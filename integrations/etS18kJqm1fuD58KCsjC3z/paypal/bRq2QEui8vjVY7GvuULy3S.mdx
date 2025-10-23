@@ -1,0 +1,49 @@
+---
+title: "PayPal"
+permalink: "bRq2QEui8vjVY7GvuULy3S"
+description: "Integrating PayPal with Softr to receive payments."
+'og:title': "PayPal – Softr Help Docs"
+'og:description': "Integrating PayPal with Softr to receive payments."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "PayPal – Softr Help Docs"
+'twitter:description': "Integrating PayPal with Softr to receive payments."
+---
+You can easily integrate PayPal on your Softr app to start receiving payments. You can either add a single button or, if you're importing a list of products from a [data source](/4230abecf813402aa2926466c313290a), you can add a PayPal link for each product in your database, so that customers can visit your store and make purchases. Let's discuss each case separately.
+
+## Adding a Single Button
+
+Your starting point is [https://www.paypal.com/buttons/](https://www.paypal.com/buttons/) where you can choose the type of button you want to have on your site. After generating the button, the code can be added inside a [Custom Code](/custom-code/3idxDhKqz1qPdqBuWbs61G/custom-code-block-overview/6XNrxFopUEiwbWipq81Eq1) block in your Softr app.
+
+As an example, let’s use the **Buy Now** button:
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F2afc6030-742f-46aa-a472-f55b6addb2c3%2FUntitled.png&blockId=eefd49fa-3c0c-4425-810d-53fd45718df1&projectId=1032)</Frame>
+<Info>Make sure you are signed in to PayPal to see the Buy Now option.</Info>
+
+Follow PayPal’s configuration steps like providing a Product name and Price:
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Faa8efb1c-5b7b-4af1-8d46-01df98352b42%2FUntitled.png&blockId=e18e320c-51b5-4277-a5f2-12321439e3c5&projectId=1032)</Frame>
+
+Once done, click “Save and Create Button”:
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F46f2a229-152c-48db-8a8f-d6c1fa5a7279%2FUntitled.png&blockId=3976b5c8-76f3-4c1e-919f-dc947ba4ff1f&projectId=1032)</Frame>
+
+You will land on a page with your button code. Copy the code:
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F817cbcc1-0649-4a94-b2fb-1cf076f7e2e0%2FUntitled.png&blockId=c41ce191-2ad8-48b3-9014-fbd8339b4772&projectId=1032)</Frame>
+
+Finally, add the link to a [Custom Code](/custom-code/3idxDhKqz1qPdqBuWbs61G/custom-code-block-overview/6XNrxFopUEiwbWipq81Eq1) block:
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F22898bb8-4f84-4aef-947e-010a6ce9c4ea%2FUntitled.png&blockId=0657b672-fb38-4833-b88f-458011bb5cf4&projectId=1032)</Frame>
+
+## Adding links in a data source
+
+Let's assume you've created an e-commerce app. Thus, you have your [product listing](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), and each product has a **View Details** button, which should be linked to the item [details page](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/item-details-block-/4bE8XaFbJp45wkAwuWiz8f). On the details page, there's in turn a **Buy Now** button. So, let's customize the **Buy Now** to link it to the item's PayPal **Buy Now** button.
+
+This time, when you create a button, switch to the **Email Link** tab, and copy the code.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F35c2b768-26ea-44f6-90b8-6392fbe8d25b%2FUntitled.png&blockId=aa8118ae-ce4b-4a7f-bf45-14ca62db1e42&projectId=1032)</Frame>
+
+### **Adding the Button Link to the Product**
+
+Now, you have the button link and need to add it to your data source to the corresponding product. We are going to use [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) as our data source and create a **PayPal Link** field to add the button link there.
+<Frame caption="The “PayPal Link” field on Airtable">![The “PayPal Link” field on Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbccfa898-eceb-4c0b-9d6f-a5837568f1d4%2Fpaypal-link-field.png&blockId=c43ec7a3-6318-4bcc-93b8-4043018bd32f&projectId=1032)</Frame>
+
+Next, on our product details page, we are going to set the **Buy Now** button action to **External url** and select the **PayPal Link** field.
+<Frame caption="Setting the external URL to the PayPal link field">![Setting the external URL to the PayPal link field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F913a7194-313a-4563-8f49-02e314012357%2Fexternal-paypal-url.png&blockId=6460f9cd-801a-4657-aa8b-959e8aa750d1&projectId=1032)</Frame>
+
+So, that's the process for one particular product, and you need to repeat it for all the products, creating a unique PayPal button for each one. When you're done, the Buy Now button on the product page will redirect to the PayPal payment page, as shown below.
+<Frame caption="Testing the button">![Testing the button](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5ab4ec48-eb83-4047-a752-dc32902dc0c7%2Ftesting-paypal-button.gif&blockId=818357c1-c138-46eb-a94b-ddef3fc7bd0a&projectId=1032)</Frame>

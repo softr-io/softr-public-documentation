@@ -1,0 +1,31 @@
+---
+title: "Get Databases"
+description: "Retrieve a list of all databases accessible to the authenticated user."
+api: GET https://tables-api.softr.io/api/v1/databases
+contentType: application/json
+---
+
+```bash
+$ curl -X GET 'https://tables-api.softr.io/api/v1/databases' \
+  -H 'Softr-Api-Key: <TOKEN>'
+```
+
+
+<ResponseExample>
+```json Response
+{
+  "data": [
+    {
+      "id": "string",
+      "name": "string",
+      "description": "string",
+      "workspaceId": "string",
+      "createdAt": "2025-06-01T10:42:10.000Z",
+      "updatedAt": "2025-06-01T10:42:10.000Z"
+    }
+  ]
+}
+```
+</ResponseExample>
+Response format:
+

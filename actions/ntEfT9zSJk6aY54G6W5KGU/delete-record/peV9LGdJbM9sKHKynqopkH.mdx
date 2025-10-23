@@ -1,0 +1,36 @@
+---
+title: "Delete Record"
+permalink: "peV9LGdJbM9sKHKynqopkH"
+description: "Letting users delete records in your data."
+'og:title': "Delete Record – Softr Help Docs"
+'og:description': "Letting users delete records in your data."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Delete Record – Softr Help Docs"
+'twitter:description': "Letting users delete records in your data."
+---
+This [Action Button](/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq) lets you delete records in your [data source](https://www.notion.so/4230abecf813402aa2926466c313290a). To demonstrate how the **Delete Record** button works, we’re going to use a [List block](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) connected to an [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) data source, which shows a list of tasks for a hypothetical product development team and has three fields: **Name** (the name of the task), **Assignee** (who it is assigned to), and **Status** (the current progress status of the task). We want to enable a “Delete task status” button to allow project managers to delete tasks.
+<Frame caption="List of tasks">![List of tasks](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F69c66584-56f5-427a-868d-7aab51fbcaf7%2Ftask-list.png&blockId=1dde0758-5bc2-4a21-a26b-25d0a134a0bf&projectId=1032)</Frame>
+
+First, we are going to configure the button label and that texts that are going to be shown in the pop-up (or modal) opened by the delete button.
+<Frame caption="Configuring button and modal labels and other texts">![Configuring button and modal labels and other texts](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F857dd7d8-f2e7-446a-a1f6-d99a9f0ff520%2Fdelete-button-texts.png&blockId=217ed37f-2d03-450e-9afb-1d34e45bd9d1&projectId=1032)</Frame>
+
+## Button Visibility
+
+Now, let’s configure the [button visibility](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/action-button-visibility/tqpb8TkUD4U4DCAUA2hjKo) to specify who the button is going to be visible to. The users of our task list are the same people who are working on those tasks, so we are going to [connect the same Airtable base](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9) with tasks and assignees to Softr as a user database.
+<Frame caption="Airtable table with the list of tasks and assignees.">![Airtable table with the list of tasks and assignees.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb2503ec9-2a88-482b-8bfe-1923015f0009%2Fusers-table.png&blockId=1b967daa-74ea-46e8-9194-a19386d18f8b&projectId=1032)</Frame>
+<Tip>The users sync between Softr and data source is one-way (from Softr to data source), so, if you connect a data source with users without having them [in Softr](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/users-menu/5JTzjtbvp8Skemd26A9ho9) first, you’ll need to create the same users in Softr as well to establish the connection.</Tip>
+
+Now, let’s configure the actual button visibility settings. We need to allow only Project Managers to delete tasks, so, first of all, we need to create a [User Group](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3) that includes only the users whose **Position** is **Project Manager**.
+<Frame caption="Creating a user group for project managers">![Creating a user group for project managers](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F460dccb3-9982-40ad-8142-dc7c26619c38%2Fpm-user-group.png&blockId=7cac3bc4-1e98-4b8c-9147-cf767f9e768e&projectId=1032)</Frame>
+
+Next, we need to navigate to our delete button’s visibility settings and select the user group that is going to be able to view the button.
+<Frame caption="Setting button visibility">![Setting button visibility](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fabb878f5-35b5-40d2-b751-74455553b841%2Fsetting-button-visibility.gif&blockId=79aad04e-919f-4356-b10b-7ca2e6fd7076&projectId=1032)</Frame>
+
+That’s it. The next and last step is to make sure everything’s working as expected.
+
+<Tip>In **Button Visibility** settings, apart from selecting user groups under **WHO CAN SEE**, you can also set conditional visibility under **ON WHICH RECORDS.** This works similar to [list conditional filters](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m).</Tip>
+
+## Testing task deletion
+
+To test our setup, we are going to log into our application with a user whose position is Project Manager and attempt to delete one of the tasks. The following gif illustrates that.
+<Frame caption="Deleting a task">![Deleting a task](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4ff17e71-45fa-453a-8252-02c8b51961f3%2FScreen_Recording_2023-04-18_at_20.29.03.gif&blockId=6d5221cb-871e-4e4d-a88b-6ca42d6cc279&projectId=1032)</Frame>

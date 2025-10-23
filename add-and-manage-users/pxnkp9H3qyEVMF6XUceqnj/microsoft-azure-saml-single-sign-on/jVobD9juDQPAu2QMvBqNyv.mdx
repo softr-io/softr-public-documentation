@@ -1,0 +1,84 @@
+---
+title: "Microsoft Azure SAML Single Sign-on"
+permalink: "jVobD9juDQPAu2QMvBqNyv"
+description: "Setting up SAML single sign-on for Softr with Microsoft Azure."
+'og:title': "Microsoft Azure SAML Single Sign-on – Softr Help Docs"
+'og:description': "Setting up SAML single sign-on for Softr with Microsoft Azure."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Microsoft Azure SAML Single Sign-on – Softr Help Docs"
+'twitter:description': "Setting up SAML single sign-on for Softr with Microsoft Azure."
+---
+[Microsoft Azure](https://azure.microsoft.com/en-us/) is a popular cloud computing platform that can be used to set up [SAML single sign-on](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/saml-single-sign-on/j9hELMUfGtAGqoNzejgoif) using its directory service called **Active Directory**. Let’s see how you can do that for your Softr app to let your users sign in with their Azure credentials.
+
+## Creating an application
+
+First of all, you need to create an application. To do that, navigate to **Enterprise Applications** on your Azure dashboard.
+<Frame caption="Enterprise applications">![Enterprise applications](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbaae7c59-bf3d-4f4d-acef-528978fb4f34%2Fenterprise-applications.png&blockId=6cea9a9e-e402-4811-873b-ee86fd9c767f&projectId=1032)</Frame>
+
+Then, hit **New Application**.
+<Frame caption="New application">![New application](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffea3c90f-85d5-4392-95a1-165198867d13%2Fnew-application.png&blockId=89ad28ed-05c5-4323-90ba-78ffdc9d9ef6&projectId=1032)</Frame>
+
+Next, in the app gallery, search for **Azure AD SAML Toolkit** and select the app.
+<Frame caption="Locating “Azure AD SAML Toolkit”">![Locating “Azure AD SAML Toolkit”](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff06a1a9f-ccc8-4cd7-8338-02bed1f0bef5%2FUntitled.png&blockId=a587f810-39a5-48f3-b253-e5e99c0b454d&projectId=1032)</Frame>
+
+In the sidebar that opens next, specify a name for your app and hit **Create**.
+<Frame caption="Creating the application">![Creating the application](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fea3217fb-872e-4349-b4c5-45b044ff698b%2Fapp-name.png&blockId=0086f106-fc2a-4d1d-a6c3-691a7f39ce4d&projectId=1032)</Frame>
+
+Now that you have your application, you need to set up single sign-on for it, which we’ll discuss next.
+
+## Getting started with single sign-on setup
+
+On the **Overview** screen of the application that you just created, click **Get started** under **Set up single sign on**.
+<Frame caption="Getting started with single sign-on setup">![Getting started with single sign-on setup](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcbd0d851-7cd2-4643-9853-296b16bfe688%2Fstart-sso.png&blockId=53b8ba82-1278-46c7-87d5-845f8f38d9ec&projectId=1032)</Frame>
+
+In the next screen, select the **SAML** method.
+<Frame caption="Selecting the single sign-on method">![Selecting the single sign-on method](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F177672d6-513a-497a-8a79-1a01ee52bb1d%2FSAML.png&blockId=5a0b53d3-a2fc-45bd-89b9-758453dab383&projectId=1032)</Frame>
+
+You’ll be taken to the configuration page, where you need to set up the required parameters in order to integrate the single sign-on with your Softr app.
+
+## Basic SAML configuration
+
+The first step of the setup is **Basic SAML Configuration**. Click **Edit** in the upper right corner to enter the configuration screen.
+<Frame caption="Basic SAML configuration">![Basic SAML configuration](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1715a5a7-6277-49ee-ba25-0caca124ac3e%2Fbasic-saml-config.png&blockId=c229c173-1aed-4b2e-b214-bf4b1a7298c7&projectId=1032)</Frame>
+
+First comes the **Identifier (Entity ID)** property, which can be found under **Audience URL** in your Softr app’s **Settings ⇒ SAML Settings**. Just copy the value and paste it in Azure.
+<Frame caption="Adding Entity ID">![Adding Entity ID](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe576164e-0c83-43f6-a213-66a09cae37df%2Fentity-id.png&blockId=bbd64e3e-3bd8-4456-8ff1-7e4fe580ec42&projectId=1032)</Frame>
+
+Next, you need to add the **Reply URL (ACS URL)**, which can be located under **ACS URL** in your Softr app’s SAML settings. **The Index** field can be left empty.
+<Frame caption="Adding ACS URL">![Adding ACS URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3f3aa624-a5f1-46f3-96bb-c85e3d655e4f%2Facs.png&blockId=db8e3cfa-f332-4ad5-bb42-4cda75091d4a&projectId=1032)</Frame>
+
+Lastly, you have the **Sign on URL**, which should have the URL of the page where your SSO login form is located.
+<Frame caption="Softr application page with an SSO sign-in block">![Softr application page with an SSO sign-in block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5f189a9e-b8ed-4837-8ff4-0a8fda2d5b77%2Fsignin-page.png&blockId=72ba2f71-1afd-4c6a-8bdb-764fee2e63bb&projectId=1032)</Frame>
+
+You need to copy the URL and paste it under **Sign on URL** in Azure.
+<Frame caption="Adding the Sign on URL">![Adding the Sign on URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc79f89b0-5194-48c9-b8c0-9389d9db6d3b%2Fazure-signin-url.png&blockId=041f45dc-c799-4754-8381-ce1e93eba52e&projectId=1032)</Frame>
+
+To finalize the setup, hit **Save** and close the sidebar.
+
+## Attributes & Claims
+
+In this step, you need to copy the **First Name**, **Last Name**, and **Email** keys from Azure and add them into your Softr app’s single sign-on settings.
+<Frame caption="Getting the keys from Azure">![Getting the keys from Azure](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa74443ae-fe6f-4423-ab97-f1b056f3c3f7%2Fazure-keys.png&blockId=61a27c96-0988-46fb-81f2-c5e15e42c044&projectId=1032)</Frame>
+
+The keys should be applied as shown in the following screenshot.
+<Frame caption="Applying keys in Softr">![Applying keys in Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F39f2d0b4-9bd0-4816-91bb-d452c6967cb1%2FSCR-20230526-q4k.png&blockId=3ca2935e-ef42-45fa-9798-60ae25e16e1c&projectId=1032)</Frame>
+
+## SAML Certificates
+
+In this step, you need to download the **Metadata XML file** in Azure.
+<Frame caption="Metadata XML Download">![Metadata XML Download](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6765e1e7-2fbd-4fa2-85bf-b9582f7f8e1e%2Fxml-download.png&blockId=bcce60a2-b098-4b46-89d0-bfdb94654e7e&projectId=1032)</Frame>
+
+Next, open the file with any suitable editor, copy the entire content of the file, and add it to your Softr app under **SAML Settings**.
+<Frame caption="Adding metadata XML to Softr">![Adding metadata XML to Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fee95bf4e-c07d-4afb-801b-5910f621dfc6%2Fxml-softr.png&blockId=dd8520d3-3698-42c3-a09e-e715cf546385&projectId=1032)</Frame>
+
+And you’re almost done. There’s one last step remaining, which we’ll discuss next.
+
+## Assigning users to an application and testing
+
+Now, your users should be able to log into your Softr app with their Active Directory credentials. **Note, that the user needs to be assigned to your Azure application to be able to access it.** To assign a user, you need to navigate to the **Users and groups** sections of your application and add that user.
+
+The following gif shows the process of assigning a user to an application.
+<Frame caption="Assigning a user to your application">![Assigning a user to your application](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F84cdf4c0-ff7f-47a8-a5db-2455a4a35438%2FScreen_Recording_2023-05-26_at_18.08.01.gif&blockId=80578034-8305-4f3a-aeeb-480601931bbb&projectId=1032)</Frame>
+
+The assigned user should now be able to log into your Softr app through single sign-on.
+<Frame caption="Signing in with Active Directory credentials">![Signing in with Active Directory credentials](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F382c6f55-eddb-45ef-9a24-cdbdf60b79f5%2FScreen_Recording_2023-05-26_at_18.34.06.gif&blockId=06434118-ef1b-4f21-bb90-93f50d2ec298&projectId=1032)</Frame>

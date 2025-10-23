@@ -1,0 +1,113 @@
+---
+title: "AI Agents"
+permalink: "5VRMhf7Q6vYhmbqWcNFDhR"
+description: "Use AI Agents in your Softr DB to auto-fill, generate content, and more."
+'og:title': "AI Agents – Softr Help Docs"
+'og:description': "Use AI Agents in your Softr DB to auto-fill, generate content, and more."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "AI Agents – Softr Help Docs"
+'twitter:description': "Use AI Agents in your Softr DB to auto-fill, generate content, and more."
+---
+## Overview
+
+AI Agents in Softr Databases can auto-fill and tag fields, summarize insights, pull details from PDFs, enrich records with live web data, and more. You decide when they run, with filters and conditions to make sure they only trigger on the records you want.
+
+## How to Add an AI Agent to a Database Field
+
+**Step 1:** Open your table in Softr Databases. Add a new **AI field**, or edit an existing text field and toggle on **Let AI auto-fill this field** in the AI tab.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9ef8f263-fd5a-4aa6-afa6-b1d2a56b1c77%2FCleanShot_2025-09-30_at_12.23.542x.png&blockId=27e9a723-d691-8073-806b-f806630f15d9&projectId=1032)</Frame>
+
+**Step 2:** Pick the AI model (e.g., GPT-4.1 for detail, Claude Sonnet 4 for speed). Then write your own prompt — like *‘Summarize the resume into key skills’* — or start with a ready-made template. Use **@** to reference other database fields in your prompts.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F599e76f8-180c-4401-be89-967bcc188f37%2FCleanShot_2025-09-30_at_12.25.562x.png&blockId=27e9a723-d691-80a8-aec7-f5c8bf1732fd&projectId=1032)</Frame>
+
+**Step 3:** Under the **Run When** section, set whether the agent is triggered manually OR runs automatically when a record is created or updated. Add **Only run if…** filters so the agent triggers only when conditions are met (e.g. run only if **Status = ‘Approved’**). This prevents unnecessary runs and saves credits.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F79f3a2f1-5dd4-4b8e-afbe-92e359e6314c%2FCleanShot_2025-09-30_at_12.26.432x.png&blockId=27e9a723-d691-8001-a09a-e440bb65b201&projectId=1032)</Frame>
+
+**Step 4:** Under **Preview**, select a record to generate a preview of what the agent will populate and how many AI credits it will consume. Click **Save** when you’re ready to activate the agent.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F892e83b2-531a-438a-a867-b945036c4b21%2FCleanShot_2025-09-30_at_12.27.412x.png&blockId=27e9a723-d691-801d-b6e9-ffbb3c34ecce&projectId=1032)</Frame>
+
+## Web Search
+
+AI Agents can search the web to enrich your data — for example, pulling the latest company info, fact-checking details, or adding context. Toggle on **Allow web search** in the AI settings, then specify in your prompt what to look up and how to format it (e.g. ‘Find the latest average delivery rates in Ontario; extract the number and cite the domain in brackets’).
+
+## AI Settings & Conditions
+
+You’re fully in control of **when** and **how** your AI agents run:
+
+* **Allow manual edits:** Toggle this on to enable review on AI-generated fields.
+
+* **Model**: Choose from 13+ models (e.g. o3, GPT-5, Claude Sonnet 4), depending on the task and the balance of speed, accuracy, and cost you need.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F854b0ded-4eaf-4e3a-8c42-6a22f93c9679%2FCleanShot_2025-09-30_at_12.04.432x.png&blockId=27e9a723-d691-806c-91b2-dffa2f0014c0&projectId=1032)</Frame>
+
+* **Run mode options:** 
+  + **Triggered manually:** Run the agent only when you click — useful for testing or expensive operations.
+  + **New record is created:** Runs automatically when a new record is added.
+  + **Existing record is updated:** Runs automatically when an existing record is updated.
+  + **Skip when value already exists:** Prevents the agent from running if the field already has data (so existing values aren’t overwritten).
+  + **“Only run if…” filters & conditions:** Add rules to specify exactly when the agent should run. Example: Run only if **Status = “Ready for AI”** or **Category = “Hardware.”**
+
+## Agent Templates
+
+Start from a ready-made agent template by clicking **Template** in the AI field settings to see a task description that you can customize to your needs.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fad0b4dad-68e3-4b7e-b40d-c5c00e909cba%2FCleanShot_2025-09-30_at_12.32.282x.png&blockId=27e9a723-d691-808b-9e94-eaeb8dce915a&projectId=1032)</Frame>
+
+## AI Credits & Billing
+
+* **Included credits:** Every **Softr plan (including Free)** comes with a set number of AI credits you can use with Softr’s AI features. If you use up your monthly AI credits, AI features will pause until your credits reset with your plan, or you add more with a credit add-on.[Learn more about AI credits](/workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/ai-credits/5VRMhf7Q6xvy7AJqyiQLx5).
+
+* **Checking Database Agent AI credit usage:** When you’re setting up an AI agent, use the Preview function to check what a run will cost (but note that every run will be different due to many factors). Credit usage depends on factors like the AI model selected, action type and input size, number of records processed, web search, and output length and format.
+
+* **Visibility:** You can see credit usage in your Plans & Billing page.
+
+---
+
+## FAQs
+<AccordionGroup>
+  <Accordion title="What are Softr Database AI Agents?">
+    Think of AI agents as helpers that handle your most tedious data tasks, like auto-filling fields, summarizing information, pulling insights from PDFs and the web, and keeping your records accurate in real time.
+    
+  </Accordion>
+  <Accordion title="Can I use AI agents on the free plan?">
+    All Softr plans (including Free) include monthly AI credits, and paid plans can purchase credit add-ons as needed.
+
+    When you’re setting up an AI agent, use the preview function to check what a run will cost (but note that every run will be different due to many factors). Credit usage depends on factors like the AI model selected, input size, number of records processed, web search, and output length.
+  </Accordion>
+  <Accordion title="How do AI credits work?">
+    AI credits reset on a monthly basis according to your plan (see the pricing page for more details). If you run out of credits, your AI features will pause running until your monthly credits reset with your plan or you purchase add-on credits.
+  </Accordion>
+  <Accordion title="Can you help me set up my agents?">
+    You can write your own prompts or use our sample templates to define the database tasks you want AI to handle. Use “@” to reference other database fields in your prompts.
+  </Accordion>
+  <Accordion title="Can I control when and how an agent runs?">
+    Yes, you can choose to run AI agents manually or automatically when records are added or updated. You can also add filters and conditions (“only run when…”) so agents trigger only on the records you specify. This added level of customization gives you more control over your AI credits and costs.
+  </Accordion>
+  <Accordion title="Can I choose which AI model powers my agent?">
+    Yes. Pick from 13+ models (e.g. o3, GPT-5, Claude Sonnet 4), depending on the task and the balance of speed, accuracy, and cost you need.
+  </Accordion>
+
+  <Accordion title="Can I test an agent before turning it on?">
+   Yes. Use the **Preview** section in a field’s AI settings to see the output on a sample record before saving the agent or running it on bulk records.
+  </Accordion>
+
+
+  <Accordion title="What fields can I use AI agents in?">
+   Most text-like fields are supported. Agents cannot write to system fields (ID, Created/Updated at) or calculated fields (Formula/Rollup).
+  </Accordion>
+
+
+  <Accordion title="How do I get AI to extract information from files or PDFs?">
+    Place the file URL or attachment in a field (e.g., *File* or *URL*). Then use the PDF/Extraction prompt templates to parse, search, or summarize the text (e.g., “summarize this contract”), referencing the field where the file is attached, e.g. @file.
+  </Accordion>
+
+
+  <Accordion title="How do I run web search?">
+    Toggle on **Allow web search** in a field’s AI settings, then write a prompt telling the agent what to look up, the format you want the output in, and websites to reference (optional). Preview results before enabling auto-runs. For best results, be specific in your prompt and add conditions (e.g. only search when “Market data” is empty).
+  </Accordion>
+</AccordionGroup>
+
+
+
+
+### FAQs for pricing page
+
+### FAQ update for Ask AI page

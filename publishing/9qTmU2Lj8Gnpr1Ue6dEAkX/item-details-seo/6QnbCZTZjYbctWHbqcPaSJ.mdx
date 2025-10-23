@@ -1,0 +1,47 @@
+---
+title: "Item Details SEO"
+permalink: "6QnbCZTZjYbctWHbqcPaSJ"
+description: "Making list details entries discoverable by search engines."
+'og:title': "Item Details SEO – Softr Help Docs"
+'og:description': "Making list details entries discoverable by search engines."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Item Details SEO – Softr Help Docs"
+'twitter:description': "Making list details entries discoverable by search engines."
+---
+To display the details of a [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) item, we use the [Item Details](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/item-details-block-/4bE8XaFbJp45wkAwuWiz8f) block, which generates and displays the data for each list entry **on the same page**. To index each item’s details as a separate page that can be discovered by search engines as well as apply a custom slug and [meta data](https://developers.google.com/search/docs/crawling-indexing/special-tags), you can set up SEO parameters for your Item Details data.
+
+## How to set up item detail seo
+
+Since there's only one Item Details page for a specific List, you can define custom SEO parameters for each List item page within your data source.
+
+<Tip>The SEO parameters will be applied only if the Item Details page is valid, i.e. it is linked to a specific List block.</Tip>
+
+The following fields can be added (**please, take into account that the names are not case-sensitive**):
+
+* **SEO:Index** – indicates whether the Item item page should be indexed or not. Can take yes/no, 1/0, true/false values. If positive, the page will be indexed by search engines and added to Sitemap.
+
+* **SEO:Slug** – Here you can define a custom URL [slug](https://en.wikipedia.org/wiki/Clean_URL#Slug) for the item page. If left empty, the automatically-generated slug will be used for the item page. Your final shareable URL with the SEO slug attached will look like this: `https://yourdomain.com/page-name/SEO-slug/r/recordID`. Do not store a `/` in the database; Softr will append this for you.
+
+* **SEO:Title** – Custom meta title for the page.
+
+* **SEO:Description** – Custom meta description for the page.
+
+In the example below, you can see how the SEO fields filled in for a "Leather Shoes" product.
+<Tip>The data source configuration described here is all you need to do. **Nothing needs to be done in your Softr application in order to enable the SEO setup.**</Tip>
+<Frame caption="SEO fields example">![SEO fields example](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F742e07d9-d084-4f56-922d-8d72381ff20b%2Fseo-fields-example.png&blockId=1889a723-d691-80ba-9c38-cffee537a502&projectId=1032)</Frame>
+<Tip>If you have too many (**more than 1000**) entries that you want to index, the system can have issues adding them to the sitemap automatically. To address this, add **/generate-sitemap** at the end of your site URL (e.g. yourdomain.com/generate-sitemap) in the browser address bar and hit enter. After the action is complete, all your List Details URLs should be added to your sitemap.</Tip>
+
+## Social media
+
+Similar to SEO fields, you can also add the following social media parameters to specify how each list item page should appear when shared on social media:
+
+* **Social:Image**
+
+* **Social:Title**
+
+* **Social:Description**
+
+You can check out how the page social parameters work [here](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/page-settings/49UoDpTpTPJe69RafDsALq). The names are not case-sensitive. Below is an example of the social fields added for a particular list item.
+<Frame caption="Social fields example">![Social fields example](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F687d295b-fa7c-4056-bfc0-e4752b2fa4c8%2Fsocial-fields-example.png&blockId=1889a723-d691-8056-8276-ccae3edf9cb5&projectId=1032)</Frame>
+
+There are tools for [Twitter](https://cards-dev.twitter.com/validator) and [LinkedIn](https://www.linkedin.com/post-inspector/) that can be used to check how the page's social tags will appear on those social networks.

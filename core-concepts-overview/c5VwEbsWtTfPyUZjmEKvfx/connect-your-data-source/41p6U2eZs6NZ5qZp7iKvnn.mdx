@@ -1,0 +1,101 @@
+---
+title: "Connect your data source"
+permalink: "41p6U2eZs6NZ5qZp7iKvnn"
+description: "Connecting your data source to your application blocks."
+'og:title': "Connect your data source – Softr Help Docs"
+'og:description': "Connecting your data source to your application blocks."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Connect your data source – Softr Help Docs"
+'twitter:description': "Connecting your data source to your application blocks."
+---
+Data is the foundation of any web application. Connecting a data source is essential for building robust, interactive, and personalized experiences that update in real time.
+
+When you connect a data source to your Softr app, you can:
+
+* **View and manage data**: Display data using forms, tables, lists, charts, and other interactive layouts.
+
+* **2-way sync**: Instantly sync changes between your data source and your Softr app without republishing.
+
+* **Enable user interaction**: Set up user accounts and permissions, allowing users to log in, edit, and update data, with changes syncing back to the data source.
+
+<iframe src="https://www.youtube.com/embed/-C7zvNrl7sY?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
+
+## Choose the data source
+
+Go to the data sources section of your Softr app and choose the platform you want to connect. Softr integrates with many popular platforms, including CRMs, modern spreadsheets, and data platforms, allowing you to connect your app with the data you need seamlessly.
+
+Below, you'll find a list of supported data sources and their corresponding pricing plans to help you choose the best option for your app.
+
+<Note>
+
+Can't find the data source you want to use in your app? [Just let us know!](https://www.softr.io/suggest-feature)
+
+</Note>
+
+## Authenticate your account
+
+Follow the authentication steps specific to your chosen data source. These might include logging into your account, granting permissions, or generating an API key. For a more detailed guide, check out the specific data source documentation.
+
+Once authenticated, decide which **bases**, **datasets**, or **documents** (depending on your data source’s terminology) you want to use in your app. Ensure the data is structured and organized to match how it will be used in your Softr app.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fec99d065-f6bf-49df-9f5a-7d8145a495e6%2FCleanShot_2025-01-24_at_12.39.56.gif&blockId=1859a723-d691-804a-8527-d13ad5405d31&projectId=1032)</Frame>
+<Info>
+
+Once authenticated, the data source will be available at the workspace level and can be accessed by other builders.
+
+</Info>
+
+## Connect data to a dynamic block
+
+Add [dynamic blocks](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) to your Softr app, such as a[list](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe), or [chart](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg). Use the source tab to select the data source you want to show and map fields from that source to the appropriate elements in the block. For example, map a "Task Name" field to a table column.
+
+**Example:** Select a "Projects" table in your data source to display the project and its status.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F911cde45-979e-4442-a397-f7c3f4006c68%2FCleanShot_2025-01-24_at_12.45.37.gif&blockId=1859a723-d691-803d-bd37-d0da75e7fe0c&projectId=1032)</Frame>
+<Note>
+
+While each dynamic block can only connect to a single data source, you can use multiple dynamic blocks connected to different data sources within the same app—even on the same page.
+
+</Note>
+
+## Configure data permissions
+
+Use **conditional filters** or **global data restrictions** to control who sees what data. These tools let you display specific records based on user details or record fields.
+
+**Example:** Show only projects with the status Done.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F87e7011c-2cab-4ca5-87ac-bcc5668e20e4%2FCleanShot_2025-01-24_at_13.04.03.gif&blockId=1859a723-d691-809e-a897-d6f5179d2806&projectId=1032)</Frame>
+
+## Configure actions
+
+You can define how users interact with your data by adding **data actions**, such as creating, editing, or deleting records.
+
+**Example:** Let users create new projects.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F91811224-7479-42ef-8d1c-2cc3804ae913%2FCleanShot_2025-01-24_at_13.16.06.gif&blockId=1859a723-d691-80c8-9a97-fff2e74ec173&projectId=1032)</Frame>
+
+## Test your connection
+
+[Preview](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/publish-your-application/41p6U2eZs7mF8o4UyKai2g) your Softr app to ensure the data is displayed correctly. Make a small change, e.g., update the name of your project in your connected data source, and verify that the update is reflected in real-time within your app.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F6db13221-ffb1-44c9-b6b5-f6b8e087bb2c%2FCleanShot_2025-01-24_at_13.21.55.gif&blockId=1859a723-d691-807a-97f7-e7e3dd96dfc2&projectId=1032)</Frame>
+
+## Building an app on top of multiple data sources
+
+One of Softr’s key strengths is its ability to integrate data from multiple sources—like CRMs, project management tools, and external APIs—into a single app. Although you can combine these sources, it’s often best to display each one in its own block to keep information organized and control how it’s presented.
+
+**Example:** Imagine you're building a project dashboard that displays customer data from your CRM (e.g., [HubSpot](/data-sources/1YYStCJukT15Lh2j93qo9A/hubspot/kwQJ43xNLmuMyiAg2qt9X9)) and project status information from your task management tool (e.g., [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX)).
+
+1. **Step 1: Connect your data sources**<br/>
+
+   Start by connecting your CRM (HubSpot) and project management tool (Airtable) to your Softr app. Go to the **Data Sources** section, select each platform, authenticate your accounts, and choose the relevant tables or datasets.
+
+2. **Step 2: Add a block for CRM data**<br/>
+
+   Add a **List** block to your page that will display customer data from HubSpot. In the block settings, map the relevant fields from HubSpot, such as customer name, email, and phone number.
+
+3. **Step 3: Add a separate block for project data**<br/>
+
+   Add another **list** block to your page, pulling project status information from Airtable. Map the project name, status, and deadline fields from Airtable to the new block.
+
+4. **Step 4: Display data in separate blocks**<br/>
+
+   You now have two separate blocks on your page:
+   * The CRM list block displays customer details.
+   * The project list block shows the project statuses.
+   This ensures each block is dedicated to its own data source, making it clear and easy to manage.

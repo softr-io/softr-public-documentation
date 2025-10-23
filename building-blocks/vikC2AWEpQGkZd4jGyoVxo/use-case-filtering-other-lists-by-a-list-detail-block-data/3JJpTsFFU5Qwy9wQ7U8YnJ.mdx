@@ -1,0 +1,83 @@
+---
+title: "Use Case: Filtering other lists by a list detail block’s data"
+permalink: "3JJpTsFFU5Qwy9wQ7U8YnJ"
+description: "You can filter lists of records by a lists detail’s record data"
+'og:title': "Use Case: Filtering other lists by a list detail block’s data – Softr Help Docs"
+'og:description': "You can filter lists of records by a lists detail’s record data"
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Use Case: Filtering other lists by a list detail block’s data – Softr Help Docs"
+'twitter:description': "You can filter lists of records by a lists detail’s record data"
+---
+<Tip>
+
+Before you begin, make sure you have a good understanding of the [Core Concepts of Softr](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx).
+
+</Tip>
+
+## Use Case
+
+You can use the data available in a list detail block to filter other lists on the same page. This is incredibly helpful in a variety of situations:
+
+* Filter a list of line items that belong to an order
+
+* Show a list of tasks that belong to a project
+
+* Display all of the contacts that belong to a selected company
+
+* Show all files uploaded by a specific user
+
+* … and many, many, many more.
+
+## Setup
+
+### Creating the main list
+
+This list will serve as the main record type the user will be selecting and can live on any page in your app. In the example below, we have a very simple Home page with a simple card list of Projects being pulled from Airtable. The cards have an action setup that when a user clicks on a card, it takes them to a details page in the app called “Project details”.
+
+You can use any type of list, table, or even Calendar and Kanban blocks for this. Anywhere you have records listed, you can link to a details screen.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F905f503f-c573-4c99-9347-94b5acf391e4%2FScreenshot_2024-12-20_at_9.42.36_AM.png&blockId=1629a723-d691-806f-a8e3-e73465e01b53&projectId=1032)</Frame>
+
+### Creating the list details page
+
+When you set up the main list and create the “on click” action, you will be asked to link to a details page for that item. If one doesn’t exist, you can also create one. In the example below, we have a “Project details” page with a very simply Item Details block showing the project image, name, client name, and status. You’ll notice that Softr prompts us with a dialog at the bottom of the screen to add items that may be linked to a project such as Tasks and Users.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fbbeb8a1d-7a6d-4268-a998-6504ea5d51ca%2FScreenshot_2024-12-20_at_10.01.26_AM.png&blockId=1629a723-d691-80c9-b952-fa31b48ab748&projectId=1032)</Frame>
+
+### Adding linked lists
+
+We can either click Add in the dialog at the bottom of the page or we can also add lists to the page manually, which is what we will do here. Below you can see that we added a “List with small cards” block below the detail block for the project and set the source to be “Users”.
+
+We also added a conditional filter stating that we only wanted to see Users where their “Projects Assigned” includes any of the Current Record’s → Project Name. This will ensure that no matter which project is selected from the main list, this list of team members (Users) will only show the people who have been assigned to the specific project, regardless of which project is being viewed.
+
+<Tip>
+
+Note that the editor will not show live filtered data, only test data. If you want to test the filtering, be sure to [Preview the app](/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/publishing-your-softr-app/gRrb1u7eLmRTrXyg3UNGkQ#previewing-your-softr-app) as different users!
+</Tip>
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fc94519a5-5bdb-49f5-b548-b8cd2c85ebe5%2FScreenshot_2024-12-20_at_10.13.27_AM.png&blockId=1629a723-d691-807c-9fcb-fda9c6fb89a8&projectId=1032)</Frame>
+
+Now let’s add one more linked list to view the Tasks associated with this project detail. Below we added a basic “Table” block with the source set to Tasks and also added a conditional filter stating that we should only show Tasks where the Project Name is the same as the Current Record’s → Project Name. This ensures that only tasks belonging to the selected project are seen here in the table.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F98efd218-2097-4517-ab83-90553ad3014d%2FScreenshot_2024-12-20_at_10.22.25_AM.png&blockId=1629a723-d691-8081-96e6-c649ac7615b7&projectId=1032)</Frame>
+
+## FAQ
+
+Click on a toggle to reveal the answer.
+   <AccordionGroup>
+   <Accordion title="Can I have multiple list details blocks on the same page?">
+Yes! But linked lists will only ever be able to filtered by the first list detail block at the top-most part of the page. If you need to filter multiple lists by different type of records and list details blocks, we recommend creating separate pages for that.
+   </Accordion>
+   <Accordion title="My list is saying no items found, what can I do?">
+Conditional filters are case and field sensitive, so make sure your conditional filters make sense. For example, if you’re matching Project Name with a task’s Project Name, make sure those two values are actually the same in your data source.
+   </Accordion>
+   <Accordion title="Is there a limit to how many linked lists I can have on a list detail page?">
+No, but from a user experience standpoint, it helps to make use of our [Tab](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/tabs/38PkeKBDeLtiKuCXp7YeBr) and [Column](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/column-container/t7HCEKvV6Y5y2t3hSWwRNx) container blocks to keep your page neat and organized!
+   </Accordion>
+   <Accordion title="Can I do this with charts as well?">
+Absolutely!
+   </Accordion>
+   <Accordion title="I need people to see more details about an item in a linked list, what can I do?">
+The same as the main list, you can add a details page for items in linked lists that people can click on to see more info, either by linking to a new page, opening a modal, or even linking out to an external URL.
+   </Accordion>
+   <Accordion title="Can I let people edit or create records using the current record’s data?">
+Yes, you can use Hidden Fields to capture information about the current record and save it as part of a different record type. Check out [this example of a Job Submission form](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-job-submission-with-hidden-fields/9j4RWhci9bi3o4BCTt6mRW).
+   </Accordion>
+
+</AccordionGroup>

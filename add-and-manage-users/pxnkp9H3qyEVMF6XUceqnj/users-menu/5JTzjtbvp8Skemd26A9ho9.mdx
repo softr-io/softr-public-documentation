@@ -1,0 +1,110 @@
+---
+title: "Users Menu"
+permalink: "5JTzjtbvp8Skemd26A9ho9"
+description: "Manage users in your app’s Users Menu."
+'og:title': "Users Menu – Softr Help Docs"
+'og:description': "Manage users in your app’s Users Menu."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Users Menu – Softr Help Docs"
+'twitter:description': "Manage users in your app’s Users Menu."
+---
+The **Users menu** can be accessed from the top toolbar inside of Softr Studio. Click on the Users tab to see a list of users that exist in your application.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9fa33eae-8194-41da-8a34-f7fb78f62d9f%2FScreenshot_2025-06-10_at_5.04.27_PM.png&blockId=20e9a723-d691-808f-a2a9-eca6b32e20b7&projectId=1032)</Frame>
+
+## Sync users with a data source
+
+You can manage users entirely in Softr or [sync users with an external data source](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9). By connecting to an external data source, you get to use additional custom fields to create user groups and application logic.
+
+<Tip>The **Last Seen Date** data is available to **Professional, Business, and Enterprise plan** users only. This field is updated once per hour.</Tip>
+
+## User Properties
+
+By default the Users tab will have some columns to display information about your users. If you have other properties about your users from your synced data source, those will not be shown here, but will still be available to use inside your app for filtering, user group creation, etc. Here are the fields available in the Users tab:
+
+* **Email (required)**: This field stores the email of your users and is required for us to create user login functionality.
+
+* **Name**: This field stores the full name of your users and is totally optional, but we highly recommend it to create a personalize experience for your users. Softr can automatically parse this into first and last name for email notifications and other uses.
+
+* **Created Time**: This is the date and time that the user was created ***in Softr***, not in your data source.
+
+* **Last Seen Time**: This field is available on Professional plans and higher. It shows the last date and time a user last logged in and is updated every hour.
+
+* **Synced:** Shows whether a user is being synced as an app user, thus counting towards your app user limit denoted by [your plan](https://www.softr.io/pricing).
+
+* **Status**: Shows whether a user has been invited to the app, not invited to the app, or activated. This has no bearing on the sync status of the user, but can be affected by whether a user is synced or not. For instance, a user who is not synced cannot also be invited or activated.
+  + Not invited: A user has not been sent an invitation to join the app and also has not joined themselves
+  + Invited: A user has been sent an invitation to the app, but has not signed up or logged in.
+  + Activated: A user has either signed up or logged in to the app at least once.
+
+* **User Groups**: This shows the user groups that a person is a part of. If you experience slow updating of these user groups, you can try turning off [user caching](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/advanced-settings/3aBby3An1TAPWnFTWc8TwS#user-caching). This UI is a bit behind actual updates so if you don’t notice an immediate change here, it is likely still functioning correctly in the end application.
+
+* **Creation Method**: Shows how a user was created. The options are:
+  + Manual: Created manually by you in the Softr UI or by CSV import.
+  + Self-sign up: The user signed up to the app themselves.
+  + Source: The user was imported by syncing with a data source.
+
+* **Authentication Method**: Shows how the user authenticated (logs in) to the app.
+  + Google: The user signed up/logs in using Google Sign-in.
+  + Email/Password: The user signed up/logs in using just Email and Password or One time codes.
+  + SAML/OpenID: The user signed up/logs in using SSO.
+
+* **Magic Link**: If Magic Link is turned on in your [Authentication](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/user-authentication/7gJmq6B7syYE3hRoFxLs5J) settings, the users [magic link](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/users-tab/5JTzjtbvp8Skemd26A9ho9#manage-magic-link) will appear in this field.
+
+## Add user(s)
+
+You can [add users manually](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/add-or-import-users-manually/g5R1bGnBTFJ3sWLR8Mgdng) by clicking on the Add user(s) button. Adding users directly to Softr will also create them in your connected datasource. Softr will prompt you to send them an optional invitation email as well.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F761fa72b-faba-445f-8ac6-94bb0c165fe7%2FScreenshot_2024-11-27_at_4.45.03_PM.png&blockId=14b9a723-d691-8026-a1d5-d72eb300d650&projectId=1032)</Frame>
+
+## Managing users
+
+By selecting users you want to manage, you will be presented with a list of actions:
+
+* Generate a [magic link](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/users-tab/5JTzjtbvp8Skemd26A9ho9#manage-magic-link) for the selected users.
+
+* Resend invite emails to the selected users.
+
+* Download the user list as a CSV file.
+
+* Delete the selected users.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F7f93396d-6be3-47f1-9944-3aa538f9b42d%2FScreenshot_2024-11-27_at_4.39.23_PM.png&blockId=2248ad73-41dc-429e-8f57-78f97352c296&projectId=1032)</Frame>
+<Tip>Please, note that **deleting** a user entry from your Softr app's Users section will delete it in the **connected data source too**.</Tip>
+
+## Manage magic link
+
+With **Magic Link**, you can generate a unique token for your users to log into your Softr app without manually signing in with a password. This can be handy when you create a user in the **Users** section and need them to sign in for the first time. Later on, the user can set up the account info in **User Profile** and sign in the usual way.
+
+Let's see how that works.
+
+### **Generating magic link**
+
+First, you need to select the users you want to generate the link for (using the checkboxes in the first column).
+
+After selecting the users, click **Generate Magic Links** under the **Actions** menu.
+<Frame caption="Generate magic link">![Generate magic link](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fd5f1d0e3-55b5-4d9a-bfd4-e662bb2b23bb%2FScreenshot_2024-11-27_at_4.40.44_PM.png&blockId=3d78123d-11dc-4649-927d-6e7acd9ea9ee&projectId=1032)</Frame>
+
+### **Copy magic link**
+
+After generating the link, you can copy it using the copy button.
+<Frame caption="Copying the link">![Copying the link](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fbd5d5259-5df8-44d7-877a-883370bf39d8%2FScreenshot_2024-11-27_at_4.41.29_PM.png&blockId=13797aaf-a3e7-4662-8f1e-d6d4712e7a24&projectId=1032)</Frame>
+
+### **Regenerate magic link**
+
+You can regenerate any user's **Magic Link** at any time using the regenerate button as shown below.
+<Frame caption="Regenerating the link">![Regenerating the link](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fcedd595b-a9b3-4f96-b3a8-c807c96a88f3%2FScreenshot_2024-11-27_at_4.42.18_PM.png&blockId=c3281834-92bc-4da3-883d-4ff3b5036ad2&projectId=1032)</Frame>
+
+### Delete a Magic Link
+
+You can also revoke/delete a magic link by clicking on the trash can icon:
+<Frame caption="Delete a magic link using the trash can icon">![Delete a magic link using the trash can icon](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fcf0d2249-4819-4649-87e2-f794af441f78%2FScreenshot_2024-11-27_at_4.43.33_PM.png&blockId=14b9a723-d691-808a-b44e-d02349100993&projectId=1032)</Frame>
+
+### Use magic link
+
+That's it, now you can send the link to the user you've generated it for. As soon as the user click's on the link or pastes it in the browser address bar, he/she will access your site in logged-in state.
+
+<Tip>
+If you want the user to be taken to a specific page in your application, you can append the following parameter at the end of your magic link: **`&next-page=/page-path`**
+
+For instance, if you have a `yourdomain.com/about-us` page that you want to add, your parameter will look as follows: **`&next-page=/about-us`**
+
+You can also append entire URLs as the `next-page` value like `https://yourdomain.com/details?recordId=XXXX` to “deep link” someone to a specific record after logging in.
+</Tip>

@@ -1,0 +1,42 @@
+---
+title: "Block Visibility"
+permalink: "3spA2dfQNrcGcPNmnDXHB3"
+description: "Make a block visible to selected user group(s)."
+'og:title': "Block Visibility – Softr Help Docs"
+'og:description': "Make a block visible to selected user group(s)."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Block Visibility – Softr Help Docs"
+'twitter:description': "Make a block visible to selected user group(s)."
+---
+This section goes through the process of configuring the visibility of any block in your Softr app.
+
+As soon as you have set up memberships, you can choose which user group you want a particular block to be visible to. This is configured through **Visibility** tab in block settings and has the following options:
+
+* **All users** (selected by default)
+
+* **Logged in users**
+
+* **Non Logged in users**
+<Frame caption="Visibility options">![Visibility options](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F76b9bdad-3e6a-4345-a2db-8dfb34b0bb6c%2Fvisibility-options.png&blockId=43ef7a53-9b5a-4674-a825-761fecb2881b&projectId=1032)</Frame>
+
+If you switch the block visibility to **Logged in users** or to **Non Logged in users**, a padlock icon will start appearing on the block, as shown below, indicating that it's gated content with limited visibility.
+<Tip>Please, keep in mind that gated content (e.g. blocks that are only accessible to logged-in users or a specific group of users) will not be crawled by search engines.</Tip>
+<Frame caption="Padlock icon indicating limited visibility">![Padlock icon indicating limited visibility](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe8958490-30c3-4b68-80e8-6eee374c42d3%2Fpadlock-for-block-visibility.png&blockId=900a4a41-3c1b-4225-9286-21559d4a30ec&projectId=1032)</Frame>
+
+For example, the block visibility feature can be used to show a header with log-in/sign-up buttons to non-logged-in users and a different header without buttons to logged-in users (discussed [here](/11ba304436ed4354a8669d4869624b9c)). But that's just one case, and there can be many other cases when you need to display/hide a certain block from a different user group, thus having different content for logged-in and non-logged-in users.
+
+## **Device visibility**
+
+Apart from setting block visibility for certain user groups, you can set device-based visibility.
+<Frame caption="Device visibility options">![Device visibility options](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F58ce3d49-9c44-46b8-adec-3a18e3ac19b0%2Fdevice-visibility-options.png&blockId=cfe0fdfa-8992-4942-b905-056f2423dcb0&projectId=1032)</Frame>
+
+By default, **Desktop**, **Tablet**, and **Mobile** options are enabled. You can disable any of the options by clicking on it. In the example below, only logged-in users who are viewing the page on a mobile device will see the block.
+<Frame caption="Applying device visibility">![Applying device visibility](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fac2966e1-a744-49e4-87c8-3d64034fe101%2Fdev-visib-applied.png&blockId=c4aeff84-5c4d-4603-a23b-9c9b87b0339d&projectId=1032)</Frame>
+
+## **Custom user groups**
+
+You can also define more low-level visibility rules for custom user groups. Learn more about [User Groups](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3).
+
+## Security
+
+<Tip>Softr viability checks and record conditional filters are applied on the server side, and there is no way to trick the system. Learn more about [Softr App Security](/security/ummZ2CWNHXZCHzsZwbEwET/softr-app-security/1xC7Hgkvo67AnHKyebr1uC).</Tip>

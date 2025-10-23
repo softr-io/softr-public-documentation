@@ -1,0 +1,78 @@
+---
+title: "SAML Single Sign-on"
+permalink: "j9hELMUfGtAGqoNzejgoif"
+description: "Setting up single sign-on for your Softr app."
+'og:title': "SAML Single Sign-on – Softr Help Docs"
+'og:description': "Setting up single sign-on for your Softr app."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "SAML Single Sign-on – Softr Help Docs"
+'twitter:description': "Setting up single sign-on for your Softr app."
+---
+<Note>SAML Single Sign-on (SSO) is available for users on the [Enterprise plan](https://www.softr.io/pricing).</Note>
+<Frame caption="Single Sign-On block">![Single Sign-On block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F18467d69-dd83-4355-b05a-b534bbb34299%2Fsingle-sign-on-block.png&blockId=80c910fc-1d5f-4827-ba56-742cfec79ff1&projectId=1032)</Frame>
+
+To be able to configure and use the block, you first need to setup SAML for your Softr app. We’ll learn what SAML is and how to configure it for Softr shortly, but let’s first get familiar with block settings.
+
+Under the **Features** tab in block settings, you can customize the Logo, Title, and Background Image of the signin block.
+<Frame caption="Logo, Title, and Background Image settings">![Logo, Title, and Background Image settings](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0d08208c-a746-4d82-89ff-bc4abb1c27a3%2Flogo-title-background-image-saml.png&blockId=11226167-edee-4e85-8611-dc5954b11100&projectId=1032)</Frame>
+
+Next, you can enable [Domain-based signup](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/signup-form/tPe3uxmdcUNeFYuaLTR1o9) and customize the **login button text**. Finally, there's an option to set **which page the user should be taken to** after successfully signing in.
+
+## ****Single Sign-On Configuration****
+
+In this section, we'll go through the steps of setting up **SAML (Security Assertion Markup Language)** for your Softr app. SAML is an open standard that allows **identity providers (IdP)** to pass authorization credentials to **service providers (SP)**, so that users can use a single set of credentials to log into different SPs. In this case your Softr app is the **SP**, and you need to connect it to an IdP to implement **Single Sign-On (SSO)** on your Softr app. There are several IdP services (e.g. Azure, Okta, Box) that you can use, but here we'll demonstrate the setup flow using [OneLogin](https://www.onelogin.com/). So, let's start.
+
+### Step 1: Creating an Application on IdP
+
+From the OneLogin dashboard, we are going to navigate to **Applications** and click **Add App**.
+<Frame caption="Adding an application">![Adding an application](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fade59788-e50e-44f7-bade-a4c617456130%2Fadding-application.png&blockId=2d0f11f8-1cad-4850-980f-d2fe8e1ed573&projectId=1032)</Frame>
+
+In the list that opens next, search for "saml test connector," select it, and create the application.
+<Frame caption="SAML Test Connector">![SAML Test Connector](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5043a3e1-e0d7-43bb-addc-9459f7511029%2Fsaml-connector-test.png&blockId=9866abe1-ca8f-41c1-b1f8-acc3a19b8eda&projectId=1032)</Frame>
+
+### Step 2: Configuring the Application
+
+In the Application settings, we are going to navigate to **Configuration** and fill in the following fields:
+
+* **Audience (EntityID)**
+
+* **Recipient**
+
+* **ACS (Consumer) URL Validator**
+
+* **ACS (Consumer) URL**
+
+To do this, you need to navigate to your Softr app's **Settings => SAML Integration**. From there, copy the **ACS URL** and paste into **Recipient** and **ACS (Consumer) URL\*** fields as well as copy the **Audience URL** and paste into the **Audience (EntityID)** field. In the **ACS (Consumer) URL Validator** field, just add "**.\***".
+<Frame caption="SAML Settings in your Softr app">![SAML Settings in your Softr app](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5a855b74-b380-49be-a0c2-d59b2ee9beb6%2Fsaml-settings-softr.png&blockId=921007a2-205f-471b-b853-45e7a864ab78&projectId=1032)</Frame>
+
+So, the **ACS URL** is basically your application SAML URL, while the **Audience URL** is a unique identifier that allows the IdP to identify the SP. Eventually, your setup should look similar to what's shown below.
+<Frame caption="Configuration section setup">![Configuration section setup](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F700ecd10-5853-4b55-8be5-265232f0082f%2Fconfig-section-setup.png&blockId=b893d944-bba5-48d2-b273-5f341876d4a5&projectId=1032)</Frame>
+
+### Step 3: Configuring Application Parameters
+
+As soon as you're done with the **Configuration** section, navigate to application's **Parameters**, where you need to create the **Email**, **First Name**, and **Last Name** fields. In the pop-up that opens after clicking the Create button, you need to add the field name (can be anything) and check the **Include in SAML assertion** flag.
+<Frame caption="New field">![New field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5ec0ca6e-2138-4d3a-bbd3-53758a4d8430%2Femail-field-new.png&blockId=51cd7b53-8747-4b1d-9be3-6cca21033bf2&projectId=1032)</Frame>
+
+Then hit **Save** and choose the field's value ("Email," "First Name," or "Last Name" depending on which one you're configuring).
+<Frame caption="Field's Value">![Field's Value](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9b4d4616-cc41-4c05-9f6e-37d7993b7533%2Femail-value.png&blockId=52d6515f-587f-4383-a559-1536a686f5c8&projectId=1032)</Frame>
+
+In the screenshot below, we already have all the three fields added.
+<Frame caption="Field added">![Field added](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe66a9e49-0867-41a7-b4ea-433faec6f085%2Ffields-added.png&blockId=61488e58-09de-46ee-b8e3-722a993771ab&projectId=1032)</Frame>
+
+### Step 4: Getting the Metadata XML
+
+Further on, navigate to the **SSO** section and copy the **Issuer URL**. As soon as you paste it in the browser address bar, it will download a metadata XML file, which we are going to use in the next step.
+<Frame caption="Issuer URL">![Issuer URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffe36dc9b-f23c-43f7-9a36-e28e2b5b1959%2Fissuer-url.png&blockId=de0bcbfd-6376-45b2-ba87-55734357018a&projectId=1032)</Frame>
+
+## Step 5: Configuring Single Sign-On in Your Softr App
+
+Now that you have everything ready, go to your Softr app's **SAML Settings** and fill in the Metadata.xml field with the XML you downloaded in the previous steps and the key fields with the names of the fields we defined earlier in **Step 3**.
+<Frame caption="SAML settings configured">![SAML settings configured](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8bac20ab-0ed1-4db7-a53b-fc953bd020ab%2FSAML-config.png&blockId=7b63dc28-9e5e-48c5-ac44-a9b4ee4b17c7&projectId=1032)</Frame>
+
+### Step 6: Adding the Single Sign-On Block
+
+That's it, you're all set and can now add the **Single Sign-on** block from **Blocks => User Accounts** to allow your users to log in with their IdP (in this case OneLogin) credentials.
+<Frame caption="Single Sign-On block">![Single Sign-On block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9ce36ea9-77a9-4765-8399-46d4847b3eb6%2Fsignle-sign-on-block.png&blockId=1f1e63b4-11fe-4fd3-b15f-31c25d98710f&projectId=1032)</Frame>
+
+You can customize the Logo, Title, Page after signin, and other settings and publish your app. Now, all the users that have an account on your OneLogin application, will be able to log in to your Softr app, and a user will be created for them. See below.
+<Frame caption="Logging in with OneLogin account">![Logging in with OneLogin account](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc12ec260-9276-4115-b183-e877c1cc3949%2Fsaml-login.gif&blockId=4b8688b7-5943-4381-9068-d14940cb8e61&projectId=1032)</Frame>

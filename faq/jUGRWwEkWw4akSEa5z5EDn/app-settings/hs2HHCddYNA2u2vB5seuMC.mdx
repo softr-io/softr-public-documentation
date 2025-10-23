@@ -1,0 +1,48 @@
+---
+title: "App Settings"
+permalink: "hs2HHCddYNA2u2vB5seuMC"
+description: "Questions related to the app settings."
+'og:title': "App Settings – Softr Help Docs"
+'og:description': "Questions related to the app settings."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "App Settings – Softr Help Docs"
+'twitter:description': "Questions related to the app settings."
+---
+<AccordionGroup>
+   <Accordion title="How to disable the Softr badge on my app?">
+<Note>Disabling Softr badge is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+
+You can disable it from your Application Settings => General => Softr Branding.
+   </Accordion>
+
+   <Accordion title="Are there default cookies on Softr?">
+Most cookies are coming with your integrations, while Softr uses cookies for user signin and signup only. Apart from that, we do not have any other cookies.
+   </Accordion>
+
+   <Accordion title="How do I set up SSL for my domain?">
+You don’t need to set it up. SSL is provided for free out of the box.
+   </Accordion>
+
+   <Accordion title="How can I change which email to use to send emails from my Softr app?">
+Check [Email Signature](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/general-settings/7YdGy1J8X2tjJSv8BGvWQU) in the app settings.
+   </Accordion>
+
+   <Accordion title="How to prevent Google from indexing my Softr app?">
+Add the following instructions to the **robots.txt** field in your app's **Settings => SEO**:
+
+```javascript
+User-agent: *
+Disallow: /
+```
+
+If youneed to disallow specific page(s), indicate the exact slug(s). Here's an example:
+
+```javascript
+Disallow: /about_us_test
+
+Disallow: /products/test_product
+
+Disallow: /products/
+```
+   </Accordion>
+</AccordionGroup>

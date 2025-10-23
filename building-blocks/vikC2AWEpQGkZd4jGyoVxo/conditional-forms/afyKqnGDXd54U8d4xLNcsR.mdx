@@ -1,0 +1,98 @@
+---
+title: "Conditional Forms"
+permalink: "afyKqnGDXd54U8d4xLNcsR"
+description: "Learn how to build a conditional form."
+'og:title': "Conditional Forms – Softr Help Docs"
+'og:description': "Learn how to build a conditional form."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Conditional Forms – Softr Help Docs"
+'twitter:description': "Learn how to build a conditional form."
+---
+Conditional Forms include all the features of Basic Forms but are enhanced with advanced functionalities like Step Logic, Section Logic and Dropdown option filtering (based on logic). These features enable the forms to adapt in real time to the attributes or input of your form users, creating a tailored form-filling experience.
+
+## **Building a Conditional Form**
+
+Setting up a Conditional Form involves the same initial steps as setting up a Basic Form. Here’s a quick recap:
+
+1. **Add a form block preset**: From your Softr app, add a new form block to your page.
+
+2. **Select a destination**: A destination can be a data source, email or a tool like Zapier or Make. You can also send a predefined JSON body directly to a webhook.
+
+3. **Add questions**: Add and map the required fields into your form such as Name, Email, Message, etc.
+
+### **Step logic**
+
+Step logic allows you to guide users through specific steps of a form based on their inputs or predefined user attributes. Here’s how to implement it:
+
+1. **Add steps**: Break your form into multiple steps or pages.
+
+2. **Set conditions for paths after a step**: Specify conditions under which a user should be directed to a particular step. For example, if a user selects "Yes" to needing additional services, you can set the form to navigate to a step that gathers more detailed information about their requirements.
+
+3. **Test step logic using preview mode**: Ensure that each pathway functions as intended by testing each conditional route to catch any errors or logical inconsistencies.
+
+<iframe src="https://www.loom.com/embed/0b3b0c607844497cbc4d46ed54246c2a" width="100%" height="500px" title="Embedded content"></iframe>
+
+### **Section logic**
+
+Section logic enhances the adaptability of forms within individual steps:
+
+1. **Add sections**: Divide your form into sections within a single step, grouping related fields together.
+
+2. **Apply conditions to sections**: Configure each section to show or hide based on user responses or attributes. For example, a section asking for payment information can be hidden unless the user selects a paid service.
+
+3. **Dynamic sections**: You can make sections dynamically appear as more information is required or certain conditions are met, improving form engagement and preventing information overload.
+
+<iframe src="https://www.loom.com/embed/784314d3215e426997d895293eb58305" width="100%" height="500px" title="Embedded content"></iframe>
+
+### Dropdown options filtering
+
+Dropdown options filtering allows you to conditionally display specific values in a dropdown field based on certain criteria. This is particularly useful when you want to guide users to select only relevant options.
+
+**Linked record option filtering**
+
+Imagine you have an event registration form connected to your "Registrations" table, which in turn is linked to an "Events" table. Each event in your data source might have a status of either 'Upcoming' or 'Past'. To prevent users from registering for 'Past' events, you can filter the dropdown to only show 'Upcoming' events. Here’s how to set it up:
+
+1. Add the dropdown field: Insert a dropdown field in your form and map it to the 'Event' field, which is a linked field from the "Registrations" table.
+
+2. Access the option filter: Click on the logic icon next to the “Options” label. This will open the option filter panel.
+
+3. Apply the conditional filter: Toggle on the "Filter options by condition" setting and add a condition. For this example, you’ll filter by `Status is Upcoming`.
+
+With this setup, the dropdown will only display 'Upcoming' events for users to select, ensuring that they can’t mistakenly register for past events.
+
+This example demonstrates how to filter linked record options.
+
+**Option value filtering**
+
+You can also apply filters based on the option values themselves, providing flexibility for different scenarios. For instance, imagine you have an email field in your data source that’s mapped to a dropdown field. If you only want to display email addresses that belong to a specific domain, such as '@softr.io', you can filter the dropdown options to show only those emails. This ensures that users are restricted to selecting emails that match the specified criteria.
+
+### Ending Logic
+
+You can control what happens when a user submits the form based on conditional logic. There are two parts to setting conditional endings: the ending itself and how users arrive there. One ending is always provided for you by default and you must have at least 1 ending on every form.
+
+To access the Endings, select the form block and click on the **Questions** tab.
+
+**The Form Ending**
+
+1. **On Submit** - You can choose to either show a success message or a thank you screen. For success message you can customize what it says. For the thank you screen you can customize what the thank you popup modal says.
+
+2. **Success Message/Thank You Screen** - This section will change based on your choice, allowing you to change the success message or thank you screen respectively.
+
+3. **Action** - Here you can choose what should happen when the user submits the form. Choose from the following options:<br/>
+   1. Refresh form - This will start the form from the beginning and let the user start a new submission
+   2. Open details page - This will open a details page for the newly created record. If one doesn’t exist, you can create one.
+   3. Open page - This will open a page in your app that you specify.
+   4. Open external URL - This will send the user to a link or URL that you specify.
+
+4. **+ Add ending** - This will add another ending to your form that you can use conditional logic to direct form submissions to.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fb328d8c1-2cb6-477d-a841-09b5ac20a394%2FScreenshot_2024-12-19_at_3.31.20_PM.png&blockId=1619a723-d691-802f-a4ec-c7e8e926552b&projectId=1032)</Frame>
+
+**Adjusting the Logic**
+Much like adding steps to the conditional form, you can select steps and use paths to send users to different endings.
+
+1. Click on the Logic tab to open up the form Logic Builder.
+
+2. Select the Step you want to route to an ending.
+
+3. Apply any logic that should make this path function and choose the Ending you want.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F194fd4b4-8a8c-4cd5-a8fe-d056e3e67277%2FScreenshot_2024-12-19_at_3.55.43_PM.png&blockId=1619a723-d691-8026-8272-c992215aba24&projectId=1032)</Frame>

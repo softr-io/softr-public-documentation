@@ -1,0 +1,192 @@
+---
+title: "User Email Notifications"
+permalink: "sZRpewgUkBFFvhKSsQrBx7"
+description: "Edit notification templates for transactional messages."
+'og:title': "User Email Notifications – Softr Help Docs"
+'og:description': "Edit notification templates for transactional messages."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "User Email Notifications – Softr Help Docs"
+'twitter:description': "Edit notification templates for transactional messages."
+---
+User email notifications refer to the transactional messages that are sent in a response to an action users take on an application. In order to ensure these messages are relevant to your app users, Softr allows you to edit email notification templates.
+
+Softr currently supports the below scenarios:
+
+### Invite email via password
+
+This email provides a temporary password for users added to the app by an app builder. The email can be sent at any time by the app builder and may be resent if necessary.
+
+[Learn how to add users manually.](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/add-or-import-users-manually/g5R1bGnBTFJ3sWLR8Mgdng)
+
+### Invite email via magic link
+
+This email provides a special magic link for users added to the app by an app builder. The email can be sent at any time by the app builder and may be resent if necessary.
+
+[Learn how to import users manually.](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/add-or-import-users-manually/g5R1bGnBTFJ3sWLR8Mgdng#import-users)
+
+### Verification email
+
+An email sent to allow users to obtain a code to sign in to this app. This email will be automatically triggered when a user requests a login code via the sign-in page.
+
+A [Sign in with Email Code](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/signin-with-email-code/5Ab4ZFWG788NHL2AB6zt2f) block must be used to enable this option.
+
+### Forgot password email
+
+An email sent to allow users to reset their password when they have forgotten it. This email will be automatically triggered when a user requests a password reset via the sign-in page.
+
+Make sure you have added [Forgot Password Form](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/forgot-password-form/cdXruGUfrkDNtzJi5JWx9s) and [Reset Password Form](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/reset-password-form/1Z48Ai2XvMX3JwuSq9ZU38) blocks to your app.
+
+## Editing notification templates
+
+To edit notification templates, click on the Notifications tab in the Users Menu of Softr Studio. Here you’ll be able to see each of the above notification templates. Click into a template to begin editing.
+
+From here, you can change the subject line, adjust the content of the email, and leverage the power of variables.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fe83bbbe1-aa0c-4d8e-9e0a-bc289d69bc0e%2FScreenshot_2024-12-19_at_8.42.11_AM.png&blockId=1619a723-d691-8012-9c84-c83beb3e9877&projectId=1032)</Frame>
+<Tip>The greyed out Softr informational text cannot be changed or removed when using the Softr email sending domain. This is to protect email recipients and legitimate Softr users. If you wish to send more customized emails, consider using automation software (Make, Zapier) and a transactional email service provider such as Mailersend, SendGrid, Mandrill, or Brevo.</Tip>
+
+### Variables
+
+Variables are dynamic inputs to your message. They are defined by user and application level data points. For example, the variable @user_name is a user level attribute and will populate as the notification recipient’s name when the email is delivered.
+
+************************************Required variables************************************
+
+Each template has a unique list of required variables. Required variables are critical pieces of information required in each scenario. For example @login_code is required for the Verification email notification. Without it app users would not be able to sign in.
+
+<Tip>To avoid errors when editing templates, we prevent you from removing required variables.</Tip>
+
+**Optional variables**
+
+Optional variables can be added to any email template. Leverage optional variables to personalize your messages, making them more relevant for your users. You have the option to add and remove optional variables.
+
+## **List of variables**
+
+### Invite email via password
+
+|  |  |
+| --- | --- |
+| **Variable Name** | **Required** |
+| @user_email | Yes |
+| @password | Yes |
+| @application_hyperlink | Yes |
+| @application_name | No |
+| @application_domain | No |
+| @application_owner | No |
+| @user_name | No |
+
+### Invite email via magic link
+
+|  |  |
+| --- | --- |
+| **Variable Name** | **Required** |
+| @magic_link | Yes |
+| @application_hyperlink | No |
+| @application_name | No |
+| @application_domain | No |
+| @application_owner | No |
+| @user_email | No |
+| @user_name | No |
+
+### Forgot password email
+
+|  |  |
+| --- | --- |
+| **Variable Name** | **Required** |
+| @reset_password_link | Yes |
+| @application_hyperlink | No |
+| @application_name | No |
+| @application_domain | No |
+| @application_owner | No |
+| @user_email | No |
+| @user_name | No |
+
+### Sign in with code
+
+|  |  |
+| --- | --- |
+| **Variable Name** | **Required** |
+| @login_code | Yes |
+| @application_hyperlink | No |
+| @application_name | No |
+| @application_domain | No |
+| @application_owner | No |
+| @user_email | No |
+| @user_name | No |
+
+## Sender details
+
+You can customize the sender details for your email notifications. To edit Sender Details, click on the Notifications tab in the Users Menu of Softr Studio. Here, you can provide a sender name and email address. The email address does not need to have an actual Inbox, however you should ensure any replies sent to it are forwarded or handled appropriately so you can verify it. Alias emails will still work.
+
+<Tip>
+
+NOTE: **You cannot use a public email domain**. Email service providers restrict this to reduce security risks, such as phishing. You can only send from emails with custom domains.
+
+</Tip>
+
+Once you have entered the name and email you want to send from, you will get an email from our service provider, Postmark, asking you to verify email to enable sending from it. Be sure to click the verification button/link in the Postmark email. Come back to Softr to check that it has been verified. You can always click the Refresh button to re-check.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F58a17519-97a7-4c13-a604-e74586a11151%2FScreenshot_2024-12-19_at_8.55.43_AM.png&blockId=1619a723-d691-80f9-9d39-fa029164c21c&projectId=1032)</Frame>
+
+## DKIM Authentication
+
+(optional)
+
+Ensuring that transactional emails from Softr apps reach their intended recipients is crucial for maintaining user engagement and satisfaction. Unfortunately, these emails can sometimes be blocked or end up in spam folders, leading to frustration and additional support overhead. Verifying the Sender Details (like in the step above) is a good first step, but by implementing DKIM (DomainKeys Identified Mail) verification, we can significantly improve email deliverability. This guide will walk you through the process of setting up DKIM for your domain to ensure consistent, reliable email delivery.
+
+### Setup
+
+After setting your custom sender details, the DKIM setup option will become available. Clicking on the **Verify** button will open a popup modal showing you the DKIM records that need to be added to your DNS.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F05b29752-5c12-4146-b546-27158934c908%2FScreenshot_2024-12-19_at_9.05.38_AM.png&blockId=1619a723-d691-80be-a0cd-e7acd7bcb69a&projectId=1032)</Frame>
+
+1. **Requesting a DKIM record**<br/>
+   * Open the DKIM setup modal. Softr will generate and return a DKIM record for your domain.
+
+2. **Adding the DKIM record to tour DNS provider**<br/>
+   * Add the provided DKIM record to your DNS provider. This step is crucial for enabling DKIM for your domain. Below are general instructions for adding DKIM records to various DNS providers:
+     + **GoDaddy:**
+       1. Log in to your GoDaddy account.
+       2. Go to the DNS management page for your domain.
+       3. Click "Add" and select "TXT" as the record type.
+       4. In the "Name" field, enter the host name provided in your DKIM record.
+       5. In the "Value" field, enter the value provided in your DKIM record.
+       6. Save the changes.
+     + **Cloudflare:**
+       1. Log in to your Cloudflare account.
+       2. Select your domain.
+       3. Go to the "DNS" tab.
+       4. Click "Add record" and select "TXT" as the record type.
+       5. Enter the host name and value provided in your DKIM record.
+       6. Save the changes.
+     + **AWS Route 53:**
+       1. Log in to the AWS Management Console.
+       2. Open the Route 53 console.
+       3. Select the hosted zone for your domain.
+       4. Click "Create record set."
+       5. Select "TXT - Text" as the record type.
+       6. Enter the host name and value provided in your DKIM record.
+       7. Save the changes.
+     + **Google Domains:**
+       1. Log in to your Google Domains account.
+       2. Select your domain.
+       3. Click on the "DNS" tab.
+       4. In the "Custom resource records" section, click "Add."
+       5. Select "TXT" as the record type.
+       6. Enter the host name and value provided in your DKIM record.
+       7. Save the changes.
+     + **Namecheap:**
+       1. Log in to your Namecheap account.
+       2. Select "Domain List" from the left sidebar and click "Manage" next to your domain.
+       3. Navigate to the "Advanced DNS" tab.
+       4. Click "Add New Record" and select "TXT Record" as the type.
+       5. Enter the host name and value provided in your DKIM record.
+       6. Save the changes.
+
+3. **Verifying the DKIM record**<br/>
+   * Click the "Verify" button to check the status. Note that DNS changes can take up to 24 hours to come into effect.
+   * Once verified, Softr will automatically start signing emails with DKIM for your domain.
+
+### Benefits of DKIM
+
+* **Improved deliverability:** DKIM ensures that your emails are less likely to be marked as spam or blocked.
+
+* **Enhanced security:** DKIM helps verify that your emails are indeed from your domain, reducing the risk of phishing attacks.
+
+* **Consistency:** Automating DKIM setup through Postmark's API saves time and ensures reliable email delivery.

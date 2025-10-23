@@ -1,0 +1,11 @@
+ol ol {
+  list-style-type: decimal !important;
+}
+
+.dark .prose span :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border-bottom: 1px solid #f9a619;
+}
+
+.dark .prose span :where(a:hover):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border-bottom-width: 2px;
+}

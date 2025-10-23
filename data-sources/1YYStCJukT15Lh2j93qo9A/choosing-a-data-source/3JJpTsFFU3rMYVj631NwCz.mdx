@@ -1,0 +1,79 @@
+---
+title: "Choosing a Data Source"
+permalink: "3JJpTsFFU3rMYVj631NwCz"
+description: "Compare and contrast data sources"
+'og:title': "Choosing a Data Source – Softr Help Docs"
+'og:description': "Compare and contrast data sources"
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Choosing a Data Source – Softr Help Docs"
+'twitter:description': "Compare and contrast data sources"
+---
+## Choosing a Data Source
+
+For Softr users who don’t have data or a source of data yet, it can be intimidating trying figure out which data source might be right for your application. Which one you choose should be based on a number of different factors such as:
+
+* Number of records
+
+* Number of concurrent users
+
+* Data source security capabilities
+
+* Technical skill
+
+* Pricepoint
+
+Let’s look at each of these in a bit more detail.
+
+### Number of Records
+
+Softr can scale to any number of records you need to bring in and display, however there are two things that will determine how many records you can use with Softr - your Softr subscription plan and the data source you are using. Softr categorizes data sources into two camps - Basic and Advanced. Our [plan breakdown](https://www.softr.io/pricing) shows how many records you can have on each plan for Basic sources like Airtable and Sheets and for Advanced sources like SQL and BigQuery.
+
+Additionally, each of these data sources may also have their own limits on the number of records or rows you can have, which Softr is also bound by depending on your account limits with those providers. If you’re building an app that uses record-heavy databases like messaging, notifications, or have lots of users, you’ll want to take this into consideration.
+
+### Number of Concurrent Users
+
+Concurrent users are much more important than the total number of users in an app, because concurrent users are the number of users who will be using the app at the *same time*. Softr uses a data source API/connection directly in realtime. These data sources often limit how often you can get data from their service - this is called rate limiting. Rate limiting varies by data source and can affect how quickly Softr is allowed to fetch data from your data source.
+
+In terms of users, you may have 50,000 users in total, but only 200 are using it at any given time - Airtable or Sheets would be a great datasource for you. However, with apps with tens of thousands of concurrent users, you will definitely want to be using SQL, Supabase, Xano, or another more scalable data source for your app. Every user in your app is fetching data from your data source. The more dynamic blocks, users, and actions you have in your app, the higher the rate limit your data source needs.
+
+### Data Source Security Capabilities
+
+Softr does not store or sync data from your data source, although we employ 24 hour caching to ensure your app remains speedy. We rely on connecting to a data source directly and pulling or pushing data at the time of need. Because of this, you should take into consideration a data source’s policies around storage, caching, deletion, encryption, and AI modeling before using it as a data source for your Softr app. If you need a HIPAA compliant data source, the data source itself needs to support it. If you require the data to be encrypted at rest, you need to make sure the data source itself does this.
+
+Since Softr does proxy requests through our servers and store your data source credentials, we make available all of our security policies on our [Security](https://www.softr.io/security) page. Softr is also SOC2 Type II compliant and we provide a standard vendor risk assessment form as well (VRA) - please contact us via the support chat on our website to request more information.
+
+### Technical Skill
+
+While Softr is quite easy to use, the data source you connect to is not always as simple. The data source you choose should match the skill level of the app builder. Simple data source like Airtable, Sheets, Smartsuite, Hubspot, Monday, etc. will be much less technical than Supabase, Xano, SQL, or REST APIs. If you feel that you need a highly scalable, but more technical data source and don’t have the skills, we have numerous [Softr Experts](https://www.softr.io/softr-experts) who would be glad to help you build what you need!
+
+### Pricepoint
+
+When choosing a data source, you will likely also be evaluating the cost differences between the various services. You’ll want to use the above criteria to help you determine the scope and needs of your app, then find a data source with a plan structure and price that works for you.
+
+## Data Source Comparison
+
+Below you will find a table of estimated (albeit subjective) comparison of different data sources and their strengths and weaknesses. Note that we don’t track a data source’s own plans and features so always verify for yourself. The table is what we at Softr have seen work as median results when used in Softr apps.
+
+<Warning>
+
+This is not a representation of plan limits on these services, but rather an indication of acceptable performance on a Softr app running on these data sources.
+
+</Warning>
+
+|  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| **Data Source** | **Number of Records** | **Recommended Concurrent Users** | **Data Security Capabilities** | **Technical Skill** | **Pricepoint** |
+| Airtable | Up to 500,000 | 200-300 | Medium | Low | $$ |
+| Google Sheets | 1 million + | 50-100 | Low | Low | $ |
+| Smartsuite | Up to 500,000 | 200-300 | Medium | Low | $$ |
+| Hubspot | 1 million + | 500-1000 | Medium | Medium | $$$ |
+| Monday | Up to 500,000 | 50-100 | Low | Low | $$ |
+| Xano | Unlimited | Unlimited | High | High | $$ |
+| SQL | Unlimited | Unlimited | High | High | $ |
+| Supabase | Unlimited | Unlimited | High | High | $ |
+| REST API | Unlimited | N/A | Varies | High | Varies |
+| BigQuery | Unlimited | N/A | Low | Medium | $ |
+| Notion | 1 million + | 50-100 | Medium | Low | $ |
+| ClickUp | Up to 500,000 | 50-100 | Medium | Low | $$ |
+| Coda | 1 million + | 200-300 | Medium | Low | $ |
+| Softr Databases | 1 million + | Unlimited | Medium | Low | $ |

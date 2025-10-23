@@ -1,0 +1,203 @@
+---
+title: "Chart Block Overview"
+permalink: "48LkSKXWY8TrBwjqBVXMqg"
+description: "Adding charts to your Softr app."
+'og:title': "Chart Block Overview – Softr Help Docs"
+'og:description': "Adding charts to your Softr app."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Chart Block Overview – Softr Help Docs"
+'twitter:description': "Adding charts to your Softr app."
+---
+<Note>Chart block is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+
+Using the Chart block, you can add different types of charts to your Softr app. The charts get the data from [data sources](/4230abecf813402aa2926466c313290a).
+
+In the following articles, you can get familiar with different chart layouts that are available. In this article, we’ll set up a chart (using a **Bar Chart** as an example) from the scratch and explain each configuration option.
+
+To start configuring the chart, you first need to link it to a [data source](/4230abecf813402aa2926466c313290a) to start displaying your data. We are going to use [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) for that purpose. So, let’s start.
+
+<Tip>
+If you make an update in your data source, **it will take 15 min** until that change is reflected in your chart in preview, and live mode.
+
+Learn more about data sampling and data freshness at the end of this article.
+</Tip>
+
+## Linking a data source
+<Frame caption="Linking an Airtable base and table">![Linking an Airtable base and table](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd4e9123b-1fd9-458a-8e49-dd1f1b65a161%2Flinking-chart-data-source.png&blockId=bf11d9b0-2029-40f1-a2e5-80d76e69bec7&projectId=1032)</Frame>
+
+This part is similar to the [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) block settings, where you need to connect a data sourcefrom the **Data** tabto get your chart data.
+
+<Tip>Please note, that you first need to have your [data source](/4230abecf813402aa2926466c313290a) linked in **Settings => Data Sources** to be able to connect a specific database.</Tip>
+
+### Conditional Filters
+
+Under the **Source** tab, you also have the **Conditional Filters** section. Chart **Conditional Filters** work similar to [List conditional filters](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m).
+
+<Tip>If you want to refer to an Airtable Linked Record in your condition, use a relevant **Lookup Field** (supported), not a Linked Record itself (not supported).</Tip>
+
+## Features
+
+Now, let's see what we have in the **Features** tab of block's settings.
+
+### **Title and Subtitle**
+
+Here you set a **Title** and **Subtitle** for the block.
+<Frame caption="Title and subtitle">![Title and subtitle](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F97a92561-1d02-4d70-828a-ed60c7cebd8a%2Fchart-title-subtitle.png&blockId=efb21bab-0a30-44fe-9e7c-434fbb7a72f8&projectId=1032)</Frame>
+
+### **Type**
+
+Next, you have the **Type** parameter where you select between different chart types. Let’s select the **Bar Chart** type and move on to configuring our data.
+
+### Metrics
+
+Here’s when we start connecting our data to display it through the chart. We’re going to use an Airtable table with a database of quarterly incomes and expenses as shown below.
+<Frame caption="Airtable table with data">![Airtable table with data](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8d295e81-f9a4-446d-b253-15b6d2335599%2FUntitled.png&blockId=b276bf16-dd0f-4402-bd74-e23526b8c397&projectId=1032)</Frame>
+
+As you can see, each record has a **Type** field, a **Sub-type**, and a corresponding value, which is negative in case of expenses.
+
+Let’s say we want to display the sum of incomes and expenses for each month.
+
+For that, we have to define what is our metric. In our case incomes and expenses are stored in Airtable **Value** field, and the metric should be a sum of those.
+
+In the chart block settings, we need to choose **Aggregate function** → Sum, and **Field** → Value
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff4aa621e-9d87-45a7-99a7-c13a401bee5c%2FUntitled.png&blockId=69d846df-f3fb-430e-a94f-c97809086f66&projectId=1032)</Frame>
+
+The **Aggregate function** has the following options:
+
+* **Sum**. Calculates the Sum of all the values for a given category.
+
+* **Average**. Calculates the average of all the values for a given category.
+
+* **Min**. Picks the smallest value of all the values of the category.
+
+* **Max**. Picks the biggest value of all the values of the category.
+
+* **Count distinct values**. Adds up the number of records that **contain a unique value**.
+
+* **Count all**. Adds up the number of records present in a given grouping category.
+
+### Groupings
+
+Under **Groupings**, we need to select the field by which we want our metric to be grouped and shown on the X-axis. In our case it is the **Date** field.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F5c02463f-eb20-4069-93f9-e9c10308a257%2FUntitled.png&blockId=93166f66-da41-4fe5-b16c-746e801b957a&projectId=1032)</Frame>
+
+As a result, we have the following chart that shows the sum of incomes and expenses for each month.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9b844eca-5e7f-4744-b882-c58924269dbf%2FUntitled.png&blockId=45d8aac7-0036-49c8-8795-149f3b5a4310&projectId=1032)</Frame>
+
+Now, let’s explore each setup option in greater detail.
+
+**Time interval**
+
+When using **date** or **timestamp** fields, you can further group your date-like records by Time interval option:
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F0b870cbc-a066-41c7-ad70-9564a3da19f3%2FUntitled.png&blockId=be64abd0-305d-40d9-9d4f-6b25864da50e&projectId=1032)</Frame>
+
+Let’s say our time interval is set to month:
+<Frame caption="Time interval: month">![Time interval: month](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F11886fd9-c423-4cad-8059-c32d264654b3%2Fmonth-interval.png&blockId=64905e27-374f-477b-8312-6767da517471&projectId=1032)</Frame>
+
+When we change time interval to a year, metric values get aggregated for each year:
+<Frame caption="Time interval: year">![Time interval: year](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F7315b7df-dc2c-4373-a1ed-80e002e465d5%2Fyear-interval.png&blockId=c548cacc-78b5-4221-8996-c40de74868b9&projectId=1032)</Frame>
+
+For the **day** and **month** time intervals you can choose relevant **display formats**:
+
+|  |  |
+| --- | --- |
+| Time interval | Display formats |
+| Day | YYYY-MM-DD MM/DD/YYYY DD/MM/YYYY MMM DD, YYYY |
+| Month | YYYY-MM MM/YYYY YYYY/MM MMM YYYY |
+
+**Sort by**
+
+Next, we have the **Sort by** dropdown, which will have the following options:
+
+* **Categories // A-Z.** Order by the **Category** field values from A to Z.
+
+* **Categories // Z-A.** Order by the **Category** field values from Z to A.
+
+* **Values // A-Z.** Order by the **Value** field values from A to Z.
+
+* **Values // Z-A.** Order by the **Value** field values from Z to A.
+
+Example: If our **Group by** field is the Date field, and we select “**Categories //A-Z,”** we’ll have the following ordering: 2019-01, 2019-02, 2019-03, etc. (by alphabetical order), as on the screenshot above.
+
+We can also sort by the **Value** field. So, if we select **“Values // Z-A,”** the month with the highest value will come first, and chart bars will be sorted in ascending order as shown below.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc52f4fc2-9fa5-4a48-8a9c-8db319c5c97c%2FUntitled.png&blockId=1089626b-1f7b-4308-9eb2-3e4d92d93587&projectId=1032)</Frame>
+
+**Max categories**
+
+Further on, we can select how many categories (i.e. chart bars) should be displayed at most. So, if we set the number to 2, only the first two months will be visible on our chart.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc8ad3382-6d67-4b73-a038-cbe2b7f8693b%2FUntitled.png&blockId=7be6bccb-b47f-43fb-aa65-04c5317c6b6d&projectId=1032)</Frame>
+
+Lastly, we have two toggles. The first lets you **Show axis label**, which is the **Date** field in our example.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb5977513-98e9-49a9-89c4-b944c71edc54%2FUntitled.png&blockId=d6ba31c6-f04a-4950-8eb4-1d63d6a2bd38&projectId=1032)</Frame>
+
+**Include empty cells**
+
+The last toggle lets you choose whether you want to **include empty cells** in the category field. In the example below, we’ve removed one of the values in the Date field.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F77ce09c6-70ee-49d6-82fe-6936c981844b%2FUntitled.png&blockId=719da686-9931-4009-8e67-e00c087a8d73&projectId=1032)</Frame>
+
+So, with “Include empty cells” toggle turned on, the chart will look as follows.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa2a35ec8-f239-4d0d-b43c-740e675a444b%2FUntitled.png&blockId=cf4bd510-59a9-414d-a573-0d8470db70a1&projectId=1032)</Frame>
+
+**Sub-grouping**
+
+Next, you can enable the **Sub-grouping** toggle to split up the chart into subcategories. In our data, we have a **Sub-type** field that indicates the exact type of each income or expense record. So, we’re going to segment our data by this field. The following image shows the resulting bar chart, where each month has four bars corresponding to each Sub-type value.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fee9524f7-ec57-45fc-a6c1-70dda8d60d3a%2FUntitled.png&blockId=c891fe21-7b40-4518-af40-09799bd2f489&projectId=1032)</Frame>
+<Tip>If you want to refer to an Airtable Linked Record in your grouping, use a relevant **Lookup Field** (supported), not a Linked Record itself (not supported).</Tip>
+
+Lastly, we can choose to **Treat empty cells as 0** as well as **Show axis label**.
+
+## Options
+
+### **Orientation**
+
+This option can be used to change the orientation of the chart from horizontal to vertical.
+<Frame caption="Switching chart orientation">![Switching chart orientation](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe5973d65-af57-431f-8589-ba563e78bec7%2FScreen_Recording_2023-03-28_at_20.19.28.gif&blockId=7adf590e-69e0-459d-914a-05ecae1c03ab&projectId=1032)</Frame>
+
+### Show zoom
+
+When this option is enabled, the users will be able to zoom into any area of the chart. There's also a **Zoom out** option that reverts the last zoom in action. See below how that works.
+<Frame caption="Zoom in and out">![Zoom in and out](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F62357755-1f95-4bc8-807b-d81fc132e42d%2FScreen_Recording_2023-03-28_at_20.25.20.gif&blockId=b0ba7f04-da5f-4f6c-a790-8dec94252b9d&projectId=1032)</Frame>
+
+### Show tooltip
+
+When this option is enabled, the users will see a tooltip when hovering over each individual bar. The tooltip contains all the information about that specific bar.
+
+### Enable download
+
+When this option is enabled, the users will be able to download the chart to their device in **.svg** format.
+
+## **Data sampling and data freshness**
+
+### Charts in edit mode
+
+* Data sampling - only a small sample of records is used to generate your charts in edit mode to optimize performance
+
+* Data freshness - data shown in edit mode is real-time.
+
+### Charts in preview mode
+
+* Data sampling - all the specified records are being shown, limited by the max number of “records per dynamic block” specified in your plan.
+
+* Data freshness - data refreshes every 15 minutes. 
+  + Chartsinclude the Information about when the data on the chart was last refreshed.
+  + App builders can instantly refresh data in preview mode. Instant data refresh is only available in preview mode for testing purposes. Not available to your end users in the live app.
+
+### Charts in live mode
+
+* Data sampling - all the specified records are being shown, limited by the max number of “records per dynamic block” specified in your plan.
+
+* Data freshness - data refreshes every 15 minutes. Chartsinclude the Information about when the data on the chart was last refreshed.
+
+### Hiding data freshness information
+
+Sometimes, you might want to hide data freshness information, typically in cases where a chart serves purely as a visual aid for your narration on a website, rather than being the object of analysis.
+
+Here’s a little custom CSS snippet that will allow you to hide the data freshness information:
+
+```css
+<style>
+div[category='Chart'] span[class*='message'] {
+    display: none!important;
+}
+</style>
+```

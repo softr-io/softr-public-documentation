@@ -1,0 +1,125 @@
+---
+title: "User groups & permissions"
+permalink: "42JZoeYwMqiZYSB8FVGepz"
+description: "Setting up user groups and defining permissions."
+'og:title': "User groups & permissions – Softr Help Docs"
+'og:description': "Setting up user groups and defining permissions."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "User groups & permissions – Softr Help Docs"
+'twitter:description': "Setting up user groups and defining permissions."
+---
+Setting up user groups and permissions in your Softr apps helps you control who can access what information. Whether you’re building a Client Portal, an Internal Tool, or any other business application, you can group users by shared needs and set permissions to define exactly what they see and how they interact with your data.
+
+Use permissions to:
+
+* Restrict access to certain pages or blocks.
+
+* Control which records users can read, edit, create, or delete.
+
+With these tools, you can easily build secure, dynamic, and personalized apps.
+
+<iframe src="https://www.youtube.com/embed/XOPycDUtlDQ?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
+
+## **User Groups**
+
+[User groups](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3) are at the core of Softr’s permissions system. They let you organize users based on their access needs and are the foundation for applying visibility and access rules throughout your app. Softr provides the following types of user groups:
+
+### **Default User Groups**
+
+* **Non-logged-in Users**: Users who access the app without logging in are automatically placed in this group. This is ideal for public-facing content such as landing pages or public directories.
+
+* **Logged-in Users**: Any user who logs into your app is part of this group. You can use this to gate content and actions exclusively for authenticated users.
+
+### **Custom User Groups**
+
+Custom **user groups** let you set detailed access rules for specific subsets of logged-in users—like clients or employees. You can make these groups either dynamic or static:
+
+* **Dynamic user groups**: Defined by rules based on user attributes or subscription tiers. When logging in, users who meet those criteria are automatically added to that group.
+
+* **Static user groups**: Defined by manually adding users to the group, with no dynamic rules involved.
+
+<Note>
+
+**Custom user groups** are available on Professional, Business, and Enterprise plans.
+
+</Note>
+
+**Example**:
+
+* The “Admin” group can access admin dashboards and team metrics.
+
+* The “Clients” group can access their own projects and tasks.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F88420558-8762-49ab-94bb-7320de77c077%2FCleanShot_2025-01-24_at_12.03.162x.png&blockId=1889a723-d691-802d-8d7a-ed934d68d14e&projectId=1032)</Frame>
+
+# Types of permissions
+
+You can set up permissions in Softr at two levels: **UI elements** and **data**.
+
+**UI element visibility** controls which pages, blocks, and actions each user group can see, while **data permissions** define which records or data subsets they can access within a block. This section covers the Softr features you can use to configure these permissions.
+
+## UI Element visibility
+
+You can manage access at various levels: **Page**, **Block**, and **Action** buttons.
+
+<Info>
+
+Visibility rules are hierarchical. If you restrict a page to a user group, everything on that page—blocks and elements—is also limited to that group or its subsets.
+
+</Info>
+
+### **Page Visibility**
+
+[Page visibility](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/page-visibility/nWJaN689VKA1TUeaEfzK9u) lets you control who can access an entire page in your app. Assign pages to predefined user groups so only the right users can see restricted pages like salary information or the company’s revenue KPIs.
+
+**Example**: In a Client Portal app, clients can only see their company page and projects’ status, not other clients’ information. Admins can see additional pages like Clients, Invoices, Teams, and Contracts.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F79d38e98-f040-4233-9077-cde3f982a2f2%2FCleanShot_2025-01-24_at_12.15.46.gif&blockId=1889a723-d691-8093-b4a7-eeed66c4a1a7&projectId=1032)</Frame>
+
+### **Block Visibility**
+
+[Block visibility](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/block-visibility/3spA2dfQNrcGcPNmnDXHB3) lets you control which user groups can see specific blocks on a page, ensuring a personalized experience. You can also tailor block visibility for different devices—desktop, tablet, and mobile.
+
+**Example**: In a Sales CRM app, admins can see the blocks showing the revenue metrics, while regular employees can only see the blocks with quick links.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F2bc6d24f-1cd2-46c3-8f2f-8975f549ac74%2FCleanShot_2025-01-24_at_12.28.06.gif&blockId=1889a723-d691-8072-a89e-fd2b9c771bfe&projectId=1032)</Frame>
+
+## Data permissions
+
+Data permissions let you control which records users can see or interact with. You can apply these permissions at the block, action, or app level.
+
+### **Action Visibility (aka Permissions)**
+
+Set [action visibility](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/action-button-visibility/tqpb8TkUD4U4DCAUA2hjKo) for user groups to control who can interact with buttons like [add record](/actions/ntEfT9zSJk6aY54G6W5KGU/add-record/3LrUMpQY4BKfDDQj6eb8h8) or [edit](/actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx) [record](/actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx). You can also use [conditional filters](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m) to show or hide actions based on custom criteria.
+
+<Note>
+
+Action Visibility is available for Professional, Business, and Enterprise plans.
+
+</Note>
+
+**Example:** Only Admins can see the Edit button in a client portal app to edit project details. Clients will only see view-only project details.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F20193ade-3ec9-4651-a7ad-a70501b29679%2FCleanShot_2025-01-24_at_12.15.46.gif&blockId=1889a723-d691-801c-9d74-d5c9f78cdc38&projectId=1032)</Frame>
+
+### Conditional Filters **(aka record filtering)**
+
+[Conditional filters](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m) let you filter data for each logged-in user by applying user-based conditions or other record information, URL parameters etc. For example, users can see only records tied to their email (e.g., show projects assigned to this user).
+
+You can also set filters based on record fields, like task status or category, to show relevant records to everyone. (e.g., show records that don’t have “Done” status).
+
+**Example:** In a Task Management app, logged-in users can view only the tasks assigned to them.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff03f24b4-8f21-4ddb-884d-d985c01793f2%2FCleanShot_2025-01-24_at_12.08.44.gif&blockId=1889a723-d691-8033-be77-c9f6d71405d8&projectId=1032)</Frame>
+
+### **Global Data Restrictions**
+
+[Global data restrictions](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/global-data-restrictions/3kH6DuUvRNVztnGzAJoiL8) let you define restriction rules of who can view, create, edit, or delete data at an application level.
+
+You only need to define them once, and they automatically apply to all blocks, ensuring consistent access control and preventing accidental data exposure. This is especially handy if you know specific rules and cases upfront when access to view, edit, or delete will always be restricted to certain groups - and instead of defining those rules at every block level, you define them once for the whole app.
+
+**Types of Global Data Restrictions**
+
+* **Record-Level**: Manage visibility or editing rights for entire records.
+
+* **Field-Level** **(coming soon)**: Restrict access to specific fields within a record for certain users.
+
+**Example (record level):** In a **client portal**, apply a “View” restriction so clients see only their project data. By matching records to the logged-in user's email, you ensure a private and secure experience where users cannot access data belonging to others.
+
+**Example (field level):** In an HR portal, you might want the HR manager to view and edit all the employees' personal information, but employees are never allowed to edit their salary information.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F17dfc35f-4ab8-4fe3-947a-174ad37e993c%2FScreenshot_2024-12-18_at_17.40.31.png&blockId=1889a723-d691-8094-9410-c718f9e4e65f&projectId=1032)</Frame>

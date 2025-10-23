@@ -1,0 +1,41 @@
+---
+title: "Reset Password Form"
+permalink: "1Z48Ai2XvMX3JwuSq9ZU38"
+description: "Reset password functionality overview."
+'og:title': "Reset Password Form – Softr Help Docs"
+'og:description': "Reset password functionality overview."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Reset Password Form – Softr Help Docs"
+'twitter:description': "Reset password functionality overview."
+---
+<iframe src="https://www.youtube.com/embed/YEdfVQg2dAs?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
+
+This article provides a guide on setting up the password reset process, outlining two available methods.
+
+## **Password reset for logged-out users**
+
+* Create separate pages for [Forgot Password Form](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/forgot-password-form/cdXruGUfrkDNtzJi5JWx9s) and discussed here "Reset Password" block.
+
+* On the "Forgot Password" page, add the respective block where users can enter their email address.
+
+* After submitting the email, users receive a unique link (e.g. `https://domain.softr.app/reset-password?token=bcb9702f-3579-49c9-be57-a01f5e93b4e1`) to reset their password.
+
+* Ensure these pages are accessible to users who are not logged in, specifically for those who have forgotten their passwords.
+
+* Refer to this instructional video for further assistance: [Password Reset Tutorial Video](https://www.youtube.com/watch?v=YEdfVQg2dAs).
+<Frame caption="Resetting the password">![Resetting the password](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F06538936-526d-4bab-980a-6833b2fd08be%2Freset-password-form.png&blockId=c4fe7bc4-d43e-42b5-bd98-4c9db72560c0&projectId=1032)</Frame>
+
+## **Password reset/set for logged-In users**
+
+Use the [User Profile](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/user-profile/jVikpwBm67W9wozwyDXtjs) block to enable password resets for logged-in users.
+
+<Note>If users log in using a magic link and wish to set a password, they should navigate to a page with the user profile block. Note that even after setting a new password, the *Old password* input field remains grayed out for these users. </Note>
+
+## Logo, Title, and Background Image
+
+This section is configured similar to that of the [Signup Form](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/signup-form/tPe3uxmdcUNeFYuaLTR1o9).
+
+## Reset Password form
+
+Customize the "New Password" field placeholder text and the "Reset" button text in this section. Note that the action of the button is fixed and cannot be changed.
+<Frame caption="Block settings">![Block settings](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F97f62112-fcc6-420c-83dd-fc9c4d655d9a%2Freset-password-settings.png&blockId=e673f850-12fd-466e-806b-16d7ea0d794e&projectId=1032)</Frame>

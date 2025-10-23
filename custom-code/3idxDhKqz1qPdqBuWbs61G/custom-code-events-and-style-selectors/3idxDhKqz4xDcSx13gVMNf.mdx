@@ -1,0 +1,771 @@
+---
+title: "Custom Code Events and Style Selectors"
+permalink: "3idxDhKqz4xDcSx13gVMNf"
+description: "Learn about how to write your own custom code using events and selectors."
+'og:title': "Custom Code Events and Style Selectors – Softr Help Docs"
+'og:description': "Learn about how to write your own custom code using events and selectors."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Custom Code Events and Style Selectors – Softr Help Docs"
+'twitter:description': "Learn about how to write your own custom code using events and selectors."
+---
+<Tip>
+
+Code snippets mentioned here should be added to the page Settings -> Custom Code -> Code Inside Header, unless stated otherwise.
+
+</Tip>
+
+## Global variables
+
+* There is a `<div>` element on top of the document `<body>` that stores application id and page id on it’s `data-appid` and `data-pageid` attributes.
+
+* If there is a logged in user `window.logged_in_user` object is available with `softr_user_email` , `softr_user_full_name` properties. If you have synced your users table with a data source, you will also be able to access the other properties about the user as well.
+
+* Block specific data is stored on `window` object with `hrid` as an identifier of that block. (ex. `window['table1']` in case hrid is table1).
+  The `window[hrid]` object differs based on block type.
+
+* List, List details, Kanban, Chart, Organization chart, Calendar, Twitter and Map blocks have `baseId` and `tableName` properties.
+
+* Form block has `airtableBaseUrl` property
+
+* Map block has `google_map_api_key` property
+
+* There is `openSwModal` global method that opens given url in modal.
+  Example: `openSwModal('https://softr.io/')`
+
+## Charts
+
+### Chart colors
+
+To change chart default colors we should set
+
+```javascript
+window['chart1-colors'] = ['#FE8070', '#DD7E6B', '#EA9999', '#F4CCCC', '#24A37D', '#AEAEB5', '#E25B5B', '#FFF974', '#4BAEAE', '#E5E5EA', '#33E4EF', '#C9DAF2'];
+```
+
+where `chart1` is the block hrid.
+
+### Chart invalidate
+
+Invalidate the chart cache after 5 seconds:
+
+```javascript
+<script>
+    const invalidateChartCache = new CustomEvent("invalidate-chart-cache-chart1");
+    window.dispatchEvent(invalidateChartCache);
+</script>
+```
+
+where `chart1` is the block hrid.
+
+### Chart reload
+
+Reload after 5 seconds:
+
+```javascript
+<script>
+    const refetchDataEvent = new CustomEvent("reload-chart1");
+    
+    setTimeout(() => {
+        window.dispatchEvent(refetchDataEvent);
+    }, 5000);
+</script>
+```
+
+where `chart1` is the block hrid.
+
+### Chart invalidate and reload
+
+Invalidate the cache and reload the chart:
+
+```javascript
+<script>
+    const invalidateChartCache = new CustomEvent("invalidate-chart-cache-chart1");
+    const refetchDataEvent = new CustomEvent("reload-chart1");
+    
+    setTimeout(() => {
+        window.dispatchEvent(invalidateChartCache);
+        window.dispatchEvent(refetchDataEvent);
+    }, 5000);
+</script>
+```
+
+Where `chart1` is the block hrid
+
+### **Chart v5 change colors depending on value WIP**
+
+```javascript
+<script>
+    window.addEventListener('chart-loaded-chart1', (event) => {
+        const chartInstance = event.detail;
+        let option = chartInstance.getOption();
+        
+        const seriesData = option.series[0].data;
+ 
+        for (let i = 0; i < seriesData.length; i++) {
+            let dataItem = seriesData[i];
+
+            if (typeof dataItem === 'number') {
+                dataItem = {value: dataItem};
+            }
+
+            const value = dataItem.value;
+
+            if (value > 100000) { 
+                dataItem.itemStyle = {color: 'red'};
+            } else {
+                dataItem.itemStyle = {color: 'green'};
+            }
+
+            seriesData[i] = dataItem;
+        }
+
+        option.series[0].data = seriesData;
+        chartInstance.setOption(option)
+    })
+</script>
+```
+
+## Browser Events
+
+Adding **event listeners** to **elements** that were rendered by **React** is tricky.
+You may **add** an **event listener** but after **React re-renders** the **component** it might **loose** your **listener** because React can (in some cases) remove and re-create element that you added the listener on.
+
+To handle this the `event listener` should be added on `parent element` that doesn’t re-render and `check` the element `selector` after `event trigger`.
+
+Example:
+
+```javascript
+const handler = (e) => {
+    if (e.target.closest('#table1 .ag-row')) {
+			 // handle click event on ag-row
+    }
+};
+
+document.body.addEventListener('click', handler);
+```
+
+This way you can handle `click` event on table rows with `table1` hrid.
+
+## Generic Custom Events
+
+There are custom events that Softr blocks trigger or listen to.
+We also add **hrid** to the event name to identify the block the event refers to.
+
+### **block-loaded**
+
+`block-loaded` event is triggered when React mounts the block into DOM. It can be used instead of `DOMContentLoaded` event that is used in old custom codes.
+
+ex.
+
+```javascript
+window.addEventListener('block-loaded-table1', () => {
+	console.log('Block loaded');
+});
+```
+
+### **get-record**
+
+`get-record` event is triggered on every single data response from softr data service. It is used on list-details blocks and it can be used as for getting the data and using it for other 3rd party calls or as a indicator that after some small interval time the block will be fully rendered.
+ex.
+
+```javascript
+const onRecord = (e) => {
+	// we got new data under e.details
+	console.log(e.detail);
+	//console.log {id: '***', fields: {...}}
+};
+
+window.addEventListener('get-record-list-details1', onRecord);
+```
+
+```javascript
+const onRecord = (e) => {
+	setTimeout(() => {
+		// The block finish rendering 
+		// I may do some staff here.
+	}, 50);
+};
+
+window.addEventListener('get-record-list-details1', onRecord);
+```
+
+```javascript
+window.addEventListener('get-record-list-details1', (e) => {
+	// hide list details block if no record found
+	if (!e.detail.id) {
+		document.getElementById('list-details1').classList.add('d-none');
+	}
+});
+```
+
+### **get-records**
+
+`get-records` event is triggered on every data response from softr data service. It can be used as for getting the data and using it for other 3rd party calls or as a indicator that after some small interval time the block will be fully rendered.
+ex.
+
+```javascript
+const onRecords = (e) => {
+	// we got new data under e.details
+	console.log(e.detail);
+	//console.log [{id: '***', fields: {...}}]
+};
+
+window.addEventListener('get-records-table1', onRecords);
+```
+
+```javascript
+const onRecords = (e) => {
+	setTimeout(() => {
+		// The block finish rendering 
+		// I may do some staff here.
+	}, 50);
+};
+
+window.addEventListener('get-records-table1', onRecords);
+```
+
+Also there is an `get-records:before` event that is triggered before sending request, It can be used to catch the inline filter or search field changes.
+
+```javascript
+const onFilterChange = (e) => {
+	console.log(e.detail);
+	//console.log { search: '', filter: [ { field: 'size', value: 'M' } ] }
+};
+
+window.addEventListener('get-records-table1:before', onFilterChange);
+```
+
+### **update-records**
+
+`update-records` event is listened by all blocks that use external data.
+It can be used to change/add/remove the data that should be rendered. Mostly it can be used in pair with `get-records`.
+ex.
+
+```javascript
+
+const onRecords = (e) => {
+	const modifiedRecords = e.detail.map(({fields, ...other}) => ({
+		...other,
+		fields: {
+	    ...fields,
+	    phone: fields.phone ? fields.phone.replace('+374', '0') : '',
+		}
+	}));
+    	
+	const modify = new CustomEvent('update-records-table1', { detail: modifiedRecords });
+	setTimeout(() => window.dispatchEvent(modify), 1);
+};
+    
+window.addEventListener('get-records-table1', onRecords);
+```
+
+## Action Buttons
+
+### **add-record**
+
+`add-record-hrid` event is fired when the form submission in the add-record modal is triggered.
+
+`add-record-success-hrid` event is fired when the submission is successful
+
+`add-record-failure-hrid` event is fired when the submission has failed
+
+```
+<script>
+    window.addEventListener("block-loaded-list1", () => {
+        window.addEventListener("add-record-list1", (e) => {
+            console.log("adding the record -> ", e);
+        });
+    
+        window.addEventListener("add-record-success-list1", (e) => {
+            console.log("success -> ", e);
+        });
+        
+        window.addEventListener("add-record-failure-list1", (e) => {
+            console.log("failure -> ", e);
+        });
+    });
+</script>
+```
+
+### update-record
+
+`update-record-success` event with field values is triggered after getting response with success status code.
+`update-record-failure` event is triggered after getting response with error code.
+
+ex.
+
+```javascript
+
+ 
+
+window.addEventListener('update-record-failure-list1', (e) => {
+	console.log('update record failure', e.detail);
+	// update record failure 'Email field is required.'
+});
+
+// To reload the page after record update on #list1 block
+window.addEventListener('update-record-success-list1', () => {
+	window.location.reload()
+});
+```
+
+### upvote-record
+
+`upvote-record-success` event with field values is triggered after getting response with success status code and datail.
+`upvote-record-failure` event is triggered after getting response with error code.
+
+ex.
+
+```javascript
+
+<script>
+	window.addEventListener('upvote-record-success-BLOCKNAME', (e) => {
+		console.log('upvote-record detail ', e.detail)
+	});
+	
+	window.addEventListener('upvote-record-failure-BLOCKNAME', (e) => {
+		console.log('upvote-record detail ', e)
+	});
+</script>
+```
+
+### call-api (webhook-trigger)
+
+`call-api-success` event with field values is triggered after getting response with a success status code.
+`call-api-failure` event is triggered after getting response with error code.
+
+ex.
+
+```javascript
+
+<script>
+	window.addEventListener('call-api-success-BLOCKNAME', (e) => {
+		console.log('call-api-success', e.detail)
+	});
+	
+	window.addEventListener('call-api-failure-BLOCKNAME', (e) => {
+		console.log('call-api-failure', e)
+	});
+</script>
+```
+
+## Blocks Custom events
+
+### Calendar block trigger reload block
+
+ex.
+
+```javascript
+<script>
+window.addEventListener('block-loaded-calendar1', () => {
+	const customEvent = new CustomEvent('reload-block-calendar1');
+  window.dispatchEvent(customEvent);
+});
+</script>
+```
+
+### List blocks trigger reload block
+
+ex.
+
+```javascript
+
+<script>
+
+	window.addEventListener('update-record-success-list-details1', () => {
+	  
+			//IF THE DETAILS BLOCK AND LIST BLOCK ON THE SAME PAGE
+			window.dispatchEvent(new CustomEvent('reload-block-BLOCKNAME'));
+		
+		
+		  //IF THE DETAILS PAGE OPENED IN MODAL
+			window.parent.dispatchEvent(new CustomEvent('reload-block-BLOCKNAME'));
+	
+		  //RELOAD PAGE
+			window.location.reload()
+		
+	});
+
+</script>
+```
+
+## Form Custom Events
+
+### **update-fields**
+
+`update-fields` event is listened by blocks that use form inputs with Formik library. Currently it’s blocks under Form and User Accounts categories. It can be used to update input values with custom code. This is used to update form values from a code automatically… let’s say after form is rendered client side custom code fetches a data from third party API and wants to set into form to be submitted… (keep in mind user attributes and URL attributes can be prefilled with default functionality without code)
+
+ex.
+
+```javascript
+<script>
+	window.addEventListener('block-loaded-form1', () => {
+		const updateFields = new CustomEvent('update-fields-form1', {
+				detail: {
+					'Full Name': 'Softr',
+					'Email': 'info@softr.io'
+				}
+		});
+		window.dispatchEvent(updateFields);
+	});
+</script>
+```
+
+### **submit-form, submit-form-success, submit-form-failure**
+
+`submit-form` event with field values as an attribute is triggered before sending form submission request.
+`submit-form-success` event with field values is triggered after getting response with success status code.
+`submit-form-failure` event is triggered after getting response with error code.
+
+ex.
+
+```javascript
+
+window.addEventListener('submit-form-form1', (e) => {
+	// e.detail is an object with form field names and values
+	console.log('form submit', e.detail);
+	// form submit { "Full Name": "Softr", "Email": "info@softr.io" }
+});
+
+window.addEventListener('submit-form-success-form1', (e) => {
+	// e.detail is an object with form field names and values
+	console.log('form submit success', e.detail);
+	// form submit success { 
+	//                   payload: { "Full Name": "Softr" ... },
+	//                   response: { headers: {...}, data: {...}, status: 200 }
+	//                 }
+});
+
+window.addEventListener('submit-form-failure-form1', (e) => {
+	console.log('form submit failure', e.detail);
+	// form submit failure 'Email field is required.'
+});
+```
+
+### **Customize form’s validation messages**
+
+Make error massages of inputs in forms and user account blocks changeable/translatable via a custom code:
+
+```
+<script>
+	window["softr_validation_messages"] = {
+    required: "the required message",
+    email: "email field's custom message",
+    phone: "phone field's custom message",
+		url: "url field's custom message"
+	};
+</script>
+```
+
+## Header Custom Events
+
+### set-logo-link
+
+`set-logo-link` event is used to set header logo link to custom url.
+
+ex.
+
+```javascript
+window.addEventListener('block-loaded-header1', () => {
+	const detail = { link: 'https://google.com' };
+	window.dispatchEvent(new CustomEvent('set-logo-link-header1', { detail }));
+});
+```
+
+### trigger action before logout
+
+first will trigger custom action and after 300 ms will continue to Sign Out
+
+ex.
+
+```javascript
+window.addEventListener('user-sign-out', (e) => {
+	
+	// do some actions before logout - (300 ms)
+
+});
+```
+
+### Sign-out user by clicking on custom button
+
+`block-loaded` event is triggered when React mounts the block into DOM.
+
+ex.
+
+```javascript
+<script>
+  window.addEventListener('block-loaded-BLOCKNAME', () => {
+
+    setTimeout(() => {
+        	const signOutButton = document.querySelector('BUTTON_CLASS_NAME');
+    signOutButton.addEventListener('click', () => {
+ 
+       document.cookie = 'jwtToken=;path=/;expires=Thu, 01 Jan 1970 00:00:00 UTC;SameSite=None;Secure';
+
+       window.location.href = '/';
+
+     });
+    }, 1000)
+
+  });
+</script>
+```
+
+## Tab Container Custom Events
+
+`tab-selected` event is triggered every time the user selects a new tab in the Tab Container.
+
+The event is triggered only when the active tab is changed, if the user clicks on the already active tab the event won’t be triggered.
+
+ex.
+
+```javascript
+// Add an event listener for "tab-selected" event for Tab container with "tab-container1" id
+window.addEventListener('tab-selected-tab-container1', (e) => {
+	// the selected tab id is stored in e.details
+	console.log(e.detail);
+});
+```
+
+## Styling
+
+There is still bootstrap included in the page, but it will be removed in the near future. So try not to use it.
+
+Material-ui React component library is used in the new blocks. It adds classes to all small to large components with the prefix of `Mui` those classes can be used to add custom styles to the elements, but we may also change it to `Softr` or something similar in the near future (ex. `MuiInputBase` to `SoftrInputBase`).
+
+Try wrapping selector with hrid to add more priority to your selector.
+ex.
+
+```css
+#table1 .MuiInputBase-input {
+	border-left: none;
+}
+```
+
+There are also some attributes that expose the content of the element. It can help identify and style them based on it.
+
+* data-content attribute on tag elements
+
+* data-rating attribute on rating elements
+
+Because CSS supports attribute selectors, they can be used to style the elements based on content.
+
+ex.
+
+```css
+
+// tags with content "Low" 
+#table1 .tag-item[data-content="Low"] {
+    background-color: #F00 !important;
+}
+// add span to the selector if you want to customize text color
+#table1 .tag-item[data-content="Low"] span {
+    color: #FFF !important;
+}
+
+// tags that start with word "Low" 
+#table1 .tag-item[data-content^="Low"] {
+    background-color: #F00 !important;
+}
+// tags that have substring "low"
+#table1 .tag-item[data-content*="low"] {
+    background-color: #F00 !important;
+}
+
+// ratings that are 1 start
+#table1 [data-rating="1"] span {
+    color: #F00 !important;
+}
+```
+
+### Overriding navigation styles
+
+```css
+<style>
+  /* Override logo size on topbar */
+  .softr-topbar .softr-nav-logo {
+    transform: scale(1.2);
+  }
+  
+  /* Override hovered link background and color */
+  .softr-topbar .softr-nav-link:hover {
+    background: #F1F1F1;
+  }
+  .softr-topbar .softr-nav-link:hover > span {
+    color: #000000;
+  }
+  
+  /* Apply specific styles for active links */
+  .softr-topbar .softr-nav-link[data-active=true] > span {
+    font-weight: bold;
+  }
+  
+  /* Override font family on sidebar links */
+	.softr-sidebar .softr-nav-link {
+	  font-family: "Comic Sans MS" !important;
+	}
+	
+	/* Override topbar background */
+	.softr-topbar {
+	  background: #F1F1F1 !important;
+	}
+</style>
+```
+
+### Kanban block custom column background colors
+
+ex.
+
+```javascript
+<script>
+// block-loaded-BLOCKNAME  --> example (block-loaded-kanban1)
+window.addEventListener('block-loaded-kanban1', () => {
+
+    // colorMap object values should be the same as column label names
+	const colorMap = {
+            '1': {
+                'background': '#1E8700'
+                },
+            '2': {
+                'background': '#F6CF2D'
+                },
+            '3': {
+                'background': '#EC1212'
+                },
+        };
+        
+        const lookingForColumns = setInterval(() => {
+            const columns = [...document.querySelectorAll(`[data-column-name]`)];
+            
+            if(columns.length){
+                clearInterval(lookingForColumns);
+                
+                columns.forEach(col => {
+                        const columnName= $(col).attr('data-column-name');
+                        if(colorMap[columnName]){
+                         $(col).css('background', colorMap[columnName].background);   
+                        }
+                    });
+                
+            }
+        }, 300);
+});
+</script>
+```
+
+### Styles and actions for Action buttons by custom code
+
+ex.
+
+```javascript
+// ✅ get an element with data-action-button-id
+const el1 = document.querySelector('[data-action-button-id="list1-visible-btn-0-rec1yIahkX1mZhLQn"]');
+
+// ✅ get an element where data-action-button-id starts with list1-visible-btn or list1-btn
+const el1 = document.querySelector('[data-action-button-id^="list1-visible-btn-"]');
+
+// ✅ get all elements where data-action-button-id starts with list1-visible-btn
+const elements = document.querySelectorAll('[data-action-button-id^="list1-visible-btn-"]');
+#list2 button[data-action-button-id^="list2-visible-btn-_l26zaezue"] {
+  margin-left: 50px
+}
+```
+
+```css
+// ✅ style for all buttons where data-action-button-id starts with list1-visible-btn-
+#list1 button[data-action-button-id^="list1-visible-btn-"] {
+  margin-left: 50px
+}
+
+// ✅ style for one of buttons with data-action-button-id-BUTTONID
+#list1 button[data-action-button-id^="list1-visible-btn-_l26zaezue"] {
+  margin-left: 50px
+}
+```
+
+### Selectors available for styling using custom code
+
+Various CSS classes and `data-` attributes let you style UI elements and select them with JavaScript.
+
+Class names use the `.softr-` prefix to distinguish them from internal classes that may change.
+
+Similarly, stable `data-*` attributes use the `data-softr-*` prefix, with a few exceptions like `data-action-id`.
+
+```css
+/**
+ * Grid block's card container. Can be used to adjust the gap
+ * between the cards using the `gap` property
+ */
+#list1 .softr-grid-container {
+  gap: 24px;
+}
+
+/**
+ * Similar to `softr-grid-container` but for the list block
+ */
+#list1 .softr-list-container {}
+
+/**
+ * Container for all fields in the list and list details blocks
+ */
+#list1 .softr-fields-container {}
+
+/* Field labels for list and list details blocks */
+#list1 .softr-field-label {}
+
+/* The wrapping element for each field/modal field input has this attribute */
+#list1 [data-softr-field-id='your-field-id'] {
+  /* Selects the wrapper div for the field with id 'your-field-id'.
+     You can find the field id from the browser dev tools.
+   */
+}
+
+/* Various dialog containers */
+#list1 [data-softr-dialog-type] {
+  /* Selects all dialogs in the list1 block  */
+}
+#list1 [data-softr-dialog-type='UPDATE_RECORD'] {
+  /* Selects only the `Update record` dialog in list1 block */
+}
+```
+
+### Worked out example for styling form inputs
+
+Let's see how to customize the appearance of input fields in the "Add record" form.
+
+Here's the end result:
+
+```css
+<style>
+/* Select the ADD_RECORD dialog  */
+#list1 [data-softr-dialog-type="ADD_RECORD"]
+{
+  /* Element which contains a text input */
+  *:has(> input[type="text"]) {
+  
+    border: 1px solid;
+    border-color: lightgray;
+    background-color: transparent;
+    border-radius: 0px;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    input {
+        background-color: initial;
+    }
+    
+    /* styles when the input has validation errors */
+    &:has(> input[aria-invalid="true"]) {
+        outline-color: crimson;
+        border-color: transparent;
+    }
+    
+    /* styles when input is selected */
+    &:has(> input:focus) {
+        outline-color: teal;
+        border-color: transparent;
+    }
+    
+  }
+}
+</style>
+```

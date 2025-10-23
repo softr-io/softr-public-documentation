@@ -1,0 +1,37 @@
+---
+title: "Google Analytics"
+permalink: "qt63nJLpVoXh7oyxJUVZL4"
+description: "Using Google Analytics to track user behavior."
+'og:title': "Google Analytics – Softr Help Docs"
+'og:description': "Using Google Analytics to track user behavior."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Google Analytics – Softr Help Docs"
+'twitter:description': "Using Google Analytics to track user behavior."
+---
+In this guide, we'll go through the process of integrating **Google Analytics** with your Softr app. You can integrate both **Universal Analytics** and **Google Analytics 4**, and below you can find separate guides for each of the versions.
+
+## Universal Analytics
+
+After [setting up a Google Analytics property](https://support.google.com/analytics/answer/10269537?ref_topic=1009620) for your site, you need to navigate to **Admin**, choose the required property, and click **Tracking Info**, as shown below.
+<Frame caption="Locating tracking info">![Locating tracking info](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdf8105d7-c646-4388-907a-0b343c5d7aef%2Ftracking-info.png&blockId=6d96dee1-fa98-410b-a77f-2b1b4e257cd6&projectId=1032)</Frame>
+
+From the opened dropdown, click on **Tracking Code** and copy the **Tracking ID** (starting with "UA-") as shown below.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F78ec8a21-6799-4551-9e0f-a3231572ac1b%2Ftracking-id.png&blockId=592cbb16-f611-479d-90c3-a186d886c426&projectId=1032)</Frame>
+
+That's it, now you just need to paste the ID in **Settings =>** **Integrations => Google Analytics**
+in the left-hand toolbar of your [Softr Studio](/5315870b0eb4473fb49dd13c97635d67) and hit **Save.**
+<Frame caption="Adding tracking code in Softr">![Adding tracking code in Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9926844c-6773-4710-b5a9-188d1006cd50%2Fadding-ga-code-in-softr.png&blockId=d847f012-98e4-4a7f-b8b5-5717956df509&projectId=1032)</Frame>
+
+## Google Analytics 4
+
+After setting up a [Google Analytics 4 property](https://support.google.com/analytics/answer/9304153#zippy=%2Cweb%2Cadd-the-tag-to-a-website-builder-or-cms-hosted-website-eg-wordpress-shopify-etc), you need to go to **Admin**, select the required **property** and navigate to **Data Streams**.
+<Frame caption="Accessing data streams">![Accessing data streams](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb5cf8ed4-b46a-40da-8380-78014dbb1d14%2Fselecting-data-streams.png&blockId=55b64d79-eff8-4d76-9817-a3772d2824de&projectId=1032)</Frame>
+
+Next, select the data stream.
+<Frame caption="Selecting the data stream">![Selecting the data stream](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F50a6d38b-938c-4d96-a6d8-4566c42f89e0%2Fselecting-data-stream.png&blockId=af6a332d-fa4c-4e43-954f-2b7ff4340cab&projectId=1032)</Frame>
+
+In the screen that comes next, locate the **Measurement ID** and copy it.
+<Frame caption="Getting the Measurement ID">![Getting the Measurement ID](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1ecc6999-a826-4c02-a0f1-54071068be79%2Fgetting-measurement-id.png&blockId=ac06b61a-a61d-4c64-b29e-bde48b87fad2&projectId=1032)</Frame>
+
+Finally, you just need to go back to your Softr app and add the ID into [Settings](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/general-settings/7YdGy1J8X2tjJSv8BGvWQU)**⇒Integrations ⇒ Google Analytics** as shown in the following screenshot.
+<Frame caption="Applying the Measurement ID">![Applying the Measurement ID](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5987ff86-e2bb-4a96-9c9f-cf1d19253666%2Fapplying-measurement-id.png&blockId=5841420c-77fe-4ea7-ac99-60dac31f54de&projectId=1032)</Frame>

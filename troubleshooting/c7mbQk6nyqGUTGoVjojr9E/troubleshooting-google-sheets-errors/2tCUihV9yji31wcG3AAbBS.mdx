@@ -1,0 +1,51 @@
+---
+title: "Troubleshooting Google Sheets errors"
+permalink: "2tCUihV9yji31wcG3AAbBS"
+description: "Common Google Sheets errors and how to fix them."
+'og:title': "Troubleshooting Google Sheets errors – Softr Help Docs"
+'og:description': "Common Google Sheets errors and how to fix them."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Troubleshooting Google Sheets errors – Softr Help Docs"
+'twitter:description': "Common Google Sheets errors and how to fix them."
+---
+When using Google Sheets as your data source, you may run across an error. In this article we help you to troubleshoot the most common error cases related to Google Sheets.
+
+## **Missing data source**
+
+### Mapped Google spreadsheet **‘\{spreadsheet_name}’** can no longer be found.
+
+This error can happen when your Google spreadsheet is **moved to trash** or **deleted**.
+
+If your Google spreadsheet is **moved** to a place you don’t have access to, you should ask its owner to [give you access to the file](https://support.google.com/drive/answer/2494822?hl=en&co=GENIE.Platform%3DDesktop).
+
+If the Google spreadsheet was **deleted** permanently, you will need to use an alternative spreadsheet as your data source.
+
+### Mapped Google sheet **‘\{sheet_name}’** can no longer be found.
+
+This error can be caused by the sheet being **renamed** or **deleted.**
+
+If your sheet was **renamed**, you can simply rename the table back to its original name. Alternatively you can map your block(s) to the newly named sheet.
+
+If the sheet was **deleted** permanently, you will need to map your block(s) to another sheet.
+
+### Mapped field **‘\{column_field_name}’** can no longer be found.
+
+This means that a column field you had mapped to your block was **renamed** or **deleted.**
+
+If the column field was **renamed**, you can:
+
+* Rename the column field back to it’s original name
+
+* (Re-)map the newly named column field to your block
+
+If the column field was **deleted** permanently, you will need to use another field.
+
+## Access
+
+### Access token for Google Account \{account_name} is no longer valid
+
+This error happens happens when the Softr access token for accessing your Google Sheets has expired. To renew the token, you need to re-authenticate Softr with your Google Account. Start in **App Settings > Data Sources > Re-authenticate** and follow the authentication flow.
+<Frame caption="Google Sheets re-authentication">![Google Sheets re-authentication](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd7ad9a6c-b8de-4375-96f7-bd7d80d457fb%2FScreenshot_2022-12-28_at_16.10.46.png&blockId=0b671abc-1a89-438a-9a7d-f05d8d4b5c6a&projectId=1032)</Frame>
+
+Make sure you **give Softr the right to edit your Google Sheets by checking these two boxes** during the authentication flow.
+<Frame caption="Google Sheets edit permissions for Softr">![Google Sheets edit permissions for Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2be4511a-723a-4edb-b9d2-868ebbeca949%2FScreenshot_2022-12-28_at_16.16.46.png&blockId=b5558bb0-c362-44e0-b0bf-0e9fc421018b&projectId=1032)</Frame>

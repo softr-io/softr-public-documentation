@@ -1,0 +1,155 @@
+---
+title: "Conditional Filters"
+permalink: "mDnn7jnpPiYmJcT99jpt7m"
+description: "Setting up conditions to filter the list data."
+'og:title': "Conditional Filters – Softr Help Docs"
+'og:description': "Setting up conditions to filter the list data."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Conditional Filters – Softr Help Docs"
+'twitter:description': "Setting up conditions to filter the list data."
+---
+The conditional filtering feature allows you to filter the list, as well as other dynamic blocks, based on the defined conditions.
+
+<Info>Conditional filtering is also used when you want to display a main list of items, and upon selecting a specific item, show its details along with its associated sub-items. Learn about [Linked List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/linked-list/bWjTdKhbftofSEKRSxMFz9). </Info>
+
+It's available through **Conditional Filters** in the block settings sidebar under the **Source** section.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fc25a19dd-395e-4469-aaf5-75c14693d054%2FUntitled.png&blockId=1021c33a-2000-4b62-b983-8795644ad4b6&projectId=1032)</Frame>
+
+Now, let's see how it works.
+
+First of all, from the dropdown selector at the top, you can choose whether **any** or **all** of the defined conditions should be met for filtering the information.
+<Frame caption="“Any” or “All” of the conditions">![“Any” or “All” of the conditions](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F04353332-5b7d-40ed-9ca1-89441d661a8e%2FUntitled.png&blockId=43273cc3-43e8-4ea7-8c86-2141f8e24dd6&projectId=1032)</Frame>
+
+Additional conditions can be joined with:
+
+* AND (when "All" is selected)
+
+* OR (when "Any" is selected)
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F3aceaf43-4aab-42b6-a10a-d30dee8559b0%2FUntitled.png&blockId=6ef49ad0-ac9f-4a21-93fa-595194bc638f&projectId=1032)</Frame>
+
+Moving on, let's see how the **Condition** is configured. There are three fields in **Condition Settings:**
+
+## **1. Field**
+
+Here, you need to select a field from the specified data source base, for which the condition will be defined.
+
+## 2. Condition
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F36641394-cd39-4545-a3ce-f37f1e1bcd23%2FUntitled.png&blockId=bf3930c2-dfb2-4f84-af41-de9f7e0ea646&projectId=1032)</Frame>
+
+The following options are available for defining a relationship between the [Field](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) and the [Value](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU).
+
+**Text-like** **Fields**, e.g. emails, formulas, URLs, single select fields – can be used with the following available conditions:
+
+* **Is** – the Field value needs to match the Valueexactly
+
+* **Is not** – the Field value has any value apart from the Value
+
+* **Contains** – the Field value partially matches the Value
+
+* **Does not contain** - the Field value doesn’t partially match the Value. It checks if the given Value is not present within the Field value
+
+* **Is any of** –the Field value is any of the Value(s). Multiple values can be added
+
+* **Is none of** – the Field values have any other value apart from the Value(s). Multiple values can be added
+
+* **Is empty** – the Field value is empty
+
+* **Is not empty** – the Field value is not empty. Has some value
+
+* **Starts with** – the Field value starts with the Value
+
+* **Ends with** – the Field value ends with the Value
+
+**Numeric Fields** can be used with the following available conditions:
+
+* =
+
+* ≠
+
+* \>
+
+* \<
+
+* ≥
+
+* ≤
+
+* Is between *(inclusive of min/max)*
+
+* Is empty
+
+* Is not empty
+
+**Array-like Fields**, e.g. multi-select fields, linked records, tags, lookup fields can be used with the following available conditions:
+
+* Includes any of
+
+* Includes all of
+
+* Includes exactly
+
+* Includes none of
+
+* Is empty
+
+* Is not empty
+
+**Boolean Fields**, e.g. checkbox fields:
+
+* Is
+
+* Is not
+
+* Is empty
+
+* Is not empty
+
+<Info>At the moment Date fields can be used with the same conditions as Text-like Fields. </Info>
+
+## 3. Value
+
+Here, you have two options. Let's consider each one separately.
+
+### Entering a specific value
+
+You can enter a specific value for the selected field so that only the records having that value are displayed.
+
+<Tip>If the **value contains a space**, you'd need to copy it from somewhere else instead of typing it in.</Tip>
+
+Let's say we have a list of employees in [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) and want to display only the ones whose position is Project Manager.
+<Frame caption="A list of employees in Airtable">![A list of employees in Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1d51d048-af28-46de-b575-c99458b4fb81%2Flist-of-employees.png&blockId=d5697d41-e439-4523-ac6c-ac25b81dbcfb&projectId=1032)</Frame>
+
+Below you can see how we apply a conditional filter to show only the entries that meet this condition.
+<Frame caption="Applying a conditional filter to the list">![Applying a conditional filter to the list](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8f200abd-5c4c-4f03-8be9-957e8a2b0cbf%2Fapply-conditional-filter-to-list.gif&blockId=80babca5-9d9c-4367-93d8-0b1a11803d3b&projectId=1032)</Frame>
+
+### **Using Logged-in user's parameters**
+
+Using this option, you can set a condition to filter the list for each logged-in user personally, so that each user only sees entries related to him/her.
+
+By default, you'll have user's **Email** and **Email-Domain** options here. However, if you've [connected users to a data source](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9), all the fields from the data source will also become available for your choice. Below, you can see how we add fields from the connected Airtable table.
+<Frame caption="Fields added from the connected Airtable base">![Fields added from the connected Airtable base](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5e3aa29e-69d7-4f3d-8aef-387331eadb54%2Ffields-from-connected-airtable.gif&blockId=2b7ad3c7-f141-4b17-9f1e-13f7b420bf02&projectId=1032)</Frame>
+
+Let's consider a specific example to make it clear how this works and in which cases it can be applied. Let's imagine you have a task list on [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) with such fields as **Assignee, Description, and Status**. The **Assignee** field contains the emails of the users to which the task is assigned.
+<Frame caption="Task list on Airtable">![Task list on Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5976206c-3bb9-4e2d-a318-85e1efb4916c%2Ftask-list-airtable.png&blockId=1ec48c5f-2779-4ea6-998e-62ff30efdc60&projectId=1032)</Frame>
+
+To be able to view their tasks, the users need to log into the system and navigate to the page with the list. However, you want each user to see only his/her tasks, and that can be achieved with a single condition. In **Condition Settings** we are going to set the **Field** to **Assignee** and **Action** to **Logged in User's Email**. This way the logged in user will only see those entries of the list, where the **Assignee** field corresponds to his/her email address. The below GIF illustrates this.
+<Frame caption="Testing the conditional filter">![Testing the conditional filter](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4f085bef-423d-4c85-8561-dff85a6cc101%2Ftesting-conditional-filter.gif&blockId=355b170a-e5f4-4dcf-bc52-a4bcea487412&projectId=1032)</Frame>
+
+That's it. This way, you can set a condition for any of the fields in your list and filter the list accordingly for your logged in users.
+
+<Tip>More attributes will be added soon to allow for more advanced filtering based on additional user attributes such as user roles, statuses, and so on.</Tip>
+
+Now, let’s consider some specific value use cases to see how you can handle them.
+
+### Use Case: **Using a Checkbox field in a Conditional Filter**
+
+Airtable has a Checkbox field type which you might want to use in a conditional filter.
+
+<Tip>The list block doesn't have a Checkbox field type (the [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe) block has it though), but you can still use it in a conditional filter (if you have it on Airtable) even without displaying it.</Tip>
+
+If you want to display the records that have the checkbox checked, you can use the **is not empty** condition as shown below. And vice versa, if you want to filter the unchecked records, you can use the **is empty** condition.
+<Frame caption="'is not empty' condition for showing checked items">!["is not empty" condition for showing checked items](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5238f46d-e8aa-405b-ab0d-0cd45ebe978b%2Fis-not-empty-condition.png&blockId=d90b1725-7072-4b45-9043-9a6fc987913c&projectId=1032)</Frame>
+
+## Security
+
+<Tip>Softr viability checks and record conditional filters are applied on the server side, and there is no way to trick the system. Learn more about [Softr App Security](/security/ummZ2CWNHXZCHzsZwbEwET/softr-app-security/1xC7Hgkvo67AnHKyebr1uC).</Tip>

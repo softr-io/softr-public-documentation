@@ -1,0 +1,400 @@
+---
+title: "Field Types"
+permalink: "57RHfyrVrpq8aaMPouT9Rs"
+description: "Field types help you format and store data in the correct way."
+'og:title': "Field Types – Softr Help Docs"
+'og:description': "Field types help you format and store data in the correct way."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Field Types – Softr Help Docs"
+'twitter:description': "Field types help you format and store data in the correct way."
+---
+Softr offers a variety of field types to help you organize and manage data in your Databases effectively. Each field type is designed to store specific kinds of information, from text and numbers to files and relationships. Below is an overview of the different field types available in Softr, along with their uses and key features.
+
+## List of Field Types
+
+### Short Text
+
+* Purpose: Stores short text entries, such as names, titles, or IDs.
+
+* Use Case: Ideal for fields like "Customer Name" or "Product Code."
+
+* Features:
+  + Supports plain text input.
+  + Limited to 255 characters.
+  + Can set a default value for newly created records
+
+### Long Text
+
+* Purpose: Stores longer text, such as descriptions or notes.
+
+* Use Case: Perfect for fields like "Project Description" or "Customer Feedback."
+
+* Features:
+  + Rich text support coming soon.
+  + No strict character limit.
+  + Can set a default value for newly created records
+
+### File
+
+* Purpose: Stores files, such as images, PDFs, or documents.
+
+* Use Case: Useful for fields like "Product Image" or "Contract PDF."
+
+* Features:
+  + Upload multiple files to a single record by toggling it on
+  + Store images, audio, docs, and other supported file types directly in Softr.
+  + File storage limits depend on your Softr plan.
+   <Accordion title="Supported File Types">
+   - PDF
+   - DOCX
+   - DOC
+   - XLSX
+   - XLS
+   - PPTX
+   - PPT
+   - TXT
+   - CSV
+   - RTF
+   - JPG
+   - JPEG
+   - PNG
+   - GIF
+   - WEBP
+   - SVG
+   - TIFF
+   - TIF
+   - BMP
+   - HEIC
+   - MP4
+   - MP3
+   - WAV
+   - MOV
+   - AVI
+   - WEBM
+   - AAC
+   - M4A
+   - MKV
+   - WMV
+   - HTML
+   - CSS
+   - JS
+   - JSON
+   - XML
+   - ZIP
+   - RAR
+   - 7Z
+   - TAR
+   - GZ
+   - ODT
+   - ODS
+   - ODP
+   - PAGES
+   - NUMBERS
+   - KEY
+   - PSD
+   - AI
+   - INDD
+   - SKETCH
+   - FIG
+   - XD
+   - EPS
+   - TTF
+   - OTF
+   - WOFF
+   - WOFF2
+   - PY
+   - JAVA
+   - PHP
+   - CPP
+   - CS
+   - GO
+   - SWIFT
+   - SQL
+   - STL
+   - OBJ
+   - DWG
+   - DXF
+   - FBX
+   - GLTF
+   - SKP
+   - EPUB
+   - MOBI
+   - AZW
+   - SQLITE
+   - DB
+   - VCF
+   - ICS
+   - SRT
+   </Accordion>
+
+### Checkbox
+
+* Purpose: Represents a true/false or yes/no value.
+
+* Use Case: Great for fields like "Task Completed" or "Subscribed."
+
+* Features:
+  + Displays as a checkbox that can be toggled on or off.
+  + Useful for filtering records based on status.
+  + Can set a default value for newly created records
+
+### Select
+
+* Purpose: Allows selection of one or multiple options from a predefined list.
+
+* Use Case: Ideal for fields like "Status" (e.g., "In Progress," "Completed"), "Categories”, or even “Tags”.
+
+* Features:
+  + Customizable options with color coding for visual clarity.
+  + Restricts input to the defined list, ensuring consistency.
+  + Can set a default value for newly created records
+
+### User
+
+* Purpose: Stores the name and photo of a Softr collaborator (Workspace or App level).
+
+* Use Case: Ideal for attaching only Softr collaborators to records
+
+* Features:
+  + See the collaborators name and profile picture
+  + Collaborators can only see other collaborators at or below their Softr permission level
+  + Can set a default value for newly created records
+
+### Number
+
+* Purpose: Stores numerical values, such as quantities or prices.
+
+* Use Case: Perfect for fields like "Quantity" or "Multiplier"
+
+* Features:
+  + Supports integers or decimals.
+  + Can set precision for decimal places.
+  + Allows negative numbers if enabled.
+  + Can set a default value for newly created records.
+
+### Currency
+
+* Purpose: Stores monetary values with a specific currency format.
+
+* Use Case: Ideal for fields like "Price" or "Invoice Amount."
+
+* Features:
+  + Customizable currency symbol (e.g., $, €, £).
+  + Supports decimal precision settings.
+  + Aligns numbers for easy reading.
+  + Can set a default value for newly created records
+
+### Percent
+
+* Purpose: Stores percentage values.
+
+* Use Case: Useful for fields like "Completion Rate" or "Discount."
+
+* Features:
+  + Displays values with a percentage sign.
+  + Supports decimal precision.
+  + Can be used in calculations using Formulas.
+  + Can set a default value for newly created records.
+  + Can be set to display as a progress bar.
+
+### Date
+
+* Purpose: Stores either only date information or date and time information.
+
+* Use Case: Great for fields like "Due Date", “Booking Time”, or “Order Placed”
+
+* Features:
+  + Customizable date formats (e.g., MM/DD/YYYY).
+  + Optional inclusion of day of the week
+  + Optional time zone display
+  + Supports calendar picker and time picker for easy input.
+  + Can default to the current date and/or time
+  + Timezone is always displayed in your local timezone. For custom timezones, use a formula field to CONCATENATE the Date field, then use DATETIME_FORMAT() to convert to another timezone. See [here](/softr-databases/57RHfyrVrq5xPojyELRnSu/formula-glossary/57RHfyrVrpgXaYL5w8E4uR#date-and-time-functions) for more information.
+
+### Email
+
+* Purpose: Stores email addresses.
+
+* Use Case: Perfect for fields like "Contact Email" or "User Email."
+
+* Features:
+  + Validates email format to ensure accuracy.
+  + Can be clicked to open a mail client.
+  + Useful for integrations with email tools.
+
+### URL
+
+* Purpose: Stores web addresses.
+
+* Use Case: Great for fields like "Website" or "Reference Link."
+
+* Features:
+  + Validates URL format.
+  + Clickable links open in a browser.
+  + Supports shortened display for long URLs.
+  + Can set a default value for newly created records.
+
+### Phone Number
+
+* Purpose: Stores phone numbers.
+
+* Use Case: Ideal for fields like "Contact Number" or "Support Line."
+
+* Features:
+  + Accepts various phone number formats.
+  + Can be clicked to initiate calls on supported devices.
+  + No strict format enforcement for flexibility.
+  + Can set a default value for newly created records.
+
+### Rating
+
+* Purpose: Stores a rating value, typically displayed as stars.
+
+* Use Case: Perfect for fields like "Customer Rating" or "Review Score."
+
+* Features:
+  + Customizable scale (e.g., 1–10 stars)
+  + Visual star display
+  + Can set a default value for newly created records.
+
+### Formula
+
+* Purpose: Calculates values based on other fields in the Database.
+
+* Use Case: Great for automatically computed fields like "Total Cost" or "Customer Status" based on other fields or criteria.
+
+* Features:
+  + Supports mathematical operations, text concatenation, and logical functions.
+  + Results are ***read-only*** and update automatically.
+  + For more information about using Formulas, check out [this help article](/softr-databases/57RHfyrVrq5xPojyELRnSu/formula-glossary/57RHfyrVrpgXaYL5w8E4uR).
+
+### Rollup
+
+<Tip>
+
+Explore Rollups on a deeper level in [this document](/softr-databases/57RHfyrVrq5xPojyELRnSu/related-record-lookup-and-rollup-fields/57RHfyrVrnNoojNtczw14L).
+
+</Tip>
+
+* Purpose: Aggregates data from linked records in another table.
+
+* Use Case: Useful for fields like "Total Orders" or "Related Tasks."
+
+* Features:
+  + Pulls data from a linked record field.
+  + Supports aggregations like count, sum, or concatenation.
+  + Can apply formulas to rolled-up data.
+
+### Lookup
+
+<Tip>
+
+Explore Lookup on a deeper level in [this document](/softr-databases/57RHfyrVrq5xPojyELRnSu/related-record-lookup-and-rollup-fields/57RHfyrVrnNoojNtczw14L).
+
+</Tip>
+
+* Purpose: Displays values from a linked record without calculation.
+
+* Use Case: Ideal for fields like "Customer Name" from a linked table.
+
+* Features:
+  + Shows data directly from a linked table.
+  + Read-only field that updates with changes in the source.
+  + Useful for displaying related information.
+
+### Linked Record
+
+<Tip>
+
+Explore Linked Record fields on a deeper level in [this document](/softr-databases/57RHfyrVrq5xPojyELRnSu/related-record-lookup-and-rollup-fields/57RHfyrVrnNoojNtczw14L).
+
+</Tip>
+
+* Purpose: Creates linked records (relationships) between tables in a Database.
+
+* Use Case: Perfect for connecting "Orders" to "Customers" or "Tasks" to "Projects."
+
+* Features:
+  + Links to one or more records in another table.
+  + Supports one-way or reciprocal relationships.
+  + Enables rollups and lookups for related data.
+
+### Created At
+
+* Purpose: Automatically records the date and time a record is created.
+
+* Use Case: Useful for tracking "Record Creation Date."
+
+* Features:
+  + Set automatically and cannot be edited.
+  + Useful for sorting or filtering records.
+
+### Last Modified At
+
+* Purpose: Automatically records the date and time a record is last edited.
+
+* Use Case: Great for tracking "Last Updated."
+
+* Features:
+  + Updates automatically when any field in the record changes.
+  + Can monitor specific fields if configured.
+
+### Created By
+
+* Purpose: Records the Softr collaborator who created a record.
+
+* Use Case: Ideal for fields like "Record Owner."
+
+* Features:
+  + Automatically captures the user’s name or email (based on Softr account).
+  + ***Read-only*** field.
+  + Useful for collaborative Databases.
+
+### Last Modified By
+
+* Purpose: Records the Softr collaborator who last edited a record.
+
+* Use Case: Useful for tracking "Last Edited By."
+
+* Features:
+  + Updates automatically when a record is modified.
+  + ***Read-only*** field.
+  + Helps in collaborative databases or when performing record auditing.
+
+### Autonumber
+
+* Purpose: Generates a unique, sequential number for each record.
+
+* Use Case: Perfect for fields like "Record ID" or "Ticket Number."
+
+* Features:
+  + Automatically increments for each new record.
+  + ***Read-only*** and cannot be edited.
+
+### Record ID
+
+* Purpose: Displays the Softr Record ID for each record.
+
+* Use Case: Provides a unique identifier for your records to more easily distinguish between similar records, allow you to filter and sort more easily in your Softr apps.
+
+* Features:
+  + Highly unique identifier not shared by any other record in your database
+  + Can be used to filter, sort, and organize list and item details blocks in your apps.
+
+## Tips for Choosing Field Types
+
+* Match the Data: Select a field type that aligns with the data you’re storing (e.g., use Currency for money, not Number).
+
+* Plan for Scalability: Use Linked Records for relationships to keep your Database organized as it grows.
+
+* Leverage Automation: Fields like Formula, Rollup, and Lookup can automate calculations and actions, saving time.
+
+* Test Display: Ensure the field type displays well in your Softr apps or views for end users.
+
+## Additional Resources
+
+* [Softr Academy](https://academy.softr.io/): Visit the Softr Academy to take full courses on building Softr apps.
+
+* [Community Forums](https://community.softr.io/): Join the Softr community to ask questions and share tips.
+
+* Support: Contact Softr support at support@softr.io if you get stuck with your Database setup.

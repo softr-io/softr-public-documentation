@@ -1,0 +1,13 @@
+---
+title: "How to filter list by Page URL parameters?"
+permalink: "42JZoeYwMstwaL9aoBdRjz"
+'og:title': "How to filter list by Page URL parameters? – Softr Help Docs"
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "How to filter list by Page URL parameters? – Softr Help Docs"
+---
+## Filtering Lists with Page URL Parameters
+
+You can automatically filter a list without needing the search bar of user-facing filters by using URL parameters in your page URL. For example, on a page where you want to filter a project list by the name using the URL itself such as [`https://example.com/projects?projectName=Kingsport%20Diner`](https://example.com/projects?projectName=Kingsport%20Diner) you would create a conditional filter for the Project Name with the value `{URL_PARAM:projectName}`.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff64eb430-b118-44bf-b328-a5a3aed532f1%2FScreenshot_2024-12-18_at_4.33.28_PM.png&blockId=1889a723-d691-8053-883e-fef607929569&projectId=1032)</Frame>
+
+Notice that the `projectName` is subjective and can be whatever you like, but it needs to be used in both the URL and the conditional filter to work properly. Avoid using spaces and symbols in URL parameter names. If you need to use spaces or symbols in the parameter’s value, make sure they are URL encoded such as `Kingsport%20Diner` (Kingsport Diner).

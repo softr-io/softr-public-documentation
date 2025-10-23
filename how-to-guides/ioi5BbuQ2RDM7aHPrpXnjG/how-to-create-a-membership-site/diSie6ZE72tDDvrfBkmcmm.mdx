@@ -1,0 +1,93 @@
+---
+title: "How to Create a Membership Site?"
+permalink: "diSie6ZE72tDDvrfBkmcmm"
+description: "Building membership sites with Softr."
+'og:title': "How to Create a Membership Site? – Softr Help Docs"
+'og:description': "Building membership sites with Softr."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "How to Create a Membership Site? – Softr Help Docs"
+'twitter:description': "Building membership sites with Softr."
+---
+With the memberships feature you can allow your users to create and manage their profiles as well as define what part of the application is going to be accessible to which users. Using this functionality, you can build online communities with membership, client portals, create gated directories, paid courses, and so on.
+
+In this guide, we'll go through the process of setting up user accounts on the [E-Learning Website template](https://www.softr.io/templates/elearning-website) for online courses, making the courses available for registered users only. Moreover, in the subsections to this article, we'll examine each **User Accounts** building block in greater detail. So, let's start.
+
+## Making a Separate Page for Courses
+
+In the Startup Academy template, the online courses are made available on the Home page. We are going to create a separate "Courses" page for them in order to make the page available for logged in users only.
+<Frame caption="Separate page for courses created">![Separate page for courses created](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F26adf7d8-a5ff-4cf1-954d-1ab1c690e9fe%2Fseparate-page-for-courses.png&blockId=bd908127-7ed0-404c-a304-8f5cd9b61c79&projectId=1032)</Frame><Frame caption="The Courses page with the list of courses">![The Courses page with the list of courses](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F91fb26f9-7575-4fa4-84c9-83a020f6129f%2Flist-of-courses.png&blockId=29e556c1-921e-4f8f-ae28-74a9590de900&projectId=1032)</Frame>
+
+The list of courses is created using the List block. You can get familiar with the block and how it;s configured [here](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU).
+
+## Adding Signup and Signin Pages
+
+To start with the user registration process, we first need to set up a signup page. The [Signup block](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/signup-form/tPe3uxmdcUNeFYuaLTR1o9) is available under **Add Block** **=> Dynamic => User Accounts => Sign up form**. So, let's create a new page and add the Signup block there, and let's also create another page for the [Signin block](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/signin-form/gYwm7wWsqb2bRyJFUreSzN), which is available under **Add** **Block => Dynamic =>User Accounts => Sign in Form**.
+<Frame caption="Signup form">![Signup form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0402355c-ec18-431b-b0a4-d989861efadb%2Fsignup.png&blockId=c9090c40-63b1-486c-b2b1-64712f181add&projectId=1032)</Frame><Frame caption="Signin form">![Signin form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F37a1922b-2659-4780-ab58-ad4345d80ad6%2Fsignin.png&blockId=05e97f73-70b9-46eb-a3d4-4093c2962e72&projectId=1032)</Frame>
+
+Each block's configuration options are discussed in detail in their respective articles (links provided above), so we won't go into that here. For our purpose, we have just changed the logo on the forms, as shown in the screenshots above, and we also need to check the **Sign In** and **Sign Up** button configurations.
+
+On the Signup form, the **Sign up** button has a predefined action, as shown below. So, we don't need to do anything here. The same is true for the **Sign In** button on the Signin form.
+<Frame caption="Signup button action on Signup form">![Signup button action on Signup form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc31afb43-5e3a-4a2c-a593-c94dbf548966%2Fbutton.png&blockId=97c685f1-b4e3-41a5-a91e-798d5d78c15c&projectId=1032)</Frame>
+
+However, as you saw, there's also a **Sign In** button on the Signup form, which we need to link to the Signin Page we have created.
+<Frame caption="Linking Signin button to Signin page">![Linking Signin button to Signin page](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdc52bc50-0cc3-492a-bc4c-e1c96a6569ff%2Fopen-signin.png&blockId=8831b6d1-fe86-461a-8f3b-c41a73f84a9e&projectId=1032)</Frame>
+
+Similarly, on the Signin form, we should link the **Sign Up** button to the Signup Page. Thus, we've set up all the pages we need. Now let's configure the **Header** and what different users see and have access to on the web app.
+
+## Adding Buttons to the Header
+
+First, let's add **Sign In** and **Sign** **Up** buttons to the application header and link them to their corresponding pages, as shown below.
+<Frame caption="Buttons added inside the Header block">![Buttons added inside the Header block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F35e28451-5bbf-4437-a312-c39cefa6087f%2Fbuttons-header.png&blockId=273600ea-7e1d-4214-a3e1-48358a895954&projectId=1032)</Frame><Frame caption="Buttons link to their corresponding pages">![Buttons link to their corresponding pages](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F358956e0-397e-4163-9c89-dbea40083532%2Fbuttons-links.png&blockId=7409e623-7a19-46a6-9e6e-856a86e51710&projectId=1032)</Frame>
+
+## Customizing Button Visibility on the Header
+
+So, we now have **Sign In** and **Sign** **Up** buttons on the header, but we need to customize them so that they are not visible to logged-in users. To do that, we need to create a duplicate header block and remove the buttons from it, as shown below.
+<Frame caption="Duplicate header without signin/signup buttons">![Duplicate header without signin/signup buttons](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb8743640-0a48-4af3-a661-b27821e9ec30%2Fheaders.png&blockId=ac538048-38a4-4057-9478-a553eb811d18&projectId=1032)</Frame>
+
+And on the duplicate header without the buttons, we'll enable the **Show User Profile** option, which adds a profile dropdown to the header.
+<Frame caption="Enabling 'Show User Profile”">![Enabling "Show User Profile”](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4fd984f7-456a-4df4-988b-95f783eae69f%2Fprofile.png&blockId=b0c75cf5-39e6-4a72-949d-a203f6338bd7&projectId=1032)</Frame><Frame caption="Profile dropdown added to the header">![Profile dropdown added to the header](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3390fd77-669f-4756-baa6-8619ee589b0f%2Fsignout.png&blockId=1ad44b47-8507-4ef8-bec1-db34a1c2cf1a&projectId=1032)</Frame>
+
+As you can see, by default, the dropdown only contains a Sign Out action, however it's possible to add more links, choosing one of the standard actions that are available. It's also possible to customize the **Icon** of each **Link**.
+<Frame caption="Link Icon and Action List">![Link Icon and Action List](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe25d87f1-2019-4c5a-8057-ce1dbf6e5bbd%2Fadd-action.png&blockId=5f5efed9-b050-4b89-9b74-eac37efc8b15&projectId=1032)</Frame>
+
+Now that we've configured the two headers, let's see how we can set up the visibility of each one, so that only logged in users see the header with **User Profile**.
+
+## Configuring Header Visibility
+
+To define [visibility for a certain block](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/block-visibility/3spA2dfQNrcGcPNmnDXHB3), we need to navigate to the **Visibility** tab in block settings as shown below.
+<Frame caption="Visibility tab">![Visibility tab](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F542523e5-0144-40f6-8554-4bbc8a44bdbb%2Fvisibility.png&blockId=7b602fe5-997a-464b-be07-4ba4f06fd81b&projectId=1032)</Frame>
+
+So for the first header with Sign In/Sign Up buttons, we are going to set the visibility to **Non Logged in users**.
+<Frame caption="First header visibility">![First header visibility](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F33fcb072-2590-4559-b29d-0388009345f7%2Fnon-logged.png&blockId=0651d5b5-a812-4af6-825a-6f9d88b99dd2&projectId=1032)</Frame>
+
+For the second header with **User Profile**, we are going to set it to **Logged in users**.
+
+As soon as you've set the visibility for a specific block, you can notice the padlock icon appear on the block, which means that it's a gated content available for the defined users only.
+<Frame caption="Padlock icon on gated content">![Padlock icon on gated content](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa0de61bf-a080-46d7-b5d3-fa01e21d89ef%2FSCR-20230210-o7f.png&blockId=b63bac6c-c910-4edd-82f8-16b99f2651b3&projectId=1032)</Frame>
+
+This way you can define the visibility of any block on your Softr app. Let's go ahead and also configure the visibility of the Courses page, which we intend to make accessible for the logged-in users only.
+
+## Configuring Courses Page Visibility
+
+In order to customize [page-level visibility](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/page-visibility/nWJaN689VKA1TUeaEfzK9u), we need to navigate to **[Page Settings](/0392ff65acfe4b1c96923c1aac7982f7)** **=> Visibility**. For the Courses page, we need to set the **Visibility** to **Logged in users**, as shown below, and save the **Page Settings.**
+<Frame caption="“Courses” page visibility">![“Courses” page visibility](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd39e4e6e-aec2-41bc-8b64-60c026daa0ad%2Fcourses-page-visibility.png&blockId=1c60e407-7282-495c-925b-a5c3d5478144&projectId=1032)</Frame>
+
+## "Start Learning" Block
+
+Let's also create another block on the Home Page with a "Start Learning" button (using the [CTA](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/cta/oPDoXzSUpMuKki92WuBDDH) block). Using this block, users will be able to navigate to the "Courses" page from Home. This block's visibility should also be set to **Logged in users**. See below.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F337257c8-4e2a-48e2-8ae1-5565cc3de41b%2Fstart-learning-block.png&blockId=9b5b5a45-e2bc-4cab-9bdd-dacd0b502e2a&projectId=1032)</Frame>
+
+So, we are all set. Now let's do some test registration to make sure everything works as expected.
+
+## Registering a User
+
+Now that everything is ready, let's actually sign up on the site to see how the registration and content visibility are working. In the following GIF, you can see how the user registers and is able to access the "Courses" page from Home.
+<Frame caption="Registering and accessing courses">![Registering and accessing courses](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fff2a6c75-b659-4e78-9c26-975eea3272b6%2Fregistering-and-accessing-courses.gif&blockId=2a303c91-fbfb-4398-9185-a81ff479ad82&projectId=1032)</Frame>
+
+## Users Tab
+
+There is a separate Userssection, where you can view all the registered users as well as remove or add new user. You can find a detailed overview of this section [here](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU).
+
+## Conclusion
+
+To sum up, we reviewed the overall process of setting up User Accounts on your Softr application and configuring the visibility of different blocks and pages. In the [User Accounts Blocks](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/signup-form/tPe3uxmdcUNeFYuaLTR1o9) subsection, we'll examine the **Signup** and **Signin** blocks in greater detail as well as will check out the rest of the blocks we didn't use here.

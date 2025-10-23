@@ -1,0 +1,51 @@
+---
+title: "Custom Code Block Overview"
+permalink: "6XNrxFopUEiwbWipq81Eq1"
+description: "Applying custom code on your Softr app."
+'og:title': "Custom Code Block Overview – Softr Help Docs"
+'og:description': "Applying custom code on your Softr app."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Custom Code Block Overview – Softr Help Docs"
+'twitter:description': "Applying custom code on your Softr app."
+---
+<Note>Custom code is available for users on the [Basic plan and above](https://www.softr.io/pricing).</Note>
+
+The **Custom code** block is a powerful feature which allows you to insert custom snippet of code, including **HTML, CSS** and/or **Javascript**, anywhere in your application. The code snippet will be added inside the **{"<body>"}** html element.
+
+**NOTE:** If you want to add custom code snippets inside {"<head>"} element, or at the end of the page, before the {"<body>"} element closes, you can do that from [Settings => Custom Code](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/general-settings/7YdGy1J8X2tjJSv8BGvWQU) for application level changes or from [Page Settings](/0392ff65acfe4b1c96923c1aac7982f7) for page level modifications. This tutorial covers the cases when you want to add a code snippet anywhere inside the {"<body>"} element.
+
+## Adding a Custom code block
+
+Custom code is added through the Custom Code block in **Blocks => Static => Custom code**.
+
+<Tip>You need to be on a paid plan to be able to use the **Custom code** block.</Tip>
+
+## Adding the code inside the block
+
+Next, you need to open the block settings and paste the code snippet you would like to add. It can contain standard **HTML elements**, **{"<style>"}** elements containing custom CSS rules, and even **{"<script>"}** tags containing JavaScript code.
+<Frame caption="Custom Code block">![Custom Code block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff4870c03-4671-4bf3-973c-3e4970b2a289%2Fcustom-code-block.png&blockId=fbd111b6-4e1d-4b95-b186-649657ac3be0&projectId=1032)</Frame>
+
+Now, you can **Preview** your Softr app to see the changes.
+
+## Use Case - Embed Calendly in Softr app
+
+Let's see how the Custom Code block works on a specific example. We'll use it to embed a [Calendly](https://calendly.com/) widget within our Softr app.
+
+### **Getting the Embed Code**
+
+In our Calendly account, we are going to navigate to **Share Your Link** in the **Account** dropdown menu.
+<Frame caption="Share your link">![Share your link](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F727bfd81-416a-466d-be39-60b143c22144%2Fshare-calendly-link.png&blockId=3298113c-f457-4fa5-bc28-e45cf7c39d34&projectId=1032)</Frame>
+
+In the pop-up that appears next, let's choose the embed option as shown below.
+<Frame caption="Selecting 'Add to Your Website”">![Selecting "Add to Your Website”](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7ac71c76-e137-4f4e-8366-f2d2b206dfa3%2Fadd-to-website.png&blockId=bc67030f-37c8-4853-a638-a96debd3709b&projectId=1032)</Frame>
+
+Next, we'll select **Inline** **Embed** and hit continue.
+<Frame caption="Choosing 'Inline Embed”">![Choosing "Inline Embed”](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F09c44cfc-8ff1-4da1-8993-0dba9015c30d%2Finline-embed.png&blockId=15749de4-30e1-415c-9714-5fad2f3cd896&projectId=1032)</Frame>
+
+In the following screen, we can customize our Calendly widget, and, when we're done, we need to click **Copy Code**.
+<Frame caption="Copying the Calendly page code">![Copying the Calendly page code](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe42b87ff-29eb-4146-aa49-f6da953191b8%2Fcopying-calendly-code.png&blockId=c6e1e9fb-1b80-475b-9254-cbbd2b19e8db&projectId=1032)</Frame>
+
+### **Adding the code to the block**
+
+Finally, we will go back to our Softr app, paste the code in the **Custom code** block, and hit **Preview** to see what it looks like.
+<Frame caption="Applying the code">![Applying the code](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fafccf643-58e3-4822-b2b8-1a8163f7e437%2Fapplying-calendly-code.gif&blockId=f38487ee-4aa1-4f75-abe2-0ccf601a2658&projectId=1032)</Frame>

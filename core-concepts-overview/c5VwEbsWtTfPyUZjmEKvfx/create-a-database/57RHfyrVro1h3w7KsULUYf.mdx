@@ -1,0 +1,109 @@
+---
+title: "Create a Database"
+permalink: "57RHfyrVro1h3w7KsULUYf"
+description: "Create a database to power your application."
+'og:title': "Create a Database – Softr Help Docs"
+'og:description': "Create a database to power your application."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Create a Database – Softr Help Docs"
+'twitter:description': "Create a database to power your application."
+---
+A database is like the brain of your app. It keeps everything organized behind the scenes so your users see the right things at the right time. If you're building something like a client portal, job board, or inventory tracker, you’ll need an easy way to store and manage your data—that’s where your database comes in.
+
+### Why do you need a database?
+
+Imagine your app is a filing cabinet. Without folders and labels, it would be chaos. A database works the same way—it helps you store your information in a clear, structured way.
+
+Here’s why it matters:
+
+* **Keeps things organized**: You can track people, products, tasks—whatever your app needs.
+
+* **Shows the right info to the right user**: For example, a client only sees their own projects.
+
+* **Updates automatically**: When someone adds or changes something, your app reflects it right away.
+
+<Note>
+
+Starting with a database helps you figure out what kinds of information your app needs, how different pieces connect, and how they’ll change over time.
+
+</Note>
+
+### Databases: Tables, Records, and Fields
+
+Databases are actually pretty simple once you break them down:
+
+* **Tables**: Think of these as folders. Each table holds a group of similar items, like a list of customers or products.
+
+* **Records**: These are individual items in your table. One customer = one record.
+
+* **Fields**: These are details about each item. A customer might have a name, email, and company name.
+
+You can mix and match different types of fields—like text, numbers, dates, and even images—to match your app’s needs.
+
+### Linked (Related) Records
+
+Let’s say you have two tables for your business:
+
+* One lists your **customers**
+
+* The other lists the **items** they’ve purchased
+
+Now you want to know:
+
+👉 Which customers bought which items?
+
+👉 And which items were purchased by which customers?
+
+That’s where **linked records** (also called relational databases) come in. They let your tables talk to each other so you can connect the dots without copying and pasting the same info everywhere.
+
+Instead of managing scattered bits of data, linked records help you build a **clear, connected view** of your work. For example:
+
+* On a customer’s profile, you can instantly see all their past purchases
+  <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F407115a9-e9f4-4f1f-a5cd-2724cdd42e61%2Fea0d1063-9cac-4668-8ecd-03b4ff52d877.png&blockId=2159a723-d691-803a-8279-fb03d82e0bb3&projectId=1032)</Frame>
+
+* On a product’s record, you can check who’s bought it and when
+  <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Faebb4096-175c-4d57-97f7-7338133070aa%2FCleanShot_2025-05-29_at_12.00.052x.png&blockId=2159a723-d691-8058-9b9a-da1c226e0330&projectId=1032)</Frame>
+
+Learn more about linked records and tables [here](/softr-databases/57RHfyrVrq5xPojyELRnSu/related-record-lookup-and-rollup-fields/57RHfyrVrnNoojNtczw14L).
+
+### **Client Portal Database** Example
+
+Here is an example of a database structure for the Client Portal. This setup lets each client log in and see only their own projects and files.
+
+**Tables**:
+
+1. **Clients**:
+
+- Fields: Name, Email, Company, Projects (Linked record to Projects table)
+
+1. **Projects**:
+
+- Fields: Project name, Status, Deadline, Client (linked to Clients table)
+
+1. **Files**:
+
+- Fields: Name, File upload, Description, Projects (linked to Projects table)
+
+[Check out the live template for Client Portal Database](https://www.softr.io/templates/client-portal)
+
+<Note>
+
+If you have not created a structured database yet, we recommend first defining the database structure before you start building it, so you can consider what information you want to display to your users and what tables and fields you will need.
+
+</Note>
+
+### What data sources should you use for your apps?
+
+You can set up your database in different ways depending on what works best for you:
+
+* [**Softr Databases**](https://docs.softr.io/softr-databases/57RHfyrVrq5xPojyELRnSu): Easy to use, built right into your app, and great for performance.
+
+* [**External data sources**](https://docs.softr.io/data-sources/1YYStCJukT15Lh2j93qo9A): Already using tools like Airtable, Google Sheets, monday.com, or Notion? You can connect those to Softr apps right away. Explore available data sources [here](/softr-databases/57RHfyrVrq5xPojyELRnSu/related-record-lookup-and-rollup-fields/57RHfyrVrnNoojNtczw14L).
+
+* **Multiple sources:** You don’t have to restrict yourself to one Database; you can connect Softr blocks to different data sources that can help bring different data into one place.
+
+<Note>
+
+**Tip:** If you want to streamline your app and data storage in one tool, you can import your data into [**Softr Databases**](https://docs.softr.io/softr-databases/57RHfyrVrq5xPojyELRnSu) and store it all in one place. We currently support CSV import, Airtable import, and more coming soon.
+
+</Note>

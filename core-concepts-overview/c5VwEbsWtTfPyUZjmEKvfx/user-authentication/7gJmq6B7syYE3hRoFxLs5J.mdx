@@ -1,0 +1,97 @@
+---
+title: "User Authentication"
+permalink: "7gJmq6B7syYE3hRoFxLs5J"
+description: "Adding user accounts to your Softr application."
+'og:title': "User Authentication – Softr Help Docs"
+'og:description': "Adding user accounts to your Softr application."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "User Authentication – Softr Help Docs"
+'twitter:description': "Adding user accounts to your Softr application."
+---
+When you first create your app, one of the first things you will want to do is define if and how users should be authenticated to your app. Depending on your app use case, you may want to restrict signup to your app or disable login altogether. The User Authentication tab is where you can adjust numerous options to customize how your users join, login to, and interact with your app
+
+<iframe src="https://www.youtube.com/embed/tmJR51LeD_I?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
+
+## Authentication settings
+
+User Authentication is heavily tied to Utility Pages. The settings you define in User Authentication will determine the utility pages that are generated for your app. For instance, if you choose to disable user login to your app, neither a sign-up or log-in page will be added to your app. You can change this at any point, even if your app has already been published.
+
+To access the User Authentication tab, first click on the Users menu in Softr Studio, then select the Authentication tab.
+<Frame caption="In Softr Studio, select the Users menu, then the Authentication tab.">![In Softr Studio, select the Users menu, then the Authentication tab.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F83993d63-04a4-4d78-bb25-ff8683f5312a%2FScreenshot_2025-02-05_at_10.19.24_AM.png&blockId=1989a723-d691-8004-85b6-de75934c2b49&projectId=1032)</Frame>
+
+In this tab, you have several options at your disposal to customize how users are authenticated:
+
+### Login
+
+Here, you have a simple toggle to tell Softr if user login functionality should be enabled. This setting will determine all of the settings below it. If you have this enabled, your Softr app will function as an actual web app, allowing account creation and user login. If it is disabled, your Softr app will function more like a landing page or website, with no ability to create or log in to your account.
+
+* Enabled - Your app will function like an actual web app, with the ability to log in and create accounts.
+
+* Disabled - Your app will function more like a landing page or website, with no ability to create or log in to your account.
+<Frame caption="This login option has two toggles, one for enabled and one for disabled.">![This login option has two toggles, one for enabled and one for disabled.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F6183cf3d-e160-4b6d-9b47-3cbe6e14acdf%2Fa60bf59a-1c07-4696-9dd1-479e3d63d28f.png&blockId=1989a723-d691-80ad-b456-dba1d31f86bf&projectId=1032)</Frame>
+
+### Authentication method
+
+If you have Login enabled, you will see an option to define how your users will be logging in. Again, here, you have several options and can enable as few or as many as you like.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fd4a253a2-d32c-451a-9db3-f27e2dd4099a%2FScreenshot_2025-02-05_at_10.33.51_AM.png&blockId=1989a723-d691-806b-b40a-fac4872a45d7&projectId=1032)</Frame>
+
+**Email**
+
+This type of authentication is considered standard. You can turn it off only if another method of authentication is enabled.
+
+Clicking on the gear icon will reveal a pop-up where you can customize how a user will use their email for the login. Here, you can toggle whether to let users sign in with a password or one-time code. You must choose ***at least*** one option.
+
+Additionally, you can click on the arrows to customize the various messages, placeholders, email labels, and even password strength and the length of time the one-time code is valid.
+<Frame caption="The email signup setup modal allows you to toggle on various options and customize labels and user messaging.">![The email signup setup modal allows you to toggle on various options and customize labels and user messaging.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F48adb27f-934f-4e0a-9fbd-5e4d4f705ca2%2FScreenshot_2025-02-05_at_10.39.16_AM.png&blockId=1989a723-d691-80a2-a002-f1735414c8d2&projectId=1032)</Frame>
+
+Furthermore, if you have both the Password and One-time code options enabled, you can choose to let them log in using either method (i.e. password OR one-time code) or you can require they use both methods to login (password AND one-time code) for a full two-factor authenticated log-in (2FA/MFA).
+<Frame caption="Enable password and one-time code options to access 2FA capability.">![Enable password and one-time code options to access 2FA capability.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F21054e65-8251-4d8e-9b05-e3213be04d92%2FScreenshot_2025-02-05_at_10.44.18_AM.png&blockId=1989a723-d691-8028-991c-d41ccc53fb51&projectId=1032)</Frame>
+
+**SSO**
+
+Single sign-on (SSO) is also available as a Log in method. Softr is compatible with SAML and OpenID configurations. More about using SSO is available for [SAML](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/saml-single-sign-on/j9hELMUfGtAGqoNzejgoif) and [OpenID](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/openid-single-sign-on/hqqStep7RUmiSMb6qnGLkq). You can also combine SSO with other login methods as well and direct various users to different sign-in methods based on their email domain.
+
+<Note>
+
+This feature is available on Enterprise plans and as a paid add-on for the Business plan. See [pricing](https://softr.io/pricing).
+</Note>
+<Frame caption="Toggling on SSO gives access to the SSO setup modal, where you can setup your configuration.">![Toggling on SSO gives access to the SSO setup modal, where you can setup your configuration.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fca240673-ce5e-4f0f-995c-3d31d19e6536%2FScreenshot_2025-02-05_at_11.15.23_AM.png&blockId=1989a723-d691-80b9-a348-eee3f562d37d&projectId=1032)</Frame>
+
+**Google Sign-in**
+
+You can also let your users sign up and log in using their Google accounts. Toggling this option on will open the configuration panel for setting up Google Sign-in. For more detailed information on how to set this up, please check out [this help article](/integrations/etS18kJqm1fuD58KCsjC3z/google-sign-in/2hBabh9UqoE8W7aWrfPVFd). Softr’s Google Sign-in feature also works with Google Workspace and Google Classroom if your Google admins allow this functionality.
+<Frame caption="Toggle on Google Sign-in to connect Google to your Softr app and let people signup/login with their Google accounts.">![Toggle on Google Sign-in to connect Google to your Softr app and let people signup/login with their Google accounts.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff84b8823-32f1-4a34-b305-d8aa07b477e5%2FScreenshot_2025-02-05_at_11.22.35_AM.png&blockId=1989a723-d691-8069-b189-c3123ac58549&projectId=1032)</Frame>
+
+**Magic Links**
+
+<Info>
+
+Tip: You don’t need Magic links to send out a new user invitation. See our Use Cases section below to learn more.
+
+</Info>
+
+Magic links provide a permanent, pre-authenticated link for you or your users to log in. This can be great for viewing your app as specific users or quickly getting your users into their account, however you should use magic links with caution - they are as good as an email and password. Anyone who has the link can log in as that user. When enabling magic links, you’ll be asked to confirm that you understand these risks. More info on magic links can be found [here](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/users-tab/5JTzjtbvp8Skemd26A9ho9#manage-magic-link).
+<Frame caption="Confirm you understand the risks in order to use magic links.">![Confirm you understand the risks in order to use magic links.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9b217a01-472a-4507-b67f-bbbd759877c0%2FScreenshot_2025-02-05_at_11.28.14_AM.png&blockId=1989a723-d691-807d-b4ea-fd3406e5713d&projectId=1032)</Frame>
+
+### Sign Up
+
+Learn more about the Signup page and form itself [in this article](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/signup/54HYs3JEjYZA33S96fP3de). In the Sign-Up section, you can control whether people should be able to sign up on their own. You have 3 options here:
+
+* **Disabled** - Only people you add manually to Softr or your data source will have an account and can sign in. No sign-up utility page will be added to your app.
+
+* **Open** - A sign-up utility page will be added to your app, and anyone with a link to your Softr app can join as a user.
+
+* **Domain restricted** - You can allow public sign-up, but only from emails with a specific domain. Selecting this option will create a sign up utility page in your app. You will also be prompted to provide a list of allowed domains, with each domain separated by a comma.
+<Frame caption="Choose if and how people should be allowed to sign-up to your app.">![Choose if and how people should be allowed to sign-up to your app.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F4c250e5c-6990-43d7-9e4d-d88e332e482d%2FScreenshot_2025-02-05_at_10.52.31_AM.png&blockId=1989a723-d691-80f3-bc23-d98ae98b3553&projectId=1032)</Frame>
+
+### Security
+
+In the Security section, you have a few options to ensure your Softr app’s security aligns with your company or team’s requirements.
+
+* **Log user out** - Choose how much time should pass before a user is required to log in again. This happens whether a user currently has the app open in a browser or not.
+
+* **End session if idle** - Choose how long the Softr app should be open and idle in a browser before logging out. This happens only when the user is logged in and has the app open in a browser, and is not actively using the app.
+<Frame caption="Select options for when and how often users should be automatically logged out.">![Select options for when and how often users should be automatically logged out.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F7d6e0b9e-0bb2-42ee-b44a-b5d08cb22938%2FScreenshot_2025-02-05_at_11.06.17_AM.png&blockId=1989a723-d691-8032-999e-f818d992d5cb&projectId=1032)</Frame>
+
+## Use Cases
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F0f8275fa-20ba-48bb-a181-639583f7976a%2FCleanShot_2025-02-12_at_14.13.29.png&blockId=1989a723-d691-80e4-b5fd-c71ecc29faf1&projectId=1032)</Frame>

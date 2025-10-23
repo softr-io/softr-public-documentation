@@ -1,0 +1,75 @@
+---
+title: "Database Migration Tips"
+permalink: "5F61VQ3Tr2syEd91hRt5W4"
+description: "Learn best practices for migrating your database to Softr DB"
+'og:title': "Database Migration Tips – Softr Help Docs"
+'og:description': "Learn best practices for migrating your database to Softr DB"
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Database Migration Tips – Softr Help Docs"
+'twitter:description': "Learn best practices for migrating your database to Softr DB"
+---
+## Video
+
+<iframe src="https://www.youtube.com/embed/GTdgZzQvb8c?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
+
+Migrating to Softr databases comes with a lot of benefits, but whenever you’re moving your data to a new place, you need to be fully aware of everything involved. That’s why we put this check list together - to help you learn if migrating to Softr Database is good for you, before doing so. So let’s dive into the do’s and dont’s!
+
+## **✅ To Know Ahead of Time**
+
+* **Duplicate your data and app**
+  + Make a duplicate base of your Airtable data.
+  + Make a duplicate Softr app to test the migration.
+
+* **Handle lookup & rollup fields carefully**
+  + If you use many Lookup or Rollup fields, put them in a separate view in your duplicate Airtable base.
+  + Confirm they are working as intended post migration
+
+* **Plan for Airtable “native” fields**
+  + Created Time, Created By, Record ID, and some formulas won’t transfer—be ready to recreate them in Softr DB.
+  + Update any formulas using these fields (e.g., CREATED_TIME, LAST_MODIFIED_BY).
+
+* **Rollups, Counts, Rich Text, and Formulas**
+  + Count fields need to be rebuilt in Softr DB.
+  + Rich Text fields transfer as Markdown.
+  + Double-check formulas—some may not be supported.
+
+---
+
+## **🛠️️ To Do After Migrating**
+
+### **1. Re-map Your Data**
+
+* Swap your data source to Softr DB under **Source** in the studio.
+
+* Data fields won’t always re-map correctly—compare with your live app and re-map fields in your duplicate app.
+
+* Update:
+  + Conditional Filters in blocks
+  + Search parameters and filter settings
+  + Tag colors (if using “as defined in Data source”)
+
+* Action buttons will stay connected, but fields may reset—review them carefully.
+
+### **2. Update User Settings**
+
+* **User Sync Table**: Toggle off “Send User Notification email” during setup.
+
+* **User Groups**: Re-map conditional logic settings. Note: user groups may not sync until you publish.
+
+* **Global Data Restrictions**: Recreate them from scratch—these don’t carry over automatically.
+
+### **3. Review Visibility Permissions**
+
+* If you’ve reconfigured User Groups, your page and block permissions should stay intact. Still, test carefully.
+
+---
+
+## **🎉 The Benefits of Softr Databases**
+
+* Full control and ownership of your data inside Softr.
+
+* Faster performance and smoother syncing compared to Airtable.
+
+* New features like inline editing, Ask AI, and more (only available with Softr DB).
+
+* A simplified, native environment with fewer external dependencies.

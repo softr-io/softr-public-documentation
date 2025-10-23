@@ -1,0 +1,111 @@
+---
+title: "How to Enable Peer-to-Peer Chat?"
+permalink: "6C2pWJYFwJcvnG8RS5CBt3"
+description: "Creating a peer-to-peer to chat using Softr’s and Airtable’s native functionalities."
+'og:title': "How to Enable Peer-to-Peer Chat? – Softr Help Docs"
+'og:description': "Creating a peer-to-peer to chat using Softr’s and Airtable’s native functionalities."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "How to Enable Peer-to-Peer Chat? – Softr Help Docs"
+'twitter:description': "Creating a peer-to-peer to chat using Softr’s and Airtable’s native functionalities."
+---
+Using a peer-to-peer (or one-on-one) chat, you can let your users initiate private chats with other users. One of the options to add such a functionality is integrating third-party tools such as [AtomChat](/integrations/etS18kJqm1fuD58KCsjC3z/atomchat/bTiJ3zbePgQMwcB9SUYY93). But it’s also possible to build a peer-to-peer chat using just Softr and Airtable. Let’s see how.
+
+## Chat functionality overview
+
+We are going to break down [Cole Fortman](https://www.softr.io/softr-expert-profile/cole-fortman/r/recdRQxd3KleHO27i)’s video that showcases an application where each user has access to the list of all the members in the application and can initiate a chat with any of the members. Users also have access to all the past conversations and can continue from where they’ve left.
+
+<iframe src="https://www.youtube.com/embed/YoUxZcv5QCo?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
+
+Our chat application contains three users: Bob Ross, Tony Stark, and Bruce Wayne. The recording below shows how we log in with Bob Ross’s account, navigate to **All Members**, and initiate a chat with Tony Stark.
+<Frame caption="Initiating a conversation between users">![Initiating a conversation between users](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff6897f46-1d6b-4038-9f3d-2f79be4eb5d3%2Fcole.gif&blockId=0f563462-8468-4d93-87b3-cd5e122f9c5b&projectId=1032)</Frame>
+
+There’s also a **Conversations** section, where each user can see the list of all the conversations he/she has participated in, open those, and continue chatting.
+<Frame caption="Accessing the “Conversations” section">![Accessing the “Conversations” section](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F87048095-80e3-4f62-badd-fd6655fd1584%2FScreen_Recording_2023-05-04_at_15.42.33.gif&blockId=5b8e654c-5bdf-4342-a441-76fc9a3d80e7&projectId=1032)</Frame>
+
+We are first going to look into the Softr side of the application to see how each page is set up. Then, we will take a closer look into the Airtable base that serves as a [data source](/4230abecf813402aa2926466c313290a?pvs=25) for the app.
+
+## Softr setup
+
+### Home page with user profile
+
+First comes the home page, where we have a [List Details](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/item-details-block-/4bE8XaFbJp45wkAwuWiz8f) block that is connected to the **Users** table on Airtable. A [conditional filter](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m) is applied to show each user his/her own details.
+<Frame caption="A details block with a conditional filter applied">![A details block with a conditional filter applied](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F746f96d3-b756-4f74-a4f4-b8d23c174b96%2Fhome-page.png&blockId=16956544-7da1-44f7-b74d-abf241eac6b0&projectId=1032)</Frame>
+
+The block shows such user details as name and email as well as **Total Conversations** and **Total Conversations Started** fields from Airtable, which we’ll explore in greater detail when we proceed to the Airtable setup.
+<Frame caption="Details block content mapping">![Details block content mapping](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9907466c-c70b-4e1b-998a-7ead0cb9b737%2Flist-details-mapping.png&blockId=e8693e9e-bf6d-4acf-bd32-190940330a9b&projectId=1032)</Frame>
+
+### All Members
+
+Next, we have the **All Members** page, which is a [List block](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) that shows the list of all users and has a **View Profile** button that opens the **Member Details** page, which we’ll discuss next.
+<Frame caption="All members list linking to Member Details">![All members list linking to Member Details](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F52e6944a-6e14-4ff0-af4c-138fd8ed6428%2Fall-members.png&blockId=a9e72446-e852-4355-b54c-877238d79659&projectId=1032)</Frame>
+
+### Member Details
+
+Similar to the Home page, the **Member Details** page contains a List Details block that shows some user info. But it also has a [Customizable Form](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/advanced-form-features/jCim5VWZePgZuaRsUZBnpG) block that consists of a **Start Conversation** button and sends two hidden field values.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff4b1f60c-8ce5-49cb-855d-416fc7aaa8f4%2FScreen_Recording_2023-05-04_at_17.00.39.gif&blockId=9ab0121d-14bb-4e3b-992f-281741152a20&projectId=1032)</Frame>
+
+Basically, the form creates a new record in the **Conversations** table on Airtable, passing the [Record ID](https://support.airtable.com/docs/finding-airtable-record-ids) of the logged-in user who is initiating the conversation as well as the the **Recipient user’s Record ID**, which is the ID of the current record (user profile) that’s opened in the **Member Details** page.
+
+When the form is submitted, the user is taken to the **All** **Conversations** page (through “On Form Submit” Action), where he/she can already view and access the newly-created conversation. Now, let’s see how the **All** **Conversations** page is configured.
+
+### All Conversations
+
+The **All Conversations** page contains an [Inbox block](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/layout-inbox/9cbSp8Mvwru9g6L6RM4uJ5) that is connected to the **Conversations** table on Airtable, which contains all the conversations initiated between users.
+<Frame caption="All Conversations list">![All Conversations list](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F207365cc-7a75-4779-9623-6e6fb56b3be8%2Fall-conversations.png&blockId=929e3359-093a-4e62-95a8-41ec1687b6b6&projectId=1032)</Frame>
+
+In order for users to have access to their own conversations only, a [conditional filter](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m) is applied that shows only those conversations where the logged-in user is either a starter or a recipient of the conversation.
+<Frame caption="Conditional filter applied on the conversations list">![Conditional filter applied on the conversations list](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0beb4dd0-f46a-494d-a240-403a332307a6%2Fall-conversations-filter.png&blockId=02c683c5-8e86-48b1-baf1-02b56fab931c&projectId=1032)</Frame>
+
+Each conversation contains **Recipient User’s Profile Picture**, the **Conversation ID** (displays the names of the starter and recipient users), L**ast Message** (displays time and date of the last message sent within the given conversation), T**otal Conversation Messages** (calculates the total number of messages exchanged within the given conversation), and an **Open Conversation** button that opens the page with the actual conversation (**Conversation Details** page).
+<Frame caption="All Conversations block setup">![All Conversations block setup](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa136eb2a-46d3-4a17-8edc-494b0ec5b313%2FScreen_Recording_2023-05-04_at_17.21.22.gif&blockId=c1bfa7d6-0801-4843-b728-8f19ed4e9a3b&projectId=1032)</Frame>
+
+We’ll take a closer look at how these fields are set up in Airtable in a bit. Now, let’s navigate to the **Conversation Details** page to see how it’s configured.
+
+### Conversation Details
+
+The first block is a List Details that’s linked to the **Conversations** table to indicate which conversation the user is currently on.
+<Frame caption="The List Details block with conversation ID">![The List Details block with conversation ID](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F873f61cd-f21b-451c-8bd8-3c2355b3e16c%2Fconversation-details.png&blockId=c66daba7-1f7e-4799-8c93-1e1832a2ea22&projectId=1032)</Frame>
+
+The block displays the **Conversation ID** field, which is simply a combination of the conversation starter and recipient names.
+<Frame caption="Displaying Conversation ID">![Displaying Conversation ID](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc0ee3a60-4770-43ea-aedc-33c8d46aeb03%2Fconversation-id.png&blockId=d4463a6d-370b-45b8-bcd9-8a369a674828&projectId=1032)</Frame>
+
+Next comes a [Comments](/697c2ac57a3c40a8b5c14cc7bcf8947c) block where the messaging happens. It is connected to the **Messages** table on Airtable.
+<Frame caption="Comment block">![Comment block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F364547a8-7c95-4ad6-90c9-7b71b7b86a48%2Fcomments-block.png&blockId=1e002bb3-0d73-4ad2-8cd6-45f74cdd5a85&projectId=1032)</Frame>
+
+As you can see below, the block sends such data as **Commenter ID** (the name of the person initiating the chat), the [record ID](https://support.airtable.com/docs/finding-airtable-record-ids) of the conversation where the messaging happens (**Current record** parameter), the message body text (**Comment field** parameter), as well as the date.
+<Frame caption="Comment block mapping">![Comment block mapping](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3cff9ca7-94b4-4705-bfc9-d903d8347684%2FSCR-20230517-r0r.png&blockId=ff5ade61-d5fa-414e-b12f-d9807dfcca51&projectId=1032)</Frame>
+
+That’s it for the Softr-side setup, now let’s navigate to the Airtable base of the project and see how the tables we’ve just been discussing are organized.
+
+## Airtable setup
+
+### Users
+
+First comes the **Users** table, where all the user data is stored. It contains such fields as **Name**, **Profile Picture**, and **Email**. Further on, we have three [linked records](https://www.airtable.com/guides/build/connect-data-with-linked-records):
+
+* **Conversations Started:** links to the **Conversations** table, where each conversation record contains data on the user who has started the conversation. As you might remember, this was collected through a hidden field in the **Start Conversation** form.
+
+* **Conversations Received:** links to the **Conversations** table, where each conversation record contains data on the conversation recipient user). This was collected through a hidden field in the same form as well.
+
+* **Messages:** links to the **Messages** table, showing the record ID of the messages that the given user has sent. As we saw in the Softr setup section, when a message was created by the user through the Comments block, it stored the **Commenter ID** in Airtable.
+<Frame caption="Users table">![Users table](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fee1bd6de-9273-4347-8881-14057916b4b9%2Fusers-first.png&blockId=8468d305-4ed0-45d6-a5e1-191150ab4e01&projectId=1032)</Frame>
+
+Then, we have the **Total Conversations Started** and **Total Conversations Received** fields, which calculate the number of conversations based on the **Conversations Started** and **Conversations Received** fields that we just reviewed. The last **Total Conversations** field just sums up the value from the two previous fields through a formula.
+<Frame caption="Total conversations">![Total conversations](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6413ff77-ddd3-4eb0-9dac-14b0248eeee6%2Ftotal-conversations.png&blockId=cdcbded0-7a3e-4a2b-b559-a26556be7a18&projectId=1032)</Frame>
+
+### Conversations
+<Frame caption="Conversations table">![Conversations table](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0fa0b2e5-5f77-49b1-92b7-71eed7a774a9%2Fconversations-table.png&blockId=daa6d397-4ea5-4bf0-8509-ac443f6bc8fd&projectId=1032)</Frame>
+
+Here, we have the **Conversation Starter User** and **Recipient User** fields (linked records from the **Users** table) and the **Conversation ID** field, which is a [concatenation](https://support.airtable.com/docs/formula-field-reference#text-operators-and-functions) of these two fields. Also, there’s the **Messages** field, which is a linked record from the **Messages** table (as we’ve already discussed, each message is submitted under a specific conversation and is automatically linked to that conversation).
+
+Then, we have a few fields that [look up](https://support.airtable.com/docs/lookup-field-overview) user data from the Users table.
+<Frame caption="User field lookups">![User field lookups](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F457d5444-088d-412b-9801-e09c17cfb5f5%2Fconversation-lookups.png&blockId=fde72c65-d4cf-4847-a30b-8e3d866e27b9&projectId=1032)</Frame>
+
+Lastly, there are a few more fields that calculate things like **Total Messages** or **Conversation Age** as well as indicate the **Record ID** of the record through the [RECORD_ID () formula](https://support.airtable.com/docs/finding-airtable-record-ids).
+
+### Messages
+
+The last table we have in this base is the **Messages** table. Here, we store all the messages linked to their corresponding conversations (**Conversations** field) and senders (the **ID** field).
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F16e9bc6d-3bc4-4726-a6ef-17a8288f8f84%2Fmessages-table.png&blockId=188950e5-5526-4683-bd77-db81f8775a22&projectId=1032)</Frame>
+
+And there you have it. We hope that we’ve been able to provide sufficient detail to let you recreate this (or a similar) setup on your side. Enjoy!

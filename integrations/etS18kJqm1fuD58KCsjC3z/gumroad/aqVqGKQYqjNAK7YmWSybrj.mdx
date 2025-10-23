@@ -1,0 +1,34 @@
+---
+title: "Gumroad"
+permalink: "aqVqGKQYqjNAK7YmWSybrj"
+description: "Creating a marketplace with Gumroad."
+'og:title': "Gumroad – Softr Help Docs"
+'og:description': "Creating a marketplace with Gumroad."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Gumroad – Softr Help Docs"
+'twitter:description': "Creating a marketplace with Gumroad."
+---
+Gumroad is an online platform for creators to sell their products directly to consumers. The platform is mostly intended for selling digital content like albums, ebooks, music, tutorials, and so on.
+
+Let's see how you can integrate Gumroad with Softr to start selling. When you create a product on Gumroad, it is assigned a unique link as shown below.
+<Frame caption="Getting product URL">![Getting product URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F12ccef7c-a6b2-47dd-82ee-b9f81ddc846a%2Fgetting-product-url.png&blockId=740d320e-9aee-46d4-be7e-7e802552e27e&projectId=1032)</Frame>
+
+So, when creating a product on Softr, you just need to have a button (e.g. "Buy Now") that will open the corresponding Gumroad product link. In most of the cases, you'll be importing a list of products from Airtable. Let's assume you've created your app based on our e-commerce template (see how to create an app with template Airtable base [here](/5315870b0eb4473fb49dd13c97635d67)).
+
+Thus, you have your products along with their names, images, descriptions and so on. Also, each product has a **View Details** button, which is linked to the item details page. Let's modify the button to open the product's Gumroad page instead.
+<Frame caption="“View Details” button on a product">![“View Details” button on a product](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffb9fc938-374d-4244-9f65-001f04cd9ac2%2Fview-product-details.png&blockId=ba67e6e5-0f7e-46f9-8738-f4276234daaa&projectId=1032)</Frame>
+
+To achieve that, you need to create a new field in your Airtable base, where each product's Gumroad link will be stored. So, let's add a new column and call it "Gumroad Link.”
+<Frame caption="Gumroad link in product list on Airtable">![Gumroad link in product list on Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffb8bf49a-2fb5-4206-ac26-41b339bdb462%2Fgumroad-link-on-airtable.png&blockId=f417d55f-a0d2-457f-aafb-a2322536e31e&projectId=1032)</Frame>
+
+Now, in your product listing configuration, you need to scroll down to the **View Details** 
+button, set the **Action** to **Open external url,** and set the Url to the "Gumroad Link" field.
+<Frame caption="Configuring the button click action">![Configuring the button click action](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F03581c8b-5e4a-423d-98db-a486f4c50beb%2Flist-block.png&blockId=8337145d-e6dc-47fe-9017-27b59f235598&projectId=1032)</Frame>
+
+That's all. Now, when the users click on the **View Details** button on the product, they'll be taken to the product's Gumroad page.
+<Frame caption="Testing the Gumroad setup">![Testing the Gumroad setup](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9f06b0fb-d0df-40d6-b27d-5efcb25d10d2%2Ftesting-gumroad-setup.gif&blockId=9f62b384-ac37-478e-a3d4-710a18226df9&projectId=1032)</Frame>
+
+You can also add the Gumroad link on the product details page or anywhere else the same way. You just need to set the button **Action** to **Open external Url** and set the corresponding Airtable field with product links.
+
+Alternatively, you can add the link directly if the product is a standalone item (e.g. you are using a [CTA button](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/cta/oPDoXzSUpMuKki92WuBDDH)), as shown in the example below.
+<Frame caption="Add Gumroad link to Softr">![Add Gumroad link to Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F43fb5353-7793-4d89-8b7e-5db237376af5%2Fadding-gumroad-link.gif&blockId=d5dec17a-b43c-49c1-9f40-e730b1a7ac7c&projectId=1032)</Frame>

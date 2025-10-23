@@ -1,0 +1,31 @@
+---
+title: "Options Filters"
+permalink: "5ZrtUQ5gDHDpMXJuGD5WA6"
+description: "Filter options in form dropdowns, inputs, and inline filters."
+'og:title': "Options Filters – Softr Help Docs"
+'og:description': "Filter options in form dropdowns, inputs, and inline filters."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Options Filters – Softr Help Docs"
+'twitter:description': "Filter options in form dropdowns, inputs, and inline filters."
+---
+## Overview
+
+Options filters are a specialized use of [conditional filters](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m) to restrict the choices available in dropdown inputs, conditional forms, or similar selection fields, ensuring users only see relevant options based on conditions.
+
+## Where Can Options Filters Be Used?
+
+* **Dropdown Inputs**: In forms for creating or updating records, to filter options in linked record or value-based dropdowns.
+
+* **Quick Select Inputs**: You can filter a quick select field in conditional forms to only show options that meet certain criteria.
+
+* **Inline Filters**: On dynamic blocks, where user-facing filter dropdowns can have their options restricted (e.g., only show filterable statuses that the user has access to).
+
+* **Other Contexts**: Any selection field mapped to a data source, such as in conditional forms for step or section logic.
+
+## Why Use Options Filters?
+
+Options filters improve user experience by preventing irrelevant or unauthorized selections. For example, clients can only see and select projects relevant to them in a dropdown (for example, filter by client email matching the Logged-in user’s Email), This can help dramatically in reducing errors and keep people from seeing options they shouldn’t see.
+
+## How Options Filters Work with Global Data Restrictions
+
+Global data restrictions apply first to limit the overall data (e.g., hiding restricted records from the data source table), and options filters then refine the visible choices within that selection. For instance, if global data restriction rules restrict a projects table to user-owned records, options filters can further limit dropdown options to active projects only. This layered approach ensures security at the app level while allowing precise control in inputs.

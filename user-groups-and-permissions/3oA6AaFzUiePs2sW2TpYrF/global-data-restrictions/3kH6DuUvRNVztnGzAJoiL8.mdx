@@ -1,0 +1,103 @@
+---
+title: "Global data restrictions"
+permalink: "3kH6DuUvRNVztnGzAJoiL8"
+description: "Restrict the data users can interact with in your data sources. "
+'og:title': "Global data restrictions – Softr Help Docs"
+'og:description': "Restrict the data users can interact with in your data sources. "
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Global data restrictions – Softr Help Docs"
+'twitter:description': "Restrict the data users can interact with in your data sources. "
+---
+In Softr, global data restrictions become superpowers. Instantly hide irrelevant or sensitive records across dynamic blocks, dropdown options and inline filters, with just a few clicks. Your users see exactly what they need, no more, no less.
+
+<Tip>
+
+Global Data Restrictions is not currently available for the Comments block.
+
+</Tip>
+
+A prime use case being client portals, which commonly restrict clients to their own data, ensuring privacy and preventing unauthorized access to other clients' information.
+
+<Note>“View” data restrictions are available on all plans, including Free.
+”Create”, “Edit”, and “Delete” data restrictions are available on the [Business plan and above](https://www.softr.io/pricing).</Note>
+
+## Getting started
+
+To access global data restrictions open your app in Studio and head to Users where you’ll find the Data Restrictions tab. Here you can easily add and manage the restrictions you’ve applied to your app’s data sources.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fad184bcf-7fe5-4a86-b73a-05129dafb226%2FGlobal_data_restrictions.png&blockId=c9d1b4c5-3397-4b7a-b5ff-8c276f393074&projectId=1032)</Frame>
+
+## Adding a restriction
+
+### Select a source to define restrictions
+
+A restriction rule must be applied to a specific table in your data source. Select a source as you normally do when connecting a block. With the “Used in this app” toggle you can filter for sources that are currently connected to your app.
+
+### Apply restrictions to
+
+A restriction rule can be applied to one or many user groups. Note you cannot directly apply a restriction to an individual user, unless they are the only user in a user group.
+
+### Specifying restriction types & scopes
+
+**Restriction types**
+
+A restriction is made up of restriction types.
+
+|  |  |
+| --- | --- |
+| Type | Description |
+| View | Restrict what users can only or can’t see |
+| Create | Restrict users from creating new records |
+| Edit | Restrict what users can only or can’t edit |
+| Delete | Restrict what users can only or can’t delete |
+
+By specifying one or up to all of these restriction types you are defining restriction rules that will be applied to the table and the user group(s) you have selected.
+
+<Info>By default, your users are unrestricted. Meaning that they can freely view, create, edit and delete records (where possible and where no additional local control has been specified). As you add restrictions you begin to narrow the scope of data accessible to your users. </Info>
+
+**Restriction scopes**
+
+A restriction also contains one of two scopes.
+
+|  |  |
+| --- | --- |
+| Scope | Description |
+| Can only | Specifies the records that users **can** take any of the available actions on (viewing, creating, editing or deleting). |
+| Can’t | Specifies the records that users **can’t** take any of the available actions on (viewing, creating, editing or deleting). |
+
+🗣️ Heads up - When a user belongs to multiple user groups with conflicting restriction rules applied, “Can’t” restrictions will take precedence.
+
+For example: Table X has 5 records: A, B, C, D, E and the following restriction rules applied:
+
+|  |  |
+| --- | --- |
+| User group | Restriction rule |
+| A | Can only view record A, B, C |
+| B | Can only view record D, E |
+| C | Can't view record E |
+
+Result: A user belonging to all three users groups will only be able to view records A, B, C & D.
+
+**Adding conditions**
+
+Completing a restriction rule involves adding conditions that link specific records to the chosen table and user group. For instance, to restrict view access to Table W's records for User group A based on email, you'd create a condition matching users' logged-in emails to the Email field in Table W. This would restrict those users to viewing only Table W records with their corresponding email.
+<Frame caption="Restrict view access to Table W's records for User group A based on email">![Restrict view access to Table W's records for User group A based on email](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F8513f26a-c3f4-4b99-abb1-f4feaa0d1cef%2FUntitled_Modal_%281%29.png&blockId=84ab06b6-8990-4947-b46e-a95e59013dc5&projectId=1032)</Frame>
+
+## What your app users see
+
+The below table details the specific impact of applying global data restrictions to your app’s user experience.
+
+|  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- |
+| Type | Scope | Action buttons | Dropdown field options | Inline filters | **Customizable forms** | Dynamic block records |
+| View | Can only view certain or all records | N/A | App users **will only** be able to see the dropdown options for records specified by restriction rules. | App users **will only** be able to see the options for records specified by restriction rules (i.e if there is a “Status” inline filter, and only “Done” & “In Progress” items are visible, then only display the Done & In Progress filters). | N/A | App users **will only** be able to see the options for records specified by restriction rules (same behavior as conditional block filter). |
+| View | Can’t view certain or all records | N/A | App users **will not** be able to see the dropdown options for records specified by restriction rules. | App users **will not** be able to see the options for records specified by restriction rules (i.e if there is a “Status” inline filter, and all “ToDo” items are restricted, then don’t display the ToDo filter). | N/A | App users **will not** be able to see the options for records specified by restriction rules (same behavior as conditional block filter). |
+| Create | Can’t add records | App users **will not** be able to see any configured add record action buttons used in blocks connected to the restricted table. | N/A | N/A | App users **will not** be able to submit form entries. However they willstill be able to see a submit button, albeit disabled. | N/A |
+| Edit & Delete | Can only edit/delete certain or all records | App users specified be able to see any configured edit, update or delete action buttons for the records specified by restriction rules. | N/A | N/A | N/A | N/A |
+| Edit & Delete | Can’t edit/delete certain or all records | App users **will not** be able to see any configured edit, update or delete action buttons for the records specified by restriction rules. | N/A | N/A | N/A | N/A |
+
+## Adding more than one restriction to a table
+
+More than one restriction rule can be added to a table, however there can only ever be a single table & user group combination. We enforce this in order to minimise the risk of conflicting restriction rules.
+
+For example: Consider the case where a restriction rule exists on the Full-time table and has been applied to the HR user group. You will be able to add another restriction to the Full-time table, however you will not be able to select the HR user group again. To apply that user group to this new restriction, you will need to remove them from the existing restriction.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F7bd62d19-69ce-420a-91d1-85f6e9240d41%2FGlobal_data_restrictions.png&blockId=93c424b3-3781-4329-ac8c-5dca436b6329&projectId=1032)</Frame>

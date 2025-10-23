@@ -1,0 +1,26 @@
+---
+title: "Use Case: Job Submission with Hidden Fields"
+permalink: "9j4RWhci9bi3o4BCTt6mRW"
+description: "Learn how to use hidden fields on an example."
+'og:title': "Use Case: Job Submission with Hidden Fields – Softr Help Docs"
+'og:description': "Learn how to use hidden fields on an example."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Use Case: Job Submission with Hidden Fields – Softr Help Docs"
+'twitter:description': "Learn how to use hidden fields on an example."
+---
+Here, we'll go through a use case when incorporating hidden fields into your form can be useful.
+
+Let's say you have a job board (built using a [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) block in our case), which is in turn connected to a [List details page](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/item-details-block-/4bE8XaFbJp45wkAwuWiz8f) for displaying the complete overview of the position. Apart from job details, the details page also contains a form through which visitors can apply for that job. The blocks display data from a [data source](/4230abecf813402aa2926466c313290a), which in this case is [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX). Below you can see what these pages and their corresponding Airtable tables look like.
+<Frame caption="Job board and job details">![Job board and job details](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1c94bbbf-ba94-4889-b5a5-be095f41bb71%2Fjob-board-with-details.gif&blockId=ee810dc1-7dbc-489c-8e55-1ce02d1ca95f&projectId=1032)</Frame>
+
+This way, each form submission will be stored under the **Job Submissions** table. However, since we don't have a field where the user can select which position he/she is applying for, we can't associate the submissions with their related jobs. But instead of adding such a field, we can go one step further and link each form submission to its related job entry in the **Jobs** table. This is where hidden fields come in handy.
+
+First of all, let's link the two tables through a linked record.
+<Frame caption="Linking 'Jobs' and 'Job Submissions' tables">![Linking "Jobs" and "Job Submissions" tables](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F108a95b5-bf04-40b3-be04-aadf0be4b896%2Flinking-tables.gif&blockId=9d20a1f7-13c7-4571-b5cf-683495b776cc&projectId=1032)</Frame>
+
+Now, on our form, we'll add a [URL parameter](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/advanced-form-features/jCim5VWZePgZuaRsUZBnpG) hidden field that gets the **recordID** of the page it has been submitted from and map that field to the **Jobs** linked record field we just created. As a result, Airtable will locate the corresponding job record from the **Jobs** table and link it to each new job submission.
+
+Now, on our form, we’ll add a Hidden field input that is Mapped to our new Jobs field in the Job Submissions table. Since we are linking to the list details page from our list of jobs, we can choose information from the Current Record to be saved as the value of our hidden field. We can use the primary field (first column) from the Jobs table as the value to send in the Hidden field. In this case it’s the Name of the job.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F039e5922-f950-4af3-a933-ef22a1bf0ece%2FArea.gif&blockId=8ce8063a-3d20-41af-aad9-367344415d1e&projectId=1032)</Frame>
+
+That's it. As you can see, the job submission is successfully linked to its related job record. Whenever a user submits an application on a job’s detail page, the form will automatically link to the job the user is applying for.

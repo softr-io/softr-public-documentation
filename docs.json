@@ -1,122 +1,626 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "aspen",
+  "name": "Softr Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#030712",
+    "light": "#fff",
+    "dark": "#030712"
   },
-  "favicon": "/favicon.svg",
+  "appearance": {
+    "default": "light"
+  },
+  "favicon": "/logo-light.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "background": {
+    "color": {
+      "dark": "#111827"
+    }
+  },
+  "fonts": {
+    "body": {
+      "family": "Inter"
+    },
+    "heading": {
+      "family": "Inter"
+    }
+  },
   "navigation": {
-    "tabs": [
+    "groups": [
       {
-        "tab": "Guides",
-        "groups": [
+        "group": " ",
+        "pages": [
           {
-            "group": "Getting started",
+            "group": "Start Here",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "start-here/9kNyHJ3UeZkJc8Z6JuypBS/welcome/si84FeKzFRrGL6u53ckCQU",
+              "start-here/9kNyHJ3UeZkJc8Z6JuypBS/generate-an-app-with-softrai/vQPEFmSph7yG6xn1rXpeHU",
+              "start-here/9kNyHJ3UeZkJc8Z6JuypBS/create-an-app-from-a-template/xhMwtBq88yFkzZDWECGRAM"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Core Concepts Overview",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/pages-and-navigation/49UoDpTpTLLXUVn7JnoHbh",
+              "core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/create-a-database/57RHfyrVro1h3w7KsULUYf",
+              "core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/connect-your-data-source/41p6U2eZs6NZ5qZp7iKvnn",
+              "core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH",
+              "core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/actions-adding-and-editing-data-/41p6U2eZs87asLz6dV5AMy",
+              "core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/user-authentication/7gJmq6B7syYE3hRoFxLs5J",
+              "core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/user-groups--permissions/42JZoeYwMqiZYSB8FVGepz",
+              "core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/style-your-app/41p6U2eZs8AZmBW8mHykXA",
+              "core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/publish-your-application/41p6U2eZs7mF8o4UyKai2g"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Softr Databases",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "softr-databases/57RHfyrVrq5xPojyELRnSu/softr-databases-overview/57RHfyrVrnHg4AcFqaAPJ9",
+              "softr-databases/57RHfyrVrq5xPojyELRnSu/field-types/57RHfyrVrpq8aaMPouT9Rs",
+              "softr-databases/57RHfyrVrq5xPojyELRnSu/formula-glossary/57RHfyrVrpgXaYL5w8E4uR",
+              "softr-databases/57RHfyrVrq5xPojyELRnSu/related-record-lookup-and-rollup-fields/57RHfyrVrnNoojNtczw14L",
+              "softr-databases/57RHfyrVrq5xPojyELRnSu/ai-agents/5VRMhf7Q6vYhmbqWcNFDhR",
+              "softr-databases/57RHfyrVrq5xPojyELRnSu/database-migration-tips/5F61VQ3Tr2syEd91hRt5W4"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Workflows",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "workflows/66fZFMfBqLYXG1P5UG7U74/workflows/66fZFMfBqLp22WwJQwofZ4"
+            ]
+          },
+          {
+            "group": "Data Sources",
+            "pages": [
+              "data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/hubspot/kwQJ43xNLmuMyiAg2qt9X9",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/notion/cUYcqYbNZNqa8oKzkdwv6L",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/coda/4XsuR2j979vbMZ48w9NrZU",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/google-sheets/jznC9Jr3Jri224AVmHVn4a",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/mondaycom/vBMFM8iNXpm4c5FD1gthKi",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/smartsuite-/qPGdcyvo78JJTfSRNCNFmi",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/clickup/4Rc2eZTBTnB2QiFKtwmHFT",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/xano/uFRrNt57Ya75tPBeP66AaN",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/supabase/wL8KgbYV44SnUG4nxn1sfJ",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/bigquery/nGYHP8uHpSH1M3uxjPLwdy",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/sql-database/fXWuGKLJ8DaY9bHhcRPBcH",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/rest-api/3idxDhKqz2YcUBVvjFcqas",
+              "data-sources/1YYStCJukT15Lh2j93qo9A/choosing-a-data-source/3JJpTsFFU3rMYVj631NwCz"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
-        "groups": [
+        "group": "Building Blocks",
+        "pages": [
           {
-            "group": "API documentation",
+            "group": "List",
             "pages": [
-              "api-reference/introduction"
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/layout-list-with-small-cards/9PKEKRws6aNYjuh7cgtHNa",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/layout-list-with-timeline/ePuVavv5Na7EfL8V5XHh6b",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/layout-inbox/9cbSp8Mvwru9g6L6RM4uJ5"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Item Details",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/item-details-block-/4bE8XaFbJp45wkAwuWiz8f",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/linked-list/bWjTdKhbftofSEKRSxMFz9",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/comments-block/523ctBgzEmA3NrfPuyfUbt",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-creating-a-user-profile-with-item-details/e4isniZBZBRV1zxEEU8dct",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-embedding-calendly-in-list-details/pUraLKqtjajCRizCqhAJLR",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-filtering-other-lists-by-a-list-detail-block-data/3JJpTsFFU5Qwy9wQ7U8YnJ",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-hiding-blocks-based-on-current-record-data/4KPti7Xsy4VcTxMVBfUasA"
+            ]
+          },
+          {
+            "group": "Table",
+            "pages": [
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe"
+            ]
+          },
+          {
+            "group": "Forms",
+            "pages": [
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/conditional-forms/afyKqnGDXd54U8d4xLNcsR",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/advanced-form-features/jCim5VWZePgZuaRsUZBnpG",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-job-submission-with-hidden-fields/9j4RWhci9bi3o4BCTt6mRW",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/tutorial-sending-form-data-to-a-data-source/pgX6BhyR98bLopZtgsXMwU"
+            ]
+          },
+          {
+            "group": "Charts",
+            "pages": [
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-bar-chart/hs9Nn3rYv1PJFoJADwMWk6",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-stacked-bar-chart/63JhkgrVPm2v1v14XL9rM7",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-line-chart/sr4V2LjKyhGdzbmAmEcwwy",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-area-chart/qN1S4vWvKS3xq3f2xSvrjd",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-scatter-chart/kcFBHiVfrXgQJ9dcGXQ2XV",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-pie-chart/wqQRQCAV5nf6jGvbJnNsGV",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-donut-chart/ieqgDDiqD4DGt9cobe1JRB",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-rose-chart/kXK3DCA2rLVQ6KZRYjDDzm",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/summary-cards/hp1xSzbMk6YjVsqHQKHD7A"
+            ]
+          },
+          {
+            "group": "Block Containers",
+            "pages": [
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/column-container/t7HCEKvV6Y5y2t3hSWwRNx",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/tabs/38PkeKBDeLtiKuCXp7YeBr"
+            ]
+          },
+          {
+            "group": "Utility Page Blocks",
+            "pages": [
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/account-settings/54HYs3JEjZj8DGwRCNUpH9",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/signup/54HYs3JEjYZA33S96fP3de",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/onboarding-flow/5MmuwRtpDR2JL56SooLXgo",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/link-expired/54HYs3JEjZq4hE6TqDeWvG",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/permission-denied-401/54HYs3JEk1EoiwpFbPzVSF",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/page-not-found-404/54HYs3JEjZUJXyjFh3sU2Q"
+            ]
+          },
+          {
+            "group": "Other Dynamic Blocks",
+            "pages": [
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/calendar/rdfXqxaPkTFioEbjBBAZai",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/kanban/7y9bp8Z1ZkTZwpVRY8Ug1K",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/organizational-chart/cobU5UfczQ51cVYow9V5CE",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/map/e1zLdwuFNU7A9WakvLBHsq"
+            ]
+          },
+          {
+            "group": "Static Blocks",
+            "pages": [
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/header/5dpe9Tntz67ejVpCGGWDnR",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/hero/avyLWEvNZNUqYewF51kMLA",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/cta/oPDoXzSUpMuKki92WuBDDH",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/feature/n7KnNydZxMifxWX5CK6ZTz",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/feature-grid/5ik7RjqWWAkDQwhW1sFcf9",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/partner/mio7YbrncvNjaqZ7VpBwA9",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/x-twitter-grid/pdito8zDFjPR9gFvFuMHwk",
+              "building-blocks/vikC2AWEpQGkZd4jGyoVxo/quick-links/54HYs3JEjYNuEi25KC6ZYn"
+            ]
+          }
+        ]
+      },
+      {
+        "group": " ",
+        "pages": [
+          {
+            "group": "Actions",
+            "pages": [
+              "actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq",
+              "actions/ntEfT9zSJk6aY54G6W5KGU/add-record/3LrUMpQY4BKfDDQj6eb8h8",
+              "actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx",
+              "actions/ntEfT9zSJk6aY54G6W5KGU/one-click-update/8BaX5i6KLZhZCrSZERGnej",
+              "actions/ntEfT9zSJk6aY54G6W5KGU/delete-record/peV9LGdJbM9sKHKynqopkH",
+              "actions/ntEfT9zSJk6aY54G6W5KGU/call-api/i9f1s3w9wib3oRmS4HZ7MX",
+              "actions/ntEfT9zSJk6aY54G6W5KGU/download-file/8Sr2y4CREVcW2GEEDYUhfJ",
+              "actions/ntEfT9zSJk6aY54G6W5KGU/mapping-fields-for-actions/7ukkeMfqspmniU4MQyTiV3",
+              "actions/ntEfT9zSJk6aY54G6W5KGU/item-on-click-actions/f1ns7phZfNNvgwXA6tTN3M",
+              "actions/ntEfT9zSJk6aY54G6W5KGU/export/mnrvzncWeoSfwWJscZCAxC",
+              "actions/ntEfT9zSJk6aY54G6W5KGU/ask-ai/5rdbeytiE5rdc2vqDyfMeU"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Add and Manage Users",
+        "pages": [
+          {
+            "group": "App Users Basics",
+            "pages": [
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/add-users-to-a-softr-app/kBJGPeH635j7HDW4NYoDDs",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/users-menu/5JTzjtbvp8Skemd26A9ho9",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/add-or-import-users-manually/g5R1bGnBTFJ3sWLR8Mgdng",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/internal-vs-external-users/kHTk5YN85i3qRyTSRft1Dx",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/user-email-notifications/sZRpewgUkBFFvhKSsQrBx7",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/automated-user-invitations/3Jhs4orvsie7byu15BWmuV"
+            ]
+          },
+          {
+            "group": "User-related Blocks",
+            "pages": [
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/signup-form/tPe3uxmdcUNeFYuaLTR1o9",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/signin-form/gYwm7wWsqb2bRyJFUreSzN",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/signin-with-email-code/5Ab4ZFWG788NHL2AB6zt2f",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/sign-in-with-sms-code-deprecated/gZLztaFS5EPwh63MdVheRL",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/user-profile/jVikpwBm67W9wozwyDXtjs",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/forgot-password-form/cdXruGUfrkDNtzJi5JWx9s",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/reset-password-form/1Z48Ai2XvMX3JwuSq9ZU38"
+            ]
+          },
+          {
+            "group": "Advanced Sign-in Options",
+            "pages": [
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/saml-single-sign-on/j9hELMUfGtAGqoNzejgoif",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/microsoft-azure-saml-single-sign-on/jVobD9juDQPAu2QMvBqNyv",
+              "add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/openid-single-sign-on/hqqStep7RUmiSMb6qnGLkq"
+            ]
+          }
+        ]
+      },
+      {
+        "group": " ",
+        "pages": [
+          {
+            "group": "User Groups and Permissions",
+            "pages": [
+              "user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3",
+              "user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m",
+              "user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/record-filters/5ZrtUQ5gDJkkFc6YQnw3Mw",
+              "user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/action-button-visibility/tqpb8TkUD4U4DCAUA2hjKo",
+              "user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/block-visibility/3spA2dfQNrcGcPNmnDXHB3",
+              "user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/page-visibility/nWJaN689VKA1TUeaEfzK9u",
+              "user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/page-rules/6zZKpehWhQhCGH9XXAFrpT",
+              "user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/global-data-restrictions/3kH6DuUvRNVztnGzAJoiL8",
+              "user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/options-filters/5ZrtUQ5gDHDpMXJuGD5WA6"
+            ]
+          }
+        ]
+      },
+      {
+        "group": " ",
+        "pages": [
+          {
+            "group": "Styling",
+            "pages": [
+              "styling/7qXYEkNvWQamR6vcLXzZnF/application-theme/91YGSL2aDJajXdbPBhitbc",
+              "styling/7qXYEkNvWQamR6vcLXzZnF/block-styles-and-formatting/dy4vuKjHgksR4pDJLFKAHP"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Publishing",
+        "pages": [
+          {
+            "group": "Publishing",
+            "pages": [
+              "publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/publishing-your-softr-app/gRrb1u7eLmRTrXyg3UNGkQ",
+              "publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/unpublishing-your-app/3yrgPM4xFi2g6rfRc4AfRE"
+            ]
+          },
+          {
+            "group": "Custom Domain",
+            "pages": [
+              "publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/add-a-custom-domain-to-your-app/93K5bLJN3n91MRo9uRGdAf",
+              "publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/tutorial-how-to-set-up-a-custom-domain-for-namecheap/qEPAYHRZAa9vPPPjsaWs3a",
+              "publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/tutorial-how-to-set-up-a-custom-subdomain-for-namecheap/3xKMZspFwCRukmmLYE649b",
+              "publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/add-an-extra-custom-domain-to-your-workspace/v7dPfiW74xXhdMWdqA3SE7"
+            ]
+          },
+          {
+            "group": "SEO",
+            "pages": [
+              "publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/softr-seo-checklist/cfcsseCaqjKL5nCjjXWrtZ",
+              "publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/site-seo/wVyec59832wgaSSHoBjaDF",
+              "publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/page-seo/jsBaG4CbYXx2yzgdEJd8Ae",
+              "publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/item-details-seo/6QnbCZTZjYbctWHbqcPaSJ"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Application Settings",
+        "pages": [
+          {
+            "group": "Page and Block Settings",
+            "pages": [
+              "application-settings/n3K2UEfpC9BpHgakMzUU5Y/footer-settings/4woAqVC4dTDN5429FkKuu7",
+              "application-settings/n3K2UEfpC9BpHgakMzUU5Y/page-settings/49UoDpTpTPJe69RafDsALq",
+              "application-settings/n3K2UEfpC9BpHgakMzUU5Y/utility-pages/49UoDpTpTPbkoKVwksoqfh",
+              "application-settings/n3K2UEfpC9BpHgakMzUU5Y/navigation-settings/49UoDpTpTMxcBVDnRVTncV",
+              "application-settings/n3K2UEfpC9BpHgakMzUU5Y/page-and-block-embed/kaMvDCneGdx43AxHnmf7bm",
+              "application-settings/n3K2UEfpC9BpHgakMzUU5Y/block-actions/1dyfJqAVQhaDPJMWU9ybco",
+              "application-settings/n3K2UEfpC9BpHgakMzUU5Y/block-version-update/jn1nBMCsXHzhsaUEsH3YK3"
+            ]
+          },
+          {
+            "group": "App Settings",
+            "pages": [
+              "application-settings/n3K2UEfpC9BpHgakMzUU5Y/general-settings/7YdGy1J8X2tjJSv8BGvWQU",
+              "application-settings/n3K2UEfpC9BpHgakMzUU5Y/app-history/2ZAq4oKJpiBXTMPkPTQqUU",
+              "application-settings/n3K2UEfpC9BpHgakMzUU5Y/advanced-settings/3aBby3An1TAPWnFTWc8TwS",
+              "application-settings/n3K2UEfpC9BpHgakMzUU5Y/migrating-app-versions/4ASdHE4RECmauL82yzcVam"
+            ]
+          }
+        ]
+      },
+      {
+        "group": " ",
+        "pages": [
+          {
+            "group": "Custom Code",
+            "pages": [
+              "custom-code/3idxDhKqz1qPdqBuWbs61G/custom-code-block-overview/6XNrxFopUEiwbWipq81Eq1",
+              "custom-code/3idxDhKqz1qPdqBuWbs61G/custom-code-snippets/3iEvtmZB1MwMUqQ8d3ht48",
+              "custom-code/3idxDhKqz1qPdqBuWbs61G/custom-code-events-and-style-selectors/3idxDhKqz4xDcSx13gVMNf"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Integrations",
+        "pages": [
+          {
+            "group": "AI",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/open-ai/a7akuLYNadxZ18rqRLZ877"
+            ]
+          },
+          {
+            "group": "Authentication",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/google-sign-in/2hBabh9UqoE8W7aWrfPVFd"
+            ]
+          },
+          {
+            "group": "Automation",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/make/dNDFZTp7eeNj7HnaUV6YMa",
+              "integrations/etS18kJqm1fuD58KCsjC3z/zapier/vFrfgfV12U9F9SNqbrAHLd"
+            ]
+          },
+          {
+            "group": "Cookies",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/iubenda-cookie-solution/3sLBqhPfnhm6zvKKoezQfE"
+            ]
+          },
+          {
+            "group": "Document Management",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/documint/2mFgRUWAwGr98mEYr63X84"
+            ]
+          },
+          {
+            "group": "Email",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/mailchimp/2GvSLRGrgMfe8S3drMWao1",
+              "integrations/etS18kJqm1fuD58KCsjC3z/mailerlite/i1Ex2KK1HwqsceB1SnYWby"
+            ]
+          },
+          {
+            "group": "Forms",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/typeform/xySzkyAzJSLxDiBg6rt4p3"
+            ]
+          },
+          {
+            "group": "Live Chat",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/crisp/bHBTPHUScJgA2sk8gYnRve",
+              "integrations/etS18kJqm1fuD58KCsjC3z/drift-chat/9S7j5Ub8694jQVNUrd4hCn",
+              "integrations/etS18kJqm1fuD58KCsjC3z/hubspot-chat/4UocQQqLC2q288N74eoLfL",
+              "integrations/etS18kJqm1fuD58KCsjC3z/intercom/5V6Wv9534d2sB9Y5LZS9dQ"
+            ]
+          },
+          {
+            "group": "Maps",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/google-maps/nu2VAqwuNyzwYC8iACyVBM"
+            ]
+          },
+          {
+            "group": "Peer-to-Peer Chat",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/atomchat/bTiJ3zbePgQMwcB9SUYY93"
+            ]
+          },
+          {
+            "group": "Payments",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/stripe-checkout/iBomMEucRZtM2y6HuutYVC",
+              "integrations/etS18kJqm1fuD58KCsjC3z/buy-me-a-coffee/9w8qSX5f3frhVaHy5X5TnG",
+              "integrations/etS18kJqm1fuD58KCsjC3z/gumroad/aqVqGKQYqjNAK7YmWSybrj",
+              "integrations/etS18kJqm1fuD58KCsjC3z/paypal/bRq2QEui8vjVY7GvuULy3S",
+              "integrations/etS18kJqm1fuD58KCsjC3z/layout-pricing-in-card-view-with-details/pNspR4mKu6spj1KSzRf4p7",
+              "integrations/etS18kJqm1fuD58KCsjC3z/stripe-customer-portal/3B7NhNtJ4RvipBwi7FwUtF",
+              "integrations/etS18kJqm1fuD58KCsjC3z/simple-billing-block/9oj8iqzqLhBWFHVt2UAY1K",
+              "integrations/etS18kJqm1fuD58KCsjC3z/simple-checkout-form/tKt3f5cV2CxsFLGM1aaNYX"
+            ]
+          },
+          {
+            "group": "User Analytics",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/facebook-pixel/aBcMovzWwwQnP3UFW17x6R",
+              "integrations/etS18kJqm1fuD58KCsjC3z/google-analytics/qt63nJLpVoXh7oyxJUVZL4",
+              "integrations/etS18kJqm1fuD58KCsjC3z/google-tag-manager/xn8tKtdvHywro9AipL7r53",
+              "integrations/etS18kJqm1fuD58KCsjC3z/microsoft-clarity/dG1NQn87tXYYoJv7GRchym"
+            ]
+          },
+          {
+            "group": "Translating",
+            "pages": [
+              "integrations/etS18kJqm1fuD58KCsjC3z/weglot/mX4TQ1cwLS2Xx3xhyAR6yX"
+            ]
+          }
+        ]
+      },
+      {
+        "group": " ",
+        "pages": [
+          {
+            "group": "Softr API",
+            "pages": [
+              "softr-api/tTFQ5vSAUozj5MsKixMH8C/api-setup-and-endpoints/j1PrTZxt7pv3iZCnZ5Fp19",
+              "softr-api/tTFQ5vSAUozj5MsKixMH8C/use-case-adding-users-through-zapier/mhCMmdRcJL2UDsprwzFYuT",
+              "softr-api/tTFQ5vSAUozj5MsKixMH8C/use-case-adding-users-through-make-formerly-integromat/vFH1YQTF7At7FwCYSmJKYz",
+              {
+                "group": "Softr Database API",
+                "pages": [
+                  "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/index",
+                  "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/authorisation/index",
+                  "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/rate-limiting/index",
+                  {
+                    "group": "Databases",
+                    "pages": [
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/databases/get-databases",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/databases/get-single-database",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/databases/create-a-database",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/databases/update-database",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/databases/delete-database"
+                    ]
+                  },
+                  {
+                    "group": "Tables",
+                    "pages": [
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/tables/get-tables",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/tables/get-single-table",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/tables/get-table-views",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/tables/create-table",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/tables/update-table",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/tables/delete-table"
+                    ]
+                  },
+                  {
+                    "group": "Table Fields",
+                    "pages": [
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/table-fields/get-table-field",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/table-fields/add-table-field",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/table-fields/update-table-field",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/table-fields/delete-table-field"
+                    ]
+                  },
+                  {
+                    "group": "Records",
+                    "pages": [
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/records/get-records",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/records/search-records",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/records/get-single-record",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/records/create-record",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/records/update-record",
+                      "softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/records/delete-record"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Security",
+            "pages": [
+              "security/ummZ2CWNHXZCHzsZwbEwET/sso-for-softr-studio/4woAqVC4dUwJ7hYkVmAaFU",
+              "security/ummZ2CWNHXZCHzsZwbEwET/softr-app-security/1xC7Hgkvo67AnHKyebr1uC",
+              "security/ummZ2CWNHXZCHzsZwbEwET/phishing/fCJ3szdDW5uXEy36wygQrs"
+            ]
+          },
+          {
+            "group": "How to Guides",
+            "pages": [
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-enable-peer-to-peer-chat/6C2pWJYFwJcvnG8RS5CBt3",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-create-your-own-template/4U6F7uBTgo8DgYuwMGpwmH",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-create-a-blog/5Vhtsqxp1VFpURgjGbdVVc",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-create-a-blog-from-a-data-source/sNGcXdD9uikJq9Btcnb7oQ",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/personalize-your-app-by-adding-welcome-message/i6Ttiod7hihVHY5Rx84vgz",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/what-internal-tools-can-you-build-with-softr/6DAy3i2YZPSLWV5Xd48ajC",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-create-a-client-portal/pnfkjmh2mr68N9WWRDEYKG",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-create-a-membership-site/diSie6ZE72tDDvrfBkmcmm",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-share-access-with-support/pzkohc6ksaa4FyYJbiJKxk",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/add-users-to-user-groups-based-on-stripe-attributes/g1A2tEtjvmiCtGL1hgJmMe",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-make-pagesblocks-accessible-only-to-company-users/xbczNbRV8Xqde7HELmgvZs",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-create-a-mobile-app-from-a-softr-app/2Em6zkSc6W7UooibPLu7T3",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-filter-list-data-from-the-url/1nz6ZAwCd51euhMgCWyjmh",
+              "how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-filter-list-by-page-url-parameters/42JZoeYwMstwaL9aoBdRjz"
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              "troubleshooting/c7mbQk6nyqGUTGoVjojr9E/troubleshooting-airtable-errors/9ZYLgZxAhfSCth2F4HRXtw",
+              "troubleshooting/c7mbQk6nyqGUTGoVjojr9E/troubleshooting-airtable-api-call-limit-exceeded/6NppUacY26WpmyagDoCDfD",
+              "troubleshooting/c7mbQk6nyqGUTGoVjojr9E/troubleshooting-google-sheets-errors/2tCUihV9yji31wcG3AAbBS",
+              "troubleshooting/c7mbQk6nyqGUTGoVjojr9E/troubleshooting-hubspot-errors/3hLzPdvf8frTjFowAHKEMt"
+            ]
+          },
+          {
+            "group": "FAQ",
+            "pages": [
+              "faq/jUGRWwEkWw4akSEa5z5EDn/domain-setup/hZQgTBnTWKi7KEjurVHqgd",
+              "faq/jUGRWwEkWw4akSEa5z5EDn/pages-theme-general-settings/4jAedFtkENGHjHiirzryYC",
+              "faq/jUGRWwEkWw4akSEa5z5EDn/memberships/nsoAVKHcvs95VDciGsoexV",
+              "faq/jUGRWwEkWw4akSEa5z5EDn/softr-subscription-plans-and-account-settings/5XrTAnfkMXPyaZxM4zimAT",
+              "faq/jUGRWwEkWw4akSEa5z5EDn/translations/jxbCJk2jQBBs81EHXqesGW",
+              "faq/jUGRWwEkWw4akSEa5z5EDn/blocks/97N45ePTwJLPEbuS4SGww4",
+              "faq/jUGRWwEkWw4akSEa5z5EDn/integrations/7Rcao9HgZ4i94wXc732HoZ",
+              "faq/jUGRWwEkWw4akSEa5z5EDn/app-settings/hs2HHCddYNA2u2vB5seuMC",
+              "faq/jUGRWwEkWw4akSEa5z5EDn/other/9rNQ2iZKhZDjUsYTc7TFAj"
+            ]
+          },
+          {
+            "group": "Workspace and Billing",
+            "pages": [
+              "workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/accessing-my-account/we3Buqt2jTwW1M5efetLud",
+              "workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/my-profile/coFeug76ExBDuJFJ748fKt",
+              "workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/billing/mMHQVxZ4Td6M91w6qjSrEy",
+              "workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/pricing-and-plans/7KRUMnHZSU6oMLjzJM84ie",
+              "workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/transfer-workspace-ownership/s2GKnonVNH2yQeqhmZC8yV",
+              "workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/workspaces-and-applications/kTbEWSYXhBCbtTB4K9dpKs",
+              "workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/ai-credits/5VRMhf7Q6xvy7AJqyiQLx5"
+            ]
+          },
+          {
+            "group": "Affiliate and Referral Programs",
+            "pages": [
+              "affiliate-and-referral-programs/wgsQBqYoQV7PZw8qDxYQRC/partner-with-softr/rXbwJy5Qq2fXU3aXV9oEAK",
+              "affiliate-and-referral-programs/wgsQBqYoQV7PZw8qDxYQRC/softrs-affiliate-program/7fxhvanyTa3ACcMgJwrifY",
+              "affiliate-and-referral-programs/wgsQBqYoQV7PZw8qDxYQRC/softrs-referral-program/pKKcLboQgLySVECNAnHvTS",
+              "affiliate-and-referral-programs/wgsQBqYoQV7PZw8qDxYQRC/softr-universe/w9AMPpwoVEczgfhp5XKuVZ"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    ]
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "https://community.softr.io/",
+        "label": "Community"
+      },
+      {
+        "href": "https://softr-academy.softr.app/",
+        "label": "Softr Academy"
       }
     ],
     "primary": {
+      "href": "https://studio.softr.io/auth/signin",
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Sign Up"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+    "links": [
+      {
+        "header": " ",
+        "items": [
+          {
+            "href": "https://studio.softr.io/auth/signin",
+            "label": "Sign Up"
+          },
+          {
+            "href": "https://www.softr.io/blog",
+            "label": "Blog"
+          },
+          {
+            "href": "https://twitter.com/softr_io",
+            "label": "Follow Us"
+          },
+          {
+            "href": "mailto:support@softr.io",
+            "label": "Contact Us"
+          }
+        ]
+      }
+    ]
   }
 }
