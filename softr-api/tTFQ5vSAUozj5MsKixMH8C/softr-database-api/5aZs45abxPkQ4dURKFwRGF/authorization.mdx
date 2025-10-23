@@ -1,0 +1,20 @@
+---
+title: "Authorisation"
+description: "For making calls you need 2 elements:"
+api: POST https://tables-api.softr.io/api/v1
+contentType: application/json
+---
+
+
+- Public API Token - [Obtain here](https://docs.softr.io/softr-api/tTFQ5vSAUozj5MsKixMH8C/api-setup-and-endpoints/j1PrTZxt7pv3iZCnZ5Fp19)
+
+To make a call you combine them into a HTTP request. Example:
+
+```bash
+$ curl -XGET 'https://tables-api.softr.io/api/v1/databases' \
+	-H 'Softr-Api-Key: <TOKEN>'
+```
+
+- All API requests must be authenticated and made through HTTPS.
+- We currently support using personal access tokens (a.k.a API Key) and OAuth access tokens will be supported later.
+- API Key inherits the access rights of the account of the user who grants access. Later more granular scopes will be supported as well as multiple Keys (Tokens) with different scopes.

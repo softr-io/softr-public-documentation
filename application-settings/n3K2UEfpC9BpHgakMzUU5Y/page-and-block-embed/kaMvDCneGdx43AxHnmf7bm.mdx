@@ -1,0 +1,37 @@
+---
+title: "Page and Block Embed"
+permalink: "kaMvDCneGdx43AxHnmf7bm"
+description: "Embedding Softr content on an external source."
+'og:title': "Page and Block Embed – Softr Help Docs"
+'og:description': "Embedding Softr content on an external source."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Page and Block Embed – Softr Help Docs"
+'twitter:description': "Embedding Softr content on an external source."
+---
+<Note>Page and block embed is available for users on the [Basic plan and above](https://www.softr.io/pricing).</Note>
+
+Softr allows you to embed any block or page on third-party site. Let’s see how that works.
+
+## Block embed
+
+The **Block Embed** option is located at the bottom of the **Features** tab in [block settings](/ccb7c7ca297742f782274da8b36c3bb2). Using this feature, you can embed the block on another website. Just copy the block code snippet and paste it wherever needed.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7ee82130-979f-451d-862f-e7ca9e52821c%2Fembed-code-copy.gif&blockId=ea9d728e-0d57-41f1-87f9-b9f7c5e1d375&projectId=1032)</Frame>
+
+Getting the block embed code
+
+## Page embed
+
+You can embed any Softr page on an external website using the following code:
+
+```javascript
+<iframe id="softr-we-erw45hrubuyt23" src="https://example.softr.app/page1" width="100%" height="1000" scrolling="no" frameborder="0" style="border:none;"></iframe>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"></script>
+<script> iFrameResize({ checkOrigin: false, log: true }, '#softr-we-erw45hrubuyt23');</script>
+```
+
+Adjust the code:
+
+1. Replace **example.softr.app** under **src** with your app's Softr subdomain or your custom domain if you've connected one. Add the page path you would like to embed e.g. `my_softr_domain.com/page1`. If you want to embed the Home page, no page path is needed.
+
+2. Inside the value of **id** ("`softr-we-erw45hrubuyt23`" in the above code), replace the part that comes after `softr-` with the actual ID of your page, which is the last component of the page's URL when it's open in the Softr Studio (see below).
+<Frame caption="Locating the page ID">![Locating the page ID](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F847e1588-c2d7-4c6c-bb43-febafdd16928%2Flocating-page-id.png&blockId=bdbf82fc-266f-4a43-88a9-dec15fe75c70&projectId=1032)</Frame>

@@ -1,0 +1,51 @@
+---
+title: "Simple Checkout Form"
+permalink: "tKt3f5cV2CxsFLGM1aaNYX"
+description: "A Stripe checkout form to allow your users make purchases."
+'og:title': "Simple Checkout Form – Softr Help Docs"
+'og:description': "A Stripe checkout form to allow your users make purchases."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Simple Checkout Form – Softr Help Docs"
+'twitter:description': "A Stripe checkout form to allow your users make purchases."
+---
+<Frame caption="Simple Checkout Form">![Simple Checkout Form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F44a3f9d6-e96e-4bf7-a68b-584cb303f687%2Fsimple-checkout-form.png&blockId=71a3dfcc-3996-4b8f-a310-6935a05e1def&projectId=1032)</Frame>
+
+Using this block, you can set up paid membership and charge your users for accessing certain sections (pages or blocks) of your Softr app. Prior to setting up this block, you need to [connect Stripe](/integrations/etS18kJqm1fuD58KCsjC3z/stripe-checkout/iBomMEucRZtM2y6HuutYVC) to be able to offer Stripe products (one-time products or subscriptions) to your users. So, let's go ahead and examine the block settings.
+
+## Title and images
+<Frame caption="Logo, Title, and Background Image">![Logo, Title, and Background Image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9fc25f06-c97e-4f5f-86e4-149c347e9520%2Flogo-title-background-image.png&blockId=b17a3c80-4221-44f1-a971-a51a3447ce7b&projectId=1032)</Frame>
+
+To start with, you can add a custom title, logo, and a background image in the **Feature** tab of block settings.
+
+## Product Setup
+
+Next, you need to set up the product that you want to offer to your users.
+<Frame caption="Product parameters">![Product parameters](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F44da22fb-7767-4f63-8f47-380a7969f308%2Fproduct-parameters.png&blockId=011ba077-e6e2-4388-98db-5c3251befb64&projectId=1032)</Frame>
+
+The **Product** dropdown is a list with all your Stripe products. First you need to select a certain product, then fill out the rest of the product fields (**Name, Trial, Price, Interval, Description**) as you wish them to be shown on your checkout page. In the example shown below, we've chosen the **Maker (Website Builder)** product, and set the other fields to their corresponding values.
+<Frame caption="Product selection">![Product selection](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F27a2ed36-2dc3-40fe-984c-02fc72682ad2%2Fproduct-selection.png&blockId=6745b8d3-e47f-48b7-b8c2-e3d27b5f0189&projectId=1032)</Frame>
+
+Below, you can see how it looks on the actual checkout form.
+<Frame caption="Published checkout form">![Published checkout form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa3ba9011-dad1-49f8-b598-17cf51645bd7%2Fpublished-checkout-form.png&blockId=234e9db8-6a1f-4763-87e1-fb04ba1a386d&projectId=1032)</Frame>
+
+### Payment details
+
+Here, you can customize the placeholder text for the name and email fields.
+
+### Discount code
+<Frame caption="Discount Code section">![Discount Code section](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd7dd5591-4441-413b-8e4a-dcfe6a027e3e%2Fdiscount-code.png&blockId=bdeee89b-9650-455f-ab41-8bb9813d860d&projectId=1032)</Frame>
+
+Here you can choose to show a discount code field. If it's enabled, you can modify the text for the discount button and coupon input field. **The form will accept** **[coupons](https://stripe.com/docs/billing/subscriptions/coupons)** **defined for the selected Stripe product.**
+<Frame caption="Applying a discount code">![Applying a discount code](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd6d485d1-fb4b-47ab-83ac-b4753b270751%2Fapplying-discount-code.gif&blockId=11036d3f-334d-45db-9321-87e56f92dc9c&projectId=1032)</Frame>
+
+### Button
+<Frame caption="Button settings">![Button settings](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb927e08f-15f1-4ad8-8906-6f4f9e95d3b2%2Fbutton-settings.png&blockId=fd1ade6b-24d1-4c77-917e-edef7da8a54e&projectId=1032)</Frame>
+
+Here, you can modify the **Text** of the payment submissions button. The **Action** of the button is predefined.
+
+### On checkout
+<Frame caption="On checkout">![On checkout](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F94b1652f-b9e0-48a2-8857-295cbef4cdfe%2Fon-checkout.png&blockId=70d7c6ab-23c4-4503-b6e7-d55619dc09cd&projectId=1032)</Frame>
+
+Lastly, you can choose to which page the user is taken after making the payment.
+
+That's it. As soon as you have provided a checkout for a specific product, you can go ahead and define access conditions (for a [block](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/block-visibility/3spA2dfQNrcGcPNmnDXHB3) or a [page](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/page-visibility/nWJaN689VKA1TUeaEfzK9u)) for users who have paid for the product.

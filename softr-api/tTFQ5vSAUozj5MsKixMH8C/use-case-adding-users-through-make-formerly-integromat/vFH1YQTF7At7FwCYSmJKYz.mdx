@@ -1,0 +1,75 @@
+---
+title: "Use Case: Adding Users through Make (formerly Integromat"
+permalink: "vFH1YQTF7At7FwCYSmJKYz"
+description: "Using Softr API and Make to add user accounts."
+'og:title': "Use Case: Adding Users through Make (formerly Integromat – Softr Help Docs"
+'og:description': "Using Softr API and Make to add user accounts."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Use Case: Adding Users through Make (formerly Integromat – Softr Help Docs"
+'twitter:description': "Using Softr API and Make to add user accounts."
+---
+In this use case, we are going to use the API to add users to a Softr app via Make. We are going to add users on Airtable and send them to Softr. Let's proceed.
+
+### **Step 1: Setting a Trigger**
+
+First of all, we're going to create a table on Airtable with **Name**, **Email**, **Password**, **Magic Link, Created Date/Time** (needed for watching record creation in Make) columns to store user data.
+<Frame caption="Table setup on Airtable">![Table setup on Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F14029999-8e19-4d83-8133-183bb2b6c94a%2Fairtable-table-setup.png&blockId=e7791990-bb5d-455d-803d-4ee25fc1258f&projectId=1032)</Frame>
+
+Then, we'll go to Make dashboard, create a new scenario, and add a trigger that watches for new records on our selected table. See below.
+<Frame caption="Creating the trigger">![Creating the trigger](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F676caeb8-d549-4616-822d-fa4032552c93%2Fcreating-trigger.gif&blockId=b772e395-72d1-483b-bac2-237c52ce3305&projectId=1032)</Frame>
+
+Now, we need to set up an **Action** to add the users received from Airtable. There are two options for this:
+
+* **Make's Softr module;**
+
+* **Custom HTTPrequest.**
+
+Let's consider each option separately.
+
+## Option 1: Make's Softr module
+
+### **Step 2: Configuring the Action**
+
+Let's add a new module to the scenario, search for "Softr," and select it.
+<Frame caption="Locating the Softr module">![Locating the Softr module](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F24e76eb9-a6a4-448b-b769-6055daee4108%2Flocating-softr-module.png&blockId=755ec2e4-cd3a-418e-9119-9baacb983a1f&projectId=1032)</Frame>
+
+Then, we are going to choose the **Create a User** option.
+<Frame caption="Choosing the Action">![Choosing the Action](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa2a92861-8904-45d5-9f0a-633bfd15375b%2Fchoosing-action.png&blockId=c609544b-b9b6-4d6f-b71d-963cacc14cbd&projectId=1032)</Frame>
+
+Next, we need to establish a connection with our Softr account and app, inputing the [Softr API key](/softr-api/tTFQ5vSAUozj5MsKixMH8C/api-setup-and-endpoints/j1PrTZxt7pv3iZCnZ5Fp19) and the domain of the app we want to add users to.
+<Frame caption="Adding a Softr connection">![Adding a Softr connection](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F350d1e3b-0bb9-4ff8-977a-da4b4205dcdd%2Fadding-softr-connection.png&blockId=f9521683-12ca-482e-b3fe-7942a631889e&projectId=1032)</Frame>
+
+Lastly, we need to map the user fields from our table as shown below.
+<Frame caption="Mapping the user fields">![Mapping the user fields](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F77f96153-1d0a-460c-a6fd-374395d4c3f6%2Fmapping-user-fields.png&blockId=618be89a-d5e4-4674-b21a-307106af8ca6&projectId=1032)</Frame>
+<Tip>As you can see, we haven't mapped the **Magiclink** field from the table but have just set the value to **Yes** to generate one automatically. We can sync it back to a [Airtable](/f001252ed01e495d8c0f8e2588f06107) if we [connect it to Softr](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9), which we'll discuss in **Step 3**.</Tip>
+
+That's it. Now, we just need to save the module and the scenario is ready. Let's test it to make sure everything is working correctly.
+
+### **Step 3: Testing the Scenario**
+
+Let's add a new user to our table and check if it's sent to our Softr app successfully.
+<Tip>This is optional, but we are also going to [connect our Softr users base](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9) to the same Airtable base and table at the beginning to sync user data **from** **Softr to Airtable** as well. This way, the magic link that's been generated when fetching the user **from Airtable to Softr** will be stored in Softr and eventually **synced back to Airtable**.</Tip>
+<Frame caption="Testing the scenario">![Testing the scenario](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcc922dbc-f228-44be-a275-db7f906a699a%2Ftesting-scenario.gif&blockId=626a088e-f41e-4ef8-81d6-3382a900760a&projectId=1032)</Frame>
+
+## Option 2: Using a Custom HTTP Request
+
+### **Step 2: Configuring the Action**
+
+In this case, we need to create a new module, search for **HTTP**, select it, and choose the **Make a request** action.
+<Frame caption="Selecting the action">![Selecting the action](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F06eb96d8-0369-4583-be04-51396b7a720b%2Fselecting-action.png&blockId=7559d2da-5dc7-4e96-b8b1-98f63f331d59&projectId=1032)</Frame>
+
+Now, let's start configuring the module based on our [endpoint](/softr-api/tTFQ5vSAUozj5MsKixMH8C/api-setup-and-endpoints/j1PrTZxt7pv3iZCnZ5Fp19). First we need to add our **URL**, then select the **method** (POST), and finally add the required **headers**. We don't need to add the **Content-Type** header, as it's going to be added in the next step. Below, you can see what it should look like.
+<Frame caption="Configuring URL, Method, and Headers">![Configuring URL, Method, and Headers](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5a2f21ed-45e9-4ade-a8c9-39546893b250%2Furl-method-headers-config.png&blockId=e36b3e72-6eaf-435d-9fe0-641336451bb5&projectId=1032)</Frame>
+
+Further on, we need to set the **Body Type** to **Raw** and the **Content Type to JSON**. Lastly, we are going to fill in the **Request Content** using the format provided above. Please, note that the **Parse response** option should be set to **Yes**.
+<Frame caption="Configuring Body and Content types and adding Request content">![Configuring Body and Content types and adding Request content](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdb71c71d-9a99-439d-a947-6726a14f26ec%2Fbody-content-types.png&blockId=c7f76b6a-b113-4876-abce-e4ced17f5d62&projectId=1032)</Frame>
+
+### **Step 3: Testing the Scenario**
+
+So, we're almost there. Let's just add a new record in our table and run the scenario to test it. As, you can see below, the user is successfully added to our Softr app.
+<Tip>This is optional, but we are also going to [connect our Softr users base](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9) to the same [Airtable](/f001252ed01e495d8c0f8e2588f06107) base and table at the beginning to sync user data **from** **Softr to Airtable** as well. This way, the magiclink that's been generated when fetching the user **from Airtable to Softr** will be stored in Softr and eventually **synced back to Airtable**.</Tip>
+<Frame caption="Testing the scenario">![Testing the scenario](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F53ece74c-6f54-412b-89dd-52bef788d999%2Ftesting-the-scenario.gif&blockId=b06cba12-f37b-4c83-b2e1-80b2d05d32e2&projectId=1032)</Frame>
+
+## Deleting a User
+
+The [delete request](/softr-api/tTFQ5vSAUozj5MsKixMH8C/api-setup-and-endpoints/j1PrTZxt7pv3iZCnZ5Fp19) can be implemented in a similar way through an HTTP (Make a request) module.

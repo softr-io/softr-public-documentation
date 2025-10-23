@@ -1,0 +1,47 @@
+---
+title: "Kanban"
+permalink: "7y9bp8Z1ZkTZwpVRY8Ug1K"
+description: "Display data as a Kanban board."
+'og:title': "Kanban – Softr Help Docs"
+'og:description': "Display data as a Kanban board."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Kanban – Softr Help Docs"
+'twitter:description': "Display data as a Kanban board."
+---
+<Note>Kanban block is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe5c217fa-c47b-4178-b4f7-f57d79ca2a62%2Fkanban-block.png&blockId=4c946654-43c7-4209-80b8-40547ffb7cd1&projectId=1032)</Frame>
+
+The Kanban block allows you to display data from a [data source](/4230abecf813402aa2926466c313290a) in a [Kanban Board](https://en.wikipedia.org/wiki/Kanban_board) layout. Most of the setup such as connecting the data source or configuring inline filters and search is similar to that of the [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) block, so let's skip those sections and proceed to the settings that are unique for this block.
+
+<Tip>You can let users **Drag and Drop** items, [Add Records](/actions/ntEfT9zSJk6aY54G6W5KGU/add-record/3LrUMpQY4BKfDDQj6eb8h8), [Edit Records](/actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx), and more in the **Actions** tab of block settings through [Action Buttons](/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq).</Tip>
+
+To demonstrate how the block works, we'll use an [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) base that contains a list of tasks. It has such fields as Assignee, Task Status, Task Description, etc. as shown below.
+<Frame caption="Task list on Airtable">![Task list on Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F13a6a003-4629-4c04-a0fd-cc687749dcef%2Ftask-list.png&blockId=f87ea0cb-4dd1-4e07-9769-fd854f14d932&projectId=1032)</Frame>
+
+## Group By
+
+Let's navigate to the **Content** tab of the block settings and look into the **Grouping** option. Here, you select the field by which you want to group the board items. If, for instance, the field has 3 values, the board will consist of 3 columns (each column is assigned one of the field values) and the records will be grouped accordingly.
+
+In our example, we have grouped by the task **Status** field. Therefore, we have four columns (**To Do, In Progress, Done**) and tasks are grouped under each column based on their status.
+<Frame caption="Grouping by the task Status field">![Grouping by the task Status field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F48170a5f-bba9-49ed-ac80-586f0eb553ef%2Fgrouping.png&blockId=cbee5210-29f5-4803-929b-ecac1fd6d3f6&projectId=1032)</Frame>
+
+## Mapping the fields
+
+In the **Item Fields**, you map the fields that should be shown on board cards. In our example, we have connected the **Image**, **Name**, **Assignee email**, and **Description** fields as you can see in the screenshot below.
+<Frame caption="Mapping the fields">![Mapping the fields](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbc1e5794-0089-4c4b-9402-e21e7038120a%2Fkanban-mapping.png&blockId=3fa9779c-1286-47d9-9c8c-51d0d74493d8&projectId=1032)</Frame>
+
+## Conditional Filters
+
+Kanban's conditional filters work similar to those of the [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) block and are also located in the **Source** tab of block settings. For our use case, it could be relevant to configure them so that each logged-in **Assignee** only sees his/her tasks. To achieve that, we need to set up a filter to show each user only the tasks where the **Assignee** fields corresponds to his/her email.
+<Frame caption="Setting a conditional filter">![Setting a conditional filter](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F529696c0-6c77-4ae0-9b54-f8da78c3c8ac%2Fsetting-conditional-filter-kanban.png&blockId=348ef62f-e5a5-4534-9e2c-adb689245b78&projectId=1032)</Frame>
+
+Here's what **john@softr.io** will see after logging in and navigating to the board.
+<Frame caption="User sees only his tasks">![User sees only his tasks](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa581427a-92af-48e6-be5b-0d514b764284%2Fuser-sees-own-tasks.gif&blockId=9d5ef293-dcba-4b3c-bd69-525cbc805644&projectId=1032)</Frame>
+
+## Moving Board Cards
+
+If the **Drag and drop** toggle is enabled under **Actions**, logged-in users can drag and drop board items. It’s also possible to let only specific user groups perform the action through [visibility settings](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/action-button-visibility/tqpb8TkUD4U4DCAUA2hjKo) of the toggle.
+<Frame caption="Drag and drop">![Drag and drop](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F48b9fd42-317d-40d7-b0d5-7c2125686f1d%2FSCR-20230531-raw.png&blockId=a9b0cce0-7f7d-4e96-97c2-c7149b0f2927&projectId=1032)</Frame>
+
+If a user moves and item from one column to another, the corresponding value of the card will be updated as well. Below we move a task from the **To Do** column to **In** **Progress**. As you can see, its **Status** field value changes to **Done** on Airtable.
+<Frame caption="Changing task status">![Changing task status](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F86500ce8-8b42-4faf-b1f7-e305bbef7015%2Fchanging-task-status-kanban.gif&blockId=0dbdd20b-77f4-4106-99ac-dee1ffad2c33&projectId=1032)</Frame>

@@ -1,0 +1,42 @@
+---
+title: "Use Case: Hiding blocks based on current record data"
+permalink: "4KPti7Xsy4VcTxMVBfUasA"
+description: "Hide blocks based on the currently selected record"
+'og:title': "Use Case: Hiding blocks based on current record data – Softr Help Docs"
+'og:description': "Hide blocks based on the currently selected record"
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Use Case: Hiding blocks based on current record data – Softr Help Docs"
+'twitter:description': "Hide blocks based on the currently selected record"
+---
+## Use Case
+
+Not only can you change a block’s visibility based on the User Group that a logged-in user is in, but you can also control a block’s visibility based on a currently selected record. This is great for:
+
+* Showing different line item formats on an invoice depending on the deal type
+
+* Showing or hiding a request form based on the type of document being viewed
+
+* Showing or hiding different task views based on the project type or a project owners preferred task view.
+
+* Displaying different CTAs based on a selected record
+
+* …and much, much more.
+
+## Setup
+
+In the example below, we want to conditionally show a request form, based on if a selected document is available to request or download. If the document has a file field that is not empty, we should only show a button to download and hide the form. If the file field is empty, we should show a form that allows end-users to request this file via email instead. This allows an administrator to track who has been given access to particular files and see how many times they have been accessed.
+
+### Hiding the Download Button
+
+We need to hide the download button if the file field is empty. First select the block, go to the Actions tab, and select the Download button. Then click on the little branching icon in the button settings:
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Facfa6b2d-5886-406d-b143-bacac9d289e4%2FScreenshot_2025-08-28_at_3.00.38_PM.png&blockId=25d9a723-d691-80f7-9e12-c24c3ce4e14c&projectId=1032)</Frame>
+
+Once open, we can toggle on the “On Specific Records Only” button and setup some rules to hide the button if the File field is empty.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fbbec7f44-b4db-4072-985d-3f5fd4e0e74c%2FScreenshot_2025-08-28_at_3.03.01_PM.png&blockId=25d9a723-d691-8093-a1b5-d89116b5c53d&projectId=1032)</Frame>
+
+### Hiding an entire block based on current record data
+
+Since the item details block is showing only one specific record, we can use that record’s data to determine whether or not to show other blocks on the page. For our example, we want to hide a Request Form if the File field in our database (you may have other fields and field names you want to use).
+
+First, select the block, then click on the Visibility tab and turn on the “Hide if” toggle. Setup your rules, which in our case should be If the File field “Is not empty”.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F4c903f63-0e43-45b1-89a6-d955f1f5deec%2FScreenshot_2025-08-28_at_3.09.19_PM.png&blockId=25d9a723-d691-802b-8de1-ddc2046301b3&projectId=1032)</Frame>

@@ -1,0 +1,306 @@
+---
+title: "Custom Code Snippets"
+permalink: "3iEvtmZB1MwMUqQ8d3ht48"
+description: "Browse the collection of commonly requested code snippets."
+'og:title': "Custom Code Snippets – Softr Help Docs"
+'og:description': "Browse the collection of commonly requested code snippets."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Custom Code Snippets – Softr Help Docs"
+'twitter:description': "Browse the collection of commonly requested code snippets."
+---
+The following code snippets are not simple copy/pastes. Many of them need to be tweaked for your specific app and block names.
+
+<Tip>
+
+Code snippets mentioned here should be added to the page Settings -> Custom Code -> Code Inside Header, unless stated otherwise.
+
+</Tip>
+
+## How to get back to the previous dynamic page (with List detail block) without losing the record id parameter in the URL
+
+```plain
+<script>
+    try {
+        const url = new URL(document.referrer);
+        const prevRecordId = url.searchParams.get('recordId');
+        if (prevRecordId && window.location.href.indexOf('?') < 0)
+            window.location.href = window.location.href + '?recordId=' + prevRecordId;
+    } catch (e) {}
+</script>
+```
+
+## How to hide the lines on the list and list detail blocks where the rows are empty on Airtable
+
+```plain
+<script>
+    const blockName = 'list-details1';
+    const fields = ['Field1', 'Field2'];
+    window.addEventListener('update-record', (e) => {
+        if (e.detail && e.detail.fields) {
+            const id = e.detail.id;
+            const tmpFields = Object.assign({}, e.detail.fields);
+            fields.forEach((field) => e.detail.fields[field] = e.detail.fields[field] || ' ');
+            setTimeout(() => {
+                if (window.records[id] && window.records[id].record) {
+                    window.records[id].record.fields = tmpFields;
+                }
+            }, 1);
+        }
+    });
+    window.addEventListener('get-record-' + blockName, (e) => {
+        if (e.detail) window.dispatchEvent(new CustomEvent('update-record', { detail: e.detail }));
+    });
+</script>
+```
+
+## How to set Gradient colors for your entire page’s background.
+
+```plain
+<style>
+nav, section, footer {
+	background: linear-gradient(90deg, rgba(132,127,221,1) 0%, rgba(166,166,255,1) 35%, rgba(0,212,255,1) 100%)!important;
+}
+</style>
+```
+
+## How to get a prefilled URL with record ID and redirect it to the detail page after login.
+
+```javascript
+<script>
+try {
+const url = new URL(document.referrer);
+if (url.search && window.location.href.indexOf('?') < 0)
+window.location.href = window.location.href + url.search;
+} catch (e) {}
+</script>
+```
+
+## Hide the button if there is no link coming from Airtable. (href is empty)
+
+```javascript
+<script>
+
+&lt;style&gt; a[data-element="button"][href=""]{ display: none!important; } &lt;/style&gt;
+</script>
+```
+
+## Code for dividing the block with custom code block
+
+```javascript
+<div class="divider"></div>
+<style>
+.divider {
+height: 1px;
+background-color: #fff;
+margin: 10px 0; }
+</style>
+```
+
+## Code for changing Charts colors
+
+```javascript
+<script> window['chart1-colors'] = ['#FE8070', '#DD7E6B', '#EA9999', '#F4CCCC', '#24A37D', '#AEAEB5', '#E25B5B', '#FFF974', '#4BAEAE', '#E5E5EA', '#33E4EF', '#C9DAF2'];
+</script>
+```
+
+## Making a video full width AUTOPLAY block
+
+```javascript
+<style>
+#BLOCKID .container {
+width: 100vw!important;
+max-width: unset;
+padding: 0;
+}
+</style>
+```
+
+## code that will allow to display always expended items from the "List with Columnar Sliding Cards Expanded" block.
+
+```plain
+	<script>
+	
+	const onRecords = (e) => {
+		setTimeout(() => {
+		 $('#list4 .horizontal-list-item').click()
+		}, 50);
+	};
+	
+	window.addEventListener('get-records-list4', onRecords);
+	
+	</script>
+```
+
+## For block’s background image
+
+```css
+<style>
+
+#map1 section {
+
+background-image: url(https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?w=2000);
+
+}
+
+</style>
+```
+
+## Translate the "Yearly" and "Monthly" options in the pricing block
+
+```plain
+<script>
+window.addEventListener('block-loaded-pricing1', () => {
+          $("span:contains('Yearly')").text('aaa');
+          $("span:contains('Monthly')").text('bbb');
+});
+</script>
+```
+
+## Create breadcrumbs so that the users can navigate across the different sections of the application.
+
+```javascript
+<ul class="stepNav fiveWide">
+<li><span class = "stepNav-selected"><a href="https://louetta269.softr.app/project-info-select-project" title="">Project Info</a></span></li>
+<li class="selected"><a href="https://louetta269.softr.app/design-select-project" title="">Design & Plan</a></li>
+<li><a href="https://louetta269.softr.app/all-conversations" title="">Message Pros</a></li>
+<li><a href="https://louetta269.softr.app/compare-bids" title="">Compare Bids</a></li>
+<li><a href="https://louetta269.softr.app/project-check-out" title="">Check Out</a></li>
+</ul>
+<style>
+/* Base
+------------------------------------------------------------------------- */
+
+body {
+	font: 14px/1.5 Helvetica, Arial, "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;
+	}
+  
+  /* Step Navigation
+------------------------------------------------------------------------- */
+.stepNav {
+height: 60px;
+position: relative;
+z-index: 0;
+list-style-type: none;
+padding: 0px;
+}
+
+/* z-index to make sure the buttons stack from left to right */
+
+.stepNav li {
+	float: left;
+	position: relative;
+	z-index: 4;
+	}
+
+.stepNav li:nth-child(2) { z-index: 3; }
+.stepNav li:nth-child(3) { z-index: 2; }
+.stepNav li:nth-child(4) { z-index: 1; }
+.stepNav li:nth-child(5) { z-index: 0; }
+
+/* different widths */
+
+.stepNav.threeWide li { width: 33.33%; }
+.stepNav.fourWide li { width: 25%; }
+.stepNav.fiveWide li { width: 20%; }
+
+   /* step links */
+
+.stepNav a {
+	width: 100%;
+	height: 60px;
+	color: #717171;
+	text-align: center;
+	text-shadow: 0 1px 0 #fff;
+	line-height: 60px;
+	white-space: nowrap;
+	border: 1px solid #cbcbcb;
+	text-decoration: none;
+	border-top-color: #dddddd;
+	border-right: 0;
+	background-color: #ffffff;
+	float: left;
+	position: relative;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+		      box-sizing: border-box;
+	}
+
+.stepNav a:after {
+	content: "";
+	width: 42px;
+	height: 42px;
+	border-right: 1px solid #cbcbcb;
+	border-bottom: 1px solid #cbcbcb;
+	background-color: #ffffff;
+    display: block;
+	position: absolute;
+	top: 8px;
+	right: -22px;
+	z-index: -1;
+	-webkit-transform: rotate(-45deg);
+	   -moz-transform: rotate(-45deg);
+	     -o-transform: rotate(-45deg);
+}
+.stepNav a:hover{
+	color: #ffffff;
+	background-color: #ebb32c;
+    &:after{
+		content: "";
+		width: 42px;
+		height: 42px;
+		border-right: 2px solid #ffffff;
+		border-bottom: 2px solid #ffffff;
+		background-color: #ebb32c;
+        display: block;
+		position: absolute;
+		top: 8px;
+		right: -22px;
+		z-index: -1;
+		-webkit-transform: rotate(-45deg);
+		   -moz-transform: rotate(-45deg);
+		     -o-transform: rotate(-45deg);
+			 	    transform: rotate(-45deg);
+  }
+
+.stepNav-selected a   {
+	color: #ffffff;
+	background-color: #ebb32c;
+    &:after{
+		content: "";
+		width: 42px;
+		height: 42px;
+		border-right: 1px solid #cbcbcb;
+		border-bottom: 1px solid #cbcbcb;
+		background-color: #ebb32c;
+        display: block;
+		position: absolute;
+		top: 8px;
+		right: -22px;
+		z-index: -1;
+		-webkit-transform: rotate(-45deg);
+		   -moz-transform: rotate(-45deg);
+		     -o-transform: rotate(-45deg);
+			 	    transform: rotate(-45deg);
+  }
+	}
+  </style>
+```
+
+## Hide chart data refresh message
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbe6497b0-665a-4be4-8a8e-a19a8b662bcc%2FUntitled.png&blockId=12a9a723-d691-804d-9939-eba8dd3ea836&projectId=1032)</Frame>
+
+```css
+<style>
+div[category='Chart'] span[class*='message'] {
+    display: none!important;
+}
+</style>
+```
+
+## Hide the labels on a sign-in or sign-up form
+
+Replace `#user-accounts2` with the name of your block. Paste this code in the header of the sign-in/sign-up page.
+
+```javascript
+<style> #user-accounts2 .form-input-label { display: none; } </style>
+```

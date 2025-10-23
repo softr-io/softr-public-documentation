@@ -1,0 +1,85 @@
+---
+title: "Ask AI"
+permalink: "5rdbeytiE5rdc2vqDyfMeU"
+description: "Let users ask an in-app AI chat assistant about your data "
+'og:title': "Ask AI – Softr Help Docs"
+'og:description': "Let users ask an in-app AI chat assistant about your data "
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Ask AI – Softr Help Docs"
+'twitter:description': "Let users ask an in-app AI chat assistant about your data "
+---
+## Overview
+
+Ask AI is Softr's built-in chat assistant that acts like a real-time analyst, reading your live app data and answering questions instantly. Unlike other AI tools that give vague answers or require complex setup, Ask AI is embedded directly into your Softr apps with no API keys. All you need to do is toggle it on!
+
+Here are some key features:
+
+🔍 **Reads from your app data**
+
+* Pulls from live data inside dynamic blocks in your Softr apps
+
+* Gives real-time answers based on your current data
+
+🛡️ **Secure by default**
+
+* Respects your app's permissions and visibility rules
+
+* Users only see data they're authorized to access (no accidental data exposure)
+
+⚡ **No setup required**
+
+* Built directly into your Softr application—just toggle it on at the block level
+
+* No API keys or complex configurations needed
+
+<Tip>
+
+**Note:** Ask AI is not currently available for app blocks connected to Airtable, HubSpot, or SQL data sources (coming soon).
+
+</Tip>
+
+## How to Add Ask AI to Your App
+
+**Step 1:** In the Softr Studio, navigate to your dynamic block's **Actions** section
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F3ab435e6-bc1a-434c-9a93-310f077bdbf3%2FCleanShot_2025-07-24_at_13.58.11.png&blockId=23e9a723-d691-80b1-8fd2-c4bee72da334&projectId=1032)</Frame>
+
+**Step 2:** Select **Add Topbar** button and choose Ask AI from the options.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fffbe0408-4c59-48b8-87c6-ffe4887ced72%2FCleanShot_2025-07-24_at_13.59.01.png&blockId=23e9a723-d691-80b4-8b48-e1497e26934d&projectId=1032)</Frame>
+
+**Step 3:** From here, you can adjust the label and icon, and use the dropdown to customize messages, instructions, response style, suggested prompts, and appearance.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F0e454962-2e79-4957-abb5-938ca62edadf%2FCleanShot_2025-07-24_at_13.59.48.png&blockId=23e9a723-d691-8078-91b8-f6fa8d35ea9e&projectId=1032)</Frame>
+
+**Step 4:** Publish your app. The chat interface will now be available to your users (depending on block permissions)
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F7ecdd586-c3ad-4af5-aec0-cbe8c049b9b8%2FCleanShot_2025-07-24_at_14.00.42.png&blockId=23e9a723-d691-80a4-a110-f32e84936671&projectId=1032)</Frame><Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F372e4d0f-3a26-4ea9-8b5f-1e15703365c7%2FCleanShot_2025-07-18_at_11.21.59.png&blockId=23e9a723-d691-803f-9d27-c784eb894d50&projectId=1032)</Frame>
+
+## Security & Permissions
+
+Ask AI only analyzes the data a user is allowed to see at the block level, always respecting your app’s permissions and visibility settings.
+
+You can decide who sees the Ask AI button—like showing it to managers but hiding it from clients. And when users ask questions, Ask AI only analyzes the data they’re allowed to see, including filtered views (like “tasks assigned to me”).
+
+## Requirements & Limitations
+
+✅ **Supported**
+
+* Dynamic blocks (e.g. Tables, Lists) connected to one of the following data sources: Softr Databases, Google Sheets, Notion, monday.com, ClickUp, Coda, BigQuery, SmartSuite, Xano, and Supabase.
+
+❌ **Not Supported**
+
+* Static blocks or blocks connected to Airtable, HubSpot, or SQL data sources
+
+* Ask AI is currently only available at the block level to ensure secure, permissioned responses.
+
+* App-wide Ask AI implementation is coming soon!
+
+### AI Credits
+
+Ask AI is currently available on all plans, including free. In future, there will be an AI credit system for this feature and each query will consume a certain number of AI credits. Each query counts toward your credit usage.
+
+## FAQ
+<AccordionGroup>
+    <Accordion title="Can I use Ask AI on the free plan?">
+        Yes. Every Softr plan (including Free) comes with a set amount of monthly AI credits to use toward Ask AI and other AI features. If you run out of AI credits in a given month, your Ask AI will pause until your credits reset with your plan or you purchase a credit add-on. [Learn more about AI credits](/workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/ai-credits/5VRMhf7Q6xvy7AJqyiQLx5).
+    </Accordion>
+
+</AccordionGroup>

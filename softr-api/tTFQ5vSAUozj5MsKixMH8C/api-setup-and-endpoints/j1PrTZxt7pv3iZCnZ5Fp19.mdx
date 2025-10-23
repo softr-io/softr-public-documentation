@@ -1,0 +1,116 @@
+---
+title: "API Setup and Endpoints"
+permalink: "j1PrTZxt7pv3iZCnZ5Fp19"
+description: "Softr API key generation and available endpoints."
+'og:title': "API Setup and Endpoints – Softr Help Docs"
+'og:description': "Softr API key generation and available endpoints."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "API Setup and Endpoints – Softr Help Docs"
+'twitter:description': "Softr API key generation and available endpoints."
+---
+You can generate an API key for your Softr account to be used when interacting with the API endpoints. Let's first see how you can generate the key, and then we'll review the available endpoints and provide API call examples.
+
+<Tip>You need to be **the owner of the application or a workspace collaborator** to be able to make API calls. Thus, [guest collaborators](/workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/workspaces-and-applications/kTbEWSYXhBCbtTB4K9dpKs) of the application won’t be able to make calls.</Tip>
+<Note>Depending on your needs, you can also consider using a [Call API](/actions/ntEfT9zSJk6aY54G6W5KGU/call-api/i9f1s3w9wib3oRmS4HZ7MX) action. </Note>
+
+## Finding your API key
+
+First, navigate to [Dashboard](https://studio.softr.io/dashboard). Then click on your profile icon → My account → API Settings
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fa1cc3ca9-40a2-4b2e-a353-bfd0fcb1f49b%2FUntitled.png&blockId=f8194032-b653-4261-833f-7c250474123a&projectId=1032)</Frame>
+
+## Generating an API key
+
+When you first enter the **API Settings** section in your account, you'll see a **Generate API key** button.
+<Frame caption="Generate API Key">![Generate API Key](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa0bf5db2-edcd-4e0e-a5f0-0f74c79baeb1%2Fgenerate-api-key.png&blockId=a79394ef-b495-47af-a086-da59665f93e5&projectId=1032)</Frame>
+
+As soon as you hit the button, the generated API key will appear. Here, you can **View**, **Copy**, **Regenerate**, or **Delete** the key.
+<Frame caption="API Key actions">![API Key actions](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8bf948e8-1a40-4ff6-abf9-7a03646b348e%2Fapi-key-actions.png&blockId=db97e21b-9783-48d7-9ace-9ec40c91728b&projectId=1032)</Frame>
+
+That's it. Now you have your API key that you can use when interacting with your Softr apps through the API. Let's proceed to see what endpoints are available.
+
+<Tip>Make sure to have your **Softr app published** before making API calls.</Tip>
+
+## API Endpoints
+
+### **Create User**
+
+This endpoint allows creating a user inside the specified Softr app within your account. Below is an example of an API call.
+
+```javascript
+curl --request POST 'https://studio-api.softr.io/v1/api/users' \
+--header 'Softr-Api-Key: uYGskr7MqMeRYrjQjsB8uEQ8n' \
+--header 'Softr-Domain: yourdomain.com' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "full_name": "John Richardson",
+  "email": "johnr@gmail.com",
+  "password": "12345678",
+  "generate_magic_link":true
+}'
+```
+
+Here, you need to replace the value next to **Softr-Api-Key** with your API key you've generated and add your Softr app's domain/subdomain instead of **yourdomain.com**.
+
+Next, you need to provide the **Full Name** of the new user along with an **Email** and **Password** (replace the values next to **full_name**, **email**, and **password**).
+
+<Tip>If you don't specify a password, it will be generated for the user automatically.</Tip>
+
+Finally, you can set the value of **generate_magic_link** to "true" or "false" depending on whether you want to generate a [Magic Link](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/add-or-import-users-manually/g5R1bGnBTFJ3sWLR8Mgdng) for the user or not.
+
+### **Delete User**
+
+Using this endpoint, you can delete a user from the specified Softr app. Bellow is an example of an API call.
+
+```javascript
+curl --location --request DELETE 'https://studio-api.softr.io/v1/api/users/user@softr.io' \
+-header 'Softr-Api-Key: pYSskw7MqMeRUgjQtsf9uRQ5n' \
+-header 'Softr-Domain: yourdomain.com'
+```
+
+Just replace **user@softr.io** with the actual email of the user you need to delete as well as provide your API key (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to delete the user from. **The rest needs to remain the same as in the example.**
+
+### **Generate a Magic Link for the User**
+
+Using this endpoint, you cangenerate a [Magic Link](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/add-or-import-users-manually/g5R1bGnBTFJ3sWLR8Mgdng) for the specified user in your Softr app. Bellow is an example of an API call.
+
+```javascript
+curl --location --request POST 'https://studio-api.softr.io/v1/api/users/magic-link/generate/user@softr.io' \
+--header 'Softr-Api-Key: pYSskw7MqMeRUgjQtsf9uRQ5n' \
+--header 'Softr-Domain: yourdomain.com'
+```
+
+Just replace **user@softr.io** with the actual email of the user as well as provide your API key (the value next to **Softr-Api-Key**) and the domain/subdomain of your Softr app (the value next to **Softr-Domain**).
+
+### Sync a Single User, Group of Users, or All Users
+
+Use this endpoint to sync a single user, an array of users, or if no email is included, trigger a user sync for all users.
+**Single User or Group of Users:**
+
+```javascript
+curl --location --request POST 'https://studio-api.softr.io/v1/api/users/sync' \
+--header 'Softr-Api-Key: pYSskw7MqMeRUgjQtsf9uRQ5n' \
+--header 'Softr-Domain: yourdomain.com'
+--data-raw '["email1@example.com", "email2@example.com", "email3@example.com"]'
+```
+
+**Sync All Users:**
+
+```javascript
+curl --location --request POST 'https://studio-api.softr.io/v1/api/users/sync' \
+--header 'Softr-Api-Key: pYSskw7MqMeRUgjQtsf9uRQ5n' \
+--header 'Softr-Domain: yourdomain.com'
+```
+
+### **Validate an Authentication Token**
+
+Using this endpoint you can validate a user authentication JWT token. This could be used in cases when you use Softr users data (e.g. to show content based on user ID) in external systems outside of Softr and need to authenticate the users with Softr. Here's how you can do that. The following is an example of an API call, where you need to replace **"yourdomain.softr.app"** with your Softr subdomain or custom domain you have connected as well as use the specific token you need to authenticate instead of **your jwt token value**.
+
+```javascript
+curl --location --request POST '[https://yourdomain.softr.app/v1/api/users/validate-token](https://yourdomain.softr.app/v1/api/users/validate-token)' \
+--header 'Content-Type: application/json' \
+--data-raw '{"jwt":"your jwt token value"}'
+```
+
+## Use Cases
+
+There are certainly a lot of different use cases for interacting with the Softr API. But if you're working with no-code tools, you can make API calls with such tools as Zapier or Integromat. In subsections to this article, we consider some use cases involving [Zapier](/softr-api/tTFQ5vSAUozj5MsKixMH8C/use-case-adding-users-through-zapier/mhCMmdRcJL2UDsprwzFYuT) and [Make](/softr-api/tTFQ5vSAUozj5MsKixMH8C/use-case-adding-users-through-make-formerly-integromat/vFH1YQTF7At7FwCYSmJKYz) to take you through the setup process.

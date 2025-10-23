@@ -1,0 +1,180 @@
+---
+title: "Item Details Block"
+permalink: "4bE8XaFbJp45wkAwuWiz8f"
+description: "How to configure the Item Details block and link it to a List."
+'og:title': "Item Details Block  – Softr Help Docs"
+'og:description': "How to configure the Item Details block and link it to a List."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Item Details Block  – Softr Help Docs"
+'twitter:description': "How to configure the Item Details block and link it to a List."
+---
+## Video
+
+<iframe src="https://www.youtube.com/embed/U17Oo8RFK1U?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
+
+## Overview
+
+The Item details block displays detailed information for a specific record, like a project or client. Users typically access it by clicking on an item in a dynamic block, such as a List or Grid. This action triggers the display of relevant details pages for that specific record, eliminating the need to create separate pages for every individual item in your database.
+
+The item detail block is for showing detailed information about one record (or one row) in your database. Therefore, we need a way to define which record will be shown in it. We have three ways to do this:
+
+1. **Easiest and Best Method**: You can set a list of many records on a previous page so that when a user clicks on an item in the list, they are taken to an item details to see more info about the record they selected. This is the method we are demonstrating in this guide.
+
+2. **For specific use cases**: If no list or records exists for them to click on first (for instance showing a logged-in users company details), you can setup filtering to narrow down the record shown by the items details block to a specific record. Be careful though - if the filter is not specific enough, Softr will try to find a good example record from your database to display.
+
+3. **For advanced use cases**: The third option is to specify which record to display using a URL to your Softr app for a specific record. You can get these by copying from a live version of the app ***or*** you can also create them in your database by constructing URLs using the `?recordId=` parameter on the end of the page slug like `https://yourapp.softr.app/item-details?recordId=XXXXX`
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F60268e7d-ae65-4394-ac73-ec8ccf671e37%2FDefault_720x2_frame_%281%29.png&blockId=1889a723-d691-80f5-9873-daff2709fa87&projectId=1032)</Frame>
+<Tip>
+
+The Item Details block works best when placed at the very top of the page, especially if there are other blocks on the page that are using its details for filtering, visibility, etc.
+
+</Tip>
+
+## **Use case examples**
+
+* **Product Details**: Showcase detailed product information when a user selects an item from a product list. For example, display product descriptions, images, prices, and ratings.
+
+* **Task Management**: Provide task-specific details, including deadlines, assigned users, and notes. For example, create a task detail page for team collaboration.
+
+* **Client Details**: Display client information when a user selects a client from a list. For example, show client contact information, recent interactions, project history, or account status.
+
+# **Configure an Item details block**
+
+To configure the Item details block to show a specific record detail when the user clicks on an item on a dynamic block, you will need to have a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#dynamic-blocks), e.g., [List](/bd9fd66f6e394867bfb70d838c4f8def?pvs=25), connected to the [data source](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/connect-your-data-source/41p6U2eZs6NZ5qZp7iKvnn). Once you have it ready, follow these steps:
+
+1. Add an Item details block to a new page.
+
+2. Connect the Item details block to the same data source (e.g., Airtable Base and Table) as the List block.
+
+3. Go to the **List** block settings and navigate to the **Actions** tab.
+
+4. Set the [Item On Click](/actions/ntEfT9zSJk6aY54G6W5KGU/item-on-click-actions/f1ns7phZfNNvgwXA6tTN3M) action to **Open page** and select the page containing the Item details block you created.
+
+**Result**: When users click on a list item, they’re directed to a page showing detailed information for that item.
+
+Once you connect to your source data, you can configure [Conditional Filters](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m), Content, Actions, and block Visibility settings.
+
+<Info>
+
+Some configuration options depend on the data source. For more details, check the documentation for your specific data source.
+
+</Info>
+
+## **Content**
+
+In the **Content** tab, customize the Item detail block layout and the data fields and adjust their display.
+
+### Sections
+
+The Item Details block includes two types of sections for organizing fields:
+
+* **Default Top Section**: Ideal for key information like titles, images, or categories (e.g., a product name and featured image).
+
+* **Custom Sections**: Add multiple sections for additional details (e.g., project assets or milestones).
+
+This structure keeps detail pages organized and easy to navigate.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F7e170d7c-95d6-41d0-9315-480857c060ab%2FCleanShot_2025-01-27_at_17.25.242x.png&blockId=1889a723-d691-8001-9dbc-cf56a0ace84a&projectId=1032)</Frame>
+
+### **Item fields**
+
+**Item Fields** lets you connect fields from your **data source** to each list item, making it easy to display the information you need. You can control what information appears by adding, removing, or rearranging fields such as task names, assignees, or descriptions.
+
+For each field in the **Item Fields** section of the secondary section, you can customize the following options:
+
+* **Type:** Defines the display field type that controls how content appears in the block (e.g., text, checkbox, or image).
+
+* **Content:** Chooses the specific data field from connected data sources to display.
+
+* **Label (Optional):** Adds context to the field. If left blank, the label will not be visible to users.
+  <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F792a9223-4ee0-49f3-b9a9-d787e0f20f65%2FDefault_720_frame_%289%29.png&blockId=1889a723-d691-816f-b74e-ce49e1ce8546&projectId=1032)</Frame>
+
+<Info>
+
+**Note:** Some display field types are compatible only with specific data formats. For example, if a field is set to display images, you cannot map it to text data. Ensure the field type matches your data source field format to avoid display issues.
+
+</Info>
+
+**Supported Field Types**
+
+|  |  |
+| --- | --- |
+| **Display Field** | **Description** |
+| **Cover Media** | Display a featured image as a prominent top section element. |
+| **Text** | Displays plain text. Ideal for names, titles, or short descriptions. |
+| **Rich Text** | Supports long text, markdown, or HTML formatting. Allows for more detailed descriptions or notes. |
+| **Headings** | Various heading sizes |
+| **Email** | Displays email addresses as clickable mailto links, allowing users to start an email directly. |
+| **URL** | Displays website links as clickable URLs, allowing users to navigate to external pages. |
+| **Tag** | Allows you to display one or more tags, helpful for organizing items by category or status. |
+| **File** | Provides a link for users to download attachments, such as PDFs or other documents. |
+| **Video** | Embed video content from a supported source, allowing users to watch content directly in the block. |
+| **Audio** | Embed audio files, letting users listen to content directly within the block. |
+| **Image** | Displays a single image, useful for things like profile pictures or product images. |
+| **Image gallery** | Displays multiple images in a gallery format, useful for showcasing a collection of visuals. |
+| **Embed** | Allows you to embed content from other services, such as YouTube videos, Calendly, or social media posts. |
+| **Rating** | Displays a rating system, typically with stars, to visually represent ratings or scores. |
+| **Checkbox** | Shows a checkbox, useful for indicating completed items or allowing users to mark items as done. |
+
+**Filtering the Filter Options**
+
+You can also filter the filter options to display different options based on user attributes, selected records, etc. Just click on the branching icon next to the Options subtitle:
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff64fde01-a1dd-4f6a-b383-75e6722ecdf8%2FScreenshot_2025-06-10_at_4.53.02_PM.png&blockId=20e9a723-d691-80d1-81d5-f65484f851d0&projectId=1032)</Frame>
+
+Then toggle it on and setup the conditions you want to apply to filter to the filter.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F7fcf0ae0-8e4f-4ec3-8498-d31cd0110086%2FScreenshot_2025-06-10_at_4.45.56_PM.png&blockId=20e9a723-d691-8097-ad0c-f8ff7ff9e21c&projectId=1032)</Frame>
+
+### **Embed Block**
+
+You can embed any Softr block in another application. Learn how in our [Page and Block Embed](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/page-and-block-embed/kaMvDCneGdx43AxHnmf7bm) guide.
+
+## Actions
+
+[Actions](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/actions-adding-and-editing-data-/41p6U2eZs87asLz6dV5AMy) let you define what happens when users interact with a block, such as navigating to a new page, editing records, or triggering workflows. This ensures your app not only displays data but also offers dynamic user engagement.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff6a505c8-83b7-47ce-9a02-cb3c414dddac%2FDefault_720_frame_%2821%29.png&blockId=1889a723-d691-808e-896f-c520bd4e1631&projectId=1032)</Frame>
+
+**Item buttons**
+
+* [Edit record](/actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx): Modify the details of a specific record.
+
+* [One-Click Update](/actions/ntEfT9zSJk6aY54G6W5KGU/one-click-update/8BaX5i6KLZhZCrSZERGnej): Apply predefined updates to a record with a single click.
+
+* [Open details page](/actions/ntEfT9zSJk6aY54G6W5KGU/item-on-click-actions/f1ns7phZfNNvgwXA6tTN3M): Open the details page of the selected record.
+
+* [Delete Record](/actions/ntEfT9zSJk6aY54G6W5KGU/delete-record/peV9LGdJbM9sKHKynqopkH): Remove a record from your data.
+
+* **Open URL**: Redirect users to an external link.
+
+* [Download file](/actions/ntEfT9zSJk6aY54G6W5KGU/download-file/8Sr2y4CREVcW2GEEDYUhfJ): Provide users with a direct option to download associated files.
+
+* [**Export**](/actions/ntEfT9zSJk6aY54G6W5KGU/export/mnrvzncWeoSfwWJscZCAxC): Export visible record or page.
+
+* **Scroll to**: Move the view to a specific section within the block.
+
+* [Call API](/actions/ntEfT9zSJk6aY54G6W5KGU/call-api/i9f1s3w9wib3oRmS4HZ7MX): This action triggers a custom API call for advanced integrations *(available for Professional, Business, and Enterprise plans).*
+
+## **Showing detailed information based on logged-in user data**
+
+In addition to showing Item details connected to a list block, you can also set up an Item details block to show details based on logged-in user data without needing an additional list block. E.g., show company profile details for the logged-in client.
+
+Follow these steps to set it up:
+
+1. Create a new page and add an Item details block.
+
+2. Connect the Item details block to the same **data source** (e.g., Airtable Base and Table) where you store the user data.
+
+3. Apply [Conditional Filters](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m) to display data based on user attributes dynamically.
+
+**Example:** Filter records where the logged-in user’s company matches the name field in the company database. Result: Users who open the page with this detail block will see only their company information.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F75d1899f-557f-4252-8b40-956884e714b6%2FCleanShot_2025-01-27_at_17.47.082x.png&blockId=1889a723-d691-80fd-8484-d836fcb0a05f&projectId=1032)</Frame>
+
+## Relevant Guides
+
+* [How to show additional related records on the details page?](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/linked-list/bWjTdKhbftofSEKRSxMFz9)
+
+* [How to set up SEO for detail pages?](/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/item-details-seo/6QnbCZTZjYbctWHbqcPaSJ)
+
+* [How to enable users to comment on the details page?](/697c2ac57a3c40a8b5c14cc7bcf8947c?pvs=25)
+
+* [Use Case: Creating a User Profile with List Details](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-creating-a-user-profile-with-item-details/e4isniZBZBRV1zxEEU8dct)
+
+* [Use Case: Embedding Calendly in List Details](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-embedding-calendly-in-list-details/pUraLKqtjajCRizCqhAJLR)

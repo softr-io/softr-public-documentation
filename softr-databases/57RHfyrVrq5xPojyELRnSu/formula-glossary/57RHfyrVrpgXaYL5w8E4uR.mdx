@@ -1,0 +1,956 @@
+---
+title: "Formula Glossary"
+permalink: "57RHfyrVrpgXaYL5w8E4uR"
+description: "Find the perfect formulas for your database."
+'og:title': "Formula Glossary – Softr Help Docs"
+'og:description': "Find the perfect formulas for your database."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Formula Glossary – Softr Help Docs"
+'twitter:description': "Find the perfect formulas for your database."
+---
+Formula fields in Softr allow you to perform calculations, manipulate text, work with dates, and create conditional logic to enhance your Database's functionality. Each function is listed with its syntax and an example to demonstrate its use.
+
+## **Introduction to Formula Fields**
+
+Formula fields in Softr are a powerful field type that enable you to compute values based on other fields in your Database. You can add a formula field to a table like any other field type, then write a formula to generate outputs such as numbers, dates, or text strings. These fields automatically update when referenced data changes, making them ideal for dynamic calculations and data manipulation.
+
+### To create a formula field:
+
+1. Add a new field to your table in Softr.
+
+2. Select "Formula" as the field type.
+
+3. Enter the formula in the formula editor, referencing other fields and using the functions below.
+
+4. Configure the output format (e.g., number, date, or string) under the Formatting tab.
+
+### Formula Syntax
+
+* When referencing other fields inside a formula, always put them in curly brackets, like so: `{Contact Name}` or `{Status}`
+
+* When you use a function, the function only applies to what is inside the parentheses `()`. If you need to place functions inside other functions, you can use multiple parentheses, like so:  
+```plain
+SUM({Price}, ({Price}*{Tax Rate}))
+```
+
+* Static, text based values always need to be inside quotation marks `“` like so: 
+```plain
+IF({Rating}<=3, "At Risk", "Nominal")
+```
+
+* Arrays (lists of items) are always displayed inside square brackets `[]`
+
+## **Formula Functions and Operators**
+
+### **Text Functions**
+
+**`CONCATENATE(text1, text2, ...)`**
+
+Combines multiple text strings into a single string.
+
+**Example:**
+
+```plain
+CONCATENATE({First Name}, " ", {Last Name})
+```
+
+If First Name is "Jane" and Last Name is "Doe", the result is "Jane Doe".
+
+Alternative, you can also use the ampersand symbol `&` to combine text together, like so:
+
+```plain
+{First Name} & {Last Name}
+```
+
+---
+
+**`LEFT(string, howMany)`**
+
+Extracts a specified number of characters from the start of a string.
+
+**Example:**
+
+```plain
+LEFT({Project Name}, 3)
+```
+
+If Project Name is "Website Redesign", the result is "Web".
+
+---
+
+**`RIGHT(string, howMany)`**
+
+Extracts a specified number of characters from the end of a string.
+
+**Example:**
+
+```plain
+RIGHT({Product Code}, 4)
+```
+
+If Product Code is "ITEM-1234", the result is "1234".
+
+---
+
+**`LEN(string)`**
+
+Returns the length of a string in characters, including symbols and spaces.
+
+**Example:**
+
+```plain
+LEN({Description})
+```
+
+If Description is "Softr is awesome", the result is 16.
+
+---
+
+**`FIND(search_text, within_text, [start_position])`**
+
+Locates the position of a substring within a string. Returns 0 if not found.
+
+**Example:**
+
+```plain
+FIND("Softr", {App Name})
+```
+
+If App Name is "Build with Softr", the result is 12.
+
+---
+
+**`SEARCH(search_text, within_text, [start_position])`**
+
+Similar to FIND, but case-insensitive. Returns 0 if not found.
+
+**Example:**
+
+```plain
+SEARCH("softr", {App Name})
+```
+
+If App Name is "Build with SOFTR", the result is 12.
+
+---
+
+**`SUBSTITUTE(text, old_text, new_text, [instance_num])`**
+
+Replaces occurrences of a specified substring with new text.
+
+**Example:**
+
+```plain
+SUBSTITUTE({Title}, "Old", "New")
+```
+
+If Title is "Old Project", the result is "New Project".
+
+---
+
+**`TRIM(text)`**
+
+Removes leading and trailing spaces from a string.
+
+**Example:**
+
+```plain
+TRIM({User Input})
+```
+
+If User Input is " Hello ", the result is "Hello".
+
+---
+
+**`LOWER(text)`**
+
+Converts a string to lowercase.
+
+**Example:**
+
+```plain
+LOWER({Email})
+```
+
+If Email is "User@Example.com", the result is "user@example.com".
+
+---
+
+**`UPPER(text)`**
+
+Converts a string to uppercase.
+
+**Example:**
+
+```plain
+UPPER({Status})
+```
+
+If Status is originally "pending", the result is "PENDING".
+
+---
+
+**`TEXT(value, format)`**
+
+Converts a value to text with a specified format.
+
+**Example:**
+
+```plain
+TEXT({Price}, "$#,##0.00")
+```
+
+If Price is 1234.5, the result is "$1,234.50".
+
+---
+
+`MID(string, start_position, length)`
+
+Extracts a substring from a string, starting at the specified position and continuing for the specified length.
+
+Example:
+
+```plain
+MID({Product Code}, 6, 4)
+```
+
+If Product Code is "ITEM-1234-XYZ", the result is "1234".
+
+---
+
+`REPT(text, number_times)`
+
+Repeats a text string a specified number of times.
+
+Example:
+
+```plain
+REPT("*", 5)
+```
+
+The result is "\*\*\*\*\*".
+
+---
+
+`T(value)`
+
+Returns the text value of the input, or an empty string if the input is not text.
+
+Example:
+
+```plain
+T({Price})
+```
+
+If Price is 100, the result is "100". If Price is a date, the result is "".
+
+---
+
+`VALUE(text)`
+
+Converts a text string representing a number to a numeric value.
+
+Example:
+
+```plain
+VALUE({Text Price})
+```
+
+If Text Price is "500.75", the result is 500.75.
+
+---
+
+### **Logical Functions**
+
+`=`, `!=`, `>`, `<`, `>=`, `<=`
+
+Comparison operators that return TRUE or FALSE.
+
+Example:
+
+```plain
+{Total} >= 1000
+```
+
+If Total is 1500, the result is TRUE.
+
+---
+
+**`IF(logical_test, value_if_true, value_if_false)`**
+
+Returns one value if a condition is true, another if false.
+
+**Example:**
+
+```plain
+IF({Total} > 1000, "Large Order", "Small Order")
+```
+
+If Total is 1500, the result is "Large Order".
+
+---
+
+**`AND(logical1, logical2, ...)`**
+
+Returns TRUE if all arguments are true, FALSE otherwise.
+
+**Example:**
+
+```plain
+AND({In Stock} = 1, {Price} > 50)
+```
+
+If In Stock is checked and Price is 75, the result is TRUE.
+
+---
+
+**`OR(logical1, logical2, ...)`**
+
+Returns TRUE if any argument is true, FALSE otherwise.
+
+**Example:**
+
+```plain
+OR({Status} = "Open", {Status} = "In Progress")
+```
+
+If Status is "Open", the result is TRUE.
+
+---
+
+**`NOT(logical)`**
+
+Reverses the logical value of its argument.
+
+**Example:**
+
+```plain
+NOT({Completed})
+```
+
+If Completed is checked (TRUE), the result is FALSE.
+
+---
+
+**`SWITCH(expression, value1, result1, [value2, result2, ...], default)`**
+
+Evaluates an expression and returns a result based on matching values.
+
+**Example:**
+
+```plain
+SWITCH({Priority}, 1, "High", 2, "Medium", 3, "Low", "Unknown")
+```
+
+If Priority is 2, the result is "Medium".
+
+---
+
+### **Numeric Functions**
+
+`+`, `-`, `*`, `/`
+
+Performs addition, subtraction, multiplication, or division on numbers.
+
+Example:
+
+```plain
+{Price} * 1.1
+```
+
+If Price is 100, the result is 110 (adds 10%).
+
+---
+
+`^`
+
+Raises a number to a power (alternative to POWER).
+
+Example:
+
+```plain
+{Base Value}^2
+```
+
+If Base Value is 5, the result is 25 (5²).
+
+---
+
+**`ROUND(number, num_digits)`**
+
+Rounds a number to a specified number of decimal places.
+
+**Example:**
+
+```plain
+ROUND({Total Cost}, 2)
+```
+
+If Total Cost is 123.456, the result is 123.46.
+
+---
+
+**`CEILING(number)`**
+
+Rounds a number up to the nearest integer.
+
+**Example:**
+
+```plain
+CEILING({Quantity})
+```
+
+If Quantity is 5.2, the result is 6.
+
+---
+
+**`FLOOR(number)`**
+
+Rounds a number down to the nearest integer.
+
+**Example:**
+
+```plain
+FLOOR({Score})
+```
+
+If Score is 7.8, the result is 7.
+
+---
+
+**`ABS(number)`**
+
+Returns the absolute value of a number.
+
+**Example:**
+
+```plain
+ABS({Balance})
+```
+
+If Balance is -50, the result is 50.
+
+---
+
+**`SUM(number1, number2, ...)`**
+
+Adds a list of numbers.
+
+**Example:**
+
+```plain
+SUM({Price1}, {Price2})
+```
+
+If Price1 is 100 and Price2 is 200, the result is 300.
+
+---
+
+**`AVERAGE(number1, number2, ...)`**
+
+Calculates the average of a list of numbers.
+
+**Example:**
+
+```plain
+AVERAGE({Score1}, {Score2}, {Score3})
+```
+
+If Score1 is 80, Score2 is 90, and Score3 is 100, the result is 90.
+
+---
+
+**`MIN(number1, number2, ...)`**
+
+Returns the smallest number in a list.
+
+**Example:**
+
+```plain
+MIN({Bid1}, {Bid2})
+```
+
+If Bid1 is 500 and Bid2 is 450, the result is 450.
+
+---
+
+**`MAX(number1, number2, ...)`**
+
+Returns the largest number in a list.
+
+**Example:**
+
+```plain
+MAX({Revenue Q1}, {Revenue Q2})
+```
+
+If Revenue Q1 is 1000 and Revenue Q2 is 1200, the result is 1200.
+
+---
+
+`INT(number)`
+
+Returns the largest integer less than or equal to the input number (equivalent to FLOOR).
+
+Example:
+
+```plain
+INT({Score})
+```
+
+If Score is 7.8, the result is 7.
+
+---
+
+`MOD(number, divisor)`
+
+Returns the remainder after dividing the number by the divisor.
+
+Example:
+
+```plain
+MOD({Total Items}, 3)
+```
+
+If Total Items is 10, the result is 1 (10 ÷ 3 leaves a remainder of 1).
+
+---
+
+`POWER(base, exponent)`
+
+Raises a number to the specified exponent.
+
+Example:
+
+```plain
+POWER({Base Value}, 2)
+```
+
+If Base Value is 5, the result is 25 (5²).
+
+---
+
+`SQRT(number)`
+
+Returns the square root of a non-negative number.
+
+Example:
+
+```plain
+SQRT({Area})
+```
+
+If Area is 16, the result is 4.
+
+### **Date and Time Functions**
+
+For a full list of Date and Time formatting options, please see this article.
+
+**`DATETIME_FORMAT(date, format)`**
+
+Formats a date/time value as a text string.
+
+**Example:**
+
+```plain
+DATETIME_FORMAT({Due Date}, "MM/DD/YYYY")
+```
+
+If Due Date is 2025-06-15, the result is "06/15/2025".
+
+---
+
+**`DATETIME_PARSE(string, format)`**
+
+Converts a text string to a date/time value.
+
+**Example:**
+
+```plain
+DATETIME_PARSE({Date Text}, "MM/DD/YYYY")
+```
+
+If Date Text is "12/31/2025", the result is a date value of 2025-12-31.
+
+---
+
+**`SET_TIMEZONE(date, timezone)`**
+
+Sets a specific timezone for a date field.
+
+**Example:**
+
+```plain
+SET_TIMEZONE({Event Date}, "America/New_York")
+```
+
+If Event Date is 2025-05-29 14:00 UTC, the result is 2025-05-29 10:00 EDT.
+
+---
+
+**`NOW()`**
+
+Returns the current date and time.
+
+**Example:**
+
+```plain
+NOW()
+```
+
+If the current time is May 29, 2025, 16:42 EDT, the result is 2025-05-29 16:42.
+
+---
+
+**`TODAY()`**
+
+Returns the current date without time.
+
+**Example:**
+
+```plain
+TODAY()
+```
+
+If today is May 29, 2025, the result is 2025-05-29.
+
+---
+
+**`DATEADD(date, number, unit)`**
+
+Adds a specified number of units (e.g., days, months) to a date.
+
+**Example:**
+
+```plain
+DATEADD({Start Date}, 7, "days")
+```
+
+If Start Date is 2025-06-01, the result is 2025-06-08.
+
+---
+
+**`DATESUB(date, number, unit)`**
+
+Subtracts a specified number of units from a date.
+
+**Example:**
+
+```plain
+DATESUB({End Date}, 1, "month")
+```
+
+If End Date is 2025-07-31, the result is 2025-06-30.
+
+---
+
+**`DATETIME_DIFF(date1, date2, unit)`**
+
+Calculates the difference between two dates in the specified unit (e.g., days, hours).
+
+**Example:**
+
+```plain
+DATETIME_DIFF({Due Date}, {Start Date}, "days")
+```
+
+If Due Date is 2025-06-10 and Start Date is 2025-06-01, the result is 9.
+
+---
+
+`CREATED_TIME()`
+
+Returns the date and time when the record was created.
+
+Example:
+
+```plain
+DATETIME_FORMAT(CREATED_TIME(), "MM/DD/YYYY")
+```
+
+If the record was created on May 29, 2025, the result is "05/29/2025".
+
+---
+
+`IS_SAME(date1, date2, [unit])`
+
+Returns TRUE if two dates are identical, optionally comparing at a specified unit (e.g., "day", "month").
+
+Example:
+
+```plain
+IS_SAME({Start Date}, {End Date}, "day")
+```
+
+If Start Date and End Date are both 2025-06-01, the result is TRUE.
+
+---
+
+`IS_AFTER(date1, date2)`
+
+Returns TRUE if date1 is after date2.
+
+Example:
+
+```plain
+IS_AFTER({Due Date}, TODAY())
+```
+
+If Due Date is 2025-06-10 and today is May 29, 2025, the result is TRUE.
+
+---
+
+`IS_BEFORE(date1, date2)`
+
+Returns TRUE if date1 is before date2.
+
+Example:
+
+```plain
+IS_BEFORE({Start Date}, TODAY())
+```
+
+If Start Date is 2025-05-01 and today is May 29, 2025, the result is TRUE.
+
+---
+
+`LAST_MODIFIED_TIME()`
+
+Returns the most recent modification time for the record.
+
+Example:
+
+```plain
+DATETIME_FORMAT(LAST_MODIFIED_TIME(), "MM/DD/YYYY")
+```
+
+If the record was last modified on May 28, 2025, the result is "05/28/2025".
+
+---
+
+`WORKDAY(start_date, num_days, [holidays])`
+
+Returns a date that is a specified number of working days from the start date, excluding weekends and optional holidays.
+
+Example:
+
+```plain
+WORKDAY({Start Date}, 5)
+```
+
+If Start Date is 2025-06-02 (Monday), the result is 2025-06-09 (Monday, 5 workdays later).
+
+---
+
+`WORKDAY_DIFF(start_date, end_date, [holidays])`
+
+Returns the number of working days between two dates, excluding weekends and optional holidays.
+
+Example:
+
+```plain
+WORKDAY_DIFF({Start Date}, {End Date})
+```
+
+If Start Date is 2025-06-02 and End Date is 2025-06-09, the result is 5 workdays.
+
+### Array Functions
+
+`ARRAYCOMPACT(values)`
+
+Removes empty or null values from an array (e.g., from a lookup field).
+
+Example:
+
+```plain
+ARRAYCOMPACT({Tasks Lookup})
+```
+
+If Tasks Lookup contains ["Task1", "", "Task2"], the result is ["Task1", "Task2"].
+
+---
+
+`ARRAYFLATTEN(values)`
+
+Flattens nested arrays into a single array.
+
+Example:
+
+```plain
+ARRAYFLATTEN({Nested Lookup})
+```
+
+If Nested Lookup contains [["A", "B"], ["C"]], the result is ["A", "B", "C"].
+
+---
+
+`ARRAYJOIN(values, [delimiter])`
+
+Joins array elements into a single string, separated by an optional delimiter.
+
+Example:
+
+```plain
+ARRAYJOIN({Tags Lookup}, ", ")
+```
+
+If Tags Lookup contains ["Red", "Blue"], the result is "Red, Blue".
+
+---
+
+`ARRAYUNIQUE(values)`
+
+Returns an array with duplicate values removed.
+
+Example:
+
+```plain
+ARRAYUNIQUE({Categories Lookup})
+```
+
+If Categories Lookup contains ["A", "B", "A"], the result is ["A", "B"].
+
+---
+
+### Regular Expression Functions
+
+`REGEX_MATCH(string, pattern)`
+
+Returns TRUE if the string matches the regular expression pattern.
+
+Example:
+
+```plain
+REGEX_MATCH({Email}, "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+```
+
+If Email is "user@example.com", the result is TRUE.
+
+---
+
+`REGEX_EXTRACT(string, pattern)`
+
+Extracts the first substring that matches the regular expression pattern.
+
+Example:
+
+```plain
+REGEX_EXTRACT({Code}, "[0-9]+")
+```
+
+If Code is "ITEM-1234-XYZ", the result is "1234".
+
+---
+
+`REGEX_REPLACE(string, pattern, replacement)`
+
+Replaces the first match of the regular expression pattern with the replacement string.
+
+Example:
+
+```plain
+REGEX_REPLACE({Phone}, "\D", "")
+```
+
+If Phone is "(123) 456-7890", the result is "1234567890".
+
+### **Other Functions**
+
+**`RECORD_ID()`**
+
+Returns the unique identifier for a record.
+
+**Example:**
+
+```plain
+RECORD_ID()
+```
+
+If the record's ID is "rec1234567890", the result is "rec1234567890".
+
+Alternatively, if you just need the Record ID, you can also use a Record ID field type.
+
+---
+
+**`ISERROR(value)`**
+
+Checks if a value or expression results in an error, returning TRUE or FALSE.
+
+**Example:**
+
+```plain
+ISERROR({Price} / 0)
+```
+
+If Price divided by 0 causes an error, the result is TRUE.
+
+---
+
+**`BLANK()`**
+
+Represents an empty or null value.
+
+**Example:**
+
+```plain
+IF({Name} = "", BLANK(), {Name})
+```
+
+If Name is empty, the result is null; otherwise, it returns the value of Name.
+
+---
+
+## **Tips for Writing Formulas**
+
+* **Plan Ahead**: Before writing a formula, outline your goal in plain language (e.g., "Calculate the days remaining until a deadline").
+
+* **Check Syntax**: Softr's formula editor highlights errors. Ensure field names are correct and enclosed in curly braces {}.
+
+* **Use Nesting**: Combine functions for complex logic, such as nested IF statements: 
+```plain
+IF({Score} > 90, "A", IF({Score} > 80, "B", "C"))
+```
+
+* **Format Outputs**: Use the Formatting tab to set the desired output format (e.g., decimal places for numbers, date styles for dates).
+
+* **Test Thoroughly**: Preview your formula results in Softr to confirm they behave as expected.
+
+## **Common Use Cases**
+
+* **Dynamic Text**: Combine names or create custom labels:Result: "New York - USA" 
+```plain
+CONCATENATE({City}, " - ", {Country})
+```
+
+* **Conditional Logic**: Categorize records based on criteria:Result: "High" or "Low" 
+```plain
+IF({Revenue} > 10000, "High", "Low")
+```
+
+* **Date Calculations**: Track project timelines:Result: Number of days until the due date 
+```plain
+DATETIME_DIFF({Due Date}, TODAY(), "days")
+```
+
+* **Numeric Calculations**: Compute totals or percentages:Result: 10% of Price, rounded to two decimals 
+```plain
+ROUND({Price} * 0.1, 2)
+```
+
+## **Limitations**
+
+* Formula fields are read-only and cannot be manually edited.
+
+* Complex formulas may impact performance in large Databases.
+
+* Some functions (e.g., FIND vs. SEARCH) are case-sensitive; choose the appropriate function for your needs.
+
+* Ensure referenced fields exist and contain valid data to avoid errors.
+
+## Additional Resources
+
+* [Softr Academy](https://academy.softr.io/): Visit the Softr Academy to take full courses on building Softr apps.
+
+* [Community Forums](https://community.softr.io/): Join the Softr community to ask questions and share tips.
+
+* Support: Contact Softr support at support@softr.io if you get stuck with your Database setup.

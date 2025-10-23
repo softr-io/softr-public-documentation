@@ -1,0 +1,64 @@
+---
+title: "Add or import users manually"
+permalink: "g5R1bGnBTFJ3sWLR8Mgdng"
+description: "Add or import users to your Softr app manually."
+'og:title': "Add or import users manually – Softr Help Docs"
+'og:description': "Add or import users to your Softr app manually."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Add or import users manually – Softr Help Docs"
+'twitter:description': "Add or import users to your Softr app manually."
+---
+To manually add users to your Softr app, you can click on **Add user(s)** button.
+<Frame caption="Add user(s) button">![Add user(s) button](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdd41df39-d836-453c-9eb3-34dd4e02dbc6%2Fadd-user-button.png&blockId=6b9a925e-cf97-4b47-a351-dc2add589198&projectId=1032)</Frame>
+
+### **Adding a single user**
+
+To add a single user, go to **ADD USERS** tab:
+
+1. Enter the `Name` and `Email` of the user you want to add.
+
+2. Select the authentication method. (We’ll explain more below)
+<Frame caption="Adding a user">![Adding a user](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3d493cfd-907d-4fca-a244-d3e83cd83c39%2FAdd-users.png&blockId=76e0d661-8941-4c5a-b6a3-eefbc54a1288&projectId=1032)</Frame>
+
+If you choose to generate a temporary password, after hitting **Save and continue**, the user will be created, and you'll be taken to the next screen with user credentials.
+
+You can either:
+
+* **Finish without inviting**
+
+* **Create invite,** which will allow you to send an email to the user with his/her login credentials included.
+<Frame caption="User added">![User added](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6815ce5b-add8-4e5a-9b3f-02d40f26e704%2Fuser-added.png&blockId=cbd243f5-cbd1-4750-a300-d58568afe65d&projectId=1032)</Frame>
+
+In the future, if you need to resend the invite, you can select the user from the list and choose the **Resend Invite** action as shown below.
+<Frame caption="Resend invite to a user">![Resend invite to a user](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa1a90911-7100-41b8-82f4-ce01d71f502a%2Fresend-invite-to-user.png&blockId=9c32d89c-c77d-41ca-9070-d1a4c06cfc96&projectId=1032)</Frame>
+
+### **Import users**
+
+To bulk import multiple users, go to **IMPORT USERS** tab:
+
+1. Upload the CSV file that contains your user data.
+
+2. Map `Email` field.
+
+3. (Optional) Map the `Name` field.
+
+4. Select the default login method the users will use to login to the app for the first time. You can choose to generate a temporary password or generate a magic link. We recommend asking them in the invite email to visit their profile and change their password on first login.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffd3c6538-e258-4664-9f81-41bcdcd12f20%2FScreenshot_2023-08-21_at_11.36.37_AM.png&blockId=40d0bf19-5eaf-4d31-b1f0-90a90900f116&projectId=1032)</Frame>
+
+Click **Add Users**, then you can select whether you want to send Invites to all Users now or send invites later.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F173e62fa-2f8a-4b9b-8b4b-166ab8c06895%2FScreenshot_2023-08-21_at_11.38.29_AM.png&blockId=90bcff4f-4aec-41ad-b952-b612df6d0cc0&projectId=1032)</Frame>
+
+Clicking **Invite Now** will open another popup where you can customize the Invite email that will be sent to the users. You can send a test email to yourself to see how it will appear. You can use handles to reference dynamic data within the email as well:
+
+* **@application_name** - will automatically populate the published name of your application
+
+* **@application_hyperlink** - will automatically populate a link to your published application
+
+* **@user_name** - will automatically populate the user’s imported name
+
+* **@user_email** - will automatically populate the user’s imported email
+
+* **@password** - will populate the user’s Softr-generated temporary password, if you chose this option
+
+* **@magic_link** - will populate the user’s Softr-generated magic link, if you chose this option
+<Frame caption="Example email using password handle">![Example email using password handle](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F082d1c6e-c57c-42f0-9dd4-5c31aacf92e3%2FScreenshot_2023-08-21_at_11.38.40_AM.png&blockId=7ad4f20a-c36d-4a73-80b4-40eb78518848&projectId=1032)</Frame><Frame caption="Example email using magic link handle">![Example email using magic link handle](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd2d5ac07-c8ff-4776-b9ea-b5c7e72498da%2FScreenshot_2023-08-21_at_11.41.28_AM.png&blockId=ce2d5095-b7d1-441c-aa3e-e08c69991fa8&projectId=1032)</Frame>

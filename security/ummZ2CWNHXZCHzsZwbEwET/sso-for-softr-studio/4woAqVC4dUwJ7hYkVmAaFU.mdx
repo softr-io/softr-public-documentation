@@ -1,0 +1,79 @@
+---
+title: "SSO for Softr Studio"
+permalink: "4woAqVC4dUwJ7hYkVmAaFU"
+description: "Enable SSO for Softr Studio for more control over collaborators."
+'og:title': "SSO for Softr Studio – Softr Help Docs"
+'og:description': "Enable SSO for Softr Studio for more control over collaborators."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "SSO for Softr Studio – Softr Help Docs"
+'twitter:description': "Enable SSO for Softr Studio for more control over collaborators."
+---
+<Info>
+
+SSO for Softr Studio is available only on the Enterprise plan. Please [Contact Sales](https://www.softr.io/contact-sales) to enable this feature.
+
+</Info>
+
+## Overview
+
+SSO for Softr Studio allows you a Workspace owner to configure Single Sign-On (SSO) for all the collaborators (app-builders) in a Softr Workspace. This allows the workspace owner, organization, or company IT administrator to have more control over who can login and use Softr within a workspace. Softr currently supports SAML and OpenID SSO configurations.
+
+### How is it helpful?
+
+Consider the following scenarios where SSO for Softr Studio might be a benefit for your company:
+
+* Your IT team can provision and de-provision users from your identity provider, ensuring that who can login to Softr rests in your own infrastructure, rather than relying solely on adding or removing them on the Softr side.
+
+* Your company can more easily monitor who is logging in and using Softr and when they do it.
+
+* You can require MFA/2FA in order for employees to login and use Softr to build apps.
+
+* SSO for Softr Studio opens the door for companies to be more secure and compliant with IT best practices and standards.
+
+* You can add Softr as a “supported app” to your company’s app hub, internal dashboard, or identity provider approved vendor list.
+
+## Enabling SSO for Softr Studio
+
+This feature is only available on Enterprise plans. Please [contact sales](https://www.softr.io/contact-sales) to enable this feature. We will ask and provide some information and enable SSO for you manually.
+
+### What information will Softr need?
+
+Softr will provide the callback URLs and audience identifiers. You should be ready to provide us with the following:
+
+* The top-level domain you will be using for SSO (this is usually the email domain of the Softr collaborators)
+
+* A user metadata XML file
+
+* Email key
+
+* First name key
+
+* Last name key
+
+Softr can provide support in setting up and finding this information if you need assistance.
+
+### What identity providers do you work with?
+
+Softr supports any IDp that supports SAML or OpenID-based SSO, such as:
+
+* Okta/Auth0
+
+* Microsoft Entra/Azure
+
+* OneLogin
+
+* Outsetta
+
+* Shibboleth
+
+* Oracle Identity Governance
+
+* Keycloak
+
+* Google Workspace
+
+* … and many more.
+
+### How is SSO for Softr Studio different from SSO for Softr apps?
+
+SSO for Softr Studio is for providing SSO for the collaborators or app builders within a Softr Workspace. SSO for Softr apps is when you want to let the end-users of the applications you’ve built with Softr login using SSO.

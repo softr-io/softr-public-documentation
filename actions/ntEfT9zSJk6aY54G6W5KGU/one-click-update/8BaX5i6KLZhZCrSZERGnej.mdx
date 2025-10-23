@@ -1,0 +1,42 @@
+---
+title: "One-click update"
+permalink: "8BaX5i6KLZhZCrSZERGnej"
+description: "Letting users update records in your data."
+'og:title': "One-click update – Softr Help Docs"
+'og:description': "Letting users update records in your data."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "One-click update – Softr Help Docs"
+'twitter:description': "Letting users update records in your data."
+---
+## Using the One-click Update Action
+
+This [Action Button](/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq), similar to the [Edit Record](/actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx) button, lets your users update records (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) items) in your data. The difference is that, instead of letting the user input data or choose an option, you predefine the value that needs to be applied. Thus, the user only needs to click the button to complete the update.
+
+To set up the button, you need to specify the field (**Field** parameter) that needs to be modified and set the value that will replace the existing value of the field.
+
+There are two ways to use the One-click update action. You can either **Replace a Value** or **Clear a Value**.
+
+* **Replace existing value** - This option will let you set a field value in your datasource, replacing anything already in that field. Selecting this will expose another field where you can select what to replace the value with. You can use a static value, or pick a dynamic value such as Logged in user data, current record data, or even datetime values and URL parameters.
+
+* **Clear value** - This option lets you reset a field in your datasource back to empty, 0, or null, depending on the field type.
+<Frame caption="One-click update setup">![One-click update setup](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F99467a97-169a-4fd6-93e8-da84f47a5257%2FScreenshot_2024-12-18_at_10.44.23_PM.png&blockId=9c760d8b-7761-437c-aa70-bbecdd01b812&projectId=1032)</Frame>
+
+**The Replace existing value with settings are similar to those of the** [**hidden field values**](/actions/ntEfT9zSJk6aY54G6W5KGU/mapping-fields-for-actions/7ukkeMfqspmniU4MQyTiV3).
+
+Let’s consider an example to see this functionality in action.
+
+## Example: Letting a development team users reassign tasks
+
+Let’s say we have a list of tasks for a development team, where each task has an assignee (**Assignee Email** field).
+<Frame caption="List of tasks">![List of tasks](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbffc9d6d-28f5-409d-b31f-556c105ad5d9%2Ftask-list.png&blockId=5aaed009-f59b-49b6-99c5-31a23135ff34&projectId=1032)</Frame>
+
+We are going to add a One-click update button to list items named “Reassign to me,” which will let each user reassign the task to him/her with one click.
+<Frame caption="Adding the button to items">![Adding the button to items](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2d7aaf83-c506-4619-b21c-a04fca6e0fc7%2Fbutton-setup.png&blockId=7f9ca90d-a6d0-4afb-9c21-3aed4f951a46&projectId=1032)</Frame>
+
+Next, we need to add a field to the button, map it to the **Assignee Email** field, and select the **Logged-in user’s Email** as the value.
+<Warning>Note that [computed fields](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX#airtable-computed-fields) will not appear in the list of mappable fields for the form.</Warning>
+<Warning>You cannot add or edit records located in synced tables.</Warning>
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4d92735e-cdd9-4267-b035-ea4bbb152698%2Fassignee-email.png&blockId=a9fee85a-0dc1-4910-97df-bf6dbf0d4c22&projectId=1032)</Frame>
+
+That’s it. Now, let’s log in with one of the development team users and test how this works.
+<Frame caption="Testing the setup">![Testing the setup](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe677fe07-875c-429f-8a43-c3f704649c21%2FScreen_Recording_2023-05-18_at_16.59.47.gif&blockId=8ec566b0-5d19-42e6-8ddc-09fc1ed7d40a&projectId=1032)</Frame>

@@ -1,0 +1,168 @@
+---
+title: "BigQuery"
+permalink: "nGYHP8uHpSH1M3uxjPLwdy"
+description: "Use BigQuery as a data source for your Softr app or dashboard."
+'og:title': "BigQuery – Softr Help Docs"
+'og:description': "Use BigQuery as a data source for your Softr app or dashboard."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "BigQuery – Softr Help Docs"
+'twitter:description': "Use BigQuery as a data source for your Softr app or dashboard."
+---
+BigQuery is a powerful cloud-based data warehouse that enables you to analyze massive datasets quickly. WithSoftr’s BigQuery integration, you can build custom dashboards, reports, and even full-fledged apps tailored to your business needs.
+
+This integration allows you to:
+
+* Create **real-time dashboards** and reports
+
+* Run **custom SQL queries** for deeper insights
+
+* Securely **control access** to data
+
+* Share **data-driven insights** with partners and stakeholders
+
+<Info>BigQuery is available on Business and Enterprise plans.</Info>
+<Warning>
+
+**Important**: **BigQuery is read-only**, so you can’t add, update, or delete data via Softr. This makes blocks like Forms unusable, and you can’t manage or store Softr user data in BigQuery. However, you can still manage user data within Softr.
+
+</Warning>
+
+**Example Use Cases:**
+
+* **Dashboards** – Track **user activity, app performance, and sales trends** in a single dashboard without complex analytics tools.
+
+* **Partner Insights** – Share **product performance data** with vendors using secure, real-time BigQuery dashboards.
+
+<iframe src="https://www.youtube.com/embed/aWCa9JmRh-o?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
+
+## **1. Connect BigQuery to Softr**
+
+To use BigQuery in Softr, you must first **link your account**. Before connecting BigQuery to Softr, make sure you have:
+
+* A **Google Cloud Platform** project with **BigQuery enabled**
+
+* A **dataset** within your BigQuery project
+
+* At least **read-only access** for Softr to your BigQuery dataset
+
+### **Step 1: Open data Ssurces in Softr**
+
+1. Navigate to **Data Sources** in your [**Softr Dashboard**](https://studio.softr.io/dashboard/data-sources).
+
+2. Click **Connect Data Source**.
+<Frame caption="Add, edit, or remove a datasource using the buttons on the dashboard">![Add, edit, or remove a datasource using the buttons on the dashboard](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9f9e368c-2404-4cea-942f-98d400598a9f%2FScreenshot_2024-04-12_at_4.25.04_PM.png&blockId=1b29a723-d691-80b8-a4dc-fad52e1e5bd9&projectId=1032)</Frame>
+
+### **Step 2: Authenticate BigQuery**
+
+1. Select **BigQuery** from the list of available data sources.
+
+2. Follow the on-screen prompts to authenticate with **Google OAuth**.
+
+3. **Grant Softr the necessary read-only permissions** to your BigQuery datasets.
+
+## **2. Connect your BigQuery data to the Softr app**
+
+Once connected, you can use your BigQuery data to build dashboards and display records in your Softr apps.
+
+### **Step 1: Connect your data to a dynamic block**
+
+To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), Chart) to your BiqQuery table:
+
+1. Go to the Block **source** **tab** and select your BigQuery integration.
+
+2. Select the **project** and **dataset** you want to connect.
+
+3. Pick the **table** you want to use or **create a new** **query**
+
+4. Optionally, select the **primary field**.<br/>
+   <Frame caption="Connect BigQuery to a dynamic block">![Connect BigQuery to a dynamic block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fedc30ac2-a7e8-4986-ab4a-27d54917feab%2FGroup_8_%282%29.png&blockId=1b29a723-d691-8002-b900-d3cb4dbf2a2b&projectId=1032)</Frame>
+
+### **Step 2: Map BigQuery fields to Softr fields**
+
+When you connect your table to a block, you can choose which BigQuery **properties** to display and map to a Softr field. This lets you control how your data appears in Softr.
+
+**Example:** If you have a **date** in BigQuery, map it to **grouping** in Softr.
+<Frame caption="Mapping fields from BigQuery to Softr">![Mapping fields from BigQuery to Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F69bfd2e7-f157-4ca1-88db-0aff664e2aa0%2FGroup_8_%283%29.png&blockId=1b29a723-d691-8020-9cd1-e867254c67b9&projectId=1032)</Frame>
+
+### **Custom SQL Queries (Optional)**
+
+You can use **Softr’s built-in query editor** to write SQL queries directly against your BigQuery dataset for advanced data analysis.
+
+1. Write and run **custom queries** inside Softr.
+
+2. Connect query results to **dynamic blocks** to display **custom tables and visualizations**.
+
+## **Troubleshooting**
+
+If you encounter errors while connecting BigQuery to Softr, check for these common issues:
+
+### **Error: Something went wrong “Access Denied”**
+
+<Columns cols={2}>
+<Frame caption="Important part of error in text: 'Access Denied:
+BigQuery BigQuery: Permission denied while globbing file pattern.',">![Important part of error in text: "Access Denied:
+BigQuery BigQuery: Permission denied while globbing file pattern.",](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ffc085bb5-deb6-423d-8d5c-d3a72b66fa5d%2F9d50fe98-a22e-4673-8f5a-285a0c2e95f1.png&blockId=1b29a723-d691-80e0-b7a5-f6a466ec7b77&projectId=1032)</Frame>
+<Frame caption="Important part of error in text: 'Access Denied:
+BigQuery BigQuery: Permission denied while getting Drive credentials.',">![Important part of error in text: "Access Denied:
+BigQuery BigQuery: Permission denied while getting Drive credentials.",](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F5a97345e-bf27-4586-8138-e4d8ac7f2e52%2F46706e7f-eaef-4fb0-8abf-bbd46c39540a.png&blockId=1b29a723-d691-8071-b966-f1ffe47e2558&projectId=1032)</Frame>
+</Columns>
+
+**Cause:** BigQuery **external tables** (from Google Drive, Sheets, or Cloud Storage) require additional permissions that Softr does not request.
+
+**Internal vs external tables**
+
+In BigQuery, while creating a table in some cases user can decide or has only the option to create an external datasource.
+<Frame caption="user might have the option to or be forced to create an “external table”. Table creation dialog, BigQuery console.">![user might have the option to or be forced to create an “external table”. Table creation dialog, BigQuery console.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F411e266f-0436-4581-b7cc-b6f81b4f079f%2FUntitled.png&blockId=1b29a723-d691-8021-a428-eb63c449633a&projectId=1032)</Frame>
+
+External tables are forced or available when a user creates a table from:
+
+* A file on Google Drive with supported format (CSV, Avro, …)
+
+* A Google Sheet document
+
+* A file on Google Cloud Storage
+
+If the user goes for an external table in these cases, trying to integrate such a table with Softr will give them an error message similar to those mentioned above.
+
+To identify an existing table as either internal or external, one could take a look at table details and would see an “External data configuration” section for external tables similar to the following:
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fd740879e-b07d-419e-aad3-95700cc4349c%2FUntitled.png&blockId=1b29a723-d691-802e-82f6-cd6a4fed5c5a&projectId=1032)</Frame>
+
+**Solution 1: Use a Native Table**
+
+To avoid issues, set the table type to **Native Table** when creating it (if available).
+
+<Warning>
+
+**Note:** A Native Table **won’t sync** with the original source, so any updates to the external source **won’t be reflected** in Softr.
+
+</Warning>
+
+**Solution 2: Copy the External Table**
+
+If using a Native Table isn’t an option, create a **duplicate** of the external table as a new **Native Table** and use that in Softr.
+
+📌 **SQL Example:**
+
+```sql
+sql
+CopyEdit
+CREATE TABLE native_table_copy AS
+SELECT * FROM external_table;
+```
+
+<Warning>
+
+**Downside:** This method **duplicates data**, which may increase storage costs.
+
+</Warning>
+
+### Error: Google BigQuery does not stay connected to Softr
+
+This issue is caused by the Reauthentication Policy settings in Google Admin console.
+
+To resolve things you can:
+
+Set Softr as a Trusted App and then exempt Trusted Apps from reauthentication.<br/>
+Alternatively, you can change the settings to never require reauthentication for any app.
+
+See this link ([https://support.google.com/a/answer/9368756](https://support.google.com/a/answer/9368756)) for more details on this. Once you have changed your settings in Google Admin, please reconnect your Google account with Softr.

@@ -1,0 +1,162 @@
+---
+title: "Related Record, Lookup, and Rollup Fields"
+permalink: "57RHfyrVrnNoojNtczw14L"
+description: "Fields for working with linked data across tables."
+'og:title': "Related Record, Lookup, and Rollup Fields – Softr Help Docs"
+'og:description': "Fields for working with linked data across tables."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Related Record, Lookup, and Rollup Fields – Softr Help Docs"
+'twitter:description': "Fields for working with linked data across tables."
+---
+You can use related record, lookup, and rollup fields in Softr to manage and display data across tables in your Database. These field types allow you to connect data, pull information from related records, and perform calculations or aggregations, enhancing the functionality of your Softr Databases and Softr Apps.
+
+## Related Records
+
+A related record field (also known as a relationship field) allows you to connect records between two tables in a Softr Database. By establishing linked records, you can reference data from one table in another, creating dynamic connections between datasets.
+
+### How to Set Up a Related Record Field
+
+1. Navigate to Your Database: Open your Softr Database and select the table where you want to add a related record field.
+
+2. Add a New Field: Click the "+" icon in the table header to create a new field.
+
+3. Choose Related Record Field Type: Select “Related record” from the field type dropdown.
+
+4. Link to Another Table: Choose the target table in your Database to link to. For example, if you have a "Tasks" table and a "Users" table, you can link each task to a specific employee housed in your Users table.
+
+5. Configure the related record field:<br/>
+   * Softr will automatically create a corresponding related record field in the linked table.
+   * Decide if the relationship is one-to-one, one-to-many, or many-to-many by toggling the “Allow Linking to Multiple Records” toggle on the related record fields in both tables.
+
+6. Save: Name the field(s) and click Save.<br/>
+   <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9fbf86b8-9cf6-4268-a4f9-0e1cbc4a03f9%2FScreenshot_2025-07-17_at_10.45.48_AM.png&blockId=2159a723-d691-8085-957a-c77812a80acd&projectId=1032)</Frame>
+
+### Example Use Case
+
+* Database Setup: You have a "Tasks" table and an "Employees" table.
+
+* Relationship: Create a related record field in the "Tasks" table to assign each task to an employee from the "Employees" table.
+
+* Result: Each task record can now display the assigned employee’s name, and the "Employees" table can show all tasks assigned to each employee.
+
+### Tips
+
+* Use related record fields to avoid duplicating data across tables.
+
+* Related record fields are bidirectional, so changes in one table will reflect in the linked table.
+
+## Lookup Fields
+
+A lookup field pulls data from a related table via Related record field. It allows you to display specific fields from related records without manually copying the data.
+
+### How to Set Up a Lookup Field
+
+1. Ensure a Related record field Exists: You must have a related record field connecting two tables (e.g., "Projects" linked to "Clients").
+
+2. Add a Lookup Field: In the table with the Related record field, click **Add field** to add a new field and select **Lookup**.
+
+3. Select the Source: Choose the Related record field that connects to the target table.
+
+4. Choose the Field to Display: Select the specific field from the linked table you want to display (e.g., "Client Name" or "Client Email").
+
+5. Save: Name the lookup field and save.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9bc30c62-ea08-412e-a0c7-2bca0fe537a0%2FScreenshot_2025-07-17_at_10.46.33_AM.png&blockId=2159a723-d691-8005-bebb-c22363ddd1f5&projectId=1032)</Frame>
+
+### Example Use Case
+
+* Database Setup: The "Projects" table has a Related record field linking to the "Clients" table.
+
+* Lookup Field: Create a lookup field in the "Projects" table to display the "Client Phone Number" from the linked client record.
+
+* Result: Each project record now shows the client’s phone number alongside other project details.
+
+### Tips
+
+* Lookup fields are ***read-only*** and update automatically when the source data changes.
+
+* Use lookup fields to display supplementary information without cluttering your table with manual entries.
+
+## Rollup Fields
+
+A rollup field aggregates or transforms data from a related table using a formula. It builds on a Related record field and allows you to summarize, count, or manipulate data from linked records.
+
+### How to Set Up a Rollup Field
+
+1. Ensure a Related record field exists: You need a Related record field connecting two tables.
+
+2. Add a Rollup Field: In the table with the related record field, click the "+" icon and select Rollup.
+
+3. Select the Source: Choose the related record field that links to the target table.
+
+4. Choose the Field to Roll Up: Select the field from the linked table you want to aggregate (e.g., "Task Status" or "Invoice Amount").
+
+5. Define the Formula: Specify how to aggregate the data. Options include:<br/>
+   * **MIN:** Finds and displays the minimum numeric value of a list of related records for a specific field.
+   * **MAX:** Finds and displays the maximum numeric value of a list of related records for a specific field.
+   * **SUM:** Adds all numeric values of a specific field for a list of related records
+   * **AVERAGE:** Averages all numeric values of a specific field for a list of related records
+   * **COUNT:** Counts the number of non-empty numeric values for a list of related records
+   * **COUNTA:** Counts the number of non-empty text or numeric values for a list of related records
+   * **COUNTALL:** Counts the number of all values (even empty ones) for a list of related records
+   * **ARRAYJOIN:** Concatenates all elements into a single string separated by semicolons (e.g. [1, 2] → "1; 2")
+   * **ARRAYUNIQUE:** Removes duplicate items, preserving the first occurrence of each.
+   * **ARRAYCOMPACT:** Strips out blank/empty/NULL elements.
+   * **ARRAYFLATTEN:** Flattens nested arrays one level (e.g. [[1],[2,3]] → [1,2,3])
+
+6. Save: Name the rollup field and save.<br/>
+
+   <Tip>
+      If you only need to count the number of related records, use the COUNTALL function.
+   </Tip>
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff576101e-69f6-4900-af10-0aeaf614e756%2FScreenshot_2025-07-17_at_10.47.21_AM.png&blockId=2159a723-d691-80a3-bde4-ca977b107378&projectId=1032)</Frame>
+
+### Example Use Case
+
+* Database Setup: The "Project" table is linked to the "Invoices" table via a related record field.
+
+* Rollup Field: Create a rollup field in the "Clients" table to calculate the total "Invoice Amount" for all invoices linked to each client.
+
+* Formula: Use **SUM** to add up the invoice amounts.
+
+* Result: Each project record displays the total invoiced amount for a given project.
+
+### Tips
+
+* Rollup fields are dynamic and update when related records change.
+
+* Use rollup fields for calculations like totaling values, counting records, or filtering arrays of data
+
+## Key Differences and When to Use Each
+
+|  |  |  |
+| --- | --- | --- |
+| **Field Type** | **Purpose** | **When to Use** |
+| Related Record | Connects records between two tables. | To link related data, such as assigning tasks to employees or projects to clients. |
+| Lookup | Displays data from a related table’s field. | To show additional details from related records, like a client’s contact info in a project table. |
+| Rollup | Aggregates or transforms data from related records. | To summarize or calculate data, such as totaling invoices or counting completed tasks. |
+
+## Best Practices
+
+* Plan Your Database Structure: Before adding related record fields, map out how your tables should connect to avoid redundant links. Think about the “nouns” of your application and avoid using adjectives in your table names - save those for Category, Type, or Status fields.
+
+* Use Descriptive Field Names: Clearly name related record, lookup, and rollup fields to make their purpose obvious (e.g., "Related Client Name" or "Total Invoice Rollup").
+
+* Test Formulas in Rollups: Double-check rollup formulas to ensure they produce the expected results, especially for complex aggregations.
+
+* Limit Lookup and Rollup Fields: Too many can slow down your Database, so only include what’s necessary for visibility in your app.
+
+## Troubleshooting
+
+* Related Record Field Not Showing Records: Ensure both tables are in the same Database and that the related record field is correctly configured.
+
+* Lookup Field Is Blank: Verify that the related record field has linked records and that the target field in the linked table contains data.
+
+* Rollup Field Shows Errors: Check the formula being used and ensure the source field in the linked table has compatible data (e.g., numbers for SUM, MIN, etc.).
+
+## Additional Resources
+
+* [Softr Academy](https://academy.softr.io/): Visit the Softr Academy to take full courses on building Softr apps.
+
+* [Community Forums](https://community.softr.io/): Join the Softr community to ask questions and share tips.
+
+* Support: Contact Softr support at support@softr.io if you get stuck with your Database setup.

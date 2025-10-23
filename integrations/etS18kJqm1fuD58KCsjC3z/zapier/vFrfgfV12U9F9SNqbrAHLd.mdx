@@ -1,0 +1,72 @@
+---
+title: "Zapier"
+permalink: "vFrfgfV12U9F9SNqbrAHLd"
+description: "Zapier allows end users to integrate the web applications they use and automate workflows."
+'og:title': "Zapier – Softr Help Docs"
+'og:description': "Zapier allows end users to integrate the web applications they use and automate workflows."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Zapier – Softr Help Docs"
+'twitter:description': "Zapier allows end users to integrate the web applications they use and automate workflows."
+---
+## "Send to Zapier" Action
+
+The Zapier integration is available through a **Send to Zapier** action, which can be selected for the [form](/4876cbed455842aebe38e0612d2da96e) submission button.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F665e23cb-e818-45e9-881c-861818824c02%2Fsend-to-zapier-action.png&blockId=a44d00ee-1ead-445c-9384-180325b18bda&projectId=1032)</Frame>
+
+After selecting the action, a field titled **Zapier** will appear below. Here, you will need to add the **custom webhook URL**, which we’ll discuss shortly.
+<Frame caption="Custom webhook URL">![Custom webhook URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb5c8df2e-a8a2-450c-b1f2-224089c57e5b%2Fwebhook-url-field.png&blockId=d9ea6f32-e657-4c87-aefc-a966c4384bc3&projectId=1032)</Frame>
+<Tip>Please, note that if you have a **File** field in your form, the attached file(s) won't be transferred to Zapier. As a workaround, we'd suggest using links (e.g. a Google Drive link) for sending files.</Tip>
+
+## Creating a ZAP
+
+Next, you need to go to your Zapier account and hit the **MAKE A ZAP** button in the upper left corner.
+<Frame caption="“Make a Zap” button">![“Make a Zap” button](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8eeef07f-9cb1-4ced-9f77-4c20eda6c327%2Fmake-zap.png&blockId=2b9d7821-49b2-4fe4-a077-4df47e767928&projectId=1032)</Frame>
+
+In the app event search bar, look for the **Webhooks by Zapier** app and select it.
+<Frame caption="Locating “Webhooks by Zapier”">![Locating “Webhooks by Zapier”](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7dc77243-43e0-43d9-89ce-fafc73cf4fcf%2Fwebhooks-by-zapier.png&blockId=2eb3f62b-648b-4574-84ac-632c9c2fd9cb&projectId=1032)</Frame>
+
+Then, select **Catch Hook** as a **Trigger Event** and hit **Continue**.
+<Frame caption="“Catch Hook” trigger event">![“Catch Hook” trigger event](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F85790ef9-f906-4096-9824-d8eccb58386b%2Fcatch-hook-trigger-event.png&blockId=c07db632-7591-4fe8-8b82-abb745e70189&projectId=1032)</Frame>
+
+In the following step, you’ll get a **Custom Webhook URL**, which you need to copy and add it back in the Zapier field of your button action.
+<Frame caption="Getting Custom Webhook URL">![Getting Custom Webhook URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5eabc464-6ebf-4250-85cb-bced6a413658%2Fgetting-custom-webhook-url.png&blockId=044d160e-f352-4ce7-9dbf-dc5ccd721550&projectId=1032)</Frame>
+
+## Entering the URL back in Softr Studio
+
+Navigate back to Softr Studio, enter the copied URL as a value in the Zapier field.
+<Frame caption="Entering Custom Webhook URL">![Entering Custom Webhook URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdc05691b-2332-41f3-84d1-764fd2017ab0%2Fentering-custom-webhook-url.png&blockId=2ca94f5d-d0b5-4ad9-92c7-f193a3b676fd&projectId=1032)</Frame>
+
+Now, you can click to send test data to make sure it's working.
+<Frame caption="Sending test data">![Sending test data](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2d28c05f-615a-4d7e-ad29-fd174360a884%2Fsend-test-data.png&blockId=ad647783-d148-40f9-98ff-c81065323674&projectId=1032)</Frame>
+
+## Checking the Results in Zapier
+
+After sending test data, go back to your Zap setup and proceed to the next step. There you should see a **Test trigger** button.
+<Frame caption="Testing the trigger">![Testing the trigger](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcbc31358-9edb-4924-bfe5-b8b3d0681ae3%2Ftest-trigger.png&blockId=3371a362-2682-4ec8-a786-a671ee7af666&projectId=1032)</Frame>
+
+If after hitting the button your request is found, as shown in the screenshot below, then the integration has been successful, and the only thing left is to click **Continue** to go to the next step in your Zap setup and configure the application to which you want your data to be sent to.
+<Frame caption="Test trigger success">![Test trigger success](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F47f9890d-5efd-4762-9c01-465382528f00%2Fsuccessful-trigger-test.png&blockId=2612b7af-6c6d-4be2-bb5a-9b8c4bc409f5&projectId=1032)</Frame>
+
+## Sending Data to Google Sheets
+
+In the next step, you need to define the action that the zap needs to accomplish. Let's assume, we want to send the form data to Google Sheets, creating a new row within the sheet for every submission. If for instance, we use the Simple Contact Form, we should have corresponding columns in the sheet to map the fields.
+<Frame caption="A contact form on Softr">![A contact form on Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Febbbe49c-af6c-4579-bda8-05595225c326%2Fsoftr-form.png&blockId=7ab75480-9354-4c14-b42e-73ce2428f6e5&projectId=1032)</Frame><Frame caption="Corresponding fields on Google Sheets">![Corresponding fields on Google Sheets](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffee720c4-94e1-4616-bd35-011e73838e62%2Fgoogle-sheets-fields.png&blockId=79de4d2b-1795-442f-9f03-570a7463077e&projectId=1032)</Frame>
+
+So, in the next **Action** step, we need to choose the Google Sheets app, set **Create Spreadsheet Row** as an **Action Event**, and hit Continue.
+<Frame caption="Selecting Google Sheets under Action">![Selecting Google Sheets under Action](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F557c6f07-fa5c-4a69-91e7-4eeb1126b43a%2Fselecting-google-sheets-event.png&blockId=46b8d61a-6523-4289-a967-4cfb42dcb263&projectId=1032)</Frame><Frame caption="Choosing an event">![Choosing an event](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F35795138-eb8b-45c8-90e8-773e3ceea315%2Fchoose-event.png&blockId=fa805ed9-de15-4a22-a078-c0f203aa36f0&projectId=1032)</Frame>
+
+In the next step, you need to add your Google account (if it hasn't been added yet) to get access to Google Sheets.
+<Frame caption="Connecting Google Sheets account">![Connecting Google Sheets account](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F16e2db83-4de1-44b9-ba61-22eed7067ac0%2Fadding-google-account.png&blockId=4c924f41-0bb1-4c24-8986-3dcb6a721737&projectId=1032)</Frame>
+
+In the next step, you need to add the Google drive where your spreadsheet is located, and select the spreadsheet and worksheet you want to send the data to. Lastly, you need to map the form fields to the corresponding worksheet columns, as shown below.
+<Frame caption="Adding Google Sheets details">![Adding Google Sheets details](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F97055352-852f-41a4-8dee-a4ee0007fec8%2Fgoogle-sheets-details.png&blockId=3b425f21-b106-44fe-aedf-c00a8d9242e6&projectId=1032)</Frame>
+
+## Testing the integration
+
+Proceed to the next step, and you're almost done. You just need to test the action to make sure it's working correctly.
+<Frame caption="Running a test automation">![Running a test automation](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe2bf62b9-8a30-412f-a34f-8fe83c971ae9%2Frunning-test-automation.png&blockId=24a44b01-cffc-47bc-a295-342ec83f095c&projectId=1032)</Frame>
+
+If the test was successful, you should see a success message in the next step and your spreadsheet should be updated with the test data, as shown below.
+<Frame caption="Test submission received">![Test submission received](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8a2daae9-027b-4d7e-9c65-264742d79875%2Ftest-submission-received.png&blockId=634d1600-6b3b-41ff-9c12-a86ac7ad7717&projectId=1032)</Frame>
+
+The form is now linked to the spreadsheet and you can start receiving submissions.

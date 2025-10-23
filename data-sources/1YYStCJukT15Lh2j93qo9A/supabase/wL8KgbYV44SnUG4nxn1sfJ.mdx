@@ -1,0 +1,128 @@
+---
+title: "Supabase"
+permalink: "wL8KgbYV44SnUG4nxn1sfJ"
+description: "Connect Supabase to your Softr apps to interact with your data."
+'og:title': "Supabase – Softr Help Docs"
+'og:description': "Connect Supabase to your Softr apps to interact with your data."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Supabase – Softr Help Docs"
+'twitter:description': "Connect Supabase to your Softr apps to interact with your data."
+---
+Supabase is a powerful open-source backend-as-a-service platform that allows you to store, manage, and query your data effortlessly. By integrating Supabase with Softr, you can seamlessly use your Supabase database in your Softr applications.
+
+This integration allows you to:
+
+* Store and retrieve structured data dynamically
+
+* Use real-time updates in your Softr apps
+
+* Securely manage and scale your backend
+
+<Info>Supabase is available on **Professional** and higher plans.</Info>
+
+<iframe src="https://www.youtube.com/embed/3xckjKoi6pU?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
+
+## **1. Connect Supabase to Softr**
+
+To use Supabase in Softr, you need to connect your Supabase project as a data source.
+
+### **Step 1: Select your Supabase project**
+
+1. **Log in to Supabase** and go to the **dashboard**.
+
+2. Click on the **project** you want to connect to Softr.<br/>
+   <Frame caption="Click on the project you want to connect to Softr">![Click on the project you want to connect to Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F98abc264-1615-4a2a-8917-37e04fbed382%2F7bd9eaac-6513-4745-9876-3f0bf7c3d9d8.png&blockId=1ad9a723-d691-80d5-8576-e08671d5e041&projectId=1032)</Frame>
+
+### **Step 2: Configure project settings**
+
+1. Click the **Connect** button at the top of the project settings page.<br/>
+   <Frame caption="Click on Project settings in the bottom left menu">![Click on Project settings in the bottom left menu](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F6b912805-0cb2-4a43-86a4-a2a11b0631f7%2FScreenshot_2025-02-14_at_9.31.04_AM.png&blockId=1ad9a723-d691-807d-8b94-ef8b8ca3e910&projectId=1032)</Frame>
+
+2. Change the **Type** to **PSQL**.
+
+3. Open the **View parameters** dropdown under the **Session Pooler** section.<br/>
+   <Frame caption="Click on the Database tab under Configuration">![Click on the Database tab under Configuration](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F982e3515-a64b-463b-9e52-0c71d48d8413%2FScreenshot_2025-02-14_at_9.32.21_AM.png&blockId=1ad9a723-d691-805f-a6b3-c44e199423f3&projectId=1032)</Frame>
+
+### **Step 3: Copy your supabase credentials**
+
+1. Locate the **Configuration Parameters** section.
+
+2. Copy and securely store the following credentials:<br/>
+   * **Host**
+   * **Database**
+   * **Port** (default is `5432`)
+   * **User**
+   * **Password** (usually the project password)<Frame caption="Find the Connection parameters section and copy down the credentials">![Find the Connection parameters section and copy down the credentials](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fbc0be26e-1c31-4524-a5be-4b5803230f5d%2FScreenshot_2025-02-14_at_9.32.57_AM.png&blockId=1ad9a723-d691-8074-b210-cd8f5c72eefc&projectId=1032)</Frame>
+
+### Step 4: Set the Pool Size
+
+Setting the pool size ensures your Supabase database can support multiple connections from Softr at the same time. You set this number to 45 ***or greater***.
+
+1. Click on Project Settings
+
+2. Click on Database
+
+3. Type in the pool size number (should be 45 or greater)
+
+4. Click Save
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F332c2152-dd2b-418a-b59b-a96e5401a2c6%2FScreenshot_2025-03-07_at_1.34.43_PM.png&blockId=1af9a723-d691-8023-aa7b-eea6a280732e&projectId=1032)</Frame>
+
+### **Step 5: Connect Supabase to Softr**
+
+1. **Log in to Softr** and go to **Data Sources** in the left-hand menu.
+
+2. Click the **Connect Data Source** button in the upper-right corner.
+
+3. Select **Supabase**, then click **Continue**.
+<Frame caption="Click on Connect Datasource">![Click on Connect Datasource](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F427359d9-2f8b-4af3-b8b7-39d1efb8e4dd%2FScreenshot_2024-05-30_at_9.17.06_AM.png&blockId=1ad9a723-d691-8052-b6fd-e950a57ab83c&projectId=1032)</Frame>
+
+### **Step 6: Enter your Supabase credentials in Softr**
+
+1. Copy and paste your Supabase credentials into the appropriate fields in Softr:<br/>
+   * **Host**
+   * **Database**
+   * **Port** (`5432` by default)
+   * **User**
+   * **Password**
+
+2. Enter a **custom name** for your connection (optional).
+
+3. Click **Connect** to complete the setup.
+<Frame caption="Fill in the fields with the info from Supabase, then click Connect in the lower Right">![Fill in the fields with the info from Supabase, then click Connect in the lower Right](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fcbc16110-8fdd-4b67-befa-f7cee6534c88%2FScreenshot_2024-06-03_at_3.43.16_PM.png&blockId=1ad9a723-d691-80cc-8c9e-f6bc0e3639e8&projectId=1032)</Frame>
+
+You should end up with something like this:
+<Frame caption="Example connection information">![Example connection information](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F7d39fdfb-0e50-49e4-9f29-73f295cc39c5%2FScreenshot_2024-06-03_at_3.46.39_PM.png&blockId=1ad9a723-d691-8086-9149-f8b04ce848a8&projectId=1032)</Frame>
+
+### **Step 7: Restrict IP Access (Optional)**
+
+If you need to restrict IP addresses inside Supabase, add **Softr’s IP addresses** to your allowed list:
+
+* `3.120.79.212`
+
+* `3.123.159.186`
+
+* `52.58.246.121`
+
+## **2. Connect your Supabase data to your Softr app**
+
+Once your Supabase account is connected, you can use it in any Softr application.
+
+### **Step 1: Connect your data to a dynamic block**
+
+To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your Supabase table:
+
+1. Go to the Block **source** **tab** and select your Supabase integration.
+
+2. Select the **database** and **schema** you want to connect.
+
+3. Pick the **table** you want to use or **add a new** **query**
+
+4. Optionally, select the **primary field**.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F59857417-0b7c-42b0-b0ab-501f80ad857f%2FCleanShot_2025-03-05_at_11.37.512x.png&blockId=1ad9a723-d691-803a-8542-c578f154d7c8&projectId=1032)</Frame>
+
+### **Step 2: Map Supabase fields to item fields**
+
+When you connect your table to a block, you can choose which Supabase **properties** to display and map to a Softr field. This lets you control how your data appears in Softr.
+
+**Example:** If you have an **email field** in Supabase, select **an email field** in Softr.
+<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F07282c23-9161-40f2-a04e-bef8bab74422%2FCleanShot_2025-03-05_at_15.28.182x.png&blockId=1ad9a723-d691-802a-b68b-f80eb63d355b&projectId=1032)</Frame>

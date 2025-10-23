@@ -1,0 +1,129 @@
+---
+title: "Softr App Security"
+permalink: "1xC7Hgkvo67AnHKyebr1uC"
+description: "How to make your Softr app secure."
+'og:title': "Softr App Security – Softr Help Docs"
+'og:description': "How to make your Softr app secure."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Softr App Security – Softr Help Docs"
+'twitter:description': "How to make your Softr app secure."
+---
+We take the security of your Softr application very seriously and are committed to providing a fully secure no-code platform.
+
+We have implemented a few levels of security, all being performed server side (many alternatives do client-side hiding only), giving no chance to modify queries on the client side and access more data than the system is configured to expose.
+
+These measures include:
+
+* Dynamically evaluating on the server side which user belongs to which user groups.
+
+* Dynamically evaluating block and page visibility rules on the server side and rendering them only when the current user is eligible to see the pages and blocks.
+
+* Dynamically evaluating data conditional filters on the server side and retrieving only the records that the current user is eligible to see.
+
+* Working only with the tables and fields that have been configured within blocks.
+
+* Working with your datasource via API and short-term caching, hence avoiding creating yet another copy of your data
+
+<Info>Communication between the server side and [data sources](/4230abecf813402aa2926466c313290a?pvs=25) goes via HTTPS (Hypertext Transfer Protocol Secure), ensuring encryption during transfer.</Info>
+
+This being said, apps could be missing configurations, partially configured, or with mistakes that could result in unintentional data exposure. Below we will highlight a few use cases, do’s and don’ts, and implementation details to help you make the best possible security decisions when building your apps and organizing your data.
+
+<Note>Security audit is available for users on the [Enterprise plan](https://www.softr.io/pricing).</Note>
+
+## **Publicly visible pages and blocks**
+
+Suppose an app creator creates a VC portal to showcase their portfolio companies publicly. They will create a publicly visible page with a list block connected to an Airtable/Gsheet table containing the list of companies.
+
+**Do’s**
+
+* Share data publicly only after careful consideration; publicly shared data is public and could be scrapped by anyone.
+
+* Make your datasource table (Airtable, Gsheet, ….) contain only publicly shareable data.
+
+**Don’ts**
+
+* Use Airtable views and Gsheet filters as security measures.
+
+* Store non-publicly shareable data in the same table as publicly shareable data.
+
+* Use Softr block’s item per page as a security measure.
+
+## **Member-only visible pages and blocks**
+
+Suppose an app creator creates a VC portal to list member-only perks. They will create a page visible to logged-in users only (members) with a list block visible to logged-in users only (members) connected to an Airtable/Gsheet table containing the list of perks.
+
+**Do’s**
+
+* Add page or block visibility for logged-in users and, if needed, add visibility for custom user groups.
+
+* Make your datasource table (Airtable, Gsheet, ….) contain member-only data.
+
+* Test the system with logged-in and non-logged-in users, and check what you can see before you publish your app to live.
+
+**Don’ts**
+
+* Use a signup block if outside members shouldn’t signup and access the data.
+
+* Put the gated content on the page and block which are visible to all users.
+
+* Use Airtable views and Gsheet filters as security measures.
+
+* Use Softr block’s item per page as a security measure.
+
+* Store non-member/publicly shareable data in the same datasource table (Airtable, Gsheet, ….) as member-only data
+
+## **Role-only visible pages and blocks**
+
+Suppose an app creator creates a VC portal that allows scouts to submit deals and lets VCs view a list of potential deals.
+
+The creator will create two user groups for each role: **Scouts and VCs.** They will then create a page exclusively visible to Scouts, including a Form block for submitting data to Airtable/Gsheet, also visible only to Scouts. In addition, the creator will create a page and list block visible only to VCs, which will be connected to an Airtable/Gsheet table containing the list of deals submitted via the form above.
+
+**Do’s**
+
+* Create custom user groups and add a page or block visibility for custom user groups.
+
+* Make your datasource table (Airtable, Gsheet, ….) contain custom group specific data.
+
+* Test the system with logged-in and non logged-in users, with users from each user group, and check what you can see before you publish your app to live.
+
+**Don’ts**
+
+* Use a signup block if outside members shouldn’t signup and access the data.
+
+* Put the gated content on the page and block which are visible to all users.
+
+* Use Airtable views and Gsheet filters as security measures.
+
+* Use Softr block’s item per page as a security measure.
+
+* Store non-member/publicly shareable data in the same datasource table (Airtable, Gsheet, ….) as member-only and custom group specific data
+
+## **Record ownership**
+
+Suppose an app creator creates the same portal and scenario as above and, in addition, creates a page and list block visible only to Scouts, which will be connected to an Airtable/Gsheet table containing the list of deals submitted via the form above and will be showing only deals submitted by logged in scout.
+
+**Do’s**
+
+* Create custom user groups and add a page or block visibility for custom user groups.
+
+* Create a conditional filter on the list and list detail blocks where the record’s attribute, e.g., email is the same as the logged-in user's attribute, e.g., email.
+
+* Make your datasource table (Airtable, Gsheet, ….) contain custom group specific data.
+
+* Test the system with logged-in and non logged-in users, with users from each user group, and check what you can see before you publish your app to live.
+
+**Don’ts**
+
+* Use a signup block if outside members shouldn’t signup and access the data.
+
+* Put the gated content on the page and block which are visible to all users.
+
+* Use Airtable views and Gsheet filters as security measures.
+
+* Use Softr block’s item per page as a security measure.
+
+* Store non-member/publicly shareable data in the same datasource table (Airtable, Gsheet, ….) as member-only and custom group specific data
+
+<Tip>Note that Softr viability checks and record conditional filters are applied on the server side, and there is no way to trick the system.</Tip>
+
+We are constantly working on improving the security of Softr systems and are very committed to creating The Easiest yet most Powerful and Secure no-code platform.

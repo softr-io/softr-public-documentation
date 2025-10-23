@@ -1,0 +1,60 @@
+---
+title: "Mapping Fields for Actions"
+permalink: "7ukkeMfqspmniU4MQyTiV3"
+description: "Mapping the fields manipulated by the Action Button."
+'og:title': "Mapping Fields for Actions – Softr Help Docs"
+'og:description': "Mapping the fields manipulated by the Action Button."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Mapping Fields for Actions – Softr Help Docs"
+'twitter:description': "Mapping the fields manipulated by the Action Button."
+---
+When setting up an [Action Button](/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq) such as an [Add Record](/actions/ntEfT9zSJk6aY54G6W5KGU/add-record/3LrUMpQY4BKfDDQj6eb8h8) or [Update Record](/actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx), you need to specify which fields in your [data source](/4230abecf813402aa2926466c313290a) the button can manipulate. Thus, you need add all those field types and link them to corresponding fields in your data source.
+
+You can add a new field using the **Add field** button in action button settings.
+<Warning>Note that [computed fields](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX#airtable-computed-fields) will not appear in the list of mappable fields for the form.</Warning>
+<Frame caption="Add field button">![Add field button](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbce40b53-d30a-4551-8e22-c74baebc84cd%2Fadd-field.png&blockId=76c2bb1d-1f40-46ab-8e1e-9aa1a761850c&projectId=1032)</Frame>
+
+Next, you need to select the field type and map it to the corresponding field in your data source.
+
+You can also add a **Label** and **Placeholder**.
+<Frame caption="Mapping the field">![Mapping the field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9caa504c-ffc9-4bff-bf7c-afb8beae1ad9%2Ffield-mapping.png&blockId=1d7b3ef0-4c29-4b36-9f74-d3fe8a4c1b79&projectId=1032)</Frame>
+
+There is also a **Required** toggle, which, if enabled, makes it obligatory for the user to fill in the value for the given field when adding a new record or updating it.
+
+## Hidden Fields
+<Frame caption="Hidden field under Add Record action">![Hidden field under Add Record action](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc616c6eb-34c1-4146-a7bc-791c3542a8d7%2Fhidden-action.png&blockId=61b95d0f-81c5-4447-89c3-38bf4146f147&projectId=1032)</Frame>
+
+Hidden fields let you collect data that’s not explicitly entered by the user (e.g. user profile data or a parameter from the page URL). Hidden fields are available on various actions such as [Add Record](/actions/ntEfT9zSJk6aY54G6W5KGU/add-record/3LrUMpQY4BKfDDQj6eb8h8) or [Update record](/actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx).
+
+The mapping for hidden fields works similar to other regular fields, so you simply need to select the field in your data source that’s going to receive the value. Now, let’s discuss the types of values you can collect through hidden fields. There are **4 categories**, so let's examine them one by one.
+
+### **1. Logged-in user**
+
+By default, here, you have the following options:
+
+* **Email.** Collects the email address of the logged-in user.
+
+* **Name.** Collects the name of the logged-in user.
+
+* **Record ID.** If you've [connected a data source to your users database](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9), you can choose this option to collect the Record ID (you can learn about Airtable Record IDs [here](https://support.airtable.com/hc/en-us/articles/360051564873-Record-ID), and learn how those work for Google Sheets [here](https://support.airtable.com/hc/en-us/articles/360051564873-Record-ID)) of the user.
+
+### **2. URL Parameter**
+
+Using this option, you can collect any of the page’s URL parameters. Let's consider a specific example to see how that works. For instance, if you've created a job board with Softr, each job announcement will have a **recordId** (you can learn about [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) Record IDs [here](https://support.airtable.com/hc/en-us/articles/360051564873-Record-ID), and learn how those work for Google Sheets [here](https://support.airtable.com/hc/en-us/articles/360051564873-Record-ID)) in its page URL, indicating the data source record corresponding to that particular job. So, if you have an action button on the job announcement page, you can set a hidden field to collect the **recordId** to identify which job announcement the action has been submitted for.
+
+Your page URL will look something like **yoursite.com/job-details/senior-product-manager?recordId=rec7HcXAgKmlk8inf**, so if you set your hidden field value as “**recordId,”** it will collect the value of **recordId** ("rec7HcXAgKmlk8inf" in this case).
+
+### **3. Page URL**
+
+This parameter allows to get **the full URL of the page** the button has been submitted from.
+
+### **4. Custom value**
+
+Here’ you can collect any custom value that you’re not able to collect using the previous options. For instance, you can use it to collect a custom text along with the submission. This can be useful if you have the same form on different pages and want to mark each of the forms distinctively.
+
+Another important use case is collecting additional logged-in user parameters. If you've [synced your users database with a data source](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9), you can use this option to collect any of the field values corresponding to the user. Here, the value has the following format: **\{LOGGED_IN_USER:'field name'}** ('field name'is replaced with the actual name of the field).
+
+Let's say you have connected an [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) data source and have a **Status** field in your users base as shown below.
+<Frame caption="Users base on Airtable">![Users base on Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbc3ddc8c-649c-49ca-8e1e-04f2b89b8774%2FUntitled.png&blockId=14879d74-9580-4942-9031-ff03351498a8&projectId=1032)</Frame>
+
+So, if you set your hidden field's value as **Status,** the values of the **Status** field will be collected for each user submitting the form (e.g. for Elise it will be "Active").

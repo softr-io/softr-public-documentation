@@ -1,0 +1,144 @@
+---
+title: "Troubleshooting Airtable errors"
+permalink: "9ZYLgZxAhfSCth2F4HRXtw"
+description: "Common Airtable errors and how to fix them."
+'og:title': "Troubleshooting Airtable errors – Softr Help Docs"
+'og:description': "Common Airtable errors and how to fix them."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Troubleshooting Airtable errors – Softr Help Docs"
+'twitter:description': "Common Airtable errors and how to fix them."
+---
+When using Airtable as your data source, you may run across some errors. In this article we help you to troubleshoot the most common error cases related to Airtable.
+
+## Invalid Airtable key
+
+### API key for Airtable account ‘\{account_name}’ is no longer valid
+
+Invalid Airtable key error can be caused by:
+
+* Airtable API key has been deleted in Airtable
+
+* Airtable API key has been regenerated in Airtable
+
+Start by making sure there is an Airtable key added to your app by going to App Settings > Data Sources.
+<Frame caption="Data Sources in app settings">![Data Sources in app settings](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb35e76b8-cecc-470b-a663-ca7f05779bd2%2FScreenshot_2022-12-22_at_19.37.37.png&blockId=e6261e62-a92b-4fc6-8791-51eb2ea75107&projectId=1032)</Frame>
+
+If there is an Airtable key used in the the app, make sure the connected Airtable key is still valid. To do this you can find your Airtable API key in your Airtable account overview.
+
+[Airtable account overview](https://airtable.com/account)
+<Frame caption="API key in Airtable Account overview page">![API key in Airtable Account overview page](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffc4db4e2-6d44-4a8f-8978-23174217048a%2FScreenshot_2022-12-28_at_18.54.44.png&blockId=9e0005ec-8184-42f2-8112-ffe321e6e505&projectId=1032)</Frame>
+
+Make sure the Airtable API key used in your Softr app matches the Airtable API key shown in your Airtable account overview. If they don’t, **paste the Airtable API key from Airtable into your Softr app** in App Settings > Data Sources > Edit API key.
+<Frame caption="Editing Airtable API key in app settings">![Editing Airtable API key in app settings](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F97970cc5-d162-4c64-9019-5c7e01887d67%2FScreenshot_2022-12-28_at_19.00.26.png&blockId=3d11bd6d-4bda-4292-91c1-28643f23358a&projectId=1032)</Frame>
+
+## Missing data source
+
+### Mapped base ‘\{base_name}’ can no longer be found
+
+This error can happen when your Airtable base is **moved** or **deleted**.
+
+If your Airtable base is **moved** to a workspace you don’t have access to, you should ask the workspace owner to give you access to the new workspace.
+
+[Viewing and changing permissions in Airtable](https://support.airtable.com/docs/viewing-and-changing-permissions)
+
+If the Airtable base was **deleted** permanently, you will need to use an alternative Airtable base as your data source.
+
+### Mapped table ‘\{table_name}’ can no longer be found
+
+This error can be caused by the table being **renamed** or **deleted.**
+
+If your table was **renamed**, you can simply rename the table back to its original name. Alternatively you can map your block(s) to the newly named table.
+
+If the table was **deleted** permanently, you will need to map your block(s) to another table or view.
+
+### Mapped view ‘\{view_name}’ can no longer be found
+
+Error for missing Airtable view can be caused by the view being **renamed** or **deleted.**
+
+If the view was **renamed**, you can simply rename the view back to its original name. Alternatively you can map your block(s) to the newly named view.
+
+If the view was **deleted** permanently, you will need to map your block(s) to an another view or table.
+
+### Mapped field ‘\{field_name}’ can no longer be found
+
+This means that a field you had mapped to your block was **renamed** or **deleted.**
+
+If the field was **renamed**, you can:
+
+* Rename the field back to it’s original name
+
+* (Re-)map the newly named field to your block
+
+If the field was **deleted** permanently, you will need to use another field.
+
+## Lacking permissions
+
+### Airtable account doesn’t have permissions to view/edit records in mapped base ‘\{base_name}’
+
+This error means that you lack the permissions to view/edit records in the Airtable base you’ve mapped.
+
+To resolve it you should ask for the owner of the Airtable base to grant you view/edit permissions.
+
+[Updating permissions for base collaborators](https://support.airtable.com/docs/viewing-and-changing-permissions#updating-permissions-for-base-collaborators)
+<Frame caption="Share button opens editing of base permission in Airtable">![Share button opens editing of base permission in Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1417e0c9-238e-4b6c-816d-ca5eb59ca986%2F6765841123479collaborationShareFind06102022.jpg&blockId=14a0f141-e041-4a6c-8cf4-c68046b035d2&projectId=1032)</Frame><Frame caption="Editing base permissions in Airtable">![Editing base permissions in Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F87b9c854-0569-4586-8041-fd39ead08f4f%2FScreenshot_2022-12-29_at_11.15.43.png&blockId=7da4a64d-ddc5-4377-b8dd-dc7df9199964&projectId=1032)</Frame>
+
+### Airtable account doesn’t have permissions to create/delete records on mapped table ‘\{table_name}’
+
+This error means that you lack the permissions to create/delete records in the Airtable table you’ve mapped to a block. To resolve it, someone with owner or creator permissions for the table needs to give you the required permissions.
+
+[Changing table editing permissions](https://support.airtable.com/docs/using-field-and-table-editing-permissions#changing-table-editing-permissions)
+<Frame caption="Editing table permissions in Airtable">![Editing table permissions in Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb4009f66-35ca-425b-bd2a-4d5292823831%2F360068203973field-table-demo.gif&blockId=52795da0-e873-4fa9-8bdc-7bfec6c97ff4&projectId=1032)</Frame>
+
+### Airtable account doesn’t have permissions to edit mapped field ‘\{field_name}’
+
+If you don’t already have the permissions in Airtable to edit the mapped field, you will need an owner or collaborator to give you the permissions in Airtable.
+
+[Changing field editing permissions](https://support.airtable.com/docs/using-field-and-table-editing-permissions#changing-field-editing-permissions)
+<Frame caption="Editing field permissions in Airtable">![Editing field permissions in Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5f8e9824-19a2-40af-a91c-bec4d79f37f6%2F4412908139159editmultipleFieldpermissions.gif&blockId=0de1d329-737b-4a59-8c79-a39bceff90a0&projectId=1032)</Frame>
+
+## Incompatible data type
+
+### Airtable field ‘\{field_name}’ is read-only. It cannot be mapped to an input
+
+Read only Airtable fields don’t accept inputs. To resolve the issue you will need to either:
+
+* **Map the input to another Airtable field** that is not read-only
+
+* **Change the currently mapped Airtable field** to a field type that is not read-only
+
+To **change the field type** in Airtable click on the field options menu and choose “Edit field”.
+<Frame caption="Changing field type in Airtable">![Changing field type in Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F29cdf007-21d6-424a-a459-6c9113fee6d0%2FScreenshot_2022-12-29_at_12.00.15.png&blockId=4d7a014a-5145-4712-88e4-e8110b2d852b&projectId=1032)</Frame>
+
+**List of read-only Airtable fields**
+
+* Count
+
+* Lookup
+
+* Rollup
+
+* Formula
+
+* Autonumber
+
+* Button
+
+* Created by
+
+* Last modified by
+
+* Created time
+
+* Last modified time
+
+## Miscellaneous
+
+### ’Open page’ > Selected details page ‘\{page_name}’ doesn’t map to the same Airtable table
+
+This error happens when your list details page maps to a different Airtable table than the list page it’s connected to. To resolve it, go to **List Details block settings** > DATA, map the List Details block to the same table as the List block.
+
+Alternatively you can replace your list page with another page that’s mapped to the list details page.
+
+### Pagination issue in Airtable
+
+This issue can sometimes can happen when an app user clicks ‘load more records’ after 5-10 minutes of inactivity.

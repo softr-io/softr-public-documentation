@@ -1,0 +1,35 @@
+---
+title: "Troubleshooting HubSpot errors"
+permalink: "3hLzPdvf8frTjFowAHKEMt"
+description: "Common HubSpot Sheets errors and how to fix them."
+'og:title': "Troubleshooting HubSpot errors – Softr Help Docs"
+'og:description': "Common HubSpot Sheets errors and how to fix them."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Troubleshooting HubSpot errors – Softr Help Docs"
+'twitter:description': "Common HubSpot Sheets errors and how to fix them."
+---
+Using HubSpot as a data source can sometimes result in errors. This guide will help you troubleshoot one of the most common issues.
+
+### **Too Many Search or Filter Conditions**
+
+This error occurs when too many search fields or filter conditions are applied to a block. The HubSpot API has specific limits on `AND` and `OR` filters in a query:
+
+* **Up to 5 "AND" filter groups** can be used.
+
+* Each "AND" group can contain **up to 6 "OR" filters**.
+
+* The total number of filters across all groups must not exceed **18 filters per block**.
+
+Additionally, there is a stricter limit for blocks with Edit button: you can only use **up to 4 "AND" filters** in these cases.
+
+**How to Fix It**
+
+To resolve this error, try reducing the number of conditions applied in these areas:
+
+* **Conditional filters**
+
+* **Inline search & filter**
+
+* **Action button visibility filters**
+
+By simplifying the filters in your setup, you can bring the total within the allowed limits and avoid this error.
