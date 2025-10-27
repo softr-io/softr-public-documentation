@@ -47,6 +47,7 @@
         "pages": [
           {
             "group": "Start Here",
+            "icon": "hand-wave",
             "pages": [
               "start-here/welcome",
               "start-here/generate-an-app-with-softrai",
@@ -55,6 +56,7 @@
           },
           {
             "group": "Core Concepts Overview",
+            "icon": "lightbulb",
             "pages": [
               "core-concepts-overview/pages-and-navigation",
               "core-concepts-overview/create-a-database",
@@ -69,6 +71,7 @@
           },
           {
             "group": "Softr Databases",
+            "icon": "database",
             "pages": [
               "softr-databases/softr-databases-overview",
               "softr-databases/field-types",
@@ -80,12 +83,14 @@
           },
           {
             "group": "Workflows",
+            "icon": "random",
             "pages": [
               "workflows/workflows"
             ]
           },
           {
             "group": "Data Sources",
+            "icon": "hard-drive",
             "pages": [
               "data-sources/airtable",
               "data-sources/hubspot",
@@ -107,6 +112,7 @@
       },
       {
         "group": "Building Blocks",
+        "icon": "cube",
         "pages": [
           {
             "group": "List",
@@ -207,6 +213,7 @@
         "pages": [
           {
             "group": "Actions",
+            "icon": "pen-to-square",
             "pages": [
               "actions/action-buttons-overview",
               "actions/add-record",
@@ -225,6 +232,7 @@
       },
       {
         "group": "Add and Manage Users",
+        "icon": "user",
         "pages": [
           {
             "group": "App Users Basics",
@@ -265,6 +273,7 @@
         "pages": [
           {
             "group": "User Groups and Permissions",
+            "icon": "users",
             "pages": [
               "user-groups-and-permissions/user-groups",
               "user-groups-and-permissions/conditional-filters",
@@ -284,6 +293,7 @@
         "pages": [
           {
             "group": "Styling",
+            "icon": "palette",
             "pages": [
               "styling/application-theme",
               "styling/block-styles-and-formatting"
@@ -293,6 +303,7 @@
       },
       {
         "group": "Publishing",
+        "icon": "globe",
         "pages": [
           {
             "group": "Publishing",
@@ -323,6 +334,7 @@
       },
       {
         "group": "Application Settings",
+        "icon": "gear",
         "pages": [
           {
             "group": "Page and Block Settings",
@@ -352,6 +364,7 @@
         "pages": [
           {
             "group": "Custom Code",
+            "icon": "code",
             "pages": [
               "custom-code/custom-code-block-overview",
               "custom-code/custom-code-snippets",
@@ -362,6 +375,7 @@
       },
       {
         "group": "Integrations",
+        "icon": "plug",
         "pages": [
           {
             "group": "AI",
@@ -463,6 +477,7 @@
         "pages": [
           {
             "group": "Softr API",
+            "icon": "code-branch",
             "pages": [
               "softr-api/api-setup-and-endpoints",
               "softr-api/use-case-adding-users-through-zapier",
@@ -520,6 +535,7 @@
           },
           {
             "group": "Security",
+            "icon": "lock",
             "pages": [
               "security/sso-for-softr-studio",
               "security/softr-app-security",
@@ -528,6 +544,7 @@
           },
           {
             "group": "How to Guides",
+            "icon": "book-open",
             "pages": [
               "how-to-guides/how-to-enable-peer-to-peer-chat",
               "how-to-guides/how-to-create-your-own-template",
@@ -547,6 +564,7 @@
           },
           {
             "group": "Troubleshooting",
+            "icon": "wrench",
             "pages": [
               "troubleshooting/troubleshooting-airtable-errors",
               "troubleshooting/troubleshooting-airtable-api-call-limit-exceeded",
@@ -556,6 +574,7 @@
           },
           {
             "group": "FAQ",
+            "icon": "circle-question",
             "pages": [
               "faq/domain-setup",
               "faq/pages-theme-general-settings",
@@ -570,6 +589,7 @@
           },
           {
             "group": "Workspace and Billing",
+            "icon": "credit-card",
             "pages": [
               "workspace-and-billing/accessing-my-account",
               "workspace-and-billing/my-profile",
@@ -582,6 +602,7 @@
           },
           {
             "group": "Affiliate and Referral Programs",
+            "icon": "handshake",
             "pages": [
               "affiliate-and-referral-programs/partner-with-softr",
               "affiliate-and-referral-programs/softrs-affiliate-program",
