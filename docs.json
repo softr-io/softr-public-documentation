@@ -116,6 +116,7 @@
         "pages": [
           {
             "group": "List",
+            "icon": "list",
             "pages": [
               "building-blocks/list-block",
               "building-blocks/grid-block",
@@ -126,6 +127,7 @@
           },
           {
             "group": "Item Details",
+            "icon": "circle-info",
             "pages": [
               "building-blocks/item-details-block-",
               "building-blocks/linked-list",
@@ -138,12 +140,14 @@
           },
           {
             "group": "Table",
+            "icon": "table",
             "pages": [
               "building-blocks/table-block-"
             ]
           },
           {
             "group": "Forms",
+            "icon": "pen-to-square",
             "pages": [
               "building-blocks/conditional-forms",
               "building-blocks/advanced-form-features",
@@ -153,6 +157,7 @@
           },
           {
             "group": "Charts",
+            "icon": "chart-column",
             "pages": [
               "building-blocks/chart-block-overview",
               "building-blocks/type-bar-chart",
@@ -168,6 +173,7 @@
           },
           {
             "group": "Block Containers",
+            "icon": "cube",
             "pages": [
               "building-blocks/column-container",
               "building-blocks/tabs"
@@ -175,6 +181,7 @@
           },
           {
             "group": "Utility Page Blocks",
+            "icon": "sliders",
             "pages": [
               "building-blocks/account-settings",
               "building-blocks/signup",
@@ -186,6 +193,7 @@
           },
           {
             "group": "Other Dynamic Blocks",
+            "icon": "bolt",
             "pages": [
               "building-blocks/calendar",
               "building-blocks/kanban",
@@ -195,6 +203,7 @@
           },
           {
             "group": "Static Blocks",
+            "icon": "image",
             "pages": [
               "building-blocks/header",
               "building-blocks/hero",
@@ -236,6 +245,7 @@
         "pages": [
           {
             "group": "App Users Basics",
+            "icon": "user-plus",
             "pages": [
               "add-and-manage-users/add-users-to-a-softr-app",
               "add-and-manage-users/users-menu",
@@ -248,6 +258,7 @@
           },
           {
             "group": "User-related Blocks",
+            "icon": "user-check",
             "pages": [
               "add-and-manage-users/signup-form",
               "add-and-manage-users/signin-form",
@@ -260,6 +271,7 @@
           },
           {
             "group": "Advanced Sign-in Options",
+            "icon": "lock",
             "pages": [
               "add-and-manage-users/saml-single-sign-on",
               "add-and-manage-users/microsoft-azure-saml-single-sign-on",
@@ -307,6 +319,7 @@
         "pages": [
           {
             "group": "Publishing",
+            "icon": "upload",
             "pages": [
               "publishing/publishing-your-softr-app",
               "publishing/unpublishing-your-app"
@@ -314,6 +327,7 @@
           },
           {
             "group": "Custom Domain",
+            "icon": "link",
             "pages": [
               "publishing/add-a-custom-domain-to-your-app",
               "publishing/tutorial-how-to-set-up-a-custom-domain-for-namecheap",
@@ -323,6 +337,7 @@
           },
           {
             "group": "SEO",
+            "icon": "magnifying-glass",
             "pages": [
               "publishing/softr-seo-checklist",
               "publishing/site-seo",
@@ -338,6 +353,7 @@
         "pages": [
           {
             "group": "Page and Block Settings",
+            "icon": "table-layout",
             "pages": [
               "application-settings/footer-settings",
               "application-settings/page-settings",
@@ -350,6 +366,7 @@
           },
           {
             "group": "App Settings",
+            "icon": "sliders",
             "pages": [
               "application-settings/general-settings",
               "application-settings/app-history",
@@ -379,18 +396,21 @@
         "pages": [
           {
             "group": "AI",
+            "icon": "brain",
             "pages": [
               "integrations/open-ai"
             ]
           },
           {
             "group": "Authentication",
+            "icon": "key",
             "pages": [
               "integrations/google-sign-in"
             ]
           },
           {
             "group": "Automation",
+            "icon": "robot",
             "pages": [
               "integrations/make",
               "integrations/zapier"
@@ -398,18 +418,21 @@
           },
           {
             "group": "Cookies",
+            "icon": "cookie",
             "pages": [
               "integrations/iubenda-cookie-solution"
             ]
           },
           {
             "group": "Document Management",
+            "icon": "file-pdf",
             "pages": [
               "integrations/documint"
             ]
           },
           {
             "group": "Email",
+            "icon": "envelope",
             "pages": [
               "integrations/mailchimp",
               "integrations/mailerlite"
@@ -417,12 +440,14 @@
           },
           {
             "group": "Forms",
+            "icon": "pen-to-square",
             "pages": [
               "integrations/typeform"
             ]
           },
           {
             "group": "Live Chat",
+            "icon": "comments",
             "pages": [
               "integrations/crisp",
               "integrations/drift-chat",
@@ -432,18 +457,21 @@
           },
           {
             "group": "Maps",
+            "icon": "map",
             "pages": [
               "integrations/google-maps"
             ]
           },
           {
             "group": "Peer-to-Peer Chat",
+            "icon": "message",
             "pages": [
               "integrations/atomchat"
             ]
           },
           {
             "group": "Payments",
+            "icon": "credit-card",
             "pages": [
               "integrations/stripe-checkout",
               "integrations/buy-me-a-coffee",
@@ -457,6 +485,7 @@
           },
           {
             "group": "User Analytics",
+            "icon": "chart-line",
             "pages": [
               "integrations/facebook-pixel",
               "integrations/google-analytics",
@@ -466,6 +495,7 @@
           },
           {
             "group": "Translating",
+            "icon": "language",
             "pages": [
               "integrations/weglot"
             ]
