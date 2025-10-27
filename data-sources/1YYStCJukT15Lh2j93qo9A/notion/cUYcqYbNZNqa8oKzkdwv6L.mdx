@@ -28,50 +28,52 @@ By using [Notion databases](https://www.notion.so/help/what-is-a-database) with 
 
 To use Notion in Softr, you must first **link your Notion account**. Here’s how:
 
-### **Step 1: Add Notion data source to your workspace**
+<Steps>
+  <Step title="Add Notion data source to your workspace">
+    To create an app using a Notion database, the first step is to add Notion as a data source in Softr. You can do this either through the **Data Sources** section of the Softr dashboard or by adding a new data source directly to a block within your application.
+    <Frame>![Image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fe0634e72-ae92-4a2a-9f90-de9fdbc6dfea%2FUntitled.png&blockId=1ac9a723-d691-8028-b8f4-c230fc28f452&projectId=1032)</Frame>
+  </Step>
+  <Step title="Grant access to the Notion databases you want to use in your workspace.">
+    After selecting Notion as the data source, you’ll be redirected to the **Notion Authorization** page. On this page, select the workspace and top-level pages containing the databases you wish to connect to Softr.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F0d359f6b-ca6a-4a4a-aa68-ee5a17ce8708%2F02d3fb73-2793-4fb3-9ace-54918dd6ae7a.png&blockId=1ac9a723-d691-8015-b14e-cf83ff8c92ba&projectId=1032)</Frame>
+    <Info>
 
-To create an app using a Notion database, the first step is to add Notion as a data source in Softr. You can do this either through the **Data Sources** section of the Softr dashboard or by adding a new data source directly to a block within your application.
-<Frame>![Image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fe0634e72-ae92-4a2a-9f90-de9fdbc6dfea%2FUntitled.png&blockId=1ac9a723-d691-8028-b8f4-c230fc28f452&projectId=1032)</Frame>
+    You can authorize the integration only for Notion workspaces where you are **a member.**
+    </Info>
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff3ee7eb7-0bcf-434d-a136-8681939d0064%2FScreenshot_2024-09-12_at_15.56.16.png&blockId=1ac9a723-d691-808c-a22b-e556aef6b340&projectId=1032)</Frame>
+    <Info>
 
-### **Step 2: Grant access to the Notion databases you want to use in your workspace.**
+    Once connected, **only Notion database pages** can be used with Softr dynamic blocks, such as List and Detail blocks.
 
-After selecting Notion as the data source, you’ll be redirected to the **Notion Authorization** page. On this page, select the workspace and top-level pages containing the databases you wish to connect to Softr.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F0d359f6b-ca6a-4a4a-aa68-ee5a17ce8708%2F02d3fb73-2793-4fb3-9ace-54918dd6ae7a.png&blockId=1ac9a723-d691-8015-b14e-cf83ff8c92ba&projectId=1032)</Frame>
-<Info>
+    </Info>
 
-You can authorize the integration only for Notion workspaces where you are **a member.**
-</Info>
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff3ee7eb7-0bcf-434d-a136-8681939d0064%2FScreenshot_2024-09-12_at_15.56.16.png&blockId=1ac9a723-d691-808c-a22b-e556aef6b340&projectId=1032)</Frame>
-<Info>
-
-Once connected, **only Notion database pages** can be used with Softr dynamic blocks, such as List and Detail blocks.
-
-</Info>
-
-To finalize the connection, click the "Allow Access" button to grant Softr permission to access your Notion account.
+    To finalize the connection, click the "Allow Access" button to grant Softr permission to access your Notion account.
+  </Step>
+</Steps>
 
 ## **2. Connect your Notion database to your Softr app**
 
-### **Step 1: Connect your data to a dynamic block**
+<Steps>
+  <Step title="Connect your data to a dynamic block">
+    To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your Notion database:
 
-To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your Notion database:
+    1. Go to the Block **source** **tab** and select your Notion integration.
 
-1. Go to the Block **source** **tab** and select your Notion integration.
+    2. Pick the **database** you want to use.
 
-2. Pick the **database** you want to use.
+    Once you select the Notion account, the pages within that database will display as individual records in your application.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F71c894f1-8db4-4cba-9085-551e5a4fee7a%2FScreenshot_2024-09-12_at_16.05.57.png&blockId=1ac9a723-d691-80e5-838b-cc60db31cb15&projectId=1032)</Frame>
+  </Step>
+  <Step title="Map Notion columns to item fields">
+    Once your data source is connected to a block, you can map individual fields to display the desired information.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F6aa3e29b-e496-468d-ad08-1cd8cbfd83bb%2FNotion_properties.png&blockId=1ac9a723-d691-801d-b9ff-e9f826c18dce&projectId=1032)</Frame>
 
-Once you select the Notion account, the pages within that database will display as individual records in your application.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F71c894f1-8db4-4cba-9085-551e5a4fee7a%2FScreenshot_2024-09-12_at_16.05.57.png&blockId=1ac9a723-d691-80e5-838b-cc60db31cb15&projectId=1032)</Frame>
+    In Notion, properties are essentially the columns in the database, with each property having a predefined type, such as **Files**, **Status**, **Date**, and more. Similarly, Softr offers a variety of field types to choose from when displaying your data. It's important to select the appropriate field type when mapping fields from Notion to Softr.
 
-### **Step 2: Map Notion columns to item fields**
-
-Once your data source is connected to a block, you can map individual fields to display the desired information.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F6aa3e29b-e496-468d-ad08-1cd8cbfd83bb%2FNotion_properties.png&blockId=1ac9a723-d691-801d-b9ff-e9f826c18dce&projectId=1032)</Frame>
-
-In Notion, properties are essentially the columns in the database, with each property having a predefined type, such as **Files**, **Status**, **Date**, and more. Similarly, Softr offers a variety of field types to choose from when displaying your data. It's important to select the appropriate field type when mapping fields from Notion to Softr.
-
-For example, in the image below, we’ve mapped a **File** property from Notion to an **Image** field type on Softr’s List block to display photos.
-<Frame>![Image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F92ca428a-8e31-47e5-9cc3-c49540544457%2FUntitled.png&blockId=1ac9a723-d691-800f-8ecf-f8c10daf4610&projectId=1032)</Frame>
+    For example, in the image below, we’ve mapped a **File** property from Notion to an **Image** field type on Softr’s List block to display photos.
+    <Frame>![Image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F92ca428a-8e31-47e5-9cc3-c49540544457%2FUntitled.png&blockId=1ac9a723-d691-800f-8ecf-f8c10daf4610&projectId=1032)</Frame>
+  </Step>
+</Steps>
 
 ### **Supported fields**
 

@@ -31,68 +31,68 @@ REST API is not a supported data source for the [Users](/add-and-manage-users/px
 
 To set up a REST API connection in Softr, follow these steps:
 
-### **Step 1: Add Rest API as data source**
+<Steps>
+  <Step title="Add Rest API as data source">
+    1. **Log in to Softr** and navigate to [**Data Sources**](https://studio.softr.io/dashboard/data-sources).
 
-1. **Log in to Softr** and navigate to [**Data Sources**](https://studio.softr.io/dashboard/data-sources).
+    2. Click **Connect Data Source**.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fc139ca85-0a93-4d73-8bb1-d1eb72036395%2FScreenshot_2024-10-25_at_10.32.53_AM.png&blockId=1b29a723-d691-8069-86ac-c20bbde76c8e&projectId=1032)</Frame>
 
-2. Click **Connect Data Source**.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fc139ca85-0a93-4d73-8bb1-d1eb72036395%2FScreenshot_2024-10-25_at_10.32.53_AM.png&blockId=1b29a723-d691-8069-86ac-c20bbde76c8e&projectId=1032)</Frame>
+    1. Choose **REST API** from the list.
 
-1. Choose **REST API** from the list.
+    2. If the API you need is listed as a **template**, select it. Otherwise, choose **Add Manually**.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F006e1786-4ac2-4f5d-bf65-e6b78a05943a%2FScreenshot_2024-10-25_at_10.47.49_AM.png&blockId=1b29a723-d691-800a-a85b-fc90f574118d&projectId=1032)</Frame>
+    <Warning>
 
-2. If the API you need is listed as a **template**, select it. Otherwise, choose **Add Manually**.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F006e1786-4ac2-4f5d-bf65-e6b78a05943a%2FScreenshot_2024-10-25_at_10.47.49_AM.png&blockId=1b29a723-d691-800a-a85b-fc90f574118d&projectId=1032)</Frame>
-<Warning>
+    **Important**: How the APIs function and are setup can vary greatly. This document is not meant to be a step-by-step guide for any one service or API, but rather a showcase of Softr’s REST API connection setup.
 
-**Important**: How the APIs function and are setup can vary greatly. This document is not meant to be a step-by-step guide for any one service or API, but rather a showcase of Softr’s REST API connection setup.
+    If you need help setting up your REST API beyond the scope of this help document, we highly recommend reaching out to one of our [Certified Softr Experts](https://www.softr.io/softr-experts) who can help guide or build for you.
 
-If you need help setting up your REST API beyond the scope of this help document, we highly recommend reaching out to one of our [Certified Softr Experts](https://www.softr.io/softr-experts) who can help guide or build for you.
+    </Warning>
+  </Step>
+  <Step title="Set up default headers">
+    Most REST APIs require some parameters to be placed in the header of the API call. You can add or remove as many headers as you need in the Softr setup, but here they should be headers that apply to all API endpoints. Headers that are only required for certain endpoints should be left out of this step - they can be added later on if needed.
 
-</Warning>
+    1. **Name**: This is a name for the REST datasource and while it is required, it can be whatever you like that helps you identify the datasource in your dashboard.
 
-### **Step 2: Set up default headers**
+    2. **Headers**: In this section you will add or remove headers needed for all endpoints in the REST API. Typically headers like `Authorization` and `Content-Type` are required, but this varies between APIs. There are two fields for each header - the header **Name** and the header **Value**.
 
-Most REST APIs require some parameters to be placed in the header of the API call. You can add or remove as many headers as you need in the Softr setup, but here they should be headers that apply to all API endpoints. Headers that are only required for certain endpoints should be left out of this step - they can be added later on if needed.
+    3. Click **Continue** when you’re finished setting up headers.
 
-1. **Name**: This is a name for the REST datasource and while it is required, it can be whatever you like that helps you identify the datasource in your dashboard.
+    In our Stripe example, the only required header is the `Authorization` header that contains our Stripe API Key.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F8dc65311-c19f-4837-8b7c-eb8da7a6d2c8%2FScreenshot_2024-10-28_at_10.57.34_AM.png&blockId=1b29a723-d691-8011-bc23-e5d15ae38bdb&projectId=1032)</Frame>
+  </Step>
+  <Step title="Add API Resources (Endpoints)">
+    Resources are the different endpoints of an API and they currently support GET and POST endpoints. In our Stripe template, we already have two resources setup - one to get a list of customers from the customers endpoint in the Stripe API, and one to get a single customer. Now let’s setup one to get a list of invoices. To add a resource, click on **Add Resource**.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fb40cce7e-02f2-4aee-bb8a-b7ef1a84dc13%2FScreenshot_2024-10-28_at_11.13.27_AM.png&blockId=1b29a723-d691-8070-a613-f4937ac7e6f4&projectId=1032)</Frame>
 
-2. **Headers**: In this section you will add or remove headers needed for all endpoints in the REST API. Typically headers like `Authorization` and `Content-Type` are required, but this varies between APIs. There are two fields for each header - the header **Name** and the header **Value**.
+    On the Add Resource screen, you’ll notice a variety of fields and options to fill out or select.
 
-3. Click **Continue** when you’re finished setting up headers.
+    * **Name**: The name field is subjective and serves to help you identify it in your list of other Resources you may have added for this REST API connection.
 
-In our Stripe example, the only required header is the `Authorization` header that contains our Stripe API Key.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F8dc65311-c19f-4837-8b7c-eb8da7a6d2c8%2FScreenshot_2024-10-28_at_10.57.34_AM.png&blockId=1b29a723-d691-8011-bc23-e5d15ae38bdb&projectId=1032)</Frame>
+    * **HTTP Method**: This dropdown supports GET and POST methods for API endpoints. It should match the endpoint documentation for the REST API you are using.
 
-### **Step 3: Add API Resources (Endpoints)**
+    * **URL**: This is the endpoint URL that Softr should call. You can get it from the documentation of the REST API you are using.
 
-Resources are the different endpoints of an API and they currently support GET and POST endpoints. In our Stripe template, we already have two resources setup - one to get a list of customers from the customers endpoint in the Stripe API, and one to get a single customer. Now let’s setup one to get a list of invoices. To add a resource, click on **Add Resource**.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fb40cce7e-02f2-4aee-bb8a-b7ef1a84dc13%2FScreenshot_2024-10-28_at_11.13.27_AM.png&blockId=1b29a723-d691-8070-a613-f4937ac7e6f4&projectId=1032)</Frame>
+    * **Execute**: Once you have filled out the other parts of the request (A, B, C, and E), you can use this Execute button to perform a test call to the API endpoint. Softr requires a successful response in order to add and save the API Resource.
 
-On the Add Resource screen, you’ll notice a variety of fields and options to fill out or select.
+    * **Additional Resource Settings**: This panel is where you can adjust several different parameters and settings for the API Resource. Because every API is different, you may need to use all of these tabs, but you also may not need any of them. You’ll need to refer to the API’s documentation for this. More information about this section can be found in the Additional Resource Settings section below.
 
-* **Name**: The name field is subjective and serves to help you identify it in your list of other Resources you may have added for this REST API connection.
+    <Info>
 
-* **HTTP Method**: This dropdown supports GET and POST methods for API endpoints. It should match the endpoint documentation for the REST API you are using.
+    At minimum, this step needs a name (A), the HTTP Method (B), and a URL endpoint to call (C).
+    </Info>
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fdc5195f4-52c6-4fea-babe-e2a6ee7260ce%2FScreenshot_2024-11-01_at_3.24.20_PM.png&blockId=1b29a723-d691-8020-bce2-e8b471c9d81c&projectId=1032)</Frame>
 
-* **URL**: This is the endpoint URL that Softr should call. You can get it from the documentation of the REST API you are using.
+    After you have setup all required fields for the API Resource and have received a successful response from the API, you can click the **Add** button to add it to the REST API Connection. This makes it easy to collect all the endpoints of a single REST API into a single connection that you can use in all of your Softr apps.
 
-* **Execute**: Once you have filled out the other parts of the request (A, B, C, and E), you can use this Execute button to perform a test call to the API endpoint. Softr requires a successful response in order to add and save the API Resource.
+    <Tip>
 
-* **Additional Resource Settings**: This panel is where you can adjust several different parameters and settings for the API Resource. Because every API is different, you may need to use all of these tabs, but you also may not need any of them. You’ll need to refer to the API’s documentation for this. More information about this section can be found in the Additional Resource Settings section below.
-
-<Info>
-
-At minimum, this step needs a name (A), the HTTP Method (B), and a URL endpoint to call (C).
-</Info>
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fdc5195f4-52c6-4fea-babe-e2a6ee7260ce%2FScreenshot_2024-11-01_at_3.24.20_PM.png&blockId=1b29a723-d691-8020-bce2-e8b471c9d81c&projectId=1032)</Frame>
-
-After you have setup all required fields for the API Resource and have received a successful response from the API, you can click the **Add** button to add it to the REST API Connection. This makes it easy to collect all the endpoints of a single REST API into a single connection that you can use in all of your Softr apps.
-
-<Tip>
-
-You will likely need to adjust other settings and the schema so don’t stop here! Check out those sections down below!
-</Tip>
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F3bdfc93c-25d1-41ec-933b-539cc991aed4%2FScreenshot_2024-11-01_at_3.48.49_PM.png&blockId=1b29a723-d691-8009-9dab-dc30e01e5fe7&projectId=1032)</Frame>
+    You will likely need to adjust other settings and the schema so don’t stop here! Check out those sections down below!
+    </Tip>
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F3bdfc93c-25d1-41ec-933b-539cc991aed4%2FScreenshot_2024-11-01_at_3.48.49_PM.png&blockId=1b29a723-d691-8009-9dab-dc30e01e5fe7&projectId=1032)</Frame>
+  </Step>
+</Steps>
 
 ## **2. Configure Additional Settings**
 

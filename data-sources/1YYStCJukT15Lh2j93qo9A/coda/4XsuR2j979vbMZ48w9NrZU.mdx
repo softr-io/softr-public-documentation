@@ -46,75 +46,74 @@ Before connecting Coda to Softr, ensure you have:
 
 ## Setup
 
-### **Step 1: Connect Coda to Softr**
+<Steps>
+  <Step title="Connect Coda to Softr">
+    1. **Log in to Softr Studio**:<br/>
+       * Navigate to your Softr Studio dashboard at [studio.softr.io](https://studio.softr.io/).
 
-1. **Log in to Softr Studio**:<br/>
-   * Navigate to your Softr Studio dashboard at [studio.softr.io](https://studio.softr.io/).
+    2. **Access Data Sources**:<br/>
+       * In the left-hand menu, click **Data Sources**.
+       * Click **Connect Data Source**<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F934b692c-c799-4ca9-96a8-dc2b6019be14%2FScreenshot_2025-05-27_at_10.17.56_AM.png&blockId=2009a723-d691-80ea-842e-d51f6701da71&projectId=1032)</Frame>
+       * Select **Coda** from the list of available integrations, then click **Continue**.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F33f0a569-b11c-49cd-b6b5-3aa283e83660%2FScreenshot_2025-05-27_at_10.20.16_AM.png&blockId=2009a723-d691-801e-a2a9-cd6d71d6bf1f&projectId=1032)</Frame>
 
-2. **Access Data Sources**:<br/>
-   * In the left-hand menu, click **Data Sources**.
-   * Click **Connect Data Source**<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F934b692c-c799-4ca9-96a8-dc2b6019be14%2FScreenshot_2025-05-27_at_10.17.56_AM.png&blockId=2009a723-d691-80ea-842e-d51f6701da71&projectId=1032)</Frame>
-   * Select **Coda** from the list of available integrations, then click **Continue**.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F33f0a569-b11c-49cd-b6b5-3aa283e83660%2FScreenshot_2025-05-27_at_10.20.16_AM.png&blockId=2009a723-d691-801e-a2a9-cd6d71d6bf1f&projectId=1032)</Frame>
+    3. **Authenticate with Coda**:<br/>
+       * You’ll be prompted to provide an API token.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fd7b7b3cb-abca-4b35-8bd7-dd2342cc38fb%2FScreenshot_2025-05-27_at_10.21.40_AM.png&blockId=2009a723-d691-80e6-84c6-c2955b79f27d&projectId=1032)</Frame>
+       * To generate a Coda API token:
+         + In Coda, click on your Profile picture in the upper right and select **Account Settings**.
+         + Navigate to the **API Settings** section and click **Generate API Token**.
+         + Copy the token and paste the new token into the Softr connection modal.
 
-3. **Authenticate with Coda**:<br/>
-   * You’ll be prompted to provide an API token.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fd7b7b3cb-abca-4b35-8bd7-dd2342cc38fb%2FScreenshot_2025-05-27_at_10.21.40_AM.png&blockId=2009a723-d691-80e6-84c6-c2955b79f27d&projectId=1032)</Frame>
-   * To generate a Coda API token:
-     + In Coda, click on your Profile picture in the upper right and select **Account Settings**.
-     + Navigate to the **API Settings** section and click **Generate API Token**.
-     + Copy the token and paste the new token into the Softr connection modal.
+    4. **Manage the Coda Connection**<br/>
+       * You can rename, edit, of delete the connection by clicking on the three dots on the connection
+       * Click on **See Active Apps** to see a list of all the Softr apps the connection is being used in.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F343e1b98-8c85-4c04-a3ae-d772463b0112%2FScreenshot_2025-05-27_at_10.34.49_AM.png&blockId=2009a723-d691-808c-88f3-ce4ab7b6ee93&projectId=1032)</Frame>
+  </Step>
+  <Step title="Configure Data Mapping">
+    With Coda connected, you can now use its data to power your Softr app:
 
-4. **Manage the Coda Connection**<br/>
-   * You can rename, edit, of delete the connection by clicking on the three dots on the connection
-   * Click on **See Active Apps** to see a list of all the Softr apps the connection is being used in.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F343e1b98-8c85-4c04-a3ae-d772463b0112%2FScreenshot_2025-05-27_at_10.34.49_AM.png&blockId=2009a723-d691-808c-88f3-ce4ab7b6ee93&projectId=1032)</Frame>
+    1. **Add Blocks**:<br/>
+       * In your Softr app, go to the **Pages** menu and select or create a page.
+       * Add any dynamic blocks like **List**, **Table**, **Kanban**, or **Form** to display or interact with Coda data.
 
-### **Step 2: Configure Data Mapping**
+    2. **Choose Document and Table**:<br/>
+       * Select the block, go to the **Source** tab and select your Coda connection.
+       * Choose the Document and table in the document you want to map to the block.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F852b5905-ba26-4d79-9e8b-8e4bb270de05%2FScreenshot_2025-05-27_at_10.44.43_AM.png&blockId=2009a723-d691-8061-8b83-f656e8da6506&projectId=1032)</Frame>
 
-With Coda connected, you can now use its data to power your Softr app:
+    3. **Apply Filters and Conditions** (Optional):<br/>
+       * Use Softr’s filtering options to display specific rows from your Coda table based on conditions (e.g., show only tasks assigned to a specific user).<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F15bc392d-6c4c-491b-b17b-22752153325f%2FScreenshot_2025-05-27_at_10.50.34_AM.png&blockId=2009a723-d691-805f-a3c7-f671aab1433d&projectId=1032)</Frame>
+       * Set visibility rules to control which data is shown to different user roles. For example, click on the **Visibility** tab to control who can see the entire block. You can also do this for buttons in the **Actions** tab as well.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F0cac456c-419f-4c2b-9920-2093bd51c604%2FScreenshot_2025-05-27_at_10.51.47_AM.png&blockId=2009a723-d691-803f-a4cb-c0addb646e30&projectId=1032)</Frame>
 
-1. **Add Blocks**:<br/>
-   * In your Softr app, go to the **Pages** menu and select or create a page.
-   * Add any dynamic blocks like **List**, **Table**, **Kanban**, or **Form** to display or interact with Coda data.
+    4. **Map Columns to Fields in Softr:**<br/>
+       * Click on the Content tab in the Block settings.
+       * Choose the fields (columns) from your Coda table you want to use in your app (e.g., task names, statuses, dates, or custom fields).
+       * Add or remove fields as needed or change the display type and its styling.
+       * Softr supports Coda’s table columns, including text, numbers, dates, select lists, and attachments.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F932a09d6-a545-4b9c-9f1c-863b6a0e9b54%2FScreenshot_2025-05-27_at_10.47.15_AM.png&blockId=2009a723-d691-8037-9c6d-dd1ecdbe6ebb&projectId=1032)</Frame>
+  </Step>
+  <Step title="Build Your Softr App with Coda Data">
+    With Coda connected, you can now use its data to power your Softr app:
 
-2. **Choose Document and Table**:<br/>
-   * Select the block, go to the **Source** tab and select your Coda connection.
-   * Choose the Document and table in the document you want to map to the block.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F852b5905-ba26-4d79-9e8b-8e4bb270de05%2FScreenshot_2025-05-27_at_10.44.43_AM.png&blockId=2009a723-d691-8061-8b83-f656e8da6506&projectId=1032)</Frame>
+    1. **Customize Layout and Styling**:<br/>
+       * Use Softr’s dynamic, static, and container blocks to display Coda data and customize layouts.
+       * [Apply branding options](/styling/7qXYEkNvWQamR6vcLXzZnF/application-theme/91YGSL2aDJajXdbPBhitbc) (colors, fonts, logos) to match your organization’s style.
 
-3. **Apply Filters and Conditions** (Optional):<br/>
-   * Use Softr’s filtering options to display specific rows from your Coda table based on conditions (e.g., show only tasks assigned to a specific user).<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F15bc392d-6c4c-491b-b17b-22752153325f%2FScreenshot_2025-05-27_at_10.50.34_AM.png&blockId=2009a723-d691-805f-a3c7-f671aab1433d&projectId=1032)</Frame>
-   * Set visibility rules to control which data is shown to different user roles. For example, click on the **Visibility** tab to control who can see the entire block. You can also do this for buttons in the **Actions** tab as well.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F0cac456c-419f-4c2b-9920-2093bd51c604%2FScreenshot_2025-05-27_at_10.51.47_AM.png&blockId=2009a723-d691-803f-a4cb-c0addb646e30&projectId=1032)</Frame>
+    2. **Set Permissions**:<br/>
+       * Go to the **Users** section in Softr Studio to configure user roles using [User Groups](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3) (e.g., admin, client, team member).
+       * Use [page](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/page-visibility/nWJaN689VKA1TUeaEfzK9u), [block](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/block-visibility/3spA2dfQNrcGcPNmnDXHB3), or [button-level visibility](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/action-button-visibility/tqpb8TkUD4U4DCAUA2hjKo) to restrict access to sensitive Coda data.
 
-4. **Map Columns to Fields in Softr:**<br/>
-   * Click on the Content tab in the Block settings.
-   * Choose the fields (columns) from your Coda table you want to use in your app (e.g., task names, statuses, dates, or custom fields).
-   * Add or remove fields as needed or change the display type and its styling.
-   * Softr supports Coda’s table columns, including text, numbers, dates, select lists, and attachments.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F932a09d6-a545-4b9c-9f1c-863b6a0e9b54%2FScreenshot_2025-05-27_at_10.47.15_AM.png&blockId=2009a723-d691-8037-9c6d-dd1ecdbe6ebb&projectId=1032)</Frame>
+    3. **Add Interactive Features**:<br/>
+       * Use [**Forms**](https://docs.softr.io/building-blocks/vikC2AWEpQGkZd4jGyoVxo/conditional-forms/afyKqnGDXd54U8d4xLNcsR) to collect data from users, which can sync back to your Coda table.
+       * Enable [**Comments**](https://docs.softr.io/building-blocks/vikC2AWEpQGkZd4jGyoVxo/comments/e2uAn1UjcxwdpcrDvE4ocN) blocks to allow user-specific discussions, with visibility controlled by conditions.
+       * Create **Dashboards** to visualize Coda data using charts or summary views.
+  </Step>
+  <Step title="Test and Publish">
+    1. **Preview Your App**:<br/>
+       * Use Softr’s preview mode to test how your app displays and interacts with Coda data.
+       * Verify that filters, permissions, and sync settings work as expected.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F2398c712-67cb-425e-8cff-a003ca7d3f61%2FScreenshot_2025-05-27_at_10.57.18_AM.png&blockId=2009a723-d691-8052-b527-c217cd0eae1d&projectId=1032)</Frame>
 
-### **Step 3: Build Your Softr App with Coda Data**
-
-With Coda connected, you can now use its data to power your Softr app:
-
-1. **Customize Layout and Styling**:<br/>
-   * Use Softr’s dynamic, static, and container blocks to display Coda data and customize layouts.
-   * [Apply branding options](/styling/7qXYEkNvWQamR6vcLXzZnF/application-theme/91YGSL2aDJajXdbPBhitbc) (colors, fonts, logos) to match your organization’s style.
-
-2. **Set Permissions**:<br/>
-   * Go to the **Users** section in Softr Studio to configure user roles using [User Groups](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3) (e.g., admin, client, team member).
-   * Use [page](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/page-visibility/nWJaN689VKA1TUeaEfzK9u), [block](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/block-visibility/3spA2dfQNrcGcPNmnDXHB3), or [button-level visibility](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/action-button-visibility/tqpb8TkUD4U4DCAUA2hjKo) to restrict access to sensitive Coda data.
-
-3. **Add Interactive Features**:<br/>
-   * Use [**Forms**](https://docs.softr.io/building-blocks/vikC2AWEpQGkZd4jGyoVxo/conditional-forms/afyKqnGDXd54U8d4xLNcsR) to collect data from users, which can sync back to your Coda table.
-   * Enable [**Comments**](https://docs.softr.io/building-blocks/vikC2AWEpQGkZd4jGyoVxo/comments/e2uAn1UjcxwdpcrDvE4ocN) blocks to allow user-specific discussions, with visibility controlled by conditions.
-   * Create **Dashboards** to visualize Coda data using charts or summary views.
-
-### **Step 4: Test and Publish**
-
-1. **Preview Your App**:<br/>
-   * Use Softr’s preview mode to test how your app displays and interacts with Coda data.
-   * Verify that filters, permissions, and sync settings work as expected.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F2398c712-67cb-425e-8cff-a003ca7d3f61%2FScreenshot_2025-05-27_at_10.57.18_AM.png&blockId=2009a723-d691-8052-b527-c217cd0eae1d&projectId=1032)</Frame>
-
-2. **Publish Your App**:<br/>
-   * Click [**Publish**](https://docs.softr.io/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/publish-your-application/41p6U2eZs7mF8o4UyKai2g) in Softr Studio to make your app live.
-   * Share the app with users via a [custom domain](/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/add-a-custom-domain-to-your-app/93K5bLJN3n91MRo9uRGdAf), public link, or restricted access for logged-in users.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9daae8c9-1ba3-4b6d-9eff-0e0c06a8946a%2FScreenshot_2025-05-27_at_10.58.19_AM.png&blockId=2009a723-d691-8056-a4f3-f6f3863d724a&projectId=1032)</Frame>
+    2. **Publish Your App**:<br/>
+       * Click [**Publish**](https://docs.softr.io/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/publish-your-application/41p6U2eZs7mF8o4UyKai2g) in Softr Studio to make your app live.
+       * Share the app with users via a [custom domain](/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/add-a-custom-domain-to-your-app/93K5bLJN3n91MRo9uRGdAf), public link, or restricted access for logged-in users.<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9daae8c9-1ba3-4b6d-9eff-0e0c06a8946a%2FScreenshot_2025-05-27_at_10.58.19_AM.png&blockId=2009a723-d691-8056-a4f3-f6f3863d724a&projectId=1032)</Frame>
+  </Step>
+</Steps>
 
 ## **Best Practices**
 

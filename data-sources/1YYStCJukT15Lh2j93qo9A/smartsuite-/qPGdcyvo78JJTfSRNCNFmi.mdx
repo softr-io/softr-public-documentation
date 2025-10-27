@@ -26,52 +26,55 @@ This integration allows you to:
 
 To use SmartSuite in Softr, you must first **connect your SmartSuite account**. Any SmartSuite data source you add to Softr can be used across all apps within your Softr workspace.
 
-### **Step 1: Add SmartSuite as a data source in Softr**
+<Steps>
+  <Step title="Add SmartSuite as a data source in Softr">
+    1. Open [**Softr’s Data Sources**](https://studio.softr.io/dashboard/data-sources) settings.
 
-1. Open [**Softr’s Data Sources**](https://studio.softr.io/dashboard/data-sources) settings.
+    2. Click **Connect data source**.
 
-2. Click **Connect data source**.
+    3. Select **SmartSuite** from the list.
 
-3. Select **SmartSuite** from the list.
+    4. Log in to your **SmartSuite** account (if not already).
 
-4. Log in to your **SmartSuite** account (if not already).
+    5. Authorize Softr to access your SmartSuite data.
 
-5. Authorize Softr to access your SmartSuite data.
-
-Once connected, your SmartSuite data will be available to use in Softr.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fe0634e72-ae92-4a2a-9f90-de9fdbc6dfea%2FUntitled.png&blockId=1ac9a723-d691-8012-8f1c-f21052901c5a&projectId=1032)</Frame>
+    Once connected, your SmartSuite data will be available to use in Softr.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fe0634e72-ae92-4a2a-9f90-de9fdbc6dfea%2FUntitled.png&blockId=1ac9a723-d691-8012-8f1c-f21052901c5a&projectId=1032)</Frame>
+  </Step>
+</Steps>
 
 ## **2. Connect your SmartSuite data to your Softr app**
 
 After connecting SmartSuite, you can use its data in any Softr app.
 
-### **Step 1: Connect your data to a dynamic block**
+<Steps>
+  <Step title="Connect your data to a dynamic block">
+    To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g., [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your SmartSuite table:
 
-To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g., [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your SmartSuite table:
+    1. Go to the Block **source** **tab** and select your SmartSuite integration.
 
-1. Go to the Block **source** **tab** and select your SmartSuite integration.
+    2. Select the **workspace** and **solution** you want to connect.
 
-2. Select the **workspace** and **solution** you want to connect.
+    3. Pick the **table** you want to use.
 
-3. Pick the **table** you want to use.
+    <Warning>
 
-<Warning>
+    **Important**: Each **block can connect to only one SmartSuite table**. If you need to display data from multiple tables, use separate blocks.
+    </Warning>
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F68f78ee5-5fa9-41b3-92d6-2587d5e0c878%2FCleanShot_2025-03-04_at_08.37.252x.png&blockId=1ac9a723-d691-8059-a2ed-ce3872dfbd26&projectId=1032)</Frame>
+  </Step>
+  <Step title="Map SmartSuite fields to item fields in softr">
+    Each SmartSuite table has multiple fields (columns) with predefined types (e.g., File, Yes/No, Formula). Connecting your table to a block lets you choose which SmartSuite **fields** to display and map it to a Softr field. This lets you control how your Smartusuite data appears in Softr.
 
-**Important**: Each **block can connect to only one SmartSuite table**. If you need to display data from multiple tables, use separate blocks.
-</Warning>
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F68f78ee5-5fa9-41b3-92d6-2587d5e0c878%2FCleanShot_2025-03-04_at_08.37.252x.png&blockId=1ac9a723-d691-8059-a2ed-ce3872dfbd26&projectId=1032)</Frame>
+    **Example:** If your SmartSuite table has a **Photos (Files & Images field)**, map it to an **Image field** in Softr to display it correctly.
+    <Frame caption="SmartSuite fields">![SmartSuite fields](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F0664fb93-4276-4541-a071-d5ea2b0c8fa2%2FUntitled.png&blockId=1ac9a723-d691-8016-9ab8-cc6c52db8987&projectId=1032)</Frame><Frame caption="Mapping an image field">![Mapping an image field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F92ca428a-8e31-47e5-9cc3-c49540544457%2FUntitled.png&blockId=1ac9a723-d691-804b-8366-f3fa53886c13&projectId=1032)</Frame>
+    <Info>
 
-### **Step 2: Map SmartSuite fields to item fields in softr**
+    Learn more about Softr field types in the [List Block Overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU).
 
-Each SmartSuite table has multiple fields (columns) with predefined types (e.g., File, Yes/No, Formula). Connecting your table to a block lets you choose which SmartSuite **fields** to display and map it to a Softr field. This lets you control how your Smartusuite data appears in Softr.
-
-**Example:** If your SmartSuite table has a **Photos (Files & Images field)**, map it to an **Image field** in Softr to display it correctly.
-<Frame caption="SmartSuite fields">![SmartSuite fields](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F0664fb93-4276-4541-a071-d5ea2b0c8fa2%2FUntitled.png&blockId=1ac9a723-d691-8016-9ab8-cc6c52db8987&projectId=1032)</Frame><Frame caption="Mapping an image field">![Mapping an image field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F92ca428a-8e31-47e5-9cc3-c49540544457%2FUntitled.png&blockId=1ac9a723-d691-804b-8366-f3fa53886c13&projectId=1032)</Frame>
-<Info>
-
-Learn more about Softr field types in the [List Block Overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU).
-
-</Info>
+    </Info>
+  </Step>
+</Steps>
 
 ### **Supported Fields**
 

@@ -22,37 +22,35 @@ So, let's see how you can get the **Action URL** from MailerLite.
 
 ## **How to locate MailerLite Action URL**
 
-### ****Step 1: Create a Subscribers Group****
+<Steps>
+  <Step title="Create a Subscribers Group">
+    Log into your MailerLite account, go to **Subscribers => Groups**,and create a group (or use an existing group if you already have one).
+    <Frame caption="Creating a group">![Creating a group](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F114505ea-0eeb-4dde-9eed-51b918a76ad6%2Fcreate-group.png&blockId=a1d99723-6c7a-4949-b421-c97d66f58341&projectId=1032)</Frame>
+  </Step>
+  <Step title="Create an embedded form">
+    Then go to **Forms => Embedded Forms** and create an embedded form as shown below.
+    <Frame caption="Creating an embedded form">![Creating an embedded form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff6d87cba-890f-4e69-8a99-ba00d8bbd8ff%2Fcreate-embedded-form.png&blockId=fc249d36-fbe5-4947-a733-e09d98c3f632&projectId=1032)</Frame>
+  </Step>
+  <Step title="Select a Subscribers Group for the Form">
+    After entering a name, you'll see the next step, where you need to select the Subscribers group for the form. Choose the group where you want the contacts to be stored and hit **Continue**.
+    <Frame caption="Selecting a Subscribers Group">![Selecting a Subscribers Group](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F57778008-cc6a-4a78-bd4d-0e2b523ce3ee%2Fselect-subscribers-group.png&blockId=60bd7ff9-2b13-4ca1-b857-7948bc6ad156&projectId=1032)</Frame>
 
-Log into your MailerLite account, go to **Subscribers => Groups**,and create a group (or use an existing group if you already have one).
-<Frame caption="Creating a group">![Creating a group](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F114505ea-0eeb-4dde-9eed-51b918a76ad6%2Fcreate-group.png&blockId=a1d99723-6c7a-4949-b421-c97d66f58341&projectId=1032)</Frame>
+    In the next screen, just hit **Done Editing** to finalize the form.
+    <Frame caption="Finalizing the form">![Finalizing the form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4c1e3d44-4d1a-4b36-8781-740a3c90ec78%2Fdone-editing.png&blockId=70c8c029-c269-4db4-9963-fdbd4e717567&projectId=1032)</Frame>
+  </Step>
+  <Step title="Getting the Action URL of the Form">
+    Finally, you'll be taken to your form's **Overview** page, where you should scroll down to the **Embed form into your website** section and switch to the **HTML code** tab. Here, you need to locate the action URL of the form (can also search for "action" using browser search with Ctrl+F), and copy the URL (highlighted below).
+    <Frame caption="Getting the Action URL">![Getting the Action URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F14d45b85-b994-4234-8424-553b8cdf9414%2Fgetting-action-url.png&blockId=509d20e5-a630-46b1-957a-3aa1bcc0624e&projectId=1032)</Frame>
+  </Step>
+  <Step title="Adding the URL on Softr">
+    Lastly, you just need to add the URL in the **MailerLite** field of your Button.
+    <Frame caption="Adding the Action URL">![Adding the Action URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2ac73fdc-ebe2-440d-8914-069d276c0ebd%2Fadding-action-url.png&blockId=58ced505-6e5e-4436-a08e-42c0ec7667d7&projectId=1032)</Frame>
 
-### **Step 2: Create an embedded form**
-
-Then go to **Forms => Embedded Forms** and create an embedded form as shown below.
-<Frame caption="Creating an embedded form">![Creating an embedded form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff6d87cba-890f-4e69-8a99-ba00d8bbd8ff%2Fcreate-embedded-form.png&blockId=fc249d36-fbe5-4947-a733-e09d98c3f632&projectId=1032)</Frame>
-
-### **Step 3: Select a Subscribers Group for the Form**
-
-After entering a name, you'll see the next step, where you need to select the Subscribers group for the form. Choose the group where you want the contacts to be stored and hit **Continue**.
-<Frame caption="Selecting a Subscribers Group">![Selecting a Subscribers Group](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F57778008-cc6a-4a78-bd4d-0e2b523ce3ee%2Fselect-subscribers-group.png&blockId=60bd7ff9-2b13-4ca1-b857-7948bc6ad156&projectId=1032)</Frame>
-
-In the next screen, just hit **Done Editing** to finalize the form.
-<Frame caption="Finalizing the form">![Finalizing the form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4c1e3d44-4d1a-4b36-8781-740a3c90ec78%2Fdone-editing.png&blockId=70c8c029-c269-4db4-9963-fdbd4e717567&projectId=1032)</Frame>
-
-### **Step 4: Getting the Action URL of the Form**
-
-Finally, you'll be taken to your form's **Overview** page, where you should scroll down to the **Embed form into your website** section and switch to the **HTML code** tab. Here, you need to locate the action URL of the form (can also search for "action" using browser search with Ctrl+F), and copy the URL (highlighted below).
-<Frame caption="Getting the Action URL">![Getting the Action URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F14d45b85-b994-4234-8424-553b8cdf9414%2Fgetting-action-url.png&blockId=509d20e5-a630-46b1-957a-3aa1bcc0624e&projectId=1032)</Frame>
-
-### **Step 5: Adding the URL on Softr**
-
-Lastly, you just need to add the URL in the **MailerLite** field of your Button.
-<Frame caption="Adding the Action URL">![Adding the Action URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2ac73fdc-ebe2-440d-8914-069d276c0ebd%2Fadding-action-url.png&blockId=58ced505-6e5e-4436-a08e-42c0ec7667d7&projectId=1032)</Frame>
-
-That's it. You can now publish your form and start collecting subscriptions. See how that works below.
-<Frame caption="Testing the email capture">![Testing the email capture](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd812415c-0cf9-4a4c-a010-930225cfcbbc%2Ftesting-email-capture.gif&blockId=f6590c0d-5e1d-4cf0-a989-1bab0931e714&projectId=1032)</Frame>
-<Tip>If you're testing the form submission and not getting anything on MailerLite, that could be due to **Double Opt-In** being enabled in your Form settings. When it's enabled, the user that submits the form receives a confirmation email. Only after the submission is confirmed by the user, it is sent to Mailerlite. You can find more details on that [here](https://www.mailerlite.com/help/how-to-use-double-opt-in-when-collecting-subscribers).</Tip>
+    That's it. You can now publish your form and start collecting subscriptions. See how that works below.
+    <Frame caption="Testing the email capture">![Testing the email capture](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd812415c-0cf9-4a4c-a010-930225cfcbbc%2Ftesting-email-capture.gif&blockId=f6590c0d-5e1d-4cf0-a989-1bab0931e714&projectId=1032)</Frame>
+    <Tip>If you're testing the form submission and not getting anything on MailerLite, that could be due to **Double Opt-In** being enabled in your Form settings. When it's enabled, the user that submits the form receives a confirmation email. Only after the submission is confirmed by the user, it is sent to Mailerlite. You can find more details on that [here](https://www.mailerlite.com/help/how-to-use-double-opt-in-when-collecting-subscribers).</Tip>
+  </Step>
+</Steps>
 
 ## Sending forms to MailerLite
 

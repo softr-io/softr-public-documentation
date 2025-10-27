@@ -45,44 +45,46 @@ To use BigQuery in Softr, you must first **link your account**. Before connectin
 
 * At least **read-only access** for Softr to your BigQuery dataset
 
-### **Step 1: Open data Ssurces in Softr**
+<Steps>
+  <Step title="Open data Ssurces in Softr">
+    1. Navigate to **Data Sources** in your [**Softr Dashboard**](https://studio.softr.io/dashboard/data-sources).
 
-1. Navigate to **Data Sources** in your [**Softr Dashboard**](https://studio.softr.io/dashboard/data-sources).
+    2. Click **Connect Data Source**.
+    <Frame caption="Add, edit, or remove a datasource using the buttons on the dashboard">![Add, edit, or remove a datasource using the buttons on the dashboard](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9f9e368c-2404-4cea-942f-98d400598a9f%2FScreenshot_2024-04-12_at_4.25.04_PM.png&blockId=1b29a723-d691-80b8-a4dc-fad52e1e5bd9&projectId=1032)</Frame>
+  </Step>
+  <Step title="Authenticate BigQuery">
+    1. Select **BigQuery** from the list of available data sources.
 
-2. Click **Connect Data Source**.
-<Frame caption="Add, edit, or remove a datasource using the buttons on the dashboard">![Add, edit, or remove a datasource using the buttons on the dashboard](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9f9e368c-2404-4cea-942f-98d400598a9f%2FScreenshot_2024-04-12_at_4.25.04_PM.png&blockId=1b29a723-d691-80b8-a4dc-fad52e1e5bd9&projectId=1032)</Frame>
+    2. Follow the on-screen prompts to authenticate with **Google OAuth**.
 
-### **Step 2: Authenticate BigQuery**
-
-1. Select **BigQuery** from the list of available data sources.
-
-2. Follow the on-screen prompts to authenticate with **Google OAuth**.
-
-3. **Grant Softr the necessary read-only permissions** to your BigQuery datasets.
+    3. **Grant Softr the necessary read-only permissions** to your BigQuery datasets.
+  </Step>
+</Steps>
 
 ## **2. Connect your BigQuery data to the Softr app**
 
 Once connected, you can use your BigQuery data to build dashboards and display records in your Softr apps.
 
-### **Step 1: Connect your data to a dynamic block**
+<Steps>
+  <Step title="Connect your data to a dynamic block">
+    To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), Chart) to your BiqQuery table:
 
-To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), Chart) to your BiqQuery table:
+    1. Go to the Block **source** **tab** and select your BigQuery integration.
 
-1. Go to the Block **source** **tab** and select your BigQuery integration.
+    2. Select the **project** and **dataset** you want to connect.
 
-2. Select the **project** and **dataset** you want to connect.
+    3. Pick the **table** you want to use or **create a new** **query**
 
-3. Pick the **table** you want to use or **create a new** **query**
+    4. Optionally, select the **primary field**.<br/>
+       <Frame caption="Connect BigQuery to a dynamic block">![Connect BigQuery to a dynamic block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fedc30ac2-a7e8-4986-ab4a-27d54917feab%2FGroup_8_%282%29.png&blockId=1b29a723-d691-8002-b900-d3cb4dbf2a2b&projectId=1032)</Frame>
+  </Step>
+  <Step title="Map BigQuery fields to Softr fields">
+    When you connect your table to a block, you can choose which BigQuery **properties** to display and map to a Softr field. This lets you control how your data appears in Softr.
 
-4. Optionally, select the **primary field**.<br/>
-   <Frame caption="Connect BigQuery to a dynamic block">![Connect BigQuery to a dynamic block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fedc30ac2-a7e8-4986-ab4a-27d54917feab%2FGroup_8_%282%29.png&blockId=1b29a723-d691-8002-b900-d3cb4dbf2a2b&projectId=1032)</Frame>
-
-### **Step 2: Map BigQuery fields to Softr fields**
-
-When you connect your table to a block, you can choose which BigQuery **properties** to display and map to a Softr field. This lets you control how your data appears in Softr.
-
-**Example:** If you have a **date** in BigQuery, map it to **grouping** in Softr.
-<Frame caption="Mapping fields from BigQuery to Softr">![Mapping fields from BigQuery to Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F69bfd2e7-f157-4ca1-88db-0aff664e2aa0%2FGroup_8_%283%29.png&blockId=1b29a723-d691-8020-9cd1-e867254c67b9&projectId=1032)</Frame>
+    **Example:** If you have a **date** in BigQuery, map it to **grouping** in Softr.
+    <Frame caption="Mapping fields from BigQuery to Softr">![Mapping fields from BigQuery to Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F69bfd2e7-f157-4ca1-88db-0aff664e2aa0%2FGroup_8_%283%29.png&blockId=1b29a723-d691-8020-9cd1-e867254c67b9&projectId=1032)</Frame>
+  </Step>
+</Steps>
 
 ### **Custom SQL Queries (Optional)**
 

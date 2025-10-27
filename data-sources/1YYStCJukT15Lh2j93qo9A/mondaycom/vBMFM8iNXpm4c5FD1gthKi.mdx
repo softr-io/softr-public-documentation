@@ -32,50 +32,52 @@ To connect your monday.com data to Softr you will need **admin** access in your 
 
 </Warning>
 
-### **Step 1: Get your API token**
+<Steps>
+  <Step title="Get your API token">
+    * Go to **Administration** > **Connections** > [API in monday.com.](https://developer.monday.com/api-reference/docs/authentication#admin-tab)
 
-* Go to **Administration** > **Connections** > [API in monday.com.](https://developer.monday.com/api-reference/docs/authentication#admin-tab)
+    * Copy your **Personal API Token**.
+      <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F994b10c0-09a8-4963-89f7-8852a3729353%2Fdf5d8186-f714-4935-95aa-92a6bf1b1293.png&blockId=1ac9a723-d691-80ff-9448-ee3c79c3d6ed&projectId=1032)</Frame>
+  </Step>
+  <Step title="Add monday.com as a data source in Softr">
+    * Open [Softr’s Data Sources](https://studio.softr.io/dashboard/data-sources) settings.
 
-* Copy your **Personal API Token**.
-  <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F994b10c0-09a8-4963-89f7-8852a3729353%2Fdf5d8186-f714-4935-95aa-92a6bf1b1293.png&blockId=1ac9a723-d691-80ff-9448-ee3c79c3d6ed&projectId=1032)</Frame>
+    * Click the **Connect data source.**
 
-### **Step 2: Add monday.com as a data source in Softr**
-
-* Open [Softr’s Data Sources](https://studio.softr.io/dashboard/data-sources) settings.
-
-* Click the **Connect data source.**
-
-* Select **monday.com** and paste your API token.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fe0634e72-ae92-4a2a-9f90-de9fdbc6dfea%2FUntitled.png&blockId=1ac9a723-d691-8093-adf8-e91a05ad42bb&projectId=1032)</Frame>
+    * Select **monday.com** and paste your API token.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fe0634e72-ae92-4a2a-9f90-de9fdbc6dfea%2FUntitled.png&blockId=1ac9a723-d691-8093-adf8-e91a05ad42bb&projectId=1032)</Frame>
+  </Step>
+</Steps>
 
 ## **2. Connect your monday.com data to your Softr app**
 
 Once your monday.com account is connected, you can use it in any Softr application.
 
-### **Step 1: Connect your data to a dynamic block**
+<Steps>
+  <Step title="Connect your data to a dynamic block">
+    To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your monday.com board:
 
-To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your monday.com board:
+    1. Go to the Block **Source** **tab** and select your monday.com integration.
 
-1. Go to the Block **Source** **tab** and select your monday.com integration.
+    2. Select the **workspace** you want to connect.
 
-2. Select the **workspace** you want to connect.
+    3. Pick the **board** you want to use.
 
-3. Pick the **board** you want to use.
+    <Warning>
 
-<Warning>
+    **Important:** You can connect **only one board to one block**. For example, if you want to show a list of clients, you can select the **Companies** board. If you would like to show **Tickets**, you will need to add another **dynamic block.**
+    </Warning>
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fe863861d-f00d-40cf-8839-7c7c258b9d8b%2FDefault_720_frame_%2826%29.png&blockId=1ac9a723-d691-8045-bc80-f029e0aa8cb8&projectId=1032)</Frame>
+  </Step>
+  <Step title="Map monday.com columns to item fields">
+    When you connect your board to a block, you can choose which monday.com **columns** to display and map it to a Softr field. This lets you control how your monday.com data appears in Softr.
 
-**Important:** You can connect **only one board to one block**. For example, if you want to show a list of clients, you can select the **Companies** board. If you would like to show **Tickets**, you will need to add another **dynamic block.**
-</Warning>
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fe863861d-f00d-40cf-8839-7c7c258b9d8b%2FDefault_720_frame_%2826%29.png&blockId=1ac9a723-d691-8045-bc80-f029e0aa8cb8&projectId=1032)</Frame>
+    **Example:** If your Airtable base has a **Profile Picture (Attachment field)**, map it to an **Image field** in Softr so it displays correctly
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff16c9951-d0c5-4a7c-9df2-9803d8601ff0%2FUntitled.png&blockId=1ac9a723-d691-804a-ab2e-f5f4b4151c7a&projectId=1032)</Frame><Frame caption="Mapping an image field">![Mapping an image field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F92ca428a-8e31-47e5-9cc3-c49540544457%2FUntitled.png&blockId=1ac9a723-d691-801d-9d20-cfc05c857f75&projectId=1032)</Frame>
 
-### **Step 2: Map monday.com columns to item fields**
-
-When you connect your board to a block, you can choose which monday.com **columns** to display and map it to a Softr field. This lets you control how your monday.com data appears in Softr.
-
-**Example:** If your Airtable base has a **Profile Picture (Attachment field)**, map it to an **Image field** in Softr so it displays correctly
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff16c9951-d0c5-4a7c-9df2-9803d8601ff0%2FUntitled.png&blockId=1ac9a723-d691-804a-ab2e-f5f4b4151c7a&projectId=1032)</Frame><Frame caption="Mapping an image field">![Mapping an image field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F92ca428a-8e31-47e5-9cc3-c49540544457%2FUntitled.png&blockId=1ac9a723-d691-801d-9d20-cfc05c857f75&projectId=1032)</Frame>
-
-You can learn more about Softr field types in the [List block overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU).
+    You can learn more about Softr field types in the [List block overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU).
+  </Step>
+</Steps>
 
 ### **Supported fields**
 
