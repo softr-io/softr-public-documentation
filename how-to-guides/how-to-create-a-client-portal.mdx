@@ -1,0 +1,87 @@
+---
+title: "How to Create a Client Portal?"
+permalink: "pnfkjmh2mr68N9WWRDEYKG"
+description: "Building client portals with Softr."
+'og:title': "How to Create a Client Portal? – Softr Help Docs"
+'og:description': "Building client portals with Softr."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "How to Create a Client Portal? – Softr Help Docs"
+'twitter:description': "Building client portals with Softr."
+---
+Creating a client/partner portal that enables you to share your Airtable data with external users is one of the most common usages of Softr.
+
+You can do so in a secure way that enables you to restrict who has access to your Airtable information. This way you won’t need to share your Airtable base with your external users.
+In addition, you’re going to be able to customize your user's experience by offering them an intuitive user interface similar to the web applications they are used to and tailored to your brand and your way of working.
+
+## 1. Getting started with the client portal template
+
+The [Client Portal template](https://www.softr.io/templates/client-portal) is a powerful agency web app template that enables clients and customers to collaborate on ongoing projects:
+
+Consultants and Managers will be able to keep track of their clients, projects, tasks, and payments in one place. In addition, they will have access to a list of team members and their contact information.
+
+Clients will be able to see their own projects, tasks, and invoices. They can add new tasks to the projects and pay past-due invoices.
+
+You can find detailed instructions on creating a Softr app from a template [here](/5315870b0eb4473fb49dd13c97635d67#e71ed9b1e6a743999a2e741a11b9855f). Just search for "client portal" and select the template. However, before we create an app from a template and start customizing it, let's **Preview** the template to explore its features. There are three [user groups](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3) available by default. If we, for instance, log in with a Client Email, we'll see that clients have access to all of their projects and tasks and can also manage and pay their invoices (using the [Stripe integration](/integrations/etS18kJqm1fuD58KCsjC3z/stripe-checkout/iBomMEucRZtM2y6HuutYVC)).
+<Frame caption="Logging in as a client">![Logging in as a client](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff27e68d5-aacc-44c9-a4cf-54f047043a9a%2Flogging-in-as-client.gif&blockId=6a333a66-0086-4389-ab29-294cf470463d&projectId=1032)</Frame>
+
+Further on, if we log in as a **Consultant,** we'll have access to some additional sections such as company clients (along with all the projects assigned to them). Moreover, they can add tasks to clients' projects. Thus, consultants can access the information of all the customers, while clients only see the info that's specific to their projects.
+<Frame caption="Logging in as a Consultant">![Logging in as a Consultant](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5fa1dfcd-d628-4cd9-ad7a-34322d17e841%2Flogging-in-as-consultant.gif&blockId=ea3005b0-fbfb-44bc-b29f-c691a8e273e9&projectId=1032)</Frame>
+
+## 2. Create your client portal
+
+One of the easiest ways to start creating your client portal is to use the Client Portal template. The process is pretty straightforward, so let's take a quick look at the steps involved.
+
+<Steps>
+  <Step title="Create an app from a template">
+    To use the template, you just need to find the required template and hit **Use Template**. As soon as you do that, you'll be immediately taken to your new Softr app with the template applied. You can connect your database during the setup or later on, so we'll look into that in the next step.
+    <Frame caption="Creating a Client Portal from a template">![Creating a Client Portal from a template](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Faf2ad7bb-045f-4ccf-bc97-bf7ec2781764%2Fclient-portal-from-template.gif&blockId=e19a5bad-86bc-4c49-be31-3789e43fc099&projectId=1032)</Frame>
+  </Step>
+  <Step title="Connecting Airtable base">
+    Now you need to connect the template's Airtable base with all the mock data, which you can modify later on. To do that, you can either go to **Integrations => Airtable** or just click on one of the dynamic blocks that is linked to Airtable.
+    <Frame caption="Connecting the app to Airtable">![Connecting the app to Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0a578eda-5e47-4e14-8ffc-aba67d271bc2%2Fconnecting-app-to-airtable.gif&blockId=2315385e-5c85-4e17-888e-a41029d39d6d&projectId=1032)</Frame>
+
+    As you can see, we now have all the data such as **Clients, Projects, Tasks, Invoices**, etc. in our Airtable base.
+    <Frame caption="Template data on Airtable">![Template data on Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbb198079-9153-40c2-aab9-02034e4a8c3c%2Ftemplate-data-airtable.png&blockId=066c13bc-6627-486a-bb7f-17cc34b8f086&projectId=1032)</Frame>
+  </Step>
+  <Step title="Publishing the app">
+    Now, all you need to do is [publish your app](/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/publishing-your-softr-app/gRrb1u7eLmRTrXyg3UNGkQ). You can publish under a Softr subdomain or [connect a custom domain](/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/add-a-custom-domain-to-your-app/93K5bLJN3n91MRo9uRGdAf).
+  </Step>
+</Steps>
+
+## 3. Updating the Client Portal template to make it your own
+
+### Sharing your data with your clients
+
+Softr makes it extremely easy to share data with your clients in a secure and user-friendly way. To do so, simply use one of the available blocks (for example, [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) or [List Details](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/item-details-block-/4bE8XaFbJp45wkAwuWiz8f)), connect it to Airtable, and you will be good to go. As we discussed earlier, each user group sees only the blocks and pages that are relevant to them. This is achieved through [conditional filters](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m) that can be applied to dynamic blocks (that fetch data from Airtable) to filter the list differently for each user.
+<Frame caption="Conditional filters applied on the list of projects">![Conditional filters applied on the list of projects](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd0b97d3a-0b40-41da-b3fa-fc5b2b81ddec%2Fconditional-filters.png&blockId=a6156f3c-1c8a-4175-ae69-a51cf79ab155&projectId=1032)</Frame>
+
+In the image above, you can see that the conditional filter applied on the list of projects allows the logged-in user to see only the projects that are assigned to him/her. This way, clients, for instance, will be able to view only those projects that contain their email under Client Email, where Client Email is a field in the template Airtable [data source](/4230abecf813402aa2926466c313290a).
+
+### **Allowing clients to add data**
+
+Allowing your clients or team to add data as part of their collaboration workflows is essential in almost all client portals. The Client Portal template allows clients to add new tasks to their running projects using a simple [form](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/advanced-form-features/jCim5VWZePgZuaRsUZBnpG). Below, you can see how the client logs in and submits a task using the form, which is then stored on Airtable.
+
+To store the form submission on Airtable, you just need to connect it to the corresponding table through form settings as well as [map all the fields](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/advanced-form-features/jCim5VWZePgZuaRsUZBnpG). Moreover, as you can see below, the task is automatically assigned to the project it was submitted for.
+<Frame caption="Task assigned to a project">![Task assigned to a project](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F13164fa0-6f4e-4d7b-9028-d96332187839%2Ftask-assigned-to-project.png&blockId=5001fd31-a08e-4395-8cf3-5482d672b228&projectId=1032)</Frame>
+
+This is done through a form hidden field, which grabs the record ID from the project URL. The ID differs depending on which project (i.e. record) is opened in the project [details](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/item-details-block-/4bE8XaFbJp45wkAwuWiz8f) block at a given time.
+
+### **Allowing clients to edit data**
+
+In some cases, you may want your clients and team to edit information. With Softr, you can enable them to do that without having to share the entire Airtable base and, if needed, be very specific about [who can edit what](/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq).
+
+### **Adding members to your client portal**
+
+Since the client portal implies a selected group of users without a public signup page, you'll most probably be adding users through one of the ways described [here](/5315870b0eb4473fb49dd13c97635d67#e71ed9b1e6a743999a2e741a11b9855f). You can find more details on the other aspects of memberships in our [detailed guide](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/add-users-to-a-softr-app/kBJGPeH635j7HDW4NYoDDs).
+
+### **Restricting access to pages and data based on user roles**
+
+Each block or page in your Softr app can have its own visibility rules that specify who can access it. Our [visibility settings overview](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/block-visibility/3spA2dfQNrcGcPNmnDXHB3) will help you understand how this works.
+
+### **Brand your portal to match your, or your client's, website**
+
+Softr provides a variety of options for customizing the look and feel of your app. You can configure [your app's theme](/styling/7qXYEkNvWQamR6vcLXzZnF/application-theme/91YGSL2aDJajXdbPBhitbc) in general as well as apply more granular stylings for each block.
+
+### Personalize the app by adding the user's name to text fields
+
+Finally, you create a more personalized experience for your app users by adding this specific variable `{LOGGED_IN_USER:NAME}` in [any static text field](/how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/personalize-your-app-by-adding-welcome-message/i6Ttiod7hihVHY5Rx84vgz) to show the logged-in user name.

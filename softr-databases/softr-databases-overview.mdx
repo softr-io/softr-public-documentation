@@ -1,0 +1,153 @@
+---
+title: "Softr Databases Overview"
+permalink: "57RHfyrVrnHg4AcFqaAPJ9"
+description: "Store your application data in Softr Databases."
+'og:title': "Softr Databases Overview – Softr Help Docs"
+'og:description': "Store your application data in Softr Databases."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Softr Databases Overview – Softr Help Docs"
+'twitter:description': "Store your application data in Softr Databases."
+---
+Softr Databases is relational database tool you can use to store, manage, and organize your data. You can use it as a standalone database tool, or connect it directly to your apps to show content, update records, or personalize what users see.
+
+Think of it like a smarter spreadsheet—but built for apps.
+
+Softr gives you a few easy ways to get started with your database:
+
+* **Start from scratch**: Set up your own tables and fields based on what your app needs.
+
+* **Use a template**: Pick from ready-made templates (like CRM, job board, or inventory) to get started faster.
+
+* **Import**: Bring your existing data into Softr with a simple import. Currently supporting CSV and Airtable import, with more import options coming soon.
+
+<Note>
+
+Softr Databases are available on all Softr plans with some record limits. For details, check out the Pricing Page.
+
+</Note>
+
+## Step-by-Step: Create your first database
+
+Here’s how to create your first database and understand the key pieces along the way:
+
+<Steps>
+  <Step title="Create a new database and your first table">
+    Go to the Databases section on the left nav of your Softr workspace and create a new database. A table is like a list of similar items. For example, if you’re building a job board, you might have a table called **Jobs**. If it’s a client portal, you might create a table called **Clients**.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F588452e9-5a7e-47d9-9d23-4be103a791c8%2Ffab4f388-3187-4815-b9a4-6805c93abc2a.png&blockId=2159a723-d691-8084-b380-e696dfc4d6a0&projectId=1032)</Frame>
+
+    You can add more tables by clicking on the **+** button. You have a few options to choose from:
+
+    * Start from scratch
+
+    * Generate with AI
+
+    * Import from CSV
+
+    * Import from Airtable
+
+    * Import from Google Sheets (coming soon)
+
+    * Import from SQL (coming soon)
+      <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F5865d64b-8de2-4c27-9720-db71706eff5e%2FScreenshot_2025-08-08_at_9.55.44_AM.png&blockId=2499a723-d691-8085-b66b-cff57a6729c1&projectId=1032)</Frame>
+  </Step>
+  <Step title="Add Fields">
+    Fields are the pieces of information you want to store about each item. These are the columns in your table. For example, a client might have:
+
+    * Name
+
+    * Email
+
+    * Company
+
+    * Status
+
+    Each field has a type that tells the database what kind of info it should expect. Here are a few common ones:
+
+    * **Text** – for names or notes
+
+    * **Number** – for prices or quantities
+
+    * **Date** – for deadlines or schedules
+
+    * **File/Image** – for uploading documents or pictures
+
+    * **Relationship** – to connect one table to another, like linking a project to a client
+
+    Choosing the right type keeps your data organised and easy to use. Learn more about different Field types [here](/softr-databases/57RHfyrVrq5xPojyELRnSu/field-types/57RHfyrVrpq8aaMPouT9Rs).
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F77088660-09a5-4297-a4ce-8e22ac707b6d%2FCleanShot_2025-05-29_at_13.25.262x.png&blockId=2159a723-d691-8019-a90b-c1e599f27e1f&projectId=1032)</Frame>
+  </Step>
+  <Step title="Add Records">
+    Each item in the list is called a record. So in your **Clients** table, every client is a new record—just like a row in a spreadsheet. You can fill in your data manually or enable your users to fill in the fields via the Softr application.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F145c1eff-69d6-4361-b7e2-1b93e40803c7%2FCleanShot_2025-05-29_at_13.26.572x.png&blockId=2159a723-d691-8084-abf3-c50a81f2e1e9&projectId=1032)</Frame>
+  </Step>
+  <Step title="Add More Tables/Fields/Records as Needed">
+    As your app grows, you may add more tables—such as Projects, Orders, or Support Tickets—or add more fields to collect new data, like Notes, Payment Status, and Company contacts.
+
+    That’s it—you’ve just built the foundation of your app with a well-structured database!
+  </Step>
+</Steps>
+
+## Connect the Database to the Softr Application
+
+Once you've created your database, you’re ready to build and connect to your app.
+
+<Steps>
+  <Step title="Connect your data to a dynamic block">
+    To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH) (e.g., List, Grid, Table) to Softr Databases:
+
+    1. Go to the **Block source** **tab** and select Softr Databases
+
+    2. Pick the **Database** you want to use.
+
+    3. Select the T**able** containing the records you want to display.<br/>
+       <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F7465b296-d5c4-490e-853a-ebde768d0f29%2F7179dfe6-5bb4-4b0c-98eb-55a19dd1fc42.png&blockId=2159a723-d691-8031-8181-cbb1dd66290d&projectId=1032)</Frame>
+
+    <Note>
+
+    **Important:** Each Database table can only connect to one Softr block. For example, if you want to display **Projects** in a List block, you’ll need to map it to the **Projects table** in your base. If you also want to show **Tasks**, you’ll need to add a separate block and connect it to the **Tasks table**.
+
+    </Note>
+    <Note>
+
+    **Note**: Softr Database is compatible with the latest dynamic blocks. **Inbox** and **Kanban** don’t yet support Softr Databases. Support for these is coming soon.
+
+    </Note>
+  </Step>
+  <Step title="Map Database fields to item fields">
+    When you connect your table to a block, you can choose which **columns** to display and map to block fields.. This lets you control how your data appears in the app.
+
+    **Example:** If you have a **Profile Picture (Attachment field) in your Database,** map it to an **Image field** in the Softr app so it displays correctly.
+    <Frame caption="Fields in Softr Database">![Fields in Softr Database](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F210a9e62-02a5-4f7d-a7b1-3ef7ca3ca2b8%2FCleanShot_2025-05-29_at_13.31.282x.png&blockId=2159a723-d691-808d-bbac-e85d8cd0dc5d&projectId=1032)</Frame><Frame caption="Same fields mapped to the list block">![Same fields mapped to the list block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F1b217aa5-c2c0-4e4d-beb7-1b939df1749b%2F04090ea9-a2ba-4aaf-aa69-579acf8585a7.png&blockId=2159a723-d691-80bc-b830-c07b9e5d59b9&projectId=1032)</Frame>
+    <Note>
+
+    Database fields work like **spreadsheet columns**, but each has a specific type (e.g., text, image, checkbox). To keep everything working smoothly, make sure to **match field types correctly** when setting up the connection.
+
+    </Note>
+  </Step>
+  <Step title="Supported field types">
+    All Database fields are supported in Softr Blocks. Some fields are read-only. For more detailed information about fields and their configuration, refer to the [Fields page](/softr-databases/57RHfyrVrq5xPojyELRnSu/field-types/57RHfyrVrpq8aaMPouT9Rs).
+  </Step>
+</Steps>
+
+---
+
+### FAQ
+   <AccordionGroup>
+   <Accordion title="Where is the Softr Database stored?">
+All Softr Database data is currently stored in the **AWS EU Region**.
+   </Accordion>
+   <Accordion title="Is Softr Databases GDPR compliant?">
+Yes, Softr follows GDPR-aligned practices for data protection and privacy.
+   </Accordion>
+   <Accordion title="Are Softr Databases available on the free plan?">
+Yes! Softr Databases are available for everyone to try, with record limits tailored to each plan so you can build and scale with confidence. The free plan includes up to 1000 records per database (and 5000 records across databases).
+   </Accordion>
+   <Accordion title="Can I add data to Softr Databases via API or automation tools?">
+Yes! You can connect any tool with a REST API and push data to Softr Databases using the public API. And you connect to Zapier to power automations across your entire stack (Make and n8n integrations coming soon).
+
+[Explore API docs →](/softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/)
+
+[Explore Softr + Zapier →](https://zapier.com/apps/softr/integrations)
+   </Accordion>
+
+</AccordionGroup>

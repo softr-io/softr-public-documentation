@@ -1,0 +1,29 @@
+---
+title: "Stripe Checkout"
+permalink: "iBomMEucRZtM2y6HuutYVC"
+description: "The Stripe Checkout integration lets you collect payments from your application built on Softr."
+'og:title': "Stripe Checkout – Softr Help Docs"
+'og:description': "The Stripe Checkout integration lets you collect payments from your application built on Softr."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Stripe Checkout – Softr Help Docs"
+'twitter:description': "The Stripe Checkout integration lets you collect payments from your application built on Softr."
+---
+With Stripe Checkout’s serverless integration for simple one-time payments or recurring subscriptions, you are able to charge your customers with a click of a button.
+
+## **Connecting Stripe**
+
+Connecting to Stripe requires you to have an account on Stripe. If you don't have an account yet or new to Stripe, please get yourself familiar with the [Stripe documentation](https://stripe.com/docs) first.
+
+After making sure you have a [Stripe account](https://stripe.com/docs), [Products](https://stripe.com/docs/billing/subscriptions/set-up-subscription#without-code) & [Pricing Plans](https://stripe.com/docs/billing/subscriptions/set-up-subscription#without-code) defined, proceed with these steps to connect Stripe to your Softr's application.
+
+<Steps>
+  <Step title="Step 1:Enable Checkout on Softr Side">
+    To enable checkout on Softr side, you need to first add your Stripe's authentication keys to Softr. You need to navigate to the API keys page on your Stripe checkout and copy the **Publishable key** and **Secret key** to your Softr app's  **Settings => Integrations => Stripe Checkout** page as shown below.
+    <Frame caption="Adding Stripe authentication keys on Softr">![Adding Stripe authentication keys on Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F504b5842-a97c-4693-ba34-a2a617aaea4c%2Fintegrations-stripe.png&blockId=d68d1649-edf2-475f-a31b-98d1747e36c8&projectId=1032)</Frame>
+  </Step>
+  <Step title="Step 2:Add a Checkout to your Application">
+    To collect payments from your users, you can either use the [Simple Checkout Form](/integrations/etS18kJqm1fuD58KCsjC3z/simple-checkout-form/tKt3f5cV2CxsFLGM1aaNYX) or link to a Stripe checkout from your site (e.g. using the [Pricing block](/integrations/etS18kJqm1fuD58KCsjC3z/layout-pricing-in-card-view-with-details/pNspR4mKu6spj1KSzRf4p7)).
+
+    You can also add a [Simple Billing Form](/integrations/etS18kJqm1fuD58KCsjC3z/simple-billing-block/9oj8iqzqLhBWFHVt2UAY1K) or connect a [Stripe Custome Portal](/integrations/etS18kJqm1fuD58KCsjC3z/stripe-customer-portal/3B7NhNtJ4RvipBwi7FwUtF) to allow your users to view and edit their billing details.
+  </Step>
+</Steps>

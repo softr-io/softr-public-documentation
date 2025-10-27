@@ -1,0 +1,85 @@
+---
+title: "Troubleshooting Airtable API call limit exceeded"
+permalink: "6NppUacY26WpmyagDoCDfD"
+description: "Review Airtable plans, check rate limits, explore solutions for optimal performance."
+'og:title': "Troubleshooting Airtable API call limit exceeded – Softr Help Docs"
+'og:description': "Review Airtable plans, check rate limits, explore solutions for optimal performance."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Troubleshooting Airtable API call limit exceeded – Softr Help Docs"
+'twitter:description': "Review Airtable plans, check rate limits, explore solutions for optimal performance."
+---
+If you're facing issues with Airtable API call limits being exceeded, follow these 3 steps to identify the problem and find the right solution.
+
+<Steps>
+  <Step title="Understand Your Plan's API Call Limits">
+    Review your Airtable plan and associated API call limits:
+
+    * **Free Plan:** 1000 API calls per month
+
+    * **Team Plan:** 100,000 API calls per month
+
+    * **Business Plan:** Unlimited API calls per month
+
+    * **Enterprise Plan:** Not disclosed publicly
+
+    Check your Airtable plan next to the name of the workspace:
+    <Frame caption="Airtable plan name next to the workspace name.">![Airtable plan name next to the workspace name.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F2f41ea64-7957-4149-b0c2-6e52a3ff28a3%2FSCR-20231214-myua.png&blockId=6f186607-75e8-4eaf-a09d-c1f9e18e75f4&projectId=1032)</Frame>
+    <Note>Make sure your connected Airtable base is actually in theworkspace you are reviewing, and that the workspace is a **paid one**.</Note>
+
+    If you exceed the limit within a month, your API access will keep working and your **rate limit will be reduced** for the remainder of the month, returning to normal at month-end – rate limiting is described later on this page.
+
+    **Important:**
+
+    * API call limits are applied **per Airtable workspace** – regardless of seats, the monthly API limit remains the same.
+
+    * There is a **shared API calls quota** – across all integrations in a workspace, meaning third-party tools and multiple Softr apps, share the same request limits.
+
+    <Info>Airtable plans to enable API usage monitoring in workspace settings in the future.</Info>
+
+    📄 Airtable sources:
+
+    * [Managing API call limits in Airtable](https://support.airtable.com/docs/managing-api-call-limits-in-airtable)
+
+    * [Airtable Pricing](https://airtable.com/pricing)
+  </Step>
+  <Step title="Check if you are hitting the rate limit">
+    Airtable imposes a **rate limit** of **5 requests per second** for OAuth Connections to ensure optimal user performance across all pricing tiers. Softr uses an OAuth connection by default, however you can also use Airtable PATs, which have a higher rate limit (read solutions in Step 3 below). If a monthly API calls limit exceeds, depending on the [Airtable price tier](https://airtable.com/pricing):
+
+    * **Free Plan:** rate limit will decrease to 2 requests per second until the month ends
+
+    * **Team Plan:** rate limit will decrease to 2 requests per second until the month ends
+
+    * **Business Plan:** rate limit will maintain 5 requests per second
+
+    * **Enterprise Plan:** rate limit will maintain 5 requests per second
+
+    <Note>Choose a higher-tiered plan, such as the Business or Enterprise Plan, to ensure a consistently fast experience throughout the month.</Note>
+
+    📄 Airtable sources:
+
+    * [Managing API call limits in Airtable](https://support.airtable.com/docs/managing-api-call-limits-in-airtable)
+
+    * [Airtable Pricing](https://airtable.com/pricing)
+  </Step>
+  <Step title="Find p**otential solutions:**">
+    * You can always switch over to using Softr’s own databases, which are much faster and performant than Airtable’s. We even have an import from Airtable option that you can use to quickly move your Airtable data over to [Softr Databases](/softr-databases/57RHfyrVrq5xPojyELRnSu).
+
+    * You can switch the datasource connection method in Softr from OAuth (5 requests per second) to use Airtable’s new Personal Access Tokens, which have a rate limit of 50 requests per second. [Learn more about that here](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX#using-airtable-personal-access-tokens-with-softr).
+
+    * In the event that you still encounter issues when using a PAT, trying using multiple PATs for different blocks or apps to distribute the request load.
+
+    * We’re doing our best to not exceed Airtable’s rate limiting. You can also keep your pages slim, not exceeding around 5 dynamic blocks per page.
+
+    * Isolate Airtable bases that consume many API calls into separate Airtable workspaces to balance API call limits.
+
+    * When possible, try using the unique Softr App {"<>"} Airtable Workspace {"<>"} Airtable Base combination.
+
+    * Instead of creating separate Airtable connections for your Softr apps, reuse the existing ones in your Softr workspace. Aim to consistently use one "My Airtable Connection (usrXXXX) #1" across all applications per Softr workspace. Only generate a new connection when dealing with new Airtable user accounts or workspaces.
+
+    * Upgrade to a higher Airtable plan. This will not affect your Softr’s [flat-rate pricing](http://softr.io/pricing). Each Softr plan comes with a **set of user allowances designed for a company size**:
+      + The number of users you have in Softr does not affect your Airtable bill.
+      + Your teammates also don’t need an Airtable license to be added as users in your Softr app.
+
+    If issues persist, contact us via support chat.
+  </Step>
+</Steps>

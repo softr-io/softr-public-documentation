@@ -1,0 +1,36 @@
+---
+title: "Tutorial: How to set up a custom domain for Namecheap"
+permalink: "qEPAYHRZAa9vPPPjsaWs3a"
+description: "Connect a Namecheap domain to your Softr app."
+'og:title': "Tutorial: How to set up a custom domain for Namecheap – Softr Help Docs"
+'og:description': "Connect a Namecheap domain to your Softr app."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Tutorial: How to set up a custom domain for Namecheap – Softr Help Docs"
+'twitter:description': "Connect a Namecheap domain to your Softr app."
+---
+<Note>Custom domain and extra custom domain slots depend on the subscription plan. See [plan comparison](https://www.softr.io/pricing). </Note>
+
+<Steps>
+  <Step title="">
+    First, log in to your [Namecheap account dashboard](https://www.namecheap.com/myaccount/login/).
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F112c22c8-9d60-4813-97e6-a58f49958de8%2Fnamecheap-login.png&blockId=37bc275c-314f-4a42-88b4-a20102b11adf&projectId=1032)</Frame>
+  </Step>
+  <Step title="">
+    Next to the domain you want to point to Softr, click on **“Manage”**.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd3b0df97-72a5-49f0-9e2d-8b2daf04758c%2F2-namecheap-dashboard.png&blockId=2bd5384a-aa71-442d-9940-6b1aa9f33185&projectId=1032)</Frame>
+  </Step>
+  <Step title="">
+    Click into the **“Advanced DNS”** tab. If you see **CNAME Record** and **URL Redirect Record** with parkingpage.namecheap like values please delete them.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fca4b4c31-25f8-4e0c-8d99-30b32598ae51%2F3-namecheap-dns.png&blockId=0a0f86bc-1984-491e-9655-6e91b9ef1a35&projectId=1032)</Frame>
+
+    If your screen doesn’t look like the image above, it’s most likely because you have your DNS pointed elsewhere. In other words, to create DNS records at Namecheap, you need to be using **“Namecheap BasicDNS”** which is included with every domain. You can check by going into the **“Domain”** tab.
+  </Step>
+  <Step title="">
+    Click into the **“Advanced DNS”** tab and then click on “**Add New Record”.** If you see an A Record that already exists you will simply need to edit it (skip to the next step).
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff5238c2d-b782-4259-9640-9ca73f10f577%2F4-namecheap-new-record.png&blockId=825e06b8-fce0-44ab-ac63-feb209ef3e75&projectId=1032)</Frame>
+  </Step>
+  <Step title="">
+    You will need to create an **A record** (with **@**)and a **CNAME** (with **www**)as well input the **IP address** provided by us (from **Settings => Custom Domain** in Softr Studio), as shown below.
+    <Frame caption="IP address">![IP address](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1f260762-aaf1-4619-b059-f30bb1136e20%2F5-softr-ip-address.png&blockId=11c8671d-16ee-443e-bcd7-9a527bf15510&projectId=1032)</Frame><Frame caption="Setup in Namecheap">![Setup in Namecheap](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe18ad749-f9c9-4b71-a909-d239c2d3bc9e%2F5-1-namecheap-setup.png&blockId=5a915b30-268d-47a5-a2fa-74d141f07d4f&projectId=1032)</Frame>
+  </Step>
+</Steps>

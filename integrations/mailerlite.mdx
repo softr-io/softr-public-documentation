@@ -1,0 +1,71 @@
+---
+title: "Mailerlite"
+permalink: "i1Ex2KK1HwqsceB1SnYWby"
+description: "Collecting form submissions with Mailerlite."
+'og:title': "Mailerlite – Softr Help Docs"
+'og:description': "Collecting form submissions with Mailerlite."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Mailerlite – Softr Help Docs"
+'twitter:description': "Collecting form submissions with Mailerlite."
+---
+With MailerLite you can collect emails from your users through any email capture form. All the collected emails will be sent to and stored in your MailerLite account.
+
+## **How to integrate MailerLite with Softr**
+
+MailerLite integration can be applied to any block with email capture (CTA, Hero section, Form etc). For instance, if you are configuring a [CTA with email capture](/6772b65a34c84bfdbe1bc16e8b03f525), you will see an "Add to Mailerlite" option under the submit button's **Action.**
+<Frame caption="“Add to Mailerlite” action">![“Add to Mailerlite” action](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbb9cdc21-1548-458c-9c41-1fb4996e512e%2Fadd-to-mailerlite-action.png&blockId=27556150-3cc3-40ed-a5ba-71fcd75ea007&projectId=1032)</Frame>
+
+As soon as you choose this option, a new field will appear, where you need to provide the MailerLite **Action URL** to link the email capture form to your MailerLite account.
+<Frame caption="“Action URL” field">![“Action URL” field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc8cab251-3648-4bc6-b6cd-113791e549cb%2Fmailerlite-action-url.png&blockId=e5f7b85f-70bc-45a4-8430-1d45c4a59b58&projectId=1032)</Frame>
+
+So, let's see how you can get the **Action URL** from MailerLite.
+
+## **How to locate MailerLite Action URL**
+
+<Steps>
+  <Step title="Create a Subscribers Group">
+    Log into your MailerLite account, go to **Subscribers => Groups**,and create a group (or use an existing group if you already have one).
+    <Frame caption="Creating a group">![Creating a group](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F114505ea-0eeb-4dde-9eed-51b918a76ad6%2Fcreate-group.png&blockId=a1d99723-6c7a-4949-b421-c97d66f58341&projectId=1032)</Frame>
+  </Step>
+  <Step title="Create an embedded form">
+    Then go to **Forms => Embedded Forms** and create an embedded form as shown below.
+    <Frame caption="Creating an embedded form">![Creating an embedded form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff6d87cba-890f-4e69-8a99-ba00d8bbd8ff%2Fcreate-embedded-form.png&blockId=fc249d36-fbe5-4947-a733-e09d98c3f632&projectId=1032)</Frame>
+  </Step>
+  <Step title="Select a Subscribers Group for the Form">
+    After entering a name, you'll see the next step, where you need to select the Subscribers group for the form. Choose the group where you want the contacts to be stored and hit **Continue**.
+    <Frame caption="Selecting a Subscribers Group">![Selecting a Subscribers Group](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F57778008-cc6a-4a78-bd4d-0e2b523ce3ee%2Fselect-subscribers-group.png&blockId=60bd7ff9-2b13-4ca1-b857-7948bc6ad156&projectId=1032)</Frame>
+
+    In the next screen, just hit **Done Editing** to finalize the form.
+    <Frame caption="Finalizing the form">![Finalizing the form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4c1e3d44-4d1a-4b36-8781-740a3c90ec78%2Fdone-editing.png&blockId=70c8c029-c269-4db4-9963-fdbd4e717567&projectId=1032)</Frame>
+  </Step>
+  <Step title="Getting the Action URL of the Form">
+    Finally, you'll be taken to your form's **Overview** page, where you should scroll down to the **Embed form into your website** section and switch to the **HTML code** tab. Here, you need to locate the action URL of the form (can also search for "action" using browser search with Ctrl+F), and copy the URL (highlighted below).
+    <Frame caption="Getting the Action URL">![Getting the Action URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F14d45b85-b994-4234-8424-553b8cdf9414%2Fgetting-action-url.png&blockId=509d20e5-a630-46b1-957a-3aa1bcc0624e&projectId=1032)</Frame>
+  </Step>
+  <Step title="Adding the URL on Softr">
+    Lastly, you just need to add the URL in the **MailerLite** field of your Button.
+    <Frame caption="Adding the Action URL">![Adding the Action URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2ac73fdc-ebe2-440d-8914-069d276c0ebd%2Fadding-action-url.png&blockId=58ced505-6e5e-4436-a08e-42c0ec7667d7&projectId=1032)</Frame>
+
+    That's it. You can now publish your form and start collecting subscriptions. See how that works below.
+    <Frame caption="Testing the email capture">![Testing the email capture](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd812415c-0cf9-4a4c-a010-930225cfcbbc%2Ftesting-email-capture.gif&blockId=f6590c0d-5e1d-4cf0-a989-1bab0931e714&projectId=1032)</Frame>
+    <Tip>If you're testing the form submission and not getting anything on MailerLite, that could be due to **Double Opt-In** being enabled in your Form settings. When it's enabled, the user that submits the form receives a confirmation email. Only after the submission is confirmed by the user, it is sent to Mailerlite. You can find more details on that [here](https://www.mailerlite.com/help/how-to-use-double-opt-in-when-collecting-subscribers).</Tip>
+  </Step>
+</Steps>
+
+## Sending forms to MailerLite
+
+In the previous section, we discussed how to capture emails with MailerLite, however you might also need to map a whole form with multiple field. Let's say you have a [Customizable Form](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/advanced-form-features/jCim5VWZePgZuaRsUZBnpG)
+on Softr with the following fields: **Name**, **Email**, and **Message**.
+<Frame caption="A Customizable Form on Softr">![A Customizable Form on Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7459a820-d4c9-49d1-9063-21b5627931d9%2Fsoftr-customizable-form.png&blockId=882f5d9d-ffb6-4c6c-9ee9-93dad39a4ca6&projectId=1032)</Frame>
+
+In order to receive the form submissions on MailerLite, you should build a similar form there as shown below.
+<Frame caption="A custom form on Mailerlite">![A custom form on Mailerlite](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fae539b83-4fd9-4e15-ad35-e76c3728ef7e%2Fmailerlite-custom-form.png&blockId=91706891-1552-469d-9405-fcd6103bb1da&projectId=1032)</Frame>
+
+Next, in the form configuration page, you need to go to the **HTML code** tab of the **Embed form into your website** section and, apart from grabbing the **Action URL** of the form, you should get the names of corresponding fields (e.g. **fields[name]** for the **Name** field as shown below).
+<Frame caption="Getting field names">![Getting field names](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd6c675a2-373e-4921-8234-81f49c610824%2Fgetting-field-names.png&blockId=03191524-cff4-48be-85b3-5d9a5ffdb22f&projectId=1032)</Frame>
+
+These names need to be pasted inside the **Map to** parameter of each of the form fields.
+<Frame caption="Mapping the form fields">![Mapping the form fields](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F480c6c1c-a7c0-4083-8e52-11ebdc1d54d3%2Fform-map-to.png&blockId=1596b667-af5a-42a3-81d9-fb026bd590d1&projectId=1032)</Frame>
+
+As soon as you do the same for the rest of the fields and add the **Action URL** (discussed in the previous section on email capturing with Mailerlite), you're all set. Now, you can start receiving form submissions on MailerLite. Let's test the form to see how that works.
+<Frame caption="Testing the form submission">![Testing the form submission](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa05c6136-ab31-4210-b2af-76353bb9b60a%2Ftesting-form-submission.gif&blockId=76beab28-db02-40a2-ac54-6b895a3cabe2&projectId=1032)</Frame>
