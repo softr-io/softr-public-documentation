@@ -30,59 +30,61 @@ In this article, we’ll walk you through **connecting your Airtable account** t
 
 To use Airtable in Softr, you must first **link your Airtable account**. Here’s how:
 
-### **Step 1: Add an Airtable data source to your workspace**
+<Steps>
+  <Step title="Add an Airtable data source to your workspace">
+    In your [Softr Dashboard](https://studio.softr.io/dashboard/data-sources), navigate to **Data Sources** in the left menu and click **Connect Data Source.** Select **Airtable** and proceed to authenticate your account.
+    <Frame caption="Add, edit, or remove a datasource using the buttons on the dashboard">![Add, edit, or remove a datasource using the buttons on the dashboard](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9f9e368c-2404-4cea-942f-98d400598a9f%2FScreenshot_2024-04-12_at_4.25.04_PM.png&blockId=1ac9a723-d691-8004-b0b5-ee9fc5995509&projectId=1032)</Frame>
+  </Step>
+  <Step title="Grant access to the Airtable bases you want to use in your workspace.">
+    Select all the bases you want to access in Softr and click Authorize.
 
-In your [Softr Dashboard](https://studio.softr.io/dashboard/data-sources), navigate to **Data Sources** in the left menu and click **Connect Data Source.** Select **Airtable** and proceed to authenticate your account.
-<Frame caption="Add, edit, or remove a datasource using the buttons on the dashboard">![Add, edit, or remove a datasource using the buttons on the dashboard](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9f9e368c-2404-4cea-942f-98d400598a9f%2FScreenshot_2024-04-12_at_4.25.04_PM.png&blockId=1ac9a723-d691-8004-b0b5-ee9fc5995509&projectId=1032)</Frame>
+    <Warning>
 
-### **Step 2: Grant access to the Airtable bases you want to use in your workspace.**
+    When granting access, we **strongly recommend** choosing **“All current and future bases in all current and future workspaces.”**
 
-Select all the bases you want to access in Softr and click Authorize.
-
-<Warning>
-
-When granting access, we **strongly recommend** choosing **“All current and future bases in all current and future workspaces.”**
-
-If you don’t, you’ll need to manually reselect bases every time you reconnect, which could break your apps.
-</Warning>
-<Frame caption="Granting access to Airtable bases">![Granting access to Airtable bases](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff8f5d09a-1164-4fd2-94a1-cc7bc89e607e%2Ff1305c92-d9a5-4124-906b-f5872ddcdedf.png&blockId=1ac9a723-d691-804f-ab52-f40d0c5ffafc&projectId=1032)</Frame>
+    If you don’t, you’ll need to manually reselect bases every time you reconnect, which could break your apps.
+    </Warning>
+    <Frame caption="Granting access to Airtable bases">![Granting access to Airtable bases](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff8f5d09a-1164-4fd2-94a1-cc7bc89e607e%2Ff1305c92-d9a5-4124-906b-f5872ddcdedf.png&blockId=1ac9a723-d691-804f-ab52-f40d0c5ffafc&projectId=1032)</Frame>
+  </Step>
+</Steps>
 
 ## **2. Connect your Airtable Base to the Softr app**
 
 Once your Airtable account is connected, you can use the authorized bases across one or multiple Softr applications.
 
-### **Step 1: Connect your data to a dynamic block**
+<Steps>
+  <Step title="Connect your data to a dynamic block">
+    To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your Airtable base:
 
-To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your Airtable base:
+    1. Go to the **Block source** **tab** and select your Airtable integration.
 
-1. Go to the **Block source** **tab** and select your Airtable integration.
+    2. Pick the **base** you want to use.
 
-2. Pick the **base** you want to use.
+    3. Choose the **table** with the records you want to show.
 
-3. Choose the **table** with the records you want to show.
+    <Warning>
 
-<Warning>
+    **Important:** Each Airtable table can only connect to one Softr block. For example, if you want to display **Projects** in a List block, you’ll need to map it to the **Projects table** in your base. If you also want to show **Tasks**, you’ll need to add a separate block and connect it to the **Tasks table**.
+    </Warning>
+    <Frame caption="Selecting an Airtable view in Softr">![Selecting an Airtable view in Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F7da240ea-0f65-4902-9ce9-f263d6befdf6%2FDefault_720_frame_%2825%29.png&blockId=1ac9a723-d691-806f-ab8d-fbcb4dd87a2c&projectId=1032)</Frame>
+    <Info>
 
-**Important:** Each Airtable table can only connect to one Softr block. For example, if you want to display **Projects** in a List block, you’ll need to map it to the **Projects table** in your base. If you also want to show **Tasks**, you’ll need to add a separate block and connect it to the **Tasks table**.
-</Warning>
-<Frame caption="Selecting an Airtable view in Softr">![Selecting an Airtable view in Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F7da240ea-0f65-4902-9ce9-f263d6befdf6%2FDefault_720_frame_%2825%29.png&blockId=1ac9a723-d691-806f-ab8d-fbcb4dd87a2c&projectId=1032)</Frame>
-<Info>
+    **Tip**: You can also select an Airtable **View** to display. If a view is selected, any filters and sorting applied in Airtable will be preserved for the records shown in the Softr block (e.g., showing only completed tasks).
 
-**Tip**: You can also select an Airtable **View** to display. If a view is selected, any filters and sorting applied in Airtable will be preserved for the records shown in the Softr block (e.g., showing only completed tasks).
+    </Info>
+  </Step>
+  <Step title="Map Airtable columns to item fields">
+    When you connect your table to a block, you can choose which Airtable **columns** to display and map it to a Softr field. This lets you control how your Airtable data appears in Softr.
 
-</Info>
+    **Example:** If your Airtable base has a **Profile Picture (Attachment field)**, map it to an **Image field** in Softr so it displays correctly.
+    <Frame caption="Airtable fields">![Airtable fields](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fdd964e69-9330-4347-83be-f8a5e9edd36b%2FCleanShot_2025-03-03_at_11.30.252x.png&blockId=1ac9a723-d691-80b3-9d3f-efd280f69d6e&projectId=1032)</Frame><Frame caption="Mapping an image field">![Mapping an image field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Febf565d7-4c3a-4265-8cea-7c3b5d97b30c%2FCleanShot_2025-03-03_at_11.31.542x.png&blockId=1ac9a723-d691-8001-afc4-f1dd9b6d7c4a&projectId=1032)</Frame>
+    <Info>
 
-### **Step 2: Map Airtable columns to item fields**
+    Airtable fields work like **spreadsheet columns**, but each has a specific type (e.g., text, image, checkbox). To keep everything working smoothly, make sure to **match field types correctly** when setting up the connection.
 
-When you connect your table to a block, you can choose which Airtable **columns** to display and map it to a Softr field. This lets you control how your Airtable data appears in Softr.
-
-**Example:** If your Airtable base has a **Profile Picture (Attachment field)**, map it to an **Image field** in Softr so it displays correctly.
-<Frame caption="Airtable fields">![Airtable fields](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fdd964e69-9330-4347-83be-f8a5e9edd36b%2FCleanShot_2025-03-03_at_11.30.252x.png&blockId=1ac9a723-d691-80b3-9d3f-efd280f69d6e&projectId=1032)</Frame><Frame caption="Mapping an image field">![Mapping an image field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Febf565d7-4c3a-4265-8cea-7c3b5d97b30c%2FCleanShot_2025-03-03_at_11.31.542x.png&blockId=1ac9a723-d691-8001-afc4-f1dd9b6d7c4a&projectId=1032)</Frame>
-<Info>
-
-Airtable fields work like **spreadsheet columns**, but each has a specific type (e.g., text, image, checkbox). To keep everything working smoothly, make sure to **match field types correctly** when setting up the connection.
-
-</Info>
+    </Info>
+  </Step>
+</Steps>
 
 ## **3. Supported field types**
 

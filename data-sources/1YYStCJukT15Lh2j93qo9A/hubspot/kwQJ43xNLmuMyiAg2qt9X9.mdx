@@ -32,64 +32,66 @@ To connect HubSpot, you must have HubSpot Super Admin access.
 
 </Warning>
 
-### Step 1: Add HubSpot data source to your workspace
+<Steps>
+  <Step title="Add HubSpot data source to your workspace">
+    1. In your [Softr Dashboard](https://studio.softr.io/dashboard/data-sources), navigate to **Data Sources** in the left menu.
 
-1. In your [Softr Dashboard](https://studio.softr.io/dashboard/data-sources), navigate to **Data Sources** in the left menu.
+    2. Click **Connect Data Source.**
 
-2. Click **Connect Data Source.**
+    3. Select **HubSpot** and proceed to authenticate your account.
+    <Frame caption="Adding new or editing existing data sources.">![Adding new or editing existing data sources.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F4d1e3ee4-7657-42f9-bc10-d176e4abbf82%2Fadding-hubspot.png&blockId=1ac9a723-d691-8091-9a27-deaf8de03cf6&projectId=1032)</Frame>
+  </Step>
+  <Step title="Grant access to HubSpot">
+    1. Sign in to your HubSpot account.
 
-3. Select **HubSpot** and proceed to authenticate your account.
-<Frame caption="Adding new or editing existing data sources.">![Adding new or editing existing data sources.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F4d1e3ee4-7657-42f9-bc10-d176e4abbf82%2Fadding-hubspot.png&blockId=1ac9a723-d691-8091-9a27-deaf8de03cf6&projectId=1032)</Frame>
-
-### Step 2: Grant access to HubSpot
-
-1. Sign in to your HubSpot account.
-
-2. Select which account you want to connect to Softr.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F752b93dd-86ac-4b56-bd98-3efa8834a9d9%2FCleanShot_2025-03-03_at_11.57.142x.png&blockId=1ac9a723-d691-80df-af95-ea3dec749a91&projectId=1032)</Frame>
+    2. Select which account you want to connect to Softr.
+    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F752b93dd-86ac-4b56-bd98-3efa8834a9d9%2FCleanShot_2025-03-03_at_11.57.142x.png&blockId=1ac9a723-d691-80df-af95-ea3dec749a91&projectId=1032)</Frame>
+  </Step>
+</Steps>
 
 ## 2. Connect your HubSpot data to a Softr app
 
 Once your HubSpot account is connected, you can use the authorized account across one or multiple Softr applications.
 
-### Step 1: Connect the HubSpot objects to a Dynamic Block
+<Steps>
+  <Step title="Connect the HubSpot objects to a Dynamic Block">
+    To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your HubSpot objects:
 
-To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your HubSpot objects:
+    1. In the Block **source tab**, select the authenticated HubSpot integration.
 
-1. In the Block **source tab**, select the authenticated HubSpot integration.
+    2. Choose the **Object** you want to use.
 
-2. Choose the **Object** you want to use.
+    <Warning>
 
-<Warning>
+    **Important:** You can connect only one object type to one block. For example, if you want to show a list of clients, you can select the **Companies** object. If you would like to show **Tickets**, you will need to add another **dynamic block**.
+    </Warning>
+    <Frame caption="Selecting HubSpot objects.">![Selecting HubSpot objects.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fb5dbac9a-5fbb-4730-8d00-0d940d35d9b5%2FCleanShot_2025-03-03_at_12.02.352x.png&blockId=1ac9a723-d691-80f6-bfea-dc35e37825fb&projectId=1032)</Frame>
 
-**Important:** You can connect only one object type to one block. For example, if you want to show a list of clients, you can select the **Companies** object. If you would like to show **Tickets**, you will need to add another **dynamic block**.
-</Warning>
-<Frame caption="Selecting HubSpot objects.">![Selecting HubSpot objects.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fb5dbac9a-5fbb-4730-8d00-0d940d35d9b5%2FCleanShot_2025-03-03_at_12.02.352x.png&blockId=1ac9a723-d691-80f6-bfea-dc35e37825fb&projectId=1032)</Frame>
+    ### Supported HubSpot Objects
 
-### Supported HubSpot Objects
+    Softr supports the following **HubSpot objects**:
 
-Softr supports the following **HubSpot objects**:
+    * **Contacts**
 
-* **Contacts**
+    * **Companies**
 
-* **Companies**
+    * **Deals**
 
-* **Deals**
+    * **Tickets**
 
-* **Tickets**
+    * **Notes**
 
-* **Notes**
+    * **Tasks**
 
-* **Tasks**
+    * **Custom Objects**
+  </Step>
+  <Step title="Mapping HubSpot object fields">
+    When you select the object type you want to show, you can customize which object properties you want to visualize alongside. Each HubSpot object has **predefined field types** like text, dropdowns, and date pickers. Since Softr also has its field types, it's important to **map fields correctly** to ensure your data appears as expected.
 
-* **Custom Objects**
-
-### Step 2. Mapping HubSpot object fields
-
-When you select the object type you want to show, you can customize which object properties you want to visualize alongside. Each HubSpot object has **predefined field types** like text, dropdowns, and date pickers. Since Softr also has its field types, it's important to **map fields correctly** to ensure your data appears as expected.
-
-For example, if a HubSpot **deal property** contains an image stored as a **File type**, you should map it to a **Softr Image field** in a **List block** so it displays correctly.
-<Frame caption="Mapping HubSpot object properties.">![Mapping HubSpot object properties.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F0100ed4f-effc-46ec-a912-c0240fffed82%2FUntitled.png&blockId=1ac9a723-d691-80d5-95ca-cfdb35de62f4&projectId=1032)</Frame>
+    For example, if a HubSpot **deal property** contains an image stored as a **File type**, you should map it to a **Softr Image field** in a **List block** so it displays correctly.
+    <Frame caption="Mapping HubSpot object properties.">![Mapping HubSpot object properties.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F0100ed4f-effc-46ec-a912-c0240fffed82%2FUntitled.png&blockId=1ac9a723-d691-80d5-95ca-cfdb35de62f4&projectId=1032)</Frame>
+  </Step>
+</Steps>
 
 ### Supported Properties
 

@@ -20,6 +20,18 @@
       "dark": "#111827"
     }
   },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
+  },
   "fonts": {
     "body": {
       "family": "Inter"
