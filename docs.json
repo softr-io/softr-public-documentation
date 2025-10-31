@@ -1449,6 +1449,10 @@
       "destination": "/softr-api/softr-database-api/records/delete-record"
     },
     {
+      "source": "/softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/5aZs45abxPkQ4dURKFwRGF",
+      "destination": "/softr-api/softr-database-api"
+    },
+    {
       "source": "/softr-api/tTFQ5vSAUozj5MsKixMH8C/softr-database-api/records/get-records",
       "destination": "/softr-api/softr-database-api/records/get-records"
     },
