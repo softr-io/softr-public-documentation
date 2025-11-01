@@ -1647,6 +1647,94 @@
     {
       "source": "/sdata-sources/1YYStCJukT15Lh2j93qo9A/bigquery/nGYHP8uHpSH1M3uxjPLwdy",
       "destination": "/sdata-sources/bigquery"
+    },
+    {
+      "source": "/how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG",
+      "destination": "/how-to-guides"
+    },
+    {
+      "source": "/softr-api/tTFQ5vSAUozj5MsKixMH8C",
+      "destination": "/softr-api"
+    },
+    {
+      "source": "/security/ummZ2CWNHXZCHzsZwbEwET",
+      "destination": "/security"
+    },
+    {
+      "source": "/workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd",
+      "destination": "/workspace-and-billing"
+    },
+    {
+      "source": "/faq/jUGRWwEkWw4akSEa5z5EDn",
+      "destination": "/faq"
+    },
+    {
+      "source": "/troubleshooting/c7mbQk6nyqGUTGoVjojr9E",
+      "destination": "/troubleshooting"
+    },
+    {
+      "source": "/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj",
+      "destination": "/add-and-manage-users"
+    },
+    {
+      "source": "/styling/7qXYEkNvWQamR6vcLXzZnF",
+      "destination": "/styling"
+    },
+    {
+      "source": "/start-here/9kNyHJ3UeZkJc8Z6JuypBS",
+      "destination": "/start-here"
+    },
+    {
+      "source": "/custom-code/3idxDhKqz1qPdqBuWbs61G",
+      "destination": "/custom-code"
+    },
+    {
+      "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo",
+      "destination": "/building-blocks"
+    },
+    {
+      "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-filtering-other-lists-by-a-list-detail-block%E2%80%99s-data/3JJpTsFFU5Qwy9wQ7U8YnJ",
+      "destination": "/building-blocks/use-case-filtering-other-lists-by-a-list-detail-blocks-data"
+    },
+    {
+      "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-filtering-other-lists-by-a-list-detail-block’s-data/3JJpTsFFU5Qwy9wQ7U8YnJ",
+      "destination": "/building-blocks/use-case-filtering-other-lists-by-a-list-detail-blocks-data"
+    },
+    {
+      "source": "/softr-databases/57RHfyrVrq5xPojyELRnSu",
+      "destination": "/softr-databases"
+    },
+    {
+      "source": "/affiliate-and-referral-programs/wgsQBqYoQV7PZw8qDxYQRC",
+      "destination": "/affiliate-and-referral-programs"
+    },
+    {
+      "source": "/application-settings/n3K2UEfpC9BpHgakMzUU5Y",
+      "destination": "/application-settings"
+    },
+    {
+      "source": "/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx",
+      "destination": "/core-concepts-overview"
+    },
+    {
+      "source": "/integrations/etS18kJqm1fuD58KCsjC3z",
+      "destination": "/integrations"
+    },
+    {
+      "source": "/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX",
+      "destination": "/publishing"
+    },
+    {
+      "source": "/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF",
+      "destination": "/user-groups-and-permissions"
+    },
+    {
+      "source": "/data-sources/1YYStCJukT15Lh2j93qo9A",
+      "destination": "/data-sources"
+    },
+    {
+      "source": "/actions/ntEfT9zSJk6aY54G6W5KGU",
+      "destination": "/actions"
     }
   ]
 }
