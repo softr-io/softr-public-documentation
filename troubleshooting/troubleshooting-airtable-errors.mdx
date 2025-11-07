@@ -21,15 +21,15 @@ Invalid Airtable key error can be caused by:
 * Airtable API key has been regenerated in Airtable
 
 Start by making sure there is an Airtable key added to your app by going to App Settings > Data Sources.
-<Frame caption="Data Sources in app settings">![Data Sources in app settings](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb35e76b8-cecc-470b-a663-ca7f05779bd2%2FScreenshot_2022-12-22_at_19.37.37.png&blockId=e6261e62-a92b-4fc6-8791-51eb2ea75107&projectId=1032)</Frame>
+<Frame caption="Data Sources in app settings">![Data Sources in app settings](/troubleshooting/images/troubleshooting-airtable-errors/image1.png)</Frame>
 
 If there is an Airtable key used in the the app, make sure the connected Airtable key is still valid. To do this you can find your Airtable API key in your Airtable account overview.
 
 [Airtable account overview](https://airtable.com/account)
-<Frame caption="API key in Airtable Account overview page">![API key in Airtable Account overview page](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffc4db4e2-6d44-4a8f-8978-23174217048a%2FScreenshot_2022-12-28_at_18.54.44.png&blockId=9e0005ec-8184-42f2-8112-ffe321e6e505&projectId=1032)</Frame>
+<Frame caption="API key in Airtable Account overview page">![API key in Airtable Account overview page](/troubleshooting/images/troubleshooting-airtable-errors/image2.png)</Frame>
 
 Make sure the Airtable API key used in your Softr app matches the Airtable API key shown in your Airtable account overview. If they don’t, **paste the Airtable API key from Airtable into your Softr app** in App Settings > Data Sources > Edit API key.
-<Frame caption="Editing Airtable API key in app settings">![Editing Airtable API key in app settings](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F97970cc5-d162-4c64-9019-5c7e01887d67%2FScreenshot_2022-12-28_at_19.00.26.png&blockId=3d11bd6d-4bda-4292-91c1-28643f23358a&projectId=1032)</Frame>
+<Frame caption="Editing Airtable API key in app settings">![Editing Airtable API key in app settings](/troubleshooting/images/troubleshooting-airtable-errors/image3.png)</Frame>
 
 ## Missing data source
 
@@ -80,21 +80,21 @@ This error means that you lack the permissions to view/edit records in the Airta
 To resolve it you should ask for the owner of the Airtable base to grant you view/edit permissions.
 
 [Updating permissions for base collaborators](https://support.airtable.com/docs/viewing-and-changing-permissions#updating-permissions-for-base-collaborators)
-<Frame caption="Share button opens editing of base permission in Airtable">![Share button opens editing of base permission in Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1417e0c9-238e-4b6c-816d-ca5eb59ca986%2F6765841123479collaborationShareFind06102022.jpg&blockId=14a0f141-e041-4a6c-8cf4-c68046b035d2&projectId=1032)</Frame><Frame caption="Editing base permissions in Airtable">![Editing base permissions in Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F87b9c854-0569-4586-8041-fd39ead08f4f%2FScreenshot_2022-12-29_at_11.15.43.png&blockId=7da4a64d-ddc5-4377-b8dd-dc7df9199964&projectId=1032)</Frame>
+<Frame caption="Share button opens editing of base permission in Airtable">![Share button opens editing of base permission in Airtable](/troubleshooting/images/troubleshooting-airtable-errors/image4.jpg)</Frame><Frame caption="Editing base permissions in Airtable">![Editing base permissions in Airtable](/troubleshooting/images/troubleshooting-airtable-errors/image5.png)</Frame>
 
 ### Airtable account doesn’t have permissions to create/delete records on mapped table ‘\{table_name}’
 
 This error means that you lack the permissions to create/delete records in the Airtable table you’ve mapped to a block. To resolve it, someone with owner or creator permissions for the table needs to give you the required permissions.
 
 [Changing table editing permissions](https://support.airtable.com/docs/using-field-and-table-editing-permissions#changing-table-editing-permissions)
-<Frame caption="Editing table permissions in Airtable">![Editing table permissions in Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb4009f66-35ca-425b-bd2a-4d5292823831%2F360068203973field-table-demo.gif&blockId=52795da0-e873-4fa9-8bdc-7bfec6c97ff4&projectId=1032)</Frame>
+<Frame caption="Editing table permissions in Airtable">![Editing table permissions in Airtable](/troubleshooting/images/troubleshooting-airtable-errors/image6.gif)</Frame>
 
 ### Airtable account doesn’t have permissions to edit mapped field ‘\{field_name}’
 
 If you don’t already have the permissions in Airtable to edit the mapped field, you will need an owner or collaborator to give you the permissions in Airtable.
 
 [Changing field editing permissions](https://support.airtable.com/docs/using-field-and-table-editing-permissions#changing-field-editing-permissions)
-<Frame caption="Editing field permissions in Airtable">![Editing field permissions in Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5f8e9824-19a2-40af-a91c-bec4d79f37f6%2F4412908139159editmultipleFieldpermissions.gif&blockId=0de1d329-737b-4a59-8c79-a39bceff90a0&projectId=1032)</Frame>
+<Frame caption="Editing field permissions in Airtable">![Editing field permissions in Airtable](/troubleshooting/images/troubleshooting-airtable-errors/image7.gif)</Frame>
 
 ## Incompatible data type
 
@@ -107,7 +107,7 @@ Read only Airtable fields don’t accept inputs. To resolve the issue you will n
 * **Change the currently mapped Airtable field** to a field type that is not read-only
 
 To **change the field type** in Airtable click on the field options menu and choose “Edit field”.
-<Frame caption="Changing field type in Airtable">![Changing field type in Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F29cdf007-21d6-424a-a459-6c9113fee6d0%2FScreenshot_2022-12-29_at_12.00.15.png&blockId=4d7a014a-5145-4712-88e4-e8110b2d852b&projectId=1032)</Frame>
+<Frame caption="Changing field type in Airtable">![Changing field type in Airtable](/troubleshooting/images/troubleshooting-airtable-errors/image8.png)</Frame>
 
 **List of read-only Airtable fields**
 

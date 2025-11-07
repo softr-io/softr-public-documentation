@@ -13,12 +13,12 @@ Here, we will go through the process of creating a form within a Softr app and l
 ## Creating the form
 
 To add a form, we need to add a new block, selecting the [Customizable Form](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/advanced-form-features/jCim5VWZePgZuaRsUZBnpG) or the [Customizable Form with Labels](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/conditional-forms/afyKqnGDXd54U8d4xLNcsR).
-<Frame caption="Selecting the Form">![Selecting the Form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa0e210d8-3bd9-43b2-9f64-01b3a853bae6%2Fselecting-form.png&blockId=9c231f26-bf11-43b1-9520-e23c8b5fae3e&projectId=1032)</Frame>
+<Frame caption="Selecting the Form">![Selecting the Form](/building-blocks/images/tutorial-sending-form-data-to-a-data-source/image1.png)</Frame>
 
 ## Selecting a destination
 
 First, we need to choose where the form is going submitted to. The **Destination** is located under the **Features** tab of block’s settings. We’re going to choose the **Send to a data source** option and select Airtable. Afterwards, we also need to select the **Base** and **Table** that needs to be linked to our form.
-<Frame caption="Configuring the form destination">![Configuring the form destination](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F14624f04-95cd-41f4-8220-b89c0d3a8453%2Fdestination.png&blockId=999c379b-9306-487e-a819-2727e13c244e&projectId=1032)</Frame>
+<Frame caption="Configuring the form destination">![Configuring the form destination](/building-blocks/images/tutorial-sending-form-data-to-a-data-source/image2.png)</Frame>
 <Tip>To be able to select a data source you need to connect it from **Settings ⇒ Data Sources**. You can find more info on that in our step-by-step guides for [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) and [Google Sheets](/data-sources/1YYStCJukT15Lh2j93qo9A/google-sheets/jznC9Jr3Jri224AVmHVn4a).</Tip>
 
 Now, let’s see how we can customize the form to start getting job announcements.
@@ -28,12 +28,12 @@ Now, let’s see how we can customize the form to start getting job announcement
 Let’s customize the form to include all the fields necessary for our job postings. In our example, those include such fields as **Company Name**, **Logo**, **Job Description**, and so on.
 
 For each field you need to select a relevant **Type**. For fields that require the user to type in the value, you can choose **Single line text** or **Long Text** (suitable for the **Job Description** field in our example). For the fields that require uploading a file (e.g. **Logo**), we will select the **File** type, and for the fields that are going to have a predefined list of options to choose from, we are going to set the type as **Dropdown**. For **Dropdown** fields we are going to add all the available options inside **Options** separated by a semicolon. In the screenshot below you can see the job category field with its options.
-<Frame caption="Dropdown field setup">![Dropdown field setup](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F61f7c30c-d51b-4b7c-9420-6e88cf712767%2Fdropdown.png&blockId=4fef1f2a-1d67-4285-ba6d-298e9ab17943&projectId=1032)</Frame>
+<Frame caption="Dropdown field setup">![Dropdown field setup](/building-blocks/images/tutorial-sending-form-data-to-a-data-source/image3.png)</Frame>
 
 Apart from the field type, we can also add a **Label** and **Placeholder** text. Further on, we need to pay particular attention to the **Map to** field, which indicates the data source field that the give field should be linked to.
 
 Below, you can see how we’ve linked the Category field to its corresponding field on Airtable.
-<Frame caption="Mapping the Category field">![Mapping the Category field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5d55defb-6bfe-4189-a6d6-5f91e08751ee%2Fmapping-category.png&blockId=218e8622-fbdb-4ffd-a664-27a5d061707a&projectId=1032)</Frame>
+<Frame caption="Mapping the Category field">![Mapping the Category field](/building-blocks/images/tutorial-sending-form-data-to-a-data-source/image4.png)</Frame>
 
 To be able to map all the fields, we need to have them ready along with their relevant types (there are no field types in Google Sheets, so you can find out how to handle such cases [here](/data-sources/1YYStCJukT15Lh2j93qo9A/google-sheets/jznC9Jr3Jri224AVmHVn4a)), which we’ll look into next.
 
@@ -50,11 +50,11 @@ In our Airtable base, the fields (base columns) need to correspond to the form f
 * **Single select/Multiple select** (correspond to **Dropdown** in the form)
 
 In the following screenshot, you can see the “Category” field along with its field type and available options.
-<Frame caption="Category field on Airtable">![Category field on Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F24be4a2b-c28e-4de8-b457-36ca7ccfb07b%2Fcategory-field-airtable.png&blockId=748cc27b-4d44-4e44-b824-f2357cae6e57&projectId=1032)</Frame>
+<Frame caption="Category field on Airtable">![Category field on Airtable](/building-blocks/images/tutorial-sending-form-data-to-a-data-source/image5.png)</Frame>
 
 Thus, as soon as we have our Airtable base ready, we can proceed with linking it to our form by selecting the **Base** and **Table** as described above.
 
 ## **Publishing the Form and Testing**
 
 That’s it. Our form is ready, and all we need to do is to publish it and do a test submission. If the test is successful, a new row with the form submission should be added in the connected Airtable base. Below, you can see the test data filled in inside the form and how it looks after being submitted to Airtable.
-<Frame caption="Test data filled in the form">![Test data filled in the form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6f7de88a-9e94-4455-91c0-f6e39f2bd3f2%2Ftest-data-form.png&blockId=24ec025b-9d56-42d2-80f5-5510178f2b83&projectId=1032)</Frame><Frame caption="Submission added in the Airtable base">![Submission added in the Airtable base](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F52e9b1f4-1c04-48cd-83ec-f691847ff76a%2Fsubmission-added-to-airtable.png&blockId=a36c1318-29dd-4d81-af01-0a89418e40e0&projectId=1032)</Frame>
+<Frame caption="Test data filled in the form">![Test data filled in the form](/building-blocks/images/tutorial-sending-form-data-to-a-data-source/image6.png)</Frame><Frame caption="Submission added in the Airtable base">![Submission added in the Airtable base](/building-blocks/images/tutorial-sending-form-data-to-a-data-source/image7.png)</Frame>

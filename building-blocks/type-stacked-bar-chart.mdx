@@ -19,22 +19,22 @@ The setup is similar to that of a [Bar Chart](/building-blocks/vikC2AWEpQGkZd4jG
 Let’s say you are a sales manager and you want to analyze bookings by month, split by deal owners. You want to both understand what is the total sum of won deals, as well as how each sales person (deal owner) contributed.
 
 Here is the output chart we aim at preparing:
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F8945c386-9c5b-4824-aea7-88b1d68a92d3%2FUntitled.png&blockId=465d7c02-2a7f-47a2-8d16-7c444448bdcb&projectId=1032)</Frame>
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image1.png)</Frame>
 
 **Setting up the chart**
 
 Take a look at the Airtable base example. It has different deals at different sales stages, close dates and deal owners.
-<Frame caption="Airtable base with sales information">![Airtable base with sales information](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F1dc0486c-6cf2-4ada-b04f-bf4a27aab5b8%2FUntitled.png&blockId=37d0a0c1-b1c6-49b8-b052-88fb97719dce&projectId=1032)</Frame>
+<Frame caption="Airtable base with sales information">![Airtable base with sales information](/building-blocks/images/type-stacked-bar-chart/image2.png)</Frame>
 
 Having a base, let’s add a Stacked Bar Chart block, and configure it.
 
 <Columns cols={2}>
 <p>**Conditional filters** – let’s take into account only the deals with a Deal stage: Won</p>
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F210aedb6-52fa-4ade-a034-d616d86c5a6d%2FUntitled.png&blockId=be6613f1-6ec2-4201-8804-0238ac9c5759&projectId=1032)</Frame>
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image3.png)</Frame>
 </Columns><Columns cols={2}>
 
 <p>**Aggregate function** – we want to SUM all the deal values</p>
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F2fd0a0f5-cac4-4e63-be35-ab7a2dc61957%2FUntitled.png&blockId=30b9c295-833b-472a-9294-eda29d477fc2&projectId=1032)</Frame>
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image4.png)</Frame>
 </Columns>
 
 **Groupings**
@@ -42,21 +42,21 @@ Having a base, let’s add a Stacked Bar Chart block, and configure it.
 <Columns cols={2}>
 
 <p>Then we want to group these won deal values by the deal close date, with a month time interval →</p>
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F22e86abf-0e3b-4d7c-b1c8-1e9a4a84cabd%2FUntitled.png&blockId=752f3d0f-d5db-40f2-9f53-4bf037f024c5&projectId=1032)</Frame>
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image5.png)</Frame>
 </Columns>
 <Columns cols={2}>
 
 <p>Finally, we want to further group the data by deal owners →</p>
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F8b3a8d50-ca52-4db0-9771-99b01ba4f24f%2FUntitled.png&blockId=86a8f8bb-c5e9-42fa-9ff9-10e727c6cae2&projectId=1032)</Frame>
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image6.png)</Frame>
 </Columns>
 
 The Stacked Bar Chart block is ready:
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F8945c386-9c5b-4824-aea7-88b1d68a92d3%2FUntitled.png&blockId=39f31c03-2e0b-4bca-b5ad-f2b03d8065ac&projectId=1032)</Frame>
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image7.png)</Frame>
 
 ## Show and hide data point labels
 
 Sometimes labels on stacked bars can look a bit too crowded, so among options shared with other chart types, the Stacked Bar Chart has an additional option to decide whether to show data point labels on stacked bars.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ff9addd55-d090-442c-94e3-5d7d06da1309%2FUntitled.png&blockId=4cb14b0d-263d-4afc-9128-f0c5d3d2e2f0&projectId=1032)</Frame>
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image8.png)</Frame>
 <Info>Whether the label will be shown or not, a data point **tooltip** still shows up upon hovering over the bars.</Info>
-<Frame caption="Show data point labels: ON">![Show data point labels: ON](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F1e396e49-6488-4f56-84e7-cff51a1aa68e%2FUntitled.png&blockId=b28c929d-3ac9-4b41-a4de-6a0f0c8619d6&projectId=1032)</Frame><Frame caption="Show data point labels: OFF">![Show data point labels: OFF](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F1e987c2f-2154-4fc2-a63d-9732a5a2f7ce%2FUntitled.png&blockId=9ef80519-b5a9-4fff-8970-e5c2b6f22b94&projectId=1032)</Frame>
+<Frame caption="Show data point labels: ON">![Show data point labels: ON](/building-blocks/images/type-stacked-bar-chart/image9.png)</Frame><Frame caption="Show data point labels: OFF">![Show data point labels: OFF](/building-blocks/images/type-stacked-bar-chart/image10.png)</Frame>
 <Info>Learn more about setting up charts → [Chart Block Overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg). </Info>

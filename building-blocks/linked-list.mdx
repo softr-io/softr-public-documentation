@@ -29,34 +29,34 @@ Linked Lists work best when they are placed below Item Details blocks that they 
 # **Example Setup**
 
 1. Create a "Projects" table<br/>
-   <Frame caption="Projects table">![Projects table](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd6d1ac41-c144-4d3e-8046-d32b0ae7fbf1%2Fprojects-table.png&blockId=4cd2c601-c14e-4d91-a1da-92f21fa3cb9a&projectId=1032)</Frame>
+   <Frame caption="Projects table">![Projects table](/building-blocks/images/linked-list/image1.png)</Frame>
 
 2. Create "Tasks" table to hold task-related data, including a field referencing the associated Project. It can be a [Lookup field](https://support.airtable.com/hc/en-us/articles/360042312194-Lookup-field-overview) that looks up the **Name** field from the **Projects** table, but it can also be a regular field that contains the names of the projects, as in the example below.<br/>
-   <Frame caption="Table with tasks">![Table with tasks](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdea84a80-bd95-4133-9dc5-079b1a2990c8%2Ftable-wit-tasks.png&blockId=2d4184ef-9241-4168-9f79-a99872772f78&projectId=1032)</Frame>
+   <Frame caption="Table with tasks">![Table with tasks](/building-blocks/images/linked-list/image2.png)</Frame>
 
 # **Implementation**
 
 1. On e.g. “Projects” page, add a **List** block linked to the Project [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) table as shown below.
-<Frame caption="List block with projects">![List block with projects](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F01fecaab-7b14-4a2f-9943-a926c2b8864c%2Flist-block-with-projects.png&blockId=d36be249-f582-40a5-a404-934f13bc7799&projectId=1032)</Frame>
+<Frame caption="List block with projects">![List block with projects](/building-blocks/images/linked-list/image3.png)</Frame>
 
 1. On e.g. “Project details” page, add a List Details block, again linked to the Projects Airtable table.
 
 2. On this detail page, add also a List block, linked to the Tasks Airtable table
-<Frame caption="Task list added to the Project details page">![Task list added to the Project details page](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F98e44a18-992e-4308-8d13-01d433130854%2Ftask-list-added-as-linked-list.png&blockId=c0cbc58f-eeb0-4d15-9803-020a4a8a00bd&projectId=1032)</Frame>
+<Frame caption="Task list added to the Project details page">![Task list added to the Project details page](/building-blocks/images/linked-list/image4.png)</Frame>
 
 # **Configuration**
 
 As soon as you add the **Tasks** list to the project's details page, you'll see that the **Projects** table's fields will start appearing inside **Conditional Filters** of the **Tasks** list block.
-<Frame caption="Projects table inside Task List's conditional filters">![Projects table inside Task List's conditional filters](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F122901bc-94e2-4a89-93ae-7ee0281d186f%2Fprojects-in-conditional.png&blockId=975d34f5-4158-4430-bf88-fc42935a647d&projectId=1032)</Frame>
+<Frame caption="Projects table inside Task List's conditional filters">![Projects table inside Task List's conditional filters](/building-blocks/images/linked-list/image5.png)</Frame>
 
 Using this, we can now set a condition to filter the **Tasks** list to show only the tasks that are associated with the project that's currently opened in the page. The condition will be set as shown below.
-<Frame caption="Setting the filtering condition">![Setting the filtering condition](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8a89d859-3734-494e-ba45-4d7bfe5efed1%2Fsetting-filtering-condition.gif&blockId=28529164-2a13-4e50-a007-b745303ac0ee&projectId=1032)</Frame>
+<Frame caption="Setting the filtering condition">![Setting the filtering condition](/building-blocks/images/linked-list/image6.gif)</Frame>
 
 So, only the tasks for which the value in the **Project** column corresponds to the current project's **Name** will be shown.
 
 # Result
 
 Let's check how that works for the **Ad Campaign** project that includes two tasks (assigned to steven@softr.io and joanne@softr.io).
-<Frame caption="Testing the result">![Testing the result](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F289f328f-b060-4517-a7cf-da6869b84e61%2Ftesting-linked-lists.gif&blockId=1b04bbf0-9f20-438a-89e6-3d8ec72f2328&projectId=1032)</Frame>
+<Frame caption="Testing the result">![Testing the result](/building-blocks/images/linked-list/image7.gif)</Frame>
 
 That's it. Now, each project details page will also show all the tasks associated to it.

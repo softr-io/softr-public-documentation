@@ -24,7 +24,7 @@ A prime use case being client portals, which commonly restrict clients to their 
 ## Getting started
 
 To access global data restrictions open your app in Studio and head to Users where you’ll find the Data Restrictions tab. Here you can easily add and manage the restrictions you’ve applied to your app’s data sources.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fad184bcf-7fe5-4a86-b73a-05129dafb226%2FGlobal_data_restrictions.png&blockId=c9d1b4c5-3397-4b7a-b5ff-8c276f393074&projectId=1032)</Frame>
+<Frame>![Notion image](/user-groups-and-permissions/images/global-data-restrictions/image1.png)</Frame>
 
 ## Adding a restriction
 
@@ -80,7 +80,7 @@ Result: A user belonging to all three users groups will only be able to view rec
 **Adding conditions**
 
 Completing a restriction rule involves adding conditions that link specific records to the chosen table and user group. For instance, to restrict view access to Table W's records for User group A based on email, you'd create a condition matching users' logged-in emails to the Email field in Table W. This would restrict those users to viewing only Table W records with their corresponding email.
-<Frame caption="Restrict view access to Table W's records for User group A based on email">![Restrict view access to Table W's records for User group A based on email](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F8513f26a-c3f4-4b99-abb1-f4feaa0d1cef%2FUntitled_Modal_%281%29.png&blockId=84ab06b6-8990-4947-b46e-a95e59013dc5&projectId=1032)</Frame>
+<Frame caption="Restrict view access to Table W's records for User group A based on email">![Restrict view access to Table W's records for User group A based on email](/user-groups-and-permissions/images/global-data-restrictions/image2.png)</Frame>
 
 ## What your app users see
 
@@ -100,4 +100,4 @@ The below table details the specific impact of applying global data restrictions
 More than one restriction rule can be added to a table, however there can only ever be a single table & user group combination. We enforce this in order to minimise the risk of conflicting restriction rules.
 
 For example: Consider the case where a restriction rule exists on the Full-time table and has been applied to the HR user group. You will be able to add another restriction to the Full-time table, however you will not be able to select the HR user group again. To apply that user group to this new restriction, you will need to remove them from the existing restriction.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F7bd62d19-69ce-420a-91d1-85f6e9240d41%2FGlobal_data_restrictions.png&blockId=93c424b3-3781-4329-ac8c-5dca436b6329&projectId=1032)</Frame>
+<Frame>![Notion image](/user-groups-and-permissions/images/global-data-restrictions/image3.png)</Frame>

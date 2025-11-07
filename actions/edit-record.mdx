@@ -13,31 +13,31 @@ This [Action Button](/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg
 <Tip>By default, you’ll have one **Edit** button added to your items, which you can remove if needed.</Tip>
 
 To demonstrate how the **Edit Record** button works, we’re going to use a [List block](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) connected to an [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) data source, which shows a list of tasks for a hypothetical product development team and has three fields: **Name** (the name of the task), **Assignee** (who it is assigned to), and **Status** (the current progress status of the task). We want to enable an “Update task status” button to allow each development team member to update the status of **his/her own task**.
-<Frame caption="List of tasks">![List of tasks](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F69c66584-56f5-427a-868d-7aab51fbcaf7%2Ftask-list.png&blockId=365c2e33-eb0c-401c-a5e8-9597af344dce&projectId=1032)</Frame>
+<Frame caption="List of tasks">![List of tasks](/actions/images/edit-record/image1.png)</Frame>
 
 First, we are going to configure the button label.
-<Frame caption="Button label">![Button label](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa1a19c54-b2b0-4c06-933f-5c31912d2b20%2Fupdate-button-label.png&blockId=86d8b9c1-9b44-4edc-8653-0eda0e3c421e&projectId=1032)</Frame>
+<Frame caption="Button label">![Button label](/actions/images/edit-record/image2.png)</Frame>
 
 Then, we are going to customize the labels and messages that are going to be displayed on the pop-up that the users are going to use to perform the update.
-<Frame caption="Customizing pop-up labels">![Customizing pop-up labels](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F60b92009-20ff-44f5-81a9-ae2f02ff82bd%2Fupdate-button-texts.gif&blockId=b00e16df-7825-4faa-af36-7dd81e2eaa4d&projectId=1032)</Frame>
+<Frame caption="Customizing pop-up labels">![Customizing pop-up labels](/actions/images/edit-record/image3.gif)</Frame>
 
 Next, we need to specify which fields from our data are going to be available for update. **By default, all the fields present in the connected data source are going to be added automatically.** So, let’s remove the ones that we don’t need and leave **Status** only. As you can see in the following gif, the [field is already mapped](/actions/ntEfT9zSJk6aY54G6W5KGU/mapping-fields-for-actions/7ukkeMfqspmniU4MQyTiV3) to its corresponding field on Airtable, so we don’t need to do anything else there. We’ll just add a label.
-<Frame caption="Configuring connected fields">![Configuring connected fields](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F45aee5c8-6fc8-4cb1-b973-24d0e198e500%2FScreen_Recording_2023-03-19_at_22.23.58.gif&blockId=1f0ed069-1969-4e46-95b0-219feebb16e7&projectId=1032)</Frame>
+<Frame caption="Configuring connected fields">![Configuring connected fields](/actions/images/edit-record/image4.gif)</Frame>
 <Warning>Note that [computed fields](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX#airtable-computed-fields) will not appear in the list of mappable fields for the form.</Warning>
 <Warning>You cannot add or edit records located in synced tables.</Warning>
 
 ## Button Visibility
 
 Now, let’s configure the [button visibility](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/action-button-visibility/tqpb8TkUD4U4DCAUA2hjKo) to specify who exactly can see and thus use the button. The users of our task list are the same people who are working on those tasks, so we are going to [connect the same Airtable base](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9) with tasks and assignees to Softr as a user database.
-<Frame caption="Airtable table with the list of tasks and assignees.">![Airtable table with the list of tasks and assignees.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb2503ec9-2a88-482b-8bfe-1923015f0009%2Fusers-table.png&blockId=2172d45e-1882-4b70-b714-788af034554e&projectId=1032)</Frame>
+<Frame caption="Airtable table with the list of tasks and assignees.">![Airtable table with the list of tasks and assignees.](/actions/images/edit-record/image5.png)</Frame>
 <Tip>The users sync between Softr and data source is one-way (from Softr to data source), so, if you connect a data source with users without having them [in Softr](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/users-menu/5JTzjtbvp8Skemd26A9ho9) first, you’ll need to create the same users in Softr as well to establish the connection.</Tip>
 
 Now, let’s configure the actual button visibility settings. The users need to be able to update their own tasks only, so we’re going to set a [conditional visibility rule](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/action-button-visibility/tqpb8TkUD4U4DCAUA2hjKo) according to which the user sees the update button only on the tasks that have his/her email in the **Assignee** **Email** field.
-<Frame caption="Configuring visibility rules">![Configuring visibility rules](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1f9e3bc3-89a7-49aa-91fc-0a519e5e2adc%2FScreen_Recording_2023-03-19_at_22.36.56.gif&blockId=307c70cd-e06b-46ec-9efa-cec709db00e7&projectId=1032)</Frame>
+<Frame caption="Configuring visibility rules">![Configuring visibility rules](/actions/images/edit-record/image6.gif)</Frame>
 
 That’s it. The last step is to make sure everything’s working as expected.
 
 ## Testing task status update
 
 To test our setup, we are going to log into our application with one of the application users and update her task status. The following gif illustrates that.
-<Frame caption="User updating her task status">![User updating her task status](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F82d513f9-a050-4528-9569-9af40f34b70b%2FScreen_Recording_2023-03-20_at_16.40.15.gif&blockId=0a0eba8d-c42c-41da-a96c-f6dd9a5096bf&projectId=1032)</Frame>
+<Frame caption="User updating her task status">![User updating her task status](/actions/images/edit-record/image7.gif)</Frame>

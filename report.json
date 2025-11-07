@@ -1,0 +1,14 @@
+{
+  "errors": [
+    {
+      "filepath": "start-here/Quick-start.mdx",
+      "url": "/images/softr-workspace.png",
+      "error": "unknown url type: '/images/softr-workspace.png'"
+    },
+    {
+      "filepath": "start-here/Quick-start.mdx",
+      "url": "/images/softr-studio.png",
+      "error": "unknown url type: '/images/softr-studio.png'"
+    }
+  ]
+}

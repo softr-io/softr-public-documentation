@@ -50,7 +50,7 @@ To use BigQuery in Softr, you must first **link your account**. Before connectin
     1. Navigate to **Data Sources** in your [**Softr Dashboard**](https://studio.softr.io/dashboard/data-sources).
 
     2. Click **Connect Data Source**.
-    <Frame caption="Add, edit, or remove a datasource using the buttons on the dashboard">![Add, edit, or remove a datasource using the buttons on the dashboard](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9f9e368c-2404-4cea-942f-98d400598a9f%2FScreenshot_2024-04-12_at_4.25.04_PM.png&blockId=1b29a723-d691-80b8-a4dc-fad52e1e5bd9&projectId=1032)</Frame>
+    <Frame caption="Add, edit, or remove a datasource using the buttons on the dashboard">![Add, edit, or remove a datasource using the buttons on the dashboard](/sdata-sources/images/bigquery/image8.png)</Frame>
   </Step>
   <Step title="Authenticate BigQuery">
     1. Select **BigQuery** from the list of available data sources.
@@ -76,13 +76,13 @@ Once connected, you can use your BigQuery data to build dashboards and display r
     3. Pick the **table** you want to use or **create a new** **query**
 
     4. Optionally, select the **primary field**.<br/>
-       <Frame caption="Connect BigQuery to a dynamic block">![Connect BigQuery to a dynamic block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fedc30ac2-a7e8-4986-ab4a-27d54917feab%2FGroup_8_%282%29.png&blockId=1b29a723-d691-8002-b900-d3cb4dbf2a2b&projectId=1032)</Frame>
+       <Frame caption="Connect BigQuery to a dynamic block">![Connect BigQuery to a dynamic block](/sdata-sources/images/bigquery/image9.png)</Frame>
   </Step>
   <Step title="Map BigQuery fields to Softr fields">
     When you connect your table to a block, you can choose which BigQuery **properties** to display and map to a Softr field. This lets you control how your data appears in Softr.
 
     **Example:** If you have a **date** in BigQuery, map it to **grouping** in Softr.
-    <Frame caption="Mapping fields from BigQuery to Softr">![Mapping fields from BigQuery to Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F69bfd2e7-f157-4ca1-88db-0aff664e2aa0%2FGroup_8_%283%29.png&blockId=1b29a723-d691-8020-9cd1-e867254c67b9&projectId=1032)</Frame>
+    <Frame caption="Mapping fields from BigQuery to Softr">![Mapping fields from BigQuery to Softr](/sdata-sources/images/bigquery/image10.png)</Frame>
   </Step>
 </Steps>
 
@@ -103,10 +103,10 @@ If you encounter errors while connecting BigQuery to Softr, check for these comm
 <Columns cols={2}>
 <Frame caption="Important part of error in text: 'Access Denied:
 BigQuery BigQuery: Permission denied while globbing file pattern.',">![Important part of error in text: "Access Denied:
-BigQuery BigQuery: Permission denied while globbing file pattern.",](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Ffc085bb5-deb6-423d-8d5c-d3a72b66fa5d%2F9d50fe98-a22e-4673-8f5a-285a0c2e95f1.png&blockId=1b29a723-d691-80e0-b7a5-f6a466ec7b77&projectId=1032)</Frame>
+BigQuery BigQuery: Permission denied while globbing file pattern.",](/sdata-sources/images/bigquery/image11.png)</Frame>
 <Frame caption="Important part of error in text: 'Access Denied:
 BigQuery BigQuery: Permission denied while getting Drive credentials.',">![Important part of error in text: "Access Denied:
-BigQuery BigQuery: Permission denied while getting Drive credentials.",](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F5a97345e-bf27-4586-8138-e4d8ac7f2e52%2F46706e7f-eaef-4fb0-8abf-bbd46c39540a.png&blockId=1b29a723-d691-8071-b966-f1ffe47e2558&projectId=1032)</Frame>
+BigQuery BigQuery: Permission denied while getting Drive credentials.",](/sdata-sources/images/bigquery/image12.png)</Frame>
 </Columns>
 
 **Cause:** BigQuery **external tables** (from Google Drive, Sheets, or Cloud Storage) require additional permissions that Softr does not request.
@@ -114,7 +114,7 @@ BigQuery BigQuery: Permission denied while getting Drive credentials.",](https:/
 **Internal vs external tables**
 
 In BigQuery, while creating a table in some cases user can decide or has only the option to create an external datasource.
-<Frame caption="user might have the option to or be forced to create an “external table”. Table creation dialog, BigQuery console.">![user might have the option to or be forced to create an “external table”. Table creation dialog, BigQuery console.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F411e266f-0436-4581-b7cc-b6f81b4f079f%2FUntitled.png&blockId=1b29a723-d691-8021-a428-eb63c449633a&projectId=1032)</Frame>
+<Frame caption="user might have the option to or be forced to create an “external table”. Table creation dialog, BigQuery console.">![user might have the option to or be forced to create an “external table”. Table creation dialog, BigQuery console.](/sdata-sources/images/bigquery/image13.png)</Frame>
 
 External tables are forced or available when a user creates a table from:
 
@@ -127,7 +127,7 @@ External tables are forced or available when a user creates a table from:
 If the user goes for an external table in these cases, trying to integrate such a table with Softr will give them an error message similar to those mentioned above.
 
 To identify an existing table as either internal or external, one could take a look at table details and would see an “External data configuration” section for external tables similar to the following:
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fd740879e-b07d-419e-aad3-95700cc4349c%2FUntitled.png&blockId=1b29a723-d691-802e-82f6-cd6a4fed5c5a&projectId=1032)</Frame>
+<Frame>![Notion image](/sdata-sources/images/bigquery/image14.png)</Frame>
 
 **Solution 1: Use a Native Table**
 

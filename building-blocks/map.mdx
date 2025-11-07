@@ -15,7 +15,7 @@ The **Map** block can be used to display a list of locations from a [data source
 ## Preparing Data
 
 First of all, you need to have the list of your locations in your data source. Let’s use [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) as an examples and set up the data there. Below you can see the example data set we're going to use.
-<Frame caption="Map data">![Map data](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F030967f6-abed-48b7-b25f-41d66f64ab14%2Fmap-data.png&blockId=a6109377-8135-4148-b994-b1ba36980fbd&projectId=1032)</Frame>
+<Frame caption="Map data">![Map data](/building-blocks/images/map/image1.png)</Frame>
 
 As you can see, we've added three cities with their respective **coordinates**, **images**, and **URLs**. The **Image** and **URL** fields are optional and, if added, will be displayed inside the pop-up that opens when clicking on the location. We'll discuss this in greater detail a bit later.
 
@@ -26,7 +26,7 @@ As soon as we have our data, we can proceed to setting up the Map on Softr. So, 
 ### **Selecting Base and Table**
 
 First of all, we need to select the **base** and **table** where the map data is stored. To do that, we need to navigate to the **Data** tab in block settings.
-<Frame caption="Connecting Base and Table">![Connecting Base and Table](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F97b7357f-0455-4c31-a14b-2b2eb3d0f2b4%2Fconnecting-base-and-table.png&blockId=f07f427a-36d2-4829-9801-1488fbb6f289&projectId=1032)</Frame>
+<Frame caption="Connecting Base and Table">![Connecting Base and Table](/building-blocks/images/map/image2.png)</Frame>
 
 ### **Inline Filters**
 
@@ -41,17 +41,17 @@ Here, you can add a Title and Subtitle for the block.
 **Map API Key**
 
 To be able to use the map, you need to create an API key through your Google developer account and add it in **Settings => Integrations => Google Map**. A detailed guide on setting up the API key can be found [here](https://developers.google.com/maps/documentation/javascript/get-api-key).
-<Frame caption="Adding Google Map key">![Adding Google Map key](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F365cd367-14f3-48ee-b624-7567ed8c6eee%2Fadding-google-map-key.png&blockId=2b325ef1-6971-4552-858a-b76468e0d7fa&projectId=1032)</Frame>
+<Frame caption="Adding Google Map key">![Adding Google Map key](/building-blocks/images/map/image3.png)</Frame>
 
 **Zoom**
 
 Here, you define the zoom level of the map. The map can have a different number of zoom levels based on the location, but it’s usually around 21 (i.e. you can enter a decimal ranging from 1 to 21). See how it works below.
-<Frame caption="Testing the zoom option">![Testing the zoom option](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Faa7acc58-a862-4267-957e-19be62226dfb%2Fzoom-option-map.gif&blockId=4a2e3340-effe-4772-b166-102b4a725a99&projectId=1032)</Frame>
+<Frame caption="Testing the zoom option">![Testing the zoom option](/building-blocks/images/map/image4.gif)</Frame>
 
 **Latitude and Longitude**
 
 Lastly, we need to select the **coordinate** fields from our Airtable data we had prepared earlier.
-<Frame caption="Latitude and Longitude">![Latitude and Longitude](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4e2ef51f-599c-4547-a992-19c23154781a%2Flat-long.png&blockId=00a5e8e8-a45e-471c-9936-b14d3a6d84e3&projectId=1032)</Frame>
+<Frame caption="Latitude and Longitude">![Latitude and Longitude](/building-blocks/images/map/image5.png)</Frame>
 
 ### **Marker Option**
 
@@ -62,4 +62,4 @@ Further down, you can see how we configure the marker settings.
 ### **Dynamic Fields**
 
 You can add any number of additional fields that will be displayed inside a pop-up that appears when the user clicks on the location. Below, you can see how we set up the marker along with dynamic fields. We add **Image** and **URL** fields and check how they appear inside the location pop-up.
-<Frame caption="Setting app the marker settings">![Setting app the marker settings](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F677e93a7-eea8-4189-af47-ba6d04841bf6%2Fsetting-up-marker-settings.gif&blockId=85287944-669a-482c-a616-921f83436a08&projectId=1032)</Frame>
+<Frame caption="Setting app the marker settings">![Setting app the marker settings](/building-blocks/images/map/image6.gif)</Frame>

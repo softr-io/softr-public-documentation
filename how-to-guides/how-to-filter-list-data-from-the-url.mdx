@@ -21,10 +21,10 @@ You should add the filtering parameters at the end of your List URL, replacing *
 ### **Example**
 
 Let's say we have a list of employee profiles with a **Position** field and want to have a URL that filters the list, leaving only the profiles where the **Position** is **Engineer**.
-<Frame caption="List of employee profiles">![List of employee profiles](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F10262c00-37dd-46ad-b461-2f8c2df884ab%2Flist-employee-profiles.png&blockId=c0ee9db8-a8c1-4e14-aa9b-5b36bd9c8242&projectId=1032)</Frame>
+<Frame caption="List of employee profiles">![List of employee profiles](/how-to-guides/images/how-to-filter-list-data-from-the-url/image1.png)</Frame>
 
 First of all, let's set up a corresponding Inline Filter.
-<Frame caption="Adding an inline filter">![Adding an inline filter](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdff48864-5cd7-4679-9442-d0df345a656c%2Fadding-inline-filter.png&blockId=ad1bb056-5424-4b30-9588-41ea8d263249&projectId=1032)</Frame>
+<Frame caption="Adding an inline filter">![Adding an inline filter](/how-to-guides/images/how-to-filter-list-data-from-the-url/image2.png)</Frame>
 
 Next, let's configure the URL, which will look as follows:
 
@@ -33,7 +33,7 @@ Next, let's configure the URL, which will look as follows:
 <Tip>Note that both **fieldName** and **fieldValue** are case sensitive. For instance, in the current example, the field name should be **"Position"** and not **"position"** or **"POSITION."**</Tip>
 
 That's it. Now, let's check if everything is working correctly.
-<Frame>![Image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F635ae8f9-9cf6-4288-a4e9-2bc25f9bf209%2Ftesting-filtering.gif&blockId=504c71f6-a638-4cd2-950b-6450fec72c16&projectId=1032)</Frame>
+<Frame>![Image](/how-to-guides/images/how-to-filter-list-data-from-the-url/image3.gif)</Frame>
 
 Testing the filtering
 
@@ -51,10 +51,10 @@ You should add the parameter at the end of your List URL, replacing **searchValu
 ### Example
 
 Let’s say we have a list of tasks for a software development team, where each task has a name.
-<Frame caption="A list of tasks">![A list of tasks](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fccddfad8-091e-40a5-8aff-cd77d3c37c14%2Flist-of-tasks.png&blockId=5566afe3-80fd-4feb-bf08-49277a192f22&projectId=1032)</Frame>
+<Frame caption="A list of tasks">![A list of tasks](/how-to-guides/images/how-to-filter-list-data-from-the-url/image4.png)</Frame>
 
 So, if we add the following parameter at the end of our page URL, we will see a list that only contains entries with a value “merge”: **?search-for=merge**
-<Frame caption="Testing the URL">![Testing the URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7ca8f6d8-fba0-467c-907c-218f6a138cee%2FScreen_Recording_2023-06-13_at_15.45.48.gif&blockId=88d57840-ad0f-442b-ae58-3570b457fa17&projectId=1032)</Frame>
+<Frame caption="Testing the URL">![Testing the URL](/how-to-guides/images/how-to-filter-list-data-from-the-url/image5.gif)</Frame>
 
 ## Combining search and inline filters
 
