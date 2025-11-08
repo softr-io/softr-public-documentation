@@ -13,46 +13,46 @@ To enable Google Sign In on the [Signup](/add-and-manage-users/pxnkp9H3qyEVMF6XU
 ## Creating a Project
 
 To start with, you need to create a project (if you don't have one yet) in your Google Cloud Platform.
-<Frame caption="Creating a project">![Creating a project](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F726e580c-3a86-48c4-899e-1f49ed962745%2Fcreate-project.png&blockId=eae08592-e58d-4fef-b7d2-f3cfd0da1a0d&projectId=1032)</Frame>
+<Frame caption="Creating a project">![Creating a project](/integrations/images/google-sign-in/image1.png)</Frame>
 
 In the next screen, add the project details (organization and location will be autofilled based on your email, but you can change them) and hit **Create** to create the project.
-<Frame caption="Project details">![Project details](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F673b3790-2045-48a7-8bab-16a2a8cdf615%2Fproject-details.png&blockId=9b0a6aaa-ea18-4e65-903d-875d815c23cf&projectId=1032)</Frame>
+<Frame caption="Project details">![Project details](/integrations/images/google-sign-in/image2.png)</Frame>
 
 From your project dashboard, go to **APIs & Services** section.
-<Frame caption="Navigating to APIs & Services">![Navigating to APIs & Services](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F87f0840f-0f96-4f68-b244-f4eb02eaf877%2Fapi-overview.png&blockId=6691b360-5259-4f06-a645-d48d5d71f89c&projectId=1032)</Frame>
+<Frame caption="Navigating to APIs & Services">![Navigating to APIs & Services](/integrations/images/google-sign-in/image3.png)</Frame>
 
 This is where you create your credentials, but before that, you need to configure the [Consent Screen](https://developers.google.com/workspace/marketplace/configure-oauth-consent-screen). Let's see how.
 
 ## Configuring the Consent Screen
 
 In the **APIs & Services section**, navigate to **Credentials** and click on **CONFIGURE CONSENT SCREEN**.
-<Frame caption="Configure Consent Screen">![Configure Consent Screen](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1ec2da13-3a87-4a2c-aa9a-39e04f496b86%2Fconfigure-consent-screen.png&blockId=2cf1cb1c-0d68-48a3-9834-c65af652363d&projectId=1032)</Frame>
+<Frame caption="Configure Consent Screen">![Configure Consent Screen](/integrations/images/google-sign-in/image4.png)</Frame>
 
 Next, choose **External** for the **User Type** and click **Create**.
-<Frame caption="User type">![User type](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa6a3d529-5165-4da4-bf01-60157a8f4990%2Fuser-type.png&blockId=58378517-3e78-4949-be59-4880aebe6fd8&projectId=1032)</Frame>
+<Frame caption="User type">![User type](/integrations/images/google-sign-in/image5.png)</Frame>
 
 In the next page, you need to fill in your app details. Here, it's important to add your Softr domain to the **Authorized Domains**. To do that, you need to click **Add Domain** under the corresponding section and fill in your domain as shown below.
 <Tip>If your Softr app is on a Softr subdomain (e.g. john.softr.app), then you need to add "softr.app" as the authorized domain. If you've connected a custom domain (e.g. [yourdomain.com](http://yourdomain.com/)), just add your domain as it is.</Tip>
-<Frame caption="Authorized domain setup">![Authorized domain setup](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe4b2e7b3-f7c6-4758-807d-292aacb7bc44%2Fauthorized-domain-setup.png&blockId=6c13eef6-2fa2-4452-9492-679631212581&projectId=1032)</Frame>
+<Frame caption="Authorized domain setup">![Authorized domain setup](/integrations/images/google-sign-in/image6.png)</Frame>
 
 In the next steps, you can define **Scopes**, add **Test Users**, and finalize the setup. As soon as you're, done, click **Back to Dashboard** at the bottom of the screen. Now, let's proceed to creating the credentials to connect your app from Softr.
 
 ## Creating Credentials
 
 From the **Credentials** section click on **Create Credentials** and choose **OAuth client ID**.
-<Frame caption="Create credentials">![Create credentials](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1d3e272f-1623-49da-bc0d-db19e2dab6b8%2Fcreate-credentials.png&blockId=5833c45f-5846-451f-b892-8c037801de09&projectId=1032)</Frame>
+<Frame caption="Create credentials">![Create credentials](/integrations/images/google-sign-in/image7.png)</Frame>
 
 In the next screen, you need to select the **Application type** as **Web application** and add your full domain (e.g. www.john.softr.app or www.yourdomain.com) under **Authorized JavaScript origins** **URIs** and **Authorized redirect URIs**.
 <Tip>Make sure to have `www` in the URIs.</Tip>
-<Frame caption="OAuth client ID setup">![OAuth client ID setup](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fd69851bb-699e-416c-9c88-e94fe1a68cbb%2FGroup_3.png&blockId=32e644fe-2905-441d-855a-abe694ddf55b&projectId=1032)</Frame>
+<Frame caption="OAuth client ID setup">![OAuth client ID setup](/integrations/images/google-sign-in/image8.png)</Frame>
 
 As soon as you complete the setup, a pop-up will appear with your **Client ID** and **Client Secret**.
-<Frame caption="Client ID and Client Secret">![Client ID and Client Secret](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4b8f8f49-d1e9-4997-9014-35ce55e2d178%2Fclient-id-and-secret.png&blockId=a77451fe-4b8e-4ad7-a59e-49031f257e6f&projectId=1032)</Frame>
+<Frame caption="Client ID and Client Secret">![Client ID and Client Secret](/integrations/images/google-sign-in/image9.png)</Frame>
 
 Just copy those values in the Authentication Tab of the Users menu. Turn on the Google Sign-in toggle, then click the gear icon to open the setup dialog.
-<Frame caption="Turn on the Google Sign-in toggle, the click the gear icon.">![Turn on the Google Sign-in toggle, the click the gear icon.](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fb966e9c5-f841-435c-b8bb-6f2e3b0eddd6%2FScreenshot_2025-04-28_at_3.53.01_PM.png&blockId=d1dca590-cf5f-4e61-84ef-b06ccf66be07&projectId=1032)</Frame>
+<Frame caption="Turn on the Google Sign-in toggle, the click the gear icon.">![Turn on the Google Sign-in toggle, the click the gear icon.](/integrations/images/google-sign-in/image10.png)</Frame>
 
 Paste the client ID and secret into the respective fields. Be sure to select Internal or External users like you did on the Google cloud console side. If you select internal, you need to define the allowed domains for signup/login.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Feba78eab-ec7e-4a0b-8f25-e9d5d573996a%2FScreenshot_2025-04-28_at_3.53.53_PM.png&blockId=1e39a723-d691-80a5-8c52-fd7c469b580a&projectId=1032)</Frame>
+<Frame>![Notion image](/integrations/images/google-sign-in/image11.png)</Frame>
 
 Once these are pasted in, click Save and you’re done!

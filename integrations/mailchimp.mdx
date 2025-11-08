@@ -13,47 +13,47 @@ Using Mailchimp you can collect email addresses from your audience, who fill out
 ## **Configuration**
 
 When you use a building block with email capture form (e.g. [Hero section with email capture](/59b829b4b58f417fa4b6cff5f7c6a658)), you will see the following options in the sidebar to choose from.
-<Frame caption="List of action options">![List of action options](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F213ee128-56ea-4636-a0ed-ae9e321d7acb%2Flist-of-options-email-capture.png&blockId=2bf5c49f-a9b4-4725-955a-b02ec5f3d21c&projectId=1032)</Frame>
+<Frame caption="List of action options">![List of action options](/integrations/images/mailchimp/image1.png)</Frame>
 
 Choose the **Add to Mailchimp** option to collect emails via Mailchimp. After selection, you will see the **Action Url** field appear.
-<Frame caption="Mailchimp action URL">![Mailchimp action URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fed52d1b3-f972-4f65-bf40-544fd0273bb1%2Fmailchimp-action-url.png&blockId=44b74f53-9c03-4fb9-a30f-e4124c0e52a7&projectId=1032)</Frame>
+<Frame caption="Mailchimp action URL">![Mailchimp action URL](/integrations/images/mailchimp/image2.png)</Frame>
 
 You need to locate the **Action Url** from your Mailchimp account, and copy paste it in this field.
 
 ## **How to locate Mailchimp Form Action Url**
 
 In order to get an Action URL and start collecting subscriptions, you need to log into your Mailchimp account and navigate to **Signup Forms ⇒ Embedded Forms**.
-<Frame caption="Embedded forms">![Embedded forms](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F83da3989-bb43-499c-bc32-89ff70c64911%2Fembedded_forms.png&blockId=455b7532-851d-4233-a291-7f727c0c8f06&projectId=1032)</Frame>
+<Frame caption="Embedded forms">![Embedded forms](/integrations/images/mailchimp/image3.png)</Frame>
 
 The embedded form will only have the email field enabled by default, so, if you’re just collecting emails, you don’t need to change anything (we’ll discuss setting up forms with multiple fields in the next section). Just hit **Continue** to proceed to the final step.
-<Frame caption="Continue">![Continue](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc5b2306b-1f70-4276-ab47-bf37f4ad0374%2Fcontinue.png&blockId=ee8a714f-ae49-4593-b6da-4ec41e887fb5&projectId=1032)</Frame>
+<Frame caption="Continue">![Continue](/integrations/images/mailchimp/image4.png)</Frame>
 
 In the next screen, copy the form **Action URL** (as shown below), then go back to your Softr application and paste it in the **Action URL field** of your form. That’s it. Now, all the emails submitted from your Softr app will be collected in your Mailchimp account under **Contacts**.
-<Frame caption="Getting the action URL">![Getting the action URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5ddf3363-a106-478f-8b43-78c1133d94a1%2Faction-url.png&blockId=76096bcf-70ef-4d45-9cfa-885c68eca138&projectId=1032)</Frame>
+<Frame caption="Getting the action URL">![Getting the action URL](/integrations/images/mailchimp/image5.png)</Frame>
 <Tip>If you're testing the form submission and not getting anything on Mailchimp, that could be due to **Double Opt-In** being enabled in your Mailchimp settings. When it's enabled, the user that submits the form receives a confirmation email. Only after the submission is confirmed by the user, it is sent to Mailchimp. You can find more details [here](https://mailchimp.com/help/about-double-opt-in/).</Tip>
 
 ## Connecting custom forms to Mailchimp
 
 Let’s create a [Customizable Form](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/advanced-form-features/jCim5VWZePgZuaRsUZBnpG) on Softr with multiple fields and see how we can connect it to Mailchimp to collect all the submissions there.
-<Frame caption="Customizable form on Softr">![Customizable form on Softr](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F50016c2b-587d-4e61-a991-97c37ecd9794%2Fcustom-form-2.png&blockId=3ea5e3ce-9371-4d2d-a597-eb67ed8ac4ea&projectId=1032)</Frame>
+<Frame caption="Customizable form on Softr">![Customizable form on Softr](/integrations/images/mailchimp/image6.png)</Frame>
 
 So, we are going to create a form with three fields (**Email**, **First name**, and **Last name)** and set the destination to Mailchimp.
-<Frame caption="Setting form destination">![Setting form destination](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa74cfa74-8189-4a4a-8f6d-c52f8f147fe9%2Fform-detination.png&blockId=40738552-2934-4cdf-829f-7cb4e66e0341&projectId=1032)</Frame>
+<Frame caption="Setting form destination">![Setting form destination](/integrations/images/mailchimp/image7.png)</Frame>
 
 Now, we need to add the **Action URL**. To get the action URL and receive form submissions on Mailchimp, we need to create a similar form in our Mailchimp account. First, we need to create an **Embedded Form.**
-<Frame caption="Embedded forms">![Embedded forms](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F83da3989-bb43-499c-bc32-89ff70c64911%2Fembedded_forms.png&blockId=bc9c338d-c3b7-4af4-80c5-e6aacf0144fb&projectId=1032)</Frame>
+<Frame caption="Embedded forms">![Embedded forms](/integrations/images/mailchimp/image8.png)</Frame>
 
 Next, in form settings, we are going to navigate to **Form Fields** and enable two additional fields apart from **Email**. Below, you can see how we’ve enabled three fields, creating a form similar to what we have in our Softr app.
-<Frame caption="Creating a form with additional fields">![Creating a form with additional fields](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F36c2805e-5369-4f3f-bb77-32ce37687adf%2Fembedded-form-ready.png&blockId=e83a8202-baba-460f-8475-77d606875e6d&projectId=1032)</Frame>
+<Frame caption="Creating a form with additional fields">![Creating a form with additional fields](/integrations/images/mailchimp/image9.png)</Frame>
 
 Lastly, we are going to hit **Continue** and copy the **Action URL** on the next screen, which we’ll need to paste in our form settings on Softr.
-<Frame caption="Getting the action URL">![Getting the action URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5ddf3363-a106-478f-8b43-78c1133d94a1%2Faction-url.png&blockId=4ab608c0-0679-4265-9d41-8d447aa465ba&projectId=1032)</Frame>
+<Frame caption="Getting the action URL">![Getting the action URL](/integrations/images/mailchimp/image10.png)</Frame>
 
 But that’s not all. In order to map all the form fields correctly from Softr to Mailchimp, we also need to specify a **Map to** value for each field. Those values can be found in the same embedded form code under **name**. Below, we’ve located the name of the **First name** field.
-<Frame caption="Name of the field">![Name of the field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1f5c370c-b120-4aaa-ae67-90db1e489b28%2Ffield-name.png&blockId=624706c3-b653-479f-ab30-b39f9bc6d2fa&projectId=1032)</Frame>
+<Frame caption="Name of the field">![Name of the field](/integrations/images/mailchimp/image11.png)</Frame>
 
 You should copy the values for all your fields (including the **Email** field) and add them to your Softr form for each field under **Map to**.
-<Frame caption="Filling in the “Map to” value">![Filling in the “Map to” value](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe7d26df5-5c68-4d98-85ac-0e55d9713964%2Ffilling-map-to.png&blockId=8d6224ab-e243-4742-b386-8551318004e7&projectId=1032)</Frame>
+<Frame caption="Filling in the “Map to” value">![Filling in the “Map to” value](/integrations/images/mailchimp/image12.png)</Frame>
 
 And we’re done. Let’s do a test submission to make sure it works correctly.
-<Frame caption="Doing a test submission">![Doing a test submission](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3aa08fd0-a697-49ff-80cb-698df85124eb%2FScreen_Recording_2023-01-27_at_14.12.13.gif&blockId=c28d657c-9c68-47a9-995f-c808db81b8ca&projectId=1032)</Frame>
+<Frame caption="Doing a test submission">![Doing a test submission](/integrations/images/mailchimp/image13.gif)</Frame>

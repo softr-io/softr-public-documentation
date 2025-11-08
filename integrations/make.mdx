@@ -11,22 +11,22 @@ description: "Make allows you to visually create, build, and automate workflows.
 ## "Send to Make" Action
 
 The Make integration is available through a **Send to Make** action, which is available as a [Form](/4876cbed455842aebe38e0612d2da96e) submit button action. When you create a form, set the destination of the form response to be Make.
-<Frame caption="“Send to Make” action">![“Send to Make” action](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F80613629-9fde-460f-a83e-a26d46798cbb%2FScreenshot_2024-12-18_at_10.35.12_PM.png&blockId=ae4d4f2b-56db-4539-8d77-5dc94592b5a9&projectId=1032)</Frame>
+<Frame caption="“Send to Make” action">![“Send to Make” action](/integrations/images/make/image1.png)</Frame>
 
 After selecting Make from the dropdown, another field will appear where you will place a Make Webhook URL. More on that below:
-<Frame caption="Custom Webhook URL field">![Custom Webhook URL field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F5981178a-7bfa-4325-9a82-f566a2667aae%2FScreenshot_2024-12-18_at_10.35.43_PM.png&blockId=f56cc75c-2be1-4957-ac26-a1872e2d2750&projectId=1032)</Frame>
+<Frame caption="Custom Webhook URL field">![Custom Webhook URL field](/integrations/images/make/image2.png)</Frame>
 
 Here, you need to fill in a **Custom Webhook URL** to connect to Make. So, let's switch to Make to configure our automation and get the **Webhook URL**.
 
 ## Creating a Scenario in Make
 
 In your Make account, you should create a new **Scenario**, set up a **Webhooks** app, and choose the **Custom Webhook** trigger. As soon as the **Custom Webhook** is ready, you need to hit **Copy address to clipboard** to get the **Webhook URL**. Below you can see how that's done.
-<Frame caption="Setting up a Custom Webhook trigger and getting its URL">![Setting up a Custom Webhook trigger and getting its URL](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd5565b9e-c508-4cff-8170-ef71ab012500%2Fsetting-up-custom_webhook-trigger.gif&blockId=ca5b9aaa-0db7-414b-ab94-f1c7331000a4&projectId=1032)</Frame>
+<Frame caption="Setting up a Custom Webhook trigger and getting its URL">![Setting up a Custom Webhook trigger and getting its URL](/integrations/images/make/image3.gif)</Frame>
 
 ## Adding the Webhook URL in Form Settings
 
 Now, you need to run your Make scenario and go back to your Softr form to enter the **Webhook URL**. After entering the URL, use the link below to **Send test data**. Further on, if you go back to your Make scenario, you should see a notification on top of your webhook icon. Click on it to see the content of the bundle that has been received. If your test data has arrived successfully, you can now add new modules to your webhook to receive the data on other services.
-<Frame caption="Adding the URL and testing the integration">![Adding the URL and testing the integration](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0ae62862-7108-45fb-8720-7477ad366b05%2Fadding-url-and-testing.gif&blockId=05158df3-78da-41b5-aef0-d496e9d01caf&projectId=1032)</Frame>
+<Frame caption="Adding the URL and testing the integration">![Adding the URL and testing the integration](/integrations/images/make/image4.gif)</Frame>
 <Warning>
 
 IMPORTANT: When sending a test call to the webhook from Softr Studio, not all fields will be sent from the Softr form to the Webhook - only some test fields will be sent. In order for Make to properly identify the correct data structure you will use in production, you should submit a form response from the live app or app preview while the webhook is listening.
@@ -36,26 +36,26 @@ IMPORTANT: When sending a test call to the webhook from Softr Studio, not all fi
 ## Sending Data to Trello
 
 Now, you need to connect another service to send the data to. Let's assume you've set up a simple contact form and want to send the form submissions to the [Trello](https://trello.com/) task management tool, creating a new card on the board for each submission.
-<Frame caption="A simple contact form">![A simple contact form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3194eaf0-fc19-474a-a3c3-83fa56e3005a%2Fsimple-contact-form.png&blockId=d2c85bae-3599-4110-861d-5fa06054141e&projectId=1032)</Frame>
+<Frame caption="A simple contact form">![A simple contact form](/integrations/images/make/image5.png)</Frame>
 
 Therefore, you need to click **Add another module** on your custom webhook and search for **Trello** within the new module.
-<Frame caption="Adding a Trello module">![Adding a Trello module](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc96eec85-93dd-423e-96e9-5435eddf6792%2Fadding-trello-module.gif&blockId=ad089222-b5db-4481-a9bd-dbdf4ca8b96b&projectId=1032)</Frame>
+<Frame caption="Adding a Trello module">![Adding a Trello module](/integrations/images/make/image6.gif)</Frame>
 
 Configuring Trello Account and Mapping the Fields
 
 After selecting Trello in the list, scroll down and choose **Create a Card** action.
-<Frame caption="“Create a Card” action for Trello">![“Create a Card” action for Trello](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1a7d2d90-e1f7-4d7a-b2bf-34754c9549f0%2Fcreate-card-trello.png&blockId=d3253111-6fb8-497a-b9d8-ff8b1b571c09&projectId=1032)</Frame>
+<Frame caption="“Create a Card” action for Trello">![“Create a Card” action for Trello](/integrations/images/make/image7.png)</Frame>
 
 In the next step, you need to connect your Trello account, clicking the **Add** button under **Connection**. Afterwards, under **Enter a List ID** you can either enter your Trello **List ID** manually or choose **Select** to be provided with the list of your current boards and their lists to choose from.
-<Frame caption="Connecting Trello account and board/list">![Connecting Trello account and board/list](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6077dbd8-8121-4eb8-9e40-b74b5265eaf3%2Fconnecting-trello-account-and-board.png&blockId=cd2257ca-8039-4592-9de3-63c2a6e49416&projectId=1032)</Frame>
+<Frame caption="Connecting Trello account and board/list">![Connecting Trello account and board/list](/integrations/images/make/image8.png)</Frame>
 
 After setting the board and list you want the cards to be created on, you need to scroll down and map the form fields. In the example below, we've mapped the **Email** field to the card **Name**, and the form **Name** and **Message** fields to the card's **Description**.
-<Frame caption="Mapping form fields to Trello">![Mapping form fields to Trello](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fce1d277c-1576-455a-8fe9-c559603fc4af%2Fmapping-form-to-trello.png&blockId=7f034a27-e3de-4f0d-8c99-3fbac00be7d7&projectId=1032)</Frame>
+<Frame caption="Mapping form fields to Trello">![Mapping form fields to Trello](/integrations/images/make/image9.png)</Frame>
 
 ## Testing the integration
 
 That's it. Now, let's run our Scenario and do a test submission from our Softr form to make sure the data is being received on Trello.
-<Frame caption="Testing the Automation">![Testing the Automation](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F82e1a2ef-b76c-4d9d-8f3d-9872c761fac1%2Ftesting-automation.gif&blockId=ada4730e-b85f-4632-b16d-a41d5dde4b3d&projectId=1032)</Frame>
+<Frame caption="Testing the Automation">![Testing the Automation](/integrations/images/make/image10.gif)</Frame>
 <Tip>
 
 Note: When sending a test call to the webhook from Softr Studio, not all fields will be sent from the Softr form to the Webhook - only some test fields will be sent. In order for Make to properly identify the correct data structure you will use in production, you should submit a form response from the live app or app preview while the Webhook is listening.

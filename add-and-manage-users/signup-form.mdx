@@ -17,20 +17,20 @@ This method of Signup is only for [Legacy Softr Apps](/application-settings/n3K2
 ## Logo, Title, and Background Image
 
 Under the Features tab of block settings, you can add a logo to the block, change the title, as well as set a background image for the whole block.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F66a2a044-f867-4508-92e4-5353032f7c11%2Fsign-up-form.png&blockId=78c3a26a-fabd-4465-9c5c-8b6805f8fc17&projectId=1032)</Frame>
+<Frame>![Notion image](/add-and-manage-users/images/signup-form/image1.png)</Frame>
 
 ## Signup Form
 
 ### **Sign up with Google**
 
 If you enable this option, a **Sign up with Google** button will be added to the form, allowing your users to sign up with their Google Accounts.
-<Frame caption="Signup with Google">![Signup with Google](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F66beb997-4dfb-44f9-8330-dc6b9e422032%2Fgoogle-signup.png&blockId=df7addca-09b9-45f7-a666-b809454a0817&projectId=1032)</Frame>
+<Frame caption="Signup with Google">![Signup with Google](/add-and-manage-users/images/signup-form/image2.png)</Frame>
 <Tip>To enable Google Signup, you first need to add your Google APP Client details in **Integrations => Google Sign In**. You can find instructions on getting the **Client ID** and **Client Secret** [here](/integrations/etS18kJqm1fuD58KCsjC3z/google-sign-in/2hBabh9UqoE8W7aWrfPVFd).</Tip>
 
 ### **Domain-based signup**
 
 Here, you can allow users to sign up only from specified domains. To do so, you need to add these domains inside the **Allowed domains** field. For instance, if you want only people with "softr.io" domains (e.g. john@softr.io) to sign up, you need to enter "softr.io" into **Allowed domains** and hit **Enter** (see below). You can add as many domains as needed.
-<Frame caption="Adding allowed domains">![Adding allowed domains](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2beb632a-0fd7-4512-9ebf-9993704651f2%2Fadding-allowed-domains.png&blockId=d5932f6d-55fb-43ae-9133-d2eab43e93f6&projectId=1032)</Frame>
+<Frame caption="Adding allowed domains">![Adding allowed domains](/add-and-manage-users/images/signup-form/image3.png)</Frame>
 
 ## Form fields
 
@@ -41,18 +41,18 @@ By default, you have three fields: **Name**, **Email**, and **Password,** where 
 ### **Adding Custom Fields**
 
 You also have the option of customizing the Signup block by adding more fields. The values of additional fields will be stored in your [data source](/4230abecf813402aa2926466c313290a), therefore you need to have [a data source connected](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9) in the **Users** section. If you haven't connected a users base data source yet, you'll see a **Create Data Source** option under the **Signup Form** section in the **Features** tab.
-<Frame caption="Create Data Source option">![Create Data Source option](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3c986ec2-bd36-49f0-b4df-facb419f3d23%2Fcreate-data-source.png&blockId=bb835001-8097-4501-98c7-5cb32981ef7c&projectId=1032)</Frame>
+<Frame caption="Create Data Source option">![Create Data Source option](/add-and-manage-users/images/signup-form/image4.png)</Frame>
 
 After clicking the **Create** button, you'll need to follow the process described [here](/integrations/etS18kJqm1fuD58KCsjC3z/google-sign-in/2hBabh9UqoE8W7aWrfPVFd) to connect a data source where user data will be synced. Further on, in your database, you can define additional fields to store extra user parameters and add those to the **Signup** form as well. Let's consider a specific example to give you a better idea of how this works.
 
 Let's connect an Airtable users base, where we have added an additional **Position** field that indicates the position of the registered employee within the company.
-<Frame caption="Users base with additional parameter">![Users base with additional parameter](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F58d7f2a0-cf74-43f2-b98d-2a2250e23112%2Fusers-base-additional-parameters.png&blockId=e8aa7646-1768-4107-9043-934a957006aa&projectId=1032)</Frame>
+<Frame caption="Users base with additional parameter">![Users base with additional parameter](/add-and-manage-users/images/signup-form/image5.png)</Frame>
 
 Now, we can add a position field to our Signup form and link it to this field on Airtable as done below.
-<Frame caption="Additional Position field">![Additional Position field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc0e06ea4-3fce-4813-beb9-e9436bdcca37%2Fposition-field.png&blockId=856d281c-2039-4ee6-96b7-aa8ea8f70289&projectId=1032)</Frame>
+<Frame caption="Additional Position field">![Additional Position field](/add-and-manage-users/images/signup-form/image6.png)</Frame>
 
 As a result, the users can now select a **Position** on signup, and it will be stored in the connected Airtable base as shown below.
-<Frame caption="Additional Signup field stored on Airtable">![Additional Signup field stored on Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F003078c4-a108-4347-8079-3698752c2d60%2Fadditional-field-stored-in-airtable.gif&blockId=b1843b42-f842-4378-81d7-18ff8e8786e0&projectId=1032)</Frame>
+<Frame caption="Additional Signup field stored on Airtable">![Additional Signup field stored on Airtable](/add-and-manage-users/images/signup-form/image7.gif)</Frame>
 
 ### **Sign Up Button**
 
@@ -69,10 +69,10 @@ Choose whether you want to show a sign-in button (takes the user to the sign-in 
 ## On Sign up
 
 Lastly, we need to set what page the user should be taken to after successfully signing up.
-<Frame caption="Configuring page after signup">![Configuring page after signup](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc03634ea-72ac-4f1a-9f65-931b7b978c53%2Fpage-after-signup.png&blockId=a0bbd172-b4c6-4ab6-9912-c4e167d1c29b&projectId=1032)</Frame>
+<Frame caption="Configuring page after signup">![Configuring page after signup](/add-and-manage-users/images/signup-form/image8.png)</Frame>
 
 ## **Enable reCaptcha**
-<Frame caption="Enabling reCaptcha on Sign Up form">![Enabling reCaptcha on Sign Up form](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8edf1cab-8d63-4c1b-9e58-63089b89c15f%2FUntitled.png&blockId=9b649140-7c8b-4415-b0e3-c1dad7175d50&projectId=1032)</Frame>
+<Frame caption="Enabling reCaptcha on Sign Up form">![Enabling reCaptcha on Sign Up form](/add-and-manage-users/images/signup-form/image9.png)</Frame>
 
 By adding reCaptcha authentication to your sign up form, you'll protect it from getting spammed or misused.
 
@@ -80,13 +80,13 @@ By adding reCaptcha authentication to your sign up form, you'll protect it from 
 
 To set up reCaptcha, you need to go to [https://www.google.com/recaptcha/admin/create](https://www.google.com/recaptcha/admin/create)
 and enter your site details as shown below.
-<Frame caption="reCaptcha setup">![reCaptcha setup](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F794d7ff3-6b36-484d-9a26-185797f3fcac%2Frecaptcha-setup.png&blockId=7f393c8d-50e9-41cf-b47f-94ff83552369&projectId=1032)</Frame>
+<Frame caption="reCaptcha setup">![reCaptcha setup](/add-and-manage-users/images/signup-form/image10.png)</Frame>
 
 In the next screen, you just need to copy the **Site Key** and **Secret Key.**
-<Frame caption="Getting Site Key and Secret Key">![Getting Site Key and Secret Key](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4c20543a-0edd-4a5e-9e63-ad26384992dd%2Frecaptcha_keys.png&blockId=74079edf-428b-4f92-9ceb-fc1949ad618b&projectId=1032)</Frame>
+<Frame caption="Getting Site Key and Secret Key">![Getting Site Key and Secret Key](/add-and-manage-users/images/signup-form/image11.png)</Frame>
 
 To finalize the setup, paste the Site Key and Secret Key in your Softr app's **Settings => Integrations => Google reCaptcha.**
-<Frame caption="Adding reCaptcha keys">![Adding reCaptcha keys](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcfb8601d-d443-4648-9d5c-3ee9aa7a156c%2Frecaptcha_integration.png&blockId=d1ec8473-b9ad-424c-95f6-de40499208d0&projectId=1032)</Frame>
+<Frame caption="Adding reCaptcha keys">![Adding reCaptcha keys](/add-and-manage-users/images/signup-form/image12.png)</Frame>
 
 ## Block visibility
 

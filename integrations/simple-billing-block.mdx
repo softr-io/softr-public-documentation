@@ -22,10 +22,10 @@ However, you can also use the [Simple Checkout Form](/integrations/etS18kJqm1fuD
 As soon as you're done with Stripe integration, you can proceed with setting up a [Pricing](/integrations/etS18kJqm1fuD58KCsjC3z/layout-pricing-in-card-view-with-details/pNspR4mKu6spj1KSzRf4p7) block, where you offer your Stripe products/subscriptions to your users.
 
 Below, you can see a product that we've set up on Stripe (available in the **Products** section of your Stripe dashboard).
-<Frame caption="A product page on Stripe">![A product page on Stripe](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7edfdac2-8b1c-445e-94d2-53dbc764a8f9%2Fproduct-page-on-stripe.png&blockId=4fd42e2e-eb79-4f56-a37b-bac616b3eadc&projectId=1032)</Frame>
+<Frame caption="A product page on Stripe">![A product page on Stripe](/integrations/images/simple-billing-block/image1.png)</Frame>
 
 Now, we are going to add this product on our Pricing block in Softr. Below, you can see how it's configured.
-<Frame caption="Product added in Pricing block">![Product added in Pricing block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F30ee097a-6f9b-4901-ac88-4e06d55db5b0%2Fproduct-added-in_pricing.gif&blockId=0a87ddad-062f-45db-8136-2a705485e563&projectId=1032)</Frame>
+<Frame caption="Product added in Pricing block">![Product added in Pricing block](/integrations/images/simple-billing-block/image2.gif)</Frame>
 
 As you can see, we've set the **Button** action to **Stripe checkout** and enabled **Recurring payments**, as the product we've added is a subscription. Moreover, we've copied the **Monthly** and **Yearly** price IDs from the product page on Stripe as well as added **Success** and **Cancel** URLs, which are mandatory. You can find more info on configuring the Pricing block [here](/integrations/etS18kJqm1fuD58KCsjC3z/stripe-checkout/iBomMEucRZtM2y6HuutYVC).
 
@@ -34,7 +34,7 @@ Other subscription plans or products on your Pricing block can be configured the
 ### **Adding Coupon Codes**
 
 Coupons can be created under **Products => Coupons**. Further on, you need to add a **Promotional Code** for your coupon, and the **Name** of your **Promotional Code** is what you should give to your users to use on checkout. Below you can see how that's set up.
-<Frame caption="Setting up a Coupon and Promotional Code">![Setting up a Coupon and Promotional Code](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Faa815986-8ff1-43da-b318-2dc5605d784b%2Fcoupon-and-promotional-code-setup.png&blockId=b22ab792-56f3-4697-9887-194c7e8005aa&projectId=1032)</Frame>
+<Frame caption="Setting up a Coupon and Promotional Code">![Setting up a Coupon and Promotional Code](/integrations/images/simple-billing-block/image3.png)</Frame>
 
 We'll use this code ("test1234") later on in this guide when demonstrating the checkout and billing management process from your users' standpoint.
 
@@ -43,7 +43,7 @@ So, now, let's proceed to setting up the **Simple Billing Form**.
 ## Configuring the Simple Billing Form block
 
 We are just going to add the **Simple Billing Form** block on a separate page and configure it. Let's quickly go through the block settings.
-<Frame caption="Simple Billing Form overview">![Simple Billing Form overview](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3d09847a-9e58-4c94-aee3-889e74109cf0%2Fsimple-billing-form-overview.gif&blockId=860f5140-35e5-46af-8954-f4a1997f0417&projectId=1032)</Frame>
+<Frame caption="Simple Billing Form overview">![Simple Billing Form overview](/integrations/images/simple-billing-block/image4.gif)</Frame>
 
 Above you can see an overview of the block configuration. Now, let's go through each setting in detail.
 
@@ -63,6 +63,6 @@ Now that we've reviewed the configs from the site owner's perspective, let's see
 
 Below you can see how the user purchases a subscription through the **Pricing** block and is later on able to view his/her subscription along with additional info (e.g. Invoices) using the Simple Billing block as well as cancel the subscription. The user also applies a promotional code during checkout.
 <Tip>In our example, we've used a subscription-type product from Stripe, but one-off purchase products can be set up in a similar manner.</Tip>
-<Frame caption="Checkout and billing management">![Checkout and billing management](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe925b231-f8c3-4714-ae3f-c787957b5bad%2Fcheckout-and-billing-management.gif&blockId=ba70bd33-c9ba-42db-9ff3-9853f6ada9cb&projectId=1032)</Frame>
+<Frame caption="Checkout and billing management">![Checkout and billing management](/integrations/images/simple-billing-block/image5.gif)</Frame>
 
 As you can see, after completing the checkout, the user is automatically taken to the page with the **Simple Billing Form**, where he/she can manage his/her details.

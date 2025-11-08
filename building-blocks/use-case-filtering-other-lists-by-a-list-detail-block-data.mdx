@@ -35,12 +35,12 @@ You can use the data available in a list detail block to filter other lists on t
 This list will serve as the main record type the user will be selecting and can live on any page in your app. In the example below, we have a very simple Home page with a simple card list of Projects being pulled from Airtable. The cards have an action setup that when a user clicks on a card, it takes them to a details page in the app called “Project details”.
 
 You can use any type of list, table, or even Calendar and Kanban blocks for this. Anywhere you have records listed, you can link to a details screen.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F905f503f-c573-4c99-9347-94b5acf391e4%2FScreenshot_2024-12-20_at_9.42.36_AM.png&blockId=1629a723-d691-806f-a8e3-e73465e01b53&projectId=1032)</Frame>
+<Frame>![Notion image](/building-blocks/images/use-case-filtering-other-lists-by-a-list-detail-block-data/image1.png)</Frame>
 
 ### Creating the list details page
 
 When you set up the main list and create the “on click” action, you will be asked to link to a details page for that item. If one doesn’t exist, you can also create one. In the example below, we have a “Project details” page with a very simply Item Details block showing the project image, name, client name, and status. You’ll notice that Softr prompts us with a dialog at the bottom of the screen to add items that may be linked to a project such as Tasks and Users.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fbbeb8a1d-7a6d-4268-a998-6504ea5d51ca%2FScreenshot_2024-12-20_at_10.01.26_AM.png&blockId=1629a723-d691-80c9-b952-fa31b48ab748&projectId=1032)</Frame>
+<Frame>![Notion image](/building-blocks/images/use-case-filtering-other-lists-by-a-list-detail-block-data/image2.png)</Frame>
 
 ### Adding linked lists
 
@@ -52,10 +52,10 @@ We also added a conditional filter stating that we only wanted to see Users wher
 
 Note that the editor will not show live filtered data, only test data. If you want to test the filtering, be sure to [Preview the app](/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/publishing-your-softr-app/gRrb1u7eLmRTrXyg3UNGkQ#previewing-your-softr-app) as different users!
 </Tip>
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Fc94519a5-5bdb-49f5-b548-b8cd2c85ebe5%2FScreenshot_2024-12-20_at_10.13.27_AM.png&blockId=1629a723-d691-807c-9fcb-fda9c6fb89a8&projectId=1032)</Frame>
+<Frame>![Notion image](/building-blocks/images/use-case-filtering-other-lists-by-a-list-detail-block-data/image3.png)</Frame>
 
 Now let’s add one more linked list to view the Tasks associated with this project detail. Below we added a basic “Table” block with the source set to Tasks and also added a conditional filter stating that we should only show Tasks where the Project Name is the same as the Current Record’s → Project Name. This ensures that only tasks belonging to the selected project are seen here in the table.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F98efd218-2097-4517-ab83-90553ad3014d%2FScreenshot_2024-12-20_at_10.22.25_AM.png&blockId=1629a723-d691-8081-96e6-c649ac7615b7&projectId=1032)</Frame>
+<Frame>![Notion image](/building-blocks/images/use-case-filtering-other-lists-by-a-list-detail-block-data/image4.png)</Frame>
 
 ## FAQ
 

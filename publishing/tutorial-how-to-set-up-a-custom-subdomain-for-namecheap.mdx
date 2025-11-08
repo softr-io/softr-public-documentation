@@ -11,25 +11,25 @@ description: "Connect a Namecheap subdomain to your Softr app."
 <Steps>
   <Step title="">
     First, log in to your [Namecheap account dashboard](https://www.namecheap.com/myaccount/login/).
-    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F112c22c8-9d60-4813-97e6-a58f49958de8%2Fnamecheap-login.png&blockId=c91a7f5a-02b7-4ddd-83e4-3c46a5ac6a5d&projectId=1032)</Frame>
+    <Frame>![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-subdomain-for-namecheap/image1.png)</Frame>
   </Step>
   <Step title="">
     Next to the domain you want to point to Softr, click on **“Manage”**.
-    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd3b0df97-72a5-49f0-9e2d-8b2daf04758c%2F2-namecheap-dashboard.png&blockId=4181362b-83a5-4312-b244-ec696c6ff288&projectId=1032)</Frame>
+    <Frame>![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-subdomain-for-namecheap/image2.png)</Frame>
   </Step>
   <Step title="">
     Click into the **“Advanced DNS”** tab. If you see **CNAME Record** and **URL Redirect Record** with parkingpage.namecheap like values please delete them.
-    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fca4b4c31-25f8-4e0c-8d99-30b32598ae51%2F3-namecheap-dns.png&blockId=e6b50f14-9de4-43eb-a9e4-778193014cbd&projectId=1032)</Frame>
+    <Frame>![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-subdomain-for-namecheap/image3.png)</Frame>
 
     If your screen doesn’t look like the image above, it’s most likely because you have your DNS pointed elsewhere. In other words, to create DNS records at Namecheap, you need to be using **“Namecheap BasicDNS”** which is included with every domain. You can check by going into the **“Domain”** tab.
   </Step>
   <Step title="">
     Click into the **“Advanced DNS”** tab and then click on “**Add New Record”.** If you see an A Record that already exists you will simply need to edit it (skip to the next step).
-    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff5238c2d-b782-4259-9640-9ca73f10f577%2F4-namecheap-new-record.png&blockId=7946252b-b8fc-43a9-bb34-f5cfdb8e3103&projectId=1032)</Frame>
+    <Frame>![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-subdomain-for-namecheap/image4.png)</Frame>
   </Step>
   <Step title="">
     You will need to create an **A record** as well as input the **IP address** provided by us (from **Settings => Custom Domain** in Softr Studio), as shown below. The host of the A record should be set to your URL's subdomain. For instance, if you URL is "**my.domain.com**", it should be set to "**my**" as shown below.
-    <Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1be86ad4-dd5d-4ead-9c73-dde4d394e899%2Fa-record.png&blockId=7729266e-748f-4239-8c76-5938feae4412&projectId=1032)</Frame>
+    <Frame>![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-subdomain-for-namecheap/image5.png)</Frame>
 
     It may take a few minutes for your A name record to propagate everywhere.
   </Step>

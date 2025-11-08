@@ -35,15 +35,15 @@ You can manage your users entirely in Softr or sync users with an external [data
 ### Making the Connection
 
 Click on the Users menu panel, then click on the **Sync with data source** button to start the setup. You will notice that a test user is already created for you manually, but you can delete this user before syncing to a data source.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9df99158-cf1d-4b19-b073-7872c7f2bf96%2FScreenshot_2025-09-09_at_9.13.51_AM.png&blockId=2699a723-d691-80c4-a800-fc964977b2ea&projectId=1032)</Frame>
+<Frame>![Notion image](/add-and-manage-users/images/syncing-users-with-a-data-source/image1.png)</Frame>
 
 Next, you need to select the data source you want to map to. Softr offers a variety of datasources to pull User’s from, and each one has its own connection methods. Learn more about data source connections [here](/data-sources/1YYStCJukT15Lh2j93qo9A).
 
 If you already have a data source connected, you can choose it from the list, otherwise you’ll be prompted to create a new connection to your selected data source. In the example below, we’re selecting Airtable as the data source.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F611e295f-371f-4c0d-9012-a638e41ee253%2FScreenshot_2024-12-19_at_11.29.24_AM.png&blockId=8ca4b1d3-5362-42fc-82fc-d33679c0ce25&projectId=1032)</Frame>
+<Frame>![Notion image](/add-and-manage-users/images/syncing-users-with-a-data-source/image2.png)</Frame>
 
 Airtable requires us to select the Base and Table we want to use for the Users of our app, but some datasources ask for other criteria such as “Solution”, “Workspace”, “Table”, or “Sheet”.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F691ea576-99a7-4625-bcb6-e216942457af%2FScreenshot_2024-12-19_at_11.30.17_AM.png&blockId=1619a723-d691-805a-8bb5-eab57b1adedd&projectId=1032)</Frame>
+<Frame>![Notion image](/add-and-manage-users/images/syncing-users-with-a-data-source/image3.png)</Frame>
 
 ### Filtered User Sync
 
@@ -64,12 +64,12 @@ You can also control what happens to a user record if they even cease to meet th
 * **Delete their user account** - deleting a user does not retain their data either in the data source or in the Softr app. They will not be able to login or reactivate their account.
 
 * **Unsync the user with the data source** - User login is retained in the app, but is no longer synced with the data source. Any extraneous user fields in the data source become unavailable for use in filtering, user groups, etc. The user still counts towards your plan’s user limits.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F1e24a054-4dad-40aa-9648-a24d72912073%2FScreenshot_2025-09-09_at_9.17.26_AM.png&blockId=2699a723-d691-80a7-b5e4-caa5259ca2fe&projectId=1032)</Frame>
+<Frame>![Notion image](/add-and-manage-users/images/syncing-users-with-a-data-source/image4.png)</Frame>
 
 ### Mapping User Fields
 
 Now that the source is selected, we need to map the fields that will be tied to the Users of our app. Only only field is required to generate a User. Other optional fields are available to add in the dropdown. Any fields not listed here will still be available for use in your app, but only these are necessary for Softr’s User management.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F9fcfe5be-0d0f-47f1-a841-26ad4fc0c271%2FScreenshot_2024-12-19_at_11.34.08_AM.png&blockId=48cee854-ff60-42ef-8433-6b4f0eda96ce&projectId=1032)</Frame>
+<Frame>![Notion image](/add-and-manage-users/images/syncing-users-with-a-data-source/image5.png)</Frame>
 
 * **Email** **\***— this is the unique user identifier and how we are able to connect user records. Please do not edit email on the data source side.
 
@@ -92,10 +92,10 @@ Lastly, you’ll want to choose the method by which your users should be able to
 Using these methods is optional, but especially helps in onboarding new users for the first time. Which one you choose will determine which [Email Template](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/automated-user-invitations/3Jhs4orvsie7byu15BWmuV) is sent when Inviting new users to your app.
 
 Once finished, click on the **Save and sync** button in the lower right corner of the popup modal.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2Faabfa5e8-c328-42b3-b706-0858f0a13b46%2FScreenshot_2024-12-19_at_11.43.21_AM.png&blockId=1619a723-d691-80fc-9397-f0c3436f105a&projectId=1032)</Frame>
+<Frame>![Notion image](/add-and-manage-users/images/syncing-users-with-a-data-source/image6.png)</Frame>
 
 Softr will begin syncing users from your data source into your app and you will begin to see users populating in your Users menu.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F101aace3-882a-46e0-adba-ff59a0952e38%2FScreenshot_2024-12-19_at_11.56.22_AM.png&blockId=1619a723-d691-800b-b0b0-fed70fee7e84&projectId=1032)</Frame>
+<Frame>![Notion image](/add-and-manage-users/images/syncing-users-with-a-data-source/image7.png)</Frame>
 
 ## How does 2-way syncing work?
 
@@ -112,7 +112,7 @@ Softr will begin syncing users from your data source into your app and you will 
 ## When does syncing happen?
 
 If your app’s user table syncs with a datasource, any new user added to your source table will get synced to Softr immediately. User syncing is not continuous inside of Studio or on unpublished apps. Only when you publish your app will user sync be realtime and continuous. You can also pause auto-sync at anytime in the connection settings:
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F24375e70-fba4-43bb-b9ed-b3bc2df68072%2FScreenshot_2024-10-07_at_10.39.34_AM.png&blockId=1189a723-d691-80f1-b84d-d52b87fd9f5a&projectId=1032)</Frame>
+<Frame>![Notion image](/add-and-manage-users/images/syncing-users-with-a-data-source/image8.png)</Frame>
 
 We’ve also defined many syncing triggers inside of Softr Studio to ensure your app always gets the latest user data when it actually needs it. A few examples:
 
@@ -127,12 +127,12 @@ If you run into any cases where the data isn’t getting synced, and it’s affe
 ## Syncing issues
 
 If there’s an issue with syncing with a data source (e.g. you have a duplicate user in your data source), you’ll be notified about that as shown below.
-<Frame caption="Sync issue notification">![Sync issue notification](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F69c9980c-c81a-4c6c-8fac-a628fd1cb39c%2Fsync-issue.png&blockId=2d5fccd6-2a07-4dfc-9464-21c368a0fd0a&projectId=1032)</Frame>
+<Frame caption="Sync issue notification">![Sync issue notification](/add-and-manage-users/images/syncing-users-with-a-data-source/image9.png)</Frame>
 
 Click on **See details** to learn more and address the issues. After successfully fixing the issue, hit **Validate fix** to trigger a sync.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd1beb4d2-835d-4da5-bfb0-dd2162e5892a%2FUntitled.png&blockId=a96e516e-68c5-4808-a40c-632711955f60&projectId=1032)</Frame>
+<Frame>![Notion image](/add-and-manage-users/images/syncing-users-with-a-data-source/image10.png)</Frame>
 
 ## Enabling 2-way sync on older apps
 
 User syncing between Softr and data source used to be 1-way (from application to data source only). If you have an app created before the introduction of 2-way sync in June, 2023, you’ll have to manually enable 2-way sync by going to the Users tab.
-<Frame caption="Enabling 2-way sync">![Enabling 2-way sync](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F57ad2c87-1e86-49e9-94cf-888b06789c89%2FSCR-20230620-mda.png&blockId=20088cf0-1988-4416-9ce2-0e125d7bb684&projectId=1032)</Frame>
+<Frame caption="Enabling 2-way sync">![Enabling 2-way sync](/add-and-manage-users/images/syncing-users-with-a-data-source/image11.png)</Frame>

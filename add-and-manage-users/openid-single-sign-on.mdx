@@ -9,7 +9,7 @@ description: "Setting up authentication with OpenId."
 'twitter:description': "Setting up authentication with OpenId."
 ---
 <Note>OpenId Single Sign-on (SSO) is available for users on the [Enterprise plan](https://www.softr.io/pricing).</Note>
-<Frame caption="OpenId Single sign on block">![OpenId Single sign on block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5392a08b-d38c-4dbb-b35b-95b490322e7f%2Fsso-openid.png&blockId=941adfc7-c429-4497-9565-1b296b9c9fae&projectId=1032)</Frame>
+<Frame caption="OpenId Single sign on block">![OpenId Single sign on block](/add-and-manage-users/images/openid-single-sign-on/image1.png)</Frame>
 
 Using this block, you can enable your users to sign in with their OpenId credentials. To be able to use the block, you first need to integrate the OpenId platform that you use for user management and authentication. We’ll find out how to do that next.
 
@@ -26,20 +26,20 @@ First, let's copy the **Callback URL** from our OpenId Settings. We are going to
 ### **Adding an OAuth Client in Outseta**
 
 First, we need to add an OAuth Client in our Outseta account. To do that, we need to navigate to **Settings => Integrations => OAuth** and hit **Add OAuth Client.**
-<Frame caption="Adding OAuth Client">![Adding OAuth Client](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6c9997e4-868a-49d9-836b-65a739b7757d%2Fadd-oauth-client.png&blockId=6df0e600-fc9e-43e2-9970-1a0d041943fc&projectId=1032)</Frame>
+<Frame caption="Adding OAuth Client">![Adding OAuth Client](/add-and-manage-users/images/openid-single-sign-on/image2.png)</Frame>
 
 In the pop-up that follows, we are going to add a **Name** for the client, paste the Callback ID we had copied earlier from our Softr app։ The Logout Redirect URL can be left blank.
-<Frame caption="Configuring OAuth client">![Configuring OAuth client](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbce0e022-e822-400d-a1df-e578e01149fb%2Fclient-setup.png&blockId=9019d875-a1ed-4916-9d5d-151420692782&projectId=1032)</Frame>
+<Frame caption="Configuring OAuth client">![Configuring OAuth client](/add-and-manage-users/images/openid-single-sign-on/image3.png)</Frame>
 
 After completing those, click Add, and the pop-up will expand, showing your **Integration Details**.
-<Frame caption="Integration details">![Integration details](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F430376f9-8936-43f4-a6b1-3cc5166d3836%2Fintegration-details.png&blockId=c8422808-a754-4f4c-a6cb-62d2ee0df0af&projectId=1032)</Frame>
+<Frame caption="Integration details">![Integration details](/add-and-manage-users/images/openid-single-sign-on/image4.png)</Frame>
 
 Here, you need the **Client Id** and **Client Secret** values.
 
 ### **Adding Client Id and Secret on Softr**
 
 Now we are going to add the **Client Id** and **Client Secret** values, which we obtained in the previous step, in our Softr app's **OpenId Settings**.
-<Frame caption="Adding ID and secret">![Adding ID and secret](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9fd57a7b-2329-42d6-aa9f-75ac8c389552%2Fid-added.png&blockId=b44ced17-fd69-4054-8af8-f54b3d7509c4&projectId=1032)</Frame>
+<Frame caption="Adding ID and secret">![Adding ID and secret](/add-and-manage-users/images/openid-single-sign-on/image5.png)</Frame>
 <Tip>As you can notice, we've added **https://softr.outseta.com/connect** under **Provider URL**. In your case, the URL will have a similar structure, but "softr.outseta.com" will be replaced with your own Outseta domain: **https://yourname.outseta.com/connect**</Tip>
 
 After completing this, Save your settings, and you're done. Now, you can use the **OpenId SSO Softr block** to allow your users log in with their Outseta credentials.
@@ -49,13 +49,13 @@ After completing this, Save your settings, and you're done. Now, you can use the
 Let's pick a user from our Outseta contacts and try logging with this user's credentials on Softr. You can learn about user authentication, how users can sign up and create passwords, and more [here](https://www.outseta.com/authentication).
 
 Below, you can see a contact that has passed authentication and has a password.
-<Frame caption="A contact in Outseta">![A contact in Outseta](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2d3116be-e0c7-4a92-9acd-1a098dfa248c%2Foutseta-user.png&blockId=23dc1454-6486-486e-8089-a0d3765c7e9e&projectId=1032)</Frame>
+<Frame caption="A contact in Outseta">![A contact in Outseta](/add-and-manage-users/images/openid-single-sign-on/image6.png)</Frame>
 
 Now, we can use this contact’s email and password to log into our Softr app through the OpenId login block. First, let’s set up the OpenId block.
-<Frame caption="Adding the OpenId Signin block">![Adding the OpenId Signin block](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6d288b60-1e80-4643-a774-168b880a2765%2FScreen_Recording_2023-02-24_at_16.09.14.gif&blockId=e7d1f372-27e5-4ec8-b2ba-2aa6dd193203&projectId=1032)</Frame>
+<Frame caption="Adding the OpenId Signin block">![Adding the OpenId Signin block](/add-and-manage-users/images/openid-single-sign-on/image7.gif)</Frame>
 
 We can modify the layout of the block as well as change the page after signin, but we are going to leave it as it is. Now, let’s publish our app and try logging in with the Outseta user we mentioned earlier.
-<Frame caption="Testing signin">![Testing signin](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F93d81b13-d263-436f-be86-c67fe083b421%2FScreen_Recording_2023-02-24_at_16.13.23.gif&blockId=70d456bc-0770-4946-bdcb-cb194904fb9a&projectId=1032)</Frame>
+<Frame caption="Testing signin">![Testing signin](/add-and-manage-users/images/openid-single-sign-on/image8.gif)</Frame>
 
 As you can see, we’re able to log in and out successfully.
 

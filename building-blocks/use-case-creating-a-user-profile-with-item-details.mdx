@@ -11,13 +11,13 @@ description: "Let users view and edit their profiles."
 Here, we are going to create a user profile section using the List Details block, which will let each logged-in user see their own data.
 
 First of all, we need to have a [users Airtable base linked](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9) in Users section. Below, we have a list of users from [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX).
-<Frame caption="Users' Airtable base">![Users' Airtable base](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fec28c3ec-5c24-499e-a823-598474113471%2Fusers-base.png&blockId=7f80ecd3-0548-45fe-9f54-5121a7674360&projectId=1032)</Frame>
+<Frame caption="Users' Airtable base">![Users' Airtable base](/building-blocks/images/use-case-creating-a-user-profile-with-item-details/image1.png)</Frame>
 
 Then, we are going to create a separate page (called "My Profile"), add a List Details block there, and link it to the same Users base and table in Airtable. Moreover, we are going to define a conditional filter so that a logged-in user sees the record where the **Email** matches his/her **Email value**.
 
 <Tip>Please, note that if there are multiple records that meet the defined condition, the **first** 
 record in the list will be shown.</Tip>
-<Frame caption="Details block linked to the Users' base with conditional filter">![Details block linked to the Users' base with conditional filter](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6f9ddc4d-ddfa-4459-8a2f-260b69adc8ae%2Fdetails-linked-to-users.png&blockId=9f471e67-25b0-434d-b3eb-f18ee82dc93d&projectId=1032)</Frame>
+<Frame caption="Details block linked to the Users' base with conditional filter">![Details block linked to the Users' base with conditional filter](/building-blocks/images/use-case-creating-a-user-profile-with-item-details/image2.png)</Frame>
 
 So, that's the setup. Now, any logged-in user that opens the My Profile page, will see his/her own profile info. The process is shown below.
-<Frame caption="User seeing his/her profile">![User seeing his/her profile](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa1c19c81-2c78-4a70-ba25-e6bbfa2f97d4%2Fuser-seeing-her-profile.gif&blockId=d6e837ab-883d-4a57-94dd-67d11f743740&projectId=1032)</Frame>
+<Frame caption="User seeing his/her profile">![User seeing his/her profile](/building-blocks/images/use-case-creating-a-user-profile-with-item-details/image3.gif)</Frame>

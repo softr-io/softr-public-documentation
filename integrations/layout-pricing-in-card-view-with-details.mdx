@@ -9,7 +9,7 @@ description: "Display the pricing of your product or service."
 'twitter:description': "Display the pricing of your product or service."
 ---
 Using this block, you can display the different pricing options of your product or service. You can also link each option to a corresponding checkout page (internal or external), which we'll discuss a bit later.
-<Frame caption="Pricing in card view with details">![Pricing in card view with details](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F584960ba-fc70-4946-86e1-682ee6cb1dff%2Fpricing-card-view-details.png&blockId=eb314ad5-c9d0-4750-9fb7-529debc9dad1&projectId=1032)</Frame>
+<Frame caption="Pricing in card view with details">![Pricing in card view with details](/integrations/images/layout-pricing-in-card-view-with-details/image1.png)</Frame>
 
 Let's review the block settings, which are located under the **Features** tab.
 
@@ -30,14 +30,14 @@ Here, you add the details for each of your pricing tiers (Title, Yearly and Mont
 Each tier has a button that can be used to take the users to the checkout page. If you're using a payment service other than Stripe, you can use the **Redirect to url** option under **Add action** to take the users to your external checkout page.
 
 To use the Stripe Checkout option, your first need to [connect your Stripe account](/integrations/etS18kJqm1fuD58KCsjC3z/stripe-checkout/iBomMEucRZtM2y6HuutYVC) to your Softr app.
-<Frame caption="Button action options">![Button action options](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9e642407-b38d-431c-a3a9-afda53402122%2Fbutton-action.png&blockId=b9b5697f-9d25-44b4-8cf3-78e8402f5af9&projectId=1032)</Frame>
+<Frame caption="Button action options">![Button action options](/integrations/images/layout-pricing-in-card-view-with-details/image2.png)</Frame>
 
 **So, let's select the Stripe Checkout option and start configuring the checkout settings.**
 
 ## **Recurring payments**
 
 Enable this if you want to charge your customers periodically based on a specific schedule (e.g. for a monthly subscription). When configuring a product on Stripe, you have the option to set it as **One time** or **Recurring**.
-<Frame caption="Choosing a product type on Stripe">![Choosing a product type on Stripe](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F821be2c2-5f8b-4ed2-9f57-67ffe9240816%2Fchoosing-product-type-stripe.png&blockId=c67a2555-ec3e-405f-a7fe-9e80f08787a9&projectId=1032)</Frame>
+<Frame caption="Choosing a product type on Stripe">![Choosing a product type on Stripe](/integrations/images/layout-pricing-in-card-view-with-details/image3.png)</Frame>
 
 ## **Allow promotion codes**
 
@@ -50,28 +50,28 @@ You can select to apply automatic taxes on checkout, which needs to be configure
 ### **Adding the Tax feature on Stripe**
 
 First of all, if you don't have the Tax feature enabled on Stripe, you can add it from the Features and Products list as shown below.
-<Frame caption="Adding the Tax feature">![Adding the Tax feature](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5af9b45b-5ee4-47d7-b52d-69a8589d3fbf%2Fadding-tax-feature.png&blockId=9f2150bc-6086-41f8-8b18-2a088175843f&projectId=1032)</Frame>
+<Frame caption="Adding the Tax feature">![Adding the Tax feature](/integrations/images/layout-pricing-in-card-view-with-details/image4.png)</Frame>
 
 Now, the Tax settings will become available from your Stripe settings.
-<Frame caption="Selecting Tax settings">![Selecting Tax settings](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0433a10b-5296-415d-b10a-b0916df3cb4a%2Ftax-settings.png&blockId=7d27293d-1717-4c0b-9b70-a11c0189d6e2&projectId=1032)</Frame>
+<Frame caption="Selecting Tax settings">![Selecting Tax settings](/integrations/images/layout-pricing-in-card-view-with-details/image5.png)</Frame>
 
 ### **Configuring tax settings**
 
 Further on, you need to configure your tax settings, setting up **Default product tax category**, **Tax registration locations**, and others.
-<Frame caption="Configuring tax settings">![Configuring tax settings](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa40a241d-ac95-4b3f-bec8-fac897c8a571%2Ftax-settings-config.png&blockId=ac92aac8-058c-4a04-baaf-a7d332b4dd49&projectId=1032)</Frame>
+<Frame caption="Configuring tax settings">![Configuring tax settings](/integrations/images/layout-pricing-in-card-view-with-details/image6.png)</Frame>
 
 ### **Testing taxes**
 
 That's it. Now when you create a new product (or edit an existing one) on Stripe, taxes will be applied automatically for your selected locations based on the **Product tax category**.
-<Frame caption="Creating a product">![Creating a product](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F66c1db11-8418-4d4a-8190-3a1430694a39%2Fcreating-product.png&blockId=da4ed366-11de-4efb-8a77-2975db1ed927&projectId=1032)</Frame>
+<Frame caption="Creating a product">![Creating a product](/integrations/images/layout-pricing-in-card-view-with-details/image7.png)</Frame>
 
 Let's also see what this looks like from the perspective of your Softr app users.
-<Frame caption="User checkout">![User checkout](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbe82f2a7-b993-4a2b-a768-54688fb17a9d%2Fuser-checkout.gif&blockId=4a78f1e2-eded-4acc-8c88-2994c08b62ad&projectId=1032)</Frame>
+<Frame caption="User checkout">![User checkout](/integrations/images/layout-pricing-in-card-view-with-details/image8.gif)</Frame>
 
 ## **Plan IDs and Success/Cancel URL**
 
 Now you just need to configure each plan corresponding to your Stripe products. If you have multiple billing cycles, you need to configure "**Monthly Plan"** & "**Yearly Plan"** fields in Softr. In case of a single billing cycle, you will configure only one **"Plan"** field.
-<Frame caption="Plan IDs and Success/Cancel URLs">![Plan IDs and Success/Cancel URLs](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F40d19125-7296-4e84-bcc6-c6ee87d7fe76%2Fplan-ids.png&blockId=e4b18372-9abf-47d5-a0e4-877a4686e3ff&projectId=1032)</Frame>
+<Frame caption="Plan IDs and Success/Cancel URLs">![Plan IDs and Success/Cancel URLs](/integrations/images/layout-pricing-in-card-view-with-details/image9.png)</Frame>
 
 You can find the **Monthly/Yearly Plan ID** by navigating to your [Stripe Dashboard](https://dashboard.stripe.com/). On the dashboard, open **Products Menu**, select a specific product, and choose the corresponding Plan ID from the Pricing plans list. In case your Products list or Pricing list is empty, please make sure to follow the [Stripe documentation](https://stripe.com/docs/billing/subscriptions/set-up-subscription#without-code) to create Products & Plans first.
 

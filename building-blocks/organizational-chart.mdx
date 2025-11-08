@@ -21,7 +21,7 @@ The data for the chart is fetched from a [data source](/4230abecf813402aa2926466
 You can use Airtable or Google Sheets for the datasource - the setup is the same. For Google Sheets, ensure you have the first row setup as the column names. For linked fields, you’ll need to use the Softr-generated record ID to link records together. For more information using Linked Record fields in Google Sheets, please refer to the [Google Sheets](/data-sources/1YYStCJukT15Lh2j93qo9A/google-sheets/jznC9Jr3Jri224AVmHVn4a) help document.
 
 We’re going to demonstrate the process using [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) data. Below, you can see the table we've set up for our chart. It's a simple list of organization employees with such fields as **Email, Name, Position, Profpic, Department, Supervisor**. The **Supervisor** field is a really important one, as it's used to establish the relationships between the employees. Therefore, let's examine it in greater detail.
-<Frame caption="Org Chart Data on Airtable">![Org Chart Data on Airtable](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6015c717-c0ae-44fc-9182-8d21b9d92694%2Forg-chart-data-airtable.png&blockId=0e63af1c-a92c-46f7-a743-e2619c2c032b&projectId=1032)</Frame>
+<Frame caption="Org Chart Data on Airtable">![Org Chart Data on Airtable](/building-blocks/images/organizational-chart/image1.png)</Frame>
 
 ### Establishing relationships between employees
 
@@ -30,7 +30,7 @@ As mentioned above, the Supervisor (can be called anything) field is where you e
 <Tip>The Supervisor field needs to be a [Linked Record](https://support.airtable.com/hc/en-us/articles/206452848-How-to-link-records-in-Airtable) that's linked to the **same table**, so that you are able to map your employees to other employee records in the same table.</Tip>
 
 Below, you can observe the process of creating the Linked Record and selecting the Parent records.
-<Frame caption="Configuring the Supervisor Linked Record field">![Configuring the Supervisor Linked Record field](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3127be56-df68-4685-90c1-858b409e6fd9%2Fconfiguring-supervisor-field.gif&blockId=e91b6523-35d5-49c6-b9c3-5253f7a929f6&projectId=1032)</Frame>
+<Frame caption="Configuring the Supervisor Linked Record field">![Configuring the Supervisor Linked Record field](/building-blocks/images/organizational-chart/image2.gif)</Frame>
 <Tip>
 As, you can see, we've disabled the **Allow linking to multiple records** option since the Organizational Chart block doesn't allow to define a parent relationship to more than one record.
 
@@ -41,13 +41,13 @@ Moreover, we've left Supervisor field **empty** for the company CEO (**top node*
 Now that our Airtable data is ready, let's proceed to mapping the fields from our chart block.
 
 If you’re using **Google Sheets**, you can use a VLOOKUP formula to pull in the Softr ID of an employee’s manager who is stored in the same sheet. This allows the Organizational chart in Softr to lookup the user record of the employees manager and show the heirarchy appropriately. Note that this is a computed field, and is determined by the name in the Manager column.
-<Frame>![Notion image](https://media.helpkit.co/proxy?url=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F484adde5-19ba-4c92-b797-4cbdd4ad462b%2F1d8252da-fd4e-429e-9379-21d258b06c5d%2FScreenshot_2023-10-03_at_11.14.09_AM.png&blockId=26c23940-8eb7-4d75-bd7a-b71a43581edd&projectId=1032)</Frame>
+<Frame>![Notion image](/building-blocks/images/organizational-chart/image3.png)</Frame>
 
 ## Mapping the chart fields
 
 In the **Features** tab of block settings we first have the **Title** and **Subtitle** fields, which are used to add headings to the block.
 
 Further on, there are 5 fields that we are going to map to the Airtable table we set up previously. Below you can see how that's done.
-<Frame caption="Mapping the chart fields">![Mapping the chart fields](https://media.helpkit.co/proxy?url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F49f6cfb5-df45-47ae-9dcc-1056e455baa0%2Fmapping-chart-fields.gif&blockId=d0826b3f-5f6c-4070-9c28-092039f912dd&projectId=1032)</Frame>
+<Frame caption="Mapping the chart fields">![Mapping the chart fields](/building-blocks/images/organizational-chart/image4.gif)</Frame>
 
 That's it. You can now publish your Softr app and present your team in a nice org chart layout.
