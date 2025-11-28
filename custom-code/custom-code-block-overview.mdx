@@ -27,7 +27,8 @@ Custom code is added through the Custom Code block in **Blocks =\> Static =\> Cu
 
 ## Adding the code inside the block
 
-Next, you need to open the block settings and paste the code snippet you would like to add. It can contain standard **HTML elements**,  elements containing custom CSS rules, and even  tags containing JavaScript code. <Frame caption="Custom Code block">
+Next, you need to open the block settings and paste the code snippet you would like to add. It can contain standard **HTML elements**, elements containing custom CSS rules, and even tags containing JavaScript code. 
+<Frame caption="Custom Code block">
   ![Custom Code block](/custom-code/images/custom-code-block-overview/image1.png)
 </Frame>
 
@@ -40,43 +41,48 @@ Let's see how the Custom Code block works on a specific example. We'll use it to
 
 ### **Getting the Embed Code**
 
-In our Calendly account, we are going to navigate to **Share Your Link** in the **Account** dropdown menu. <Frame caption="Share your link">
+In our Calendly account, we are going to navigate to **Share Your Link** in the **Account** dropdown menu. 
+<Frame caption="Share your link">
   ![Share your link](/custom-code/images/custom-code-block-overview/image2.png)
 </Frame>
 
 
-In the pop-up that appears next, let's choose the embed option as shown below. <Frame caption="Selecting 'Add to Your Website”">
-  ![Selecting "Add to Your Website”](/custom-code/images/custom-code-block-overview/image3.png)
+In the pop-up that appears next, let's choose the embed option as shown below. 
+<Frame caption="Selecting 'Add to Your Website'">
+  ![Selecting "Add to Your Website"](/custom-code/images/custom-code-block-overview/image3.png)
 </Frame>
 
 
-Next, we'll select **Inline** **Embed** and hit continue. <Frame caption="Choosing 'Inline Embed”">
-  ![Choosing "Inline Embed”](/custom-code/images/custom-code-block-overview/image4.png)
+Next, we'll select **Inline** **Embed** and hit continue. 
+<Frame caption="Choosing 'Inline Embed'">
+  ![Choosing "Inline Embed"](/custom-code/images/custom-code-block-overview/image4.png)
 </Frame>
 
 
-In the following screen, we can customize our Calendly widget, and, when we're done, we need to click **Copy Code**. <Frame caption="Copying the Calendly page code">
+In the following screen, we can customize our Calendly widget, and, when we're done, we need to click **Copy Code**. 
+<Frame caption="Copying the Calendly page code">
   ![Copying the Calendly page code](/custom-code/images/custom-code-block-overview/image5.png)
 </Frame>
 
 
 ### **Adding the code to the block**
 
-Finally, we will go back to our Softr app, paste the code in the **Custom code** block, and hit **Preview** to see what it looks like. <Frame caption="Applying the code">
+Finally, we will go back to our Softr app, paste the code in the **Custom code** block, and hit **Preview** to see what it looks like. 
+<Frame caption="Applying the code">
   ![Applying the code](/custom-code/images/custom-code-block-overview/image6.gif)
 </Frame>
 
 
 ## Guidelines for custom code in SPA mode
 
-In SPA mode (Single-Page Application), custom code works a little differently than non SPA mode. Since we never do full page reload in the SPA mode, page level custom code needs to ensure that it doesn’t interfere with other pages.
+In SPA mode (Single-Page Application), custom code works a little differently than non SPA mode. Since we never do full page reload in the SPA mode, page level custom code needs to ensure that it doesn't interfere with other pages.
 
 ## TL;DR
 
 - Keep page specific code out of app level custom code.
 - Whenever possible, use plain HTML/CSS instead of Javascript.
 - Use `<script type="module">` to avoid global name conflicts.
-- Instead of “DOMContentLoaded” in page level level custom code, wait for elements that you need using `window.SOFTR_PAGE.waitFor` .
+- Instead of "DOMContentLoaded" in page level level custom code, wait for elements that you need using `window.SOFTR_PAGE.waitFor` .
 - Use `window.SOFTR_PAGE.beforeUnload` to cleanup elements and timers before navigating to a new page. This function can be called multiple times to register several cleanup functions.
 
 ## Keep page specific code out of app level custom code
@@ -89,7 +95,7 @@ To ensure your app looks consistent whether you're navigating from another page 
 
 When navigating to a new page, HTML elements dynamically injected by JavaScript outside the custom code's own scope won't be automatically cleaned up. Use the `window.SOFTR_PAGE.beforeUnload` API to remove any dynamically rendered DOM nodes. This ensures that navigating from page A to page B doesn't leave behind remnants from page A.
 
-Here’s an example
+Here's an example
 
 ```html
 <div id="my-container-for-page1">
@@ -122,9 +128,9 @@ Here’s an example
 
 ## Cleanup timers and resize observers on page unload
 
-If your page custom code sets up timers or resize observers, they need to be cleaned up before the page unloads. This ensures that the timers don’t keep running after navigating away from the page.
+If your page custom code sets up timers or resize observers, they need to be cleaned up before the page unloads. This ensures that the timers don't keep running after navigating away from the page.
 
-For example, here’s a custom code block which shows the number of seconds this page has been open for
+For example, here's a custom code block which shows the number of seconds this page has been open for
 
 ```html
 
@@ -142,7 +148,7 @@ The page has been open for <span id="page-timer-count">0</span> second(s)
 </script>
 ```
 
-## Don’t use DOMContentLoaded in page level custom code
+## Don't use DOMContentLoaded in page level custom code
 
 DOMContentLoaded will only fire once, on app load. Navigating between the pages will **not** re-run the event listener.
 
