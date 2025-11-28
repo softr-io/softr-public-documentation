@@ -2,28 +2,35 @@
 title: "Custom Code Block Overview"
 permalink: "6XNrxFopUEiwbWipq81Eq1"
 description: "Applying custom code on your Softr app."
-'og:title': "Custom Code Block Overview – Softr Help Docs"
-'og:description': "Applying custom code on your Softr app."
-'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
-'twitter:title': "Custom Code Block Overview – Softr Help Docs"
-'twitter:description': "Applying custom code on your Softr app."
+og:title: "Custom Code Block Overview – Softr Help Docs"
+og:description: "Applying custom code on your Softr app."
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+twitter:title: "Custom Code Block Overview – Softr Help Docs"
+twitter:description: "Applying custom code on your Softr app."
 ---
-<Note>Custom code is available for users on the [Basic plan and above](https://www.softr.io/pricing).</Note>
 
-The **Custom code** block is a powerful feature which allows you to insert custom snippet of code, including **HTML, CSS** and/or **Javascript**, anywhere in your application. The code snippet will be added inside the **{"<body>"}** html element.
+<Note>
+  Custom code is available for users on the [Basic plan and above](https://www.softr.io/pricing).
+</Note>
 
-**NOTE:** If you want to add custom code snippets inside {"<head>"} element, or at the end of the page, before the {"<body>"} element closes, you can do that from [Settings => Custom Code](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/general-settings/7YdGy1J8X2tjJSv8BGvWQU) for application level changes or from [Page Settings](/0392ff65acfe4b1c96923c1aac7982f7) for page level modifications. This tutorial covers the cases when you want to add a code snippet anywhere inside the {"<body>"} element.
+The **Custom code** block is a powerful feature which allows you to insert custom snippet of code, including **HTML, CSS** and/or **Javascript**, anywhere in your application. The code snippet will be added inside the  html element.
+
+**NOTE:** If you want to add custom code snippets inside "\<head\>" element, or at the end of the page, before the "\<body\>" element closes, you can do that from [Settings =\> Custom Code](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/general-settings/7YdGy1J8X2tjJSv8BGvWQU) for application level changes or from [Page Settings](/0392ff65acfe4b1c96923c1aac7982f7) for page level modifications. This tutorial covers the cases when you want to add a code snippet anywhere inside the "\<body\>" element.
 
 ## Adding a Custom code block
 
-Custom code is added through the Custom Code block in **Blocks => Static => Custom code**.
+Custom code is added through the Custom Code block in **Blocks =\> Static =\> Custom code**.
 
-<Tip>You need to be on a paid plan to be able to use the **Custom code** block.</Tip>
+<Tip>
+  You need to be on a paid plan to be able to use the **Custom code** block.
+</Tip>
 
 ## Adding the code inside the block
 
-Next, you need to open the block settings and paste the code snippet you would like to add. It can contain standard **HTML elements**, **{"<style>"}** elements containing custom CSS rules, and even **{"<script>"}** tags containing JavaScript code.
-<Frame caption="Custom Code block">![Custom Code block](/custom-code/images/custom-code-block-overview/image1.png)</Frame>
+Next, you need to open the block settings and paste the code snippet you would like to add. It can contain standard **HTML elements**,  elements containing custom CSS rules, and even  tags containing JavaScript code. <Frame caption="Custom Code block">
+  ![Custom Code block](/custom-code/images/custom-code-block-overview/image1.png)
+</Frame>
+
 
 Now, you can **Preview** your Softr app to see the changes.
 
@@ -33,19 +40,123 @@ Let's see how the Custom Code block works on a specific example. We'll use it to
 
 ### **Getting the Embed Code**
 
-In our Calendly account, we are going to navigate to **Share Your Link** in the **Account** dropdown menu.
-<Frame caption="Share your link">![Share your link](/custom-code/images/custom-code-block-overview/image2.png)</Frame>
+In our Calendly account, we are going to navigate to **Share Your Link** in the **Account** dropdown menu. <Frame caption="Share your link">
+  ![Share your link](/custom-code/images/custom-code-block-overview/image2.png)
+</Frame>
 
-In the pop-up that appears next, let's choose the embed option as shown below.
-<Frame caption="Selecting 'Add to Your Website”">![Selecting "Add to Your Website”](/custom-code/images/custom-code-block-overview/image3.png)</Frame>
 
-Next, we'll select **Inline** **Embed** and hit continue.
-<Frame caption="Choosing 'Inline Embed”">![Choosing "Inline Embed”](/custom-code/images/custom-code-block-overview/image4.png)</Frame>
+In the pop-up that appears next, let's choose the embed option as shown below. <Frame caption="Selecting 'Add to Your Website”">
+  ![Selecting "Add to Your Website”](/custom-code/images/custom-code-block-overview/image3.png)
+</Frame>
 
-In the following screen, we can customize our Calendly widget, and, when we're done, we need to click **Copy Code**.
-<Frame caption="Copying the Calendly page code">![Copying the Calendly page code](/custom-code/images/custom-code-block-overview/image5.png)</Frame>
+
+Next, we'll select **Inline** **Embed** and hit continue. <Frame caption="Choosing 'Inline Embed”">
+  ![Choosing "Inline Embed”](/custom-code/images/custom-code-block-overview/image4.png)
+</Frame>
+
+
+In the following screen, we can customize our Calendly widget, and, when we're done, we need to click **Copy Code**. <Frame caption="Copying the Calendly page code">
+  ![Copying the Calendly page code](/custom-code/images/custom-code-block-overview/image5.png)
+</Frame>
+
 
 ### **Adding the code to the block**
 
-Finally, we will go back to our Softr app, paste the code in the **Custom code** block, and hit **Preview** to see what it looks like.
-<Frame caption="Applying the code">![Applying the code](/custom-code/images/custom-code-block-overview/image6.gif)</Frame>
+Finally, we will go back to our Softr app, paste the code in the **Custom code** block, and hit **Preview** to see what it looks like. <Frame caption="Applying the code">
+  ![Applying the code](/custom-code/images/custom-code-block-overview/image6.gif)
+</Frame>
+
+
+## Guidelines for custom code in SPA mode
+
+In SPA mode (Single-Page Application), custom code works a little differently than non SPA mode. Since we never do full page reload in the SPA mode, page level custom code needs to ensure that it doesn’t interfere with other pages.
+
+## TL;DR
+
+- Keep page specific code out of app level custom code.
+- Whenever possible, use plain HTML/CSS instead of Javascript.
+- Use `<script type="module">` to avoid global name conflicts.
+- Instead of “DOMContentLoaded” in page level level custom code, wait for elements that you need using `window.SOFTR_PAGE.waitFor` .
+- Use `window.SOFTR_PAGE.beforeUnload` to cleanup elements and timers before navigating to a new page. This function can be called multiple times to register several cleanup functions.
+
+## Keep page specific code out of app level custom code
+
+Scripts in the App header/App footer custom code execute only once—on the first page load. They won't re-execute when navigating between pages, unlike in non-SPA mode.
+
+To ensure your app looks consistent whether you're navigating from another page or visiting directly via URL, keep page-specific code in custom code blocks on the page or in page-level custom code.
+
+## Cleanup any dynamically inserted DOM nodes on page navigation
+
+When navigating to a new page, HTML elements dynamically injected by JavaScript outside the custom code's own scope won't be automatically cleaned up. Use the `window.SOFTR_PAGE.beforeUnload` API to remove any dynamically rendered DOM nodes. This ensures that navigating from page A to page B doesn't leave behind remnants from page A.
+
+Here’s an example
+
+```html
+<div id="my-container-for-page1">
+   Any DOM node inserted inside the scope of this custom code block
+   will be automatically removed on page navigation.
+</div>
+
+<script type="module">
+  const dynamicElem = document.createElement("div")
+  dynamicElem.innerHTML = `
+     This element is injected directly into the body, which is preserved
+     across navigations.
+     This needs to be cleaned up on page navigation.
+  `
+  document.body.appendChild(dynamicElem)
+  window.SOFTR_PAGE.beforeUnload(() => {
+     // Will run just before navigating to a new page.
+     dynamicElem.remove()
+  })
+  
+  const anotherElement = document.createElement("div")
+  anotherElement.innerHTML = `
+     This element is inserted within an element owned by this custom
+     code block.
+     There's no need to clean this up manually :)
+  `
+  document.getElementById("my-container-for-page-1").appendChild(anotherElement)
+</script>
+```
+
+## Cleanup timers and resize observers on page unload
+
+If your page custom code sets up timers or resize observers, they need to be cleaned up before the page unloads. This ensures that the timers don’t keep running after navigating away from the page.
+
+For example, here’s a custom code block which shows the number of seconds this page has been open for
+
+```html
+
+The page has been open for <span id="page-timer-count">0</span> second(s)
+<script type="module">
+  let count = 0
+  const interval = setInterval(() => {
+    count++
+    document.getElementById("page-timer-count").innerText = count;
+  }, 1000)
+  
+  window.SOFTR_PAGE.beforeUnload(() => {
+    clearInterval(interval)
+  })
+</script>
+```
+
+## Don’t use DOMContentLoaded in page level custom code
+
+DOMContentLoaded will only fire once, on app load. Navigating between the pages will **not** re-run the event listener.
+
+Instead, `window.SOFTR_PAGE.waitFor` provides a simple way to wait for an element to be on the page before continuing.
+
+```html
+<script type="module">
+   window.SOFTR_PAGE
+     .waitFor(
+       // Don't forget the `() =>`!
+       () => document.getElementById("some-element-id"))
+     .then(() => {
+       const element = document.getElementById("some-element-id")
+       // element is visible now
+     })
+</script>
+```
