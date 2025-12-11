@@ -742,7 +742,10 @@ paths:
               type: object
               properties:
                 filter:
-                  $ref: '#/components/schemas/FilterCondition'
+                  type: object
+                  properties:
+                    condition:
+                      $ref: '#/components/schemas/FilterCondition'
                 sort:
                   type: array
                   items:
