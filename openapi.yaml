@@ -744,8 +744,15 @@ paths:
                 filter:
                   $ref: '#/components/schemas/FilterCondition'
                 sort:
-                  type: object
-                  description: "Sorting criteria (structure not fully specified in docs)."
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      sortingField:
+                        type: string
+                      sortType:
+                        type: string
+                        enum: [ASC, DESC]
                 paging:
                   type: object
                   properties:
