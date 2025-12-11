@@ -750,6 +750,7 @@ paths:
                     properties:
                       sortingField:
                         type: string
+                        description: "The Field ID to apply the sorting on"
                       sortType:
                         type: string
                         enum: [ASC, DESC]
