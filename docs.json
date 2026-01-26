@@ -79,9 +79,10 @@
             ]
           },
           {
-            "group": "Workflows",
+            "group": "Softr Workflows",
             "icon": "random",
             "pages": [
+              "softr-workflows/softr",
               "workflows/workflows"
             ]
           },

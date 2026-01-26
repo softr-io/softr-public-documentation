@@ -1,0 +1,63 @@
+---
+title: "Softr Forms (Standalone Forms)"
+description: "Use Softr Forms without the need for an app."
+---
+
+Softr’s **Standalone Forms** let you create and publish powerful, conditional forms without building a full app first. Use them to collect intake requests, surveys, event RSVPs, or lead capture data, and automatically store responses in Softr Databases or send them to external tools.
+
+## What you can do with standalone forms
+
+- **Create forms without building an app:** Build multi-step forms with conditional logic, custom styling, and personalized endings—perfect when you just need a form, not a full application.
+- **Connect form data anywhere:** Store submissions in **Softr Databases** by default, or route data to external data sources (e.g. Airtable, Notion, Google Sheets, [monday.com](http://monday.com)), automation tools (Zapier, Make), email, or webhooks.
+- **Control who can submit your forms:** Limit access with **domain restrictions** to ensure only the right users can respond.
+- **Publish and embed anywhere:** Share your form with a direct link or embed it on any website—no separate form tool required.
+
+---
+
+## How to set it up
+
+### 1. Create a new form
+
+- Go to **Forms** in the left navigation
+- Click **Create new form**
+
+### 2. Choose where submission data is sent
+
+- Under **Settings \> Destination** on the right panel, select where form submissions should go:
+  - Softr Database (Built-in database) is the default setting
+  - To connect to an external data source (Airtable, Notion, Google Sheets, and more), automation tool (Zapier or Make), Email, or Webhook, click **Integrations** from the dropdown and follow the steps for configuration.
+  - You can also access connected data from the **Data** tab at the top of the builder.
+- From **Settings \> Options**, you can also set domain restrictions or enable reCaptcha.
+
+### 3. Set domain restrictions (optional)
+
+- From **Settings \> Options**, you can enable domain restrictions, where users must verify their email with a one-time code.
+- From here, you can also enable reCaptcha.
+
+### 4. Build your form
+
+- From the **Steps** tab on the right panel, add **steps, fields, and sections** to build your form.
+  - Field types include: Dropdown, Quick Select, Short text, Long text, Email, Date, Date time, File, Checkbox, URL, Number, Rating, Phone Number, Signature, and Address.
+- Use the **Logic** tab to configure conditional logic between steps and fields.
+- Customize appearance from the **Styles** tab (note: you can also apply global style settings from the **Theme** section in the left navigation).
+  - From **Settings \> Side Section**, you can enable to add a split screen/background image to your form
+- From **Steps \> Ending**, set the form ending (confirmation message and next action).
+
+### 5. Set field validation rules and tooltips (optional)
+
+- For each field, open the input settings and scroll to **Validation** to define rules (including custom regex validation).
+  - For Email fields, you can use **Validation \> Allow only specific email domains** to restrict submissions.
+- From input settings, you can also set a **Tooltip** (under **Label**), along with a **Placeholder**, **Hint**, or **Default** value.
+
+### 6. Publish and share or embed
+
+- Click **Publish** and choose a subdomain or custom domain.
+- Copy the \*\*\*\*link to share the form. \*\*\*\*
+- Embed the form on any website by clicking the **Publish** button again (after the form has been published) and clicking Embed to copy the embed code.
+
+## ✅ Things to keep in mind
+
+- Conditional logic for standalone forms is available on **all plans (including Free)**
+- You can create and publish **unlimited standalone forms**
+- There is **no submission limit**
+- If you’re building a form inside your app, use the Conditional Forms block → see [**Conditional Forms**](https://docs.softr.io/building-blocks/conditional-forms#conditional-forms)** (App Building Block)** for details
