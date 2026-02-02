@@ -2,370 +2,286 @@
 title: "Other"
 permalink: "9rNQ2iZKhZDjUsYTc7TFAj"
 description: "Questions related to the topics not highlighted in the other FAQ sections."
-'og:title': "Other – Softr Help Docs"
-'og:description': "Questions related to the topics not highlighted in the other FAQ sections."
-'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
-'twitter:title': "Other – Softr Help Docs"
-'twitter:description': "Questions related to the topics not highlighted in the other FAQ sections."
+og:title: "Other – Softr Help Docs"
+og:description: "Questions related to the topics not highlighted in the other FAQ sections."
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+twitter:title: "Other – Softr Help Docs"
+twitter:description: "Questions related to the topics not highlighted in the other FAQ sections."
 ---
-<AccordionGroup>  
-   <Accordion title="How to generate a sitemap?">
-Please, be informed that the sitemap is generated automatically under **yourdomain.com/sitemap.xml**
-   </Accordion>
 
-   <Accordion title="How to get a demo from Softr?">
-Please, check the following videos: [https://www.youtube.com/@Softr/videos](https://www.youtube.com/@Softr/videos). If you have further questions, feel free to contact us.
-   </Accordion>
-
-   <Accordion title="Can I apply a template to an existing app?">
-No. You'd need to create a new app using a template and modify it.
-   </Accordion>
-
-   <Accordion title="Can I create a blog with Softr?">
-We don't have dedicated blocks for that purpose yet, but here you can find instructions and examples to implement a blog layout [here](/how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-create-a-blog/5Vhtsqxp1VFpURgjGbdVVc).
-   </Accordion>
-
-   <Accordion title="What is the CPU/RAM allocated to the server for each subscription plan?">
-As a cloud environment, we are not providing a dedicated CPU/RAM. Instead, the system auto-scales the capacities whenever needed.
-   </Accordion>
-
-   <Accordion title="Where can I showcase projects (built by others or myself) made with Softr?">
-There is a [Made with Softr](https://softr.io/made-with-softr) page on our website, where anyone can suggest interesting projects built with Softr. We review all the submissions and publish the best ones.
-   </Accordion>
-
-   <Accordion title="How to fix a CNAME DNS error when configuring a custom domain in Softr">
-If you encounter a CNAME DNS error while linking a custom domain in Softr, first check the DNS profile to ensure the CNAME is configured correctly. If an incorrect record is present, delete it. Then open your Softr app and publish it again to apply the changes. Make sure you add the correct domain (for example, the apex domain like yourdomain.es, not an incorrect variant) and publish once more. After publishing, allow some time for DNS propagation and verify the site loads with a valid SSL certificate. If issues persist, recheck the DNS configuration and repeat the publish step.
-   </Accordion>
-
-   <Accordion title="How to resolve the error 'You have exceeded the maximum number of records allowed for your plan' when importing a CSV in Softr?">
-This error indicates that the number of records in the target database exceeds the limit of your current plan. To resolve it: (1) check how many records are currently in the Database for your workspace. (2) verify the CSV you are importing and ensure the number of actual data rows (excluding headers or empty rows) fits within your plan's limit. If there are empty rows, remove them before importing. (3) if you still encounter issues, contact support and share the CSV so we can test with your data. You may also request the support team to review the database and plan limits by adding them as a workspace collaborator and providing the CSV for testing.
-   </Accordion>
-
-   <Accordion title="How do I install or test a Softr app on an iPhone when the mobile-install/share icon isn’t visible in Safari?">
-The icon you’re looking for is the share/install icon shown in the guidance. On mobile Safari (iPhone), don’t click in the browser’s address/URL field. Instead, look for the share/install icon and use that to proceed with installing or testing the Softr app on the device. If you don’t see the icon, double‑check you’re following the same flow as described in the guide and that you’re not tapping in the browser’s URL bar by mistake. In desktop Chrome, the flow may behave differently and show the prompt there, but on iPhone Safari you’ll typically access the install option via the share icon.
-   </Accordion>
-
-   <Accordion title="How to fix HTTP 404 error when accessing a Softr app after configuring a custom domain?">
-If you encounter an HTTP 404 error after configuring a custom domain, check your DNS configuration for extra A records. In the reported case, an extra A record caused the issue. Delete the extra A record so that only the required A record remains (pointing to the expected IP, e.g., 3.33.251.168). After removing the stray A record, the site loaded correctly.
-   </Accordion>
-
-   <Accordion title="How to get notified when a new user account is created in Softr?">
-Our upcoming Workflow product will make it easier to set up notification systems under specific conditions such as having a new app user. In the meantime, you can use an external automation tool such as Make or Zapier to send emails when a new user is added to your Softr database. Check with Make or Zapier how to configure the workflow to trigger on a new record in your Softr database and send the notification to you.
-   </Accordion>
-
-   <Accordion title="How to create user accounts without email in Softr?">
-Accounts on the Softr platform require an email address; email is the main authentication method for user accounts. Creating accounts without email is not supported.
-   </Accordion>
-
-   <Accordion title="How to display a video on the video detail page in Softr?">
-Map the video URL to the video field type on your item. You can simply paste the YouTube link (or other video URL) into the video field, and there is no need to embed the video manually. This ensures the video appears correctly on the video detail page.
-   </Accordion>
-
-   <Accordion title="How many workspaces can I have per subscription plan in Softr?">
-A single subscription plan is attached to one workspace. If you create a new workspace under your account, it will be in Free status until you add a payment method and upgrade the plan.
-   </Accordion>
-
-   <Accordion title="How many user groups are included on the Softr Free plan and how do I access custom user groups?">
-On the Softr Free plan, the two user groups are the default ones: logged-in and non-logged-in users. Custom user groups are not available on the Free plan and will be removed after the trial period. To use custom user groups, you need the Professional plan or higher.
-   </Accordion>
-
-   <Accordion title="How to display a domain without www (naked domain) in Softr?">
-Displaying a domain without www is not supported. Softr follows best practices by using a canonical domain setup with redirects so users don’t have to type the www version, and modern browsers typically don’t display the www prefix. This means while the site can be reached via the non-www domain, the platform itself does not render the site with www removed as a separate display option.
-   </Accordion>
-
-   <Accordion title="How to set up an appointment booking form and enable payment in Softr">
-To set up an appointment and collect payment in Softr, create a form block where users can choose a date/time and enter their details. If you prefer real scheduling, you can embed external scheduling tools like Calendly or TidyCal directly into Softr. For payments, use Softr's Stripe integration by adding a checkout block or a payment button so users can pay right after booking. Typical flow: the user fills out the appointment form (or books via Calendly), and then completes the payment via Stripe on the Softr app.
-   </Accordion>
-
-   <Accordion title="How to enable user sign-up and create new logins in Softr?">
-Users can create new logins by enabling the Sign Up block in your Softr app. To do this, enable the sign-up feature for your application. For guidance, watch the relevant video on how to enable sign-up and consult the official docs (https://docs.softr.io/) and Softr Academy for broader onboarding and usage help.
-   </Accordion>
-
-   <Accordion title="How to locate the Block ID to use in a custom code snippet (footer) in Softr?">
-Open the block in Studio, then view the settings on the right side. The Block ID is shown there (for example, List 2 is the block ID). Copy the Block ID and replace the placeholder BlockID in your code with this value. This applies when adding the code in the custom code footer at the page level.
-   </Accordion>
-
-   <Accordion title="How to rename the Actions column header in a table block in Softr?">
-In the old Table Block there is no option to change the header of the Actions column; changing it would require custom code. If you upgrade to the New Table Block, the Actions column does not have a defined header, so there is no label to rename. If you still see the old block after upgrading, remove it and add a new Table Block, since the legacy block is no longer available for new apps.
-   </Accordion>
-
-   <Accordion title="How to log out in Softr?">
-If you are logged in, you should see a sign out button in the navigation once it is enabled.
-   </Accordion>
-
-   <Accordion title="How to redirect users to a Softr page after completing a Stripe Checkout payment">
-To have users redirected after a Stripe Checkout payment, use the Stripe Checkout button and configure the Redirect to URL option with the specific Softr page URL where you want users to land after the payment. Make sure the page URL is correctly entered. Also verify the setup on your end: ensure the recurring payment toggle matches your Stripe configuration (use it if the product is recurring in Stripe) and use the correct Price IDs in the Stripe Checkout details. After updating these settings, publish your application before testing. If a static post-payment redirect is desired, you can also define a static link in your app for the redirection after completion.
-   </Accordion>
-
-   <Accordion title="How can I format a year field in Softr to show a four-digit year (without thousands separators) on item detail pages?">
-To display a clean four-digit year without thousands separators on item detail pages, disable thousand separators and any decimal formatting for the year field. In practice: 1) Click the block (the item-details block) and look at the right panel under Content. 2) Find the item field that is connected to the year from your datasource and edit it there. 3) Ensure decimal places are set to None and the thousand separators toggle is off. These changes apply to the year field across similar pages as well. For reference, you can also consult the documentation linked in the chat for the item-details-block setup.
-   </Accordion>
-
-   <Accordion title="How to resolve a 'request limit exceeded' error in Softr?">
-If you see 'request limit exceeded' on a Softr page, this usually relates to the data source (e.g., Airtable) rather than the Softr page itself. Try the following steps: 1) Check your Airtable connection and make sure the database is connected properly. 2) Review the block settings and data sources in your Softr app to ensure they are configured correctly. 3) Check your Airtable account for any API call limits or usage restrictions (look under Account settings). 4) If needed, re-authenticate the connection to Airtable from the Softr app. 5) If you cannot access or modify the data source due to permissions, you may need to adjust ownership or access rights, or connect a new database and use that with the blocks in the app. 6) After making changes, test the page again to confirm the issue is resolved. If the problem persists, provide the studio URL and any relevant screenshots to support for further investigation.
-   </Accordion>
-
-   <Accordion title="How to add a text-only block in Softr?">
-Use the Simple text block to add plain text. If you need a block that only lets you add simple texts, select the Simple text block.
-   </Accordion>
-
-   <Accordion title="Does Softr provide built-in analytics on knowledge usage (e.g., most visited pages, search terms, etc.)?">
-Softr provides analytics through a native integration with Google Analytics.
-   </Accordion>
-
-   <Accordion title="How to resize the logo in the new navigation and adjust navigation colors in Softr?">
-Currently, the logo in the new navigation can only be resized using the three available size options, and there is no option to set a size larger than the 'L' size. If you need a different logo size, you can apply a custom code snippet from the community thread to scale the logo in the new header: [https://community.softr.io/t/resize-logo-in-new-header/11973/2?u=sveta.ohanyan](https://community.softr.io/t/resize-logo-in-new-header/11973/2?u=sveta.ohanyan)
-
-For navigation colors, you can change them in the Style section of the navigation block, where you will see three color options. The regular color is determined by your chosen background color, and the Softr accent color is defined automatically based on the Accent color in the Theme section. However, there is no option to set a custom navigation color (for example, making the navigation light grey while keeping a green accent).
-   </Accordion>
-
-   <Accordion title="How to continue using an app after the Softr free trial ends?">
-The app will remain available after the free trial ends. However, features exclusive to paid plans will no longer be accessible. You can review and compare plan features on the Softr pricing page: [https://www.softr.io/pricing](https://www.softr.io/pricing).
-   </Accordion>
-
-   <Accordion title="How can I upload large video or asset files in Softr given the file size limits?">
-Softr currently imposes a file size limit on assets uploaded in Studio blocks of 64 MB, and a limit of 128 MB for files uploaded through forms in a published app. There is no available workaround to increase this limit at this time. A common workaround is to host the video externally (e.g., YouTube) and use the embed code to display it in Softr. Note that YouTube embeds may include ads and privacy considerations. If you need to store large files natively in Softr, this limitation may affect usability for video assets.
-   </Accordion>
-
-   <Accordion title="How to convert a date from a webhook to a format accepted by Softr Databases when using Make?">
-If the date coming from the webhook isn’t in the format accepted by Softr Databases, convert it inside Make before sending it to Softr. A common approach is to use a Make formula to reformat the date, for example: set a variable with formatDate(inputDate; YYYY-MM-DD) and then pass that formatted value to the Softr module. This ensures the date matches the Softr Databases requirement (YYYY-MM-DD). The Make–Softr integration documentation is available, but date-format specifics may not be covered; using a date-formatting formula is a practical workaround applicable to similar scenarios.
-   </Accordion>
-
-   <Accordion title="How to implement conditional visibility for form sections based on answers in Softr forms?">
-To achieve conditional visibility in a Softr form, add sections within the form steps and set a visibility rule for the target section. Configure the rule so that the section (and its questions) appears when a specific option is selected in a previous section (for example, when the answer is A in Section 1). This enables subsequent questions to appear only based on the chosen option. See the documentation example on conditional forms for reference: [https://docs.softr.io/building-blocks/vikC2AWEpQGkZd4jGyoVxo/conditional-forms/afyKqnGDXd54U8d4xLNcsR](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/conditional-forms/afyKqnGDXd54U8d4xLNcsR)
-   </Accordion>
-
-   <Accordion title="How to set and fix a custom favicon and related SEO/Social images in Softr so that search engines and social platforms display the correct logo?">
-Set your own logo as the favicon in Settings > General. After updating, click Save and Publish the app to apply changes. If the favicon still shows Softr’s default in search results, request re-indexing for all app pages (not just the home page) so search engines pick up the new favicon. In addition, configure the SEO and Social fields: SEO controls what search engines index and display in search results, while Social controls how the page looks when shared on social platforms. While not mandatory, it’s recommended to configure both to ensure the correct logo and description appear. If issues persist, open a support request with a guest collaborator to allow the technical team to investigate and verify the favicon and indexing setup across all pages.
-   </Accordion>
-
-   <Accordion title="How to customize the reply address for invitation emails in Softr (no-reply vs. personal email)">
-Softr invitation emails don’t have a separate configurable “Reply-To” field. If you leave the From email empty, the email is sent from {subdomain}@softr.app and replies go to the same address. To customize where replies go, set a From email address (e.g., a no-reply or domain-specific address) and test it. If you use a domain email (like @yourdomain or @softr.io), make sure the address is verified (DKIM/verification may be required) and, if needed, use an allowed domain such as [no-reply@softr.io](mailto:no-reply@softr.io). If you don’t have a custom domain, you can still use the [Softr.io](http://softr.io/) domain for the From address after it’s verified. After configuring and testing, ensure the test invitation reflects the desired From/Reply behavior.
-   </Accordion>
-
-   <Accordion title="How to onboard client users and assign them to a user group while keeping data isolated in Softr?">
-Use Softr’s Onboarding flow to present the available user groups to the end user during signup; after choosing a group, the user will be added to that group. If automatic group assignment is needed beyond the built‑in onboarding, you can use the form block to collect new user emails and store them in the same datasource linked to the Users tab, then use a sync process to add the user to the app. To keep data isolated between clients, you can add the logged‑in user’s company data as a hidden field in the form to determine their group, and you can also collect additional onboarding data (e.g., who invited them, their company) via the onboarding flow. The onboarding flow supports adding fields to gather this extra information. This setup helps maintain confidentiality by ensuring users only access data related to their own client.
-   </Accordion>
-
-   <Accordion title="What is the trial period duration in Softr and how does cancellation work for monthly subscriptions?">
-The current trial period is 7+7 days, totaling 14 days. Additional trial days require you to add your card details to your Softr account, and we cannot grant more than 14 total trial days. For monthly subscriptions, you can cancel at any time; if you cancel during the current paid month, you will not be charged for the next month. Our refund policy covers the first payment for monthly subscriptions within the first 14 days (or the first payment for annual subscriptions within the first 30 days).
-   </Accordion>
-
-   <Accordion title="How to switch from monthly to annual billing in Softr (and manage billing cycle)?">
-To switch to annual billing, go to the Plan and Billing section and change the billing cycle to annual. The information provided indicates this is the supported location to make the change.
-   </Accordion>
-
-   <Accordion title="How to switch from OAuth Airtable to a Personal Access Token in Softr?">
-You just need to switch from the screen shown, and that’s it. Nothing else is required—just click on Switch, grant the right access as shown in that screen, and it will work.
-   </Accordion>
-
-   <Accordion title="How to show a form only after pressing a button in Softr and prefill it with a record ID?">
-Use a List and List Details setup. Add an action button that navigates to the details page, where the form lives, so the form is not shown until the button is pressed. To pass the record ID, ensure the details page and the form are on the same page and use the record context. If you need the form to open via a URL (prefilled), create prefilled form URLs and save them in your database; on the list, configure the action button to open URL and select the prefilled URL for that record. This allows the form to be shown only after the button press and to prepopulate fields with the appropriate record ID.
-   </Accordion>
-
-   <Accordion title="How to test a new v2 version of a Softr app without impacting existing customers and production workflows?">
-A recommended approach is to copy the product and run tests on the copied version, so you can validate changes without touching the live app. If you need to perform production-like checks, you can publish the copied app to test its behavior and then unpublish it from Settings > General to keep the custom domain intact. Avoid DNS switching between apps for testing, as it can introduce complications. If needed, you can share the test URL with the tech team for review. For version control, consider using snapshots to retrieve a previous state, but be aware this still carries some risk if a deployment occurs inadvertently.
-   </Accordion>
-
-   <Accordion title="How can I access Softr's security and compliance documentation and any recent pentest information?">
-      You can access Softr's official security and compliance resources and obtain related reports as follows:
-
-      - Security & compliance docs are available at [https://www.softr.io/security](https://www.softr.io/security), and additional policies pages at [https://www.softr.io/terms](https://www.softr.io/terms) and [https://www.softr.io/policy](https://www.softr.io/policy) (and imprint at [https://www.softr.io/imprint](https://www.softr.io/imprint)).
-
-      - The DPA is available at [https://www.softr.io/dpa-v1](https://www.softr.io/dpa-v1).
-
-      - Softr is SOC 2 compliant; you can request the SOC 2 reports via [https://app.drata.com/trust/77a4c33a-ecc4-4f61-b3a5-8fd2b06196be](https://app.drata.com/trust/77a4c33a-ecc4-4f61-b3a5-8fd2b06196be).
-
-      - For penetration testing (pentest) information, there is a process to request pentest details or attestation. A summary or official certificate can be provided, and you can share the pentest summary/documentation with your client after the request is made. There is a specific link to request pentest information referenced in the support thread, and the team can provide the necessary attestation or summary once requested.
-   </Accordion>
-
-   <Accordion title="How to migrate to a new app version in Softr with minimal downtime and how to handle sign-up and log-in pages?">
-Refer to the official migration guide for Softr: [https://docs.softr.io/application-settings/n3K2UEfpC9BpHgakMzUU5Y/migrating-app-versions/4ASdHE4RECmauL82yzcVam](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/migrating-app-versions/4ASdHE4RECmauL82yzcVam). The guide covers how to migrate to a new app version and considerations for updating authentication-related pages such as sign-up and log-in. Use the documentation to plan the migration steps, review any required changes to authentication flows, and coordinate timing to minimize downtime. If questions arise during the process, support is available to assist.
-   </Accordion>
-
-   <Accordion title="How to embed a media player in the item details block in Softr?">
-Embed the media player's code into the base rich text field and connect it to an embed field type on the details page.
-   </Accordion>
-
-   <Accordion title="How to embed URLs in Softr dynamic blocks?">
-You can embed URLs by using the embed field type on Softr dynamic blocks.
-   </Accordion>
-
-   <Accordion title="How to configure a subdomain to point to Softr without affecting the main domain?">
-To point a subdomain to Softr while keeping the main domain functional, configure the DNS so that only the subdomain’s record (A or CNAME) directs to Softr, without altering the main domain’s records. Avoid creating conflicting records for the subdomain (such as other A/CNAME records) and allow DNS propagation time after changes. Softr cannot modify DNS settings from our side; contact your domain registrar or hosting provider to set the subdomain correctly (for example, [subdomain.yourdomain.com](http://subdomain.yourdomain.com/) → Softr endpoint). If the main site stops loading, review and revert conflicting DNS changes affecting the root domain.
-   </Accordion>
-
-   <Accordion title="How to add more users and manage pricing for extra users in Softr?">
-Additional users are added in packages. If you exceed the included user limit (e.g., beyond 100 users), you will be charged $10 for every additional 10 users. Billing can be set on a monthly basis, with charges calculated in 10-user blocks. If you want, you can opt to have monthly charges for extra users, and the system can be configured to reflect that billing method.
-   </Accordion>
-
-   <Accordion title="How to add extra users to a Softr plan and what happens when sign-up attempts fail">
-To add additional users to your Softr plan, the request needs to be handled manually by the support/admin team. You can request adding more users (e.g., 10 or 20), and the admins will process it and confirm when the additional users have been added. There is no self-serve way to see who has attempted to sign up; if someone tries to sign up and it doesn’t work, they will simply be blocked from signing up and there won’t be a report of who attempted. If you need more users or have sign-up issues, contact support and your account email will be used to apply the changes.
-   </Accordion>
-
-   <Accordion title="How to make a menu item visible only to a specific group in Softr?">
-To ensure a menu item is visible only to users in a specific group, publish the app and re-check after publishing. If the item is still not visible, verify the sub-item's visibility settings are enabled. Have the affected user log out and back in to refresh the session. If issues persist, consider having a collaborator troubleshoot (e.g., provide access so a support engineer can review the configuration). Also confirm the correct page/sub-item is configured for the target group and that the app is up to date with the latest publish.
-   </Accordion>
-
-   <Accordion title="How to generate a sitemap in Softr while excluding certain pages from indexing for Google?">
-To generate a sitemap that excludes specific pages from indexing, first disable the indexing option for those pages in the page settings > SEO. Then republish the app. After that, regenerate the sitemap by adding /generate-sitemap to the end of the homepage URL (for example: [http://your-domain/generate-sitemap](http://your-domain/generate-sitemap)). Note that there won’t be a visible status change; wait a few minutes, close the tab, and then check the sitemap to confirm the result.
-   </Accordion>
-
-   <Accordion title="How to update a user's email address in Softr">
-Update the user's email address in your Users table (the one connected to the Users section of the app). Note that after updating, the user with the old email will still appear under the Softr app’s Users section, so you should select the old record in the Softr app and delete it from there.
-   </Accordion>
-
-   <Accordion title="How to send an automatic email after a form submission in Softr?">
-Automatic emails after a form submission require an automation that watches for new records in the destination table and sends the email to the relevant user. This can be configured using external automation tools such as Make or Zapier (or other similar tools). Softr alone cannot trigger this on the onboarding step; you need to connect Softr with an automation service to trigger the email when the form creates a new record in the destination table.
-   </Accordion>
-
-   <Accordion title="How to configure SEO:Slug and SEO:Index in Softr to use custom slugs for detail pages?">
-In Softr, the SEO:Slug and SEO:Index fields must exist in your data source, and the field titles must exactly match what is described in the documentation. Add valid slugs in your base (for example, 31-ocean-parkway). Ensure that the slug values in each record are mapped to the detail page so the URL reflects your custom slug. If the slug still doesn’t appear on the detail page, provide the page URL from which users select a record and consider adding a collaborator so support can verify the setup and slug mapping.
-   </Accordion>
-
-   <Accordion title="How to troubleshoot Airtable data not pulling into Softr due to API rate limits?">
-If Softr stops pulling data from Airtable and you see a 'Request limit exceeded' message, this indicates that the Airtable API quota has been reached. To resolve: 1) Check how many Airtable API calls are being performed from your account and by whom (including collaborators). 2) Have the workspace owner verify whether the allowed monthly public API call limit has been exceeded. 3) If the quota is exhausted and not automatically renewed, consider upgrading your Airtable plan to increase API call limits. 4) After adjusting quota, retry the data source connection in Softr to restore data fetch. If access permissions are an issue, add a guest collaborator as needed and ensure the correct page/block URLs are being used.
-   </Accordion>
-
-   <Accordion title="How do Softr's user limits work for the web app, and can I offer a free plan or community where guests can access without being logged in?">
-In Softr, the web app supports unlimited visitors, but there is a limit on the number of logged-in users. If you need to support thousands of active users, you would typically use the Enterprise plan, whose pricing depends on factors such as the expected number of users, SSO needs, and other features. For Enterprise, you’ll need to submit the form at [https://www.softr.io/contact-sales](https://www.softr.io/contact-sales) for a tailored quote. Regarding a free plan or community, you can have an unlimited number of visitors, but not unlimited logged-in users. A free community would rely on visitors, while access for logged-in users would be governed by the applicable plan limits.
-   </Accordion>
-
-   <Accordion title="How to track user activity and login details in Softr">
-Softr does not include built-in analytics for detailed user activity. To analyze user behavior, use an external analytics tool such as Google Analytics by integrating it with your app. In the Users section of the dashboard, there is a Last seen time that shows when a user was last active, but tracking exact login and logout times is not available. To track what users view or download, integrate an analytics tool (e.g., Google Analytics) into your app.
-   </Accordion>
-
-   <Accordion title="How to plot daily values in a line chart using a Sheets data source in Softr?">
-Use a DATE column type in your data source, enable Group by, and set the interval to days. This will aggregate the data by day and display it as a line chart for the different days.
-   </Accordion>
-
-   <Accordion title="How to show a date only (no time) for a date field in Softr?">
-To display a date without the time in Softr, use the Date field settings and toggle Show time off. This hides the time portion and shows the date only. Ensure you are using the Date field (not a Date/Time display) for the field in question.
-   </Accordion>
-
-   <Accordion title="How to locate the email customization setting in Softr?">
-Navigate to the Users tab and open the Notifications section to find the email customization setting.
-   </Accordion>
-
-   <Accordion title="How many Notion records can I store per Softr app and how can I increase the limit?">
-Notion data sources in Softr support up to 100,000 records per app. There is no UI to view how many records you are currently using, and you cannot increase this limit on existing plans. To use more records, you would need to upgrade to the Enterprise plan. Alternatively, you can switch the data source from Notion to SQL-based options (SQL Databases, BigQuery, Xano, or Supabase), which are considered advanced sources and can support up to 10 million records per app.
-   </Accordion>
-
-   <Accordion title="How to remove Softr branding when sharing a Softr website and set a custom social share image in Softr?">
-To remove Softr branding when sharing a Softr site, go to Home Page Settings → SEO → Edit Title and Description and publish your changes. If you’re concerned about the image, also check the Social Image section under SEO and upload your own image there. This sets a custom image for social sharing and can help eliminate the default Softr branding in previews.
-   </Accordion>
-
-   <Accordion title="How to publish Softr apps to mobile devices (iOS/Android)?">
-Mobile publishing is not supported in Softr. Softr builds are PWAs (progressive web apps) and cannot be published to the iOS App Store or Google Play. This applies across all plans.
-   </Accordion>
-
-   <Accordion title="How to manage post-sign-in redirects by user group and onboarding status in Softr?">
-In Softr, control where users land after sign-in by using custom user groups and page rules:
-
-- Create a custom user group for users who have completed onboarding.
-
-- Set the post-login redirect for that group to the desired page (e.g., User Dashboard).
-
-- For users who have not completed onboarding (e.g., Undefined), direct them to the Onboarding page after sign-in.
-
-- After onboarding is completed, those users will follow the redirect defined for their group (or the post-onboarding landing rule you configure).
-
-- If users are already onboarded, they will be redirected to the page defined as the after-sign-in page; if you want different behavior, adjust the page rules so that the onboarding flow is skipped for those groups.
-
-- If you’re unsure where to set these redirects, refer to the article on creating custom user groups and configuring post-login redirects based on group data: [https://docs.softr.io/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3)
-
-Note: Ensure you are editing the page rules for the correct user group and that the onboarding state (Not started / Completed) is aligned with your desired landing pages.
-   </Accordion>
-
-   <Accordion title="Can Custom Code be tested during a trial plan?">
-Yes, you can test Custom Code during the trial. If the code doesn’t work, please ensure the code is correct.
-   </Accordion>
-
-   <Accordion title="How to fix timezone differences when using Airtable data in Softr?">
-If you notice a timezone discrepancy on a published Softr page when connected to Airtable, first check the timezone settings in Softr (General settings). If the issue persists, verify the timezone set in Airtable and ensure it matches the timezone used in Softr. In the example from the conversation, correcting the Airtable timezone resolved the difference.
-   </Accordion>
-
-   <Accordion title="Does Softr allow both email-based and phone-based user authentication?">
-You can only allow registration with email; there is no option to register with a phone number. To enable signup, go to Users tab > Authentication > enable signup. Once enabled, the signup form will appear under utility pages for users to register with their email.
-   </Accordion>
-
-   <Accordion title="How to display a user's full name in the comment block in Softr?">
-To display the full name in comments, connect a full name field to the Users tab > Name field. If your full name is stored in a single line text field, map that field to Users tab > Name field and it will display. Note: if the full name is a formula field, this approach will not work; use a standalone text field containing the full name and connect it to the Name field in the Users tab.
-   </Accordion>
-
-   <Accordion title="How to collect leads from customers in Softr using a form or CSV upload?">
-In Softr, you can enable customers to submit leads by using a form or by adding an action button on a block that includes a file upload field type. This setup allows users to upload a CSV or other file as part of the lead submission. For details on how to configure the block, use the form, or add the action button with a file upload field, refer to the relevant documentation sections on action buttons and building blocks with conditional forms.
-   </Accordion>
-
-   <Accordion title="How do publishing options and user limits work in Softr, and what can affect app performance?">
-Publishing options: Softr offers Progressive Web Apps (PWAs) for Professional Plan users and above. PWAs run in a web browser and can be installed from a website, while native apps from the App Store or Play Market are not included in Softr’s publishing flow. For native publishing, this would differ from the PWA experience. Users and performance: Each plan has a specific limit on the number of users across your workspace. For the Business plan, the limit is 2500 users in total for all your app users. Users with the same email are counted as a single user, and deactivated users are not counted. If you experience performance issues, provide details about your use case along with screenshots or screen recordings (e.g., via loom) to help diagnose the cause.
-   </Accordion>
-
-   <Accordion title="What is the limit for the single-select dropdown field in Softr databases?">
-The current limit for a single-select dropdown in Softr databases is 512 options (for now).
-   </Accordion>
-
-   <Accordion title="How can I change the form title on a page form?">
-Use the heading input in the steps to add a heading to your form, which serves as the form title.
-   </Accordion>
-
-   <Accordion title="How can I place a call-to-action button at the top of a page that scrolls to the form at the bottom using an anchor link?">
-Set the header call-to-action button to open a URL. Use your application URL, then add a # and the page slug (the anchor for the form). For example: your-app-url/#your-page-slug. This will navigate (scroll) to the anchored form on the same page. Ensure the form has the corresponding anchor/element ID that matches the slug.
-   </Accordion>
-
-   <Accordion title="What does the Airtable API request limit exceeded error mean and how can I resolve it?">
-The error means you have hit Airtable's API rate limit, which is 5 requests per second per base. This can occur when multiple dynamic blocks load on a page or when several users access the page at once, causing API calls to exceed the limit. The system waits for Airtable to respond (about 20 seconds), but if responses take longer, the error may appear. The limit cannot be bypassed. To mitigate this, you can: use a Personal Access Token instead of OAuth for the connection, or switch to a data source without such strict API call limits. Additional long-term options include waiting for the monthly quota to reset, upgrading to a higher API-limit plan with Airtable, or switching to a different data source such as Softr’s database, which does not have the same API limits.
-   </Accordion>
-
-   <Accordion title="Can I filter on lookup fields or on fields from a linked table, and how does syncing of those options work in inline filters?">
-Yes, you can filter on lookup/linked-table fields, but the options are not automatically synced. Auto-sync applies only to linked records, single select, and multiple select fields. For inline filters, you will need to manually input all the options that you want to filter by.
-   </Accordion>
-
-   <Accordion title="What is the maximum number of columns Softr can read from a Google Sheet, and what steps should I take if not all columns are loaded?">
-Softr can read up to 512 columns from a Google Sheet. To ensure all columns are loaded, make sure: (1) the Softr Record ID field is the last column in the sheet, and (2) every column has a header. If headers are missing, some columns may not be read or displayed correctly.
-   </Accordion>
-
-   <Accordion title="How do I connect a Data Source via Rest API in Softr and what should I check if it doesn't connect?">
-You can connect a Data Source via Rest API. If the connection isn’t working, verify the following: check that the header name and header value expected by the data source are correct, ensure you are using a valid API key, and confirm you are on a plan that supports the feature. Refer to the Rest API data source documentation for the exact steps and required headers. If issues persist, re-check the header name/value with the data source and try again, then contact support with any updated details so we can assist further.
-   </Accordion>
-
-   <Accordion title="Can Softr Forms send submissions directly to an external webhook (for example Make) and store the response back into a table (e.g. Airtable)?">
-Yes. In the form settings, you can select a destination for submissions and specify a webhook URL (e.g., from Make) to receive the submitted form results. Your webhook-based workflow can then process the data and log the response back to your table in your data source.
-   </Accordion>
-
-   <Accordion title="How can I ensure a form submission is attributed to the currently logged-in user and that filtering uses the correct user context (not the admin)?">
-The behavior depends on how you built your conditions. Check the page where the form is placed and review the filtering criteria on the data source. Ensure the user identity field (e.g., the field used to store who filled the form) is bound to the logged-in user context rather than a static value. If necessary, align the form submission so the identity is populated automatically from the current user (instead of the admin) and make sure the list block’s filter uses the same user basis (e.g., the logged-in user identity). If you’re currently relying on a manual or hardcoded value, update it to reference the logged-in user context (or the user’s email/ID). In short: it depends on how the condition is built; verify the page, the form’s data bindings, and the data source filtering to ensure they all reference the active user context. If you can share the page details or a short video, we can pinpoint the exact mismatch.
-   </Accordion>
-
-   <Accordion title="How can I customize the social share preview (image, title, and description) for my Softr app, and why might the changes take time to appear?">
-To customize the social share preview, go to Page settings > Social and set the desired title and description, and publish the app. If you want to change the image as well, update the social image (often on the homepage) and publish. Be aware that changes may not appear immediately due to caching and propagation delays. After publishing, give it some time for caches to refresh across platforms (e.g., Slack link previews). If issues persist, ensure you updated the social settings on the page you are sharing and that you’ve published the latest changes before testing again.
-   </Accordion>
-
-   <Accordion title="How do I switch to a rich text editor for a button field, and what will it look like on the frontend?">
-Use the Rich text field option for the button to enable rich text editing instead of a plain text field. With the Rich text field, the frontend will render the formatted content accordingly. If you need a visual reference of the frontend rendering, apply the Rich text field to the button and check the result in the live view.
-   </Accordion>
-
-   <Accordion title="How can I automatically assign the logged-in user as the Owner of a new record (without showing an Owner field on the form) in Softr?">
-Use a hidden field in the form and map it to the logged-in user as the Owner. Set the hidden field to pass the logged-in user value (for example, Logged-in user → User ID or the user’s email) to the Owner/User field in your backend table. Then ensure the Owner/User field is configured to receive that ID (or email) from the form submission. After configuring this mapping, the new record will be automatically linked to the currently signed-in user without exposing the Owner field on the form.
-   </Accordion>
-
-   <Accordion title="Does Softr offer versioning or an undo/revert feature for changes in the app or database (e.g., reverting a block or table to a previous state)?">
-Yes, you can revert changes using the App History feature, which is available in the app Settings. Note that there is currently no dedicated feature to snapshot a database or export a temporary backup version. As a workaround, you can duplicate tables or blocks before making changes to preserve a backup. There are plans to bring enhanced database versioning options by the end of the year.
-   </Accordion>
-
-   <Accordion title="How do I remove the Softr logo from my portal, and what plan is required?">
-To remove the Softr logo, you must be on the Professional plan or above. Go to App settings → General and turn off the logo toggle. If the toggle is unavailable, your current plan is below Professional.
-   </Accordion>
-
-   <Accordion title="How do I delete an app I created, and who is allowed to delete it in a workspace?">
-To delete an app, do it directly from your workspace. However, only workspace owners can delete applications. If you don’t see a delete option, you are likely not the workspace owner. Ensure you are the workspace owner to delete the app, or have the owner perform the deletion.
-   </Accordion>
-
-   <Accordion title="How can I ensure the Onboarding flow updates the existing user record instead of creating a new row in my data source?">
-Use the correct onboarding configuration: ensure you select the Complete user profile option for the Onboarding flow instead of Add new record. The Add New Record action in dynamic blocks is not part of the Onboarding flow and will create a new row in your data source (e.g., Softr Databases, Airtable). If you want users to update their existing data, configure the Onboarding flow to edit existing user data (Complete user profile). After changing this, test the flow to confirm updates apply to the current user rather than adding a new record. If the issue persists, provide a screenshot of your onboarding setup so we can verify the configuration.
-   </Accordion>
-
-   <Accordion title="How can I prevent the automatically created onboarding page from being indexed or appearing in search results?">
-If you don’t need the onboarding page, delete the Onboarding flow page from your pages. You can create another onboarding flow later via a block if needed.
-   </Accordion>
+<AccordionGroup>
+  <Accordion title="How to generate a sitemap?">
+    Please, be informed that the sitemap is generated automatically under **yourdomain.com/sitemap.xml**
+  </Accordion>
+  <Accordion title="How to get a demo from Softr?">
+    Please, check the following videos: https://www.youtube.com/@Softr/videos. If you have further questions, feel free to contact us.
+  </Accordion>
+  <Accordion title="Can I apply a template to an existing app?">
+    No. You'd need to create a new app using a template and modify it.
+  </Accordion>
+  <Accordion title="Can I create a blog with Softr?">
+    We don't have dedicated blocks for that purpose yet, but here you can find instructions and examples to implement a blog layout [here](/how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/how-to-create-a-blog/5Vhtsqxp1VFpURgjGbdVVc).
+  </Accordion>
+  <Accordion title="What is the CPU/RAM allocated to the server for each subscription plan?">
+    As a cloud environment, we are not providing a dedicated CPU/RAM. Instead, the system auto-scales the capacities whenever needed.
+  </Accordion>
+  <Accordion title="Where can I showcase projects (built by others or myself) made with Softr?">
+    There is a [Made with Softr](https://softr.io/made-with-softr) page on our website, where anyone can suggest interesting projects built with Softr. We review all the submissions and publish the best ones.
+  </Accordion>
+  <Accordion title="How to fix a CNAME DNS error when configuring a custom domain in Softr">
+    If you encounter a CNAME DNS error while linking a custom domain in Softr, first check the DNS profile to ensure the CNAME is configured correctly. If an incorrect record is present, delete it. Then open your Softr app and publish it again to apply the changes. Make sure you add the correct domain (for example, the apex domain like yourdomain.es, not an incorrect variant) and publish once more. After publishing, allow some time for DNS propagation and verify the site loads with a valid SSL certificate. If issues persist, recheck the DNS configuration and repeat the publish step.
+  </Accordion>
+  <Accordion title="How to resolve the error 'You have exceeded the maximum number of records allowed for your plan' when importing a CSV in Softr?">
+    This error indicates that the number of records in the target database exceeds the limit of your current plan. To resolve it: (1) check how many records are currently in the Database for your workspace. (2) verify the CSV you are importing and ensure the number of actual data rows (excluding headers or empty rows) fits within your plan's limit. If there are empty rows, remove them before importing. (3) if you still encounter issues, contact support and share the CSV so we can test with your data. You may also request the support team to review the database and plan limits by adding them as a workspace collaborator and providing the CSV for testing.
+  </Accordion>
+  <Accordion title="How do I install or test a Softr app on an iPhone when the mobile-install/share icon isn’t visible in Safari?">
+    The icon you’re looking for is the share/install icon shown in the guidance. On mobile Safari (iPhone), don’t click in the browser’s address/URL field. Instead, look for the share/install icon and use that to proceed with installing or testing the Softr app on the device. If you don’t see the icon, double‑check you’re following the same flow as described in the guide and that you’re not tapping in the browser’s URL bar by mistake. In desktop Chrome, the flow may behave differently and show the prompt there, but on iPhone Safari you’ll typically access the install option via the share icon.
+  </Accordion>
+  <Accordion title="How to fix HTTP 404 error when accessing a Softr app after configuring a custom domain?">
+    If you encounter an HTTP 404 error after configuring a custom domain, check your DNS configuration for extra A records. In the reported case, an extra A record caused the issue. Delete the extra A record so that only the required A record remains (pointing to the expected IP, e.g., 3.33.251.168). After removing the stray A record, the site loaded correctly.
+  </Accordion>
+  <Accordion title="How to get notified when a new user account is created in Softr?">
+    Our upcoming Workflow product will make it easier to set up notification systems under specific conditions such as having a new app user. In the meantime, you can use an external automation tool such as Make or Zapier to send emails when a new user is added to your Softr database. Check with Make or Zapier how to configure the workflow to trigger on a new record in your Softr database and send the notification to you.
+  </Accordion>
+  <Accordion title="How to create user accounts without email in Softr?">
+    Accounts on the Softr platform require an email address; email is the main authentication method for user accounts. Creating accounts without email is not supported.
+  </Accordion>
+  <Accordion title="How to display a video on the video detail page in Softr?">
+    Map the video URL to the video field type on your item. You can simply paste the YouTube link (or other video URL) into the video field, and there is no need to embed the video manually. This ensures the video appears correctly on the video detail page.
+  </Accordion>
+  <Accordion title="How many workspaces can I have per subscription plan in Softr?">
+    A single subscription plan is attached to one workspace. If you create a new workspace under your account, it will be in Free status until you add a payment method and upgrade the plan.
+  </Accordion>
+  <Accordion title="How many user groups are included on the Softr Free plan and how do I access custom user groups?">
+    On the Softr Free plan, the two user groups are the default ones: logged-in and non-logged-in users. Custom user groups are not available on the Free plan and will be removed after the trial period. To use custom user groups, you need the Professional plan or higher.
+  </Accordion>
+  <Accordion title="How to display a domain without www (naked domain) in Softr?">
+    Displaying a domain without www is not supported. Softr follows best practices by using a canonical domain setup with redirects so users don’t have to type the www version, and modern browsers typically don’t display the www prefix. This means while the site can be reached via the non-www domain, the platform itself does not render the site with www removed as a separate display option.
+  </Accordion>
+  <Accordion title="How to set up an appointment booking form and enable payment in Softr">
+    To set up an appointment and collect payment in Softr, create a form block where users can choose a date/time and enter their details. If you prefer real scheduling, you can embed external scheduling tools like Calendly or TidyCal directly into Softr. For payments, use Softr's Stripe integration by adding a checkout block or a payment button so users can pay right after booking. Typical flow: the user fills out the appointment form (or books via Calendly), and then completes the payment via Stripe on the Softr app.
+  </Accordion>
+  <Accordion title="How to enable user sign-up and create new logins in Softr?">
+    Users can create new logins by enabling the Sign Up block in your Softr app. To do this, enable the sign-up feature for your application. For guidance, watch the relevant video on how to enable sign-up and consult the official docs (https://docs.softr.io/) and Softr Academy for broader onboarding and usage help.
+  </Accordion>
+  <Accordion title="How to locate the Block ID to use in a custom code snippet (footer) in Softr?">
+    Open the block in Studio, then view the settings on the right side. The Block ID is shown there (for example, List 2 is the block ID). Copy the Block ID and replace the placeholder BlockID in your code with this value. This applies when adding the code in the custom code footer at the page level.
+  </Accordion>
+  <Accordion title="How to rename the Actions column header in a table block in Softr?">
+    In the old Table Block there is no option to change the header of the Actions column; changing it would require custom code. If you upgrade to the New Table Block, the Actions column does not have a defined header, so there is no label to rename. If you still see the old block after upgrading, remove it and add a new Table Block, since the legacy block is no longer available for new apps.
+  </Accordion>
+  <Accordion title="How to log out in Softr?">
+    If you are logged in, you should see a sign out button in the navigation once it is enabled.
+  </Accordion>
+  <Accordion title="How to redirect users to a Softr page after completing a Stripe Checkout payment">
+    To have users redirected after a Stripe Checkout payment, use the Stripe Checkout button and configure the Redirect to URL option with the specific Softr page URL where you want users to land after the payment. Make sure the page URL is correctly entered. Also verify the setup on your end: ensure the recurring payment toggle matches your Stripe configuration (use it if the product is recurring in Stripe) and use the correct Price IDs in the Stripe Checkout details. After updating these settings, publish your application before testing. If a static post-payment redirect is desired, you can also define a static link in your app for the redirection after completion.
+  </Accordion>
+  <Accordion title="How can I format a year field in Softr to show a four-digit year (without thousands separators) on item detail pages?">
+    To display a clean four-digit year without thousands separators on item detail pages, disable thousand separators and any decimal formatting for the year field. In practice: 1) Click the block (the item-details block) and look at the right panel under Content. 2) Find the item field that is connected to the year from your datasource and edit it there. 3) Ensure decimal places are set to None and the thousand separators toggle is off. These changes apply to the year field across similar pages as well. For reference, you can also consult the documentation linked in the chat for the item-details-block setup.
+  </Accordion>
+  <Accordion title="How to resolve a 'request limit exceeded' error in Softr?">
+    If you see 'request limit exceeded' on a Softr page, this usually relates to the data source (e.g., Airtable) rather than the Softr page itself. Try the following steps: 1) Check your Airtable connection and make sure the database is connected properly. 2) Review the block settings and data sources in your Softr app to ensure they are configured correctly. 3) Check your Airtable account for any API call limits or usage restrictions (look under Account settings). 4) If needed, re-authenticate the connection to Airtable from the Softr app. 5) If you cannot access or modify the data source due to permissions, you may need to adjust ownership or access rights, or connect a new database and use that with the blocks in the app. 6) After making changes, test the page again to confirm the issue is resolved. If the problem persists, provide the studio URL and any relevant screenshots to support for further investigation.
+  </Accordion>
+  <Accordion title="How to add a text-only block in Softr?">
+    Use the Simple text block to add plain text. If you need a block that only lets you add simple texts, select the Simple text block.
+  </Accordion>
+  <Accordion title="Does Softr provide built-in analytics on knowledge usage (e.g., most visited pages, search terms, etc.)?">
+    Softr provides analytics through a native integration with Google Analytics.
+  </Accordion>
+  <Accordion title="How to resize the logo in the new navigation and adjust navigation colors in Softr?">
+    Currently, the logo in the new navigation can only be resized using the three available size options, and there is no option to set a size larger than the 'L' size. If you need a different logo size, you can apply a custom code snippet from the community thread to scale the logo in the new header: https://community.softr.io/t/resize-logo-in-new-header/11973/2?u=sveta.ohanyan
+
+    For navigation colors, you can change them in the Style section of the navigation block, where you will see three color options. The regular color is determined by your chosen background color, and the Softr accent color is defined automatically based on the Accent color in the Theme section. However, there is no option to set a custom navigation color (for example, making the navigation light grey while keeping a green accent).
+  </Accordion>
+  <Accordion title="How to continue using an app after the Softr free trial ends?">
+    The app will remain available after the free trial ends. However, features exclusive to paid plans will no longer be accessible. You can review and compare plan features on the Softr pricing page: https://www.softr.io/pricing.
+  </Accordion>
+  <Accordion title="How can I upload large video or asset files in Softr given the file size limits?">
+    Softr currently imposes a file size limit on assets uploaded in Studio blocks of 64 MB, and a limit of 128 MB for files uploaded through forms in a published app. There is no available workaround to increase this limit at this time. A common workaround is to host the video externally (e.g., YouTube) and use the embed code to display it in Softr. Note that YouTube embeds may include ads and privacy considerations. If you need to store large files natively in Softr, this limitation may affect usability for video assets.
+  </Accordion>
+  <Accordion title="How to convert a date from a webhook to a format accepted by Softr Databases when using Make?">
+    If the date coming from the webhook isn’t in the format accepted by Softr Databases, convert it inside Make before sending it to Softr. A common approach is to use a Make formula to reformat the date, for example: set a variable with formatDate(inputDate; YYYY-MM-DD) and then pass that formatted value to the Softr module. This ensures the date matches the Softr Databases requirement (YYYY-MM-DD). The Make–Softr integration documentation is available, but date-format specifics may not be covered; using a date-formatting formula is a practical workaround applicable to similar scenarios.
+  </Accordion>
+  <Accordion title="How to implement conditional visibility for form sections based on answers in Softr forms?">
+    To achieve conditional visibility in a Softr form, add sections within the form steps and set a visibility rule for the target section. Configure the rule so that the section (and its questions) appears when a specific option is selected in a previous section (for example, when the answer is A in Section 1). This enables subsequent questions to appear only based on the chosen option. See the documentation example on conditional forms for reference: [https://docs.softr.io/building-blocks/vikC2AWEpQGkZd4jGyoVxo/conditional-forms/afyKqnGDXd54U8d4xLNcsR](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/conditional-forms/afyKqnGDXd54U8d4xLNcsR)
+  </Accordion>
+  <Accordion title="How to set and fix a custom favicon and related SEO/Social images in Softr so that search engines and social platforms display the correct logo?">
+    Set your own logo as the favicon in Settings \> General. After updating, click Save and Publish the app to apply changes. If the favicon still shows Softr’s default in search results, request re-indexing for all app pages (not just the home page) so search engines pick up the new favicon. In addition, configure the SEO and Social fields: SEO controls what search engines index and display in search results, while Social controls how the page looks when shared on social platforms. While not mandatory, it’s recommended to configure both to ensure the correct logo and description appear. If issues persist, open a support request with a guest collaborator to allow the technical team to investigate and verify the favicon and indexing setup across all pages.
+  </Accordion>
+  <Accordion title="How to customize the reply address for invitation emails in Softr (no-reply vs. personal email)">
+    Softr invitation emails don’t have a separate configurable “Reply-To” field. If you leave the From email empty, the email is sent from subdomain@softr.app and replies go to the same address. To customize where replies go, set a From email address (e.g., a no-reply or domain-specific address) and test it. If you use a domain email (like @yourdomain or @softr.io), make sure the address is verified (DKIM/verification may be required) and, if needed, use an allowed domain such as [no-reply@softr.io](mailto:no-reply@softr.io). If you don’t have a custom domain, you can still use the [Softr.io](http://softr.io/) domain for the From address after it’s verified. After configuring and testing, ensure the test invitation reflects the desired From/Reply behavior.
+  </Accordion>
+  <Accordion title="How to onboard client users and assign them to a user group while keeping data isolated in Softr?">
+    Use Softr’s Onboarding flow to present the available user groups to the end user during signup; after choosing a group, the user will be added to that group. If automatic group assignment is needed beyond the built‑in onboarding, you can use the form block to collect new user emails and store them in the same datasource linked to the Users tab, then use a sync process to add the user to the app. To keep data isolated between clients, you can add the logged‑in user’s company data as a hidden field in the form to determine their group, and you can also collect additional onboarding data (e.g., who invited them, their company) via the onboarding flow. The onboarding flow supports adding fields to gather this extra information. This setup helps maintain confidentiality by ensuring users only access data related to their own client.
+  </Accordion>
+  <Accordion title="What is the trial period duration in Softr and how does cancellation work for monthly subscriptions?">
+    The current trial period is 7+7 days, totaling 14 days. Additional trial days require you to add your card details to your Softr account, and we cannot grant more than 14 total trial days. For monthly subscriptions, you can cancel at any time; if you cancel during the current paid month, you will not be charged for the next month. Our refund policy covers the first payment for monthly subscriptions within the first 14 days (or the first payment for annual subscriptions within the first 30 days).
+  </Accordion>
+  <Accordion title="How to switch from monthly to annual billing in Softr (and manage billing cycle)?">
+    To switch to annual billing, go to the Plan and Billing section and change the billing cycle to annual. The information provided indicates this is the supported location to make the change.
+  </Accordion>
+  <Accordion title="How to switch from OAuth Airtable to a Personal Access Token in Softr?">
+    You just need to switch from the screen shown, and that’s it. Nothing else is required—just click on Switch, grant the right access as shown in that screen, and it will work.
+  </Accordion>
+  <Accordion title="How to show a form only after pressing a button in Softr and prefill it with a record ID?">
+    Use a List and List Details setup. Add an action button that navigates to the details page, where the form lives, so the form is not shown until the button is pressed. To pass the record ID, ensure the details page and the form are on the same page and use the record context. If you need the form to open via a URL (prefilled), create prefilled form URLs and save them in your database; on the list, configure the action button to open URL and select the prefilled URL for that record. This allows the form to be shown only after the button press and to prepopulate fields with the appropriate record ID.
+  </Accordion>
+  <Accordion title="How to test a new v2 version of a Softr app without impacting existing customers and production workflows?">
+    A recommended approach is to copy the product and run tests on the copied version, so you can validate changes without touching the live app. If you need to perform production-like checks, you can publish the copied app to test its behavior and then unpublish it from Settings \> General to keep the custom domain intact. Avoid DNS switching between apps for testing, as it can introduce complications. If needed, you can share the test URL with the tech team for review. For version control, consider using snapshots to retrieve a previous state, but be aware this still carries some risk if a deployment occurs inadvertently.
+  </Accordion>
+  <Accordion title="How can I access Softr's security and compliance documentation and any recent pentest information?">
+    You can access Softr's official security and compliance resources and obtain related reports as follows:
+
+    - Security & compliance docs are available at https://www.softr.io/security, and additional policies pages at https://www.softr.io/terms and https://www.softr.io/policy (and imprint at https://www.softr.io/imprint).
+    - The DPA is available at https://www.softr.io/dpa-v1.
+    - Softr is SOC 2 compliant; you can request the SOC 2 reports via https://app.drata.com/trust/77a4c33a-ecc4-4f61-b3a5-8fd2b06196be.
+    - For penetration testing (pentest) information, there is a process to request pentest details or attestation. A summary or official certificate can be provided, and you can share the pentest summary/documentation with your client after the request is made. There is a specific link to request pentest information referenced in the support thread, and the team can provide the necessary attestation or summary once requested.
+  </Accordion>
+  <Accordion title="How to migrate to a new app version in Softr with minimal downtime and how to handle sign-up and log-in pages?">
+    Refer to the official migration guide for Softr: [https://docs.softr.io/application-settings/n3K2UEfpC9BpHgakMzUU5Y/migrating-app-versions/4ASdHE4RECmauL82yzcVam](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/migrating-app-versions/4ASdHE4RECmauL82yzcVam). The guide covers how to migrate to a new app version and considerations for updating authentication-related pages such as sign-up and log-in. Use the documentation to plan the migration steps, review any required changes to authentication flows, and coordinate timing to minimize downtime. If questions arise during the process, support is available to assist.
+  </Accordion>
+  <Accordion title="How to embed a media player in the item details block in Softr?">
+    Embed the media player's code into the base rich text field and connect it to an embed field type on the details page.
+  </Accordion>
+  <Accordion title="How to embed URLs in Softr dynamic blocks?">
+    You can embed URLs by using the embed field type on Softr dynamic blocks.
+  </Accordion>
+  <Accordion title="How to configure a subdomain to point to Softr without affecting the main domain?">
+    To point a subdomain to Softr while keeping the main domain functional, configure the DNS so that only the subdomain’s record (A or CNAME) directs to Softr, without altering the main domain’s records. Avoid creating conflicting records for the subdomain (such as other A/CNAME records) and allow DNS propagation time after changes. Softr cannot modify DNS settings from our side; contact your domain registrar or hosting provider to set the subdomain correctly (for example, [subdomain.yourdomain.com](http://subdomain.yourdomain.com/) → Softr endpoint). If the main site stops loading, review and revert conflicting DNS changes affecting the root domain.
+  </Accordion>
+  <Accordion title="How to add more users and manage pricing for extra users in Softr?">
+    Additional users are added in packages. If you exceed the included user limit (e.g., beyond 100 users), you will be charged \$10 for every additional 10 users. Billing can be set on a monthly basis, with charges calculated in 10-user blocks. If you want, you can opt to have monthly charges for extra users, and the system can be configured to reflect that billing method.
+  </Accordion>
+  <Accordion title="How to add extra users to a Softr plan and what happens when sign-up attempts fail">
+    To add additional users to your Softr plan, the request needs to be handled manually by the support/admin team. You can request adding more users (e.g., 10 or 20), and the admins will process it and confirm when the additional users have been added. There is no self-serve way to see who has attempted to sign up; if someone tries to sign up and it doesn’t work, they will simply be blocked from signing up and there won’t be a report of who attempted. If you need more users or have sign-up issues, contact support and your account email will be used to apply the changes.
+  </Accordion>
+  <Accordion title="How to make a menu item visible only to a specific group in Softr?">
+    To ensure a menu item is visible only to users in a specific group, publish the app and re-check after publishing. If the item is still not visible, verify the sub-item's visibility settings are enabled. Have the affected user log out and back in to refresh the session. If issues persist, consider having a collaborator troubleshoot (e.g., provide access so a support engineer can review the configuration). Also confirm the correct page/sub-item is configured for the target group and that the app is up to date with the latest publish.
+  </Accordion>
+  <Accordion title="How to generate a sitemap in Softr while excluding certain pages from indexing for Google?">
+    To generate a sitemap that excludes specific pages from indexing, first disable the indexing option for those pages in the page settings \> SEO. Then republish the app. After that, regenerate the sitemap by adding /generate-sitemap to the end of the homepage URL (for example: http://your-domain/generate-sitemap). Note that there won’t be a visible status change; wait a few minutes, close the tab, and then check the sitemap to confirm the result.
+  </Accordion>
+  <Accordion title="How to update a user's email address in Softr">
+    Update the user's email address in your Users table (the one connected to the Users section of the app). Note that after updating, the user with the old email will still appear under the Softr app’s Users section, so you should select the old record in the Softr app and delete it from there.
+  </Accordion>
+  <Accordion title="How to send an automatic email after a form submission in Softr?">
+    Automatic emails after a form submission require an automation that watches for new records in the destination table and sends the email to the relevant user. This can be configured using external automation tools such as Make or Zapier (or other similar tools). Softr alone cannot trigger this on the onboarding step; you need to connect Softr with an automation service to trigger the email when the form creates a new record in the destination table.
+  </Accordion>
+  <Accordion title="How to configure SEO:Slug and SEO:Index in Softr to use custom slugs for detail pages?">
+    In Softr, the SEO:Slug and SEO:Index fields must exist in your data source, and the field titles must exactly match what is described in the documentation. Add valid slugs in your base (for example, 31-ocean-parkway). Ensure that the slug values in each record are mapped to the detail page so the URL reflects your custom slug. If the slug still doesn’t appear on the detail page, provide the page URL from which users select a record and consider adding a collaborator so support can verify the setup and slug mapping.
+  </Accordion>
+  <Accordion title="How to troubleshoot Airtable data not pulling into Softr due to API rate limits?">
+    If Softr stops pulling data from Airtable and you see a 'Request limit exceeded' message, this indicates that the Airtable API quota has been reached. To resolve: 1) Check how many Airtable API calls are being performed from your account and by whom (including collaborators). 2) Have the workspace owner verify whether the allowed monthly public API call limit has been exceeded. 3) If the quota is exhausted and not automatically renewed, consider upgrading your Airtable plan to increase API call limits. 4) After adjusting quota, retry the data source connection in Softr to restore data fetch. If access permissions are an issue, add a guest collaborator as needed and ensure the correct page/block URLs are being used.
+  </Accordion>
+  <Accordion title="How do Softr's user limits work for the web app, and can I offer a free plan or community where guests can access without being logged in?">
+    In Softr, the web app supports unlimited visitors, but there is a limit on the number of logged-in users. If you need to support thousands of active users, you would typically use the Enterprise plan, whose pricing depends on factors such as the expected number of users, SSO needs, and other features. For Enterprise, you’ll need to submit the form at https://www.softr.io/contact-sales for a tailored quote. Regarding a free plan or community, you can have an unlimited number of visitors, but not unlimited logged-in users. A free community would rely on visitors, while access for logged-in users would be governed by the applicable plan limits.
+  </Accordion>
+  <Accordion title="How to track user activity and login details in Softr">
+    Softr does not include built-in analytics for detailed user activity. To analyze user behavior, use an external analytics tool such as Google Analytics by integrating it with your app. In the Users section of the dashboard, there is a Last seen time that shows when a user was last active, but tracking exact login and logout times is not available. To track what users view or download, integrate an analytics tool (e.g., Google Analytics) into your app.
+  </Accordion>
+  <Accordion title="How to plot daily values in a line chart using a Sheets data source in Softr?">
+    Use a DATE column type in your data source, enable Group by, and set the interval to days. This will aggregate the data by day and display it as a line chart for the different days.
+  </Accordion>
+  <Accordion title="How to show a date only (no time) for a date field in Softr?">
+    To display a date without the time in Softr, use the Date field settings and toggle Show time off. This hides the time portion and shows the date only. Ensure you are using the Date field (not a Date/Time display) for the field in question.
+  </Accordion>
+  <Accordion title="How to locate the email customization setting in Softr?">
+    Navigate to the Users tab and open the Notifications section to find the email customization setting.
+  </Accordion>
+  <Accordion title="How many Notion records can I store per Softr app and how can I increase the limit?">
+    Notion data sources in Softr support up to 100,000 records per app. There is no UI to view how many records you are currently using, and you cannot increase this limit on existing plans. To use more records, you would need to upgrade to the Enterprise plan. Alternatively, you can switch the data source from Notion to SQL-based options (SQL Databases, BigQuery, Xano, or Supabase), which are considered advanced sources and can support up to 10 million records per app.
+  </Accordion>
+  <Accordion title="How to remove Softr branding when sharing a Softr website and set a custom social share image in Softr?">
+    To remove Softr branding when sharing a Softr site, go to Home Page Settings → SEO → Edit Title and Description and publish your changes. If you’re concerned about the image, also check the Social Image section under SEO and upload your own image there. This sets a custom image for social sharing and can help eliminate the default Softr branding in previews.
+  </Accordion>
+  <Accordion title="How to publish Softr apps to mobile devices (iOS/Android)?">
+    Mobile publishing is not supported in Softr. Softr builds are PWAs (progressive web apps) and cannot be published to the iOS App Store or Google Play. This applies across all plans.
+  </Accordion>
+  <Accordion title="How to manage post-sign-in redirects by user group and onboarding status in Softr?">
+    In Softr, control where users land after sign-in by using custom user groups and page rules:
+
+    - Create a custom user group for users who have completed onboarding.
+    - Set the post-login redirect for that group to the desired page (e.g., User Dashboard).
+    - For users who have not completed onboarding (e.g., Undefined), direct them to the Onboarding page after sign-in.
+    - After onboarding is completed, those users will follow the redirect defined for their group (or the post-onboarding landing rule you configure).
+    - If users are already onboarded, they will be redirected to the page defined as the after-sign-in page; if you want different behavior, adjust the page rules so that the onboarding flow is skipped for those groups.
+    - If you’re unsure where to set these redirects, refer to the article on creating custom user groups and configuring post-login redirects based on group data: [https://docs.softr.io/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3)
+
+    Note: Ensure you are editing the page rules for the correct user group and that the onboarding state (Not started / Completed) is aligned with your desired landing pages.
+  </Accordion>
+  <Accordion title="Can Custom Code be tested during a trial plan?">
+    Yes, you can test Custom Code during the trial. If the code doesn’t work, please ensure the code is correct.
+  </Accordion>
+  <Accordion title="How to fix timezone differences when using Airtable data in Softr?">
+    If you notice a timezone discrepancy on a published Softr page when connected to Airtable, first check the timezone settings in Softr (General settings). If the issue persists, verify the timezone set in Airtable and ensure it matches the timezone used in Softr. In the example from the conversation, correcting the Airtable timezone resolved the difference.
+  </Accordion>
+  <Accordion title="Does Softr allow both email-based and phone-based user authentication?">
+    You can only allow registration with email; there is no option to register with a phone number. To enable signup, go to Users tab \> Authentication \> enable signup. Once enabled, the signup form will appear under utility pages for users to register with their email.
+  </Accordion>
+  <Accordion title="How to display a user's full name in the comment block in Softr?">
+    To display the full name in comments, connect a full name field to the Users tab \> Name field. If your full name is stored in a single line text field, map that field to Users tab \> Name field and it will display. Note: if the full name is a formula field, this approach will not work; use a standalone text field containing the full name and connect it to the Name field in the Users tab.
+  </Accordion>
+  <Accordion title="How to collect leads from customers in Softr using a form or CSV upload?">
+    In Softr, you can enable customers to submit leads by using a form or by adding an action button on a block that includes a file upload field type. This setup allows users to upload a CSV or other file as part of the lead submission. For details on how to configure the block, use the form, or add the action button with a file upload field, refer to the relevant documentation sections on action buttons and building blocks with conditional forms.
+  </Accordion>
+  <Accordion title="How do publishing options and user limits work in Softr, and what can affect app performance?">
+    Publishing options: Softr offers Progressive Web Apps (PWAs) for Professional Plan users and above. PWAs run in a web browser and can be installed from a website, while native apps from the App Store or Play Market are not included in Softr’s publishing flow. For native publishing, this would differ from the PWA experience. Users and performance: Each plan has a specific limit on the number of users across your workspace. For the Business plan, the limit is 2500 users in total for all your app users. Users with the same email are counted as a single user, and deactivated users are not counted. If you experience performance issues, provide details about your use case along with screenshots or screen recordings (e.g., via loom) to help diagnose the cause.
+  </Accordion>
+  <Accordion title="What is the limit for the single-select dropdown field in Softr databases?">
+    The current limit for a single-select dropdown in Softr databases is 512 options (for now).
+  </Accordion>
+  <Accordion title="How can I change the form title on a page form?">
+    Use the heading input in the steps to add a heading to your form, which serves as the form title.
+  </Accordion>
+  <Accordion title="How can I place a call-to-action button at the top of a page that scrolls to the form at the bottom using an anchor link?">
+    Set the header call-to-action button to open a URL. Use your application URL, then add a # and the page slug (the anchor for the form). For example: your-app-url/#your-page-slug. This will navigate (scroll) to the anchored form on the same page. Ensure the form has the corresponding anchor/element ID that matches the slug.
+  </Accordion>
+  <Accordion title="What does the Airtable API request limit exceeded error mean and how can I resolve it?">
+    The error means you have hit Airtable's API rate limit, which is 5 requests per second per base. This can occur when multiple dynamic blocks load on a page or when several users access the page at once, causing API calls to exceed the limit. The system waits for Airtable to respond (about 20 seconds), but if responses take longer, the error may appear. The limit cannot be bypassed. To mitigate this, you can: use a Personal Access Token instead of OAuth for the connection, or switch to a data source without such strict API call limits. Additional long-term options include waiting for the monthly quota to reset, upgrading to a higher API-limit plan with Airtable, or switching to a different data source such as Softr’s database, which does not have the same API limits.
+  </Accordion>
+  <Accordion title="Can I filter on lookup fields or on fields from a linked table, and how does syncing of those options work in inline filters?">
+    Yes, you can filter on lookup/linked-table fields, but the options are not automatically synced. Auto-sync applies only to linked records, single select, and multiple select fields. For inline filters, you will need to manually input all the options that you want to filter by.
+  </Accordion>
+  <Accordion title="What is the maximum number of columns Softr can read from a Google Sheet, and what steps should I take if not all columns are loaded?">
+    Softr can read up to 512 columns from a Google Sheet. To ensure all columns are loaded, make sure: (1) the Softr Record ID field is the last column in the sheet, and (2) every column has a header. If headers are missing, some columns may not be read or displayed correctly.
+  </Accordion>
+  <Accordion title="How do I connect a Data Source via Rest API in Softr and what should I check if it doesn't connect?">
+    You can connect a Data Source via Rest API. If the connection isn’t working, verify the following: check that the header name and header value expected by the data source are correct, ensure you are using a valid API key, and confirm you are on a plan that supports the feature. Refer to the Rest API data source documentation for the exact steps and required headers. If issues persist, re-check the header name/value with the data source and try again, then contact support with any updated details so we can assist further.
+  </Accordion>
+  <Accordion title="Can Softr Forms send submissions directly to an external webhook (for example Make) and store the response back into a table (e.g. Airtable)?">
+    Yes. In the form settings, you can select a destination for submissions and specify a webhook URL (e.g., from Make) to receive the submitted form results. Your webhook-based workflow can then process the data and log the response back to your table in your data source.
+  </Accordion>
+  <Accordion title="How can I ensure a form submission is attributed to the currently logged-in user and that filtering uses the correct user context (not the admin)?">
+    The behavior depends on how you built your conditions. Check the page where the form is placed and review the filtering criteria on the data source. Ensure the user identity field (e.g., the field used to store who filled the form) is bound to the logged-in user context rather than a static value. If necessary, align the form submission so the identity is populated automatically from the current user (instead of the admin) and make sure the list block’s filter uses the same user basis (e.g., the logged-in user identity). If you’re currently relying on a manual or hardcoded value, update it to reference the logged-in user context (or the user’s email/ID). In short: it depends on how the condition is built; verify the page, the form’s data bindings, and the data source filtering to ensure they all reference the active user context. If you can share the page details or a short video, we can pinpoint the exact mismatch.
+  </Accordion>
+  <Accordion title="How can I customize the social share preview (image, title, and description) for my Softr app, and why might the changes take time to appear?">
+    To customize the social share preview, go to Page settings \> Social and set the desired title and description, and publish the app. If you want to change the image as well, update the social image (often on the homepage) and publish. Be aware that changes may not appear immediately due to caching and propagation delays. After publishing, give it some time for caches to refresh across platforms (e.g., Slack link previews). If issues persist, ensure you updated the social settings on the page you are sharing and that you’ve published the latest changes before testing again.
+  </Accordion>
+  <Accordion title="How do I switch to a rich text editor for a button field, and what will it look like on the frontend?">
+    Use the Rich text field option for the button to enable rich text editing instead of a plain text field. With the Rich text field, the frontend will render the formatted content accordingly. If you need a visual reference of the frontend rendering, apply the Rich text field to the button and check the result in the live view.
+  </Accordion>
+  <Accordion title="How can I automatically assign the logged-in user as the Owner of a new record (without showing an Owner field on the form) in Softr?">
+    Use a hidden field in the form and map it to the logged-in user as the Owner. Set the hidden field to pass the logged-in user value (for example, Logged-in user → User ID or the user’s email) to the Owner/User field in your backend table. Then ensure the Owner/User field is configured to receive that ID (or email) from the form submission. After configuring this mapping, the new record will be automatically linked to the currently signed-in user without exposing the Owner field on the form.
+  </Accordion>
+  <Accordion title="Does Softr offer versioning or an undo/revert feature for changes in the app or database (e.g., reverting a block or table to a previous state)?">
+    Yes, you can revert changes using the App History feature, which is available in the app Settings. Note that there is currently no dedicated feature to snapshot a database or export a temporary backup version. As a workaround, you can duplicate tables or blocks before making changes to preserve a backup. There are plans to bring enhanced database versioning options by the end of the year.
+  </Accordion>
+  <Accordion title="How do I remove the Softr logo from my portal, and what plan is required?">
+    To remove the Softr logo, you must be on the Professional plan or above. Go to App settings → General and turn off the logo toggle. If the toggle is unavailable, your current plan is below Professional.
+  </Accordion>
+  <Accordion title="Which data source works best with Softr?">
+    Softr Database is the most optimized data source for the platform and integrates seamlessly to help you build apps efficiently. It eliminates the need to purchase external tools, allowing you to create a database from scratch, use the AI co-builder to accelerate development, or import data via CSVs or Airtable migration. While Softr Database offers the best native experience, you retain full flexibility to connect to any other supported data sources if preferred.
+  </Accordion>
+  <Accordion title="What can I do if the standard blocks don't match the specific interface I need?">
+    While Softr's native no-code blocks (such as tables, kanbans, and forms) cover the vast majority of business app requirements, you can use the AI Vibe-coding block for advanced customization. Simply add a Vibe-coding block, connect it to your data source (ensuring secure and smooth CRUD capabilities), and prompt the AI to build exactly what you need. You can iterate on the design by chatting with the AI to request improvements. The custom block will automatically inherit your app's theme but remains fully customizable.
+  </Accordion>
+  <Accordion title="How do I delete an app I created, and who is allowed to delete it in a workspace?">
+    To delete an app, do it directly from your workspace. However, only workspace owners can delete applications. If you don’t see a delete option, you are likely not the workspace owner. Ensure you are the workspace owner to delete the app, or have the owner perform the deletion.
+  </Accordion>
+  <Accordion title="How can I ensure the Onboarding flow updates the existing user record instead of creating a new row in my data source?">
+    Use the correct onboarding configuration: ensure you select the Complete user profile option for the Onboarding flow instead of Add new record. The Add New Record action in dynamic blocks is not part of the Onboarding flow and will create a new row in your data source (e.g., Softr Databases, Airtable). If you want users to update their existing data, configure the Onboarding flow to edit existing user data (Complete user profile). After changing this, test the flow to confirm updates apply to the current user rather than adding a new record. If the issue persists, provide a screenshot of your onboarding setup so we can verify the configuration.
+  </Accordion>
+  <Accordion title="How can I prevent the automatically created onboarding page from being indexed or appearing in search results?">
+    If you don’t need the onboarding page, delete the Onboarding flow page from your pages. You can create another onboarding flow later via a block if needed.
+  </Accordion>
 </AccordionGroup>
