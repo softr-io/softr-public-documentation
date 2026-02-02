@@ -281,6 +281,53 @@ twitter:description: "Questions related to the topics not highlighted in the oth
   <Accordion title="How can I ensure the Onboarding flow updates the existing user record instead of creating a new row in my data source?">
     Use the correct onboarding configuration: ensure you select the Complete user profile option for the Onboarding flow instead of Add new record. The Add New Record action in dynamic blocks is not part of the Onboarding flow and will create a new row in your data source (e.g., Softr Databases, Airtable). If you want users to update their existing data, configure the Onboarding flow to edit existing user data (Complete user profile). After changing this, test the flow to confirm updates apply to the current user rather than adding a new record. If the issue persists, provide a screenshot of your onboarding setup so we can verify the configuration.
   </Accordion>
+  <Accordion title="Does Softr allow the creation of Gantt charts?">
+
+While there is no native Gantt block, you can easily build one using the AI Vibe-coding block. Simply add the block, connect it to your project data source, and prompt the AI to generate a Gantt view. The AI handles the dependencies and timeline visualization, giving you a fully functional chart that matches your app's theme and allows you to manage project timelines effectively.
+
+</Accordion>
+
+<Accordion title="Can I create Pivot Tables to summarize my data?">
+
+Yes, you can implement Pivot Tables using the Vibe-coding block. Since standard table blocks do not currently support pivoting, the Vibe-coding block is the perfect solution. Connect your data and ask the AI to construct a dynamic Pivot Table, allowing your users to analyze and summarize large datasets directly within your app.
+
+</Accordion>
+
+<Accordion title="Is it possible to build interactive calculators (e.g., ROI or Mortgage)?">
+
+Absolutely. You can create custom interactive calculators using the Vibe-coding block. By defining your inputs and required formulas in a simple prompt, the AI will generate a functional interface that performs real-time calculations. This is ideal for building ROI estimators, loan calculators, or dynamic pricing tools without writing code.
+
+</Accordion>
+
+<Accordion title="Can I display data using advanced visualizations like Word Clouds or Heatmaps?">
+
+Yes, specialized visualizations like Word Clouds and Heatmaps can be generated instantly with Vibe-coding. Connect your dataset to a Vibe-coding block and describe the visualization you need. The AI will code the component to visualize data density, geographic distribution, or text frequency, providing insights that go beyond standard charts.
+
+</Accordion>
+
+<Accordion title="Can I create a Comparison Table for plans or products?">
+
+Side-by-side comparison tables can be built easily using the Vibe-coding block. You can prompt the AI to design a layout that compares specific fields or records (such as product features or pricing tiers), allowing for a highly customized view that fits your design requirements better than a standard list block.
+
+</Accordion>
+
+<Accordion title="Does Softr allow grouping records in table blocks?">
+
+Native table blocks currently list records linearly, but you can achieve record grouping by using the Vibe-coding block. Connect your data and instruct the AI to build a table that groups rows by a specific category (e.g., "Group by Status" or "Department"). This allows you to render headers for each group and organize your data more effectively.
+
+</Accordion>
+
+<Accordion title="Does Softr allow bulk editing or bulk deleting of records?">
+
+While native list blocks primarily handle single-record actions, you can enable bulk operations using the Vibe-coding block. You can ask the AI to build a grid with selection checkboxes and "Bulk Edit" or "Delete Selected" buttons. The block connects securely to your data source to perform these batch updates or deletions safely and smoothly.
+
+</Accordion>
+
+<Accordion title="Can app users have an interface to import CSVs to bulk create records?">
+
+Yes, you can build a user-facing CSV importer using the Vibe-coding block. Simply prompt the AI to create a file upload interface that parses CSV data and adds it to your connected data source. This gives your end-users the ability to bulk upload records directly from the published app without needing backend access.
+
+</Accordion>
   <Accordion title="How can I prevent the automatically created onboarding page from being indexed or appearing in search results?">
     If you don’t need the onboarding page, delete the Onboarding flow page from your pages. You can create another onboarding flow later via a block if needed.
   </Accordion>
