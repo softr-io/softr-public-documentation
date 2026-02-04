@@ -46,7 +46,6 @@
             "group": "Start Here",
             "icon": "hand-wave",
             "pages": [
-              "start-here/welcome",
               "start-here/generate-an-app-with-softrai",
               "start-here/create-an-app-from-a-template"
             ]
@@ -85,7 +84,7 @@
               "workflows/workflows"
             ]
           },
-          "softr-workflows/softr",
+          "softr-forms",
           {
             "group": "Data Sources",
             "icon": "hard-drive",
@@ -105,7 +104,8 @@
               "data-sources/rest-api",
               "data-sources/choosing-a-data-source"
             ]
-          }
+          },
+          "start-here/welcome"
         ]
       },
       {
