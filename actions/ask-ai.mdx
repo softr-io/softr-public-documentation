@@ -2,12 +2,13 @@
 title: "Ask AI"
 permalink: "5rdbeytiE5rdc2vqDyfMeU"
 description: "Let users ask an in-app AI chat assistant about your data "
-'og:title': "Ask AI – Softr Help Docs"
-'og:description': "Let users ask an in-app AI chat assistant about your data "
-'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
-'twitter:title': "Ask AI – Softr Help Docs"
-'twitter:description': "Let users ask an in-app AI chat assistant about your data "
+og:title: "Ask AI – Softr Help Docs"
+og:description: "Let users ask an in-app AI chat assistant about your data "
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+twitter:title: "Ask AI – Softr Help Docs"
+twitter:description: "Let users ask an in-app AI chat assistant about your data "
 ---
+
 ## Overview
 
 Ask AI is Softr's built-in chat assistant that acts like a real-time analyst, reading your live app data and answering questions instantly. Unlike other AI tools that give vague answers or require complex setup, Ask AI is embedded directly into your Softr apps with no API keys. All you need to do is toggle it on!
@@ -16,66 +17,75 @@ Here are some key features:
 
 🔍 **Reads from your app data**
 
-* Pulls from live data inside dynamic blocks in your Softr apps
-
-* Gives real-time answers based on your current data
+- Pulls from live data inside dynamic blocks in your Softr apps
+- Gives real-time answers based on your current data
 
 🛡️ **Secure by default**
 
-* Respects your app's permissions and visibility rules
-
-* Users only see data they're authorized to access (no accidental data exposure)
+- Respects your app's permissions and visibility rules
+- Users only see data they're authorized to access (no accidental data exposure)
 
 ⚡ **No setup required**
 
-* Built directly into your Softr application—just toggle it on at the block level
-
-* No API keys or complex configurations needed
-
-
+- Built directly into your Softr application—just toggle it on at the block level
+- No API keys or complex configurations needed
 
 ## How to Add Ask AI to Your App
 
-**Step 1:** In the Softr Studio, navigate to your dynamic block's **Actions** section
-<Frame>![Notion image](/actions/images/ask-ai/image1.png)</Frame>
+**Step 1:** In the Softr Studio, navigate to your dynamic block's **Actions** section 
+<Frame>
+  ![Notion image](/actions/images/ask-ai/image1.png)
+</Frame>
 
-**Step 2:** Select **Add Topbar** button and choose Ask AI from the options.
-<Frame>![Notion image](/actions/images/ask-ai/image2.png)</Frame>
 
-**Step 3:** From here, you can adjust the label and icon, and use the dropdown to customize messages, instructions, response style, suggested prompts, and appearance.
-<Frame>![Notion image](/actions/images/ask-ai/image3.png)</Frame>
+**Step 2:** Select **Add Topbar** button and choose Ask AI from the options. 
+<Frame>
+  ![Notion image](/actions/images/ask-ai/image2.png)
+</Frame>
 
-**Step 4:** Publish your app. The chat interface will now be available to your users (depending on block permissions)
-<Frame>![Notion image](/actions/images/ask-ai/image4.png)</Frame><Frame>![Notion image](/actions/images/ask-ai/image5.png)</Frame>
+
+**Step 3:** From here, you can adjust the label and icon, and use the dropdown to customize messages, instructions, response style, suggested prompts, and appearance. 
+<Frame>
+  ![Notion image](/actions/images/ask-ai/image3.png)
+</Frame>
+
+
+**Step 4:** Publish your app. The chat interface will now be available to your users (depending on block permissions) 
+<Frame>
+  ![Notion image](/actions/images/ask-ai/image4.png)
+</Frame>
+
+<Frame>
+  ![Notion image](/actions/images/ask-ai/image5.png)
+</Frame>
+
 
 ## Security & Permissions
 
-Ask AI only analyzes the data a user is allowed to see at the block level, always respecting your app’s permissions and visibility settings.
+Ask AI only analyzes the data a user is allowed to see at the block level, always respecting your app's permissions and visibility settings.
 
-You can decide who sees the Ask AI button—like showing it to managers but hiding it from clients. And when users ask questions, Ask AI only analyzes the data they’re allowed to see, including filtered views (like “tasks assigned to me”).
+You can decide who sees the Ask AI button—like showing it to managers but hiding it from clients. And when users ask questions, Ask AI only analyzes the data they're allowed to see, including filtered views (like "tasks assigned to me").
 
 ## Requirements & Limitations
 
 ✅ **Supported**
 
-* Dynamic blocks (e.g. Tables, Lists) connected to any of Softr's supported data sources (except REST API).
+- Dynamic blocks (e.g. Tables, Lists) connected to any of Softr's supported data sources (except REST API).
 
 ❌ **Not Supported**
 
-* Static blocks or blocks connected to REST API data sources
-
-* Ask AI is currently only available at the block level to ensure secure, permissioned responses.
-
-* App-wide Ask AI implementation is coming soon!
+- Static blocks or blocks connected to REST API data sources
+- Ask AI is currently only available at the block level to ensure secure, permissioned responses.
+- App-wide Ask AI implementation is coming soon!
 
 ### AI Credits
 
 Ask AI is currently available on all plans, including free. In future, there will be an AI credit system for this feature and each query will consume a certain number of AI credits. Each query counts toward your credit usage.
 
 ## FAQ
-<AccordionGroup>
-    <Accordion title="Can I use Ask AI on the free plan?">
-        Yes. Every Softr plan (including Free) comes with a set amount of monthly AI credits to use toward Ask AI and other AI features. If you run out of AI credits in a given month, your Ask AI will pause until your credits reset with your plan or you purchase a credit add-on. [Learn more about AI credits](/workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/ai-credits/5VRMhf7Q6xvy7AJqyiQLx5).
-    </Accordion>
 
+<AccordionGroup>
+  <Accordion title="Can I use Ask AI on the free plan?">
+    Yes. Every Softr plan (including Free) comes with a set amount of monthly AI credits to use toward Ask AI and other AI features. If you run out of AI credits in a given month, your Ask AI will pause until your credits reset with your plan or you purchase a credit add-on. [Learn more about AI credits](/workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/ai-credits/5VRMhf7Q6xvy7AJqyiQLx5).
+  </Accordion>
 </AccordionGroup>
