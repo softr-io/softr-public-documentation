@@ -82,10 +82,10 @@
             "group": "Softr Workflows",
             "icon": "random",
             "pages": [
-              "softr-workflows/softr",
               "workflows/workflows"
             ]
           },
+          "softr-workflows/softr",
           {
             "group": "Data Sources",
             "icon": "hard-drive",
