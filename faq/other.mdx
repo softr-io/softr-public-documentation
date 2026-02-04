@@ -331,4 +331,23 @@ Yes, you can build a user-facing CSV importer using the Vibe-coding block. Simpl
   <Accordion title="How can I prevent the automatically created onboarding page from being indexed or appearing in search results?">
     If you don’t need the onboarding page, delete the Onboarding flow page from your pages. You can create another onboarding flow later via a block if needed.
   </Accordion>
+  <Accordion title="What is DSV2 and what data sources have been upgraded?">
+    DSV2 is Softr's enhanced way of connecting to external data sources, which significantly increases the performance of Softr apps.
+
+    All 17 available data sources have now been upgraded (Airtable, Notion, Hubspot, Coda, Clickup, and others) except for the REST API. This means that all of Softr's new features are now compatible with these data sources, including:
+
+    *   **Ask AI**
+    *   **Comments**
+    *   **Kanban and Map blocks**
+    *   **Calendar conditional coloring**
+    *   **Inline editing in tables**
+    *   **Workflows UI actions**
+    *   **Dynamic app logos**
+    *   **Chart custom coloring and number formatting**
+    *   **Multi-sorting**
+
+    Additionally, speed is improved across the board, including instant user group changes and faster data loading.
+
+    **Note:** For blocks that were connected to Airtable with a specific Airtable View synchronized, the block won't be compatible with DSV2. The recommended approach is to replicate the Airtable view's settings (filters & sorting) directly in the Softr block configuration. Once disconnected from the Airtable view, the block will automatically use DSV2.
+  </Accordion>
 </AccordionGroup>
