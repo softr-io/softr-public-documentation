@@ -75,7 +75,8 @@
               "softr-databases/formula-glossary",
               "softr-databases/related-record-lookup-and-rollup-fields",
               "softr-databases/ai-agents",
-              "softr-databases/database-migration-tips"
+              "softr-databases/database-migration-tips",
+              "softr-databases/datetime-formatting"
             ]
           },
           {
