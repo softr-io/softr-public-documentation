@@ -190,17 +190,45 @@ If Status is originally "pending", the result is "PENDING".
 
 ---
 
-**`TEXT(value, format)`**
+`CAPITALIZE(string)`
 
-Converts a value to text with a specified format.
+Converts the first character of a string to uppercase and the remaining characters to lowercase.
 
-**Example:**
+Example:
 
 ```plain
-TEXT({Price}, "$#,##0.00")
+CAPITALIZE({Status})
 ```
 
-If Price is 1234.5, the result is "$1,234.50".
+If Status is "in progress", the result is "In progress".
+
+---
+
+`PROPER(string)`
+
+Capitalizes the first letter of each word in a text string and converts all other letters to lowercase.
+
+Example:
+
+```plain
+PROPER({Full Name})
+```
+
+If Full Name is "jane doe", the result is "Jane Doe".
+
+---
+
+`DOMAIN(url)`
+
+Extracts the domain name from a URL.
+
+Example:
+
+```plain
+DOMAIN({Website})
+```
+
+If Website is "https://www.example.com/page", the result is "example.com".
 
 ---
 
@@ -243,20 +271,6 @@ T({Price})
 ```
 
 If Price is 100, the result is "100". If Price is a date, the result is "".
-
----
-
-`VALUE(text)`
-
-Converts a text string representing a number to a numeric value.
-
-Example:
-
-```plain
-VALUE({Text Price})
-```
-
-If Text Price is "500.75", the result is 500.75.
 
 ---
 
@@ -332,6 +346,20 @@ If Completed is checked (TRUE), the result is FALSE.
 
 ---
 
+**`XOR(logical1, logical2, ...)`**
+
+Returns TRUE if an odd number of arguments are true, FALSE otherwise.
+
+**Example:**
+
+```plain
+XOR({Option A}, {Option B})
+```
+
+If Option A is TRUE and Option B is FALSE, the result is TRUE. If both are TRUE, the result is FALSE.
+
+---
+
 **`SWITCH(expression, value1, result1, [value2, result2, ...], default)`**
 
 Evaluates an expression and returns a result based on matching values.
@@ -390,9 +418,9 @@ If Total Cost is 123.456, the result is 123.46.
 
 ---
 
-**`CEILING(number)`**
+**`CEILING(number, [significance])`**
 
-Rounds a number up to the nearest integer.
+Rounds a number up to the nearest integer, or to the nearest multiple of significance if specified.
 
 **Example:**
 
@@ -402,11 +430,17 @@ CEILING({Quantity})
 
 If Quantity is 5.2, the result is 6.
 
+```plain
+CEILING({Price}, 10)
+```
+
+If Price is 23, the result is 30.
+
 ---
 
-**`FLOOR(number)`**
+**`FLOOR(number, [significance])`**
 
-Rounds a number down to the nearest integer.
+Rounds a number down to the nearest integer, or to the nearest multiple of significance if specified.
 
 **Example:**
 
@@ -415,6 +449,12 @@ FLOOR({Score})
 ```
 
 If Score is 7.8, the result is 7.
+
+```plain
+FLOOR({Price}, 10)
+```
+
+If Price is 27, the result is 20.
 
 ---
 
@@ -488,17 +528,17 @@ If Revenue Q1 is 1000 and Revenue Q2 is 1200, the result is 1200.
 
 ---
 
-`INT(number)`
+`COUNT(array)`
 
-Returns the largest integer less than or equal to the input number (equivalent to FLOOR).
+Counts the number of non-null items in an array.
 
 Example:
 
 ```plain
-INT({Score})
+COUNT({Tasks Lookup})
 ```
 
-If Score is 7.8, the result is 7.
+If Tasks Lookup contains ["Task1", "", "Task2", "Task3"], the result is 3.
 
 ---
 
@@ -541,6 +581,20 @@ SQRT({Area})
 ```
 
 If Area is 16, the result is 4.
+
+---
+
+`RANDBETWEEN(low, high)`
+
+Returns a random integer between the specified low and high values (inclusive).
+
+Example:
+
+```plain
+RANDBETWEEN(1, 100)
+```
+
+The result is a random number between 1 and 100, such as 42.
 
 ### **Date and Time Functions**
 
@@ -630,20 +684,6 @@ If Start Date is 2025-06-01, the result is 2025-06-08.
 
 ---
 
-**`DATESUB(date, number, unit)`**
-
-Subtracts a specified number of units from a date.
-
-**Example:**
-
-```plain
-DATESUB({End Date}, 1, "month")
-```
-
-If End Date is 2025-07-31, the result is 2025-06-30.
-
----
-
 **`DATETIME_DIFF(date1, date2, unit)`**
 
 Calculates the difference between two dates in the specified unit (e.g., days, hours).
@@ -674,7 +714,7 @@ If the record was created on May 29, 2025, the result is "05/29/2025".
 
 `IS_SAME(date1, date2, [unit])`
 
-Returns TRUE if two dates are identical, optionally comparing at a specified unit (e.g., "day", "month").
+Returns 1 if two dates are identical, or 0 otherwise. Optionally compares at a specified unit (e.g., "day", "month").
 
 Example:
 
@@ -682,13 +722,13 @@ Example:
 IS_SAME({Start Date}, {End Date}, "day")
 ```
 
-If Start Date and End Date are both 2025-06-01, the result is TRUE.
+If Start Date and End Date are both 2025-06-01, the result is 1.
 
 ---
 
 `IS_AFTER(date1, date2)`
 
-Returns TRUE if date1 is after date2.
+Returns 1 if date1 is after date2, or 0 otherwise.
 
 Example:
 
@@ -696,13 +736,13 @@ Example:
 IS_AFTER({Due Date}, TODAY())
 ```
 
-If Due Date is 2025-06-10 and today is May 29, 2025, the result is TRUE.
+If Due Date is 2025-06-10 and today is May 29, 2025, the result is 1.
 
 ---
 
 `IS_BEFORE(date1, date2)`
 
-Returns TRUE if date1 is before date2.
+Returns 1 if date1 is before date2, or 0 otherwise.
 
 Example:
 
@@ -710,7 +750,7 @@ Example:
 IS_BEFORE({Start Date}, TODAY())
 ```
 
-If Start Date is 2025-05-01 and today is May 29, 2025, the result is TRUE.
+If Start Date is 2025-05-01 and today is May 29, 2025, the result is 1.
 
 ---
 
@@ -728,9 +768,9 @@ If the record was last modified on May 28, 2025, the result is "05/28/2025".
 
 ---
 
-`WORKDAY(start_date, num_days, [holidays])`
+`WORKDAY(start_date, num_days)`
 
-Returns a date that is a specified number of working days from the start date, excluding weekends and optional holidays.
+Returns a date that is a specified number of working days from the start date, excluding weekends.
 
 Example:
 
@@ -742,9 +782,9 @@ If Start Date is 2025-06-02 (Monday), the result is 2025-06-09 (Monday, 5 workda
 
 ---
 
-`WORKDAY_DIFF(start_date, end_date, [holidays])`
+`WORKDAY_DIFF(start_date, end_date)`
 
-Returns the number of working days between two dates, excluding weekends and optional holidays.
+Returns the number of working days between two dates, excluding weekends.
 
 Example:
 
@@ -754,11 +794,213 @@ WORKDAY_DIFF({Start Date}, {End Date})
 
 If Start Date is 2025-06-02 and End Date is 2025-06-09, the result is 5 workdays.
 
+---
+
+`WEEKDAY(date, [startDayOfWeek])`
+
+Returns the day of the week as a number. By default, the week starts on Sunday (0 = Sunday, 1 = Monday, ..., 6 = Saturday). Pass "monday" as the second argument to start the week on Monday instead.
+
+Example:
+
+```plain
+WEEKDAY({Due Date})
+```
+
+If Due Date is 2025-06-02 (a Monday), the result is 1.
+
+```plain
+WEEKDAY({Due Date}, "monday")
+```
+
+If Due Date is 2025-06-02 (a Monday), the result is 0.
+
+---
+
+`WEEKNUM(date, [startDayOfWeek])`
+
+Returns the week number of the year for a given date. By default, the week starts on Sunday. Pass "monday" as the second argument to start the week on Monday instead.
+
+Example:
+
+```plain
+WEEKNUM({Due Date})
+```
+
+If Due Date is 2025-06-02, the result is 23.
+
+---
+
+`DATESTR(date)`
+
+Converts a date to a string in "YYYY-MM-DD" format.
+
+Example:
+
+```plain
+DATESTR({Start Date})
+```
+
+If Start Date is June 1, 2025, the result is "2025-06-01".
+
+---
+
+`DATE(value)`
+
+Converts a value to a date type.
+
+Example:
+
+```plain
+DATE("2025-06-15")
+```
+
+The result is a date value of 2025-06-15.
+
+---
+
+`DATETIME(value)`
+
+Converts a value to a datetime type.
+
+Example:
+
+```plain
+DATETIME("2025-06-15 14:30:00")
+```
+
+The result is a datetime value of 2025-06-15 14:30:00.
+
+---
+
+`EDATE(date, [months])`
+
+Returns the date that is the specified number of months before or after the start date, keeping the same day. If the day doesn't exist in the target month, it rolls to the last day of the target month. If months is omitted, defaults to 0.
+
+Example:
+
+```plain
+EDATE({Start Date}, 3)
+```
+
+If Start Date is 2025-01-31, the result is 2025-04-30 (April has no 31st, so it rolls to the last day).
+
+---
+
+`EOMONTH(date, [months])`
+
+Returns the last day of the month that is the specified number of months before or after the start date. If months is omitted, defaults to 0 (returns last day of the current month).
+
+Example:
+
+```plain
+EOMONTH({Start Date}, 1)
+```
+
+If Start Date is 2025-06-15, the result is 2025-07-31 (last day of the following month).
+
+---
+
+`DAY(date)`
+
+Returns the day of the month from a date.
+
+Example:
+
+```plain
+DAY({Due Date})
+```
+
+If Due Date is 2025-06-15, the result is 15.
+
+---
+
+`MONTH(date)`
+
+Returns the month from a date (1–12).
+
+Example:
+
+```plain
+MONTH({Due Date})
+```
+
+If Due Date is 2025-06-15, the result is 6.
+
+---
+
+`YEAR(date)`
+
+Returns the year from a date.
+
+Example:
+
+```plain
+YEAR({Due Date})
+```
+
+If Due Date is 2025-06-15, the result is 2025.
+
+---
+
+`HOUR(date)`
+
+Returns the hour from a datetime value (0–23).
+
+Example:
+
+```plain
+HOUR({Created Time})
+```
+
+If Created Time is 2025-06-15 14:30:00, the result is 14.
+
+---
+
+`MINUTE(date)`
+
+Returns the minute from a datetime value (0–59).
+
+Example:
+
+```plain
+MINUTE({Created Time})
+```
+
+If Created Time is 2025-06-15 14:30:00, the result is 30.
+
+---
+
+`SECOND(date)`
+
+Returns the second from a datetime value (0–59).
+
+Example:
+
+```plain
+SECOND({Created Time})
+```
+
+If Created Time is 2025-06-15 14:30:45, the result is 45.
+
+---
+
+`DAYS_IN_MONTH([date])`
+
+Returns the number of days in the month of the given date. If no date is provided, uses the current date.
+
+Example:
+
+```plain
+DAYS_IN_MONTH({Due Date})
+```
+
+If Due Date is 2025-02-15, the result is 28.
+
 ### Array Functions
 
 `ARRAYCOMPACT(values)`
 
-Removes empty or null values from an array (e.g., from a lookup field).
+Removes empty or null values from a list and returns the result as a comma-separated string.
 
 Example:
 
@@ -766,21 +1008,7 @@ Example:
 ARRAYCOMPACT({Tasks Lookup})
 ```
 
-If Tasks Lookup contains ["Task1", "", "Task2"], the result is ["Task1", "Task2"].
-
----
-
-`ARRAYFLATTEN(values)`
-
-Flattens nested arrays into a single array.
-
-Example:
-
-```plain
-ARRAYFLATTEN({Nested Lookup})
-```
-
-If Nested Lookup contains [["A", "B"], ["C"]], the result is ["A", "B", "C"].
+If Tasks Lookup contains ["Task1", "", "Task2"], the result is "Task1, Task2".
 
 ---
 
@@ -800,7 +1028,7 @@ If Tags Lookup contains ["Red", "Blue"], the result is "Red, Blue".
 
 `ARRAYUNIQUE(values)`
 
-Returns an array with duplicate values removed.
+Removes duplicate values from a list and returns the result as a comma-separated string.
 
 Example:
 
@@ -808,7 +1036,21 @@ Example:
 ARRAYUNIQUE({Categories Lookup})
 ```
 
-If Categories Lookup contains ["A", "B", "A"], the result is ["A", "B"].
+If Categories Lookup contains ["A", "B", "A"], the result is "A, B".
+
+---
+
+`ARRAYSLICE(array, start, [end])`
+
+Extracts a portion of an array from the start index to the optional end index (exclusive). Indexes are 1-based.
+
+Example:
+
+```plain
+ARRAYSLICE({Tags Lookup}, 2, 4)
+```
+
+If Tags Lookup contains ["A", "B", "C", "D"], the result is "B, C".
 
 ---
 
@@ -888,7 +1130,7 @@ If Price divided by 0 causes an error, the result is TRUE.
 
 **`BLANK()`**
 
-Represents an empty or null value.
+Returns an empty string.
 
 **Example:**
 
@@ -896,7 +1138,63 @@ Represents an empty or null value.
 IF({Name} = "", BLANK(), {Name})
 ```
 
-If Name is empty, the result is null; otherwise, it returns the value of Name.
+If Name is empty, the result is an empty string; otherwise, it returns the value of Name.
+
+---
+
+**`ERROR()`**
+
+Returns an error value.
+
+**Example:**
+
+```plain
+IF({Quantity} < 0, ERROR(), {Quantity} * {Price})
+```
+
+If Quantity is -1, the result is an error.
+
+---
+
+**`IFERROR(expression, fallback)`**
+
+Returns the value of the expression if it is not an error; otherwise, returns the fallback value.
+
+**Example:**
+
+```plain
+IFERROR({Total} / {Count}, 0)
+```
+
+If Count is 0 and the division causes an error, the result is 0.
+
+---
+
+**`TRUE()`**
+
+Returns the number 1 (true).
+
+**Example:**
+
+```plain
+IF(TRUE(), "Always", "Never")
+```
+
+The result is "Always".
+
+---
+
+**`FALSE()`**
+
+Returns the number 0 (false).
+
+**Example:**
+
+```plain
+IF(FALSE(), "Always", "Never")
+```
+
+The result is "Never".
 
 ---
 
