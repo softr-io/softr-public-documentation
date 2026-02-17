@@ -3,3 +3,199 @@ title: 'Add Table Field'
 sidebarTitle: 'Add Table Field'
 openapi: '/openapi.yaml POST /databases/{databaseId}/tables/{tableId}/fields'
 ---
+
+## Field Types Reference
+
+### Editable Fields
+
+| Type | Value Format | Description |
+|---|---|---|
+| `SINGLE_LINE_TEXT` | `string` | Short text |
+| `LONG_TEXT` | `string` | Multi-line text |
+| `EMAIL` | `string` | Email address |
+| `PHONE` | `string` | Phone number |
+| `URL` | `string` | Web URL |
+| `ADDRESS` | `string` | Full address |
+| `NUMBER` | `number` | Numeric value |
+| `CURRENCY` | `number` | Monetary amount |
+| `PERCENT` | `number` | Percentage (0–100) |
+| `RATING` | `number` | Star rating |
+| `DURATION` | `number` | Duration |
+| `CHECKBOX` | `boolean` | True/false |
+| `SELECT` | `string` or `array` | Single or multi-select from predefined choices |
+| `USER` | `object` or `array` | User reference |
+| `LINKED_RECORD` | `string` or `array` | Link to record(s) in another table |
+| `ATTACHMENT` | `object` or `array` | File attachment |
+| `LOCATION` | `object` | `{ lat, lon }` coordinates |
+| `DATE` | `string` | Date (ISO 8601) |
+| `DATETIME` | `string` | Date and time (ISO 8601) |
+| `TIME` | `string` | Time |
+| `DATE_RANGE` | `object` | Start and end dates |
+| `BUTTON` | `object` | Action button |
+| `PROGRESS` | `number` | Progress bar value |
+
+### Read-Only Fields
+
+These are computed or system-managed and cannot be set when creating or updating records.
+
+| Type | Description |
+|---|---|
+| `LOOKUP` | Value from a linked record's field |
+| `ROLLUP` | Aggregation over linked records |
+| `FORMULA` | Calculated from a formula expression |
+| `COUNT` | Count of linked records |
+| `CREATED_AT` | Record creation timestamp |
+| `UPDATED_AT` | Record last modified timestamp |
+| `CREATED_BY` | User who created the record |
+| `UPDATED_BY` | User who last modified the record |
+| `AUTONUMBER` | Auto-incrementing number |
+| `RECORD_ID` | System record identifier |
+
+## Field Options
+
+Type-specific configuration passed in the `options` object when creating or updating fields.
+
+### SELECT
+
+```json
+{
+  "choices": [
+    { "id": "choice-1", "label": "Option A", "color": "#FF0000" },
+    { "id": "choice-2", "label": "Option B", "color": "#00FF00" }
+  ],
+  "allowToAddNewChoice": true,
+  "sorting": "CUSTOM",
+  "enforceOrder": false
+}
+```
+
+`sorting` can be `CUSTOM`, `ALPHA_ASC`, or `ALPHA_DESC`.
+
+### NUMBER
+
+```json
+{
+  "precision": 2,
+  "min": 0,
+  "max": 1000000,
+  "showThousandSeparator": true,
+  "thousandSeparatorLocale": "en-US",
+  "largeNumberAbbreviation": "NONE",
+  "prefix": null,
+  "suffix": null
+}
+```
+
+`largeNumberAbbreviation` can be `NONE`, `K`, `M`, `B`, or `T`.
+
+### CURRENCY
+
+```json
+{
+  "precision": 2,
+  "min": null,
+  "max": null,
+  "isoCode": "USD",
+  "customSymbol": null,
+  "showAs": "SYMBOL",
+  "showThousandSeparator": true,
+  "thousandSeparatorLocale": "en-US",
+  "largeNumberAbbreviation": "NONE",
+  "symbolOrCodePosition": "BEFORE"
+}
+```
+
+- `showAs`: `SYMBOL` or `CODE`
+- `symbolOrCodePosition`: `BEFORE` or `AFTER`
+
+### LINKED_RECORD
+
+```json
+{
+  "linkedTableId": "table-uuid",
+  "inverseLinkFieldId": "field-uuid",
+  "viewId": null,
+  "sorting": [],
+  "filter": null,
+  "enforceOrder": false
+}
+```
+
+### LOOKUP
+
+```json
+{
+  "linkedRecordFieldId": "field-uuid",
+  "lookupFieldId": "field-uuid",
+  "isValid": true
+}
+```
+
+### ROLLUP
+
+```json
+{
+  "linkedRecordFieldId": "field-uuid",
+  "rollupFieldId": "field-uuid",
+  "function": "SUM",
+  "filter": null
+}
+```
+
+Available functions: `SUM`, `MIN`, `MAX`, `COUNT`, `AVERAGE`, `ARRAYCOMPACT`, `ARRAYJOIN`, `ARRAYUNIQUE`, `ARRAYFLATTEN`, `CONCATENATE`, `COUNTALL`, `COUNTA`, `OR`, `AND`.
+
+### ATTACHMENT
+
+```json
+{
+  "showAs": "PREVIEW",
+  "inferredFileType": "OTHER",
+  "enableFileLinkExpiration": true,
+  "fileLinkExpirationValue": 2,
+  "fileLinkExpirationUnit": "HOURS"
+}
+```
+
+- `showAs`: `PREVIEW`, `LIST`, or `BADGE`
+- `inferredFileType`: `IMAGE`, `VIDEO`, `PDF`, `AUDIO`, or `OTHER`
+- `fileLinkExpirationUnit`: `HOURS` or `MINUTES`
+
+### FORMULA
+
+```json
+{
+  "formula": "IF({Status} = 'Active', {Amount} * 1.1, {Amount})",
+  "isValid": true,
+  "referencedFieldIds": ["field-uuid-1", "field-uuid-2"]
+}
+```
+
+## AI Options
+
+Fields can include an `aiOptions` object that configures AI-powered auto-fill behavior. This is returned in field definitions and can be set when creating or updating fields.
+
+```json
+{
+  "aiFillable": true,
+  "aiOnly": false,
+  "allowWebSearch": true,
+  "aiModel": "GPT_4_1",
+  "prompt": "Summarize the customer's request based on {Description}",
+  "canBeTriggeredManually": true,
+  "runWhenRecordIsCreated": true,
+  "runWhenRecordIsUpdated": false
+}
+```
+
+| Property | Type | Default | Description |
+|---|---|---|---|
+| `aiFillable` | boolean | `false` | Whether AI can fill this field |
+| `aiOnly` | boolean | `true` | If `true`, only AI can write to this field |
+| `allowWebSearch` | boolean | `false` | Allow AI to use web search when filling |
+| `aiModel` | string | `"GPT_4_1"` | AI model to use |
+| `prompt` | string | `""` | Prompt template (reference other fields with `{FieldName}`) |
+| `canBeTriggeredManually` | boolean | `true` | Whether users can trigger AI fill manually |
+| `runWhenRecordIsCreated` | boolean | `true` | Auto-run when record is created |
+| `runWhenRecordIsUpdated` | boolean | `true` | Auto-run when record is updated |
+
+Fields without AI configuration return `"aiOptions": null`.

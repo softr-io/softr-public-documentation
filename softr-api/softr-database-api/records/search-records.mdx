@@ -3,3 +3,149 @@ title: 'Search Records'
 sidebarTitle: 'Search Records'
 openapi: '/openapi.yaml POST /databases/{databaseId}/tables/{tableId}/records/search'
 ---
+
+## Filtering Guide
+
+The Search Records endpoint lets you filter, sort, and paginate records using a JSON request body. All three top-level fields (`filter`, `sorting`, `paging`) are optional.
+
+```json
+{
+  "paging": {
+    "offset": 0,
+    "limit": 50
+  },
+  "sorting": [
+    { "sortingField": "field-uuid", "sortType": "ASC" }
+  ],
+  "filter": {
+    "condition": { ... }
+  }
+}
+```
+
+### Filter Condition Types
+
+Filters are passed in `filter.condition`. There are four types, determined by the operator.
+
+#### Binary Conditions
+
+Compare a field to a value:
+
+```json
+{
+  "operator": "CONTAINS",
+  "leftSide": "field-uuid",
+  "rightSide": "search term"
+}
+```
+
+| Operator | Description | Right Side |
+|---|---|---|
+| `IS` | Equals | single value |
+| `IS_NOT` | Not equals | single value |
+| `GREATER_THAN` | Greater than | number or date |
+| `GREATER_THAN_OR_EQUALS` | Greater than or equal | number or date |
+| `LESS_THAN` | Less than | number or date |
+| `LESS_THAN_OR_EQUALS` | Less than or equal | number or date |
+| `CONTAINS` | String contains | string |
+| `DOES_NOT_CONTAIN` | String does not contain | string |
+| `STARTS_WITH` | String starts with | string |
+| `DOES_NOT_START_WITH` | String does not start with | string |
+| `ENDS_WITH` | String ends with | string |
+| `DOES_NOT_END_WITH` | String does not end with | string |
+| `IS_ONE_OF` | Value is one of | array |
+| `IS_NOT_ONE_OF` | Value is none of | array |
+| `HAS_ANY_OF` | Multi-value field has any of | array |
+| `HAS_ALL_OF` | Multi-value field has all of | array |
+| `HAS_NONE_OF` | Multi-value field has none of | array |
+
+#### Unary Conditions
+
+Check whether a field is empty — no `rightSide` needed:
+
+```json
+{
+  "operator": "IS_EMPTY",
+  "leftSide": "field-uuid"
+}
+```
+
+| Operator | Description |
+|---|---|
+| `IS_EMPTY` | Field has no value |
+| `IS_NOT_EMPTY` | Field has a value |
+
+#### Ternary Conditions
+
+Range-based checks with `lowerBound` and `upperBound`:
+
+```json
+{
+  "operator": "IS_BETWEEN",
+  "leftSide": "field-uuid",
+  "lowerBound": 10,
+  "upperBound": 100
+}
+```
+
+| Operator | Description |
+|---|---|
+| `IS_BETWEEN` | Value is between bounds (inclusive) |
+| `IS_NOT_BETWEEN` | Value is outside bounds |
+| `IS_WITHIN` | Date is within a relative range |
+| `IS_NOT_WITHIN` | Date is outside a relative range |
+
+#### Composite Conditions
+
+Combine multiple conditions with `AND` or `OR`:
+
+```json
+{
+  "operator": "AND",
+  "conditions": [
+    { "operator": "CONTAINS", "leftSide": "name-field", "rightSide": "acme" },
+    { "operator": "GREATER_THAN", "leftSide": "amount-field", "rightSide": 1000 },
+    {
+      "operator": "OR",
+      "conditions": [
+        { "operator": "IS", "leftSide": "status-field", "rightSide": "active" },
+        { "operator": "IS_EMPTY", "leftSide": "archived-field" }
+      ]
+    }
+  ]
+}
+```
+
+### Relative Date Values
+
+For date fields, you can use relative date strings instead of fixed ISO 8601 dates:
+
+| Format | Examples |
+|---|---|
+| `PREDEFINED:<token>` | `PREDEFINED:TODAY`, `PREDEFINED:YESTERDAY`, `PREDEFINED:TOMORROW`, `PREDEFINED:THIS_WEEK`, `PREDEFINED:LAST_WEEK`, `PREDEFINED:THIS_MONTH`, `PREDEFINED:THIS_YEAR`, `PREDEFINED:NEXT_MONTH`, `PREDEFINED:PAST_MONTH`, `PREDEFINED:7_DAYS_AGO`, `PREDEFINED:30_DAYS_FROM_NOW` |
+| `RELATIVE_DATE:<period>:<unit>` | `RELATIVE_DATE:THIS:WEEK`, `RELATIVE_DATE:PAST:MONTH`, `RELATIVE_DATE:NEXT:QUARTER`, `RELATIVE_DATE:PAST:7` (7 days ago) |
+| ISO 8601 | `"2025-05-21"`, `"2025-05-21T20:00:00.000Z"` |
+
+### Complete Example
+
+Find active contacts named "acme" with an amount over 1000, created this month:
+
+```json
+{
+  "paging": { "offset": 0, "limit": 50 },
+  "sorting": [
+    { "sortingField": "amount-field-uuid", "sortType": "DESC" }
+  ],
+  "filter": {
+    "condition": {
+      "operator": "AND",
+      "conditions": [
+        { "operator": "CONTAINS", "leftSide": "name-field-uuid", "rightSide": "acme" },
+        { "operator": "GREATER_THAN", "leftSide": "amount-field-uuid", "rightSide": 1000 },
+        { "operator": "IS", "leftSide": "status-field-uuid", "rightSide": "active" },
+        { "operator": "IS_WITHIN", "leftSide": "created-at-field-uuid", "lowerBound": "RELATIVE_DATE:THIS:MONTH", "upperBound": "PREDEFINED:TODAY" }
+      ]
+    }
+  }
+}
+```
