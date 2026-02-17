@@ -15,7 +15,6 @@ openapi: '/openapi.yaml POST /databases/{databaseId}/tables/{tableId}/fields'
 | `EMAIL` | `string` | Email address |
 | `PHONE` | `string` | Phone number |
 | `URL` | `string` | Web URL |
-| `ADDRESS` | `string` | Full address |
 | `NUMBER` | `number` | Numeric value |
 | `CURRENCY` | `number` | Monetary amount |
 | `PERCENT` | `number` | Percentage (0–100) |
@@ -26,13 +25,8 @@ openapi: '/openapi.yaml POST /databases/{databaseId}/tables/{tableId}/fields'
 | `USER` | `object` or `array` | User reference |
 | `LINKED_RECORD` | `string` or `array` | Link to record(s) in another table |
 | `ATTACHMENT` | `object` or `array` | File attachment |
-| `LOCATION` | `object` | `{ lat, lon }` coordinates |
 | `DATE` | `string` | Date (ISO 8601) |
 | `DATETIME` | `string` | Date and time (ISO 8601) |
-| `TIME` | `string` | Time |
-| `DATE_RANGE` | `object` | Start and end dates |
-| `BUTTON` | `object` | Action button |
-| `PROGRESS` | `number` | Progress bar value |
 
 ### Read-Only Fields
 
@@ -43,7 +37,6 @@ These are computed or system-managed and cannot be set when creating or updating
 | `LOOKUP` | Value from a linked record's field |
 | `ROLLUP` | Aggregation over linked records |
 | `FORMULA` | Calculated from a formula expression |
-| `COUNT` | Count of linked records |
 | `CREATED_AT` | Record creation timestamp |
 | `UPDATED_AT` | Record last modified timestamp |
 | `CREATED_BY` | User who created the record |

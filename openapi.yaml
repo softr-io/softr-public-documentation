@@ -80,7 +80,7 @@ components:
         type:
           type: string
           description: "The type of the field."
-          enum: [SINGLE_LINE_TEXT, CHECKBOX, CURRENCY, DATE, DATETIME, DURATION, EMAIL, SELECT, NUMBER, ATTACHMENT, RATING, LINKED_RECORD, LONG_TEXT, URL, PERCENT, BUTTON, PROGRESS, PHONE, DATE_RANGE, ADDRESS, TIME, LOCATION, LOOKUP, ROLLUP, FORMULA, COUNT, CREATED_AT, UPDATED_AT, CREATED_BY, UPDATED_BY, AUTONUMBER, RECORD_ID, USER]
+          enum: [SINGLE_LINE_TEXT, CHECKBOX, CURRENCY, DATE, DATETIME, DURATION, EMAIL, SELECT, NUMBER, ATTACHMENT, RATING, LINKED_RECORD, LONG_TEXT, URL, PERCENT, PHONE, LOOKUP, ROLLUP, FORMULA, CREATED_AT, UPDATED_AT, CREATED_BY, UPDATED_BY, AUTONUMBER, RECORD_ID, USER]
         options:
           type: object
           description: "Configuration options for the field, specific to its type. See the official documentation for the structure of each type."
