@@ -1,0 +1,77 @@
+---
+title: 'Quickstart'
+sidebarTitle: 'Quickstart'
+description: 'Make your first Softr Database API request in minutes.'
+---
+
+This guide walks you through authenticating with the Softr Database API and making your first requests to create and retrieve records.
+
+## 1. Get your API key
+
+Go to **Softr Studio → Settings → API** and copy your Public API Token. You'll include it in every request as a header.
+
+<Tip>
+  Keep your API key secret — it inherits the full access rights of your account.
+</Tip>
+
+## 2. Find your database and table IDs
+
+Before writing to records, you need the IDs of the database and table you want to work with.
+
+```bash
+curl -X GET 'https://tables-api.softr.io/api/v1/databases' \
+  -H 'Softr-Api-Key: YOUR_API_KEY'
+```
+
+The response lists your databases with their `id` fields. Pick one and fetch its tables:
+
+```bash
+curl -X GET 'https://tables-api.softr.io/api/v1/databases/YOUR_DATABASE_ID/tables' \
+  -H 'Softr-Api-Key: YOUR_API_KEY'
+```
+
+Note the `id` of the table you want to use.
+
+## 3. Create a record
+
+With your database ID and table ID, you can now create a record. Send a `POST` request with the field values as a JSON object:
+
+```bash
+curl -X POST 'https://tables-api.softr.io/api/v1/databases/YOUR_DATABASE_ID/tables/YOUR_TABLE_ID/records' \
+  -H 'Softr-Api-Key: YOUR_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "fields": {
+      "Name": "Acme Corp",
+      "Status": "Active"
+    }
+  }'
+```
+
+A successful response returns the newly created record including its `id`.
+
+## 4. Retrieve records
+
+Fetch all records from the table:
+
+```bash
+curl -X GET 'https://tables-api.softr.io/api/v1/databases/YOUR_DATABASE_ID/tables/YOUR_TABLE_ID/records' \
+  -H 'Softr-Api-Key: YOUR_API_KEY'
+```
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Authorisation" href="/softr-api/softr-database-api/authorisation/index">
+    Learn more about authentication and API key management.
+  </Card>
+  <Card title="Rate Limiting" href="/softr-api/softr-database-api/rate-limiting/index">
+    Understand the rate limits that apply to your plan.
+  </Card>
+  <Card title="Records" href="/softr-api/softr-database-api/records/get-records">
+    Full reference for reading, searching, and managing records.
+  </Card>
+  <Card title="Tables" href="/softr-api/softr-database-api/tables/get-tables">
+    Manage tables programmatically with the Tables API.
+  </Card>
+</CardGroup>
