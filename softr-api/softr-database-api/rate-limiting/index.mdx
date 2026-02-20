@@ -3,10 +3,11 @@ title: 'Rate Limiting'
 sidebarTitle: 'Rate Limiting'
 ---
 
-All calls are subject to rate limiting.
+All API calls are subject to rate limiting, enforced per token.
 
-Current rate-limit for paid plans is **20 calls per second per single Public API Token or Workspace**.
+| Operation Type | Limit |
+|---|---|
+| **Reads** (`GET`, `POST /search`) | 40 requests/second |
+| **Writes** (`POST`, `PUT`, `PATCH`, `DELETE`) | 30 requests/second |
 
-Free plans are limited to **10 calls per second per single Public API Token or Workspace**
-
-On exceeding the limit you will receive 429 HTTP Response Status Code.
+When the limit is exceeded, the API returns a `429 Too Many Requests` HTTP status code. Back off and retry after a short delay.

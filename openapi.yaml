@@ -6,8 +6,8 @@ info:
     
     **Rate Limiting:**
     All calls are subject to rate limiting. On exceeding the limit, you will receive a 429 HTTP Response Status Code.
-    - **Paid plans:** 20 calls per second per single Public API Token or Workspace.
-    - **Free plans:** 10 calls per second per single Public API Token or Workspace.
+    - **Reads** (GET, POST /search): 40 requests/second per token.
+    - **Writes** (POST, PUT, PATCH, DELETE): 30 requests/second per token.
   version: "1.0.0"
 servers:
   - url: https://tables-api.softr.io/api/v1
@@ -38,6 +38,13 @@ components:
         message:
           type: string
           description: A human-readable error message.
+        errorCode:
+          type: string
+          description: A machine-readable error code (e.g. BAD_REQUEST, VALIDATION_ERROR, RESOURCE_NOT_FOUND).
+        details:
+          type: object
+          description: Additional context about the error (e.g. fieldId, traceId).
+          additionalProperties: true
 
     # DATABASES
     Database:
@@ -52,6 +59,9 @@ components:
           nullable: true
         workspaceId:
           type: string
+        tablesCount:
+          type: integer
+          description: Number of tables in this database.
         createdAt:
           type: string
           format: date-time
@@ -70,7 +80,7 @@ components:
         type:
           type: string
           description: "The type of the field."
-          enum: [SINGLE_LINE_TEXT, CHECKBOX, CURRENCY, DATETIME, DURATION, EMAIL, SELECT, NUMBER, ATTACHMENT, RATING, LINKED_RECORD, LONG_TEXT, URL, PERCENT, BUTTON, PROGRESS, PHONE, DATE_RANGE, ADDRESS, TIME, LOOKUP, ROLLUP, FORMULA, COUNT, CREATED_AT, UPDATED_AT, CREATED_BY, UPDATED_BY, AUTONUMBER, RECORD_ID, USER]
+          enum: [SINGLE_LINE_TEXT, CHECKBOX, CURRENCY, DATE, DATETIME, DURATION, EMAIL, SELECT, NUMBER, ATTACHMENT, RATING, LINKED_RECORD, LONG_TEXT, URL, PERCENT, PHONE, LOOKUP, ROLLUP, FORMULA, CREATED_AT, UPDATED_AT, CREATED_BY, UPDATED_BY, AUTONUMBER, RECORD_ID, USER]
         options:
           type: object
           description: "Configuration options for the field, specific to its type. See the official documentation for the structure of each type."
@@ -86,6 +96,27 @@ components:
         defaultValue:
           type: string
           nullable: true
+        aiOptions:
+          type: object
+          nullable: true
+          description: "AI-powered auto-fill configuration. Null if not configured."
+          properties:
+            aiFillable:
+              type: boolean
+            aiOnly:
+              type: boolean
+            allowWebSearch:
+              type: boolean
+            aiModel:
+              type: string
+            prompt:
+              type: string
+            canBeTriggeredManually:
+              type: boolean
+            runWhenRecordIsCreated:
+              type: boolean
+            runWhenRecordIsUpdated:
+              type: boolean
         createdAt:
           type: string
           format: date-time
@@ -173,7 +204,7 @@ components:
       properties:
         operator:
           type: string
-          enum: [AND, OR, IS_EMPTY, IS_NOT_EMPTY, IS_BETWEEN, IS_NOT_BETWEEN, IS, IS_NOT, GREATER_THAN, GREATER_THAN_OR_EQUALS, LESS_THAN, LESS_THAN_OR_EQUALS, CONTAINS, DOES_NOT_CONTAIN, STARTS_WITH, DOES_NOT_START_WITH, ENDS_WITH, DOES_NOT_END_WITH, IS_ONE_OF, IS_NOT_ONE_OF, HAS_ALL_OF, HAS_NONE_OF]
+          enum: [AND, OR, IS_EMPTY, IS_NOT_EMPTY, IS_BETWEEN, IS_NOT_BETWEEN, IS_WITHIN, IS_NOT_WITHIN, IS, IS_NOT, GREATER_THAN, GREATER_THAN_OR_EQUALS, LESS_THAN, LESS_THAN_OR_EQUALS, CONTAINS, DOES_NOT_CONTAIN, STARTS_WITH, DOES_NOT_START_WITH, ENDS_WITH, DOES_NOT_END_WITH, IS_ONE_OF, IS_NOT_ONE_OF, HAS_ANY_OF, HAS_ALL_OF, HAS_NONE_OF]
         leftSide:
           type: string
           description: "The Field ID to apply the operator on."
@@ -671,6 +702,17 @@ paths:
           schema:
             type: integer
             default: 10
+        - name: fieldNames
+          in: query
+          description: "If true, use field names as keys in the fields object instead of field IDs."
+          schema:
+            type: boolean
+            default: false
+        - name: viewId
+          in: query
+          description: "Filter records by a specific view."
+          schema:
+            type: string
       responses:
         '200':
           description: A paginated list of records.
@@ -693,6 +735,13 @@ paths:
       summary: Create Record
       description: Create a new record in the specified table.
       operationId: createRecord
+      parameters:
+        - name: fieldNames
+          in: query
+          description: "If true, use field names as keys in the response fields object instead of field IDs."
+          schema:
+            type: boolean
+            default: false
       requestBody:
         required: true
         content:
@@ -735,6 +784,13 @@ paths:
       summary: Search Records
       description: Search for records in the specified table based on filter, sort, and pagination criteria.
       operationId: searchRecords
+      parameters:
+        - name: fieldNames
+          in: query
+          description: "If true, use field names as keys in the fields object instead of field IDs."
+          schema:
+            type: boolean
+            default: false
       requestBody:
         content:
           application/json:
@@ -806,6 +862,13 @@ paths:
       summary: Get Single Record
       description: Retrieve details of a specific record by its ID.
       operationId: getRecordById
+      parameters:
+        - name: fieldNames
+          in: query
+          description: "If true, use field names as keys in the fields object instead of field IDs."
+          schema:
+            type: boolean
+            default: false
       responses:
         '200':
           description: Record details.
@@ -824,6 +887,13 @@ paths:
       summary: Update Record
       description: Partially update a specific record by its ID. Only the fields provided in the request body will be changed.
       operationId: updateRecord
+      parameters:
+        - name: fieldNames
+          in: query
+          description: "If true, use field names as keys in the response fields object instead of field IDs."
+          schema:
+            type: boolean
+            default: false
       requestBody:
         required: true
         content:

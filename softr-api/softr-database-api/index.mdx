@@ -4,7 +4,9 @@ description: 'Public API to communicate with Softr Databases'
 sidebarTitle: 'Overview'
 ---
 
-The Softr Database API can be used to integrate your data in Softr with external systems. The API follows REST semantics and uses JSON to encode objects.
+The Softr Database API lets you integrate your Softr data with external systems. The API follows REST semantics, uses JSON to encode objects, and requires all requests to be made over HTTPS.
+
+Download the [OpenAPI specification](/openapi.yaml) to import into tools like Postman or use for code generation.
 
 ## Video Introduction
 
@@ -12,15 +14,150 @@ The Softr Database API can be used to integrate your data in Softr with external
   <iframe src="https://www.youtube.com/embed/QdPKewoLM4Y?rel=0" allowFullScreen className="notion-image-inset notion-embed" style={{position: 'absolute', width: '100%', height: '100%', left: 0, top: 0}} />
 </div>
 
-## Quick links
+## Data Model
 
-Use the links below to navigate the Softr Database API docs split into smaller pages.
+The API is organized around four core resources:
 
-- [Authorisation](softr-database-api/authorisation/index)
-- [Rate Limiting](softr-database-api/rate-limiting/index)
-- [Databases — Get Databases](/softr-api/softr-database-api/databases/get-databases)
-- [Tables — Get Tables](/softr-api/softr-database-api/tables/get-tables)
-- [Table Fields — Get Table Field](/softr-api/softr-database-api/table-fields/get-table-field)
-- [Records — Get Records](/softr-api/softr-database-api/records)
-- [Records — Create, Update, Delete, Search](/softr-api/softr-database-api/records)
+- **Database** — A top-level container that belongs to a workspace. Each database holds one or more tables.
+- **Table** — A structured collection of records, similar to a spreadsheet or database table. Each table has a set of fields and one or more views.
+- **Field** — A column definition on a table. Fields have a type (e.g. `SINGLE_LINE_TEXT`, `NUMBER`, `SELECT`) and optional configuration. Some fields are read-only (computed or system-managed).
+- **Record** — A single row of data in a table. Record values are stored in a `fields` object, keyed by field ID (or field name if you pass `?fieldNames=true`).
 
+All resources are identified by UUIDs.
+
+## Authentication
+
+All requests require a **Personal Access Token (PAT)** passed in the `Softr-Api-Key` header:
+
+```bash
+curl -X GET 'https://tables-api.softr.io/api/v1/databases' \
+  -H 'Softr-Api-Key: <your-token>'
+```
+
+Tokens are scoped to one or more workspaces — you can only access databases within your authorized workspaces. See [Authorisation](/softr-api/softr-database-api/authorisation) for how to generate a token.
+
+## Quick Start
+
+**1. List your databases:**
+
+```bash
+curl -X GET 'https://tables-api.softr.io/api/v1/databases' \
+  -H 'Softr-Api-Key: <your-token>'
+```
+
+**2. Get records from a table:**
+
+```bash
+curl -X GET 'https://tables-api.softr.io/api/v1/databases/{databaseId}/tables/{tableId}/records?limit=10&fieldNames=true' \
+  -H 'Softr-Api-Key: <your-token>'
+```
+
+**3. Create a record:**
+
+```bash
+curl -X POST 'https://tables-api.softr.io/api/v1/databases/{databaseId}/tables/{tableId}/records' \
+  -H 'Softr-Api-Key: <your-token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "fields": {
+      "Name": "Jane Doe",
+      "Email": "jane@example.com"
+    }
+  }'
+```
+
+## Response Format
+
+### Success (single item)
+
+```json
+{
+  "data": { ... },
+  "metadata": null
+}
+```
+
+### Success (paginated list)
+
+```json
+{
+  "data": [ ... ],
+  "metadata": {
+    "offset": 0,
+    "limit": 20,
+    "total": 100
+  }
+}
+```
+
+### Error
+
+```json
+{
+  "message": "Human-readable error message",
+  "errorCode": "MACHINE_READABLE_CODE",
+  "details": {
+    "fieldId": "Additional context",
+    "traceId": "abc-123"
+  }
+}
+```
+
+## Error Codes
+
+| Code | HTTP Status | Description |
+|---|---|---|
+| `BAD_REQUEST` | 400 | Invalid request format or data |
+| `VALIDATION_ERROR` | 400 | Field validation failed |
+| `UNKNOWN_FIELD` | 400 | Unrecognized field in request |
+| `UNAUTHORIZED` | 401 | Missing or invalid token |
+| `QUOTA_EXCEEDED` | 402 | Plan quota limit reached |
+| `FORBIDDEN` | 403 | Insufficient permissions |
+| `RESOURCE_NOT_FOUND` | 404 | Resource does not exist |
+| `CONSTRAINT_VIOLATION` | 409 | Data constraint violation (e.g. duplicate unique value) |
+| `PAYLOAD_TOO_LARGE` | 413 | Request body exceeds 64 MB |
+| `TOO_MANY_REQUESTS` | 429 | Rate limit exceeded |
+| `SERVICE_UNAVAILABLE` | 503 | Service temporarily unavailable |
+
+## Pagination
+
+All list endpoints support offset-based pagination:
+
+| Parameter | Default | Max | Description |
+|---|---|---|---|
+| `offset` | `0` | — | Number of records to skip |
+| `limit` | `20` | `200` | Number of records per page |
+
+The response `metadata` includes a `total` count. To iterate through all records:
+
+```
+GET .../records?offset=0&limit=100    → records 1–100
+GET .../records?offset=100&limit=100  → records 101–200
+GET .../records?offset=200&limit=100  → records 201–300
+```
+
+Stop when `offset >= metadata.total`.
+
+## Using Field Names
+
+By default, the `fields` object in record responses uses **field IDs** as keys (UUIDs). Pass `?fieldNames=true` on any record endpoint to use **human-readable field names** instead:
+
+```bash
+# With field IDs (default)
+GET .../records
+→ { "fields": { "fld_abc123": "Jane Doe" } }
+
+# With field names
+GET .../records?fieldNames=true
+→ { "fields": { "Full Name": "Jane Doe" } }
+```
+
+## Quick Links
+
+- [Authorisation](/softr-api/softr-database-api/authorisation)
+- [Rate Limiting](/softr-api/softr-database-api/rate-limiting)
+- [Databases](/softr-api/softr-database-api/databases/get-databases)
+- [Tables](/softr-api/softr-database-api/tables/get-tables)
+- [Table Fields](/softr-api/softr-database-api/table-fields/get-table-field)
+- [Records](/softr-api/softr-database-api/records/get-records)
+- [Search & Filtering](/softr-api/softr-database-api/records/search-records)
