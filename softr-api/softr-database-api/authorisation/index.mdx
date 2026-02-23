@@ -3,22 +3,27 @@ title: 'Authorisation'
 sidebarTitle: 'Authorisation'
 ---
 
-For making calls you need 2 elements:
+All API requests must be authenticated and made over HTTPS.
 
-- API Basic URL: `https://tables-api.softr.io/api/v1`
+## Base URL
 
-- Public API Token - [Obtain here](https://docs.softr.io/softr-api/tTFQ5vSAUozj5MsKixMH8C/api-setup-and-endpoints/j1PrTZxt7pv3iZCnZ5Fp19)
+```
+https://tables-api.softr.io/api/v1
+```
 
-To make a call you combine them into an HTTP request. Example:
+## Authentication
+
+Pass your Personal Access Token (PAT) in the `Softr-Api-Key` header:
 
 ```bash
 curl -X GET 'https://tables-api.softr.io/api/v1/databases' \
-  -H 'Softr-Api-Key: <TOKEN>'
+  -H 'Softr-Api-Key: <your-token>'
 ```
 
-- All API requests must be authenticated and made through HTTPS.
+To generate a token, go to [API Setup and Endpoints](/softr-api/api-setup-and-endpoints).
 
-- We currently support using personal access tokens (a.k.a. API Key). OAuth access tokens will be supported later.
+## Token Scoping
 
-- API Key inherits the access rights of the account of the user who grants access. Later more granular scopes and multiple Keys (Tokens) with different scopes may be supported.
-
+- Tokens are scoped to one or more **workspaces**. You can only access databases within your authorized workspaces.
+- The token inherits the access rights of the user who created it.
+- We currently support Personal Access Tokens only. OAuth access tokens may be supported in the future.
