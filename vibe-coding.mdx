@@ -1,0 +1,106 @@
+---
+title: "Vibe Coding"
+icon: "wand-magic-sparkles"
+keywords: ["vibe coding softr"]
+description: "Create custom app UI and tools with AI prompts"
+---
+
+The Vibe Coding Block lets you go beyond Softr's standard blocks to build fully custom interfaces— all from a prompt. It's the most flexible way to customize your Softr app beyond what standard blocks offer. Connect it to your live data, add CRUD actions, and create personalized experiences. Build and iterate confidently with version history built in, and make simple edits directly without re-prompting.
+
+## What can you build?
+
+Client dashboards, booking tools, progress trackers, calculators, notification feeds, partner portals, and more — all inside a real, working Softr app. Check out the videos below for examples.
+
+<iframe src="https://www.youtube.com/embed/BpVZkoKn6jE" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+
+<iframe src="https://www.youtube.com/embed/Y-RxUlnGEbw" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+
+### 1. Add the Vibe Coding Block and enter your prompt
+
+Open your Softr app, click **Add block**, then select **AI → Vibe Coding Block**.
+
+In the chat, describe what you want to build in plain English. The Vibe Coding Block supports both static and data-connected blocks. For example:
+
+- A static layout like a page header, pricing table, or content section
+- A dynamic, data-connected block like a dashboard, booking tool, or admin view that pulls from live data
+
+You can also attach an image to your prompt (click the image icon in the bottom left of the chat box), which is useful for sharing a design reference or screenshot of what you're going for.
+
+Once you submit your prompt, Softr's AI generates the interface inside the block. To connect a live data source, see Step 2.
+
+<Frame>
+  ![Clean Shot 2026 02 26 At 16 42 00@2x](/images/CleanShot2026-02-26at16.42.00@2x.png)
+</Frame>
+
+### 2. Connect a data source (optional)
+
+If you want your block to dynamically display live data, go to the **Source** tab and connect a data source (Database + Table). You can also add conditional filters here.
+
+The Vibe Coding Block supports Softr Databases and 15+ [external data sources](https://www.softr.io/integrations), including Airtable, Google Sheets, Notion, HubSpot, SQL, and more.
+
+<Frame>
+  ![Clean Shot 2026 02 26 At 16 46 34@2x](/images/CleanShot2026-02-26at16.46.34@2x.png)
+</Frame>
+
+### 3. Add and configure CRUD actions (optional)
+
+You can prompt the AI to add action buttons, such as:
+
+- Create/add records
+- Edit/update records
+- Delete records
+
+After generating these actions in the UI, you can:
+
+1. Go to the **Actions** tab in the vibe coding block
+2. Review each action and configure permissions, conditions, or connected workflows as needed
+
+For example, you could prompt: _"Add a button that lets users submit a new booking request"_ — the AI will generate the UI and create a corresponding action you can configure in the Actions tab.
+
+<iframe src="https://www.youtube.com/embed/zKvUYrY3QvQ" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+
+### 4. Control visibility and access
+
+Use the **Visibility** tab to control which user groups can see the block. You can also set conditional filters in the **Source** tab. 
+
+<Frame>
+  ![Clean Shot 2026 02 26 At 16 57 50@2x](/images/CleanShot2026-02-26at16.57.50@2x.png)
+</Frame>
+
+## Managing version history
+
+Each time you re-prompt the block, Softr saves a new version.
+
+To view or revert versions:
+
+1. Open the **Content** tab
+2. Use the version dropdown at the top of the tab
+3. Select a previous version and click **Restore** to revert (or **Duplicate as new** to duplicate the block)
+
+This lets you experiment without losing earlier work.
+
+<Frame>
+  ![Clean Shot 2026 02 26 At 16 59 03@2x](/images/CleanShot2026-02-26at16.59.03@2x.png)
+</Frame>
+
+## Editing text in the vibe-coded block
+
+From the **Content** tab, go to **Settings** to edit text fields directly — for example, hero text, testimonials, or images. This option appears when the AI has generated editable text fields in your block.
+
+<Frame>
+  ![Clean Shot 2026 02 26 At 16 59 28@2x](/images/CleanShot2026-02-26at16.59.28@2x.png)
+</Frame>
+
+## Editing the generated code
+
+If you want to make manual changes beyond what the AI generates, you can edit the underlying code yourself. Go to the **Content tab → Code** to see the full generated code. Make your changes and click **Save** to apply them.
+
+You can use the AI chat for bigger structural changes and drop into the code for fine-tuned adjustments — both approaches work together.
+
+## Copying the block to another project
+
+To reuse a vibe-coded block in a different Softr project, hover over the block until the action icons appear on the right side. Click the **Copy to** icon and select the destination project. This is useful for replicating tools or UI patterns across client portals or apps.
+
+## Pricing and AI credits
+
+The Vibe Coding Block is currently in beta and free to use — no Softr AI credits consumed. Once the beta period ends, credit usage will be communicated in product, with a certain number available on each plan. Learn more about AI credits [here](https://docs.softr.io/workspace-and-billing/ai-credits).
