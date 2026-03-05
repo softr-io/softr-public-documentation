@@ -1,0 +1,801 @@
+---
+title: "Vibe Coding — Developer Guide"
+icon: "code"
+description: "Write code directly in the Vibe Coding Block for full control over markup, logic, and data"
+---
+
+This guide is for developers who want to write code directly in the Vibe Coding Block, rather than prompting the AI. Use it when you need full control over your block's markup, logic, and data.
+
+---
+
+## The Basics
+
+Your block must be a **default-exported React component** named `Block`:
+
+```tsx
+export default function Block() {
+  return (
+    <div className="container">
+      <div className="content">
+        <h1>Hello, world!</h1>
+      </div>
+    </div>
+  );
+}
+```
+
+**Rules:**
+- Vanilla React only — no Next.js, Remix, or other frameworks
+- Frontend only — no server-side code, no Node.js APIs
+- Styling via **Tailwind classes only** — no inline `style` objects, no external CSS files
+- Always wrap your root in `container` and your main content in `content` for consistent layout
+
+---
+
+## Available Libraries
+
+### shadcn/ui components
+
+All shadcn/ui components are available — no installation needed:
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+```
+
+Available components include:
+`accordion`, `alert`, `alert-dialog`, `aspect-ratio`, `avatar`, `badge`, `button`, `calendar`, `card`, `carousel`, `chart`, `checkbox`, `collapsible`, `command`, `context-menu`, `dialog`, `drawer`, `dropdown-menu`, `empty`, `hover-card`, `input`, `input-group`, `input-otp`, `item`, `kbd`, `label`, `menubar`, `native-select`, `navigation-menu`, `pagination`, `popover`, `progress`, `radio-group`, `resizable`, `scroll-area`, `select`, `separator`, `sheet`, `skeleton`, `slider`, `sonner`, `spinner`, `switch`, `table`, `tabs`, `textarea`, `toggle`, `toggle-group`, `tooltip`
+
+### Icons
+
+Icons from `lucide-react` are available:
+
+```tsx
+import { TrendingUp, User, Settings } from "lucide-react";
+```
+
+### External npm packages
+
+You can import any public npm package by name:
+
+```tsx
+import _ from "lodash";
+import { format } from "date-fns";
+```
+
+---
+
+## Editable Settings
+
+Editable settings let builders modify block content through the editor UI (**Content → Settings** tab) without touching code. Always use them for any text, images, icons, or lists that might change between block instances.
+
+Import from `@/lib/editable-settings`.
+
+### `useTextSetting`
+
+Returns a `string`. Use for titles, descriptions, button labels, URLs, etc.
+
+```tsx
+import { useTextSetting } from "@/lib/editable-settings";
+
+export default function Block() {
+  const title = useTextSetting({
+    name: "title",           // unique identifier — changing this resets the value
+    label: "Title",          // shown in the editor UI
+    initialValue: "Welcome", // starting value
+    required: false,         // optional, default false
+  });
+
+  return <h1>{title}</h1>;
+}
+```
+
+### `useImageSetting`
+
+Returns `{ src: string; alt: string }`.
+
+```tsx
+import { useImageSetting } from "@/lib/editable-settings";
+
+export default function Block() {
+  const image = useImageSetting({
+    name: "hero-image",
+    label: "Hero Image",
+    initialValue: {
+      src: "https://images.unsplash.com/photo-...",
+      alt: "A hero image",
+    },
+  });
+
+  return <img src={image.src} alt={image.alt} className="w-full rounded-lg" />;
+}
+```
+
+### `useVideoSetting`
+
+Returns `{ src: string }`.
+
+```tsx
+import { useVideoSetting } from "@/lib/editable-settings";
+
+export default function Block() {
+  const video = useVideoSetting({
+    name: "intro-video",
+    label: "Intro Video",
+    initialValue: { src: "https://example.com/video.mp4" },
+  });
+
+  return <video src={video.src} controls className="w-full" />;
+}
+```
+
+### `useVibeCodingBlockIconSetting`
+
+Returns `{ icon: string }` where `icon` is a `lucide-react` icon name. Render it with the `DynamicIcon` component.
+
+```tsx
+import { useVibeCodingBlockIconSetting } from "@/lib/editable-settings";
+import { DynamicIcon } from "@/components/dynamic-icon";
+
+export default function Block() {
+  const { icon } = useVibeCodingBlockIconSetting({
+    name: "feature-icon",
+    label: "Feature Icon",
+    initialValue: { icon: "trending-up" },
+  });
+
+  return <DynamicIcon name={icon} className="w-6 h-6" />;
+}
+```
+
+### `useArraySetting`
+
+Returns an array of items with a consistent shape. Use for feature lists, team members, FAQs, testimonials, etc.
+
+```tsx
+import { useArraySetting } from "@/lib/editable-settings";
+import { DynamicIcon } from "@/components/dynamic-icon";
+
+export default function Block() {
+  const features = useArraySetting({
+    name: "features",
+    label: "Features",
+    schema: {
+      title: { type: "text", label: "Title", initialValue: "Feature" },
+      description: { type: "text", label: "Description" },
+      icon: { type: "vibeCodingBlockIcon", label: "Icon" },
+      image: { type: "image", label: "Image" },
+    },
+    initialValue: [
+      {
+        title: "Fast",
+        description: "Blazing fast performance.",
+        icon: { icon: "zap" },
+        image: { src: "", alt: "" },
+      },
+      {
+        title: "Reliable",
+        description: "99.9% uptime guaranteed.",
+        icon: { icon: "shield" },
+        image: { src: "", alt: "" },
+      },
+    ],
+  });
+
+  return (
+    <div className="container py-12">
+      <div className="content grid md:grid-cols-2 gap-6">
+        {features.map((feature, index) => (
+          <div key={index} className="flex gap-4">
+            <DynamicIcon name={feature.icon.icon} className="w-6 h-6 text-primary" />
+            <div>
+              <h3 className="font-semibold">{feature.title}</h3>
+              <p className="text-muted-foreground text-sm">{feature.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+**Schema field types:** `"text"`, `"image"`, `"video"`, `"vibeCodingBlockIcon"`
+
+**Constraints:**
+- Schema cannot contain nested arrays — for list-like text, use a `"text"` field with a separator (e.g. comma) and split it in code
+- Do not put a `vibeCodingBlockIcon` field as the **first** field in the schema
+- Calling two settings hooks with the same `name` is not allowed
+
+---
+
+## Data from Your Datasource
+
+Import data hooks from `@/lib/datasource`. Use these when you want to display live records from your connected data source (Airtable, etc.).
+
+### Defining a select query
+
+Field mappings must be **static** — declared once outside the component, never built dynamically:
+
+```tsx
+import { q } from "@/lib/datasource";
+
+// Declare this above the component, not inside it
+const select = q.select({
+  title: "FIELD_ID1",    // key = alias used in code, value = actual field ID
+  description: "FIELD_ID2",
+  createdAt: "FIELD_ID3",
+});
+```
+
+### `useRecords` — fetch a list of records
+
+```tsx
+import { useRecords, q } from "@/lib/datasource";
+
+const select = q.select({
+  name: "FIELD_ID1",
+  email: "FIELD_ID2",
+});
+
+export default function Block() {
+  const {
+    data,
+    status,
+    error,
+    hasNextPage,
+    fetchNextPage,
+    isFetching,
+    isFetchingNextPage,
+  } = useRecords({
+    select,
+    count: 6,          // records per page, default 6, max 100
+    // where: ...,     // optional filter
+    // orderBy: ...,   // optional sort
+  });
+
+  if (status === "pending") return <div>Loading...</div>;
+  if (status === "error") return <div>Error loading data</div>;
+
+  const items = data.pages.flatMap(page => page.items);
+
+  return (
+    <div className="container py-8">
+      <div className="content space-y-4">
+        {items.map((item) => (
+          <div key={item.id}>
+            <p className="font-semibold">{item.fields.name}</p>
+            <p className="text-muted-foreground">{item.fields.email}</p>
+          </div>
+        ))}
+        {hasNextPage && (
+          <button onClick={() => fetchNextPage()} disabled={isFetching}>
+            {isFetchingNextPage ? "Loading..." : "Load More"}
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+### `useRecord` — fetch a single record by ID
+
+Use with `useCurrentRecordId()` to display details of the record currently shown in a list/detail context:
+
+```tsx
+import { useRecord, useCurrentRecordId, q } from "@/lib/datasource";
+
+const select = q.select({
+  title: "FIELD_ID1",
+  description: "FIELD_ID2",
+});
+
+export default function Block() {
+  const recordId = useCurrentRecordId(); // gets the ID from the URL/context
+  const { data, status } = useRecord({ recordId, select });
+
+  if (status === "pending") return <div>Loading...</div>;
+  if (status === "error") return <div>Error</div>;
+  if (!data) return <div>Not found</div>;
+
+  return (
+    <div className="container py-8">
+      <div className="content">
+        <h1>{data.fields.title}</h1>
+        <p>{data.fields.description}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+### Filtering records
+
+Use the `q` query builder for filters. Filters support up to **2 levels of nesting**.
+
+```tsx
+useRecords({
+  select,
+  where: q.and(
+    q.text("name").contains("Alice"),
+    q.number("age").gte(18),
+    q.or(
+      q.boolean("isActive").is(true),
+      q.text("notes").isNotEmpty()
+    )
+  ),
+});
+```
+
+**Available filter methods:**
+
+| Builder | Methods |
+|---|---|
+| `q.text(field)` | `is`, `isNot`, `contains`, `startsWith`, `endsWith`, `isOneOf`, `isNoneOf`, `hasAllOf`, `isEmpty`, `isNotEmpty` |
+| `q.number(field)` | `is`, `isNot`, `gt`, `gte`, `lt`, `lte`, `between`, `isEmpty`, `isNotEmpty` |
+| `q.boolean(field)` | `is`, `isNot`, `isEmpty`, `isNotEmpty` |
+| `q.date(field)` | `is`, `isNot`, `gt`, `gte`, `lt`, `lte`, `between`, `isNotBetween`, `isEmpty`, `isNotEmpty` |
+| `q.array(field)` | `is`, `isOneOf`, `isNoneOf`, `hasAllOf`, `isEmpty`, `isNotEmpty` |
+| `q.and(...)` | combine filters with AND |
+| `q.or(...)` | combine filters with OR |
+
+### Sorting records
+
+```tsx
+useRecords({
+  select,
+  orderBy: q.desc("createdAt"), // or q.asc("createdAt")
+});
+
+// Multiple sort fields (tie-breakers):
+useRecords({
+  select,
+  orderBy: [q.asc("lastName"), q.asc("firstName")],
+});
+```
+
+### `useLinkedRecords` — fetch options from a linked table
+
+Use for dropdowns, comboboxes, or tag pickers where you need to show values from a related table:
+
+```tsx
+import { q, useLinkedRecords } from "@/lib/datasource";
+
+const select = q.select({
+  category: "$CATEGORY_FIELD_ID",
+});
+
+export default function Block() {
+  const { data, status } = useLinkedRecords({
+    select,
+    field: "category",    // alias from select that holds the linked field
+    sortOrder: "ASC",     // "ASC" | "DESC"
+    search: "",           // optional search term
+    enabled: true,        // set false to defer loading (e.g. until dropdown opens)
+  });
+
+  const options = data?.pages.flatMap(p => p.items) ?? [];
+
+  return (
+    <div>
+      {options.map(opt => (
+        <span key={opt.id}>{opt.title}</span>
+      ))}
+    </div>
+  );
+}
+```
+
+---
+
+## Mutating Records
+
+All mutation hooks expose an `enabled` boolean — **always check it** before rendering the mutation UI or calling the function. It reflects whether the current user has sufficient permissions.
+
+### `useRecordCreate`
+
+```tsx
+import { useRecordCreate, q } from "@/lib/datasource";
+import { toast } from "sonner";
+
+const fields = q.select({
+  name: "FIELD_ID1",
+  email: "FIELD_ID2",
+});
+
+export default function Block() {
+  const createRecord = useRecordCreate({
+    fields,
+    onSuccess: (newRecord) => toast.success("Created!"),
+    onError: (error) => toast.error(error.message),
+  });
+
+  return (
+    <div>
+      {createRecord.enabled && (
+        <button
+          onClick={() => createRecord.mutate({ name: "Jane", email: "jane@example.com" })}
+          disabled={createRecord.status === "pending"}
+        >
+          {createRecord.status === "pending" ? "Saving..." : "Add Record"}
+        </button>
+      )}
+    </div>
+  );
+}
+```
+
+### `useRecordUpdate`
+
+```tsx
+import { useRecordUpdate, q } from "@/lib/datasource";
+
+const updateFields = q.select({ status: "FIELD_ID1" });
+
+export default function Block() {
+  const updateRecord = useRecordUpdate({
+    fields: updateFields,
+    onSuccess: async (updatedRecord) => {
+      await refetch();
+      toast.success("Updated!");
+    },
+    onError: (error) => toast.error(error.message),
+  });
+
+  // ...
+  updateRecord.enabled && updateRecord.mutate({
+    recordId: "RECORD_ID",
+    fields: { status: "active" },
+  });
+}
+```
+
+### `useRecordDelete`
+
+```tsx
+import { useRecordDelete } from "@/lib/datasource";
+
+export default function Block() {
+  const deleteRecord = useRecordDelete({
+    onSuccess: async ({ recordId }) => {
+      await refetch();
+      toast.success("Deleted!");
+    },
+    onError: (error) => toast.error(error.message),
+  });
+
+  // ...
+  deleteRecord.enabled && deleteRecord.mutate("RECORD_ID");
+}
+```
+
+---
+
+## Uploading Files
+
+Use `useUpload` from `@/lib/datasource` to upload files and get back a URL to store in a record.
+
+```tsx
+import { useUpload, useRecordCreate, q } from "@/lib/datasource";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { useState } from "react";
+
+const fields = q.select({
+  name: "$NAME_FIELD_ID",
+  attachment: "$ATTACHMENT_FIELD_ID",
+});
+
+export default function Block() {
+  const [name, setName] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const { uploadAsync, isUploading } = useUpload();
+  const createRecord = useRecordCreate({
+    fields,
+    onSuccess: () => toast.success("Submitted!"),
+  });
+
+  const handleSubmit = async () => {
+    if (!file) return;
+    const [result] = await uploadAsync(file);
+    if (result.status === "completed") {
+      createRecord.mutate({
+        name,
+        attachment: { filename: result.file.name, url: result.url },
+      });
+    } else {
+      toast.error(result.error?.message ?? "Upload failed");
+    }
+  };
+
+  return (
+    <div className="container py-6">
+      <div className="content space-y-4 max-w-md">
+        <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
+        <Input type="file" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
+        <Button onClick={handleSubmit} disabled={isUploading || !file}>
+          {isUploading ? "Uploading..." : "Submit"}
+        </Button>
+      </div>
+    </div>
+  );
+}
+```
+
+For multiple files:
+
+```tsx
+const results = await uploadAsync(Array.from(e.target.files));
+const completed = results.filter(r => r.status === "completed");
+```
+
+---
+
+## Current User
+
+Get info about the logged-in user with `useCurrentUser` from `@/lib/user`. Returns `null` if no user is logged in.
+
+```tsx
+import { useCurrentUser } from "@/lib/user";
+
+export default function Block() {
+  const user = useCurrentUser();
+
+  if (!user) return <div>Please log in to continue.</div>;
+
+  return (
+    <div className="container py-8">
+      <div className="content flex items-center gap-4">
+        {user.avatar && (
+          <img src={user.avatar} alt={user.fullName ?? ""} className="w-10 h-10 rounded-full" />
+        )}
+        <div>
+          <p className="font-semibold">{user.fullName}</p>
+          <p className="text-muted-foreground text-sm">{user.email}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+**Available fields:** `id`, `fullName`, `firstName`, `lastName`, `email`, `avatar` (all can be `null`)
+
+---
+
+## Metrics & Charts
+
+### `useMetric` — single aggregated value
+
+Useful for KPI cards (total sales, average rating, etc.):
+
+```tsx
+import { useMetric, q, metric } from "@/lib/datasource";
+
+const select = q.select({ revenue: "$REVENUE_FIELD_ID" });
+
+export default function Block() {
+  const { data, status } = useMetric({
+    select,
+    metric: metric.sum("revenue"),
+    // where: q.date("createdAt").gte("2025-01-01"),
+  });
+
+  if (status === "pending") return <div>Loading...</div>;
+
+  return <div className="text-4xl font-bold">${data?.toFixed(2)}</div>;
+}
+```
+
+**Aggregations:** `metric.sum(field)`, `metric.avg(field)`, `metric.max(field)`, `metric.min(field)`, `metric.distinct(field)`, `metric.count()`
+
+### `useChartData` — grouped data for charts
+
+```tsx
+import { useChartData, q, metric } from "@/lib/datasource";
+import { LineChart, Line, XAxis, CartesianGrid } from "recharts";
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart";
+
+const select = q.select({
+  date: "$DATE_FIELD_ID",
+  revenue: "$REVENUE_FIELD_ID",
+});
+
+const chartConfig = {
+  revenue: { label: "Revenue", color: "var(--chart-1)" },
+} satisfies ChartConfig;
+
+export default function Block() {
+  const { data, status } = useChartData({
+    select,
+    orderBy: q.asc("date"),
+    metric: { revenue: metric.sum("revenue") },
+    groupBy: metric.groupBy("date", metric.bucket.month.long),
+  });
+
+  if (status === "pending") return <div>Loading...</div>;
+
+  return (
+    <div className="container py-8">
+      <div className="content">
+        <ChartContainer config={chartConfig}>
+          <LineChart data={data} margin={{ left: 12, right: 12 }}>
+            <CartesianGrid vertical={false} />
+            <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <Line dataKey="revenue" stroke="var(--color-revenue)" strokeWidth={2} dot={false} />
+          </LineChart>
+        </ChartContainer>
+      </div>
+    </div>
+  );
+}
+```
+
+**Grouping buckets:**
+
+| Bucket | Format example |
+|---|---|
+| `metric.bucket.year` | `2025` |
+| `metric.bucket.month.iso` | `"2025-03"` |
+| `metric.bucket.month.long` | `"March 2025"` |
+| `metric.bucket.day.iso` | `"2025-03-15"` |
+| `metric.bucket.day.long` | `"Mar 15, 2025"` |
+
+---
+
+## Styling Reference
+
+### Colors — use semantic tokens
+
+Always use semantic Tailwind classes instead of raw colors:
+
+| Token | Use for |
+|---|---|
+| `bg-background` / `text-foreground` | Page background and body text |
+| `bg-card` / `text-card-foreground` | Card surfaces |
+| `bg-primary` / `text-primary-foreground` | Brand color, primary actions |
+| `bg-secondary` / `text-secondary-foreground` | Secondary actions |
+| `bg-muted` / `text-muted-foreground` | Subtle backgrounds and secondary text |
+| `bg-accent` / `text-accent-foreground` | Accents and highlights |
+| `bg-destructive` / `text-destructive-foreground` | Errors and destructive actions |
+| `border` / `border-input` | Borders |
+| `bg-chart-1` … `bg-chart-5` | Data visualization |
+
+### Fonts
+
+```tsx
+<h1 className="font-heading">Heading</h1>
+<p className="font-sans">Body text</p>
+<code className="font-mono">code</code>
+```
+
+### Layout pattern
+
+```tsx
+<div className="container">          {/* respects app max-width + horizontal padding */}
+  <div className="content">          {/* main content wrapper */}
+    {/* your content here */}
+  </div>
+</div>
+```
+
+---
+
+## Field Types Reference
+
+When reading record fields, here are the TypeScript types for each Airtable field type:
+
+| Field type | Value shape |
+|---|---|
+| `SINGLE_LINE_TEXT`, `LONG_TEXT`, `EMAIL`, `PHONE`, `URL`, `ADDRESS` | `string` |
+| `NUMBER`, `CURRENCY`, `PERCENT`, `PROGRESS`, `AUTONUMBER` | `number \| null` |
+| `CHECKBOX` | `string \| boolean` |
+| `DATE`, `DATETIME`, `TIME`, `CREATED_AT`, `UPDATED_AT` | `string` (ISO) |
+| `DATE_RANGE` | `{ from: string; to: string }` |
+| `RATING`, `DURATION` | `string \| number \| null` |
+| `SELECT` | `{ label: string; id: string }` |
+| `ATTACHMENT` | `{ filename: string \| null; id: string \| null; type: string \| null; url: string }` |
+| `LINKED_RECORD` | `{ label: string; id: string }` |
+| `USER`, `CREATED_BY`, `UPDATED_BY` | `{ avatarUrl: string \| null; id: string; name: string; email: string }` |
+| `FORMULA` | `string \| number` |
+| `COUNT`, `ROLLUP`, `LOOKUP` | varies |
+
+---
+
+## Complete Example — Feature Showcase
+
+A full-featured block combining editable settings, datasource records, and shadcn/ui:
+
+```tsx
+import { useTextSetting, useArraySetting } from "@/lib/editable-settings";
+import { useRecords, q } from "@/lib/datasource";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { DynamicIcon } from "@/components/dynamic-icon";
+
+// Static field mapping — never build dynamically
+const select = q.select({
+  name: "$PRODUCT_NAME_FIELD",
+  category: "$CATEGORY_FIELD",
+  price: "$PRICE_FIELD",
+});
+
+export default function Block() {
+  // Editable settings for the section header
+  const heading = useTextSetting({
+    name: "heading",
+    label: "Section heading",
+    initialValue: "Our Products",
+  });
+  const subheading = useTextSetting({
+    name: "subheading",
+    label: "Section subheading",
+    initialValue: "Explore our latest offerings",
+  });
+
+  // Live records from datasource
+  const { data, status, hasNextPage, fetchNextPage, isFetching } = useRecords({
+    select,
+    count: 6,
+    orderBy: q.asc("name"),
+  });
+
+  const items = data?.pages.flatMap(p => p.items) ?? [];
+
+  return (
+    <div className="container py-12">
+      <div className="content">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-heading font-bold">{heading}</h2>
+          <p className="text-muted-foreground mt-2">{subheading}</p>
+        </div>
+
+        {status === "pending" && (
+          <div className="flex justify-center py-12">
+            <div className="text-muted-foreground">Loading...</div>
+          </div>
+        )}
+
+        {status === "error" && (
+          <div className="text-destructive text-center">Failed to load products.</div>
+        )}
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {items.map((item) => (
+            <Card key={item.id}>
+              <CardHeader>
+                <Badge variant="secondary" className="w-fit">
+                  {item.fields.category?.label ?? "Uncategorized"}
+                </Badge>
+                <CardTitle className="mt-2">{item.fields.name}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-2xl font-bold">
+                  ${(item.fields.price as number)?.toFixed(2)}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {hasNextPage && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={() => fetchNextPage()}
+              disabled={isFetching}
+              className="text-primary underline underline-offset-4 hover:no-underline"
+            >
+              {isFetching ? "Loading..." : "Load more"}
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+```

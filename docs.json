@@ -214,7 +214,14 @@
               "building-blocks/quick-links"
             ]
           },
-          "vibe-coding"
+          {
+            "group": "Vibe Coding",
+            "icon": "wand-magic-sparkles",
+            "pages": [
+              "vibe-coding",
+              "vibe-coding-developer-guide"
+            ]
+          }
         ]
       },
       {
