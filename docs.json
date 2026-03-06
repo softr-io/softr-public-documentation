@@ -392,7 +392,8 @@
             "pages": [
               "custom-code/custom-code-block-overview",
               "custom-code/custom-code-snippets",
-              "custom-code/custom-code-events-and-style-selectors"
+              "custom-code/custom-code-events-and-style-selectors",
+              "custom-code/spa-custom-code-guidelines"
             ]
           }
         ]
