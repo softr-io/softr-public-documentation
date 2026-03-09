@@ -11,33 +11,40 @@ This guide is for developers who want to write code directly in the Vibe Coding 
 
 ## The Basics
 
-Your block must be a **default-exported React component** named `Block`:
+Block's source code is a TypeScript file with a default-exported React component:
 
 ```tsx
 export default function Block() {
   return (
     <div className="container">
       <div className="content">
-        <h1>Hello, world!</h1>
+        <h1 className="text-4xl font-extrabold tracking-tight text-balance">
+          Hello, world!
+        </h1>
       </div>
     </div>
   );
 }
 ```
 
-**Rules:**
-- Vanilla React only — no Next.js, Remix, or other frameworks
-- Frontend only — no server-side code, no Node.js APIs
-- Styling via **Tailwind classes only** — no inline `style` objects, no external CSS files
-- Always wrap your root in `container` and your main content in `content` for consistent layout
+This only runs in the browser - you can fetch and mutate data from connected data sources, but you cannot run server-side code or use Node.js APIs.
+
+Vibe coding block is configured to use [Tailwind](https://tailwindcss.com/) for styling and [shadcn/ui](https://ui.shadcn.com/) for components, but you are free to import any public npm package as needed. In fact, any npm package import you add will automatically install it for you.
+
+```tsx
+import { format } from "date-fns"; // will be resolved at compile time
+
+export default function Block() {
+  const today = format(new Date(), "MMMM d, yyyy");
+  return <div>Today's date is {today}</div>;
+}
+```
 
 ---
 
-## Available Libraries
+## shadcn/ui
 
-### shadcn/ui components
-
-All shadcn/ui components are available — no installation needed:
+shadcn/ui components are already pre-configured and follow your app's theme out of the box. They're available under the `@/components/ui` path, so you can import them like this:
 
 ```tsx
 import { Button } from "@/components/ui/button";
@@ -46,25 +53,513 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 ```
 
-Available components include:
+Currently the following components are available:
 `accordion`, `alert`, `alert-dialog`, `aspect-ratio`, `avatar`, `badge`, `button`, `calendar`, `card`, `carousel`, `chart`, `checkbox`, `collapsible`, `command`, `context-menu`, `dialog`, `drawer`, `dropdown-menu`, `empty`, `hover-card`, `input`, `input-group`, `input-otp`, `item`, `kbd`, `label`, `menubar`, `native-select`, `navigation-menu`, `pagination`, `popover`, `progress`, `radio-group`, `resizable`, `scroll-area`, `select`, `separator`, `sheet`, `skeleton`, `slider`, `sonner`, `spinner`, `switch`, `table`, `tabs`, `textarea`, `toggle`, `toggle-group`, `tooltip`
+
+Check out the [shadcn/ui docs](https://ui.shadcn.com/docs/components) for usage details and examples for each component.
 
 ### Icons
 
-Icons from `lucide-react` are available:
+Preferred icon pack is [Lucide Icons](https://lucide.dev/), but you can opt for a different one.
 
 ```tsx
 import { TrendingUp, User, Settings } from "lucide-react";
 ```
 
-### External npm packages
+### Styling
 
-You can import any public npm package by name:
+We follow the default shadcn/ui naming convention for background/foreground color pairs (e.g. `bg-primary` / `text-primary-foreground`) which maps to your app's theme colors.
+
+By default, block occupies full width of the page but special classes - `container` and `content` are available to constrain the width of content to match app's max width settings to ensure visual consistency with other blocks:
 
 ```tsx
-import _ from "lodash";
-import { format } from "date-fns";
+<div className="container">
+  <div className="content">
+    {/* your content here */}
+  </div>
+</div>
 ```
+
+## Data from Your Datasource
+
+Import data hooks from `@/lib/datasource`. Use these when you want to display records from your connected data source. All data fetching hooks follow a query builder pattern so you can be quite expressive with your queries.
+
+### Defining a select query
+
+Field mappings have to be static, we also use static analysis to determine which fields your block actually uses so we don't overfetch and don't accidentally expose potentially sensitive data.
+
+```tsx
+import { q } from "@/lib/datasource";
+
+const select = q.select({
+  title: "FIELD_ID1",    // key = alias used in code, value = actual field ID
+  description: "FIELD_ID2",
+  createdAt: "FIELD_ID3",
+});
+```
+
+So something like this is not allowed as it breaks static analysis:
+
+```tsx
+const select = q.select({
+  [dynamicKey]: "FIELD_ID1",   // ❌ dynamic keys not allowed
+  title: getFieldId(),         // ❌ dynamic values not allowed
+});
+```
+
+### `useRecords` — fetch a list of records
+
+```tsx
+import { useRecords, q } from "@/lib/datasource";
+
+const select = 
+export default function Block() {
+  const {
+    data,                // array of pages with shape { items: Record[]; total: number; offset: string | number | null }
+    status,              // "pending" | "success" | "error"
+    error,               // Error object if status is "error"
+    fetchNextPage,       // function to fetch the next page of results
+    hasNextPage,         // boolean indicating if there are more pages to fetch
+    isFetching,          // boolean indicating if any page is currently being fetched
+    isFetchingNextPage,  // boolean indicating if the next page is currently being fetched
+    refetch,             // function to refetch the data (e.g. after a mutation)
+    isRefetching,        // boolean indicating if a refetch is currently in progress
+    isRefetchError,      // boolean indicating if the last refetch resulted in an error
+  } = useRecords({
+    select: q.select({
+      name: "FIELD_ID1",
+      email: "FIELD_ID2",
+    }),
+    count: 6,            // records per page, default 6, max 100
+    // where: ...,       // optional filter
+    // orderBy: ...,     // optional sort
+    // enabled: ...,     // optional boolean to defer loading (e.g. until component is visible)
+  });
+
+  if (status === "pending") return <div>Loading...</div>;
+  if (status === "error") return <div>Error loading data</div>;
+
+  const items = data.pages.flatMap(page => page.items);
+
+  return (
+    <div className="container py-8">
+      <div className="content space-y-4">
+        {items.map((item) => (
+          <div key={item.id}>
+            <p className="font-semibold">{item.fields.name}</p>
+            <p className="text-muted-foreground">{item.fields.email}</p>
+          </div>
+        ))}
+        {hasNextPage && (
+          <button onClick={() => fetchNextPage()} disabled={isFetching}>
+            {isFetchingNextPage ? "Loading..." : "Load More"}
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+### `useRecord` — fetch a single record by ID
+
+Use with `useCurrentRecordId()` to display details of the record currently shown in a list/detail context:
+
+```tsx
+import { useRecord, useCurrentRecordId, q } from "@/lib/datasource";
+
+export default function Block() {
+  const recordId = useCurrentRecordId(); // resolves the ID of the current record from page, can also be null
+  const { data, status } = useRecord({ 
+    select: q.select({
+      title: "FIELD_ID1",
+      description: "FIELD_ID2",
+    }),
+    recordId, 
+  });
+
+  if (status === "pending") return <div>Loading...</div>;
+  if (status === "error") return <div>Error</div>;
+  if (!data) return <div>Not found</div>;
+
+  return (
+    <div className="container py-8">
+      <div className="content">
+        <h1>{data.fields.title}</h1>
+        <p>{data.fields.description}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+### Filtering records
+
+Use the `q` query builder for filters. Filters support up to **2 levels of nesting**.
+
+```tsx
+useRecords({
+  select,
+  where: q.and(
+    q.text("name").contains("Alice"),
+    q.number("age").gte(18),
+    q.or(
+      q.boolean("isActive").is(true),
+      q.text("notes").isNotEmpty()
+    )
+  ),
+});
+```
+
+**Available filter methods:**
+
+| Builder | Methods |
+|---|---|
+| `q.text(field)` | `is`, `isNot`, `contains`, `startsWith`, `endsWith`, `isOneOf`, `isNoneOf`, `hasAllOf`, `isEmpty`, `isNotEmpty` |
+| `q.number(field)` | `is`, `isNot`, `gt`, `gte`, `lt`, `lte`, `between`, `isEmpty`, `isNotEmpty` |
+| `q.boolean(field)` | `is`, `isNot`, `isEmpty`, `isNotEmpty` |
+| `q.date(field)` | `is`, `isNot`, `gt`, `gte`, `lt`, `lte`, `between`, `isNotBetween`, `isEmpty`, `isNotEmpty` |
+| `q.array(field)` | `is`, `isOneOf`, `isNoneOf`, `hasAllOf`, `isEmpty`, `isNotEmpty` |
+| `q.and(...)` | combine filters with AND |
+| `q.or(...)` | combine filters with OR |
+
+### Sorting records
+
+```tsx
+useRecords({
+  select,
+  orderBy: q.desc("createdAt"), // or q.asc("createdAt")
+});
+
+// Multiple sort fields (tie-breakers):
+useRecords({
+  select,
+  orderBy: [q.asc("lastName"), q.asc("firstName")],
+});
+```
+
+### `useLinkedRecords` — fetch options from a linked table
+
+Use for dropdowns, comboboxes, or tag pickers where you need to show values from a related table:
+
+```tsx
+import { q, useLinkedRecords } from "@/lib/datasource";
+
+export default function Block() {
+  const {
+    data,
+    status,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    refetch,
+    isRefetching,
+    isRefetchError,
+  } = useLinkedRecords({
+    select: q.select({ category: "$CATEGORY_FIELD_ID" }),
+
+    field: "category",    // alias from select that holds the linked field
+    sortOrder: "ASC",     // "ASC" | "DESC"
+    search: "",           // optional search term
+    enabled: true,        // set false to defer loading (e.g. until dropdown opens)
+    // count: ...,        // optional page size, defaults to 100, max 1000
+  });
+
+  const options = data?.pages.flatMap(p => p.items) ?? [];
+
+  return (
+    <div>
+      {options.map(opt => (
+        <span key={opt.id}>{opt.title}</span>
+      ))}
+    </div>
+  );
+}
+```
+
+---
+
+## Mutating Records
+
+All mutation hooks expose an `enabled` boolean — **always check it** before rendering the mutation UI or calling the function. It reflects whether the current user has sufficient permissions. If called without checking `enabled`, the mutation will throw an error.
+
+### `useRecordCreate`
+
+```tsx
+import { useRecordCreate, q } from "@/lib/datasource";
+import { toast } from "sonner";
+
+export default function Block() {
+  const {
+    enabled,      // boolean indicating if the user has permission to create records
+    mutate,       // void function to create a record, accepts an object with shape from provided fields, in this case - `{ name: string; email: string }`
+    mutateAsync,  // async version of mutate that returns a promise with the created record
+    status,       // "idle" | "pending" | "success" | "error"
+    error,        // Error object if status is "error"
+    reset,        // function to reset the status and error state back to "idle" and null, useful for showing multiple create forms in a row
+  } = useRecordCreate({
+    fields: q.select({
+      name: "FIELD_ID1",
+      email: "FIELD_ID2",
+    }),
+    onSuccess: (newRecord) => toast.success("Created!"),
+    onError: (error) => toast.error(error.message),
+  });
+
+  return (
+    <div>
+      {enabled && (
+        <button
+          onClick={() => mutate({ name: "Jane", email: "jane@example.com" })}
+          disabled={status === "pending"}
+        >
+          {status === "pending" ? "Saving..." : "Add Record"}
+        </button>
+      )}
+    </div>
+  );
+}
+```
+
+### `useRecordUpdate`
+
+```tsx
+import { useRecordUpdate, q } from "@/lib/datasource";
+
+export default function Block() {
+  const { data, refetch } = useRecords({ ... });
+  const {
+    enabled,
+    mutate,
+    mutateAsync,
+    status,
+    error,
+    reset,
+  } = useRecordUpdate({
+    fields: q.select({ status: "FIELD_ID1" }),
+    onSuccess: async (updatedRecord) => {
+      // refetch the data first to ensure the UI shows the latest value before notifying the user.
+      await refetch();
+      toast.success("Updated!");
+    },
+    onError: (error) => toast.error(error.message),
+  });
+
+  const onUpdateClick = () => {
+    if (!enabled) return;
+    mutate({
+      recordId: "RECORD_ID", // ID of the record to update
+      fields: { status: "active" }, // updated field values
+    });
+  };
+}
+```
+
+### `useRecordDelete`
+
+```tsx
+import { useRecordDelete } from "@/lib/datasource";
+
+export default function Block() {
+  const {
+    enabled,
+    mutate,
+    mutateAsync,
+    status,
+    error,
+    reset,
+  } = useRecordDelete({
+    onSuccess: async ({ recordId }) => {
+      await refetch();
+      toast.success("Deleted!");
+    },
+    onError: (error) => toast.error(error.message),
+  });
+
+  const onDeleteClick = () => {
+    if (!enabled) return;
+    mutate("RECORD_ID"); // ID of the record to delete
+  };
+}
+```
+
+---
+
+## Uploading Files
+
+Use `useUpload` from `@/lib/datasource` to upload files and get back a URL to store in a record.
+
+```tsx
+import { useUpload, useRecordCreate, q } from "@/lib/datasource";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { useState } from "react";
+
+const fields = q.select({
+  name: "$NAME_FIELD_ID",
+  attachment: "$ATTACHMENT_FIELD_ID",
+});
+
+export default function Block() {
+  const [name, setName] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const { uploadAsync, isUploading } = useUpload();
+  const createRecord = useRecordCreate({
+    fields,
+    onSuccess: () => toast.success("Submitted!"),
+  });
+
+  const handleSubmit = async () => {
+    if (!file) return;
+    const [result] = await uploadAsync(file);
+    if (result.status === "completed") {
+      createRecord.mutate({
+        name,
+        attachment: { filename: result.file.name, url: result.url },
+      });
+    } else {
+      toast.error(result.error?.message ?? "Upload failed");
+    }
+  };
+
+  return (
+    <div className="container py-6">
+      <div className="content space-y-4 max-w-md">
+        <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
+        <Input type="file" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
+        <Button onClick={handleSubmit} disabled={isUploading || !file}>
+          {isUploading ? "Uploading..." : "Submit"}
+        </Button>
+      </div>
+    </div>
+  );
+}
+```
+
+For multiple files:
+
+```tsx
+const results = await uploadAsync(Array.from(e.target.files));
+const completed = results.filter(r => r.status === "completed");
+```
+
+---
+
+## Current User
+
+Get info about the logged-in user with `useCurrentUser` from `@/lib/user`. Returns `null` if no user is logged in.
+
+```tsx
+import { useCurrentUser } from "@/lib/user";
+
+export default function Block() {
+  const user = useCurrentUser();
+
+  if (!user) return <div>Please log in to continue.</div>;
+
+  return (
+    <div className="container py-8">
+      <div className="content flex items-center gap-4">
+        {user.avatar && (
+          <img src={user.avatar} alt={user.fullName ?? ""} className="w-10 h-10 rounded-full" />
+        )}
+        <div>
+          <p className="font-semibold">{user.fullName}</p>
+          <p className="text-muted-foreground text-sm">{user.email}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+Available fields:
+ - `id`: `string | null` (only present when user sync is enabled)
+ - `fullName`: `string | null`
+ - `email`: `string | null`
+ - `avatar`: `string | null`
+
+
+---
+
+## Metrics & Charts
+
+### `useMetric` — single aggregated value
+
+Useful for KPI cards (total sales, average rating, etc.):
+
+```tsx
+import { useMetric, q, metric } from "@/lib/datasource";
+
+export default function Block() {
+  const { data, status } = useMetric({
+    select: q.select({ revenue: "$REVENUE_FIELD_ID" }),
+    metric: metric.sum("revenue"),
+    // where: q.date("createdAt").gte("2025-01-01"),
+  });
+
+  if (status === "pending") return <div>Loading...</div>;
+
+  return <div className="text-4xl font-bold">${data?.toFixed(2)}</div>;
+}
+```
+
+**Aggregations:** `metric.sum(field)`, `metric.avg(field)`, `metric.max(field)`, `metric.min(field)`, `metric.distinct(field)`, `metric.count()`
+
+### `useChartData` — grouped data for charts
+
+```tsx
+import { useChartData, q, metric } from "@/lib/datasource";
+import { LineChart, Line, XAxis, CartesianGrid } from "recharts";
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart";
+
+const chartConfig = {
+  revenue: { label: "Revenue", color: "var(--chart-1)" },
+} satisfies ChartConfig;
+
+export default function Block() {
+  const { data, status } = useChartData({
+    select: q.select({
+      date: "$DATE_FIELD_ID",
+      revenue: "$REVENUE_FIELD_ID",
+    }),
+    orderBy: q.asc("date"),
+    metric: { revenue: metric.sum("revenue") },
+    groupBy: metric.groupBy("date", metric.bucket.month.long),
+  });
+
+  if (status === "pending") return <div>Loading...</div>;
+
+  return (
+    <div className="container py-8">
+      <div className="content">
+        <ChartContainer config={chartConfig}>
+          <LineChart data={data} margin={{ left: 12, right: 12 }}>
+            <CartesianGrid vertical={false} />
+            <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <Line dataKey="revenue" stroke="var(--color-revenue)" strokeWidth={2} dot={false} />
+          </LineChart>
+        </ChartContainer>
+      </div>
+    </div>
+  );
+}
+```
+
+**Grouping buckets:**
+
+| Bucket | Format example |
+|---|---|
+| `metric.bucket.year` | `2025` |
+| `metric.bucket.month.iso` | `"2025-03"` |
+| `metric.bucket.month.long` | `"March 2025"` |
+| `metric.bucket.day.iso` | `"2025-03-15"` |
+| `metric.bucket.day.long` | `"Mar 15, 2025"` |
+
 
 ---
 
@@ -212,502 +707,6 @@ export default function Block() {
 
 ---
 
-## Data from Your Datasource
-
-Import data hooks from `@/lib/datasource`. Use these when you want to display live records from your connected data source (Airtable, etc.).
-
-### Defining a select query
-
-Field mappings must be **static** — declared once outside the component, never built dynamically:
-
-```tsx
-import { q } from "@/lib/datasource";
-
-// Declare this above the component, not inside it
-const select = q.select({
-  title: "FIELD_ID1",    // key = alias used in code, value = actual field ID
-  description: "FIELD_ID2",
-  createdAt: "FIELD_ID3",
-});
-```
-
-### `useRecords` — fetch a list of records
-
-```tsx
-import { useRecords, q } from "@/lib/datasource";
-
-const select = q.select({
-  name: "FIELD_ID1",
-  email: "FIELD_ID2",
-});
-
-export default function Block() {
-  const {
-    data,
-    status,
-    error,
-    hasNextPage,
-    fetchNextPage,
-    isFetching,
-    isFetchingNextPage,
-  } = useRecords({
-    select,
-    count: 6,          // records per page, default 6, max 100
-    // where: ...,     // optional filter
-    // orderBy: ...,   // optional sort
-  });
-
-  if (status === "pending") return <div>Loading...</div>;
-  if (status === "error") return <div>Error loading data</div>;
-
-  const items = data.pages.flatMap(page => page.items);
-
-  return (
-    <div className="container py-8">
-      <div className="content space-y-4">
-        {items.map((item) => (
-          <div key={item.id}>
-            <p className="font-semibold">{item.fields.name}</p>
-            <p className="text-muted-foreground">{item.fields.email}</p>
-          </div>
-        ))}
-        {hasNextPage && (
-          <button onClick={() => fetchNextPage()} disabled={isFetching}>
-            {isFetchingNextPage ? "Loading..." : "Load More"}
-          </button>
-        )}
-      </div>
-    </div>
-  );
-}
-```
-
-### `useRecord` — fetch a single record by ID
-
-Use with `useCurrentRecordId()` to display details of the record currently shown in a list/detail context:
-
-```tsx
-import { useRecord, useCurrentRecordId, q } from "@/lib/datasource";
-
-const select = q.select({
-  title: "FIELD_ID1",
-  description: "FIELD_ID2",
-});
-
-export default function Block() {
-  const recordId = useCurrentRecordId(); // gets the ID from the URL/context
-  const { data, status } = useRecord({ recordId, select });
-
-  if (status === "pending") return <div>Loading...</div>;
-  if (status === "error") return <div>Error</div>;
-  if (!data) return <div>Not found</div>;
-
-  return (
-    <div className="container py-8">
-      <div className="content">
-        <h1>{data.fields.title}</h1>
-        <p>{data.fields.description}</p>
-      </div>
-    </div>
-  );
-}
-```
-
-### Filtering records
-
-Use the `q` query builder for filters. Filters support up to **2 levels of nesting**.
-
-```tsx
-useRecords({
-  select,
-  where: q.and(
-    q.text("name").contains("Alice"),
-    q.number("age").gte(18),
-    q.or(
-      q.boolean("isActive").is(true),
-      q.text("notes").isNotEmpty()
-    )
-  ),
-});
-```
-
-**Available filter methods:**
-
-| Builder | Methods |
-|---|---|
-| `q.text(field)` | `is`, `isNot`, `contains`, `startsWith`, `endsWith`, `isOneOf`, `isNoneOf`, `hasAllOf`, `isEmpty`, `isNotEmpty` |
-| `q.number(field)` | `is`, `isNot`, `gt`, `gte`, `lt`, `lte`, `between`, `isEmpty`, `isNotEmpty` |
-| `q.boolean(field)` | `is`, `isNot`, `isEmpty`, `isNotEmpty` |
-| `q.date(field)` | `is`, `isNot`, `gt`, `gte`, `lt`, `lte`, `between`, `isNotBetween`, `isEmpty`, `isNotEmpty` |
-| `q.array(field)` | `is`, `isOneOf`, `isNoneOf`, `hasAllOf`, `isEmpty`, `isNotEmpty` |
-| `q.and(...)` | combine filters with AND |
-| `q.or(...)` | combine filters with OR |
-
-### Sorting records
-
-```tsx
-useRecords({
-  select,
-  orderBy: q.desc("createdAt"), // or q.asc("createdAt")
-});
-
-// Multiple sort fields (tie-breakers):
-useRecords({
-  select,
-  orderBy: [q.asc("lastName"), q.asc("firstName")],
-});
-```
-
-### `useLinkedRecords` — fetch options from a linked table
-
-Use for dropdowns, comboboxes, or tag pickers where you need to show values from a related table:
-
-```tsx
-import { q, useLinkedRecords } from "@/lib/datasource";
-
-const select = q.select({
-  category: "$CATEGORY_FIELD_ID",
-});
-
-export default function Block() {
-  const { data, status } = useLinkedRecords({
-    select,
-    field: "category",    // alias from select that holds the linked field
-    sortOrder: "ASC",     // "ASC" | "DESC"
-    search: "",           // optional search term
-    enabled: true,        // set false to defer loading (e.g. until dropdown opens)
-  });
-
-  const options = data?.pages.flatMap(p => p.items) ?? [];
-
-  return (
-    <div>
-      {options.map(opt => (
-        <span key={opt.id}>{opt.title}</span>
-      ))}
-    </div>
-  );
-}
-```
-
----
-
-## Mutating Records
-
-All mutation hooks expose an `enabled` boolean — **always check it** before rendering the mutation UI or calling the function. It reflects whether the current user has sufficient permissions.
-
-### `useRecordCreate`
-
-```tsx
-import { useRecordCreate, q } from "@/lib/datasource";
-import { toast } from "sonner";
-
-const fields = q.select({
-  name: "FIELD_ID1",
-  email: "FIELD_ID2",
-});
-
-export default function Block() {
-  const createRecord = useRecordCreate({
-    fields,
-    onSuccess: (newRecord) => toast.success("Created!"),
-    onError: (error) => toast.error(error.message),
-  });
-
-  return (
-    <div>
-      {createRecord.enabled && (
-        <button
-          onClick={() => createRecord.mutate({ name: "Jane", email: "jane@example.com" })}
-          disabled={createRecord.status === "pending"}
-        >
-          {createRecord.status === "pending" ? "Saving..." : "Add Record"}
-        </button>
-      )}
-    </div>
-  );
-}
-```
-
-### `useRecordUpdate`
-
-```tsx
-import { useRecordUpdate, q } from "@/lib/datasource";
-
-const updateFields = q.select({ status: "FIELD_ID1" });
-
-export default function Block() {
-  const updateRecord = useRecordUpdate({
-    fields: updateFields,
-    onSuccess: async (updatedRecord) => {
-      await refetch();
-      toast.success("Updated!");
-    },
-    onError: (error) => toast.error(error.message),
-  });
-
-  // ...
-  updateRecord.enabled && updateRecord.mutate({
-    recordId: "RECORD_ID",
-    fields: { status: "active" },
-  });
-}
-```
-
-### `useRecordDelete`
-
-```tsx
-import { useRecordDelete } from "@/lib/datasource";
-
-export default function Block() {
-  const deleteRecord = useRecordDelete({
-    onSuccess: async ({ recordId }) => {
-      await refetch();
-      toast.success("Deleted!");
-    },
-    onError: (error) => toast.error(error.message),
-  });
-
-  // ...
-  deleteRecord.enabled && deleteRecord.mutate("RECORD_ID");
-}
-```
-
----
-
-## Uploading Files
-
-Use `useUpload` from `@/lib/datasource` to upload files and get back a URL to store in a record.
-
-```tsx
-import { useUpload, useRecordCreate, q } from "@/lib/datasource";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-import { useState } from "react";
-
-const fields = q.select({
-  name: "$NAME_FIELD_ID",
-  attachment: "$ATTACHMENT_FIELD_ID",
-});
-
-export default function Block() {
-  const [name, setName] = useState("");
-  const [file, setFile] = useState<File | null>(null);
-  const { uploadAsync, isUploading } = useUpload();
-  const createRecord = useRecordCreate({
-    fields,
-    onSuccess: () => toast.success("Submitted!"),
-  });
-
-  const handleSubmit = async () => {
-    if (!file) return;
-    const [result] = await uploadAsync(file);
-    if (result.status === "completed") {
-      createRecord.mutate({
-        name,
-        attachment: { filename: result.file.name, url: result.url },
-      });
-    } else {
-      toast.error(result.error?.message ?? "Upload failed");
-    }
-  };
-
-  return (
-    <div className="container py-6">
-      <div className="content space-y-4 max-w-md">
-        <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
-        <Input type="file" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
-        <Button onClick={handleSubmit} disabled={isUploading || !file}>
-          {isUploading ? "Uploading..." : "Submit"}
-        </Button>
-      </div>
-    </div>
-  );
-}
-```
-
-For multiple files:
-
-```tsx
-const results = await uploadAsync(Array.from(e.target.files));
-const completed = results.filter(r => r.status === "completed");
-```
-
----
-
-## Current User
-
-Get info about the logged-in user with `useCurrentUser` from `@/lib/user`. Returns `null` if no user is logged in.
-
-```tsx
-import { useCurrentUser } from "@/lib/user";
-
-export default function Block() {
-  const user = useCurrentUser();
-
-  if (!user) return <div>Please log in to continue.</div>;
-
-  return (
-    <div className="container py-8">
-      <div className="content flex items-center gap-4">
-        {user.avatar && (
-          <img src={user.avatar} alt={user.fullName ?? ""} className="w-10 h-10 rounded-full" />
-        )}
-        <div>
-          <p className="font-semibold">{user.fullName}</p>
-          <p className="text-muted-foreground text-sm">{user.email}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-```
-
-**Available fields:** `id`, `fullName`, `firstName`, `lastName`, `email`, `avatar` (all can be `null`)
-
----
-
-## Metrics & Charts
-
-### `useMetric` — single aggregated value
-
-Useful for KPI cards (total sales, average rating, etc.):
-
-```tsx
-import { useMetric, q, metric } from "@/lib/datasource";
-
-const select = q.select({ revenue: "$REVENUE_FIELD_ID" });
-
-export default function Block() {
-  const { data, status } = useMetric({
-    select,
-    metric: metric.sum("revenue"),
-    // where: q.date("createdAt").gte("2025-01-01"),
-  });
-
-  if (status === "pending") return <div>Loading...</div>;
-
-  return <div className="text-4xl font-bold">${data?.toFixed(2)}</div>;
-}
-```
-
-**Aggregations:** `metric.sum(field)`, `metric.avg(field)`, `metric.max(field)`, `metric.min(field)`, `metric.distinct(field)`, `metric.count()`
-
-### `useChartData` — grouped data for charts
-
-```tsx
-import { useChartData, q, metric } from "@/lib/datasource";
-import { LineChart, Line, XAxis, CartesianGrid } from "recharts";
-import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart";
-
-const select = q.select({
-  date: "$DATE_FIELD_ID",
-  revenue: "$REVENUE_FIELD_ID",
-});
-
-const chartConfig = {
-  revenue: { label: "Revenue", color: "var(--chart-1)" },
-} satisfies ChartConfig;
-
-export default function Block() {
-  const { data, status } = useChartData({
-    select,
-    orderBy: q.asc("date"),
-    metric: { revenue: metric.sum("revenue") },
-    groupBy: metric.groupBy("date", metric.bucket.month.long),
-  });
-
-  if (status === "pending") return <div>Loading...</div>;
-
-  return (
-    <div className="container py-8">
-      <div className="content">
-        <ChartContainer config={chartConfig}>
-          <LineChart data={data} margin={{ left: 12, right: 12 }}>
-            <CartesianGrid vertical={false} />
-            <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} />
-            <ChartTooltip content={<ChartTooltipContent />} />
-            <Line dataKey="revenue" stroke="var(--color-revenue)" strokeWidth={2} dot={false} />
-          </LineChart>
-        </ChartContainer>
-      </div>
-    </div>
-  );
-}
-```
-
-**Grouping buckets:**
-
-| Bucket | Format example |
-|---|---|
-| `metric.bucket.year` | `2025` |
-| `metric.bucket.month.iso` | `"2025-03"` |
-| `metric.bucket.month.long` | `"March 2025"` |
-| `metric.bucket.day.iso` | `"2025-03-15"` |
-| `metric.bucket.day.long` | `"Mar 15, 2025"` |
-
----
-
-## Styling Reference
-
-### Colors — use semantic tokens
-
-Always use semantic Tailwind classes instead of raw colors:
-
-| Token | Use for |
-|---|---|
-| `bg-background` / `text-foreground` | Page background and body text |
-| `bg-card` / `text-card-foreground` | Card surfaces |
-| `bg-primary` / `text-primary-foreground` | Brand color, primary actions |
-| `bg-secondary` / `text-secondary-foreground` | Secondary actions |
-| `bg-muted` / `text-muted-foreground` | Subtle backgrounds and secondary text |
-| `bg-accent` / `text-accent-foreground` | Accents and highlights |
-| `bg-destructive` / `text-destructive-foreground` | Errors and destructive actions |
-| `border` / `border-input` | Borders |
-| `bg-chart-1` … `bg-chart-5` | Data visualization |
-
-### Fonts
-
-```tsx
-<h1 className="font-heading">Heading</h1>
-<p className="font-sans">Body text</p>
-<code className="font-mono">code</code>
-```
-
-### Layout pattern
-
-```tsx
-<div className="container">          {/* respects app max-width + horizontal padding */}
-  <div className="content">          {/* main content wrapper */}
-    {/* your content here */}
-  </div>
-</div>
-```
-
----
-
-## Field Types Reference
-
-When reading record fields, here are the TypeScript types for each Airtable field type:
-
-| Field type | Value shape |
-|---|---|
-| `SINGLE_LINE_TEXT`, `LONG_TEXT`, `EMAIL`, `PHONE`, `URL`, `ADDRESS` | `string` |
-| `NUMBER`, `CURRENCY`, `PERCENT`, `PROGRESS`, `AUTONUMBER` | `number \| null` |
-| `CHECKBOX` | `string \| boolean` |
-| `DATE`, `DATETIME`, `TIME`, `CREATED_AT`, `UPDATED_AT` | `string` (ISO) |
-| `DATE_RANGE` | `{ from: string; to: string }` |
-| `RATING`, `DURATION` | `string \| number \| null` |
-| `SELECT` | `{ label: string; id: string }` |
-| `ATTACHMENT` | `{ filename: string \| null; id: string \| null; type: string \| null; url: string }` |
-| `LINKED_RECORD` | `{ label: string; id: string }` |
-| `USER`, `CREATED_BY`, `UPDATED_BY` | `{ avatarUrl: string \| null; id: string; name: string; email: string }` |
-| `FORMULA` | `string \| number` |
-| `COUNT`, `ROLLUP`, `LOOKUP` | varies |
-
----
-
 ## Complete Example — Feature Showcase
 
 A full-featured block combining editable settings, datasource records, and shadcn/ui:
@@ -719,7 +718,6 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { DynamicIcon } from "@/components/dynamic-icon";
 
-// Static field mapping — never build dynamically
 const select = q.select({
   name: "$PRODUCT_NAME_FIELD",
   category: "$CATEGORY_FIELD",
