@@ -77,6 +77,10 @@ components:
           type: string
         name:
           type: string
+        description:
+          type: string
+          nullable: true
+          description: "Optional description of the field."
         type:
           type: string
           description: "The type of the field."
