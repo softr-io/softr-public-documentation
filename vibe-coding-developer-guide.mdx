@@ -112,7 +112,7 @@ const select = q.select({
 ```tsx
 import { useRecords, q } from "@/lib/datasource";
 
-const select = 
+const select =
 export default function Block() {
   const {
     data,                // array of pages with shape { items: Record[]; total: number; offset: string | number | null }
@@ -170,12 +170,12 @@ import { useRecord, useCurrentRecordId, q } from "@/lib/datasource";
 
 export default function Block() {
   const recordId = useCurrentRecordId(); // resolves the ID of the current record from page, can also be null
-  const { data, status } = useRecord({ 
+  const { data, status } = useRecord({
     select: q.select({
       title: "FIELD_ID1",
       description: "FIELD_ID2",
     }),
-    recordId, 
+    recordId,
   });
 
   if (status === "pending") return <div>Loading...</div>;
@@ -643,6 +643,37 @@ export default function Block() {
   });
 
   return <DynamicIcon name={icon} className="w-6 h-6" />;
+}
+```
+
+### `useNavigationSetting`
+
+Returns `{ action: "OPEN_URL" | "OPEN_PAGE"; destination: string; openIn: "SELF" | "TAB" }`.
+
+```tsx
+import { useNavigationSetting } from "@/lib/editable-settings";
+
+export default function Block() {
+  const navigation = useNavigationSetting({
+    name: "cta-navigation",
+    label: "CTA Navigation",
+    initialValue: {
+      action: "OPEN_PAGE",
+      destination: "/pricing",
+      openIn: "TAB",
+    },
+  });
+
+  return (
+    <a
+      href={navigation.destination}
+      target={navigation.openIn === "TAB" ? "_blank" : "_self"}
+      rel={navigation.openIn === "TAB" ? "noopener noreferrer" : undefined}
+      className="btn btn-primary"
+    >
+      Go to page
+    </a>
+  );
 }
 ```
 
