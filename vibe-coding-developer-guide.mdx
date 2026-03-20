@@ -728,6 +728,25 @@ export default function Block() {
 }
 ```
 
+
+### `useBooleanSetting`
+
+Returns a `boolean`. Use for toggles, switches, show/hide elements, etc.
+
+```tsx
+import { useBooleanSetting } from "@/lib/editable-settings";
+
+export default function Block() {
+  const showHeader = useBooleanSetting({
+    name: "toggleHeader",     // unique identifier — changing this resets the value
+    label: "Toggle header",   // shown in the editor UI
+    initialValue: false,      // starting value (default is true)
+  });
+
+  return <>{showHeader && <Header />}</>;
+}
+```
+
 **Schema field types:** `"text"`, `"image"`, `"video"`, `"vibeCodingBlockIcon"`
 
 **Constraints:**
