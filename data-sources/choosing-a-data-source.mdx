@@ -2,44 +2,41 @@
 title: "Choosing a Data Source"
 permalink: "3JJpTsFFU3rMYVj631NwCz"
 description: "Compare and contrast data sources"
-'og:title': "Choosing a Data Source – Softr Help Docs"
-'og:description': "Compare and contrast data sources"
-'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
-'twitter:title': "Choosing a Data Source – Softr Help Docs"
-'twitter:description': "Compare and contrast data sources"
+og:title: "Choosing a Data Source – Softr Help Docs"
+og:description: "Compare and contrast data sources"
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+twitter:title: "Choosing a Data Source – Softr Help Docs"
+twitter:description: "Compare and contrast data sources"
 ---
+
 ## Choosing a Data Source
 
 The best data source for your Softr application depends on where your data lives and how you plan to scale. If you're starting from scratch and don't have a database yet, we highly recommend using **Softr Databases**. It’s the most seamless way to build, as it’s built directly into the Softr Studio, offers the best performance with no API rate limits, and is included in your subscription.
 
 If you already have your data elsewhere, you have a few options:
 
-*   **Migrating to Softr Databases**: If your data is currently in a spreadsheet or Airtable, you might consider moving it into Softr Databases for better performance and easier management. We offer a **one-click migration tool for Airtable** that copies your entire base, and you can easily **import CSV files** from any spreadsheet.
-*   **Connecting your current source**: If you prefer to keep your data where it is, Softr connects natively to over 15 different data sources. This is a great option if you already have complex workflows or other tools connected to your data.
+- **Migrating to Softr Databases**: If your data is currently in a spreadsheet or Airtable, you might consider moving it into Softr Databases for better performance and easier management. We offer a **one-click migration tool for Airtable** that copies your entire base, and you can easily **import CSV files** from any spreadsheet.
+- **Connecting your current source**: If you prefer to keep your data where it is, Softr connects natively to over 15 different data sources. This is a great option if you already have complex workflows or other tools connected to your data.
 
 When evaluating which path to take, consider the following factors:
 
-* Number of records
-
-* Number of concurrent users
-
-* Data source security capabilities
-
-* Technical skill
-
-* Pricepoint
+- Number of records
+- Number of concurrent users
+- Data source security capabilities
+- Technical skill
+- Pricepoint
 
 Let’s look at each of these in a bit more detail.
 
 ### Number of Records
 
-Softr can scale to any number of records you need to bring in and display, however there are two things that will determine how many records you can use with Softr - your Softr subscription plan and the data source you are using. Softr categorizes data sources into two camps - Basic (like Airtable and Sheets) and Advanced (like SQL and BigQuery). **Softr Databases** sits in a unique position, offering high record limits (often 1 million+) while remaining as simple to use as basic sources.
+Softr can scale to any number of records you need to bring in and display, however there are two things that will determine how many records you can use with Softr - your Softr subscription plan and the data source you are using. Softr categorizes data sources into two camps - Basic (like Airtable and Sheets) and Advanced (like SQL and BigQuery). **Softr Databases** sits in a unique position, offering high record limits (often 1 million\+) while remaining as simple to use as basic sources.
 
 Additionally, each of these data sources may also have their own limits on the number of records or rows you can have, which Softr is also bound by depending on your account limits with those providers. If you’re building an app that uses record-heavy databases like messaging, notifications, or have lots of users, you’ll want to take this into consideration. Using **Softr Databases** ensures you are only bound by your Softr plan limits.
 
 ### Number of Concurrent Users
 
-Concurrent users are much more important than the total number of users in an app, because concurrent users are the number of users who will be using the app at the *same time*. Softr uses a data source API/connection directly in realtime. These data sources often limit how often you can get data from their service - this is called rate limiting. Rate limiting varies by data source and can affect how quickly Softr is allowed to fetch data from your data source.
+Concurrent users are much more important than the total number of users in an app, because concurrent users are the number of users who will be using the app at the _same time_. Softr uses a data source API/connection directly in realtime. These data sources often limit how often you can get data from their service - this is called rate limiting. Rate limiting varies by data source and can affect how quickly Softr is allowed to fetch data from your data source.
 
 **Softr Databases** is native to the platform and not bound by any external API rate limits, making it a great choice for apps that expect high traffic.
 
@@ -64,25 +61,23 @@ When choosing a data source, you will likely also be evaluating the cost differe
 Below you will find a table of estimated (albeit subjective) comparison of different data sources and their strengths and weaknesses. Note that we don’t track a data source’s own plans and features so always verify for yourself. The table is what we at Softr have seen work as median results when used in Softr apps.
 
 <Warning>
-
-This is not a representation of plan limits on these services, but rather an indication of acceptable performance on a Softr app running on these data sources.
-
+  This is not a representation of plan limits on these services, but rather an indication of acceptable performance on a Softr app running on these data sources.
 </Warning>
 
 |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
 | **Data Source** | **Number of Records** | **Recommended Concurrent Users** | **Data Security Capabilities** | **Technical Skill** | **Pricepoint** |
-| Airtable | Up to 500,000 | 200-300 | Medium | Low | $$ |
-| Google Sheets | 1 million + | 50-100 | Low | Low | $ |
-| Smartsuite | Up to 500,000 | 200-300 | Medium | Low | $$ |
-| Hubspot | 1 million + | 500-1000 | Medium | Medium | $$$ |
-| Monday | Up to 500,000 | 50-100 | Low | Low | $$ |
-| Xano | Unlimited | Unlimited | High | High | $$ |
-| SQL | Unlimited | Unlimited | High | High | $ |
-| Supabase | Unlimited | Unlimited | High | High | $ |
+| Softr Databases | 1 million \+ | Unlimited | Medium | Low | \$ |
+| Airtable | Up to 500,000 | 200-300 | Medium | Low | \$\$ |
+| Google Sheets | 1 million \+ | 50-100 | Low | Low | \$ |
+| Smartsuite | Up to 500,000 | 200-300 | Medium | Low | \$\$ |
+| Hubspot | 1 million \+ | 500-1000 | Medium | Medium | \$\$\$ |
+| Monday | Up to 500,000 | 50-100 | Low | Low | \$\$ |
+| Xano | Unlimited | Unlimited | High | High | \$\$ |
+| SQL | Unlimited | Unlimited | High | High | \$ |
+| Supabase | Unlimited | Unlimited | High | High | \$ |
 | REST API | Unlimited | N/A | Varies | High | Varies |
-| BigQuery | Unlimited | N/A | Low | Medium | $ |
-| Notion | 1 million + | 50-100 | Medium | Low | $ |
-| ClickUp | Up to 500,000 | 50-100 | Medium | Low | $$ |
-| Coda | 1 million + | 200-300 | Medium | Low | $ |
-| Softr Databases | 1 million + | Unlimited | Medium | Low | $ |
+| BigQuery | Unlimited | N/A | Low | Medium | \$ |
+| Notion | 1 million \+ | 50-100 | Medium | Low | \$ |
+| ClickUp | Up to 500,000 | 50-100 | Medium | Low | \$\$ |
+| Coda | 1 million \+ | 200-300 | Medium | Low | \$ |
