@@ -1,0 +1,86 @@
+---
+title: "Advanced Concepts"
+permalink: "workflows-advanced-concepts"
+sidebarTitle: "Advanced Concepts"
+description: "Learn how to use branching, filtering, loops, and interactive actions to build powerful workflows in Softr."
+og:title: "Workflows Advanced Concepts - Softr Help Docs"
+og:description: "Learn how to use branching, filtering, loops, and interactive actions to build powerful workflows in Softr."
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+twitter:title: "Workflows Advanced Concepts - Softr Help Docs"
+twitter:description: "Learn how to use branching, filtering, loops, and interactive actions to build powerful workflows in Softr."
+---
+
+# Workflows: Advanced Concepts
+
+This page covers the building blocks for more sophisticated workflows: conditional logic, early exits, iteration, and interactive steps.
+
+---
+
+## Branch
+
+The **Branch** action splits your workflow into two paths based on a condition.
+
+- If the condition is **true**, the workflow follows the "yes" path.
+- If the condition is **false**, it follows the "no" path.
+
+This is the main way to build if/else logic without writing code.
+
+**Example:** After a user submits a form, branch on whether their subscription plan is "Pro". If yes, send them a welcome email for Pro users. If no, send the standard welcome email.
+
+---
+
+## Filter
+
+The **Filter** action checks a condition and **stops the workflow** if the condition is not met.
+
+Use it when you only want the workflow to continue for certain records or situations, and there's nothing to do in the "no" case.
+
+**Example:** A workflow triggers on every new Airtable record. Add a Filter at the start to stop the workflow if the record's "Status" field is not "Ready". Only "Ready" records will proceed through the rest of the workflow.
+
+Unlike Branch, Filter doesn't create two paths. It's an early exit.
+
+---
+
+## Loop
+
+The **Loop** action runs a group of actions once for each item in a list.
+
+**How it works:**
+
+1. You point the Loop at an array of items (e.g. a list of records returned by a "Get Records" action).
+2. The actions inside the loop run once per item.
+3. Inside the loop, use `{loopVariables.fieldName}` to access the current item's data and `{loopCounter}` to know which iteration you're on.
+4. After all items are processed, the workflow continues with the next action after the loop.
+
+**Example:** Fetch all "Pending" orders from Airtable, then loop over them and send each customer a status update email.
+
+### Nested Loops
+
+You can place a Loop inside another Loop to handle **lists within lists**.
+
+**When to use it:** When each item in your outer list contains its own list of items that each need individual processing.
+
+**Example:** You have a list of Tasks, and each Task has multiple Tags. You want to create one record per Task and Tag combination.
+
+```
+Loop Tasks
+└── Loop Tags of this Task
+        └── Create record (Task + Tag)
+└── Mark Task as checked
+```
+
+Here, if a task has 3 tags, the inner loop runs 3 times and creates 3 records for that task. The outer loop then moves on to the next task.
+
+Nesting is not limited to two levels. You can nest further if your data structure requires it.
+
+---
+
+## Interactive Actions
+
+Some actions pause the workflow and wait for a person to respond before continuing. These are called **interactive actions**.
+
+### Slack Interactive Messages
+
+The **Slack - Send Interactive Channel Message** and **Slack - Send Interactive Direct Message** actions send a Slack message that includes buttons or a form. The workflow pauses until the recipient clicks a button or submits the form, then continues based on their response.
+
+**Example:** When a new expense report is submitted, send an interactive Slack DM to the manager with "Approve" and "Reject" buttons. The workflow resumes when the manager clicks one.
