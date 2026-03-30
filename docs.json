@@ -83,7 +83,8 @@
             "group": "Softr Workflows",
             "icon": "random",
             "pages": [
-              "workflows/workflows"
+              "workflows/workflows",
+              "workflows/untitled-page"
             ]
           },
           "softr-forms",
