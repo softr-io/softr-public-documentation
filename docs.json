@@ -84,7 +84,7 @@
             "icon": "random",
             "pages": [
               "workflows/workflows",
-              "workflows/untitled-page"
+              "workflows/trigger-types"
             ]
           },
           "softr-forms",
