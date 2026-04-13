@@ -26,6 +26,8 @@ Most workflow actions need data from earlier steps: the record that triggered th
 2. Browse the list of previous steps (the trigger and every action that ran before this one).
 3. Select a field. Its value will be injected at runtime when the workflow runs.
 
+<Frame caption="Variable picker showing outputs from a previous step">![Variable picker showing outputs from a previous step](/workflows/images/workflows/advanced/variable-picker.png)</Frame>
+
 You can combine variables with static text. For example, a Slack message might read: `A new bug was reported by [+ Trigger → email]: [+ Trigger → description]`.
 
 **Where variables come from:**
@@ -49,6 +51,10 @@ The **Branch** action splits your workflow into two paths based on a condition.
 
 This is the main way to build if/else logic without writing code.
 
+<Frame caption="Branch action splitting the workflow into two paths based on an AI result">![Branch action splitting the workflow into two paths](/workflows/images/workflows/advanced/branch1.png)</Frame>
+
+<Frame caption="Using a variable from a previous step inside a Branch path">![Using a variable from a previous step inside a Branch path](/workflows/images/workflows/advanced/branch2.png)</Frame>
+
 **Example:** After a user submits a form, branch on whether their subscription plan is "Pro". If yes, send them a welcome email for Pro users. If no, send the standard welcome email.
 
 Branches are especially powerful when combined with AI actions - see [AI + Branch Patterns](#ai--branch-patterns) below.
@@ -62,6 +68,8 @@ The **Filter** action checks a condition and **stops the workflow** if the condi
 Use it when you only want the workflow to continue for certain records or situations, and there's nothing to do in the "no" case.
 
 **Example:** A workflow triggers on every new Airtable record. Add a Filter at the start to stop the workflow if the record's "Status" field is not "Ready". Only "Ready" records will proceed through the rest of the workflow.
+
+<Frame caption="Filter action stopping the workflow unless a condition is met">![Filter action stopping the workflow unless a condition is met](/workflows/images/workflows/advanced/filter.png)</Frame>
 
 Unlike Branch, Filter doesn't create two paths. It's an early exit.
 
@@ -77,6 +85,10 @@ The **Loop** action runs a group of actions once for each item in a list.
 2. The actions inside the loop run once per item.
 3. Inside the loop, use `{loopVariables.fieldName}` to access the current item's data and `{loopCounter}` to know which iteration you're on.
 4. After all items are processed, the workflow continues with the next action after the loop.
+
+<Frame caption="Loop action iterating over a list of items from a webhook">![Loop action iterating over a list of items](/workflows/images/workflows/advanced/loop1.png)</Frame>
+
+<Frame caption="Loop with actions inside — Enrich with AI and Add task run for each item">![Loop with actions inside](/workflows/images/workflows/advanced/loop2.png)</Frame>
 
 **Example:** Fetch all "Pending" orders from Airtable, then loop over them and send each customer a status update email.
 
@@ -116,6 +128,8 @@ The **Transform Data** action lets you create new values using **formulas** - th
 
 You name each output field yourself, and those names become available as variables in subsequent steps.
 
+<Frame caption="Transform Data action using a DATE_TIME_FORMAT formula">![Transform Data action using a formula](/workflows/images/workflows/advanced/formula.png)</Frame>
+
 **When to use Transform Data vs. Run Custom Code:**
 
 | | Transform Data | Run Custom Code |
@@ -141,6 +155,8 @@ The **Run Custom Code** action executes **JavaScript** or **Python** inside your
 
 <Tip>You don't need to write code from scratch. Click **Help me write code** in the code editor, describe what you want in plain language, and the AI assistant will generate the code for you.</Tip>
 
+<Frame caption="Run Custom Code action with JavaScript extracting a domain from an email">![Run Custom Code action with JavaScript](/workflows/images/workflows/advanced/run-custom-code.png)</Frame>
+
 <Note>Run Custom Code is available on paid plans.</Note>
 
 **Example:** A Call API step returns a complex JSON response with nested objects. Use Run Custom Code to extract just the fields you need (e.g., pull out `response.data.items[0].name`) and return them as clean variables for the next step.
@@ -158,6 +174,8 @@ The **Call API** action makes an outgoing HTTP request to any REST endpoint. Use
 - **Headers:** Authentication tokens, content type, and other metadata
 - **Query parameters:** Key-value pairs appended to the URL
 - **Request body:** The JSON payload to send (for POST, PUT, PATCH)
+
+<Frame caption="Call API action configured with a GET request, authentication headers, and query parameters">![Call API action settings](/workflows/images/workflows/advanced/call-api.png)</Frame>
 
 The response body is available as a variable in subsequent steps - you can reference individual fields from the JSON response, or use Run Custom Code to parse a complex response.
 
@@ -189,6 +207,10 @@ Enable **Structured output** to get back a **JSON object with typed fields** ins
 1. In any Custom Prompt AI action (Softr AI or bring-your-own-key), toggle **Structured output** on.
 2. Provide a **JSON schema** that describes the fields and types you expect.
 
+<Frame caption="Custom Prompt with Structured output enabled and a JSON schema example">![Custom Prompt with Structured output enabled](/workflows/images/workflows/advanced/ai-structured-output-json.png)</Frame>
+
+<Frame caption="The full JSON schema defining the expected output structure">![Full JSON schema for structured output](/workflows/images/workflows/advanced/ai-structured-output-jsonschema.png)</Frame>
+
 **Example schema** for categorizing customer feedback with a confidence score:
 
 ```json
@@ -209,6 +231,8 @@ Enable **Structured output** to get back a **JSON object with typed fields** ins
 ```
 
 With this schema, the AI will always return exactly two fields - `category` and `confidence` - that you can reference in subsequent steps. No risk of the model returning unexpected text or varying its format between runs.
+
+<Frame caption="Test result showing the structured output with subject and body fields">![Structured output test result](/workflows/images/workflows/advanced/ai-structured-output-result.png)</Frame>
 
 <Tip>If you only need simple classification into predefined categories, the **Categorize** AI action handles this without a JSON schema. Use **Custom Prompt + Structured output** when you need richer outputs (e.g., a category *and* a confidence score, or multiple extracted fields).</Tip>
 
@@ -261,6 +285,8 @@ Softr workflows give you access to models from OpenAI, Anthropic, Google, Mistra
 
 <Tip>Start with the smallest model that could handle the task. Run a few tests and compare outputs. Only move to a more capable (and more expensive) model if quality is insufficient.</Tip>
 
+<Frame caption="AI model selector showing available models from multiple providers">![AI model selector](/workflows/images/workflows/advanced/ai-model-selector.png)</Frame>
+
 With **Softr AI**, you select from these models and usage is deducted from your AI credits. On Business and Enterprise plans, you can also **bring your own API key** for OpenAI, Anthropic, Google Gemini, Mistral, or DeepSeek to use your own account directly.
 
 ---
@@ -307,6 +333,8 @@ When a workflow is triggered by a user action inside your Softr app (clicking a 
 
 The **Show Wait Screen** action displays a loading overlay in the app while the workflow processes. Add a custom message so the user knows what's happening (e.g., "Processing your vote..." or "Generating your report...").
 
+<Frame caption="Wait screen showing a loading overlay in the app">![Wait screen loading overlay](/workflows/images/workflows/advanced/end-user-interactions-result.png)</Frame>
+
 ### End User Interactions
 
 The **End User Interactions** action defines what happens after the workflow completes:
@@ -314,6 +342,8 @@ The **End User Interactions** action defines what happens after the workflow com
 - **Toast message:** Show a success, info, warning, or error notification with a custom title and message
 - **Navigation:** Stay on the current page, open a different page, open a record's details page, open an external URL, refresh the form, or close a modal
 - **Reload blocks:** Toggle **Reload all blocks on current page** to refresh data displayed in the app - essential when your workflow updated a record that's visible on screen
+
+<Frame caption="End User Interactions settings with toast message and navigation options">![End User Interactions settings](/workflows/images/workflows/advanced/end-user-interactions-settings.png)</Frame>
 
 **Example - Upvote button:**
 
