@@ -1,6 +1,7 @@
 ---
 title: "Trigger Types"
 ---
+
 # Summary
 
 Triggers define when a workflow runs. Every workflow starts with exactly one trigger — the event or condition that kicks off the sequence of actions. Softr Workflows supports three categories of triggers: Softr-native triggers, built-in triggers, and integration triggers from third-party services.
@@ -53,7 +54,7 @@ Fires when any field on an existing record changes.
 3. **Table** — Choose the table to watch
 4. **Conditions** (optional) — Scope the trigger to specific field values (e.g., only fire when `Status` is `"Active"`)
 
-> **Tip:** If you only want to react to a specific field changing, combine this trigger with a [Filter](./05-logic-actions.md) action at the start of your workflow to check the exact field.
+> **Tip:** If you only want to react to a specific field changing, combine this trigger with a [Filter](./workflows-advanced-concepts#filter) action at the start of your workflow to check the exact field.
 
 **When to use:** Sync record changes to a Google Sheet, or send a notification when a project's status is updated.
 
@@ -89,24 +90,45 @@ Fires when a record appears in a saved database view — for example, when a fil
 
 ### Softr Apps
 
-App triggers fire based on user activity within your published Softr applications. These triggers use **1-minute polling** — the workflow checks for new events approximately once per minute.
+App triggers fire based on user activity within your published Softr applications. These triggers fall into two distinct execution models: **Synchronous** (Interactive) and **Polling** (Background).
 
-**Configuration for all App triggers:**
-- **Application** — Select the Softr app to monitor
+#### Synchronous Triggers (Interactive)
+Synchronous triggers maintain a live connection between the user's browser and the workflow runner. **Only these triggers support the [Show Wait Screen](./workflows-advanced-concepts#managing-the-loading-state) and [End User Interactions](./workflows-advanced-concepts#closing-the-loop-with-ui-feedback) actions.**
 
-#### User added
+##### Submit form
+Fires instantly when a user submits a form block in your Softr app.
+**Configuration:**
+- **Application** — Select the Softr app
+- **Form Block** — Select the specific form block to watch
+**When to use:** Process form data with AI or custom logic and show an immediate success toast or redirect.
 
-Fires when a new user account is created in the selected Softr app.
+##### Run custom workflow
+Fires instantly when a user clicks a button configured with the "Run custom workflow" action.
+**Configuration:**
+- **Application** — Select the Softr app
+- **Button** — Map the workflow to a specific button in your interface
+**When to use:** Create high-UX features like "Upvote", "Approve", or "Generate Summary" that provide instant visual feedback.
 
-**When to use:** Send a welcome email, create a corresponding record in your database, or add the user to a Slack channel.
+##### Record created (UI)
+Fires when a user creates a record through a List block's 'Add' action inside the app.
+**When to use:** Redirect a user to a custom onboarding page immediately after they create their first project.
+
+##### Record updated (UI)
+Fires when a user edits an existing record through a List block's 'Edit' action inside the app.
+**When to use:** Validate an update and show a confirmation loading screen while a backend sync occurs.
 
 ---
 
-#### Comment added
+#### Polling Triggers (Background)
+These triggers use a background service to check for updates approximately every **1 minute**.
 
+##### User added
+Fires when a new user account is created in the selected Softr app.
+**When to use:** Send a welcome email, create a corresponding record in your database, or add the user to a Slack channel.
+
+##### Comment added
 Fires when a user posts a comment anywhere in the selected Softr app.
-
-**When to use:** Notify a team member when a client leaves a comment, or log all comments to a centralized database.
+**When to use:** Notify a team member when a client leaves a comment.
 
 ---
 
@@ -190,8 +212,17 @@ Runs a workflow repeatedly on a schedule you define.
 
 ## Integration Triggers
 
-Integration triggers connect Softr Workflows to third-party services. Most use **1-minute polling** — Softr checks for new events in the connected service approximately once per minute. Calendly triggers are the exception: they fire instantly via webhooks.
+Integration triggers connect Softr Workflows to third-party services. Softr Tables and Calendly are **Instant**, while other services use background polling.
 
+### Softr Tables
+Softr Tables triggers fire instantly since version 1.1.0, ensuring high performance.
+| Event | Execution type |
+|---|---|
+| Record created | **Instant** |
+| Record updated | **Instant** |
+| Record deleted | **Instant** |
+
+---
 
 ### Airtable
 
@@ -269,6 +300,10 @@ Integration triggers connect Softr Workflows to third-party services. Most use *
 | Record enters the view | Softr Databases | Instant | Any |
 | User added | Softr Apps | 1-min polling | Any |
 | Comment added | Softr Apps | 1-min polling | Any |
+| **Submit form** | Softr Apps | Synchronous | Any |
+| **Run custom workflow** | Softr Apps | Synchronous | Any |
+| **Record created (UI)** | Softr Apps | Synchronous | Any |
+| **Record updated (UI)** | Softr Apps | Synchronous | Any |
 | Email received | Softr Email | Instant | Basic+ |
 | Webhook | Built-in | Instant | Professional+ |
 | One-time schedule | Built-in | Scheduled (once) | Any |
