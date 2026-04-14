@@ -47,7 +47,7 @@
             "icon": "hand-wave",
             "pages": [
               "start-here/welcome",
-              "start-here/generate-an-app-with-softrai",
+              "start-here/ai-co-builder",
               "start-here/create-an-app-from-a-template"
             ]
           },
@@ -84,6 +84,7 @@
             "icon": "random",
             "pages": [
               "workflows/workflows",
+              "workflows/trigger-types",
               "workflows/advanced-concepts"
             ]
           },
