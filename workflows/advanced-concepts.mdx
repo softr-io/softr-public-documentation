@@ -40,6 +40,15 @@ You can combine variables with static text. For example, a Slack message might r
 
 **Example:** A form submission triggers a workflow. Step 1 uses the submitter's email from the trigger to look up their full user record. Step 2 sends a Slack message that combines the form's message field (`+` → Trigger → message) with the user's account plan from Step 1 (`+` → Step 1 → plan).
 
+**Common Trigger Payloads:**
+
+Different triggers provide different sets of variables at the start of your workflow. Understanding these helps you design better logic:
+
+- **UI Triggers (Forms/Buttons):** Provide context about the app context, including `applicationId`, `pageId`, and `blockId`. Triggers from list blocks also include the specific `record` object.
+- **Unified Record Triggers:** Standardized via the Softr logic, these provide an `id` and a `fields` object containing all key-value pairs from the record.
+- **System Triggers (New User):** Provide rich user metadata including `fullName`, `credentials.email`, and `userGroups` — allowing you to branch based on permissions.
+- **Webhooks & Calendly:** Pass the raw `body` of the event. Webhooks additionally provide `header` and `query` variables.
+
 ---
 
 ## Branch
