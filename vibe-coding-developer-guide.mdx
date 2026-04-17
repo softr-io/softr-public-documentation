@@ -847,3 +847,72 @@ export default function Block() {
   );
 }
 ```
+
+---
+
+## Fetching field options
+
+Use `useFieldOptions` to fetch available options for SELECT or multi-select fields. This is useful for building filters, dropdowns, badges, or any UI that needs to display the available choices from the datasource without hardcoding them.
+
+Example to build a filter UI using `useFieldOptions`:
+
+```tsx
+import { useState } from "react";
+import { q, useRecords, useFieldOptions } from "@/lib/datasource";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const select = q.select({
+  title: "$TITLE_FIELD_ID",
+  productStatus: "$PRODUCT_STATUS_FIELD_ID",
+});
+
+export default function Block() {
+  const [selectedProductStatus, setSelectedProductStatus] = useState<string | null>(null);
+  const { options } = useFieldOptions({ select, field: "stockStatus" });
+
+  const { data, status } = useRecords({
+    select,
+    where: selectedProductStatus ? q.text("productStatus").is(selectedProductStatus) : undefined,
+    count: 10,
+  });
+
+  const items = data?.pages.flatMap((p) => p.items) ?? [];
+
+  return (
+    <div className="container py-6">
+      <div className="content space-y-4">
+        <Select
+          value={selectedProductStatus ?? "all"}
+          onValueChange={(val) => setSelectedProductStatus(val === "all" ? null : val)}
+        >
+          <SelectTrigger className="w-48">
+            <SelectValue placeholder="Filter by product status" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Product Statuses</SelectItem>
+            {options.map((opt) => (
+              <SelectItem key={opt.id} value={opt.id}>
+                {opt.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
+        {status === "pending" && <div>Loading...</div>}
+        {items.map((item) => (
+          <div key={item.id}>
+            <div>{item.fields.title}</div>
+            <div>{item.fields.status?.label || "Unknown"}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
