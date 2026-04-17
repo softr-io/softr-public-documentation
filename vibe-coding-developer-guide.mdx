@@ -908,7 +908,7 @@ export default function Block() {
         {items.map((item) => (
           <div key={item.id}>
             <div>{item.fields.title}</div>
-            <div>{item.fields.status?.label || "Unknown"}</div>
+            <div>{item.fields.productStatus?.label || "Unknown"}</div>
           </div>
         ))}
       </div>
