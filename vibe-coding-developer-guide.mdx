@@ -874,7 +874,7 @@ const select = q.select({
 
 export default function Block() {
   const [selectedProductStatus, setSelectedProductStatus] = useState<string | null>(null);
-  const { options } = useFieldOptions({ select, field: "stockStatus" });
+  const { options } = useFieldOptions({ select, field: "productStatus" });
 
   const { data, status } = useRecords({
     select,
