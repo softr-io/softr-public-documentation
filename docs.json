@@ -85,7 +85,10 @@
             "pages": [
               "workflows/workflows",
               "workflows/trigger-types",
-              "workflows/advanced-concepts"
+              "workflows/advanced-concepts",
+              "workflows/slack",
+              "workflows/granola",
+              "workflows/zendesk"
             ]
           },
           "softr-forms",
