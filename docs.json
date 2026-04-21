@@ -92,6 +92,7 @@
                 "pages": [
                   "workflows/integrations/overview",
                   "workflows/integrations/granola",
+                  "workflows/integrations/linkup",
                   "workflows/integrations/slack"
                 ]
               }
