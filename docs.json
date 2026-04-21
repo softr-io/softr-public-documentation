@@ -93,7 +93,7 @@
                   "workflows/integrations/overview",
                   "workflows/integrations/granola",
                   "workflows/integrations/slack",
-                  "workflows/zendesk"
+                  "workflows/integrations/zendesk"
                 ]
               }
             ]
