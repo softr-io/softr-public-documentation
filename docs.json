@@ -85,7 +85,16 @@
             "pages": [
               "workflows/workflows",
               "workflows/trigger-types",
-              "workflows/advanced-concepts"
+              "workflows/advanced-concepts",
+              {
+                "group": "Integrations",
+                "icon": "plug",
+                "pages": [
+                  "workflows/integrations/overview",
+                  "workflows/integrations/granola",
+                  "workflows/integrations/slack"
+                ]
+              }
             ]
           },
           "softr-forms",
