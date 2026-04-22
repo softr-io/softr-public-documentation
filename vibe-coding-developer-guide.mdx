@@ -647,9 +647,11 @@ export default function Block() {
 
 ### `useNavigationSetting`
 
-Returns `{ action: "OPEN_URL" | "OPEN_PAGE"; destination: string; openIn: "SELF" | "TAB" }`.
+Returns `{ action: "OPEN_URL" | "OPEN_PAGE"; destination: string; openIn: "SELF" | "TAB" } | { action: "OPEN_CHAT" }`.
 
 ```tsx
+import { NavigationAction } from "@/components/navigation-action";
+import { Button } from "@/components/ui/button";
 import { useNavigationSetting } from "@/lib/editable-settings";
 
 export default function Block() {
@@ -664,14 +666,11 @@ export default function Block() {
   });
 
   return (
-    <a
-      href={navigation.destination}
-      target={navigation.openIn === "TAB" ? "_blank" : "_self"}
-      rel={navigation.openIn === "TAB" ? "noopener noreferrer" : undefined}
-      className="btn btn-primary"
-    >
-      Go to page
-    </a>
+      <Button asChild>
+        <NavigationAction navigation={navigation}>
+          Click me!
+        </NavigationAction>
+      </Button>
   );
 }
 ```
