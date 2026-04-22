@@ -12,7 +12,7 @@ With Softr, you can scrape single URLs, search the web, and wire the responses i
 
 ### Scrape URL
 
-Scrape a webpage and return its content in one or more formats: `markdown`, `html`, `rawHtml`, `screenshot`, `summary`, or `json`. You can choose to keep only the main content (strip nav, headers, footers, sidebars) or keep the full page. The response includes the requested formats plus page metadata (title, description, language, Open Graph tags, source URL, status code, content type).
+Scrape a webpage and return its content in one or more formats: `markdown`, `html`, `rawHtml`, `screenshot`, or `summary`. You can choose to keep only the main content (strip nav, headers, footers, sidebars) or keep the full page. The response includes the requested formats plus page metadata (title, description, language, Open Graph tags, source URL, status code, content type).
 
 ### Search web
 
