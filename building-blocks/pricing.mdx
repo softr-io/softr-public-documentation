@@ -1,0 +1,260 @@
+---
+title: "Pricing"
+---
+
+Pricing blocks are drop-in sections for showing plans, tiers, or package prices. They live under the **Static** tab in the block library and cover everything from a simple three-tier layout to a full comparison table or an interactive price calculator.
+
+Every Pricing block is editable two ways, side by side:
+
+<CardGroup cols={2}>
+  <Card title="AI chat" icon="sparkles">
+    Describe what you want in plain English and Softr rewrites the whole block for you — names, descriptions, prices, features, button labels.
+  </Card>
+
+  <Card title="Content settings" icon="sliders">
+    Open the **Content** tab and edit any field by hand. This is exactly the same data the AI writes to, so you can switch between the two at any time.
+  </Card>
+</CardGroup>
+
+You don't have to pick one approach. Most people use the AI to get 90% of the way there, then polish specific values (a price, a line of copy, a button link) in the settings panel.
+
+<Frame caption="A freshly added Centered Pricing block. The right-panel tabs are the full editing surface — Chat is the AI, Content is the manual settings the AI writes to.">
+  ![Screenshot 2026 04 23 At 4 52 13 PM](/images/Screenshot-2026-04-23-at-4.52.13-PM.png)
+</Frame>
+
+## Adding a Pricing block
+
+<Steps>
+  <Step title="Open the page">
+    Open the page you want the block on.
+  </Step>
+  <Step title="Open Browse blocks">
+    Click an empty area of the canvas (or the **\+** between two blocks) to open **Browse blocks**.
+  </Step>
+  <Step title="Switch to the Static tab">
+    The Pricing category lives here, alongside Hero, CTA, Team, Testimonial, and FAQ.
+  </Step>
+  <Step title="Pick a variant">
+    Expand the **Pricing** category and click the variant you want.
+  </Step>
+</Steps>
+
+<Frame>
+  ![Screenshot 2026 04 23 At 4 53 16 PM](/images/Screenshot-2026-04-23-at-4.53.16-PM.png)
+</Frame>
+
+The block lands on the canvas with placeholder content (three tiers, sample features, sample prices). The settings panel opens on the right with **Chat** already selected so you can start iterating immediately.
+
+### Pricing variants at a glance
+
+Softr ships 11 Pricing variants. They all share the same underlying content model, so switching between them is safe — your plans, prices, and features carry over.
+
+<CardGroup cols={3}>
+  <Card title="Centered" icon="align-center">
+    Three-tier layout with a centered header and a highlighted "Most popular" card.
+  </Card>
+
+  <Card title="Split header" icon="columns-2">
+    Heading on the left, plans on the right.
+  </Card>
+
+  <Card title="With cover image" icon="image">
+    Three tiers with illustrated imagery above each card.
+  </Card>
+
+  <Card title="Multi color" icon="palette">
+    Three tiers with distinct colored backgrounds per card.
+  </Card>
+
+  <Card title="With background pattern" icon="grid">
+    Three tiers on a decorative patterned background.
+  </Card>
+
+  <Card title="With custom plan" icon="square-plus">
+    Three tiers plus a wider custom/enterprise row underneath.
+  </Card>
+
+  <Card title="Hovered card" icon="hand-pointer">
+    Three tiers where the middle card lifts on hover.
+  </Card>
+
+  <Card title="Simple table" icon="table">
+    Comparison table with features in rows and plans in columns.
+  </Card>
+
+  <Card title="Card grid" icon="grip">
+    Feature matrix presented as a grid of cards.
+  </Card>
+
+  <Card title="Plan recommender" icon="wand-magic-sparkles">
+    Interactive quiz that recommends a plan based on the visitor's answers.
+  </Card>
+
+  <Card title="Price calculator" icon="calculator">
+    Slider/input driven calculator that produces a live price estimate.
+  </Card>
+</CardGroup>
+
+<Info>
+  The first nine variants are purely presentational. **Plan recommender** and **Price calculator** include interactive logic — editable the same way, but with extra settings for the quiz questions or calculator inputs.
+</Info>
+
+## Editing with AI (the Chat tab)
+
+Click the block on the canvas. The right panel opens with **Chat** active and a greeting: _"Hi, you can ask me to make edits to this block!"_ Type what you want and hit send.
+
+<Frame>
+  ![Screenshot 2026 04 23 At 4 53 55 PM](/images/Screenshot-2026-04-23-at-4.53.55-PM.png)
+</Frame>
+
+### What the AI can rewrite in one go
+
+A single prompt can set any combination of:
+
+- Block title and description
+- Each tier's plan name, tagline, monthly price, and yearly price
+- Each tier's feature list (including the "Everything in X, plus:" label on higher tiers)
+- The CTA button text and link for each tier
+- Which tier is badged **Most popular**
+
+### A worked example
+
+<Note>
+  **Prompt:** Change the pricing to three tiers for a photography studio: Basic $99, Standard $249, Premium \$499. Update features to match.
+</Note>
+
+Within a few seconds the block renders new tiers — Basic, Standard, Premium — with photography-appropriate features ("1-hour photo session", "Online gallery for 30 days", "Commercial use license") and button labels ("Book now") that match the new context.
+
+<Frame caption="The AI writes to the same fields you'd edit manually — so the new content shows up in the Content tab too.">
+  ![Screenshot 2026 04 23 At 4 55 40 PM](/images/Screenshot-2026-04-23-at-4.55.40-PM.png)
+</Frame>
+
+### Iterating with follow-up prompts
+
+The chat is conversational. Use short follow-ups rather than rewriting from scratch:
+
+- _"Make the middle tier not most popular, highlight Premium instead."_
+- _"Add a 'Print album included' feature to the Premium tier."_
+- _"Change the billing period from monthly to per session."_
+- _"Drop the yearly prices, I only offer monthly."_
+
+Each prompt produces a new version — see [Versions and rollback](#versions-and-rollback) below.
+
+<Warning>
+  **What the AI can't do.** The AI edits the _content_ of the block. It doesn't change the structural layout (it won't turn a Centered variant into a Table variant — you switch variants from the block library), and it doesn't wire up payment processing. To take payments, connect the CTA button to a Stripe checkout URL or a custom workflow via the **Actions** tab.
+</Warning>
+
+<Tip>
+  **Attach a reference image.** The composer has a small image icon at the bottom left. Attach a competitor's pricing screenshot or a mood board and ask the AI to "match the tiers and pricing structure from this image" — handy when you're porting pricing over from an existing source.
+</Tip>
+
+<Info>
+  **Credits.** Every AI edit consumes a small number of AI credits — typically well under one credit per prompt. After the AI replies, a credit cost appears under the message (e.g. _"0.89 credits used"_). Credits are scoped to your workspace plan; tight loops of small follow-up prompts are cheap.
+</Info>
+
+## Editing in the Content tab
+
+Open **Content** to see every field the AI is writing to. Whether you got here after an AI edit or you're starting fresh, the layout is the same.
+
+<Frame>
+  ![Screenshot 2026 04 23 At 4 56 14 PM](/images/Screenshot-2026-04-23-at-4.56.14-PM.png)
+</Frame>
+
+The Content tab has two inner modes:
+
+<Tabs>
+  <Tab title="Settings">
+    The structured editor described below. This is what most people use, **_but could change depending on what you prompt the AI_**.
+  </Tab>
+  <Tab title="Code">
+    The raw JSON for the block. Advanced users can paste a block definition from another project, diff two versions, or hand-craft content that's easier to express as data.
+  </Tab>
+</Tabs>
+
+### Block-level fields
+
+At the top of Settings:
+
+- **Title** — big heading at the top of the block (e.g. "Pricing").
+- **Description** — smaller subheading below the title.
+- **Popular badge text** — text shown on the highlighted plan's badge. Defaults to "Most popular".
+- **Monthly button text** / **Yearly button text** — the labels on the billing-period toggle above the plan cards. Edit these if you want different wording (e.g. "Per month" / "Per year") or if you're showing something other than monthly/yearly (e.g. "Per session" / "Per project").
+
+### Pricing plans
+
+Below that, the **Pricing plans** list shows every tier as a draggable, collapsible row. Hover a row to reveal the trash and drag handles. Click the chevron to expand and see the plan's own fields.
+
+<Frame>
+  ![Screenshot 2026 04 23 At 4 57 32 PM](/images/Screenshot-2026-04-23-at-4.57.32-PM.png)
+</Frame>
+
+In this case, each plan has:
+
+- **Plan name** — e.g. "Basic", "Standard", "Premium".
+- **Description** — one-line tagline under the name (e.g. "Getting started").
+- **Monthly price** / **Yearly price** — free-text, so `$99`, `£79`, `€49 + VAT`, or `Contact us` all work.
+- **Features label** — the line above the feature list. Leave blank on the first tier; use "Everything in Basic, plus:" style text on higher tiers.
+- **Features** — the bullet list. Each feature is its own draggable row with a trash icon. **\+ Add item** adds a new one.
+- **Is most popular** — a per-plan toggle. Turning it on adds the Most popular badge to that tier. Only one plan should have this enabled at a time.
+- **CTA text** — the button label on that card.
+- **CTA URL** — where the button goes. Softr shows a dropdown of existing app pages; you can also paste an external URL or connect to a workflow.
+
+To reorder plans, drag a row by its handle. To add a plan, click **\+ Add item** at the bottom of the list.
+
+## Versions and rollback
+
+Every AI edit is saved as a version. Above the Settings editor you'll see a **Version 1** dropdown with a chevron — open it to see the history.
+
+<Frame>
+  ![Screenshot 2026 04 23 At 4 59 08 PM](/images/Screenshot-2026-04-23-at-4.59.08-PM.png)
+</Frame>
+
+Each version records:
+
+- The prompt that produced it (or "Initial Version Prompt" for the starting template).
+- The date and time.
+- The label **(Latest)** on the current one.
+
+<Check>
+  Pick any version to roll the block back. This is the easiest way to recover from a prompt that didn't go the way you wanted — no undo stack, no copy-paste, just a single click.
+</Check>
+
+## Connecting a data source (optional)
+
+<Info>
+  Pricing blocks are static by default — the prices and features live in the block itself, not in a database.
+</Info>
+
+The **Source** tab is there for the one case where you want the block driven by a table: a banner reading _"Data source is optional"_ appears at the top, and below it are dropdowns for Source, Database, and Table. Connect a table and each row in that table becomes a plan card.
+
+Use this when your pricing changes often, you have more than ~6 tiers, or you want non-technical teammates to edit pricing by editing a spreadsheet rather than touching the Studio.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="If I use the AI and then edit a field in Content, will my next AI prompt overwrite what I edited?">
+    It might. The AI rewrites whichever fields your prompt implies are in scope. Narrow prompts ("change the Standard tier price to \$299") touch only that field; broad prompts ("rewrite the whole pricing section for a consulting business") will reset most fields.
+
+    If you've made manual tweaks you want to keep, either rely on version history (every AI edit is saved automatically — see [Versions and rollback](#versions-and-rollback)) or include your tweaks in the prompt ("keep the current features on Basic, just change the price").
+  </Accordion>
+
+  <Accordion title="How are AI credits charged for the chat edits?">
+    Each prompt-response pair costs AI credits — usually well under one credit for a single pricing edit. You can see the exact cost under each AI reply via the info icon. Credits are pooled at the workspace level and replenish based on your Softr plan; check **Settings → Billing** for your current allowance.
+  </Accordion>
+
+  <Accordion title="Can the AI change the block's visual layout — e.g. turn Centered into Simple table?">
+    No. The AI edits content within the current variant. To switch layouts, delete the block and add a different variant from the library, or pick a variant and then re-run your AI prompt — the copy you wrote works the same across variants because they share one content model.
+  </Accordion>
+
+  <Accordion title='My pricing is "Contact us" — can I put non-numeric text in the price field?'>
+    Yes. Monthly price and Yearly price are free-text, so `$49`, `£29.99/mo`, `Contact us`, and `Custom` all render correctly. The billing-period toggle still applies, though — if you only have one price, either set both Monthly and Yearly to the same value, or word the button text to match what you're actually charging for.
+  </Accordion>
+
+  <Accordion title="How do I wire the CTA button to a real checkout or signup flow?">
+    Set **CTA URL** to the destination you want — that can be another page in your app, an external URL (e.g. a Stripe Checkout link), or a linked workflow. For logged-in users you can stamp the submission with the user's email or record ID via the **Actions** tab; see the [Mapping Fields for Actions](/actions/mapping-fields-for-actions) doc for the full field-mapping flow.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<Tooltip tip="Last updated April 2026">Last updated: April 2026.</Tooltip> If something in this doc looks wrong or out of date, please contact support.

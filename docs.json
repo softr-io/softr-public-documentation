@@ -222,7 +222,8 @@
               "building-blocks/feature-grid",
               "building-blocks/partner",
               "building-blocks/x-twitter-grid",
-              "building-blocks/quick-links"
+              "building-blocks/quick-links",
+              "building-blocks/pricing"
             ]
           },
           {
