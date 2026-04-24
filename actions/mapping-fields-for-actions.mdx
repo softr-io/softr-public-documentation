@@ -1,60 +1,283 @@
 ---
 title: "Mapping Fields for Actions"
 permalink: "7ukkeMfqspmniU4MQyTiV3"
+og:title: "Mapping Fields for Actions – Softr Help Docs"
+og:description: "Mapping the fields manipulated by the Action Button."
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+twitter:title: "Mapping Fields for Actions – Softr Help Docs"
+twitter:description: "Mapping the fields manipulated by the Action Button."
 description: "Mapping the fields manipulated by the Action Button."
-'og:title': "Mapping Fields for Actions – Softr Help Docs"
-'og:description': "Mapping the fields manipulated by the Action Button."
-'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
-'twitter:title': "Mapping Fields for Actions – Softr Help Docs"
-'twitter:description': "Mapping the fields manipulated by the Action Button."
 ---
-When setting up an [Action Button](/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq) such as an [Add Record](/actions/ntEfT9zSJk6aY54G6W5KGU/add-record/3LrUMpQY4BKfDDQj6eb8h8) or [Update Record](/actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx), you need to specify which fields in your [data source](/4230abecf813402aa2926466c313290a) the button can manipulate. Thus, you need add all those field types and link them to corresponding fields in your data source.
 
-You can add a new field using the **Add field** button in action button settings.
-<Warning>Note that [computed fields](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX#airtable-computed-fields) will not appear in the list of mappable fields for the form.</Warning>
-<Frame caption="Add field button">![Add field button](/actions/images/mapping-fields-for-actions/image1.png)</Frame>
+When you add an **Action Button** like **Add record** or **Update record** to a block, Softr needs to know which columns in your data source the button should write to. That pairing — a form field in Softr linked to a column in your table — is called a **field mapping**.
 
-Next, you need to select the field type and map it to the corresponding field in your data source.
+<Check>
+  Softr now handles most of this for you automatically. As soon as you pick an action, every mappable field from your data source shows up pre-configured. You only need to step in when you want to customize a field, remove one, or collect a value behind the scenes (a **hidden input**).
+</Check>
 
-You can also add a **Label** and **Placeholder**.
-<Frame caption="Mapping the field">![Mapping the field](/actions/images/mapping-fields-for-actions/image2.png)</Frame>
+<Frame caption="When you add an Add record action, Softr auto-maps every eligible column from the connected table. Computed (formula) fields are skipped because they can't be written to.">
+  ![Screenshot 2026 04 24 At 3 18 00 PM](/images/Screenshot-2026-04-24-at-3.18.00-PM.png)
+</Frame>
 
-There is also a **Required** toggle, which, if enabled, makes it obligatory for the user to fill in the value for the given field when adding a new record or updating it.
+## How to add an action button
 
-## Hidden Fields
-<Frame caption="Hidden field under Add Record action">![Hidden field under Add Record action](/actions/images/mapping-fields-for-actions/image3.png)</Frame>
+Open any block that supports actions — lists, tables, grids, item details — then:
 
-Hidden fields let you collect data that’s not explicitly entered by the user (e.g. user profile data or a parameter from the page URL). Hidden fields are available on various actions such as [Add Record](/actions/ntEfT9zSJk6aY54G6W5KGU/add-record/3LrUMpQY4BKfDDQj6eb8h8) or [Update record](/actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx).
+<Steps>
+  <Step title="Select the block">
+    Click the block on the canvas to open its settings panel on the right.
+  </Step>
+  <Step title="Open the Actions tab">
+    In the right-hand settings panel, switch to the **Actions** tab.
+  </Step>
+  <Step title="Add a button">
+    Click **\+ Add topbar button** (applies to the whole block, like "Add a new project") or **\+ Add item button** (applies per row, like an Edit button on each card).
+  </Step>
+  <Step title="Choose the action type">
+    Pick from the dropdown — options listed below.
+  </Step>
+</Steps>
 
-The mapping for hidden fields works similar to other regular fields, so you simply need to select the field in your data source that’s going to receive the value. Now, let’s discuss the types of values you can collect through hidden fields. There are **4 categories**, so let's examine them one by one.
+<Frame>
+  ![Screenshot 2026 04 24 At 3 20 15 PM](/images/Screenshot-2026-04-24-at-3.20.15-PM.png)
+</Frame>
 
-### **1. Logged-in user**
+<CardGroup cols={2}>
+  <Card title="Add record" icon="plus">
+    Creates a new row in a connected table. The most common starting point — field mapping matters a lot here.
+  </Card>
 
-By default, here, you have the following options:
+  <Card title="Update record" icon="pen-to-square">
+    Edits an existing row. Only available as an item button. Same field-mapping UI as Add record.
+  </Card>
 
-* **Email.** Collects the email address of the logged-in user.
+  <Card title="Run custom workflow" icon="diagram-project">
+    Triggers a Softr workflow. Useful when you need to combine values from multiple sources before writing.
+  </Card>
 
-* **Name.** Collects the name of the logged-in user.
+  <Card title="Open page" icon="file">
+    Navigates to another page in your app.
+  </Card>
 
-* **Record ID.** If you've [connected a data source to your users database](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9), you can choose this option to collect the Record ID (you can learn about Airtable Record IDs [here](https://support.airtable.com/hc/en-us/articles/360051564873-Record-ID), and learn how those work for Google Sheets [here](https://support.airtable.com/hc/en-us/articles/360051564873-Record-ID)) of the user.
+  <Card title="Open URL" icon="arrow-up-right-from-square">
+    Opens an external URL in a new tab.
+  </Card>
 
-### **2. URL Parameter**
+  <Card title="Scroll to" icon="arrow-down">
+    Smoothly scrolls to another block on the same page.
+  </Card>
 
-Using this option, you can collect any of the page’s URL parameters. Let's consider a specific example to see how that works. For instance, if you've created a job board with Softr, each job announcement will have a **recordId** (you can learn about [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) Record IDs [here](https://support.airtable.com/hc/en-us/articles/360051564873-Record-ID), and learn how those work for Google Sheets [here](https://support.airtable.com/hc/en-us/articles/360051564873-Record-ID)) in its page URL, indicating the data source record corresponding to that particular job. So, if you have an action button on the job announcement page, you can set a hidden field to collect the **recordId** to identify which job announcement the action has been submitted for.
+  <Card title="Ask AI" icon="sparkles">
+    Opens an AI chat scoped to the current record or context.
+  </Card>
+</CardGroup>
 
-Your page URL will look something like **yoursite.com/job-details/senior-product-manager?recordId=rec7HcXAgKmlk8inf**, so if you set your hidden field value as “**recordId,”** it will collect the value of **recordId** ("rec7HcXAgKmlk8inf" in this case).
+<Info>
+  For this guide we'll focus on **Add record** and **Update record** — those are the action types where field mapping applies.
+</Info>
 
-### **3. Page URL**
+## What auto-mapping does (and what you still control)
 
-This parameter allows to get **the full URL of the page** the button has been submitted from.
+As soon as you pick Add record or Update record, Softr scans the connected table and creates a field entry for every writable column, with the correct **Input type** already selected (Text, Long text, Number, Dropdown, Date, Attachment, and so on).
 
-### **4. Custom value**
+<AccordionGroup>
+  <Accordion title="Computed / formula fields are skipped" icon="ban">
+    They're read-only in the data source, so they can't be written to from an action.
+  </Accordion>
 
-Here’ you can collect any custom value that you’re not able to collect using the previous options. For instance, you can use it to collect a custom text along with the submission. This can be useful if you have the same form on different pages and want to mark each of the forms distinctively.
+  <Accordion title="Lookup and linked-record fields are included" icon="link">
+    They show up as dropdowns or multi-selects, depending on how the underlying table is configured.
+  </Accordion>
 
-Another important use case is collecting additional logged-in user parameters. If you've [synced your users database with a data source](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9), you can use this option to collect any of the field values corresponding to the user. Here, the value has the following format: **\{LOGGED_IN_USER:'field name'}** ('field name'is replaced with the actual name of the field).
+  <Accordion title="You can remove any field you don't want users to fill in" icon="trash">
+    Hover the field row and click the trash icon. Removed fields won't appear in the form.
+  </Accordion>
 
-Let's say you have connected an [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) data source and have a **Status** field in your users base as shown below.
-<Frame caption="Users base on Airtable">![Users base on Airtable](/actions/images/mapping-fields-for-actions/image4.png)</Frame>
+  <Accordion title="You can re-add a field later" icon="plus">
+    Click **\+ Add field** at the bottom of the list. This also lets you add a field that isn't yet bound to a column — useful for hidden inputs (see below).
+  </Accordion>
+</AccordionGroup>
 
-So, if you set your hidden field's value as **Status,** the values of the **Status** field will be collected for each user submitting the form (e.g. for Elise it will be "Active").
+<Frame>
+  ![Screenshot 2026 04 24 At 3 21 23 PM](/images/Screenshot-2026-04-24-at-3.21.23-PM.png)
+</Frame>
+
+<Tip>
+  The header of each field row shows the **field's label** on the left and the **column type** on the right (e.g. "Status — Dropdown"). A field that's missing its mapping will show **"Not set"** — that's the one indicator to watch for.
+</Tip>
+
+## Configuring an individual field
+
+Click any field in the list to open its configuration popover.
+
+<Frame>
+  ![Screenshot 2026 04 24 At 3 22 12 PM](/images/Screenshot-2026-04-24-at-3.22.12-PM.png)
+</Frame>
+
+The popover has the following controls, top to bottom:
+
+- **Field header** — shows the column currently mapped to this input. Click the dropdown to remap it to a different column in the same table.
+- **Hidden input** _(toggle)_ — when off, the field shows in the form for the end user to fill in. When on, the field is collected silently — see the [Hidden inputs](#hidden-inputs) section.
+- **Input type** — usually set correctly by auto-mapping. Override it only if you want a different UI (e.g. render a Text column as an email input with validation).
+- **Required** — forces the user to fill the field before the form can submit. For Add record, this corresponds to a required column in the data source; for Update record, it guards against accidental blanks.
+- **Label** — the text shown above the input. Defaults to the column name.
+- **Tooltip** — a small "?" next to the label with helper text on hover.
+- **Placeholder** — ghost text inside an empty input.
+- **Hint** — helper text shown below the input.
+- **Default value** — prefills the input. For Add record, this is the value used if the user doesn't change anything. For Update record, this is overridden by the existing record value.
+- **Validation** — expands to show input-type–specific rules (min/max length, regex pattern, minimum date, file size, and so on).
+
+## Hidden inputs
+
+A **hidden input** is a form field the end user never sees — it's submitted automatically with a value you pick. These are great for automatically saving values to a record without requiring input from the user. For example, you may want to automatically assign the Project Lead as the Logged in User, since the Logged in User is the one creating the new Project record.
+
+<Info>
+  **Change from the old UI.** Hidden fields used to live in a separate section at the bottom of the action settings. They're now a **per-field toggle**, which means any field in your form — whether Softr auto-mapped it or you added it yourself — can be turned into a hidden input with one click.
+</Info>
+
+To make a field hidden:
+
+<Steps>
+  <Step title="Open the field">
+    Click the field to open its configuration popover.
+  </Step>
+  <Step title="Turn on Hidden input">
+    Flip the **Hidden input** toggle.
+  </Step>
+  <Step title="Pick a value source">
+    Choose what to submit from the **Value** dropdown.
+  </Step>
+</Steps>
+
+<Frame>
+  ![Screenshot 2026 04 24 At 3 24 45 PM](/images/Screenshot-2026-04-24-at-3.24.45-PM.png)
+</Frame>
+
+The Value dropdown gives you **six categories** of automatically-collected values. Each is covered below.
+
+### Logged-in user
+
+Pulls any field from the signed-in user's record in your users table.
+
+<Frame>
+  ![Screenshot 2026 04 24 At 3 27 00 PM](/images/Screenshot-2026-04-24-at-3.27.00-PM.png)
+</Frame>
+
+The list shows **every column in your users table**, not just a few built-ins. Common picks:
+
+- **Email** or **Name** — to stamp a submission with who created it.
+- **Client company** or **Client contact of** (in Client Portal apps) — to tie a new record to the logged-in user's organization.
+- **Record ID** — to link the new record to the user's row via a linked-record field.
+
+<Note>
+  **Migrating from the old UI?** You no longer need the `{LOGGED_IN_USER:'Field name'}` custom-value syntax for this. The Logged-in user submenu covers any field directly.
+</Note>
+
+### Details page record
+
+Available on pages that have a parent record (list-detail pages, Users-scoped pages). Works the same as Logged-in user — you get a submenu of every field on the parent record.
+
+<Frame>
+  ![Screenshot 2026 04 24 At 3 27 51 PM](/images/Screenshot-2026-04-24-at-3.27.51-PM.png)
+</Frame>
+
+<Tip>
+  **Clearest use case:** an Add record button on a "Project detail" page that creates a Task. Pick **Details page record → Record ID**, map it to the Task's **Project** lookup column, and every new task is automatically linked to the project the user is viewing.
+</Tip>
+
+### URL parameter
+
+Collects a query-string parameter from the page the button is on. Enter the parameter's name. 
+
+<Frame>
+  ![Screenshot 2026 04 24 At 3 28 25 PM](/images/Screenshot-2026-04-24-at-3.28.25-PM.png)
+</Frame>
+
+**Example:** a job board where each page URL is `yoursite.com/job-details/senior-product-manager?recordId=rec7HcXAgKmlk8inf`. Setting the Value to URL parameter → `recordId` captures `rec7HcXAgKmlk8inf` and stamps it onto the submission.
+
+### Page URL
+
+Captures the full URL of the current page, including query string. Useful when the same action button lives on multiple pages and you want to know which one was used.
+
+### Current time
+
+Records a timestamp at the moment of submission. You can pick the format (ISO datetime, date only, Unix timestamp) from the submenu.
+
+<Frame>
+  ![Screenshot 2026 04 24 At 3 30 07 PM](/images/Screenshot-2026-04-24-at-3.30.07-PM.png)
+</Frame>
+
+<Warning>
+  Because Softr stamps this on submit, it's the correct way to populate a "Created at" or "Last edited" column — don't try to compute it client-side, as client clocks can be wrong.
+</Warning>
+
+### Custom value
+
+A free-text box where you can type any literal value — static text, a fixed tag, a number, a default value. Keep in mind that the value type should match the field type its being mapped to. For example, don't send a string (letters and symbols) to a pure number field.
+
+<Frame>
+  ![Screenshot 2026 04 24 At 3 30 37 PM](/images/Screenshot-2026-04-24-at-3.30.37-PM.png)
+</Frame>
+
+Useful for:
+
+- Tagging all submissions from a specific page (_"Source: marketing-landing"_).
+- Filling a default category that the user shouldn't change.
+- Pulling anything you can express as a literal value.
+
+## Update record: what changes
+
+Update record uses the same field-mapping UI as Add record — all the auto-mapping, per-field configuration, and hidden-input behavior work identically. The main differences are operational:
+
+<CardGroup cols={2}>
+  <Card title="Item buttons only" icon="list">
+    Update record is only available as an **item button** (per row), because it needs an existing record to operate on.
+  </Card>
+
+  <Card title="Form pre-fills" icon="fill-drip">
+    The form pre-fills with the current row's values. **Default value** in the field config is ignored if the record already has a value.
+  </Card>
+
+  <Card title="Hidden inputs still overwrite" icon="rotate">
+    Stamp a `Last edited at` column with Current time on every update and that's exactly what happens.
+  </Card>
+
+  <Card title="Wiring is identical" icon="wrench">
+    Click the block → **Actions** tab → **\+ Add item button** → **Update record** → tweak fields as needed.
+  </Card>
+</CardGroup>
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Auto-mapping added a field I don't want my users to fill in. Can I hide it?">
+    Yes — two options. If the field should be invisible but still written to with a value you control, leave it in the list and turn on **Hidden input**. If it shouldn't be touched at all on this action, hover the field row and click the trash icon to remove it.
+  </Accordion>
+
+  <Accordion title="One of my columns didn't show up in the auto-mapped list. What's going on?">
+    The most common reason is that the column is a **computed / formula field** — those are read-only in the source, so Softr skips them. Other possibilities: the column has an unsupported type for the block's data source connector, or it was added to the table after the block was configured.
+
+    Open the **Source** tab and click the refresh icon next to the Database/Table selector to re-sync the schema.
+  </Accordion>
+
+  <Accordion title="I'm using the {LOGGED_IN_USER:'Field name'} syntax in an older doc. Does it still work?">
+    Yes, that syntax is still supported for backwards compatibility — you'll find it under **Custom value**. But for new work, use the **Logged-in user** submenu instead. It's type-safe, it updates if you rename the column, and it handles escaping correctly.
+  </Accordion>
+
+  <Accordion title="Do hidden inputs run Validation rules?">
+    Yes. Validation applies to all fields, hidden or not — the system treats a hidden input the same as any other submission. If a hidden input's value can't satisfy a required rule or a regex pattern, the submission will fail.
+
+    That's worth knowing when you combine hidden inputs with strict validation (e.g. a hidden `recordId` field with a regex that matches Airtable record-ID format).
+  </Accordion>
+
+  <Accordion title='Can I compute a hidden value from multiple sources (e.g. "user email + current time")?'>
+    Not directly in a single field. Each hidden input collects one value from one source. For combinations, either:
+
+    - Use a **custom workflow** action, which lets you build a payload from multiple values before writing, or
+    - Rely on a **formula field** in your data source that computes the combination after insertion.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+_Last updated: April 2026. If something in this doc looks wrong or out of date, please let our support team know._
