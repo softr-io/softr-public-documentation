@@ -293,7 +293,8 @@
             "pages": [
               "add-and-manage-users/saml-single-sign-on",
               "add-and-manage-users/microsoft-azure-saml-single-sign-on",
-              "add-and-manage-users/openid-single-sign-on"
+              "add-and-manage-users/openid-single-sign-on",
+              "add-and-manage-users/scim-provisioning"
             ]
           }
         ]

@@ -1,0 +1,175 @@
+---
+title: "SCIM User Provisioning"
+description: "Automate user lifecycle management for your Softr app from your identity provider."
+'og:title': "SCIM User Provisioning – Softr Help Docs"
+'og:description': "Automate user lifecycle management for your Softr app from your identity provider."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "SCIM User Provisioning – Softr Help Docs"
+'twitter:description': "Automate user lifecycle management for your Softr app from your identity provider."
+---
+<Note>SCIM user provisioning is available for users on the [Enterprise plan](https://www.softr.io/pricing). Please [contact sales](https://www.softr.io/contact-sales) to enable this feature for your workspace.</Note>
+
+## Overview
+
+SCIM (System for Cross-domain Identity Management, [RFC 7644](https://datatracker.ietf.org/doc/html/rfc7644)) is the standard protocol that identity providers use to manage users in third-party apps. Once SCIM is connected, your IdP becomes the source of truth for who has access to your Softr app — when you add, update, deactivate, or remove a user in your IdP, the change is pushed to Softr automatically.
+
+SCIM is the natural complement to [SSO](/add-and-manage-users/saml-single-sign-on): SSO authenticates a user when they sign in, while SCIM provisions the user record itself ahead of time and keeps it in sync. The two are typically used together for centralized identity management.
+
+## Supported identity providers
+
+Softr's SCIM implementation follows the SCIM 2.0 standard, so it works with any SCIM-capable IdP, including:
+
+* Okta
+* Microsoft Entra ID (Azure AD)
+* OneLogin
+* JumpCloud
+* Google Workspace
+* … and any other IdP that supports SCIM 2.0.
+
+## What SCIM does in Softr
+
+| Action in your IdP | Result in Softr |
+| --- | --- |
+| Assign a user to the Softr app | A user is created in your Softr app. If [auto-invite](/add-and-manage-users/automated-user-invitations) is enabled in the app's User Settings, the invitation email is sent automatically. |
+| Update a user's name or email | The corresponding Softr user record is updated. |
+| Deactivate a user (set `active: false`) | The user is deactivated in Softr and can no longer sign in. |
+| Reactivate a user (set `active: true`) | The user is reactivated. |
+| Unassign a user / delete from your IdP | The user is removed from your Softr app. |
+
+## Prerequisites
+
+Before configuring SCIM, make sure you have:
+
+* An **Enterprise plan** with SCIM enabled by Softr — [contact sales](https://www.softr.io/contact-sales) if you haven't requested it yet.
+* A **published Softr app**.
+* A **Softr API key** — see [API Setup and Endpoints](/softr-api/api-setup-and-endpoints) for how to generate one.
+* The **Application ID** of the Softr app you want to provision into.
+
+## Connection details
+
+Your IdP will ask for two values when you set up the SCIM integration: a base URL (sometimes called Tenant URL) and a Bearer token.
+
+| Field | Value |
+| --- | --- |
+| **SCIM Base URL / Tenant URL** | `https://studio-api.softr.io/scim/v2/applications/{applicationId}/Users` |
+| **Authentication** | HTTP Bearer token — header `Authorization: Bearer YOUR_SOFTR_API_KEY` |
+| **Content type** | `application/scim+json` |
+
+Replace `{applicationId}` with the ID of your Softr application and `YOUR_SOFTR_API_KEY` with the API key you generated.
+
+## Supported endpoints
+
+| Method | Path | Purpose | Rate limit |
+| --- | --- | --- | --- |
+| `GET` | `/Users` | List or filter users in the app. Supports pagination via `startIndex` and `count`. | 300 / min |
+| `GET` | `/Users/{id}` | Retrieve a single user by ID. | 300 / min |
+| `POST` | `/Users` | Provision a new user. | 100 / min |
+| `PUT` | `/Users/{id}` | Replace all attributes of an existing user (used by Microsoft Entra ID). | 100 / min |
+| `PATCH` | `/Users/{id}` | Apply partial updates to a user (used by Okta and most IdPs). | 60 / min |
+| `DELETE` | `/Users/{id}` | Remove a user from the app. | 30 / min |
+
+Pagination defaults: `count` defaults to `100` and is capped at `500` per request.
+
+## Supported attributes
+
+| SCIM attribute | Notes |
+| --- | --- |
+| `userName` | Required on create. Used as the user's email. If absent, Softr falls back to the primary entry in `emails`. |
+| `name.givenName`, `name.familyName`, `name.formatted` | Combined into the user's full name. |
+| `displayName` | Takes precedence over `name.*` when resolving the full name. |
+| `emails[].value` | The primary email is used as `userName` if `userName` isn't supplied. |
+| `active` | `true` activates the user; `false` deactivates them. |
+| `password` | Optional, write-only. Most IdPs do not send a password — Softr generates one automatically and the user sets their own via the invitation email. |
+
+## Supported filters
+
+The `GET /Users` endpoint supports a single filter form, which is what Okta and Entra ID send during user lookup:
+
+```
+GET /Users?filter=userName eq "user@example.com"
+```
+
+## Setting up SCIM in your IdP
+
+The provisioning flow looks the same in every SCIM-capable IdP — only the UI differs. In your IdP's SCIM (or "User Provisioning") settings:
+
+<Steps>
+  <Step title="Create or open the Softr app in your IdP">
+    Add Softr as a SCIM-enabled application in your IdP, or open the existing app you already use for SSO. SCIM is configured on the same application.
+  </Step>
+  <Step title="Enter the SCIM Base URL and Bearer Token">
+    Paste the Softr **SCIM Base URL** (`https://studio-api.softr.io/scim/v2/applications/{applicationId}/Users`) and your Softr **API key** as the Bearer token.
+  </Step>
+  <Step title="Verify the connection">
+    Use your IdP's built-in **Test Connection** / **Verify** button. It will issue a test request against Softr to make sure the URL and token are valid.
+  </Step>
+  <Step title="Enable provisioning and assign users">
+    Turn on the provisioning actions you want (Create Users, Update Attributes, Deactivate Users) and assign the users or groups that should have access to the Softr app. Your IdP will start pushing them to Softr.
+  </Step>
+</Steps>
+
+For provider-specific UI details, see your IdP's documentation:
+
+* [Okta — Configure SCIM provisioning](https://help.okta.com/oie/en-us/content/topics/provisioning/scim/scim-app-integration.htm)
+* [Microsoft Entra ID — Automatic provisioning with SCIM](https://learn.microsoft.com/en-us/entra/identity/app-provisioning/use-scim-to-provision-users-and-groups)
+* [OneLogin — SCIM Provisioner](https://developers.onelogin.com/scim)
+
+## Example requests
+
+You can smoke-test the SCIM endpoint with `curl` before pointing your IdP at it.
+
+### Create a user
+
+```bash
+curl --request POST 'https://studio-api.softr.io/scim/v2/applications/YOUR_APP_ID/Users' \
+  --header 'Authorization: Bearer YOUR_SOFTR_API_KEY' \
+  --header 'Content-Type: application/scim+json' \
+  --data-raw '{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+    "userName": "jane@example.com",
+    "name": {
+      "givenName": "Jane",
+      "familyName": "Doe"
+    },
+    "emails": [
+      { "value": "jane@example.com", "type": "work", "primary": true }
+    ],
+    "active": true
+  }'
+```
+
+### Deactivate a user
+
+```bash
+curl --request PATCH 'https://studio-api.softr.io/scim/v2/applications/YOUR_APP_ID/Users/USER_ID' \
+  --header 'Authorization: Bearer YOUR_SOFTR_API_KEY' \
+  --header 'Content-Type: application/scim+json' \
+  --data-raw '{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations": [
+      { "op": "replace", "path": "active", "value": false }
+    ]
+  }'
+```
+
+## Error responses
+
+Errors follow the standard SCIM error schema (`urn:ietf:params:scim:api:messages:2.0:Error`). Common statuses:
+
+| Status | Meaning |
+| --- | --- |
+| `400` | Malformed request, unsupported PATCH path, or invalid filter. |
+| `401` | Missing or invalid Bearer token. |
+| `403` | SCIM is not enabled for this workspace's plan. |
+| `404` | The application or user does not exist. |
+| `409` | A user with the same email already exists in the app. |
+
+## Limitations
+
+Softr's current SCIM implementation supports:
+
+* The `Users` resource only — `Groups` provisioning is not yet supported.
+* `add` and `replace` PATCH operations.
+* The `userName eq "value"` filter form.
+
+Manage [user groups](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3) inside Softr while SCIM keeps the underlying user records in sync.
