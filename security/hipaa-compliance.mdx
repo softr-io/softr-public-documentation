@@ -1,0 +1,161 @@
+---
+title: "HIPAA Compliance"
+---
+
+Softr is **not HIPAA-compliant** and does not sign Business Associate Agreements (BAAs). That sounds like a dealbreaker for healthcare — it isn't. Plenty of healthcare teams use Softr today by keeping protected health information out of Softr entirely and letting Softr render the parts of the app that never touch it. This page walks through how that works, where the responsibility lines fall, and what to evaluate before you ship.
+
+<Warning>
+  This is general guidance, not legal advice. Run your final architecture by your compliance officer or HIPAA counsel before going live with anything patient-facing.
+</Warning>
+
+## Where Softr stands
+
+Softr is a no-code app builder. The platform itself is **SOC 2 certified**, but Softr is **not currently a HIPAA Business Associate** and does not sign BAAs. In practical terms: protected health information (PHI) cannot be transmitted to or stored inside Softr — not in a connected data source row, not in a form submission, not in a file upload, not in the **Users table**, and not in a workflow payload.
+
+If PHI lives in Softr, you are out of compliance, regardless of what your backend looks like.
+
+The good news: HIPAA does not care what tool renders your UI. It cares about who handles PHI. If PHI never reaches Softr, Softr is not a Business Associate at all — and you can use it as the frontend for a healthcare app the same way you would for any other app.
+
+## A 60-second HIPAA primer
+
+HIPAA's Privacy Rule defines **Protected Health Information (PHI)** as health information that can be tied back to an identifiable person. The **Safe Harbor** de-identification method lists 18 identifiers that make data identifiable — names, geographic detail finer than state, dates more specific than year (for births, admissions, deaths, etc.), phone numbers, emails, SSNs, medical record numbers, account numbers, biometrics, full-face photos, IP addresses, and similar.
+
+The Security Rule layers on technical safeguards for electronic PHI: **access control**, **audit logs**, **integrity**, **person or entity authentication**, and **transmission security**.
+
+A vendor that handles ePHI on your behalf is a Business Associate and must sign a BAA. A vendor that never sees ePHI — only de-identified or non-identifying data — is not a Business Associate at all.
+
+That last sentence is where the Softr pattern lives.
+
+## The architectural pattern
+
+The goal: PHI stays inside your HIPAA-covered systems; Softr only ever receives non-identifying references.
+
+<Steps>
+  <Step title="Pick a HIPAA-covered backend for PHI">
+    All clinical and identifying data lives in a system that has signed a BAA with you. Common options include Airtable Enterprise Scale, Google Workspace, Supabase with the HIPAA add-on, Postgres or MySQL on AWS RDS, or a healthcare-specific platform or EHR API. That backend is your source of truth for everything sensitive.
+  </Step>
+  <Step title="Mint a non-PHI identifier per record">
+    Generate a UUID, internal patient code, or token that does not reveal anything about the person. This is the only identifier Softr ever sees.
+  </Step>
+  <Step title="Connect Softr to a non-PHI view">
+    Build a separate table, view, or database that contains the identifier plus only genuinely non-identifying fields the app needs — record IDs, status flags, appointment IDs, condition codes that mean nothing without your internal lookup. Connect Softr to that view, not to the PHI table.
+  </Step>
+  <Step title="Render PHI from the compliant system, not from Softr">
+    When a screen really must show PHI, embed an iframe or link to a page served by your HIPAA-covered system. The PHI renders from your compliant backend, not from Softr's servers, and is never copied into Softr.
+  </Step>
+  <Step title="Lock down access in the compliant backend">
+    The HIPAA Security Rule's access-control, audit-logging, and authentication requirements apply to the system that holds PHI. Softr's permissions help, but they cannot satisfy the Security Rule on their own.
+  </Step>
+</Steps>
+
+## What you can and can't put in Softr
+
+<CardGroup cols={2}>
+  <Card title="Safe in Softr" icon="circle-check">
+    Internal patient UUIDs and tokens, opaque condition codes, appointment IDs, status flags, role labels, public marketing content, staff user accounts, anything fully de-identified under Safe Harbor.
+  </Card>
+
+  <Card title="Never in Softr" icon="circle-xmark">
+    Patient names, addresses, ZIPs, dates of birth, phone numbers, patient emails, diagnoses, treatment notes, lab results, photos, insurance or member numbers, SSNs — any of the 18 HIPAA identifiers tied to a real person.
+  </Card>
+</CardGroup>
+
+<Warning>
+  Logged-in users authenticate against Softr's **Users table**, which stores their email and name. A patient email is itself a HIPAA identifier. Either restrict Softr logins to staff (who are not patients), or front authentication with an SSO identity provider you have a BAA with so that the IdP — not Softr — is the system of record for patient identity.
+</Warning>
+
+## Choosing a HIPAA-compliant data source
+
+Softr supports 14\+ data sources. Most can host non-PHI safely. The HIPAA question is what sits behind the connector — where the PHI version lives, and whether _that_ vendor has signed a BAA with you.
+
+<CardGroup cols={2}>
+  <Card title="Airtable Enterprise Scale" icon="table">
+    Airtable signs BAAs **only** on its Enterprise Scale plan. Keep PHI in a HIPAA-enabled base; expose a separate base or view holding only non-identifying columns to Softr.
+  </Card>
+
+  <Card title="Google Workspace + Sheets" icon="google">
+    Google Workspace signs a BAA covering Sheets, Drive, Gmail, and more. Store PHI in a BAA-covered Sheet; expose a separate non-PHI Sheet (or a filtered view) as Softr's data source.
+  </Card>
+
+  <Card title="Supabase HIPAA add-on" icon="database">
+    Supabase offers HIPAA on Team and Enterprise plans via a paid add-on. Flag the PHI project as HIPAA; have Softr read a non-PHI view or a sibling project.
+  </Card>
+
+  <Card title="Postgres or MySQL on AWS / GCP / Azure" icon="server">
+    Major clouds sign BAAs for their managed database services. Self-host PHI tables in a HIPAA-covered project; expose a non-PHI view or replica to Softr through Softr's [SQL connector](/data-sources/sql).
+  </Card>
+</CardGroup>
+
+Native [Softr Databases](/data-sources/softr-databases) live inside Softr's own infrastructure, so they are not HIPAA-covered either. They are fine for non-PHI data, but cannot be the home for any patient information.
+
+<Tip>
+  Get the BAA in writing **before** loading any PHI, and confirm exactly which products and plan tiers it covers. Most vendors restrict BAAs to specific plans, and a misread there is the most common HIPAA mistake we see in support tickets.
+</Tip>
+
+## Builder responsibilities
+
+In this pattern, most HIPAA responsibility lives with you, the builder — not with Softr. The Security Rule's safeguards map cleanly onto things you control.
+
+<AccordionGroup>
+  <Accordion title="Access control" icon="lock">
+    Use [User Groups](/users/user-groups) and [Data Restrictions](/users/data-restrictions) in Softr to enforce who sees which records. Then mirror the same restrictions in your HIPAA-covered backend, so a misconfigured Softr permission cannot expose PHI directly. Defense in depth.
+  </Accordion>
+
+  <Accordion title="Authentication" icon="key">
+    Softr supports email \+ password, Google Sign-in, and SSO (Enterprise plan). For HIPAA workflows, prefer SSO from an identity provider that you have a BAA with, and require strong passwords plus MFA on the IdP. Patient-facing logins should never use email \+ password directly against Softr.
+  </Accordion>
+
+  <Accordion title="Audit logging" icon="scroll">
+    The Security Rule requires logs of who accessed PHI and when. Softr does not produce HIPAA-grade audit logs of PHI access — your compliant backend has to. Make sure every PHI read and write is logged there, with tamper-evident retention that meets your state's rules.
+  </Accordion>
+
+  <Accordion title="Encryption in transit and at rest" icon="shield-halved">
+    Softr serves traffic over HTTPS, which covers transmission security between the browser and Softr. Encryption at rest for PHI is your backend's job — verify it is on, and verify the connector between Softr and that backend enforces TLS.
+  </Accordion>
+
+  <Accordion title="Data retention and deletion" icon="trash">
+    HIPAA requires you to honor patient-initiated deletion and respect retention rules. Build retention into your backend, not Softr. When a patient leaves, purge them in the compliant system and the non-PHI mirror updates downstream automatically.
+  </Accordion>
+
+  <Accordion title="Your app design itself" icon="pen-ruler">
+    Even with a compliant backend, app design can leak PHI by accident — a diagnosis in a URL parameter, a patient name in a page title, a form field labeled "Symptoms" pointing at a non-HIPAA storage. Review every **Block**, **form**, **Action Button**, and **workflow** for PHI exposure before publishing.
+  </Accordion>
+</AccordionGroup>
+
+## A worked example
+
+Imagine a portal where physical-therapy clinics let patients see appointment status and download exercise plans.
+
+**PHI lives in Postgres on AWS RDS** under a BAA with AWS. Each patient record holds a `patient_uuid`, full name, DOB, phone, diagnosis, and clinical notes. None of those identifying fields ever leave that database.
+
+A second Postgres view, `softr_patient_status`, exposes only `patient_uuid`, `clinic_id`, `next_appointment_id`, and `status` (`scheduled`, `attended`, `missed`). Softr connects to that view through the SQL connector.
+
+When a patient logs in, your IdP (for example, Auth0 with a signed BAA) authenticates them and hands Softr a `patient_uuid` plus a non-identifying display name like "Patient #4821" — never the real name. The Softr page shows their appointment status indexed by `patient_uuid`. For the actual exercise PDF and appointment details, the page embeds an iframe pointing at a HIPAA-covered web app that renders PHI server-side and never proxies it through Softr.
+
+Softr never sees a name, DOB, or anything clinical. Your compliant backend logs every PHI read. The portal works. The architecture is HIPAA-defensible.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Will Softr ever sign a BAA?" icon="circle-question">
+    Not currently, and there is no public commitment to HIPAA certification. If your use case absolutely requires the frontend tool itself to be a Business Associate, Softr is not the right fit today. The pattern in this doc only works when you can keep PHI out of Softr.
+  </Accordion>
+
+  <Accordion title="What about the user emails Softr stores in the Users table?" icon="envelope">
+    A patient email is a HIPAA identifier. Restrict direct Softr authentication to staff users wherever possible. If patients must log in, use SSO from a BAA-covered identity provider so the IdP — not Softr — is the system of record for that email. The internal Softr user record can hold a non-identifying, generated email instead of the patient's real address.
+  </Accordion>
+
+  <Accordion title="Are file uploads safe to use?" icon="paperclip">
+    No, not for PHI. Softr's file uploads land in Softr's own storage, which is not HIPAA-covered. Do not let patients or staff upload PHI through Softr forms. Route any PHI document upload to a HIPAA-compliant storage layer your backend controls — typically a signed URL into S3 or GCS in a HIPAA project — and surface only a download link in Softr if needed.
+  </Accordion>
+
+  <Accordion title="Can workflows or integrations send PHI?" icon="bolt">
+    Only if you wire them that way, and you should not. Any **Run custom workflow**, webhook, or third-party integration triggered from a Softr block passes data through Softr's infrastructure. Keep workflow payloads to non-PHI identifiers and let your compliant backend do the PHI-handling work after the fact.
+  </Accordion>
+
+  <Accordion title="What if I just need a public marketing site for a healthcare brand?" icon="globe">
+    A public marketing site with no PHI is fine — no BAA needed, because no PHI is involved. The HIPAA conversation only kicks in once individually identifiable health information enters the picture. Patient portals, intake forms, and dashboards are where the rules apply.
+  </Accordion>
+</AccordionGroup>
+
+_Last updated: April 2026. If something in this doc looks wrong or out of date, ping the docs team._

@@ -1,0 +1,201 @@
+---
+title: "FERPA Compliance"
+---
+
+FERPA doesn't work the way HIPAA or FedRAMP does. There is no FERPA certification or audit a vendor can complete, and there is no list a school can check to see if Softr is "FERPA approved." Instead, FERPA gives schools a path: they can designate a vendor as a **school official** and disclose education records to that vendor, provided four specific conditions are met. This page explains how that pathway works for Softr, what schools need to put in writing, what stays out of Softr regardless, and how state student-privacy laws often add requirements on top of FERPA.
+
+<Warning>
+  This is general guidance, not legal advice. Confirm your specific use case with your district counsel, registrar, or institutional privacy officer before deploying a Softr app that touches student data.
+</Warning>
+
+## Where Softr stands
+
+Softr is a no-code app builder. The platform is **SOC 2 certified**, which most school IT teams view as the security baseline for accepting any cloud vendor. FERPA itself does not require a certification — it requires a _relationship_ between the school and the vendor that meets certain conditions. Whether Softr fits a given school's FERPA posture depends on:
+
+1. The data the school plans to put in the Softr app
+2. The agreement the school and Softr put in place
+3. The state student-privacy laws that apply on top of FERPA
+
+The first two are workable for most schools. The third is where things get genuinely complicated, and where state laws like California SOPIPA, Illinois SOPPA, and New York Education Law 2-d sometimes raise the bar above what FERPA alone requires.
+
+## A 60-second FERPA primer
+
+The **Family Educational Rights and Privacy Act (FERPA)** is the federal law that governs access to **education records** at schools that receive federal education funding — which is essentially all public K-12 districts and the vast majority of colleges and universities.
+
+Three concepts matter for builders:
+
+- **Education records** — records "directly related to a student" and "maintained by an educational agency or institution or by a party acting for" the institution. Transcripts, grades, attendance, discipline, health, financial aid, class lists, schedules.
+- **Personally Identifiable Information (PII)** — names, student IDs, dates of birth, biometric records, plus indirect identifiers and any combination that could be used to identify a specific student.
+- **Directory information** — a school-defined subset (typically name, address, phone, dates of attendance, photos) that the school can disclose without consent unless the parent or eligible student has opted out.
+
+FERPA generally requires written consent from the parent (or from the **eligible student** — anyone 18 or in postsecondary education) before a school discloses PII from education records. The major exception that matters for SaaS vendors is the **school official exception**.
+
+## The school official exception
+
+Schools can disclose education records to a vendor without individual consent if four conditions are met. These are the conditions that turn a vendor (like Softr) into a FERPA-permissible recipient of education records.
+
+<CardGroup cols={2}>
+  <Card title="Performs an institutional service" icon="briefcase">
+    The vendor is doing something the school would otherwise do itself — a parent portal, a class schedule app, a tutor-matching tool. Not advertising, not data resale.
+  </Card>
+
+  <Card title="Has legitimate educational interest" icon="user-graduate">
+    The vendor needs the specific data being shared to perform the service. A grade-portal vendor needs grades; a bus-route app does not.
+  </Card>
+
+  <Card title="Under direct control of the school" icon="hand">
+    The school sets — usually in writing — what the vendor can do with the records and what it can't. This is what a Data Privacy Agreement (DPA) captures.
+  </Card>
+
+  <Card title="No further disclosure without consent" icon="lock">
+    The vendor uses records only for the authorized purpose and does not redisclose them to third parties without the school's authorization.
+  </Card>
+</CardGroup>
+
+<Note>
+  FERPA does not strictly require a written agreement — but in practice, "direct control" is impossible to demonstrate without one. State laws and modern district procurement essentially make a written DPA mandatory for any vendor that touches education records.
+</Note>
+
+## The architectural pattern
+
+Two paths exist depending on how cautious the school wants to be. Most schools end up somewhere on a spectrum between them.
+
+<Steps>
+  <Step title="Decide whether education records will enter Softr at all">
+    The most defensible posture is to keep education records in the school's **Student Information System** (PowerSchool, Infinite Campus, Banner, Workday Student, etc.) and use Softr only for content that is not an education record — public news, calendars, club signups, directory listings, parent-facing announcements. If you can build the app without education records, do.
+  </Step>
+  <Step title="If records must enter Softr, get a written agreement first">
+    Before any FERPA-protected data flows into Softr, the school and Softr need a written agreement that captures the four school-official conditions. Many districts use the [Student Data Privacy Consortium's National DPA](https://privacy.a4l.org/national-dpa/) as a starting template; some states require a specific state-level addendum. [Contact Softr Sales](https://www.softr.io/contact-sales) to discuss custom agreements for your specific use case.
+  </Step>
+  <Step title="Minimize PII even with a DPA in place">
+    Even when the agreement allows education records in Softr, store as little as possible. Use student UUIDs or internal IDs rather than names where you can. Keep grades, discipline, health, and financial-aid data in the SIS and reference it from Softr by ID. Embed PHI-bearing screens via iframe to a system that has stronger logging and retention controls. For more information regarding PHI, please see our article on [HIPAA Compliance](https://docs.softr.io/security/hipaa-compliance).
+  </Step>
+  <Step title="Set granular access controls">
+    A teacher should see their students; a parent should see their own children; a clerk should see records relevant to their role. Use Softr's access tools such as [User Groups](https://docs.softr.io/user-groups-and-permissions/user-groups#user-groups) and [Data Restrictions](https://docs.softr.io/user-groups-and-permissions/global-data-restrictions#global-data-restrictions) to enforce this and mirror the same restrictions in the underlying data source.
+  </Step>
+  <Step title="Document the boundary and the disclosures">
+    FERPA requires the school to maintain a record of disclosures. The school keeps that log; you make sure your app behavior matches what the DPA describes. If the DPA says "vendor will not use student data for advertising," every Softr workflow must respect that — no ad-pixel embeds, no retargeting integrations.
+  </Step>
+</Steps>
+
+## What you can and can't put in Softr
+
+<CardGroup cols={2}>
+  <Card title="Generally safe — non-record content" icon="circle-check">
+    Public school news, calendars, faculty bios, public event listings, club descriptions, lunch menus, bus routes, public-facing forms, and properly-designated **directory information** for students who have not opted out.
+  </Card>
+
+  <Card title="Education records — only with a DPA" icon="file-shield">
+    Class schedules, course rosters, grades, attendance, discipline, health forms, financial aid, transcripts. These can flow into Softr only if the school has designated Softr as a school official under FERPA via written agreement, and even then you should minimize what gets stored.
+  </Card>
+</CardGroup>
+
+<Warning>
+  The **directory information** designation is school-specific. A school must publicly designate which fields are directory information and honor any parent or eligible-student opt-outs. Don't assume names \+ grades are public — schools designate this on their own terms, and a student whose parent has opted out cannot have their directory information published.
+</Warning>
+
+## State student-privacy laws — often stricter than FERPA
+
+FERPA is the federal floor. Many states layer additional requirements on top, and several explicitly target vendors. The most consequential for SaaS vendors are:
+
+<CardGroup cols={2}>
+  <Card title="California — SOPIPA" icon="flag">
+    Prohibits targeted advertising to K-12 students, profile-building from student data, and selling student information. Applies to any service "designed, marketed, and used primarily" for K-12 — contract or no contract.
+  </Card>
+
+  <Card title="Illinois — SOPPA" icon="flag">
+    Requires a written DPA between operator and school, public posting of subcontractors and breach history, and detailed transparency about data use.
+  </Card>
+
+  <Card title="New York — Education Law 2-d" icon="flag">
+    Mandates DPAs aligned with the NIST Cybersecurity Framework, breach notification timelines, and a Parents Bill of Rights for Data Privacy and Security incorporated into every contract.
+  </Card>
+
+  <Card title="Plus 100+ other state statutes" icon="map">
+    Most states have at least one student-data law on the books. The Parent Coalition for Student Privacy maintains a current map. If your school is in a regulated state, the DPA template often comes from the state, not the district.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Ask the school which DPA template applies. Many districts use the [Student Data Privacy Consortium's National DPA](https://privacy.a4l.org/national-dpa/) plus a state-specific exhibit. Signing once against a standardized template covers many districts in the same state.
+</Tip>
+
+## Where the data actually lives
+
+For the regulated portion, the **Student Information System** (SIS) remains the system of record. Softr connects on top of it, in the same architectural pattern used in the [HIPAA doc](/security/hipaa-compliance) — keep the heavy records where they belong; render references and non-record content in Softr.
+
+Common pairings:
+
+- **PowerSchool, Infinite Campus, Skyward** (K-12 SIS) — record-of-truth for grades, attendance, discipline. Softr connects via REST API or SQL when an integration layer exposes a non-PII view.
+- **Banner, Workday Student, PeopleSoft Campus Solutions** (higher-ed SIS) — same pattern; expose non-PII views to Softr through your data warehouse.
+- **Google Workspace for Education** with a signed FERPA-aware agreement — many schools already use this; Softr can read a Sheets-based non-PII view and Softr supports Sign-in with Google, which works well as an Idp (identity provider) for faculty, staff, and student logins).
+
+<Note>
+  Even when the SIS holds the records, Softr's [Users table](/users/users) typically stores at minimum a login email and display name for every authenticated user. For staff, that's fine. For students, decide whether the email itself counts as PII under your DPA — some DPAs treat student email as a regulated identifier.
+</Note>
+
+## Builder responsibilities
+
+<AccordionGroup>
+  <Accordion title="Access control and direct control" icon="lock">
+    FERPA's direct-control requirement maps onto Softr's [User Groups](/users/user-groups) and [Data Restrictions](/users/data-restrictions). Build groups for staff roles, parent accounts, and student accounts; restrict each group to the minimum records needed for their function.
+  </Accordion>
+
+  <Accordion title="No advertising or profile-building" icon="ban">
+    Whether or not your school is in a state with SOPIPA-style rules, treat student data as off-limits for advertising integrations. Don't connect Softr forms to ad-conversion pixels, don't pipe student records into a marketing CRM, and don't enable third-party tracking on student-facing pages.
+  </Accordion>
+
+  <Accordion title="Retention and deletion" icon="trash">
+    DPAs typically specify retention and deletion timelines — often "delete within 30 or 60 days of contract termination." Build a process for purging student records from Softr (and from any connected data source) when the school requests it or when the contract ends.
+  </Accordion>
+
+  <Accordion title="Breach notification" icon="bell">
+    State laws often impose specific breach-notification timelines on edtech vendors — sometimes as short as 7 days from discovery. Make sure your incident-response plan can meet the strictest applicable timeline, and that the school knows who to contact at Softr if they suspect a breach in the app you built.
+  </Accordion>
+
+  <Accordion title="Account-class clarity" icon="users">
+    Don't conflate parents, students, teachers, and staff under a single "user" abstraction in the UI. FERPA gives different rights to parents (under-18 students) versus eligible students (18\+ or postsecondary), and the app's permission logic has to reflect that.
+  </Accordion>
+
+  <Accordion title="Subcontractors and integrations" icon="plug">
+    Anything Softr's app sends to a third-party integration (a webhook, a workflow, an analytics tool) is itself a disclosure under FERPA. The DPA needs to list each subprocessor; if the school adds a new integration to the app later, it likely needs DPA approval too.
+  </Accordion>
+</AccordionGroup>
+
+## A worked example
+
+A K-8 charter school wants a parent portal where parents can see school news, the lunch menu, the bus schedule, club signups, and a single "my child's classroom" page that shows the homeroom teacher and a public class photo.
+
+The school keeps grades, attendance, discipline, and health records in **PowerSchool**. PowerSchool is the FERPA system of record for those — Softr never sees them. The school designates the "homeroom teacher name" and "class photo" as **directory information** in their public FERPA notice, and offers parents an opt-out form (which they collect outside Softr).
+
+The Softr app pulls from a Postgres view that contains only `student_id`, `homeroom_teacher`, and `class_photo_url`, plus a `directory_opt_out` flag. The Softr **Data Restrictions** panel filters out any row where `directory_opt_out = true`. Parents log in via Google Sign-in; a User Group called "Parents" can only see their own children, enforced by a conditional filter mapping `student.parent_email = LOGGED_IN_USER.email`.
+
+The school and Softr have signed the SDPC National DPA plus a California-specific exhibit (the school is in CA, so SOPIPA applies). The DPA names PowerSchool and Google Workspace as subprocessors; no advertising integrations are present anywhere on the page; retention is set to "delete within 60 days of contract termination" and the school confirms this annually.
+
+For grades, attendance, and any other education records, the portal shows a single button: "Open PowerSchool." That button links to the SIS — the records are rendered there, where the FERPA disclosure log already runs.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Is Softr 'FERPA-certified'?" icon="circle-question">
+    FERPA does not have a vendor certification. No SaaS vendor is, in any meaningful sense, "FERPA-certified" — what matters is the agreement between the school and the vendor and the four school-official conditions being met in practice. SOC 2 is the security certification most school IT teams ask for and Softr has it.
+  </Accordion>
+
+  <Accordion title="Does Softr sign DPAs with schools?" icon="file-signature">
+    Schools that need a DPA before designating Softr as a school official should [contact Softr Sales](https://www.softr.io/contact-sales) directly to discuss agreement terms and which template the school's state requires. The DPA captures the school-official conditions and any state-specific obligations (NIST CSF alignment for NY, transparency rules for IL, advertising prohibitions for CA).
+  </Accordion>
+
+  <Accordion title="Is my school's directory information actually safe to publish?" icon="address-book">
+    It is, provided the school has formally designated those fields as directory information in its FERPA notice and respects parent and eligible-student opt-outs. Many schools forget the opt-out part. Build the opt-out flag into your data source and filter on it in Softr — never assume "the school told me this is public."
+  </Accordion>
+
+  <Accordion title="What about students under 13 — does COPPA apply too?" icon="child">
+    Often, yes. The Children's Online Privacy Protection Act applies to services collecting personal information from children under 13. K-12 schools can sometimes provide consent on behalf of parents under specific FTC guidance, but this overlaps with FERPA and needs careful handling. If your app collects data from under-13 students, get specific guidance — COPPA non-compliance has real teeth.
+  </Accordion>
+
+  <Accordion title="Can a higher-ed institution use Softr more freely?" icon="building-columns">
+    A bit. In postsecondary education, the rights are with the **eligible student** rather than the parent. The school-official exception still applies, the DPA pattern still applies, and the SIS-as-system-of-record principle still applies — but the consent and access dynamics are simpler because there's no parent-rights layer. Many universities run Softr-style portals for non-record content with no education records flowing through them at all.
+  </Accordion>
+</AccordionGroup>
+
+_Last updated: April 2026. If something in this doc looks wrong or out of date, ping the docs team._

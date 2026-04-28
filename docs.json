@@ -590,7 +590,10 @@
             "pages": [
               "security/sso-for-softr-studio",
               "security/softr-app-security",
-              "security/phishing"
+              "security/phishing",
+              "security/hipaa-compliance",
+              "security/fed-ramp-compliance",
+              "security/ferpa-compliance"
             ]
           },
           {

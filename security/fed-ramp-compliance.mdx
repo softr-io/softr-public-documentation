@@ -1,0 +1,202 @@
+---
+title: "FedRamp Compliance"
+description: "Softr isn't FedRAMP authorized. Here's where Softr fits for federal contractors and government-adjacent teams — and where it doesn't."
+---
+
+Softr is **not currently FedRAMP authorized** and is not listed on the [FedRAMP Marketplace](https://marketplace.fedramp.gov/). For federal agencies, that means Softr cannot host a federal information system. For federal contractors and government-adjacent companies, the picture is more nuanced — Softr is fine for parts of your stack that never process federal data, and a non-starter for parts that do. This page walks through the distinction so you know up front whether Softr fits the job.
+
+<Warning>
+  This is general guidance, not legal or compliance advice. Consult your CISO, your contracting officer, or qualified federal-compliance counsel before making procurement decisions.
+</Warning>
+
+## Where Softr stands
+
+Softr is a no-code app builder. The platform is **SOC 2 certified**, but Softr is **not FedRAMP authorized at any impact level** (Low, Moderate, or High) and has not gone through a Joint Authorization Board (JAB) Provisional ATO or an Agency ATO. Federal information systems — anything operated by or on behalf of a federal agency to process federal data — must run on FedRAMP-authorized cloud services, so Softr is not eligible to host them.
+
+Practically, that splits Softr's federal-adjacent fit into two clear lists.
+
+**Softr can be used for:**
+
+- Public marketing sites with no federal data
+- Internal tools at federal contractor companies that never touch CUI or federal information
+- Commercial (non-federal) customer portals, even at companies that also do federal work
+- State and local government workflows that fall under StateRAMP / GovRAMP, where the agency's posture allows non-authorized tools at the relevant tier
+
+**Softr cannot be used for:**
+
+- Anything operated by a federal agency to process federal information (a "federal information system" under FISMA)
+- Workflows that store, process, or transmit Controlled Unclassified Information (CUI)
+- Federal contract deliverables where the contracting officer specifies FedRAMP-authorized infrastructure
+- Connecting to a FedRAMP-only data source from a non-authorized frontend
+
+## A 60-second FedRAMP primer
+
+**FedRAMP** (Federal Risk and Authorization Management Program) is the federal government's standardized way of authorizing cloud services. Federal agencies are required to use FedRAMP-authorized cloud services for cloud-based information systems; the program provides a single security baseline and a public marketplace of authorized services so each agency does not redo the assessment from scratch.
+
+FedRAMP defines three impact levels under FIPS 199 — based on the worst-case impact to confidentiality, integrity, and availability if the system were compromised:
+
+- **Low** — public or low-sensitivity data; about 125 NIST 800-53 controls.
+- **Moderate** — most CUI and sensitive-but-unclassified workloads; over 400 controls. The majority of authorizations sit here.
+- **High** — severe or catastrophic impact (national security, health and safety, law enforcement); the strictest level.
+
+Authorization happens through either a JAB Provisional ATO or an Agency ATO with a sponsoring federal agency. The process typically takes 12–18 months and costs more than \$1M in assessment, remediation, and continuous-monitoring effort.
+
+A few related acronyms turn up in the same conversations:
+
+- **FISMA** — the law that drives federal information system requirements. FedRAMP is "FISMA for the cloud."
+- **NIST SP 800-171** — the control set for CUI living in non-federal systems (federal contractors). Different from FedRAMP, though they share a NIST family.
+- **StateRAMP / GovRAMP** — the state and local equivalent, rebranded as **GovRAMP** in 2025.
+
+## Who actually needs FedRAMP and who doesn't
+
+The first question is not "is Softr FedRAMP authorized" but "is FedRAMP the rule that applies to this workflow."
+
+<CardGroup cols={2}>
+  <Card title="Federal agency, federal data" icon="landmark">
+    FedRAMP applies. The system must be a FedRAMP-authorized cloud service at the right impact level. Softr cannot host this.
+  </Card>
+
+  <Card title="Federal contractor, CUI" icon="folder-tree">
+    NIST SP 800-171 applies to systems that touch CUI. Don't put CUI in Softr; keep it in your 800-171-aligned primary system.
+  </Card>
+
+  <Card title="Federal contractor, no CUI" icon="briefcase">
+    Standard commercial security obligations apply. Softr is a fine choice for marketing, internal tools, and commercial customer portals.
+  </Card>
+
+  <Card title="State or local agency" icon="building-columns">
+    Check your state's procurement rules — many require StateRAMP / GovRAMP authorization at a defined tier. Softr is not on any StateRAMP marketplaces.
+  </Card>
+</CardGroup>
+
+## The architectural pattern
+
+If you're a federal contractor or government-adjacent company that wants to use Softr alongside a FedRAMP- or CUI-regulated system, the pattern looks similar to the [HIPAA pattern](/security/hipaa-compliance) — keep the regulated data out of Softr, and use Softr only where the rules don't apply.
+
+<Steps>
+  <Step title="Identify what is and isn't federal data">
+    Map every workflow: which records contain CUI, government-furnished information, or other federal data; which records are purely commercial or public. Treat that boundary as a hard line, not a guideline. If the contracting officer hasn't told you what's CUI, ask in writing.
+  </Step>
+  <Step title="Pick FedRAMP-authorized infrastructure for the regulated side">
+    Federal data lives in a FedRAMP-authorized backend at the impact level your contract specifies — AWS GovCloud, Azure Government, Google Cloud Assured Workloads, or another service on the [FedRAMP Marketplace](https://marketplace.fedramp.gov/). Hosting on a FedRAMP-authorized platform is necessary but not sufficient — your application running on top of it usually still needs its own ATO.
+  </Step>
+  <Step title="Use Softr only for non-regulated workflows">
+    Public sites, commercial customer portals, internal tools that never touch CUI — those can live in Softr. Build them in a separate Softr workspace from anything that even sits adjacent to federal data, so a misconfiguration cannot cross the boundary.
+  </Step>
+  <Step title="Never bridge the two systems through Softr">
+    Resist the temptation to "just sync a status field" between the FedRAMP-authorized system and Softr. Even metadata about CUI-bearing records can be regulated. If two systems must exchange data, do it directly between them, not through Softr.
+  </Step>
+  <Step title="Document the boundary">
+    For any federal contract, your compliance posture has to be defensible. Write down where CUI lives, what crosses into Softr, and why. Your contracting officer or auditor will ask, and "we never thought about it" is the wrong answer.
+  </Step>
+</Steps>
+
+## What you can and can't put in Softr
+
+<CardGroup cols={2}>
+  <Card title="Safe in Softr" icon="circle-check">
+    Public marketing content, commercial-only customer data, internal staff records that don't reference federal contracts, non-CUI internal tools, partner directories, public RFP-tracking that uses only public information.
+  </Card>
+
+  <Card title="Never in Softr" icon="circle-xmark">
+    CUI, government-furnished information, federal contract performance data, federal personnel records, classified or controlled technical data, ITAR-controlled data, anything bearing a CUI banner or "for official use only" marking.
+  </Card>
+</CardGroup>
+
+<Warning>
+  CUI is broader than most builders expect. Contract performance reports, system architecture diagrams for federal projects, source code written under a federal contract, and even some contact lists can be CUI depending on the markings. When in doubt, treat it as CUI and keep it out of Softr.
+</Warning>
+
+## Choosing FedRAMP-authorized infrastructure
+
+For the regulated side of your stack, you want services on the [FedRAMP Marketplace](https://marketplace.fedramp.gov/) at the impact level your contract specifies. The major cloud platforms each have FedRAMP offerings:
+
+<CardGroup cols={2}>
+  <Card title="AWS GovCloud (US)" icon="aws">
+    JAB Provisional ATO at the High impact level. Most federal cloud workloads land here or in AWS US East/West, which has a separate authorization.
+  </Card>
+
+  <Card title="Microsoft Azure Government" icon="microsoft">
+    FedRAMP High-authorized; supports the largest catalog of High-level services among major cloud providers.
+  </Card>
+
+  <Card title="Google Cloud Assured Workloads" icon="google">
+    FedRAMP High and Moderate authorizations across specific regions; pairs with Google's federal-tenant configurations.
+  </Card>
+
+  <Card title="Specialized federal SaaS" icon="building-shield">
+    Niche platforms specifically authorized for federal use — search the FedRAMP Marketplace by service type. Many are domain-specific (case management, ERP, identity).
+  </Card>
+</CardGroup>
+
+<Note>
+  Hosting an application on FedRAMP-authorized infrastructure does **not** automatically make the application FedRAMP authorized. A service running on top of AWS GovCloud usually still needs its own ATO. This is the most common misconception in early federal-procurement conversations.
+</Note>
+
+## Builder responsibilities
+
+If your organization touches federal work in any form, the responsibility lines look like this.
+
+<AccordionGroup>
+  <Accordion title="Knowing what data class you're handling" icon="tag">
+    Most compliance failures start with mislabeled data. Confirm in writing with your contracting officer whether the workflow involves CUI, federal information, or FCI (federal contract information). The label drives every other decision.
+  </Accordion>
+
+  <Accordion title="Boundary enforcement" icon="border-all">
+    Use [User Groups](/users/user-groups) and [Data Restrictions](/users/data-restrictions) to make sure federal-side users and commercial-side users never see each other's records. A leaky permission isn't a FedRAMP issue per se, but it can trigger contract-level breach notifications.
+  </Accordion>
+
+  <Accordion title="Authentication for federal users" icon="key">
+    Federal employees logging in on behalf of an agency typically need PIV/CAC or FIDO2 authentication routed through a FedRAMP-authorized identity provider. Softr's email-and-password and Google Sign-in flows do not meet that bar. If federal users must authenticate, route them through a compliant IdP and only let them reach Softr for non-federal workflows. [**Contact Softr Sales**](https://www.softr.io/contact-sales) if you need SSO using an IdP.
+  </Accordion>
+
+  <Accordion title="Audit and logging" icon="scroll">
+    FedRAMP and NIST 800-171 both require detailed access and change logging. Softr's logging is not FedRAMP-grade. Your CUI-handling system has to produce the audit record — Softr can hold non-regulated complementary data, but cannot be the system of record for compliance evidence.
+  </Accordion>
+
+  <Accordion title="Public-facing apps still need basics" icon="shield-halved">
+    Even Softr-hosted public marketing or non-federal sites should follow the basics: HTTPS-only, strong passwords for any admin login, scoped staff access. Federal contracting officers may ask about your overall security posture, even for systems that don't fall under FedRAMP. Fortunately, Softr helps bootstrap much of these basics for you.
+  </Accordion>
+
+  <Accordion title="Documentation and Plan of Action" icon="file-lines">
+    Federal auditors expect a written description of which systems handle which data classes. Document Softr's role explicitly: "used for non-CUI commercial customer portal" beats a vague "portal app" every time.
+  </Accordion>
+</AccordionGroup>
+
+## A worked example
+
+A defense electronics contractor builds three things in Softr.
+
+A **public marketing site** carries product datasheets that have already been cleared for public release. No federal data, no CUI. Softr handles it cleanly.
+
+A **commercial customer portal** lets the company's non-federal industrial clients see shipment status. The customer data here is normal commercial PII; it has no relation to federal contracts. Softr handles it cleanly.
+
+An **internal RFP-tracking pipeline** tracks which federal solicitations the company plans to bid on. This one needs care: the _fact_ that they are bidding can be public, but the bid materials and any CUI provided in the solicitation cannot enter Softr. They use Softr to track public RFP IDs, deadlines, and yes/no decisions; the actual proposal documents and any CUI live in a separate, NIST 800-171-aligned document management system.
+
+Their federal performance data (contract deliverables, technical documentation, personnel records tied to clearances) never enters Softr. Auditors should get a one-page diagram showing exactly where the boundary sits.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Will Softr ever pursue FedRAMP authorization?" icon="circle-question">
+    There is no public commitment to FedRAMP authorization. The process is long and expensive, and the federal-agency portion of Softr's customer base would need to express substantial interest to justify the cost. If your agency or program needs the frontend tool itself to be on the FedRAMP Marketplace, Softr is not the right fit today.
+  </Accordion>
+
+  <Accordion title="Can a federal agency use Softr at all?" icon="landmark">
+    For genuine federal information systems, no — those require FedRAMP-authorized cloud services. For purely public-facing pages with no federal data, an agency CIO/CISO might still clear Softr after their own risk review, but the bar is high and most agencies will say no by default.
+  </Accordion>
+
+  <Accordion title="What if my customer is a state or local agency?" icon="building-columns">
+    State and local procurement rules vary. Many states have adopted StateRAMP (now GovRAMP), which is structurally similar to FedRAMP but somewhat less stringent. Softr is not on the StateRAMP / GovRAMP marketplace either, so the same architectural pattern applies — keep regulated data outside the Softr ecosystem of products.
+  </Accordion>
+
+  <Accordion title="What about FedRAMP Low — surely that's easier?" icon="layer-group">
+    FedRAMP Low still requires authorization and significant expense. There is no "Low for free" tier. A FedRAMP Low system goes through assessment by a third-party assessor (3PAO) and obtains an ATO, just with a smaller control set (around 125 controls instead of 400\+).
+  </Accordion>
+
+  <Accordion title="Does GSA Schedule or SAM.gov registration help?" icon="receipt">
+    No. Being a registered federal contractor in SAM.gov, or being on a GSA Schedule, is unrelated to FedRAMP authorization. They are different programs solving different problems. SAM.gov registration says a contractor is allowed to sell to the government; FedRAMP says a specific cloud service is allowed to be operated for an agency.
+  </Accordion>
+</AccordionGroup>
+
+_Last updated: April 2026. If something in this doc looks wrong or out of date, ping the docs team._
