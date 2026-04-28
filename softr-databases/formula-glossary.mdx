@@ -134,6 +134,20 @@ If App Name is "Build with SOFTR", the result is 12.
 
 ---
 
+**`REPLACE(old_string, start_num, num_chars, new_string)`**
+
+Replaces part of a text string with a different text string. Replacement starts at `start_num` (1-based) and replaces `num_chars` characters.
+
+**Example:**
+
+```plain
+REPLACE({Product Code}, 6, 4, "5678")
+```
+
+If Product Code is "ITEM-1234-XYZ", the result is "ITEM-5678-XYZ".
+
+---
+
 **`SUBSTITUTE(text, old_text, new_text, [instance_num])`**
 
 Replaces occurrences of a specified substring with new text.
@@ -274,6 +288,20 @@ If Price is 100, the result is "100". If Price is a date, the result is "".
 
 ---
 
+`STRINGIFY(value)`
+
+Converts any value into a string representation.
+
+Example:
+
+```plain
+STRINGIFY({Price})
+```
+
+If Price is 100, the result is "100".
+
+---
+
 ### **Logical Functions**
 
 `=`, `!=`, `>`, `<`, `>=`, `<=`
@@ -290,9 +318,9 @@ If Total is 1500, the result is TRUE.
 
 ---
 
-**`IF(logical_test, value_if_true, value_if_false)`**
+**`IF(logical_test, value_if_true, [value_if_false])`**
 
-Returns one value if a condition is true, another if false.
+Returns one value if a condition is true, another if false. If `value_if_false` is omitted and the condition is false, the result is empty.
 
 **Example:**
 
@@ -329,20 +357,6 @@ OR({Status} = "Open", {Status} = "In Progress")
 ```
 
 If Status is "Open", the result is TRUE.
-
----
-
-**`NOT(logical)`**
-
-Reverses the logical value of its argument.
-
-**Example:**
-
-```plain
-NOT({Completed})
-```
-
-If Completed is checked (TRUE), the result is FALSE.
 
 ---
 
@@ -556,20 +570,6 @@ If Total Items is 10, the result is 1 (10 ÷ 3 leaves a remainder of 1).
 
 ---
 
-`POWER(base, exponent)`
-
-Raises a number to the specified exponent.
-
-Example:
-
-```plain
-POWER({Base Value}, 2)
-```
-
-If Base Value is 5, the result is 25 (5²).
-
----
-
 `SQRT(number)`
 
 Returns the square root of a non-negative number.
@@ -595,6 +595,34 @@ RANDBETWEEN(1, 100)
 ```
 
 The result is a random number between 1 and 100, such as 42.
+
+---
+
+`RAND()`
+
+Returns a random number between 0 (inclusive) and 1 (exclusive).
+
+Example:
+
+```plain
+RAND()
+```
+
+The result is a random decimal value such as 0.4517.
+
+---
+
+`NUMBER(value)`
+
+Converts a value to type number. Returns 0 if conversion fails. Useful to ensure the result of a formula is treated as a number.
+
+Example:
+
+```plain
+NUMBER({Quantity Text})
+```
+
+If Quantity Text is "42", the result is 42. If it is "abc", the result is 0.
 
 ### **Date and Time Functions**
 
@@ -684,9 +712,9 @@ If Start Date is 2025-06-01, the result is 2025-06-08.
 
 ---
 
-**`DATETIME_DIFF(date1, date2, unit)`**
+**`DATETIME_DIFF(date1, date2, [unit])`**
 
-Calculates the difference between two dates in the specified unit (e.g., days, hours).
+Calculates the difference between two dates in the specified unit. Supported units: `seconds`, `minutes`, `hours`, `days`, `months`, `years` (case-insensitive). If `unit` is omitted, defaults to `seconds`.
 
 **Example:**
 
@@ -712,23 +740,23 @@ If the record was created on May 29, 2025, the result is "05/29/2025".
 
 ---
 
-`IS_SAME(date1, date2, [unit])`
+`IS_SAME(date1, date2)`
 
-Returns 1 if two dates are identical, or 0 otherwise. Optionally compares at a specified unit (e.g., "day", "month").
+Returns TRUE if two dates are identical, FALSE otherwise.
 
 Example:
 
 ```plain
-IS_SAME({Start Date}, {End Date}, "day")
+IS_SAME({Start Date}, {End Date})
 ```
 
-If Start Date and End Date are both 2025-06-01, the result is 1.
+If Start Date and End Date are both 2025-06-01, the result is TRUE.
 
 ---
 
 `IS_AFTER(date1, date2)`
 
-Returns 1 if date1 is after date2, or 0 otherwise.
+Returns TRUE if date1 is after date2, FALSE otherwise.
 
 Example:
 
@@ -736,13 +764,13 @@ Example:
 IS_AFTER({Due Date}, TODAY())
 ```
 
-If Due Date is 2025-06-10 and today is May 29, 2025, the result is 1.
+If Due Date is 2025-06-10 and today is May 29, 2025, the result is TRUE.
 
 ---
 
 `IS_BEFORE(date1, date2)`
 
-Returns 1 if date1 is before date2, or 0 otherwise.
+Returns TRUE if date1 is before date2, FALSE otherwise.
 
 Example:
 
@@ -750,7 +778,7 @@ Example:
 IS_BEFORE({Start Date}, TODAY())
 ```
 
-If Start Date is 2025-05-01 and today is May 29, 2025, the result is 1.
+If Start Date is 2025-05-01 and today is May 29, 2025, the result is TRUE.
 
 ---
 
@@ -768,9 +796,9 @@ If the record was last modified on May 28, 2025, the result is "05/28/2025".
 
 ---
 
-`WORKDAY(start_date, num_days)`
+`WORKDAY(start_date, num_days, [...holidays])`
 
-Returns a date that is a specified number of working days from the start date, excluding weekends.
+Returns a date that is a specified number of working days from the start date, excluding weekends. You can optionally pass one or more holiday dates to also be excluded.
 
 Example:
 
@@ -780,11 +808,17 @@ WORKDAY({Start Date}, 5)
 
 If Start Date is 2025-06-02 (Monday), the result is 2025-06-09 (Monday, 5 workdays later).
 
+```plain
+WORKDAY({Start Date}, 5, "2025-06-04", "2025-06-05")
+```
+
+If Start Date is 2025-06-02 and 2025-06-04 and 2025-06-05 are holidays, the result is 2025-06-11.
+
 ---
 
-`WORKDAY_DIFF(start_date, end_date)`
+`WORKDAY_DIFF(start_date, end_date, [...holidays])`
 
-Returns the number of working days between two dates, excluding weekends.
+Returns the number of working days between two dates, excluding weekends. You can optionally pass one or more holiday dates to also be excluded.
 
 Example:
 
@@ -793,6 +827,12 @@ WORKDAY_DIFF({Start Date}, {End Date})
 ```
 
 If Start Date is 2025-06-02 and End Date is 2025-06-09, the result is 5 workdays.
+
+```plain
+WORKDAY_DIFF({Start Date}, {End Date}, "2025-06-04")
+```
+
+If Start Date is 2025-06-02 and End Date is 2025-06-09 and 2025-06-04 is a holiday, the result is 4 workdays.
 
 ---
 
@@ -1086,7 +1126,7 @@ If Code is "ITEM-1234-XYZ", the result is "1234".
 
 `REGEX_REPLACE(string, pattern, replacement)`
 
-Replaces the first match of the regular expression pattern with the replacement string.
+Replaces all matches of the regular expression pattern with the replacement string.
 
 Example:
 
