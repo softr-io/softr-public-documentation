@@ -92,7 +92,8 @@
                 "pages": [
                   "workflows/integrations/overview",
                   "workflows/integrations/granola",
-                  "workflows/integrations/slack"
+                  "workflows/integrations/slack",
+                  "workflows/integrations/zoom"
                 ]
               }
             ]
