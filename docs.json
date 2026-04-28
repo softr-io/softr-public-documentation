@@ -91,6 +91,7 @@
                 "icon": "plug",
                 "pages": [
                   "workflows/integrations/overview",
+                  "workflows/integrations/firecrawl",
                   "workflows/integrations/granola",
                   "workflows/integrations/slack"
                 ]
