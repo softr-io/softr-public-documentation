@@ -1,0 +1,141 @@
+---
+title: "Softr MCP Server"
+permalink: "mcp-server-integration"
+description: "Connect AI assistants to your Softr databases using the Model Context Protocol."
+'og:title': "Softr MCP Server – Softr Help Docs"
+'og:description': "Connect AI assistants to your Softr databases using the Model Context Protocol."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Softr MCP Server – Softr Help Docs"
+'twitter:description': "Connect AI assistants to your Softr databases using the Model Context Protocol."
+---
+
+[Model Context Protocol (MCP)](https://modelcontextprotocol.io) is an open standard that lets AI assistants securely connect to external data sources. With Softr's MCP server, you can give AI tools like Claude, ChatGPT, or Cursor direct read and write access to your Softr databases — so you can query data, create records, manage tables, and more, all through natural language.
+
+## MCP Server URL
+
+```
+https://mcp.softr.io/mcp
+```
+
+Use this URL when adding Softr as an MCP server in your AI tool.
+
+## Authentication
+
+Softr's MCP server supports two authentication methods. Both offer fine-grained permission control over what the AI tool can access.
+
+### OAuth (Recommended)
+
+OAuth is the simplest way to connect. Softr has pre-built OAuth integrations for the following AI tools:
+
+| AI Tool | Integration |
+|---|---|
+| Claude (claude.ai) | Connect directly from Claude's MCP settings |
+| Cursor | Connect directly from Cursor's MCP settings |
+| ChatGPT | Connect directly from ChatGPT's connector settings |
+| Mistral AI | Connect directly from Mistral AI's settings |
+
+When you connect via OAuth, you are taken to a Softr authorization screen where you choose which permissions to grant. Only the permissions you approve are available to the AI tool. You can revoke access at any time from your Softr account settings.
+
+<Steps>
+  <Step title="Open your AI tool's MCP settings">
+    In Claude, Cursor, ChatGPT, or Mistral AI, navigate to the section where you add MCP servers or external connectors.
+  </Step>
+  <Step title="Add the Softr MCP server URL">
+    Enter `https://mcp.softr.io/mcp` as the server URL.
+  </Step>
+  <Step title="Authenticate with Softr">
+    Click **Connect** or **Authorize**. You will be redirected to Softr to log in and approve the requested permissions.
+  </Step>
+  <Step title="Select your permissions">
+    On the Softr authorization screen, review the permissions and approve the ones you want to grant to the AI tool.
+  </Step>
+</Steps>
+
+### Personal API Token (PAT)
+
+Use a Personal API Token if you are connecting a custom AI tool, building your own MCP client, or using any tool not listed above.
+
+<Steps>
+  <Step title="Generate a Personal API Token">
+    In your Softr account, go to **Settings → API Tokens** and create a new token. Select only the permissions your AI tool needs.
+  </Step>
+  <Step title="Configure your AI tool">
+    Add the MCP server with Bearer token authentication:
+
+    ```json
+    {
+      "mcpServers": {
+        "softr": {
+          "url": "https://mcp.softr.io/mcp",
+          "headers": {
+            "Authorization": "Bearer YOUR_API_TOKEN"
+          }
+        }
+      }
+    }
+    ```
+  </Step>
+</Steps>
+
+## Permissions
+
+Both OAuth and PAT support the same set of fine-grained permissions. Grant only what your AI tool actually needs.
+
+| Permission | What it allows |
+|---|---|
+| `databases.records:read` | Read records from tables |
+| `databases.records:write` | Create, update, and delete records |
+| `databases.schema:write` | Create and modify databases, tables, and fields |
+
+<Warning>
+The `databases.schema:write` permission allows creating and modifying database structure (databases, tables, fields). Grant this only if you intend to let the AI tool make schema changes.
+</Warning>
+
+## Available Tools
+
+The Softr MCP server exposes 20 tools across three categories.
+
+### Databases
+
+| Tool | Description | Required permission |
+|---|---|---|
+| `list_databases` | List all databases in your workspace, including name, description, table count, and timestamps. | `databases.records:read` |
+| `get_database` | Get details of a specific database by ID. | `databases.records:read` |
+| `create_database` | Create a new database in a workspace. | `databases.schema:write` |
+| `update_database` | Update a database's name or description. | `databases.schema:write` |
+
+### Tables
+
+| Tool | Description | Required permission |
+|---|---|---|
+| `list_tables` | List all tables in a database with record counts and timestamps. | `databases.records:read` |
+| `get_table` | Get a table's full schema including all field definitions. | `databases.records:read` |
+| `create_table` | Create a new table with an initial set of fields. | `databases.schema:write` |
+| `update_table` | Update a table's name or description. | `databases.schema:write` |
+| `list_fields` | List all fields in a table with their types and configuration. | `databases.records:read` |
+| `create_field` | Add a new field to a table. Supports 20 field types including text, number, select, date, attachment, linked record, and more. | `databases.schema:write` |
+| `update_field` | Update a field's name or options. Field type cannot be changed. | `databases.schema:write` |
+| `list_views` | List saved views for a table. Views can be passed to `list_records` to apply saved filters and sorts. | `databases.records:read` |
+
+### Records
+
+| Tool | Description | Required permission |
+|---|---|---|
+| `list_records` | List records in a table with pagination. Optionally filter by a saved view. | `databases.records:read` |
+| `search_records` | Search records using filter conditions and sorting rules. | `databases.records:read` |
+| `get_record` | Get a single record by ID. | `databases.records:read` |
+| `create_record` | Create a single record in a table. | `databases.records:write` |
+| `create_records` | Batch create up to 100 records in a single operation. | `databases.records:write` |
+| `update_record` | Update fields on an existing record. | `databases.records:write` |
+| `delete_record` | Delete a single record. | `databases.records:write` |
+| `delete_records` | Batch delete up to 100 records in a single operation. | `databases.records:write` |
+
+## Example prompts
+
+Once connected, you can interact with your Softr databases in natural language. Here are a few examples:
+
+- _"List all databases in my workspace."_
+- _"Show me the last 10 records added to the Contacts table."_
+- _"Create a new record in the Projects table with name 'Website Redesign' and status 'In Progress'."_
+- _"Search the Orders table for all records where status is 'Pending' and sort by created date descending."_
+- _"Add a new 'Priority' select field to the Tasks table with options Low, Medium, and High."_

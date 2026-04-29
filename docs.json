@@ -419,7 +419,8 @@
             "group": "AI",
             "icon": "brain",
             "pages": [
-              "integrations/open-ai"
+              "integrations/open-ai",
+              "integrations/mcp"
             ]
           },
           {
