@@ -419,8 +419,7 @@
             "group": "AI",
             "icon": "brain",
             "pages": [
-              "integrations/open-ai",
-              "integrations/mcp"
+              "integrations/open-ai"
             ]
           },
           {
@@ -531,6 +530,7 @@
             "group": "Softr API",
             "icon": "code-branch",
             "pages": [
+              "softr-api/mcp",
               "softr-api/api-setup-and-endpoints",
               "softr-api/use-case-adding-users-through-zapier",
               "softr-api/use-case-adding-users-through-make-formerly-integromat",
