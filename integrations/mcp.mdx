@@ -27,12 +27,12 @@ Softr's MCP server supports two authentication methods. Both offer fine-grained 
 
 OAuth is the simplest way to connect. Softr has pre-built OAuth integrations for the following AI tools:
 
-| AI Tool | Integration |
+| AI Tool | OAuth Client ID |
 |---|---|
-| Claude (claude.ai) | Connect directly from Claude's MCP settings |
-| Cursor | Connect directly from Cursor's MCP settings |
-| ChatGPT | Connect directly from ChatGPT's connector settings |
-| Mistral AI | Connect directly from Mistral AI's settings |
+| Claude (claude.ai) | `db31b760-e758-4f52-b15b-93b0262a1290` |
+| Cursor | `4d2556b2-cfc8-4608-bd76-8dbe7e605f68` |
+| ChatGPT | `aa73bf7b-c5b6-4031-b771-25108bf6c132` |
+| Mistral AI | `522bfc02-e64f-43cd-87ef-552507ecb967` |
 
 When you connect via OAuth, you are taken to a Softr authorization screen where you choose which permissions to grant. Only the permissions you approve are available to the AI tool. You can revoke access at any time from your Softr account settings.
 
@@ -42,6 +42,9 @@ When you connect via OAuth, you are taken to a Softr authorization screen where 
   </Step>
   <Step title="Add the Softr MCP server URL">
     Enter `https://mcp.softr.io/mcp` as the server URL.
+  </Step>
+  <Step title="Enter the Client ID">
+    When prompted for a Client ID, paste the value from the table above that corresponds to your AI tool. If asked for a Client Secret, leave it blank — Softr's OAuth clients are public and do not require one.
   </Step>
   <Step title="Authenticate with Softr">
     Click **Connect** or **Authorize**. You will be redirected to Softr to log in and approve the requested permissions.
