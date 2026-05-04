@@ -1,6 +1,6 @@
 # Zendesk integration
 
-Connect Zendesk with your Softr applications to automate support operations and manage tickets — all without code. Build workflows that create, update, and comment on tickets, and look up users and organizations to enrich your automation logic.
+Connect Zendesk with your Softr applications to automate support operations and manage tickets — all without code. Build workflows that create, update, and comment on tickets, and look up or list users and organizations to enrich your automation logic.
 
 ## Overview
 
@@ -36,7 +36,7 @@ Retrieve a single ticket by its numeric ID.
 
 **Key inputs:** ticket\_id (required)
 
-**Output fields:** id, subject, description, status, priority, type, requester\_id, assignee\_id, group\_id, organization\_id, tags, custom\_fields, created\_at, updated\_at, url
+**Output fields:** id, subject, description, status, priority, type, requester\_id, assignee\_id, group\_id, organization\_id, tags, external\_id, created\_at, updated\_at, url
 
 ### Ticket: Update
 
@@ -56,11 +56,11 @@ Soft-delete a ticket by ID. Deleted tickets move to the Deleted view and are per
 
 ### Ticket: List
 
-Search and list tickets. Filter by status, group, organization, or a full Zendesk search query. Control sort order and the number of results returned.
+Search and list tickets. Filter by status, group, organization, or a full Zendesk search query. Control sort order and the number of results returned. Maximum 100 results per call.
 
-**Key inputs:** status, group, organization, query, sort by, sort order, limit
+**Key inputs:** status, group, organization, query, sort by, sort order, limit (max 100)
 
-**Output fields:** array of ticket objects (same fields as Ticket: Get)
+**Output fields:** `records` — array of ticket objects (same fields as Ticket: Get)
 
 ### Add Comment to Ticket
 
@@ -68,7 +68,7 @@ Add a public reply or an internal note to an existing ticket.
 
 **Key inputs:** ticket\_id (required), body (required), visibility (public or internal note)
 
-**Output fields:** id, ticket\_id, body, public, author\_id, created\_at
+**Output fields:** id, type, author\_id, body, html\_body, public, created\_at
 
 ### User: Get
 
@@ -76,7 +76,15 @@ Retrieve a user by their numeric Zendesk user ID.
 
 **Key inputs:** user\_id (required)
 
-**Output fields:** id, name, email, role, organization\_id, phone, time\_zone, locale, verified, suspended, external\_id, tags, created\_at, updated\_at, url
+**Output fields:** id, name, email, role, organization\_id, default\_group\_id, phone, time\_zone, locale, active, verified, suspended, external\_id, tags, created\_at, updated\_at, url
+
+### User: List
+
+Search and retrieve a list of users. Use the query field to filter by any Zendesk search criteria (e.g. `role:agent`). Maximum 100 results per call.
+
+**Key inputs:** query, sort by, sort order, limit (max 100)
+
+**Output fields:** `records` — array of user objects (same fields as User: Get)
 
 ### Organization: Get
 
@@ -85,6 +93,14 @@ Retrieve an organization by its numeric Zendesk ID.
 **Key inputs:** organization\_id (required)
 
 **Output fields:** id, name, domain\_names, details, notes, tags, external\_id, group\_id, shared\_tickets, shared\_comments, created\_at, updated\_at, url
+
+### Organization: List
+
+Search and retrieve a list of organizations. Use the query field to filter by name or other criteria (e.g. `name:Acme`). Maximum 100 results per call.
+
+**Key inputs:** query, sort by, sort order, limit (max 100)
+
+**Output fields:** `records` — array of organization objects (same fields as Organization: Get)
 
 ## Key Benefits
 
