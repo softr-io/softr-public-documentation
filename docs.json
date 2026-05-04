@@ -93,6 +93,8 @@
                   "workflows/integrations/overview",
                   "workflows/integrations/fathom",
                   "workflows/integrations/granola",
+                  "workflows/integrations/slack",
+                  "workflows/integrations/zoom",
                   "workflows/integrations/linkup",
                   "workflows/integrations/slack"
                 ]
