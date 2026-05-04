@@ -91,9 +91,12 @@
                 "icon": "plug",
                 "pages": [
                   "workflows/integrations/overview",
+                  "workflows/integrations/fathom",
                   "workflows/integrations/granola",
                   "workflows/integrations/slack",
-                  "workflows/integrations/zoom"
+                  "workflows/integrations/zoom",
+                  "workflows/integrations/linkup",
+                  "workflows/integrations/slack"
                 ]
               }
             ]
@@ -591,7 +594,10 @@
             "pages": [
               "security/sso-for-softr-studio",
               "security/softr-app-security",
-              "security/phishing"
+              "security/phishing",
+              "security/hipaa-compliance",
+              "security/fed-ramp-compliance",
+              "security/ferpa-compliance"
             ]
           },
           {
