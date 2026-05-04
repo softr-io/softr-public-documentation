@@ -94,9 +94,9 @@
                   "workflows/integrations/fathom",
                   "workflows/integrations/granola",
                   "workflows/integrations/slack",
+                  "workflows/integrations/zendesk",
                   "workflows/integrations/zoom",
-                  "workflows/integrations/linkup",
-                  "workflows/integrations/slack"
+                  "workflows/integrations/linkup"
                 ]
               }
             ]
