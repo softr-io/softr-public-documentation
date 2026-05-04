@@ -584,7 +584,7 @@
               }
             ]
           },
-          "mcp",
+          "mcp-server",
           {
             "group": "Security",
             "icon": "lock",
