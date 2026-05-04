@@ -91,9 +91,12 @@
                 "icon": "plug",
                 "pages": [
                   "workflows/integrations/overview",
+                  "workflows/integrations/fathom",
                   "workflows/integrations/granola",
                   "workflows/integrations/slack",
-                  "workflows/integrations/zendesk"
+                  "workflows/integrations/zendesk",
+                  "workflows/integrations/zoom",
+                  "workflows/integrations/linkup"
                 ]
               }
             ]
@@ -223,7 +226,8 @@
               "building-blocks/feature-grid",
               "building-blocks/partner",
               "building-blocks/x-twitter-grid",
-              "building-blocks/quick-links"
+              "building-blocks/quick-links",
+              "building-blocks/pricing"
             ]
           },
           {
@@ -294,7 +298,8 @@
             "pages": [
               "add-and-manage-users/saml-single-sign-on",
               "add-and-manage-users/microsoft-azure-saml-single-sign-on",
-              "add-and-manage-users/openid-single-sign-on"
+              "add-and-manage-users/openid-single-sign-on",
+              "add-and-manage-users/scim-provisioning"
             ]
           }
         ]
@@ -583,13 +588,17 @@
               }
             ]
           },
+          "mcp-server",
           {
             "group": "Security",
             "icon": "lock",
             "pages": [
               "security/sso-for-softr-studio",
               "security/softr-app-security",
-              "security/phishing"
+              "security/phishing",
+              "security/hipaa-compliance",
+              "security/fed-ramp-compliance",
+              "security/ferpa-compliance"
             ]
           },
           {
