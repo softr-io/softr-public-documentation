@@ -91,12 +91,28 @@
                 "icon": "plug",
                 "pages": [
                   "workflows/integrations/overview",
+                  "workflows/integrations/airtable",
+                  "workflows/integrations/apify",
+                  "workflows/integrations/calendly",
+                  "workflows/integrations/clickup",
+                  "workflows/integrations/docs-automator",
                   "workflows/integrations/fathom",
+                  "workflows/integrations/gmail",
+                  "workflows/integrations/google-calendar",
+                  "workflows/integrations/google-sheets",
                   "workflows/integrations/granola",
+                  "workflows/integrations/hubspot",
+                  "workflows/integrations/linkup",
+                  "workflows/integrations/monday",
+                  "workflows/integrations/notion",
+                  "workflows/integrations/outlook",
+                  "workflows/integrations/postmark",
                   "workflows/integrations/slack",
+                  "workflows/integrations/stripe",
+                  "workflows/integrations/telegram",
+                  "workflows/integrations/twilio",
                   "workflows/integrations/zendesk",
-                  "workflows/integrations/zoom",
-                  "workflows/integrations/linkup"
+                  "workflows/integrations/zoom"
                 ]
               }
             ]
