@@ -69,6 +69,30 @@ curl --location --request DELETE 'https://studio-api.softr.io/v1/api/users/user@
 
 Just replace **user@softr.io** with the actual email of the user you need to delete as well as provide your API key (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to delete the user from. **The rest needs to remain the same as in the example.**
 
+### **Deactivate User**
+
+Using this endpoint, you can deactivate a user in the specified Softr app. Deactivated users cannot log in and don't count toward your plan's user limit, but their record is retained and they can be re-activated later. Below is an example of an API call.
+
+```javascript
+curl --location --request POST 'https://studio-api.softr.io/v1/api/users/user@softr.io/deactivate' \
+--header 'Softr-Api-Key: pYSskw7MqMeRUgjQtsf9uRQ5n' \
+--header 'Softr-Domain: yourdomain.com'
+```
+
+Just replace **user@softr.io** with the actual email of the user you need to deactivate as well as provide your API key (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to deactivate the user in. **The rest needs to remain the same as in the example.**
+
+### **Activate User**
+
+Using this endpoint, you can re-activate a previously deactivated user in the specified Softr app. Below is an example of an API call.
+
+```javascript
+curl --location --request POST 'https://studio-api.softr.io/v1/api/users/user@softr.io/activate' \
+--header 'Softr-Api-Key: pYSskw7MqMeRUgjQtsf9uRQ5n' \
+--header 'Softr-Domain: yourdomain.com'
+```
+
+Just replace **user@softr.io** with the actual email of the user you need to activate as well as provide your API key (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to activate the user in. **The rest needs to remain the same as in the example.**
+
 ### **Generate a Magic Link for the User**
 
 Using this endpoint, you cangenerate a [Magic Link](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/add-or-import-users-manually/g5R1bGnBTFJ3sWLR8Mgdng) for the specified user in your Softr app. Bellow is an example of an API call.
