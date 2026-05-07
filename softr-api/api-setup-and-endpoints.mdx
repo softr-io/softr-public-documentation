@@ -93,6 +93,18 @@ curl --location --request POST 'https://studio-api.softr.io/v1/api/users/user@so
 
 Just replace **user@softr.io** with the actual email of the user you need to activate as well as provide your API key (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to activate the user in. **The rest needs to remain the same as in the example.**
 
+### **Invite User**
+
+Using this endpoint, you can send an invitation email to an existing user of the specified Softr app. Once invited, the user's status changes to **Invited**. Note that the **app must be published** for invitations to be sent. Below is an example of an API call.
+
+```javascript
+curl --location --request POST 'https://studio-api.softr.io/v1/api/users/user@softr.io/invite' \
+--header 'Softr-Api-Key: pYSskw7MqMeRUgjQtsf9uRQ5n' \
+--header 'Softr-Domain: yourdomain.com'
+```
+
+Just replace **user@softr.io** with the actual email of the user you need to invite as well as provide your API key (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to invite the user in. **The rest needs to remain the same as in the example.**
+
 ### **Generate a Magic Link for the User**
 
 Using this endpoint, you cangenerate a [Magic Link](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/add-or-import-users-manually/g5R1bGnBTFJ3sWLR8Mgdng) for the specified user in your Softr app. Bellow is an example of an API call.
