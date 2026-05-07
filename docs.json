@@ -96,6 +96,7 @@
                   "workflows/integrations/calendly",
                   "workflows/integrations/clickup",
                   "workflows/integrations/docs-automator",
+                  "workflows/integrations/asana",
                   "workflows/integrations/fathom",
                   "workflows/integrations/gmail",
                   "workflows/integrations/google-calendar",
