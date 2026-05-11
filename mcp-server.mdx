@@ -89,7 +89,7 @@ Both OAuth and PAT support the same set of fine-grained permissions. Grant only 
 | Permission | What it allows |
 |---|---|
 | `databases.records:read` | Read records from tables |
-| `databases.records:write` | Create, update, and delete records |
+| `databases.records:write` | Create and update records |
 | `databases.schema:write` | Create and modify databases, tables, and fields |
 
 <Warning>
@@ -132,8 +132,6 @@ The Softr MCP server exposes 20 tools across three categories.
 | `create_record` | Create a single record in a table. | `databases.records:write` |
 | `create_records` | Batch create up to 100 records in a single operation. | `databases.records:write` |
 | `update_record` | Update fields on an existing record. | `databases.records:write` |
-| `delete_record` | Delete a single record. | `databases.records:write` |
-| `delete_records` | Batch delete up to 100 records in a single operation. | `databases.records:write` |
 
 ## Example prompts
 
