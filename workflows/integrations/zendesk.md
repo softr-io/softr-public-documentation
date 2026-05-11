@@ -1,131 +1,79 @@
 # Zendesk integration
 
-Connect Zendesk with your Softr applications to automate support operations and manage tickets — all without code. Build workflows that create, update, and comment on tickets, and look up or list users and organizations to enrich your automation logic.
+Connect Zendesk with your Softr applications to automate support operations and eliminate manual ticket work. Build workflows that create and update tickets, log comments, and look up users and organizations — all triggered by events in your Softr app.
 
 ## Overview
 
-The Softr Zendesk integration allows you to connect your no-code apps with your Zendesk support account. Automatically create support tickets, update their status, add comments, and retrieve user or organization details — all triggered by events in your Softr app.
+The Softr Zendesk integration links your no-code apps directly to your Zendesk support account. Whenever something happens in Softr — a form submission, a record status change, a new user sign-up — you can automatically create tickets, update their details, post comments, or retrieve customer and organization data to drive the next step in your workflow.
 
-Whether you're building a customer portal, an internal help desk, or an operations tool, you can wire Softr records and form submissions directly to Zendesk to eliminate manual data entry and speed up response times.
-
-## Credentials Required
-
-To connect Softr with Zendesk you need three pieces of information from your Zendesk account:
-
-| Field | Description |
-| :---- | :---------- |
-| **Subdomain** | The prefix of your Zendesk URL, e.g. `acme` from `acme.zendesk.com` |
-| **Email** | The email address of the Zendesk agent or admin used for API access |
-| **API Token** | A token generated in Zendesk Admin → Apps & Integrations → Zendesk API → API Tokens |
-
-To generate an API token, log into Zendesk, go to **Admin Center → Apps & Integrations → Zendesk API**, enable token access, and click **Add API token**.
+Whether you're building a client portal, an internal help desk tool, or an operations dashboard, the Zendesk integration removes the gap between what's happening in your Softr app and what your support team sees in Zendesk.
 
 ## Available Actions
 
-### Ticket: Create
+### Create ticket
 
-Create a new support ticket in Zendesk. Set the description, subject, status, priority, type, assignee, group, tags, and more.
+Open a new support ticket in Zendesk with a subject, description, priority, assignee, and tags — all set dynamically from your Softr workflow.
 
-**Key inputs:** description (required), subject, status, priority, type, requester email, assignee email, group, organization, tags, external ID, recipient
+### Get ticket
 
-**Output fields:** id, subject, description, status, priority, type, requester\_id, assignee\_id, group\_id, organization\_id, tags, external\_id, created\_at, updated\_at, url
+Retrieve the full details of a specific ticket by its ID, so you can use ticket data in later workflow steps.
 
-### Ticket: Get
+### Update ticket
 
-Retrieve a single ticket by its numeric ID.
+Change a ticket's status, priority, assignee, group, or tags to keep Zendesk in sync with what's happening in your Softr app.
 
-**Key inputs:** ticket\_id (required)
+### Delete ticket
 
-**Output fields:** id, subject, description, status, priority, type, requester\_id, assignee\_id, group\_id, organization\_id, tags, external\_id, created\_at, updated\_at, url
+Remove a ticket from your Zendesk queue — useful for cleanup workflows or voided requests.
 
-### Ticket: Update
+### List tickets
 
-Update an existing ticket. Change its status, priority, assignee, group, organization, or tags.
+Fetch a filtered list of tickets by status, group, organization, or Zendesk search query to power reports, dashboards, or conditional logic.
 
-**Key inputs:** ticket\_id (required), subject, status, priority, type, assignee email, group, organization, tags, external ID
+### Add comment to ticket
 
-**Output fields:** same as Ticket: Get
+Post a public reply or internal agent note to any ticket — ideal for logging Softr form responses or escalation details directly inside Zendesk.
 
-### Ticket: Delete
+### Get user
 
-Soft-delete a ticket by ID. Deleted tickets move to the Deleted view and are permanently removed after 30 days.
+Look up a Zendesk user by ID to retrieve their name, email, role, and organization for use in downstream workflow steps.
 
-**Key inputs:** ticket\_id (required)
+### List users
 
-**Output fields:** success (boolean)
+Search and return a set of Zendesk users based on any query criteria, such as role or organization.
 
-### Ticket: List
+### Get organization
 
-Search and list tickets. Filter by status, group, organization, or a full Zendesk search query. Control sort order and the number of results returned. Maximum 100 results per call.
+Retrieve the full details of a Zendesk organization by ID, including domain names, notes, and tags.
 
-**Key inputs:** status, group, organization, query, sort by, sort order, limit (max 100)
+### List organizations
 
-**Output fields:** `records` — array of ticket objects (same fields as Ticket: Get)
-
-### Add Comment to Ticket
-
-Add a public reply or an internal note to an existing ticket.
-
-**Key inputs:** ticket\_id (required), body (required), visibility (public or internal note)
-
-**Output fields:** id, type, author\_id, body, html\_body, public, created\_at
-
-### User: Get
-
-Retrieve a user by their numeric Zendesk user ID.
-
-**Key inputs:** user\_id (required)
-
-**Output fields:** id, name, email, role, organization\_id, default\_group\_id, phone, time\_zone, locale, active, verified, suspended, external\_id, tags, created\_at, updated\_at, url
-
-### User: List
-
-Search and retrieve a list of users. Use the query field to filter by any Zendesk search criteria (e.g. `role:agent`). Maximum 100 results per call.
-
-**Key inputs:** query, sort by, sort order, limit (max 100)
-
-**Output fields:** `records` — array of user objects (same fields as User: Get)
-
-### Organization: Get
-
-Retrieve an organization by its numeric Zendesk ID.
-
-**Key inputs:** organization\_id (required)
-
-**Output fields:** id, name, domain\_names, details, notes, tags, external\_id, group\_id, shared\_tickets, shared\_comments, created\_at, updated\_at, url
-
-### Organization: List
-
-Search and retrieve a list of organizations. Use the query field to filter by name or other criteria (e.g. `name:Acme`). Maximum 100 results per call.
-
-**Key inputs:** query, sort by, sort order, limit (max 100)
-
-**Output fields:** `records` — array of organization objects (same fields as Organization: Get)
+Search and return a list of Zendesk organizations to drive lookups, filters, or conditional branching in your workflow.
 
 ## Key Benefits
 
-- **No-code simplicity:** Set up and manage your Zendesk workflows visually in Softr, without any coding.
-- **End-to-end ticket lifecycle:** Create, update, comment on, and close tickets automatically based on events in your Softr app.
-- **Dynamic fields:** Groups, statuses, and organizations are loaded from your live Zendesk account so you always see up-to-date options.
-- **Flexible filtering:** Use Zendesk's native search syntax to query tickets with any combination of conditions.
-- **Enriched automation:** Look up user and organization details mid-workflow to branch logic or populate other systems.
+- **No-code simplicity:** Configure every Zendesk action visually in Softr — no coding required beyond the initial API token setup.
+- **Instant ticket creation:** Turn any Softr form submission or record event into a Zendesk ticket automatically, the moment it happens.
+- **Full ticket lifecycle:** Create, update, comment on, and close tickets without leaving your workflow canvas.
+- **Richer automation with lookups:** Pull user and organization data mid-workflow to personalize messages, route tickets, or update other systems.
+- **Support-ready portals:** Build client-facing forms and internal help desks in Softr that feed directly into Zendesk — giving your support team everything they need, where they already work.
 
 ## Example Use Cases
 
 | Use Case | Description |
 | :------- | :---------- |
-| **Support ticket from form** | Automatically create a Zendesk ticket when a user submits a contact or support form in Softr. |
-| **Status sync** | When a Softr database record moves to "Resolved", update the linked Zendesk ticket status to `solved`. |
-| **Agent reply** | Post an internal note or public reply to a ticket from a Softr workflow step. |
-| **Escalation alerts** | When a ticket priority is set to `urgent`, look it up and post its details to Slack or send an email via a multi-step workflow. |
-| **Agent dashboard** | Build an internal Softr portal that lists open tickets for a team, fetching them by group or query filter. |
+| **Support request form** | Create a Zendesk ticket automatically when a user submits a help request form in your Softr portal. |
+| **Status sync** | Update the linked Zendesk ticket to `solved` when a record's status field changes to "Resolved" in your Softr database. |
+| **Agent notes from forms** | Post an internal note to a ticket when a customer fills in a follow-up form, keeping all context in one place. |
+| **Escalation alerts** | When a high-priority record is flagged in Softr, create an urgent Zendesk ticket and notify your team in Slack. |
+| **Client portal ticket feed** | Display a filtered list of open tickets for each logged-in user by querying Zendesk with their email inside a Softr list block. |
+| **New user onboarding ticket** | Auto-create a welcome or setup ticket in Zendesk when a new member signs up to your Softr app. |
 
 ## How to Connect Softr with Zendesk
 
-1. Open your Softr workspace and go to **Integrations**.
-2. Find **Zendesk** and click **Connect**.
-3. Enter your **subdomain**, **email**, and **API token** (see Credentials Required above).
-4. Click **Save**. Softr will verify the credentials against your Zendesk account.
-5. Open the **Workflow** builder and add a Zendesk action to any workflow.
-6. Select the connected account, configure the action inputs, and save.
-7. Test the step and activate your workflow.
+1. Open your Softr workspace and go to **Workflows**.
+2. Create a new workflow or open an existing one, then add a Zendesk action.
+3. In the **Account** field, click **Add another account** and enter your Zendesk **subdomain**, **email address**, and **API token**.
+4. To generate an API token, log into Zendesk and go to **Admin Center → Apps & Integrations → Zendesk API → API Tokens**, then click **Add API token**.
+5. Click **Save** — Softr verifies your credentials and connects the account.
+6. Configure the action inputs, click **Continue**, and activate your workflow.
