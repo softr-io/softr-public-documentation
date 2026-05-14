@@ -107,6 +107,7 @@
                   "workflows/integrations/notion",
                   "workflows/integrations/outlook",
                   "workflows/integrations/postmark",
+                  "workflows/integrations/salesforce",
                   "workflows/integrations/slack",
                   "workflows/integrations/stripe",
                   "workflows/integrations/telegram",
