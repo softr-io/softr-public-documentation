@@ -38,18 +38,12 @@ Read items from any existing Apify dataset by ID. Use this to pull historical sc
 
 Retrieve a single record from an Apify key-value store. Useful for fetching screenshots, files, or structured payloads an Actor has saved alongside its dataset output.
 
-## Available Triggers
-
-### Actor Run Finished
-
-Kick off a Softr workflow whenever an Apify Actor or task run finishes — succeeds, fails, aborts, or times out. Optionally scope the trigger to a specific Actor or task so unrelated runs don't fire your workflow.
-
 ## Key Benefits
 
 - **No-code web data:** Add live web scraping to your Softr app without managing servers, browsers, or proxies.
 - **Thousands of ready-made scrapers:** Tap into the Apify Store for pre-built Actors covering Google Maps, LinkedIn, Amazon, Instagram, Zillow, and more.
 - **Bring your own Actors:** Run any custom Actor your team has built, with full control over input and output.
-- **Real-time and scheduled:** Trigger scrapes on user actions in your app, or react to runs that finish in the background.
+- **Real-time and scheduled:** Trigger scrapes on user actions in your app or as part of scheduled workflows.
 - **Member-facing or internal:** Build self-serve research tools for your customers, or back-office dashboards for your team.
 
 ## Example Use Cases
@@ -68,6 +62,6 @@ Kick off a Softr workflow whenever an Apify Actor or task run finishes — succe
 1. In your Apify Console, go to **Settings → API tokens** and copy a token.
 2. Open your Softr app and go to **Integrations → Apify**.
 3. Click **Connect Apify** and paste your API token.
-4. Add an Apify action or trigger to a workflow and pick the Actor, task, dataset, or key-value store you want to use.
+4. Add an Apify action to a workflow and pick the Actor, task, dataset, or key-value store you want to use.
 5. Map inputs from your Softr forms, records, or previous workflow steps to the Actor's JSON input.
 6. Save and activate your workflow.
