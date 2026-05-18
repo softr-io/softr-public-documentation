@@ -675,6 +675,14 @@ export default function Block() {
 }
 ```
 
+The `NavigationAction` component also accepts an optional `recordId?: string` prop. When rendering record-specific links in a list/loop, pass the current record ID so it can be dynamically added as a URL parameter to the final URL `?recordId=<id>`.
+
+```tsx
+<NavigationAction navigation={detailsLink} recordId={item.id}>
+  View details
+</NavigationAction>
+```
+
 ### `useArraySetting`
 
 Returns an array of items with a consistent shape. Use for feature lists, team members, FAQs, testimonials, etc.
