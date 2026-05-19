@@ -106,6 +106,7 @@
                   "workflows/integrations/monday",
                   "workflows/integrations/notion",
                   "workflows/integrations/outlook",
+                  "workflows/integrations/pinecone",
                   "workflows/integrations/postmark",
                   "workflows/integrations/slack",
                   "workflows/integrations/stripe",
