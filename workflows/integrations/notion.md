@@ -59,9 +59,10 @@ Remove multiple pages from a Notion database in one go, keeping your workspace t
 
 ## How to Connect Softr with Notion
 
-1. Open your Softr app and go to **Integrations -> Notion**.
-2. Click **Connect Notion** and sign in to authorize Softr to access your Notion workspace.
-3. Choose which pages and databases Softr should be able to read from and write to.
-4. Add a Notion action to a workflow and pick the database you want to use.
-5. Map your Softr form fields, record properties, or previous workflow outputs to the matching Notion database properties.
-6. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add a Notion action.
+3. Click **Connect to Notion** and sign in to authorize Softr to access your Notion workspace.
+4. Choose which pages and databases Softr should be able to read from and write to.
+5. Pick the database you want to use.
+6. Map your Softr form fields, record properties, or previous workflow outputs to the matching Notion database properties.
+7. Save and activate your workflow.

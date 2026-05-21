@@ -35,9 +35,10 @@ Send a text message to any phone number using your Twilio account. Personalize t
 
 ## How to Connect Softr with Twilio
 
-1. In your Twilio Console, copy your **Account SID**, **Auth Token**, and the **phone number** you want to send messages from.
-2. Open your Softr app and go to **Integrations → Twilio**.
-3. Click **Connect Twilio** and paste in your Account SID, Auth Token, and sender phone number.
-4. Add a **Send SMS** action to a workflow and pick the trigger that should fire it — a form submission, record update, or scheduled run.
-5. Write your message and map fields from your Softr forms or records into the recipient number and message body.
-6. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add the **Send SMS** Twilio action.
+3. Click **Connect to Twilio** and paste in your Account SID, Auth Token, and sender phone number.
+4. Your Account SID, Auth Token, and sender phone number can be found in your Twilio Console.
+5. Pick the trigger that should fire it — a form submission, record update, or scheduled run.
+6. Write your message and map fields from your Softr forms or records into the recipient number and message body.
+7. Save and activate your workflow.

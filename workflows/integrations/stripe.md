@@ -93,9 +93,10 @@ Fetch your current Stripe account balance, including available and pending funds
 
 ## How to Connect Softr with Stripe
 
-1. In your Stripe Dashboard, go to **Developers → API keys** and copy your Secret API key.
-2. Open your Softr app and go to **Integrations → Stripe**.
-3. Click **Connect Stripe** and paste your Secret API key.
-4. Add a Stripe action to a workflow and pick the operation you need — create a customer, charge a payment, list charges, and so on.
-5. Map fields from your Softr forms, records, or previous workflow steps to the Stripe action's inputs.
-6. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add a Stripe action.
+3. Click **Connect to Stripe** and paste your Secret API key.
+4. Your Secret API key can be found in your Stripe Dashboard under **Developers → API keys**.
+5. Pick the operation you need — create a customer, charge a payment, list charges, and so on.
+6. Map fields from your Softr forms, records, or previous workflow steps to the Stripe action's inputs.
+7. Save and activate your workflow.

@@ -39,9 +39,10 @@ Invite one or more guests to an existing calendar event so they receive the meet
 
 ## How to Connect Softr with Google Calendar
 
-1. Open your Softr app and go to **Integrations → Google Calendar**.
-2. Click **Connect Google Calendar** and sign in with the Google account whose calendar you want to use.
-3. Approve access so Softr can create events and manage attendees on your behalf.
-4. Add a Google Calendar action to a workflow and pick the calendar you want events to land in.
-5. Map fields from your Softr forms, records, or previous workflow steps to the event details — title, description, start and end times, and attendees.
-6. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add a Google Calendar action.
+3. Click **Connect to Google Calendar** and sign in with the Google account whose calendar you want to use.
+4. Approve access so Softr can create events and manage attendees on your behalf.
+5. Pick the calendar you want events to land in.
+6. Map fields from your Softr forms, records, or previous workflow steps to the event details — title, description, start and end times, and attendees.
+7. Save and activate your workflow.

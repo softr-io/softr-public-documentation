@@ -35,9 +35,10 @@ Generate a single-use Calendly scheduling link for a specific event type. Send i
 
 ## How to Connect Softr with Calendly
 
-1. Open your Softr app and go to **Integrations → Calendly**.
-2. Click **Connect Calendly** and authorize Softr to access your Calendly account.
-3. Add the **Create scheduling link** action to a workflow and pick the event type you want bookings to land on.
-4. Map the invitee's name and email from your Softr form, member record, or previous workflow step.
-5. Wire the generated link into the next step — send it via email, store it on a record, or display it in your app.
-6. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add the **Create scheduling link** Calendly action.
+3. Click **Connect to Calendly** and authorize Softr to access your Calendly account.
+4. Pick the event type you want bookings to land on.
+5. Map the invitee's name and email from your Softr form, member record, or previous workflow step.
+6. Wire the generated link into the next step — send it via email, store it on a record, or display it in your app.
+7. Save and activate your workflow.

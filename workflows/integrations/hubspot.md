@@ -59,9 +59,10 @@ Delete multiple HubSpot records at once, ideal for bulk clean-up workflows trigg
 
 ## How to Connect Softr with HubSpot
 
-1. Open your Softr app and go to **Integrations → HubSpot**.
-2. Click **Connect HubSpot** and sign in to authorize Softr to access your HubSpot account.
-3. Pick the HubSpot account or portal you want to connect if you manage more than one.
-4. Add a HubSpot action to a workflow and choose the object you want to work with — Contact, Company, Deal, Ticket, or a custom object.
-5. Map fields from your Softr forms, records, or earlier workflow steps to the matching HubSpot properties.
-6. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add a HubSpot action.
+3. Click **Connect to HubSpot** and sign in to authorize Softr to access your HubSpot account.
+4. Pick the HubSpot account or portal you want to connect if you manage more than one.
+5. Choose the object you want to work with — Contact, Company, Deal, Ticket, or a custom object.
+6. Map fields from your Softr forms, records, or earlier workflow steps to the matching HubSpot properties.
+7. Save and activate your workflow.

@@ -35,9 +35,10 @@ Send a transactional email from your verified Postmark sender to one or more rec
 
 ## How to Connect Softr with Postmark
 
-1. In your Postmark account, go to **Servers**, open the server you want to send from, and copy its **Server API token**.
-2. Open your Softr app and go to **Integrations → Postmark**.
-3. Click **Connect Postmark** and paste your Server API token.
-4. Add the **Send email** action to a workflow and choose your verified sender address.
-5. Map recipient, subject, and message content from your Softr forms, records, or previous workflow steps.
-6. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add the **Send email** Postmark action.
+3. Click **Connect to Postmark** and paste your Server API token.
+4. Your Server API token can be found in your Postmark account under **Servers** — open the server you want to send from and copy its **Server API token**.
+5. Choose your verified sender address.
+6. Map recipient, subject, and message content from your Softr forms, records, or previous workflow steps.
+7. Save and activate your workflow.

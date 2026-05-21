@@ -71,9 +71,9 @@ Spin up a new Gmail label on the fly so your workflows can organize messages int
 
 ## How to Connect Softr with Gmail
 
-1. Open your Softr app and go to **Integrations → Gmail**.
-2. Click **Connect Gmail** and sign in with your Google account to authorize Softr.
-3. Add a Gmail action to a workflow and pick the action you want — send, reply, draft, label, archive, or delete.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add a Gmail action — send, reply, draft, label, archive, or delete.
+3. Click **Connect Gmail** and sign in with your Google account to authorize Softr.
 4. Map fields from your Softr forms, records, or previous workflow steps into the email's recipient, subject, body, and labels.
 5. Choose triggers — form submissions, user sign-ups, record updates, or scheduled runs — to decide when the workflow runs.
 6. Save and activate your workflow.
