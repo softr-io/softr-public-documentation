@@ -59,9 +59,10 @@ Clear out multiple matching rows at once to keep your sheet tidy after bulk acti
 
 ## How to Connect Softr with Google Sheets
 
-1. Open your Softr app and go to **Integrations → Google Sheets**.
-2. Click **Connect Google Sheets** and sign in with your Google account.
-3. Authorize Softr to access the sheets you want to use in your workflows.
-4. Add a Google Sheets action to a workflow and pick the spreadsheet and worksheet you want to read from or write to.
-5. Map fields from your Softr forms, records, or previous workflow steps to the columns in your sheet.
-6. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add a Google Sheets action.
+3. Click **Connect to Google Sheets** and sign in with your Google account.
+4. Authorize Softr to access the sheets you want to use in your workflows.
+5. Pick the spreadsheet and worksheet you want to read from or write to.
+6. Map fields from your Softr forms, records, or previous workflow steps to the columns in your sheet.
+7. Save and activate your workflow.

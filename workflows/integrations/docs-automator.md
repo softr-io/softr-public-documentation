@@ -35,9 +35,9 @@ Generate a PDF from a Google Docs template by passing in the values that fill it
 
 ## How to Connect Softr with DocsAutomator
 
-1. In Google Docs, create the template you want to use and add `{placeholder}` tags wherever dynamic data should appear (for example `{client_name}`, `{invoice_total}`).
-2. In your DocsAutomator account, register the template and copy your API key from the account settings.
-3. Open your Softr app and go to **Integrations → DocsAutomator**.
-4. Click **Connect DocsAutomator** and paste your API key.
-5. Add the **Create document** action to a workflow and pick the template you want to fill.
+1. In Google Docs, create the template you want to use and add `{placeholder}` tags wherever dynamic data should appear (for example `{client_name}`, `{invoice_total}`). In your DocsAutomator account, register the template and copy your API key from the account settings.
+2. Open your Softr app and go to **Workflows**.
+3. Create a new workflow and add the **Create document** DocsAutomator action.
+4. Click **Connect to DocsAutomator** and paste your API key.
+5. Pick the template you want to fill.
 6. Map fields from your Softr forms, records, or earlier workflow steps to the template's placeholders, then save and activate your workflow.

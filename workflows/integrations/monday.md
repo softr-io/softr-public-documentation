@@ -59,8 +59,9 @@ Delete multiple monday.com items in one step to clean up completed, rejected, or
 
 ## How to Connect Softr with monday.com
 
-1. Open your Softr app and go to **Integrations → monday.com**.
-2. Click **Connect monday.com** and authorize Softr to access your account.
-3. Add a monday.com action to a workflow and pick the board you want to read from or write to.
-4. Map your Softr form fields, record values, or previous workflow outputs to the monday.com columns.
-5. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add a monday.com action.
+3. Click **Connect to monday.com** and authorize Softr to access your account.
+4. Pick the board you want to read from or write to.
+5. Map your Softr form fields, record values, or previous workflow outputs to the monday.com columns.
+6. Save and activate your workflow.

@@ -35,9 +35,10 @@ Send an email from your connected Outlook account to one or more recipients, wit
 
 ## How to Connect Softr with Outlook
 
-1. Open your Softr app and go to **Integrations → Outlook**.
-2. Click **Connect Outlook** and sign in with your Microsoft 365 account.
-3. Approve the requested permissions so Softr can send email on your behalf.
-4. Add a **Send email** action to a workflow and choose the trigger that should send it (form submission, sign-up, record update, schedule).
-5. Fill in recipients, subject, and body — using fields from your Softr forms, records, or previous workflow steps to personalize the message.
-6. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add the **Send email** Outlook action.
+3. Click **Connect to Outlook** and sign in with your Microsoft 365 account.
+4. Approve the requested permissions so Softr can send email on your behalf.
+5. Choose the trigger that should send it (form submission, sign-up, record update, schedule).
+6. Fill in recipients, subject, and body — using fields from your Softr forms, records, or previous workflow steps to personalize the message.
+7. Save and activate your workflow.

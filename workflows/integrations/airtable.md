@@ -59,9 +59,10 @@ Clean up multiple records in one step — useful for batch deletions from admin 
 
 ## How to Connect Softr with Airtable
 
-1. Open your Softr app and go to **Integrations → Airtable**.
-2. Click **Connect Airtable** and authorize Softr to access your bases.
-3. Add an Airtable action to a workflow and pick the base and table you want to work with.
-4. Map fields from your Softr forms, records, or previous workflow steps to the Airtable fields.
-5. Set any filters or sorting if you're querying records, then preview the result.
-6. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add an Airtable action.
+3. Click **Connect to Airtable** and authorize Softr to access your bases.
+4. Pick the base and table you want to work with.
+5. Map fields from your Softr forms, records, or previous workflow steps to the Airtable fields.
+6. Set any filters or sorting if you're querying records, then preview the result.
+7. Save and activate your workflow.

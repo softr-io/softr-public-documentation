@@ -59,9 +59,10 @@ Retrieve a single record from an Apify key-value store. Useful for fetching scre
 
 ## How to Connect Softr with Apify
 
-1. In your Apify Console, go to **Settings → API tokens** and copy a token.
-2. Open your Softr app and go to **Integrations → Apify**.
-3. Click **Connect Apify** and paste your API token.
-4. Add an Apify action to a workflow and pick the Actor, task, dataset, or key-value store you want to use.
-5. Map inputs from your Softr forms, records, or previous workflow steps to the Actor's JSON input.
-6. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add an Apify action.
+3. Click **Connect to Apify** and paste your API token.
+4. Your API token can be found in your Apify Console under **Settings → API tokens**.
+5. Pick the Actor, task, dataset, or key-value store you want to use.
+6. Map inputs from your Softr forms, records, or previous workflow steps to the Actor's JSON input.
+7. Save and activate your workflow.

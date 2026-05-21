@@ -55,9 +55,9 @@ Retrieve information about a Telegram chat, group, or channel — useful for con
 
 ## How to Connect Softr with Telegram
 
-1. In Telegram, start a chat with **@BotFather** and send the `/newbot` command. Pick a name and username for your bot, then copy the **bot token** BotFather gives you.
-2. Add your bot to the chat, group, or channel you want to send messages to, and give it permission to post.
-3. Open your Softr app and go to **Integrations → Telegram**.
-4. Click **Connect Telegram** and paste your bot token.
-5. Add a Telegram action to a workflow, choose the chat or channel ID, and map your message, media, or poll content from forms, records, or previous workflow steps.
+1. In Telegram, start a chat with **@BotFather** and send the `/newbot` command. Pick a name and username for your bot, then copy the **bot token** BotFather gives you. Add your bot to the chat, group, or channel you want to send messages to, and give it permission to post.
+2. Open your Softr app and go to **Workflows**.
+3. Create a new workflow and add a Telegram action.
+4. Click **Connect to Telegram** and paste your bot token.
+5. Choose the chat or channel ID, and map your message, media, or poll content from forms, records, or previous workflow steps.
 6. Save and activate your workflow.

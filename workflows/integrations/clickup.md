@@ -59,8 +59,9 @@ Clean up multiple ClickUp tasks in one step when records are archived, projects 
 
 ## How to Connect Softr with ClickUp
 
-1. Open your Softr app and go to **Integrations → ClickUp**.
-2. Click **Connect ClickUp** and authorize the workspace you want to use.
-3. Add a ClickUp action to a workflow and pick the workspace, space, and list you want to work with.
-4. Map fields from your Softr forms, records, or previous workflow steps to the ClickUp task fields (name, description, assignee, status, due date, custom fields).
-5. Save and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add a ClickUp action.
+3. Click **Connect to ClickUp** and authorize the workspace you want to use.
+4. Pick the workspace, space, and list you want to work with.
+5. Map fields from your Softr forms, records, or previous workflow steps to the ClickUp task fields (name, description, assignee, status, due date, custom fields).
+6. Save and activate your workflow.
