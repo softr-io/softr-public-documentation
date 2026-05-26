@@ -1,0 +1,72 @@
+# Salesforce integration
+
+Connect Salesforce with your Softr applications to automate CRM workflows, sync customer data, and keep your sales team's pipeline up to date — all without writing code.
+
+<Frame>
+    ![Install the app](/workflows/images/workflows/salesforce.png)
+</Frame>
+
+## Overview
+
+The Softr Salesforce integration lets you create, update, retrieve, and delete records in any Salesforce object — including Contacts, Leads, Opportunities, Accounts, and custom objects — directly from your no-code app workflows. Trigger CRM operations from form submissions, user sign-ups, record changes, or any other event in your Softr app, and have Salesforce reflect those changes instantly.
+
+Use Softr workflows to bridge your customer-facing portals and internal tools with Salesforce, so your team always has accurate, up-to-date data without manual data entry.
+
+## Available Actions
+
+### Create record
+
+Add a new record to any Salesforce object. Select the object type (Contact, Lead, Opportunity, Account, or a custom object), then map fields from your Softr form or data source directly to the Salesforce object fields.
+
+### Update record
+
+Update an existing Salesforce record by ID. Select the object type, provide the record ID, and map whichever fields you want to modify — such as updating a phone number, changing a deal stage, or reassigning an account owner.
+
+### Get record
+
+Retrieve a single Salesforce record by its ID. Select the object type and provide the record ID — all fields of that record are returned and available in subsequent workflow steps.
+
+### Get many records
+
+Fetch multiple records from any Salesforce object. Optionally filter results using a SOQL WHERE clause (for example, `LastName = 'Doe' AND AccountId = '001abc'`) and set a limit on the number of records returned.
+
+### Delete record
+
+Permanently remove a record from any Salesforce object by ID. Trigger this from a Softr admin action button or a data-cleanup workflow.
+
+## Key Benefits
+
+- **Works with any Salesforce object:** Automate workflows across Contacts, Leads, Opportunities, Accounts, and your own custom objects — not just a single record type.
+- **Eliminate manual data entry:** Automatically push data from Softr forms and portals into Salesforce without anyone having to copy and paste.
+- **Real-time CRM sync:** Keep your Salesforce data current as soon as events happen in your Softr app — new sign-ups, form submissions, or record updates.
+- **Seamless customer portals:** Build client-facing portals in Softr that read from and write to Salesforce, giving your team a single source of truth.
+- **No Salesforce admin required:** Configure CRM automations visually in Softr, without custom Apex code or complex Salesforce flows.
+- **Multi-step workflows:** Chain Salesforce actions with other integrations — send a Slack notification after creating a record, or email a confirmation after closing a deal.
+
+## Example Use Cases
+
+| Use Case | Description |
+| :------- | :---------- |
+| **Lead capture from forms** | When a visitor submits a contact form in your Softr app, automatically create a Salesforce Lead or Contact with their details. |
+| **Member portal sync** | When a new user signs up to your Softr portal, create a corresponding Salesforce Contact and assign them to the right account. |
+| **CRM data enrichment** | Allow customers to update their own profile in a Softr portal, and have those changes flow directly into their Salesforce record. |
+| **Deal pipeline automation** | When a form is submitted or a status changes in Softr, automatically create or update a Salesforce Opportunity to keep your pipeline current. |
+| **Admin record management** | Give your team an internal dashboard in Softr to look up, edit, or remove Salesforce records without needing Salesforce licenses for every user. |
+| **Deduplication before outreach** | Before creating a new record, query Salesforce with a SOQL filter to check whether it already exists, and skip or update instead of duplicating. |
+| **Offboarding automation** | When a user account is deleted in Softr, automatically delete or update the corresponding Salesforce record. |
+
+## How to Connect Softr with Salesforce
+
+Salesforce requires a one-time package installation before you can connect your org via OAuth.
+
+<Frame>
+  ![Install the app](/workflows/images/workflows/salesforce-link.png)
+</Frame>
+
+1. **Install the Softr app in your Salesforce org**. This only needs to be done once per org.
+2. In your Softr app, open the **Workflows** section and create or edit a workflow.
+3. Add a **Salesforce action** step (Create record, Update record, etc.).
+4. Click **Connect Salesforce** and authorize Softr to access your Salesforce org via OAuth.
+5. Select the **object type** you want to work with (Contact, Lead, Opportunity, Account, or a custom object).
+6. Configure the action inputs — map fields from your workflow data to the Salesforce object fields.
+7. Save and activate your workflow to start syncing data automatically.
