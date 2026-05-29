@@ -478,8 +478,39 @@ export default function Block() {
 Available fields:
  - `id`: `string | null` (only present when user sync is enabled)
  - `fullName`: `string | null`
+ - `firstName`: `string | null`
+ - `lastName`: `string | null`
  - `email`: `string | null`
  - `avatar`: `string | null`
+
+### Custom user properties
+
+Beyond the reserved fields above, any custom fields that exist on your user record are available under `user.properties`. Pass a `properties` map to alias each field to a readable name, the same way a `select` query works.
+
+```tsx
+import { useCurrentUser } from "@/lib/user";
+
+export default function Block() {
+  const user = useCurrentUser({
+    properties: {
+      stripeId: "FIELD_ID1",
+      plan: "FIELD_ID2",
+    },
+  });
+
+  if (!user) return <div>Please log in to continue.</div>;
+
+  return (
+    <div className="container py-8">
+      <div className="content">
+        <p className="font-semibold">Welcome, {user.fullName}!</p>
+        {user.properties.stripeId && <p className="text-muted-foreground text-sm">Stripe ID: {user.properties.stripeId}</p>}
+        {user.properties.plan && <p className="text-muted-foreground text-sm">Your plan: {user.properties.plan}</p>}
+      </div>
+    </div>
+  );
+}
+```
 
 
 ---
