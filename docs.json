@@ -607,6 +607,7 @@
             ]
           },
           "mcp-server",
+          "app-mcp-server",
           {
             "group": "Security",
             "icon": "lock",
