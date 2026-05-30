@@ -103,6 +103,7 @@
                   "workflows/integrations/granola",
                   "workflows/integrations/hubspot",
                   "workflows/integrations/linkup",
+                  "workflows/integrations/firecrawl",
                   "workflows/integrations/monday",
                   "workflows/integrations/notion",
                   "workflows/integrations/outlook",
