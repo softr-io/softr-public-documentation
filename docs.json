@@ -91,9 +91,31 @@
                 "icon": "plug",
                 "pages": [
                   "workflows/integrations/overview",
-                  "workflows/integrations/firecrawl",
+                  "workflows/integrations/airtable",
+                  "workflows/integrations/apify",
+                  "workflows/integrations/calendly",
+                  "workflows/integrations/clickup",
+                  "workflows/integrations/docs-automator",
+                  "workflows/integrations/fathom",
+                  "workflows/integrations/gmail",
+                  "workflows/integrations/google-calendar",
+                  "workflows/integrations/google-sheets",
                   "workflows/integrations/granola",
-                  "workflows/integrations/slack"
+                  "workflows/integrations/hubspot",
+                  "workflows/integrations/linkup",
+                  "workflows/integrations/firecrawl",
+                  "workflows/integrations/monday",
+                  "workflows/integrations/notion",
+                  "workflows/integrations/outlook",
+                  "workflows/integrations/pinecone",
+                  "workflows/integrations/postmark",
+                  "workflows/integrations/salesforce",
+                  "workflows/integrations/slack",
+                  "workflows/integrations/stripe",
+                  "workflows/integrations/telegram",
+                  "workflows/integrations/twilio",
+                  "workflows/integrations/zendesk",
+                  "workflows/integrations/zoom"
                 ]
               }
             ]
@@ -223,7 +245,8 @@
               "building-blocks/feature-grid",
               "building-blocks/partner",
               "building-blocks/x-twitter-grid",
-              "building-blocks/quick-links"
+              "building-blocks/quick-links",
+              "building-blocks/pricing"
             ]
           },
           {
@@ -294,7 +317,8 @@
             "pages": [
               "add-and-manage-users/saml-single-sign-on",
               "add-and-manage-users/microsoft-azure-saml-single-sign-on",
-              "add-and-manage-users/openid-single-sign-on"
+              "add-and-manage-users/openid-single-sign-on",
+              "add-and-manage-users/scim-provisioning"
             ]
           }
         ]
@@ -583,13 +607,17 @@
               }
             ]
           },
+          "mcp-server",
           {
             "group": "Security",
             "icon": "lock",
             "pages": [
               "security/sso-for-softr-studio",
               "security/softr-app-security",
-              "security/phishing"
+              "security/phishing",
+              "security/hipaa-compliance",
+              "security/fed-ramp-compliance",
+              "security/ferpa-compliance"
             ]
           },
           {
