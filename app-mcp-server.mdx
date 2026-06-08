@@ -1,0 +1,200 @@
+---
+title: "App MCP Server"
+sidebarTitle: "App MCP server"
+description: "Expose a Softr app as a Model Context Protocol server so AI assistants can connect to it."
+"og:title": "App MCP Server – Softr Help Docs"
+"og:description": "Expose a Softr app as a Model Context Protocol server so AI assistants can connect to it."
+"og:image": "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+"twitter:title": "App MCP Server – Softr Help Docs"
+"twitter:description": "Expose a Softr app as a Model Context Protocol server so AI assistants can connect to it."
+icon: "plug"
+---
+
+Every Softr app can act as its own [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server. Once you enable MCP on an app, AI assistants like Claude, Claude Code, and ChatGPT can connect to that specific app over OAuth and interact with its data.
+
+<Note>
+  This is different from the workspace-wide [Softr MCP
+  Server](/mcp-server-integration), which exposes your Softr databases. The
+  **App MCP Server** is scoped to a single published app, uses that app's
+  domain, and has its own OAuth credentials.
+</Note>
+
+## How permissions work
+
+When an AI client connects, it does so **as a signed-in user of your app**, not as an admin and not as the app itself. Everything the assistant can see or do is capped by what that user could already do in the app's interface. The MCP server never grants extra access.
+
+Concretely, the assistant's capabilities are derived from the **blocks you've built into the app**:
+
+| What the app contains             | What the assistant can do |
+| --------------------------------- | ------------------------- |
+| A list, grid, or table block      | **Read** records          |
+| A form or sign-up block           | **Create** records (only the fields shown in the form) |
+| A profile block or inline editing | **Update** records        |
+| A delete action                   | **Delete** records        |
+
+This means the MCP surface mirrors your app's screens:
+
+- **If there's no block for a table, the assistant can't touch that table**, even if the underlying data source contains it.
+- **Fields are limited to those your blocks display.** Hidden or unmapped fields stay invisible to the assistant.
+- **User groups, page visibility, and data restrictions all still apply.** A user connecting through MCP sees exactly the records and actions their account would see when logged into the app normally.
+
+<Tip>
+  To expose more (or less) to AI clients, change what your app shows. Add a form
+  to allow record creation, add a list to allow reading, or restrict a block by
+  user group to limit access, and the MCP server updates to match.
+</Tip>
+
+## Enabling MCP for your app
+
+<Steps>
+  <Step title="Open MCP settings">
+    In the app's left sidebar, open **Settings → MCP**.
+  </Step>
+  <Step title="Enable MCP">
+    Click **Enable MCP**. Softr generates an OAuth Client ID and Client Secret for this app.
+  </Step>
+  <Step title="Connect an AI tool">
+    Use one of the quick-setup cards (Claude, Claude Code, ChatGPT, Other) to connect a client. Each card walks you through the steps for that specific tool.
+  </Step>
+</Steps>
+
+## Server URL
+
+Your app's MCP endpoint follows your app's published URL:
+
+```
+https://<your-app-domain>/v1/mcp
+```
+
+For example, if your app is published at `https://acme.softr.app`, the MCP server URL is `https://acme.softr.app/v1/mcp`. If you've added a custom domain, the MCP URL uses that domain. You can copy the exact URL from the **Server URL** field in MCP settings.
+
+## Connecting an AI tool
+
+The setup dialog in MCP settings gives you a ready-to-use snippet for each supported client. You can also follow the steps manually.
+
+<Tabs>
+  <Tab title="Claude (web & desktop)">
+    <Steps>
+      <Step title="Open the connector setup">
+        In Claude, go to **Customize → Connectors → + → Add custom connector**.
+      </Step>
+      <Step title="Add the server">
+        Enter a name (for example, your app's name) and paste the **Server URL** from MCP settings.
+      </Step>
+      <Step title="Authorize">
+        Click **Add**. Claude opens a browser window to authorize the connection to your app via OAuth.
+      </Step>
+    </Steps>
+
+    Claude uses dynamic client registration, so you don't need to paste a Client ID or Secret.
+
+  </Tab>
+
+  <Tab title="Claude Code">
+    Claude Code is Anthropic's CLI. The setup snippet looks like this:
+
+    ```bash
+    claude mcp add <slug> https://<your-app-domain>/v1/mcp --transport http --client-id <your-client-id> --client-secret
+    ```
+
+    <Steps>
+      <Step title="Install Claude Code">
+        ```bash
+        npm install -g @anthropic-ai/claude-code
+        ```
+      </Step>
+      <Step title="Run the command">
+        Copy the command from the **Claude Code** setup card in MCP settings and run it in your terminal. The Client ID is already filled in.
+      </Step>
+      <Step title="Paste the Client Secret when prompted">
+        Claude Code's interactive CLI displays:
+
+        ```
+        Enter OAuth client secret:
+        ```
+
+        Paste the Client Secret shown in the dialog (or in **Advanced settings → Client Secret**) and press **Enter**. The CLI deliberately prompts interactively so your secret doesn't end up in your shell history.
+      </Step>
+      <Step title="Authorize">
+        After submitting the secret, Claude Code opens a browser window to complete OAuth authorization.
+      </Step>
+    </Steps>
+
+  </Tab>
+
+<Tab title="ChatGPT">
+  <Steps>
+    <Step title="Enable Developer Mode">
+      In ChatGPT, go to **Settings → Connectors → Advanced** and enable
+      **Developer Mode**.
+    </Step>
+    <Step title="Create a custom connector">
+      Open **Settings → Connectors → Create**. Enter a name, paste the **Server
+      URL** from MCP settings, and leave the Authentication options as-is.
+    </Step>
+    <Step title="Connect">
+      Click **Create**, then **Connect**. ChatGPT opens a browser window to
+      authorize access to your app.
+    </Step>
+  </Steps>
+</Tab>
+
+  <Tab title="Other MCP clients">
+    Any OAuth-capable MCP client can connect using just the Server URL. Most clients perform [dynamic client registration](https://datatracker.ietf.org/doc/html/rfc7591) automatically and don't need a pre-shared Client ID.
+
+    ```json
+    {
+      "url": "https://<your-app-domain>/v1/mcp",
+      "transport": "http"
+    }
+    ```
+
+    If your client requires a pre-registered Client ID and Secret, copy them from **Advanced settings**.
+
+  </Tab>
+</Tabs>
+
+## Advanced settings
+
+Open the **Advanced settings** section in MCP settings to see and manage the OAuth credentials.
+
+| Field             | What it's for                                                                                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Client ID**     | Public identifier for your app's MCP OAuth client. Safe to share.                                                                                                |
+| **Client Secret** | Confidential credential. Used by clients that don't support dynamic client registration.                                            |
+| **Redirect URIs** | Allowed OAuth redirect URIs. Add an entry for every client that needs a fixed redirect. Most clients fill this in automatically via dynamic client registration. |
+
+### Adding redirect URIs
+
+Some AI clients require their callback URL to be pre-registered on the OAuth server. To add one:
+
+<Steps>
+  <Step title="Open Advanced settings">
+    Expand **Advanced settings** in your app's MCP settings.
+  </Step>
+  <Step title="Add the URI">
+    Click **Add redirect URI** and paste the callback URL the client provided.
+  </Step>
+  <Step title="Save">Click **Save** in the footer to persist the change.</Step>
+</Steps>
+
+## Turning MCP off
+
+Toggle **Enable MCP** off and click **Save** to disable the server without removing its credentials. Existing connected clients will stop being able to call the server until you re-enable it.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="My client still asks for the Client Secret after I pasted it inline">
+    Some CLIs (Claude Code included) treat `--client-secret` as a
+    *prompt-trigger flag*, not a value flag. Any value you append inline is
+    ignored and the CLI prompts interactively. This is intentional so the secret
+    doesn't appear in your shell history. Paste the secret at the prompt
+    instead.
+  </Accordion>
+  <Accordion title="OAuth authorization redirects to an error">
+    Check that the client's redirect URI is registered under **Advanced settings
+    → Redirect URIs**. Clients that support dynamic client registration handle
+    this automatically; clients with a fixed callback don't.
+  </Accordion>
+</AccordionGroup>
