@@ -84,6 +84,32 @@ By default, block occupies full width of the page but special classes - `contain
 
 Import data hooks from `@/lib/datasource`. Use these when you want to display records from your connected data source. All data fetching hooks follow a query builder pattern so you can be quite expressive with your queries.
 
+### One or many datasources
+
+A block can connect to multiple datasources. When it does, every fetch or mutation needs to say which datasource it targets. The `datasource.define` utility gives you readable aliases for that. Declare it once at the top of the file, then pass the alias as `from` on each hook:
+
+```tsx
+import { datasource, useRecords, q } from "@/lib/datasource";
+
+const ds = datasource.define({
+  orders: "ds_id_1",
+  customers: "ds_id_2",
+});
+
+const ordersSelect = q.select({ product: "field1", total: "field2" });
+const customersSelect = q.select({ name: "field3", email: "field4" });
+
+export default function Block() {
+  const { data: orders } = useRecords({ from: ds.orders, select: ordersSelect });
+  const { data: customers } = useRecords({ from: ds.customers, select: customersSelect });
+  // ...
+}
+```
+
+With a single datasource you can skip `datasource.define` and omit `from`. The hooks then default to that one datasource. As soon as a block has more than one, leaving out `from` throws an error, since the hook can't tell which datasource the call belongs to.
+
+Every record hook takes `from` the same way: `useRecords`, `useRecord`, `useLinkedRecords`, `useFieldOptions`, `useMetric`, `useChartData`, `useRecordCreate`, `useRecordUpdate`, and `useRecordDelete`. `useUpload` and `useCurrentRecordId` work at the app level and thus `from` is not applicable to them.
+
 ### Defining a select query
 
 Field mappings have to be static, we also use static analysis to determine which fields your block actually uses so we don't overfetch and don't accidentally expose potentially sensitive data.
@@ -130,6 +156,7 @@ export default function Block() {
       email: "FIELD_ID2",
     }),
     count: 6,            // records per page, default 6, max 100
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
     // where: ...,       // optional filter
     // orderBy: ...,     // optional sort
     // enabled: ...,     // optional boolean to defer loading (e.g. until component is visible)
@@ -175,6 +202,7 @@ export default function Block() {
       description: "FIELD_ID2",
     }),
     recordId,
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
   });
 
   if (status === "pending") return <div>Loading...</div>;
@@ -263,6 +291,7 @@ export default function Block() {
     sortOrder: "ASC",     // "ASC" | "DESC"
     search: "",           // optional search term
     enabled: true,        // set false to defer loading (e.g. until dropdown opens)
+    // from: ds.orders,   // datasource alias, required when the block has multiple datasources
     // count: ...,        // optional page size, defaults to 100, max 1000
   });
 
@@ -277,6 +306,8 @@ export default function Block() {
   );
 }
 ```
+
+Each item only carries its `id` and `title` (the linked table's primary field). To read other fields off those records, connect the linked table as its own datasource and query it with `useRecords`. See [One or many datasources](#one-or-many-datasources).
 
 ---
 
@@ -305,6 +336,7 @@ export default function Block() {
     }),
     onSuccess: (newRecord) => toast.success("Created!"),
     onError: (error) => toast.error(error.message),
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
   });
 
   return (
@@ -344,6 +376,7 @@ export default function Block() {
       toast.success("Updated!");
     },
     onError: (error) => toast.error(error.message),
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
   });
 
   const onUpdateClick = () => {
@@ -375,6 +408,7 @@ export default function Block() {
       toast.success("Deleted!");
     },
     onError: (error) => toast.error(error.message),
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
   });
 
   const onDeleteClick = () => {
@@ -528,6 +562,7 @@ export default function Block() {
   const { data, status } = useMetric({
     select: q.select({ revenue: "$REVENUE_FIELD_ID" }),
     metric: metric.sum("revenue"),
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
     // where: q.date("createdAt").gte("2025-01-01"),
   });
 
@@ -559,6 +594,7 @@ export default function Block() {
     orderBy: q.asc("date"),
     metric: { revenue: metric.sum("revenue") },
     groupBy: metric.groupBy("date", metric.bucket.month.long),
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
   });
 
   if (status === "pending") return <div>Loading...</div>;
@@ -890,7 +926,7 @@ export default function Block() {
 
 ## Fetching field options
 
-Use `useFieldOptions` to fetch available options for SELECT or multi-select fields. This is useful for building filters, dropdowns, badges, or any UI that needs to display the available choices from the datasource without hardcoding them.
+Use `useFieldOptions` to fetch available options for SELECT or multi-select fields. This is useful for building filters, dropdowns, badges, or any UI that needs to display the available choices from the datasource without hardcoding them. Like the other data hooks, it accepts a `from` alias (`useFieldOptions({ from: ds.orders, select, field })`), required when the block has multiple datasources.
 
 Example to build a filter UI using `useFieldOptions`:
 
@@ -952,5 +988,107 @@ export default function Block() {
       </div>
     </div>
   );
+}
+```
+
+---
+
+## Fetching from a REST API
+
+When using a REST API as a datasource, call it with `useProxyFetch` from `@/lib/datasource`. The proxy attaches authentication for you, so don't send tokens, API keys, or auth headers yourself.
+
+`useProxyFetch` returns a function with the same signature as `fetch`. [TanStack Query](https://tanstack.com/query) (or a similar data-fetching library) pairs nicely with it for caching and request state, and we strongly recommend it over fetching inside a `useEffect`.
+
+<Warning>
+**Caveats**: the proxy currently only supports text payloads. Streams, `FormData`, and file uploads won't work.
+</Warning>
+
+### Reading data
+
+```tsx
+import { useQuery } from "@tanstack/react-query";
+import { useProxyFetch } from "@/lib/datasource";
+
+export default function Block() {
+  const proxyFetch = useProxyFetch();
+
+  const { data, status, error } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const res = await proxyFetch("https://api.example.com/products");
+      if (!res.ok) throw new Error("Failed to fetch products");
+      return res.json();
+    },
+  });
+
+  if (status === "pending") return <div>Loading...</div>;
+  if (status === "error") return <div>{error.message}</div>;
+
+  return (
+    <div className="container py-6">
+      <div className="content space-y-2">
+        {data.map((item) => (
+          <div key={item.id}>{item.name}</div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+### Mutating data
+
+Wrap writes in `useMutation` and invalidate the affected queries on success so the UI refetches:
+
+```tsx
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useProxyFetch } from "@/lib/datasource";
+import { toast } from "sonner";
+
+function useCreateProduct() {
+  const proxyFetch = useProxyFetch();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (input: { name: string; price: number }) => {
+      const res = await proxyFetch("https://api.example.com/products", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input),
+      });
+      if (!res.ok) throw new Error("Failed to create product");
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+      toast.success("Created");
+    },
+  });
+}
+```
+
+### Multiple datasources
+
+When a block has more than one datasource, `useProxyFetch` needs to know which one to route the request to, so pass the datasource alias as its argument. With a single datasource you can call `useProxyFetch()` with no argument; once there's more than one, leaving it out throws an error. Define the aliases with `datasource.define`, the same pattern the record hooks use:
+
+```tsx
+import { useQuery } from "@tanstack/react-query";
+import { datasource, useProxyFetch } from "@/lib/datasource";
+
+const ds = datasource.define({
+  store: "ds_id_1",
+});
+
+function useProducts() {
+  const proxyFetch = useProxyFetch(ds.store);
+
+  return useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const res = await proxyFetch("https://api.example.com/products");
+      if (!res.ok) throw new Error("Failed to fetch products");
+      return res.json();
+    },
+  });
 }
 ```
