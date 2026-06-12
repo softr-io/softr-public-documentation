@@ -15,11 +15,19 @@ You can generate an API token for your Softr account to be used when interacting
 
 ## Generating an API token
 
-You authenticate API calls with a **Personal API Token**. To create one:
+You authenticate API calls with a **Personal Access Token**. To create one:
 
-1. Open your Softr [Dashboard](https://studio.softr.io/dashboard) and go to **Settings → API Tokens**.
-2. Click **Create token**, give it a name, and select the permissions your integration needs.
-3. Copy the token and store it somewhere safe — for security reasons it's shown only once.
+1. Open your Softr [Dashboard](https://studio.softr.io/dashboard) and go to **Settings → API tokens**.
+<Frame>![API tokens page](/softr-api/images/api-setup-and-endpoints/image1.png)</Frame>
+
+2. Click **Create**, give your token a recognizable name, and pick an expiration period.
+<Frame caption="Name your token">![Create new token](/softr-api/images/api-setup-and-endpoints/image2.png)</Frame>
+
+3. Define the **scopes** — choose what the token can access and the permissions it should have — then click **Continue**.
+<Frame caption="Define scopes">![Define scopes](/softr-api/images/api-setup-and-endpoints/image3.png)</Frame>
+
+4. Copy the token and store it somewhere safe — for security reasons it's shown only once.
+<Frame caption="Copy your token">![Token created](/softr-api/images/api-setup-and-endpoints/image4.png)</Frame>
 
 You'll pass this token in the **Softr-Api-Key** header of every request (see the examples below).
 
