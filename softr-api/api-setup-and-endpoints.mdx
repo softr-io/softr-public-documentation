@@ -8,25 +8,30 @@ description: "Softr API key generation and available endpoints."
 'twitter:title': "API Setup and Endpoints – Softr Help Docs"
 'twitter:description': "Softr API key generation and available endpoints."
 ---
-You can generate an API key for your Softr account to be used when interacting with the API endpoints. Let's first see how you can generate the key, and then we'll review the available endpoints and provide API call examples.
+You can generate an API token for your Softr account to be used when interacting with the API endpoints. Let's first see how you can generate the token, and then we'll review the available endpoints and provide API call examples.
 
 <Tip>You need to be **the owner of the application or a workspace collaborator** to be able to make API calls. Thus, [guest collaborators](/workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/workspaces-and-applications/kTbEWSYXhBCbtTB4K9dpKs) of the application won’t be able to make calls.</Tip>
 <Note>Depending on your needs, you can also consider using a [Call API](/actions/ntEfT9zSJk6aY54G6W5KGU/call-api/i9f1s3w9wib3oRmS4HZ7MX) action. </Note>
 
-## Finding your API key
+## Generating an API token
 
-First, navigate to [Dashboard](https://studio.softr.io/dashboard). Then click on your profile icon → My account → API Settings
-<Frame>![Notion image](/softr-api/images/api-setup-and-endpoints/image1.png)</Frame>
+You authenticate API calls with a **Personal Access Token**. To create one:
 
-## Generating an API key
+1. Open your Softr [Dashboard](https://studio.softr.io/dashboard), click on your workspace in the top-left corner, and go to **API tokens**.
+<Frame>![API tokens page](/softr-api/images/api-setup-and-endpoints/image1.png)</Frame>
 
-When you first enter the **API Settings** section in your account, you'll see a **Generate API key** button.
-<Frame caption="Generate API Key">![Generate API Key](/softr-api/images/api-setup-and-endpoints/image2.png)</Frame>
+2. Click **Create**, give your token a recognizable name, and pick an expiration period.
+<Frame caption="Name your token">![Create new token](/softr-api/images/api-setup-and-endpoints/image2.png)</Frame>
 
-As soon as you hit the button, the generated API key will appear. Here, you can **View**, **Copy**, **Regenerate**, or **Delete** the key.
-<Frame caption="API Key actions">![API Key actions](/softr-api/images/api-setup-and-endpoints/image3.png)</Frame>
+3. Define the **scopes** — choose what the token can access and the permissions it should have — then click **Continue**.
+<Frame caption="Define scopes">![Define scopes](/softr-api/images/api-setup-and-endpoints/image3.png)</Frame>
 
-That's it. Now you have your API key that you can use when interacting with your Softr apps through the API. Let's proceed to see what endpoints are available.
+4. Copy the token and store it somewhere safe — for security reasons it's shown only once.
+<Frame caption="Copy your token">![Token created](/softr-api/images/api-setup-and-endpoints/image4.png)</Frame>
+
+You'll pass this token in the **Softr-Api-Key** header of every request (see the examples below).
+
+That's it. Now you have your API token that you can use when interacting with your Softr apps through the API. Let's proceed to see what endpoints are available.
 
 <Tip>Make sure to have your **Softr app published** before making API calls.</Tip>
 
@@ -49,7 +54,7 @@ curl --request POST 'https://studio-api.softr.io/v1/api/users' \
 }'
 ```
 
-Here, you need to replace the value next to **Softr-Api-Key** with your API key you've generated and add your Softr app's domain/subdomain instead of **yourdomain.com**.
+Here, you need to replace the value next to **Softr-Api-Key** with the API token you've generated and add your Softr app's domain/subdomain instead of **yourdomain.com**.
 
 Next, you need to provide the **Full Name** of the new user along with an **Email** and **Password** (replace the values next to **full_name**, **email**, and **password**).
 
@@ -67,7 +72,7 @@ curl --location --request DELETE 'https://studio-api.softr.io/v1/api/users/user@
 -header 'Softr-Domain: yourdomain.com'
 ```
 
-Just replace **user@softr.io** with the actual email of the user you need to delete as well as provide your API key (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to delete the user from. **The rest needs to remain the same as in the example.**
+Just replace **user@softr.io** with the actual email of the user you need to delete as well as provide your API token (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to delete the user from. **The rest needs to remain the same as in the example.**
 
 ### **Deactivate User**
 
@@ -79,7 +84,7 @@ curl --location --request POST 'https://studio-api.softr.io/v1/api/users/user@so
 --header 'Softr-Domain: yourdomain.com'
 ```
 
-Just replace **user@softr.io** with the actual email of the user you need to deactivate as well as provide your API key (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to deactivate the user in. **The rest needs to remain the same as in the example.**
+Just replace **user@softr.io** with the actual email of the user you need to deactivate as well as provide your API token (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to deactivate the user in. **The rest needs to remain the same as in the example.**
 
 ### **Activate User**
 
@@ -91,7 +96,7 @@ curl --location --request POST 'https://studio-api.softr.io/v1/api/users/user@so
 --header 'Softr-Domain: yourdomain.com'
 ```
 
-Just replace **user@softr.io** with the actual email of the user you need to activate as well as provide your API key (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to activate the user in. **The rest needs to remain the same as in the example.**
+Just replace **user@softr.io** with the actual email of the user you need to activate as well as provide your API token (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to activate the user in. **The rest needs to remain the same as in the example.**
 
 ### **Invite User**
 
@@ -103,7 +108,7 @@ curl --location --request POST 'https://studio-api.softr.io/v1/api/users/user@so
 --header 'Softr-Domain: yourdomain.com'
 ```
 
-Just replace **user@softr.io** with the actual email of the user you need to invite as well as provide your API key (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to invite the user in. **The rest needs to remain the same as in the example.**
+Just replace **user@softr.io** with the actual email of the user you need to invite as well as provide your API token (the value next to **Softr-Api-Key**) and the domain/subdomain of the Softr app (the value next to **Softr-Domain**) you want to invite the user in. **The rest needs to remain the same as in the example.**
 
 ### **Generate a Magic Link for the User**
 
@@ -115,7 +120,7 @@ curl --location --request POST 'https://studio-api.softr.io/v1/api/users/magic-l
 --header 'Softr-Domain: yourdomain.com'
 ```
 
-Just replace **user@softr.io** with the actual email of the user as well as provide your API key (the value next to **Softr-Api-Key**) and the domain/subdomain of your Softr app (the value next to **Softr-Domain**).
+Just replace **user@softr.io** with the actual email of the user as well as provide your API token (the value next to **Softr-Api-Key**) and the domain/subdomain of your Softr app (the value next to **Softr-Domain**).
 
 ### Sync a Single User, Group of Users, or All Users
 
