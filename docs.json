@@ -102,6 +102,7 @@
                   "workflows/integrations/google-sheets",
                   "workflows/integrations/granola",
                   "workflows/integrations/hubspot",
+                  "workflows/integrations/jotform",
                   "workflows/integrations/linkup",
                   "workflows/integrations/firecrawl",
                   "workflows/integrations/monday",
@@ -114,6 +115,7 @@
                   "workflows/integrations/stripe",
                   "workflows/integrations/telegram",
                   "workflows/integrations/twilio",
+                  "workflows/integrations/xero",
                   "workflows/integrations/zendesk",
                   "workflows/integrations/zoom"
                 ]
