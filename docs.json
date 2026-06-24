@@ -95,6 +95,7 @@
                   "workflows/integrations/apify",
                   "workflows/integrations/calendly",
                   "workflows/integrations/clickup",
+                  "workflows/integrations/coda",
                   "workflows/integrations/docs-automator",
                   "workflows/integrations/docusign",
                   "workflows/integrations/fathom",
