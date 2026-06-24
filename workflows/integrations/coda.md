@@ -14,6 +14,14 @@ This fits naturally with the kinds of apps Softr customers build every day: clie
 
 Pull rows from a Coda table into a Softr list block, dashboard, or admin view — ideal for showing project status, inventory, or any tracked data to clients and teammates. Pick the doc and table, optionally filter to just the rows you need, and map the columns into your Softr app.
 
+### Get row
+
+Look up a single Coda row by its ID to display its details inside your Softr app or use its values later in the workflow.
+
+### Delete row
+
+Remove a row from a Coda table as part of a workflow — for example when a request is cancelled or a record is archived in your Softr app.
+
 ## Key Benefits
 
 - **No-code data access:** Bring Coda tables into your Softr app visually — no scripts, no API calls to manage.
