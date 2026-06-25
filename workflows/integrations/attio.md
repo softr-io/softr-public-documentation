@@ -26,6 +26,10 @@ Update an existing record by its ID — change only the attributes you choose, l
 
 Search any Attio object for records that match the conditions you set, and use the results in later workflow steps.
 
+### Get record
+
+Retrieve a single record by its ID and use its attributes in later steps — for example, to pull the full details of the record that fired a trigger.
+
 ### Create note
 
 Attach a note to a record in Attio — great for logging form answers, call summaries, or activity from your Softr app.
@@ -75,6 +79,7 @@ Starts a workflow when a new task is created in Attio.
 | **Log activity as notes**      | Attach a note to the matching Attio record whenever a customer submits feedback or completes a step.         |
 | **Automatic follow-up tasks**  | Create an assigned task in Attio when a new lead comes in, so someone always owns the next step.             |
 | **React to CRM changes**       | When a record is created or updated in Attio, trigger a Softr workflow to notify a team or update your app.  |
+| **Enrich on trigger**          | When a trigger fires, fetch the full record by its ID to read every attribute before notifying or updating.  |
 
 ## How to Connect Softr with Attio
 
