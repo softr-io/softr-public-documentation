@@ -97,12 +97,14 @@
                   "workflows/integrations/calendly",
                   "workflows/integrations/clickup",
                   "workflows/integrations/docs-automator",
+                  "workflows/integrations/docusign",
                   "workflows/integrations/fathom",
                   "workflows/integrations/gmail",
                   "workflows/integrations/google-calendar",
                   "workflows/integrations/google-sheets",
                   "workflows/integrations/granola",
                   "workflows/integrations/hubspot",
+                  "workflows/integrations/jotform",
                   "workflows/integrations/linkup",
                   "workflows/integrations/firecrawl",
                   "workflows/integrations/monday",
@@ -115,6 +117,7 @@
                   "workflows/integrations/stripe",
                   "workflows/integrations/telegram",
                   "workflows/integrations/twilio",
+                  "workflows/integrations/xero",
                   "workflows/integrations/zendesk",
                   "workflows/integrations/zoom"
                 ]
@@ -609,6 +612,7 @@
             ]
           },
           "mcp-server",
+          "app-mcp-server",
           {
             "group": "Security",
             "icon": "lock",
