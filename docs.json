@@ -97,6 +97,7 @@
                   "workflows/integrations/clickup",
                   "workflows/integrations/docs-automator",
                   "workflows/integrations/docusign",
+                  "workflows/integrations/asana",
                   "workflows/integrations/fathom",
                   "workflows/integrations/gmail",
                   "workflows/integrations/google-calendar",
