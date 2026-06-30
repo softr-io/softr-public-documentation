@@ -212,7 +212,7 @@ Runs a workflow repeatedly on a schedule you define.
 
 ## Integration Triggers
 
-Integration triggers connect Softr Workflows to third-party services. Softr Tables and Calendly are **Instant**, while other services use background polling.
+Integration triggers connect Softr Workflows to third-party services. Softr Tables, Calendly, and Attio are **Instant**, while other services use background polling.
 
 ### Softr Tables
 Softr Tables triggers fire instantly since version 1.1.0, ensuring high performance.
@@ -289,6 +289,23 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 ---
 
+### Attio
+
+| Event | Execution type |
+|---|---|
+| Record created | **Instant** |
+| Record updated | **Instant** |
+| Record deleted | **Instant** |
+| Task created | **Instant** |
+
+**Configuration:** Requires a connected Attio account. Optionally scope record triggers to a single object (People, Companies, Deals, or a custom object); leave empty to fire for all objects.
+
+> **Tip:** Attio triggers are Instant — they fire via webhook as soon as the change happens in Attio. **Record updated** fires once per changed attribute.
+
+**When to use:** Sync new Attio records into a Softr database, notify a team when a deal is updated, or kick off a follow-up workflow when a task is created.
+
+---
+
 ## Trigger Comparison Table
 
 | Trigger | Category | Execution type | Plan requirement |
@@ -316,5 +333,9 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 | Invitee Scheduled | Calendly | Instant | Any |
 | Invitee Canceled | Calendly | Instant | Any |
 | Invitee No Show | Calendly | Instant | Any |
+| Record created | Attio | Instant | Any |
+| Record updated | Attio | Instant | Any |
+| Record deleted | Attio | Instant | Any |
+| Task created | Attio | Instant | Any |
 
 ---
