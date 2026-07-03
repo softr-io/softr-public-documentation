@@ -28,10 +28,18 @@ Send a push notification to one or more users of your published app.
 
 | Field        | Description                                                                 |
 | :----------- | :-------------------------------------------------------------------------- |
-| **Recipient(s)** | One or more users to notify. Map a user email from an earlier workflow step, or provide multiple emails for targeted delivery. |
+| **Recipient(s)** | One or more users to notify. Recipients must be users of the selected application. Map a user email from an earlier workflow step, or provide multiple emails for targeted delivery. |
 | **Title**    | The notification heading (displayed in bold). Keep it short and clear.      |
 | **Body**     | The notification message text. Describe what happened or what action is needed. |
 | **URL** *(optional)* | The page to open when the user clicks the notification. Defaults to your app's home page if left empty. |
+
+<Warning>
+  If push notifications are not enabled for the selected application, the action will show the warning:
+
+  **"Push notification is not enabled for this app. Please enable it here."**
+
+  The **here** link takes you directly to **Users → Notifications** in your app settings, where you can enable push notifications for the desired device type(s).
+</Warning>
 
 ## Key Benefits
 
