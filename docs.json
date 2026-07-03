@@ -94,6 +94,7 @@
                   "workflows/integrations/airtable",
                   "workflows/integrations/apify",
                   "workflows/integrations/attio",
+                  "workflows/integrations/cal-com",
                   "workflows/integrations/calendly",
                   "workflows/integrations/clickup",
                   "workflows/integrations/docs-automator",
