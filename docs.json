@@ -112,6 +112,7 @@
                   "workflows/integrations/outlook",
                   "workflows/integrations/pinecone",
                   "workflows/integrations/postmark",
+                  "workflows/integrations/push-notifications",
                   "workflows/integrations/salesforce",
                   "workflows/integrations/slack",
                   "workflows/integrations/stripe",
