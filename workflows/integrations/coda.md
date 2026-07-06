@@ -18,6 +18,14 @@ Pull rows from a Coda table into a Softr list block, dashboard, or admin view �
 
 Look up a single Coda row by its ID to display its details inside your Softr app or use its values later in the workflow.
 
+### Create or update row
+
+Add a new row to a Coda table from a form submission or workflow step — or, by setting key columns, update the matching row when one already exists so you never create duplicates.
+
+### Update row
+
+Change the column values of an existing Coda row when something happens in your Softr app, such as a status change or an approval.
+
 ### Delete row
 
 Remove a row from a Coda table as part of a workflow — for example when a request is cancelled or a record is archived in your Softr app.
