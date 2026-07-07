@@ -134,6 +134,7 @@
             "pages": [
               "data-sources/airtable",
               "data-sources/hubspot",
+              "data-sources/salesforce",
               "data-sources/notion",
               "data-sources/coda",
               "data-sources/google-sheets",
