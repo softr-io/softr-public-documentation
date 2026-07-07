@@ -1,0 +1,140 @@
+---
+title: "Salesforce"
+description: "Using Salesforce as a data source for your Softr app."
+'og:title': "Salesforce – Softr Help Docs"
+'og:description': "Using Salesforce as a data source for your Softr app."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Salesforce – Softr Help Docs"
+'twitter:description': "Using Salesforce as a data source for your Softr app."
+---
+Salesforce is the world's leading customer relationship management (CRM) platform, giving sales, service, and marketing teams a single source of truth for customer data.
+
+Because Salesforce is a relational CRM organized around standard and custom objects, it makes an excellent data source for internal tools, client portals, and dashboards built on Softr. To learn more about Salesforce, visit the [official Salesforce website](https://www.salesforce.com/).
+
+In this article, we'll cover how to connect Salesforce to Softr and take a closer look at the features that matter in that context.
+
+<Info>
+
+**Salesforce** as a data source is available on **Business** and **Enterprise** plans.
+
+</Info>
+
+## 1. Connect your Salesforce account
+
+To use Salesforce in Softr, you must first **connect your Salesforce account**. Any Salesforce data source you connect in Softr can be used by all of the workspace's collaborators in all of the workspace's apps.
+
+<Warning>
+
+To connect Salesforce, you must have permissions to authorize third-party OAuth applications in your Salesforce org. If your org restricts connected apps, ask your Salesforce administrator to approve Softr.
+
+</Warning>
+
+<Steps>
+  <Step title="Add Salesforce data source to your workspace">
+    1. In your [Softr Dashboard](https://studio.softr.io/dashboard/data-sources), navigate to **Data Sources** in the left menu.
+
+    2. Click **Connect Data Source.**
+
+    3. Select **Salesforce** and proceed to authenticate your account.
+  </Step>
+  <Step title="Grant access to Salesforce">
+    1. Sign in to your Salesforce account when redirected.
+
+    2. Choose whether to connect a **production** org or a **sandbox** org, then approve the requested permissions to complete the connection.
+  </Step>
+</Steps>
+
+## 2. Connect your Salesforce data to a Softr app
+
+Once your Salesforce account is connected, you can use the authorized account across one or multiple Softr applications.
+
+<Steps>
+  <Step title="Connect Salesforce objects to a Dynamic Block">
+    To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your Salesforce objects:
+
+    1. In the block **source tab**, select the authenticated Salesforce integration.
+
+    2. Choose the **Object** you want to use.
+
+    <Warning>
+
+    **Important:** You can connect only one object type to one block. For example, if you want to show a list of accounts, select the **Accounts** object. To display **Opportunities** as well, add another **dynamic block**.
+    </Warning>
+
+    ### Supported Salesforce Objects
+
+    Softr supports the following **Salesforce objects**:
+
+    * **Contacts**
+
+    * **Leads**
+
+    * **Opportunities**
+
+    * **Accounts**
+
+    * **Cases**
+
+    * **Tasks**
+
+    * **Custom Objects**
+  </Step>
+  <Step title="Mapping Salesforce object fields">
+    When you select the object type you want to show, you can customize which object fields to visualize. Each Salesforce object has **predefined field types** like text, picklists, dates, and lookups. Since Softr also has its own field types, it's important to **map fields correctly** to ensure your data appears as expected.
+
+    For example, if a Salesforce **Opportunity** stores an attached image URL in a **URL field**, map it to a **Softr Image field** in a **List block** so it displays correctly.
+  </Step>
+</Steps>
+
+### Supported Fields
+
+Softr supports:
+
+* All standard Salesforce object fields
+
+* All custom fields you've created in Salesforce
+
+However, some **read-only fields** cannot be edited in Softr, including:
+
+* **Formula** fields, **Rollup Summary** fields, and system audit fields such as **Created By**, **Last Modified By**, and **System Modstamp**.
+
+### Salesforce object relationships
+
+Salesforce works as a **relational database**, meaning objects can be linked together through **lookup** and **master-detail** relationships. This allows you to display related data, such as:
+
+* An **Account** with multiple **Contacts** linked to it
+
+* An **Opportunity** with multiple **Tasks** linked to it
+
+In Softr, you can show related objects using:
+
+1. [Linked List Block](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/linked-list/bWjTdKhbftofSEKRSxMFz9)
+
+2. Related record ID fields
+
+**Limitations**
+
+<Warning>
+
+Related objects cannot currently be used in [Visibility Conditional Filters](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/block-visibility/3spA2dfQNrcGcPNmnDXHB3).
+
+</Warning>
+
+
+## FAQs
+   <AccordionGroup>
+   <Accordion title="Why can't I see certain Salesforce fields in Softr?">
+Salesforce enforces **field-level security** and **profile permissions** on the API user account that authorized the connection. If a field or object is missing in Softr, verify that the authorizing user's profile and permission sets grant read (and, where needed, edit) access to those fields.
+   </Accordion>
+   <Accordion title="Can I connect a Salesforce sandbox?">
+Yes. When connecting Salesforce, choose the **sandbox** option to authenticate against `test.salesforce.com` instead of your production org. This is useful for testing your Softr app against non-production data before going live.
+   </Accordion>
+   <Accordion title="Can I use multiple Salesforce orgs in one Softr app?">
+Yes. You can connect multiple Salesforce accounts, but you'll need to use **separate Softr blocks** for each object from each org.
+   </Accordion>
+
+</AccordionGroup>
+
+## Need More Help?
+
+* 📖 Automate Salesforce records from your app with the [Salesforce workflow integration](/workflows/integrations/salesforce).
