@@ -133,6 +133,7 @@
                   "workflows/integrations/stripe",
                   "workflows/integrations/supabase",
                   "workflows/integrations/telegram",
+                  "workflows/integrations/trello",
                   "workflows/integrations/twilio",
                   "workflows/integrations/xano",
                   "workflows/integrations/xero",
