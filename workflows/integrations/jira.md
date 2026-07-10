@@ -30,6 +30,14 @@ Remove an issue from Jira by its key — with the option to delete its subtasks 
 
 Find issues with a JQL query and return the matching set, so you can power lists, dashboards, reports, or conditional logic inside your Softr app.
 
+### Add comment
+
+Post a comment to an issue — ideal for logging Softr form responses, status updates, or context straight onto the relevant Jira issue.
+
+### List comments
+
+Retrieve the comments on an issue to display an activity feed, drive follow-ups, or surface the latest discussion inside your Softr app.
+
 ## Key Benefits
 
 - **No-code simplicity:** Configure every Jira action visually in Softr — no code required beyond the one-time API token setup.
