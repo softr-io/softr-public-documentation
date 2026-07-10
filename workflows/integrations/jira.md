@@ -14,6 +14,14 @@ Whether you're building a client portal, an internal operations tool, or a suppo
 
 Open a new issue in a Jira project with a summary, description, issue type, assignee, priority, labels, and due date — all set dynamically from your Softr workflow. Project, issue type, assignee, and priority are chosen from live dropdowns pulled straight from your connected Jira site.
 
+### Get issue
+
+Retrieve the full details of a specific issue by its key — summary, status, assignee, priority, and timestamps — so you can use live Jira data in later workflow steps.
+
+### Update issue
+
+Change an existing issue's summary, description, assignee, priority, labels, or due date to keep Jira in sync with what's happening in your Softr app.
+
 ## Key Benefits
 
 - **No-code simplicity:** Configure every Jira action visually in Softr — no code required beyond the one-time API token setup.
