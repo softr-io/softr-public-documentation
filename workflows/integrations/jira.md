@@ -22,6 +22,14 @@ Retrieve the full details of a specific issue by its key — summary, status, as
 
 Change an existing issue's summary, description, assignee, priority, labels, or due date to keep Jira in sync with what's happening in your Softr app.
 
+### Delete issue
+
+Remove an issue from Jira by its key — with the option to delete its subtasks too — for cleanup or voided-request workflows.
+
+### Search issues
+
+Find issues with a JQL query and return the matching set, so you can power lists, dashboards, reports, or conditional logic inside your Softr app.
+
 ## Key Benefits
 
 - **No-code simplicity:** Configure every Jira action visually in Softr — no code required beyond the one-time API token setup.
