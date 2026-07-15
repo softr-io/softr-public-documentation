@@ -1,210 +1,111 @@
 # Asana integration
 
-Connect Asana with your Softr applications to automate work management — create and update tasks, manage projects, post comments, and look up users without writing code.
+Connect Asana with your Softr applications to turn form submissions, sign-ups, and record changes into real work — create tasks, keep projects up to date, and keep your team aligned without any manual data entry. Build workflows that push the right work into Asana the moment it happens in your app.
 
 ## Overview
 
-The Softr Asana integration lets you connect your no-code apps with your Asana workspace. Automatically create tasks when forms are submitted, update task status as records change, post comments to keep conversations in sync, and pull in users or projects to enrich your automations.
+The Softr Asana integration lets your app create and manage work in your Asana workspace directly from your workflows. Trigger tasks from form submissions, user sign-ups, button clicks, or record updates, add comments and subtasks to keep conversations in sync, and pull in users and projects to enrich what you build.
 
-Whether you're building a client portal, an internal task tracker, or a project-status dashboard, you can wire Softr records and user actions directly to Asana to remove manual data entry and keep both systems aligned in real time.
-
-## Credentials Required
-
-Connect Softr to Asana with one of two methods.
-
-### OAuth 2.0 (recommended for multi-user accounts)
-
-Click **Connect with Asana** in the Softr workflow builder; you'll be redirected to Asana to authorize Softr. Softr requests the following scopes (or their bundled `default` scope):
-
-| Scope | Purpose |
-| :---- | :------ |
-| `tasks:read`, `tasks:write` | Read and modify tasks and subtasks |
-| `projects:read`, `projects:write` | Read and modify projects |
-| `users:read` | Look up workspace members |
-| `workspaces:read` | List workspaces |
-
-### Personal Access Token (single-user / scripts)
-
-Generate a Personal Access Token in the Asana developer console under **My Apps → Personal access tokens**. Paste it into the **Personal Access Token** field when configuring an Asana action in Softr.
-
-| Field | Description |
-| :---- | :---------- |
-| **Personal Access Token** | A long-lived token from your Asana developer console; inherits your account's permissions and never expires. |
+Whether you're building a client portal, an internal task tracker, or a project-status dashboard, Asana gives your Softr app a live connection to how your team actually delivers work — new requests become tasks, status changes flow back and forth, and everyone stays on the same page in real time.
 
 ## Available Actions
 
 ### Task: Create
 
-Create a new task in a workspace. Set name, description (notes), assignee, due date, projects, tags, followers, and custom fields.
-
-**Key inputs:** workspace (required), name (required), projects, parent, assignee, assignee status, notes, html notes, due on, due at, start on, start at, tags, followers, custom fields, completed, liked, resource subtype
-
-**Output fields:** gid, name, notes, html_notes, completed, completed_at, due_on, due_at, start_on, start_at, assignee, assignee_status, projects, workspace, parent, tags, followers, num_subtasks, liked, num_likes, created_at, modified_at, permalink_url, custom_fields, resource_subtype
+Create a new Asana task whenever a workflow runs — set the name, description, assignee, due date, project, and more — so a form submission or sign-up becomes actionable work instantly.
 
 ### Task: Get
 
-Retrieve a single task by its GID.
-
-**Key inputs:** task_gid (required)
-
-**Output fields:** Same as Task: Create.
+Pull a single task into your workflow to display it in a Softr list, log it to a record, or use its details in the next step.
 
 ### Task: Update
 
-Update any combination of fields on an existing task. Only fields you provide are changed.
-
-**Key inputs:** task_gid (required), name, notes, html_notes, assignee, assignee_status, due_on, due_at, start_on, start_at, completed, liked, projects, custom_fields, resource_subtype
-
-**Output fields:** Same as Task: Create.
+Change any field on an existing task — reassign it, move its due date, or mark it complete — automatically as records change in your app.
 
 ### Task: Delete
 
-Soft-delete a task. The task moves to Asana's trash and is recoverable for 30 days.
-
-**Key inputs:** task_gid (required)
-
-**Output fields:** success (boolean), task_gid
+Remove a task that's no longer needed, keeping your Asana workspace tidy as work is cancelled or cleaned up.
 
 ### Task: List
 
-List tasks scoped to a project, section, or assignee. Filter by completion or modification time. Cursor-paginated; pass `next_offset` from one call as `offset` on the next.
-
-**Key inputs:** project, section, assignee + workspace, completed_since, modified_since, limit (1–100), offset
-
-**Output fields:** `records` — array of task objects (same fields as Task: Get); `next_offset` — pagination cursor
+Pull a list of tasks from a project, section, or assignee into your Softr app to power a live task board or project dashboard.
 
 ### Task: Search
 
-Full-text search for tasks within a workspace, with rich filters for assignees, projects, tags, and date ranges.
-
-> **Rate limit notice:** Asana's search endpoint is hard-limited to **60 requests per minute** regardless of plan tier. Design workflows accordingly.
-
-**Key inputs:** workspace (required), text, completed, assignee_any, projects_any, tags_any, created_on_after, created_on_before, due_on_after, due_on_before, sort_by, sort_ascending, limit
-
-**Output fields:** `records` — array of matching tasks
+Find tasks across a workspace by assignee, project, tag, or date range — perfect for surfacing overdue or high-priority work in a digest or dashboard.
 
 ### Subtask: Create
 
-Add a subtask to an existing task.
-
-**Key inputs:** parent_task_gid (required), name (required), assignee, notes, html_notes, due_on, due_at, completed
-
-**Output fields:** Same as Task: Get.
+Break a task down into steps by adding subtasks automatically — ideal for spinning up a checklist when a new client or project kicks off.
 
 ### Subtask: List
 
-List subtasks of a parent task. Cursor-paginated.
-
-**Key inputs:** parent_task_gid (required), limit, offset
-
-**Output fields:** `records` — array of subtasks; `next_offset` cursor.
+Pull the subtasks of a task into your workflow to show progress or drive the next step.
 
 ### Comment: Add to Task
 
-Post a plain-text or rich-text comment on a task. Optionally pin it.
-
-**Key inputs:** task_gid (required), text **or** html_text (one required), is_pinned
-
-**Output fields:** gid, resource_subtype (`comment_added`), created_at, created_by, text, html_text, is_pinned
+Post a comment on a task to keep everyone in the loop — log a status update, a customer note, or a hand-off message right where the work lives.
 
 ### Tag: Add to Task
 
-Apply an existing tag to a task.
-
-**Key inputs:** task_gid (required), tag_gid (required)
-
-**Output fields:** success, task_gid, tag_gid
+Apply a tag to a task to categorize it by customer, priority, or stage as it moves through your workflow.
 
 ### Tag: Remove from Task
 
-Remove a tag from a task.
-
-**Key inputs:** task_gid (required), tag_gid (required)
-
-**Output fields:** success, task_gid, tag_gid
+Take a tag off a task once it's resolved or moves to a new stage.
 
 ### Project: Create
 
-Create a project in a workspace. Required fields differ between personal workspaces and organizations (organizations require a team).
-
-**Key inputs:** workspace (required), team (required for organizations), name (required), notes, html_notes, color, due_on, start_on, privacy_setting, owner, default_view, archived
-
-**Output fields:** gid, name, notes, html_notes, color, due_on, start_on, owner, team, workspace, privacy_setting, default_view, archived, created_at, modified_at, permalink_url
+Spin up a new project when a new client, campaign, or initiative starts, so work has a home from day one.
 
 ### Project: Get
 
-Retrieve a project by its GID.
-
-**Key inputs:** project_gid (required)
-
-**Output fields:** Same as Project: Create.
+Pull a project's details into your workflow to display or reference in later steps.
 
 ### Project: Update
 
-Update fields on an existing project.
-
-**Key inputs:** project_gid (required), name, notes, html_notes, color, due_on, start_on, owner, default_view, archived
-
-**Output fields:** Same as Project: Create.
+Keep a project's name, dates, owner, or status in sync with what's happening in your Softr app.
 
 ### Project: Delete
 
-Delete a project.
-
-**Key inputs:** project_gid (required)
-
-**Output fields:** success, project_gid
+Remove a project that's been cancelled or archived.
 
 ### Project: List
 
-List projects in a workspace, optionally filtered by team or archived state. Cursor-paginated.
-
-**Key inputs:** workspace (required), team, archived, limit (1–100), offset
-
-**Output fields:** `records` — array of projects; `next_offset` cursor.
+Pull the list of projects in a workspace to power a project picker or portfolio view inside your Softr app.
 
 ### User: Get
 
-Retrieve a user by GID, email, or the literal `me`.
-
-**Key inputs:** user (required)
-
-**Output fields:** gid, name, email, photo (URLs at multiple sizes), workspaces
+Look up a specific workspace member to assign work to the right person or personalize a task.
 
 ### User: List
 
-List all users in a workspace. Cursor-paginated.
-
-**Key inputs:** workspace (required), limit, offset
-
-**Output fields:** `records` — array of users; `next_offset` cursor.
+Pull the members of a workspace into your Softr app to build assignee pickers or team directories.
 
 ## Key Benefits
 
-- **No-code simplicity:** Configure Asana actions visually in the Softr workflow builder — no scripting required.
-- **End-to-end task lifecycle:** Create, update, complete, comment on, and delete tasks driven by Softr events.
-- **Dynamic dropdowns:** Workspaces, projects, users, tags, teams, and sections are loaded live from the connected account so options stay current.
-- **Rich filtering and search:** Use Asana's native search to find tasks by assignee, project, tag, or date range.
-- **Custom fields supported:** Pass a key/value map to set custom field values on Task: Create and Task: Update.
+- **No-code work automation:** Set up task creation, updates, comments, and clean-up visually inside Softr — no scripting or API keys required.
+- **End-to-end task lifecycle:** Create, update, comment on, tag, and complete tasks driven by what your users do in your app.
+- **Always-current options:** Workspaces, projects, users, tags, and teams load live from your connected account, so your dropdowns stay up to date.
+- **Real-time team alignment:** New requests become Asana tasks the moment they arrive, and status changes stay in sync both ways.
+- **Powerful search and filtering:** Surface tasks by assignee, project, tag, or due date to build focused dashboards and digests.
 
 ## Example Use Cases
 
 | Use Case | Description |
 | :------- | :---------- |
-| **Form-to-task** | A Softr form submission creates an Asana task with the submission details and assigns it to the on-duty agent. |
-| **Status sync** | When a Softr database record moves to "In progress", flip the linked Asana task's `completed` flag and post a comment. |
-| **Onboarding tracker** | Auto-create a checklist of subtasks (Subtask: Create) when a new client signs up. |
-| **Internal portal** | Build a Softr page that lists open Asana tasks for a project (Task: List), with a quick-update form per row. |
-| **Daily digest** | Use Task: Search with `due_on_before: today` and `completed: false` to surface overdue tasks for a Slack or email digest. |
+| **Form-to-task intake** | A Softr form submission creates an Asana task with the request details and assigns it to the on-duty team member. |
+| **Client onboarding checklist** | When a new client signs up, auto-create a task with a set of subtasks so nothing in the onboarding gets missed. |
+| **Status sync** | When a record moves to "In progress" in your Softr database, update the linked Asana task and post a comment. |
+| **Internal task portal** | Build a Softr page that lists open Asana tasks for a project, with a quick-update form so your team can act without leaving the app. |
+| **Overdue-work digest** | Search for tasks due before today that aren't complete, and feed them into a daily email or Slack digest. |
+| **New-project provisioning** | Spin up a new Asana project automatically whenever a new campaign or client is added in Softr. |
 
 ## How to Connect Softr with Asana
 
-1. Open your Softr workspace and go to **Integrations**.
-2. Find **Asana** and click **Connect**.
-3. Choose **OAuth 2.0** (recommended) or **Personal Access Token**.
-   - For OAuth: click **Continue**, authorize Softr in Asana, and you'll be returned to Softr.
-   - For PAT: paste the token from Asana's developer console.
-4. Click **Save**. Softr will verify the credentials.
-5. In the **Workflow** builder, add an Asana action to any workflow.
-6. Pick the connected account, select the workspace, and configure the action inputs.
-7. Test the step and activate your workflow.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add an Asana action — create a task, update a task, add a comment, create a project, and more.
+3. Click **Connect to Asana** and complete the auth step — sign in with Asana to authorize Softr, or paste a personal access token from your Asana account settings.
+4. Select the workspace the action should work in, then pick the project or task it applies to.
+5. Map fields from your Softr forms, records, or previous workflow steps to the action's inputs.
+6. Save and activate your workflow.

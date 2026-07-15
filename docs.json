@@ -130,8 +130,10 @@
                   "workflows/integrations/salesforce",
                   "workflows/integrations/slack",
                   "workflows/integrations/stripe",
+                  "workflows/integrations/supabase",
                   "workflows/integrations/telegram",
                   "workflows/integrations/twilio",
+                  "workflows/integrations/xano",
                   "workflows/integrations/xero",
                   "workflows/integrations/zendesk",
                   "workflows/integrations/zoom"
