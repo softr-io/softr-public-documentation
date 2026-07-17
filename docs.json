@@ -103,6 +103,7 @@
                   "workflows/integrations/clickup",
                   "workflows/integrations/coda",
                   "workflows/integrations/docs-automator",
+                  "workflows/integrations/documint",
                   "workflows/integrations/docusign",
                   "workflows/integrations/asana",
                   "workflows/integrations/fathom",
