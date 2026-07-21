@@ -1,16 +1,20 @@
 ---
 title: "App MCP Server"
 sidebarTitle: "App MCP server"
-description: "Expose a Softr app as a Model Context Protocol server so AI assistants can connect to it."
+description: "Let the users of your Softr app work with it through their own AI assistant, with the exact same permissions they have in the app."
 "og:title": "App MCP Server – Softr Help Docs"
-"og:description": "Expose a Softr app as a Model Context Protocol server so AI assistants can connect to it."
+"og:description": "Let the users of your Softr app work with it through their own AI assistant, with the exact same permissions they have in the app."
 "og:image": "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
 "twitter:title": "App MCP Server – Softr Help Docs"
-"twitter:description": "Expose a Softr app as a Model Context Protocol server so AI assistants can connect to it."
+"twitter:description": "Let the users of your Softr app work with it through their own AI assistant, with the exact same permissions they have in the app."
 icon: "plug"
 ---
 
-Every Softr app can act as its own [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server. Once you enable MCP on an app, AI assistants like Claude, Claude Code, and ChatGPT can connect to that specific app over OAuth and interact with its data.
+Every Softr app can act as its own [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server. Once you enable MCP on an app, **the people who use that app** can connect their own AI assistant (Claude, ChatGPT, Mistral, and others) and work with the app through it.
+
+It turns your app into a surface an assistant can operate on behalf of the user. Whatever a user does by clicking through the app's screens, reading the records they have access to, submitting a form, updating an entry, they can now ask their assistant to do in plain language instead. Every request runs **as that specific user**, so user groups, page visibility, and data restrictions all still apply, and the MCP server can never expose more than the user's own account already can. That makes it a safe and reliable way to bring AI into your app.
+
+For example, if you've built a CRM or an ERP on Softr, a user could ask their assistant to check the stock left on a product, adjust a quantity, or add a new contact, and each action respects the same permissions that user has in the app itself.
 
 <Note>
   This is different from the workspace-wide [Softr MCP
@@ -69,6 +73,8 @@ https://<your-app-domain>/v1/mcp
 For example, if your app is published at `https://acme.softr.app`, the MCP server URL is `https://acme.softr.app/v1/mcp`. If you've added a custom domain, the MCP URL uses that domain. You can copy the exact URL from the **Server URL** field in MCP settings.
 
 ## Connecting an AI tool
+
+For most clients, the **Server URL** is the only thing you need. You paste it into the client, and the client opens a browser window where the user signs in to the app and approves the connection over OAuth. Nothing else has to be shared. The Client ID and Secret in **Advanced settings** are only needed for the few clients that can't register themselves automatically.
 
 The setup dialog in MCP settings gives you a ready-to-use snippet for each supported client. You can also follow the steps manually.
 
