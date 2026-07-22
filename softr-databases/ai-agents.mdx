@@ -1,23 +1,23 @@
 ---
-title: "AI Agents"
+title: "Database AI Agents"
 permalink: "5VRMhf7Q6vYhmbqWcNFDhR"
-description: "Use AI Agents in your Softr DB to auto-fill, generate content, and more."
-'og:title': "AI Agents – Softr Help Docs"
-'og:description': "Use AI Agents in your Softr DB to auto-fill, generate content, and more."
+description: "Use Database AI Agents in your Softr Databases to auto-fill, generate content, and more."
+'og:title': "Database AI Agents – Softr Help Docs"
+'og:description': "Use Database AI Agents in your Softr Databases to auto-fill, generate content, and more."
 'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
-'twitter:title': "AI Agents – Softr Help Docs"
-'twitter:description': "Use AI Agents in your Softr DB to auto-fill, generate content, and more."
+'twitter:title': "Database AI Agents – Softr Help Docs"
+'twitter:description': "Use Database AI Agents in your Softr Databases to auto-fill, generate content, and more."
 ---
 ## Overview
 
-AI Agents in Softr Databases can auto-fill and tag fields, summarize insights, pull details from PDFs, enrich records with live web data, and more. You decide when they run, with filters and conditions to make sure they only trigger on the records you want.
+Database AI Agents are AI helpers that live inside your Softr Databases fields. (This is distinct from any other AI feature in Softr; throughout this page, "Database AI Agents" always refers to the AI helpers that run on fields in Softr Databases.) They can auto-fill and tag fields, summarize insights, pull details from PDFs, enrich records with live web data, and more. You decide when they run, with filters and conditions to make sure they only trigger on the records you want.
 
-## How to Add an AI Agent to a Database Field
+## How to Add a Database AI Agent to a Field
 
 **Step 1:** Open your table in Softr Databases. Add a new **AI field**, or edit an existing text field and toggle on **Let AI auto-fill this field** in the AI tab.
 <Frame>![Notion image](/softr-databases/images/ai-agents/image1.png)</Frame>
 
-**Step 2:** Pick the AI model (e.g., GPT-4.1 for detail, Claude Sonnet 4 for speed). Then write your own prompt — like *‘Summarize the resume into key skills’* — or start with a ready-made template. Use **@** to reference other database fields in your prompts.
+**Step 2:** Pick the AI model. You can choose from models by leading providers like Anthropic, OpenAI, and Gemini, depending on the balance of speed, accuracy, and cost you need. Then write your own prompt — like *‘Summarize the resume into key skills’* — or start with a ready-made template. Use **@** to reference other database fields in your prompts.
 <Frame>![Notion image](/softr-databases/images/ai-agents/image2.png)</Frame>
 
 **Step 3:** Under the **Run When** section, set whether the agent is triggered manually OR runs automatically when a record is created or updated. Add **Only run if…** filters so the agent triggers only when conditions are met (e.g. run only if **Status = ‘Approved’**). This prevents unnecessary runs and saves credits.
@@ -36,7 +36,7 @@ You’re fully in control of **when** and **how** your AI agents run:
 
 * **Allow manual edits:** Toggle this on to enable review on AI-generated fields.
 
-* **Model**: Choose from 13+ models (e.g. o3, GPT-5, Claude Sonnet 4), depending on the task and the balance of speed, accuracy, and cost you need.
+* **Model**: Choose from dozens of models by leading providers like Anthropic, OpenAI, and Gemini, depending on the task and the balance of speed, accuracy, and cost you need.
 <Frame>![Notion image](/softr-databases/images/ai-agents/image5.png)</Frame>
 
 * **Run mode options:** 
@@ -82,7 +82,7 @@ Start from a ready-made agent template by clicking **Template** in the AI field 
     Yes, you can choose to run AI agents manually or automatically when records are added or updated. You can also add filters and conditions (“only run when…”) so agents trigger only on the records you specify. This added level of customization gives you more control over your AI credits and costs.
   </Accordion>
   <Accordion title="Can I choose which AI model powers my agent?">
-    Yes. Pick from 13+ models (e.g. o3, GPT-5, Claude Sonnet 4), depending on the task and the balance of speed, accuracy, and cost you need.
+    Yes. Pick from dozens of models by leading providers like Anthropic, OpenAI, and Gemini, depending on the task and the balance of speed, accuracy, and cost you need.
   </Accordion>
 
   <Accordion title="Can I test an agent before turning it on?">
@@ -104,10 +104,3 @@ Start from a ready-made agent template by clicking **Template** in the AI field 
     Toggle on **Allow web search** in a field’s AI settings, then write a prompt telling the agent what to look up, the format you want the output in, and websites to reference (optional). Preview results before enabling auto-runs. For best results, be specific in your prompt and add conditions (e.g. only search when “Market data” is empty).
   </Accordion>
 </AccordionGroup>
-
-
-
-
-### FAQs for pricing page
-
-### FAQ update for Ask AI page
