@@ -14,17 +14,24 @@ Database AI Agents are AI helpers that live inside your Softr Databases fields. 
 
 ## How to Add a Database AI Agent to a Field
 
-**Step 1:** Open your table in Softr Databases. Add a new **AI field**, or edit an existing text field and toggle on **Let AI auto-fill this field** in the AI tab.
-<Frame>![Notion image](/softr-databases/images/ai-agents/image1.png)</Frame>
-
-**Step 2:** Pick the AI model. You can choose from models by leading providers like Anthropic, OpenAI, and Gemini, depending on the balance of speed, accuracy, and cost you need. Then write your own prompt — like *‘Summarize the resume into key skills’* — or start with a ready-made template. Use **@** to reference other database fields in your prompts.
-<Frame>![Notion image](/softr-databases/images/ai-agents/image2.png)</Frame>
-
-**Step 3:** Under the **Run When** section, set whether the agent is triggered manually OR runs automatically when a record is created or updated. Add **Only run if…** filters so the agent triggers only when conditions are met (e.g. run only if **Status = ‘Approved’**). This prevents unnecessary runs and saves credits.
-<Frame>![Notion image](/softr-databases/images/ai-agents/image3.png)</Frame>
-
-**Step 4:** Under **Preview**, select a record to generate a preview of what the agent will populate and how many AI credits it will consume. Click **Save** when you’re ready to activate the agent.
-<Frame>![Notion image](/softr-databases/images/ai-agents/image4.png)</Frame>
+<Steps>
+  <Step title="Add an AI field">
+    Open your table in Softr Databases. Add a new **AI field**, or edit an existing text field and toggle on **Let AI auto-fill this field** in the AI tab.
+    <Frame>![Notion image](/softr-databases/images/ai-agents/image1.png)</Frame>
+  </Step>
+  <Step title="Pick a model and write your prompt">
+    Pick the AI model. You can choose from models by leading providers like Anthropic, OpenAI, and Gemini, depending on the balance of speed, accuracy, and cost you need. Then write your own prompt, like *‘Summarize the resume into key skills’*, or start with a ready-made template. Use **@** to reference other database fields in your prompts.
+    <Frame>![Notion image](/softr-databases/images/ai-agents/image2.png)</Frame>
+  </Step>
+  <Step title="Set when the agent runs">
+    Under the **Run When** section, set whether the agent is triggered manually OR runs automatically when a record is created or updated. Add **Only run if…** filters so the agent triggers only when conditions are met (e.g. run only if **Status = ‘Approved’**). This prevents unnecessary runs and saves credits.
+    <Frame>![Notion image](/softr-databases/images/ai-agents/image3.png)</Frame>
+  </Step>
+  <Step title="Preview and save">
+    Under **Preview**, select a record to generate a preview of what the agent will populate and how many AI credits it will consume. Click **Save** when you’re ready to activate the agent.
+    <Frame>![Notion image](/softr-databases/images/ai-agents/image4.png)</Frame>
+  </Step>
+</Steps>
 
 ## Web Search
 
