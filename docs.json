@@ -114,6 +114,7 @@
                   "workflows/integrations/google-sheets",
                   "workflows/integrations/granola",
                   "workflows/integrations/hubspot",
+                  "workflows/integrations/jira",
                   "workflows/integrations/jotform",
                   "workflows/integrations/linkup",
                   "workflows/integrations/firecrawl",
