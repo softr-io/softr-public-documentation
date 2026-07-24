@@ -26,6 +26,18 @@ Change any field of an existing issue: retitle it, reassign it, move it to anoth
 
 Move an issue to Linear's trash when it's no longer needed — for example when the related record is removed from your Softr app. Trashed issues stay recoverable in Linear for a grace period.
 
+### List issues
+
+Fetch a batch of issues — from a specific team or your whole workspace — and use them in later steps, for example to build digests or sync summaries into your Softr database.
+
+### Create comment
+
+Post a comment on any issue, with full Markdown support and optional threaded replies — perfect for pushing customer responses or status notes from your Softr app into the team's discussion.
+
+### Add link to issue
+
+Attach any URL to an issue — the Softr record it came from, a document, or a customer conversation — so the team has the full context one click away.
+
 ## Key Benefits
 
 - **No-code simplicity:** Configure every Linear action visually in Softr — no code required beyond the one-time API key setup.
