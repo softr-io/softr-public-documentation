@@ -123,6 +123,10 @@ const select = q.select({
 });
 ```
 
+<Note>
+For **Airtable and Notion** datasources do not use field IDs in this context — use the **field name** as the value instead (e.g. `title: "Name"` rather than `title: "fldXXXXXX"`).
+</Note>
+
 So something like this is not allowed as it breaks static analysis:
 
 ```tsx
