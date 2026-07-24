@@ -116,6 +116,7 @@
                   "workflows/integrations/hubspot",
                   "workflows/integrations/jira",
                   "workflows/integrations/jotform",
+                  "workflows/integrations/linear",
                   "workflows/integrations/linkup",
                   "workflows/integrations/firecrawl",
                   "workflows/integrations/microsoft-excel",
