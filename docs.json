@@ -146,6 +146,13 @@
               }
             ]
           },
+          {
+            "group": "Softr Agents",
+            "icon": "robot",
+            "pages": [
+              "agents/overview"
+            ]
+          },
           "softr-forms",
           {
             "group": "Data Sources",
