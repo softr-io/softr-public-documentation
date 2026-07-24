@@ -14,6 +14,18 @@ Whether you're building a client portal, an internal operations tool, or a suppo
 
 Create a new issue in a Linear team with a title, description, assignee, priority, status, labels, project, and due date — all set dynamically from your Softr workflow. Teams, assignees, statuses, labels, and projects are chosen from live dropdowns pulled straight from your connected Linear workspace.
 
+### Get issue
+
+Fetch the full details of any Linear issue by its ID or identifier (like `ENG-123`) — title, status, assignee, priority, labels, and dates — and use them in the next steps of your workflow.
+
+### Update issue
+
+Change any field of an existing issue: retitle it, reassign it, move it to another status, team, or project, adjust its priority or labels, or set a new due date. Only the fields you fill in are changed.
+
+### Delete issue
+
+Move an issue to Linear's trash when it's no longer needed — for example when the related record is removed from your Softr app. Trashed issues stay recoverable in Linear for a grace period.
+
 ## Key Benefits
 
 - **No-code simplicity:** Configure every Linear action visually in Softr — no code required beyond the one-time API key setup.
