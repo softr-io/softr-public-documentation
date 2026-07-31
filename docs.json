@@ -127,6 +127,7 @@
                   "workflows/integrations/pinecone",
                   "workflows/integrations/postmark",
                   "workflows/integrations/push-notifications",
+                  "workflows/integrations/quickbooks",
                   "workflows/integrations/replicate",
                   "workflows/integrations/resend",
                   "workflows/integrations/salesforce",
