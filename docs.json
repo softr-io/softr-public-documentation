@@ -131,6 +131,7 @@
                   "workflows/integrations/replicate",
                   "workflows/integrations/resend",
                   "workflows/integrations/salesforce",
+                  "workflows/integrations/sharepoint",
                   "workflows/integrations/slack",
                   "workflows/integrations/stripe",
                   "workflows/integrations/supabase",
