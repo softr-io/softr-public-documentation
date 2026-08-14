@@ -421,6 +421,16 @@ export default function Block() {
 }
 ```
 
+### Phone fields
+
+When writing to a `PHONE` field, the value must be in unformatted international format: `+` followed by digits only (e.g. `+12125550100`). Some datasources (such as Monday.com) reject values that contain spaces, dashes, or parentheses. Strip all non-digit characters except the leading `+` before submitting:
+
+```tsx
+const sanitizePhone = (raw: string) => raw.replace(/[^\d+]/g, "").replace(/(?!^)\+/g, "");
+
+mutate({ phone: sanitizePhone(inputValue) });
+```
+
 ---
 
 ## Uploading Files
