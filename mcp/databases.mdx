@@ -1,0 +1,88 @@
+---
+title: "Databases"
+sidebarTitle: "Databases"
+description: "Query, edit, and structure your Softr databases through an AI assistant."
+'og:title': "MCP: Databases – Softr Help Docs"
+'og:description': "Query, edit, and structure your Softr databases through an AI assistant."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "MCP: Databases – Softr Help Docs"
+'twitter:description': "Query, edit, and structure your Softr databases through an AI assistant."
+icon: "database"
+---
+
+These tools cover [Softr Databases](/softr-databases/softr-databases-overview) — reading and writing records, and building the tables and fields that hold them. They work on Softr's own database engine. To reach data in external data sources, see [Integrations](/mcp/integrations).
+
+Databases belong to a workspace. `create_database` needs a workspace ID, and `list_databases` returns the databases across every workspace your token reaches, each tagged with the workspace it belongs to.
+
+## How the assistant works with your data
+
+A few things shape the results you get.
+
+**It reads the schema first.** `get_schema` returns the authoritative reference for field types, their options, and the operators available for filtering. A well-behaved assistant calls it before creating tables or fields and before building a filter, rather than guessing.
+
+**Field keys are IDs, not column names.** A record comes back keyed by field ID, not by the label you see in the table. `list_fields` maps between the two, which is why the assistant may look up a table's fields before it can talk about a record in your terms.
+
+**Some fields cannot be written to.** Formula, lookup, rollup, and count fields are computed from other data. Created time, updated time, created by, updated by, autonumber, and record ID are managed by Softr. The assistant can read all of them but cannot set them, and cannot change a field's type after it is created.
+
+**Nothing can be deleted (yet, will be possible soon).** There is no tool to delete a record, table, field, or database. Removing data is something you do in the builder.
+
+## Schema
+
+| Tool | What it does |
+|---|---|
+| `get_schema` | Returns the full reference of field types, their options, and the available filter operators |
+
+## Databases
+
+| Tool | What it does |
+|---|---|
+| `list_databases` | Lists the databases you can access, with table counts |
+| `get_database` | Gets one database's details |
+| `create_database` | Creates a database in a workspace |
+| `update_database` | Renames a database or changes its description |
+
+## Tables and fields
+
+| Tool | What it does |
+|---|---|
+| `list_tables` | Lists a database's tables, with record counts |
+| `get_table` | Gets a table's full schema, including every field definition |
+| `create_table` | Creates a table with an initial set of fields |
+| `update_table` | Renames a table or changes its description |
+| `list_fields` | Lists a table's fields with their types and configuration |
+| `create_field` | Adds a field. Supports text, number, select, date, attachment, linked record, formula, rollup, and more |
+| `update_field` | Renames a field or changes its options. The type cannot be changed |
+| `list_views` | Lists a table's saved views, which can be passed to `list_records` to apply their filters and sorts |
+
+## Records
+
+| Tool | What it does |
+|---|---|
+| `list_records` | Lists records, optionally through a saved view |
+| `search_records` | Finds records using filter conditions and sorting |
+| `get_record` | Gets a single record by ID |
+| `create_record` | Creates one record |
+| `create_records` | Creates up to 100 records in one call |
+| `update_record` | Updates fields on a record, leaving the others untouched |
+
+## Analytics
+
+| Tool | What it does |
+|---|---|
+| `aggregate_data` | Groups and summarizes a table with sum, average, count, min, max, or distinct count |
+
+`aggregate_data` returns totals rather than rows, which makes it the right tool behind questions like "revenue by month" or "how many open tickets per assignee". It groups by at most two fields.
+
+## Limits
+
+| | |
+|---|---|
+| Records per `create_records` call | 100 |
+| Records returned per read | 200 |
+| Group-by fields in `aggregate_data` | 2 |
+
+Asking for more than 200 records is not an error — you simply get 200. Reading a large table therefore takes several calls, which is another reason to prefer a filter or an aggregate over paging through everything.
+
+<Tip>
+  For large tables, ask for a summary rather than the raw rows. `aggregate_data` and `search_records` with a filter both return far less data than paging through a table, so the assistant can answer in one step instead of many.
+</Tip>

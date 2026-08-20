@@ -1,0 +1,82 @@
+---
+title: "Vibe coding blocks"
+sidebarTitle: "Vibe coding blocks"
+description: "Create and edit custom code blocks in your Softr app through an AI assistant."
+'og:title': "MCP: Vibe coding blocks – Softr Help Docs"
+'og:description': "Create and edit custom code blocks in your Softr app through an AI assistant."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "MCP: Vibe coding blocks – Softr Help Docs"
+'twitter:description': "Create and edit custom code blocks in your Softr app through an AI assistant."
+icon: "wand-magic-sparkles"
+---
+
+[Vibe coding blocks](/vibe-coding) are custom React components you add to a page when the built-in blocks don't do what you need. These tools let an assistant write and maintain them from outside Softr Studio — so you can ask for a block in the same conversation where you explored the data it should show.
+
+The framework reference is in the [Vibe Coding Developer Guide](/vibe-coding-developer-guide). The assistant reads the current version of it with `get_vibe_coding_docs` before writing code.
+
+## Good to know
+
+**A broken block can't be saved.** Code is checked before it is stored, so if something is wrong the block keeps working as it did and nothing is lost.
+
+**A version is a snapshot of the whole block.** One is saved each time the code changes, capturing the block as it stands at that moment — its code, but also its settings, visibility, and connected data sources. Changing only a setting doesn't create a version of its own.
+
+<Warning>
+  **Rolling back reverts more than the code.** Restoring a version also restores the settings, visibility, and data source connections as they were at that point, so anything changed since goes back with it.
+</Warning>
+
+<Warning>
+  **Changing the code resets action permissions.** Any code change rebuilds the block's record actions from scratch, at their default visibility. If you had restricted one to certain user groups, that restriction is gone and needs setting again.
+</Warning>
+
+## Creating and reading blocks
+
+| Tool | What it does |
+|---|---|
+| `get_vibe_coding_docs` | Fetches the current vibe coding framework documentation |
+| `create_vibe_coding_block` | Creates a block on an existing page |
+| `get_vibe_coding_block_code` | Gets a block's source code and its current settings |
+| `get_vibe_coding_block_settings` | Gets a block's settings, actions, and data sources without the code |
+
+## Editing code
+
+| Tool | What it does |
+|---|---|
+| `update_vibe_coding_block_code` | Replaces a block's source code |
+| `update_vibe_coding_block_code_search_replace` | Makes a targeted edit to part of the code |
+
+## Settings and visibility
+
+| Tool | What it does |
+|---|---|
+| `update_vibe_coding_block_settings` | Changes the block's editable settings |
+| `set_vibe_coding_block_visibility` | Controls who can see the block and which devices it renders on |
+| `set_vibe_coding_block_action_visibility` | Controls which user groups can run the block's actions |
+
+Editable settings are the fields you would fill in on the block's panel in the builder — a title, a label, a threshold. Changing one doesn't touch the code.
+
+## Version history
+
+| Tool | What it does |
+|---|---|
+| `list_vibe_coding_block_versions` | Lists a block's versions, newest first |
+| `restore_vibe_coding_block_version` | Rolls a block back to an earlier version |
+| `duplicate_vibe_coding_block_from_version` | Creates a new block on the same page from one of an existing block's versions, leaving the original alone |
+
+Duplicating from a version is the safe way to try an alternative: you keep the working block and get a second one to experiment on.
+
+## Connecting data
+
+A block that shows data needs a data source connected to it. The source is an integration belonging to the workspace, so this starts by [browsing the workspace's integrations](/mcp/integrations) to find the table you want.
+
+| Tool | What it does |
+|---|---|
+| `connect_vibe_coding_block_data_source` | Connects a table or sheet to the block, making it available to the code |
+| `disconnect_vibe_coding_block_data_source` | Removes a connection |
+| `set_vibe_coding_block_data_source_sort` | Sets the default sort order for a connected source |
+| `set_vibe_coding_block_data_source_record_filters` | Sets which records are visible through a connected source |
+
+Sort order and record filters are the same settings as the **Source** tab in the builder.
+
+<Warning>
+  A block whose data source isn't connected will still save without complaint, then show an error when someone opens the page. If a new block looks broken but the code seems right, check its data source first.
+</Warning>

@@ -1,0 +1,164 @@
+---
+title: "Softr MCP Server"
+sidebarTitle: "Overview"
+description: "Connect an AI assistant to your Softr workspace to work with data, build apps, and create workflows."
+'og:title': "Softr MCP Server – Softr Help Docs"
+'og:description': "Connect an AI assistant to your Softr workspace to work with data, build apps, and create workflows."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Softr MCP Server – Softr Help Docs"
+'twitter:description': "Connect an AI assistant to your Softr workspace to work with data, build apps, and create workflows."
+icon: "plug"
+---
+
+[Model Context Protocol (MCP)](https://modelcontextprotocol.io) is an open standard that lets AI assistants securely connect to external tools and data. Softr's MCP server gives an assistant like Claude, ChatGPT, or Cursor direct access to your Softr workspace — so you can query and edit your data, read and build apps, write custom code blocks, and create workflows, all in plain language.
+
+It is the same workspace you see in Softr Studio, reached a different way. Anything the assistant does happens as you, with your permissions, and shows up in the builder like any other change.
+
+## What you can do
+
+| Area | What the assistant can do |
+|---|---|
+| [Databases](/mcp/databases) | Query, filter, and aggregate your data; create records; build and change tables and fields |
+| [Applications](/mcp/apps) | Read apps, pages, blocks, and permissions; preview an app; publish it |
+| [Vibe coding blocks](/mcp/vibe-coding) | Create and edit custom code blocks, manage their settings, visibility, and version history |
+| [Integrations](/mcp/integrations) | Browse the external data sources connected to a workspace |
+| [Workflows](/mcp/workflows) | Build workflows step by step, test each step, and publish them |
+
+## How Softr is organized
+
+Almost every tool asks for a workspace, so it helps to know how the pieces fit together. A **workspace** is the top-level container, and everything else belongs to one:
+
+```
+Workspace
+├── Applications ── pages ── blocks (including vibe coding blocks)
+├── Databases ───── tables ── fields, views, records
+├── Workflows ───── steps
+└── Integrations ── the external data sources apps and blocks read from
+```
+
+`list_workspaces` returns the workspaces you can reach, with their IDs. It is how the assistant turns "my Sales workspace" into the ID that every other tool needs, so it is often the first call in a conversation.
+
+## MCP server URL
+
+```
+https://mcp.softr.io/mcp
+```
+
+Use this URL when adding Softr as an MCP server in your AI tool.
+
+## Authentication
+
+Softr's MCP server supports two authentication methods. Both offer fine-grained control over what the AI tool can access.
+
+### OAuth (recommended)
+
+OAuth is the simplest way to connect. Softr has pre-built OAuth integrations for the following AI tools:
+
+| AI Tool | OAuth Client ID |
+|---|---|
+| Claude (claude.ai) | `db31b760-e758-4f52-b15b-93b0262a1290` |
+| Cursor (cursor.com) | `4d2556b2-cfc8-4608-bd76-8dbe7e605f68` |
+| ChatGPT (chatgpt.com) | `aa73bf7b-c5b6-4031-b771-25108bf6c132` |
+| Mistral AI (mistral.ai) | `522bfc02-e64f-43cd-87ef-552507ecb967` |
+
+When you connect via OAuth, you are taken to a Softr authorization screen where you choose which permissions to grant. Only the permissions you approve are available to the AI tool, and you can revoke access at any time.
+
+<Steps>
+  <Step title="Open your AI tool's MCP settings">
+    In Claude, Cursor, ChatGPT, or Mistral AI, navigate to the section where you add MCP servers or external connectors.
+  </Step>
+  <Step title="Add the Softr MCP server URL">
+    Enter `https://mcp.softr.io/mcp` as the server URL.
+  </Step>
+  <Step title="Enter the Client ID">
+    When prompted for a Client ID, paste the value from the table above that corresponds to your AI tool. If asked for a Client Secret, leave it blank — Softr's OAuth clients are public and do not require one.
+  </Step>
+  <Step title="Authenticate with Softr">
+    Click **Connect** or **Authorize**. You will be redirected to Softr to log in and approve the requested permissions.
+  </Step>
+  <Step title="Choose your permissions">
+    On the Softr authorization screen, pick what the tool can access and how much it can do. See [Permissions](#permissions) below.
+  </Step>
+</Steps>
+
+<Note>
+  The AI tool cannot ask for specific permissions in advance. You always choose them yourself on Softr's authorization screen.
+</Note>
+
+### Personal access token
+
+Use a personal access token if you are connecting a custom AI tool, building your own MCP client, or using any tool not listed above.
+
+<Steps>
+  <Step title="Create a token">
+    Go to **Settings → API tokens** and click **Create**. Give the token a name and an expiry (never, 1 year, 90 days, or 30 days).
+  </Step>
+  <Step title="Choose what it can access">
+    On the **Define scopes** step, pick the workspaces the token covers and the permissions it carries. See [Permissions](#permissions) below.
+  </Step>
+  <Step title="Configure your AI tool">
+    Add the MCP server with Bearer token authentication:
+
+    ```json
+    {
+      "mcpServers": {
+        "softr": {
+          "url": "https://mcp.softr.io/mcp",
+          "headers": {
+            "Authorization": "Bearer YOUR_API_TOKEN"
+          }
+        }
+      }
+    }
+    ```
+  </Step>
+</Steps>
+
+## Permissions
+
+Whether you connect with OAuth or a personal access token, you choose permissions the same way: pick which workspaces are covered, then set an access level for each of three areas.
+
+| Area | Access levels |
+|---|---|
+| **Applications & Forms** | Full access · Read only · None |
+| **Databases** | Full access · Edit data · View only · None |
+| **Workflows** | Full access · Read only · None |
+
+What each level allows:
+
+| Area | Level | What it allows |
+|---|---|---|
+| Applications & Forms | Read only | Read apps, pages, blocks, user groups, and permissions; browse integrations |
+| | Full access | The above, plus creating and editing vibe coding blocks, previewing, and publishing |
+| Databases | View only | Read databases, tables, fields, views, and records; search and aggregate |
+| | Edit data | The above, plus creating and updating records |
+| | Full access | The above, plus creating and changing databases, tables, and fields |
+| Workflows | Read only | Read workflows and their steps, and the outputs of steps already tested |
+| | Full access | The above, plus building, editing, testing, and publishing workflows |
+
+<Note>
+  Levels are bundles, not a checklist. There is no way to grant editing without reading, or database schema changes without record access. Picking a level always includes everything below it.
+</Note>
+
+## Managing access
+
+Go to **Settings → API tokens** to see and remove access at any time.
+
+- **Personal access tokens** can be edited, regenerated, or deleted.
+- **Authorized apps** lists the AI tools you connected with OAuth, with a **Revoke** button for each. Revoking one immediately invalidates the tokens it was issued.
+
+<Note>
+  The **Authorized apps** section only appears once you have authorized at least one app, so it will be missing if you have only ever used personal access tokens.
+</Note>
+
+## Example prompts
+
+Once connected, you can work with your workspace in plain language:
+
+- _"List all databases in my workspace."_
+- _"Search the Orders table for everything still pending and sort by date."_
+- _"Add a Priority field to Tasks with options Low, Medium, and High."_
+- _"Build me a chart block on the dashboard page showing revenue by month."_
+- _"What user groups can edit the Clients page?"_
+- _"Create a workflow that sends me a Slack message whenever a new order comes in."_
+- _"Show me what the app looks like right now."_
