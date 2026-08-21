@@ -1,0 +1,55 @@
+---
+title: "Applications"
+sidebarTitle: "Applications"
+description: "Let an AI assistant read your apps, preview changes, and publish them."
+'og:title': "MCP: Applications – Softr Help Docs"
+'og:description': "Let an AI assistant read your apps, preview changes, and publish them."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "MCP: Applications – Softr Help Docs"
+'twitter:description': "Let an AI assistant read your apps, preview changes, and publish them."
+icon: "window"
+---
+
+These tools let an assistant understand how an app is built — its pages, its blocks, and who can see what — and then show you a change or make it live.
+
+Everything here is read-only except previewing and publishing. Currently, changes to an app's content can only be made through [vibe coding blocks](/mcp/vibe-coding).
+
+## Reading an app
+
+Before changing anything, the assistant needs to know what is there. This is how it finds the page you meant when you say "the dashboard", and the block you meant when you say "the chart at the top".
+
+| Tool | What it does |
+|---|---|
+| `list_applications` | Lists the apps you can access, optionally filtered to one workspace |
+| `get_application` | Gets an app's details: name, workspace, domain, and home page |
+| `list_pages` | Lists an app's pages with their paths, types, and whether they are enabled |
+| `get_page` | Gets a page and the blocks on it |
+| `get_block` | Gets a single block's configuration and visibility settings |
+
+## Permissions and user groups
+
+Softr apps gate what end users see with [user groups](/user-groups-and-permissions/user-groups). These tools let the assistant read that setup, which is useful both for answering questions about it and for getting visibility right when it builds something new.
+
+| Tool | What it does |
+|---|---|
+| `list_user_groups` | Lists the app's user groups, their type, and their members |
+| `get_access_control` | Gives an overview of the app's access control setup |
+| `get_page_permissions` | Shows which user groups can view, edit, add, or delete on a page |
+
+## Previewing and publishing
+
+| Tool | What it does |
+|---|---|
+| `preview_app` | Builds a preview of the app as it stands right now, unpublished changes included, and returns a link |
+| `publish_app` | Makes the app's current state live for real users |
+
+`preview_app` is how you look at a change before anyone else does. It builds the app from the current builder state, so it includes work that has not been published, and you can ask it to open on a specific page so you land where the change is. It publishes nothing — the live app and its visitors are untouched.
+
+<Warning>
+  **A preview link is a credential, not just an address.** It signs whoever opens it in as the person who asked for the preview, and stays valid for about a day. Don't post one in a shared channel or a ticket. Ask for a fresh link rather than reusing an old one — each one also rebuilds the preview, so a new link is the only way to see your latest changes.
+</Warning>
+
+`publish_app` makes changes live. Two things to know before you ask for it:
+
+- **It publishes the whole app**, not the page or block you were working on. Every unpublished change goes live at once, including ones made earlier or by someone else. If other people are working in the same app, check with them first.
+- **It cannot be undone from here.** There is no unpublish tool yet, so an assistant can take an app live but cannot take it back down. To do that, unpublish the app yourself in Studio, under the app's **Settings → General**.

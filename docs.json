@@ -644,7 +644,18 @@
               }
             ]
           },
-          "mcp-server",
+          {
+            "group": "Softr MCP server",
+            "icon": "plug",
+            "pages": [
+              "mcp/overview",
+              "mcp/databases",
+              "mcp/apps",
+              "mcp/vibe-coding",
+              "mcp/integrations",
+              "mcp/workflows"
+            ]
+          },
           "app-mcp-server",
           {
             "group": "Security",
@@ -773,6 +784,10 @@
     ]
   },
   "redirects": [
+    {
+      "source": "/mcp-server",
+      "destination": "/mcp/overview"
+    },
     {
       "source": "/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq",
       "destination": "/actions/action-buttons-overview"

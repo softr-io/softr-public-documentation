@@ -1,0 +1,90 @@
+---
+title: "Workflows"
+sidebarTitle: "Workflows"
+description: "Build, test, and publish Softr workflows through an AI assistant."
+'og:title': "MCP: Workflows – Softr Help Docs"
+'og:description': "Build, test, and publish Softr workflows through an AI assistant."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "MCP: Workflows – Softr Help Docs"
+'twitter:description': "Build, test, and publish Softr workflows through an AI assistant."
+icon: "random"
+---
+
+[Workflows](/workflows/workflows) automate work in the background: something happens, and Softr responds by sending an email, updating a record, calling an API, or whatever else you need. These tools let an assistant build one for you — choosing a trigger, adding the steps, wiring them together, testing them, and turning the workflow on.
+
+<Note>
+  The tool names say "node" where the builder says **step**. They're the same thing — a node is one step in the workflow.
+</Note>
+
+## How the assistant builds a workflow
+
+Workflows are built one step at a time: pick a trigger, add a step, fill in its inputs, test it, then move on to the next.
+
+**A step's output can only be used once that step has been tested.** Later steps usually need data from earlier ones, and those references only work after the earlier step has actually run. So the assistant tests as it builds rather than at the end — and every step needs a passing test, including final ones that nothing reads from.
+
+**Testing can have real effects.** Some steps can be tested with mock data. Others can't, and testing one makes a real call — sending the actual email, writing the actual row.
+
+## Creating and managing workflows
+
+| Tool | What it does |
+|---|---|
+| `create_workflow` | Creates a workflow with a trigger |
+| `list_workflows` | Lists a workspace's workflows, most recently updated first |
+| `get_workflow` | Gets a workflow's steps, and which of them have been tested |
+| `get_workflow_url` | Gets the link to open a workflow in Softr |
+| `rename_workflow` | Renames a workflow |
+| `update_workflow_configuration` | Changes workflow-level settings: time zone, date and number formats, and whether runs happen one at a time |
+| `publish_workflow` | Turns the workflow on, so it starts running on its trigger |
+| `unpublish_workflow` | Turns it off. The steps are kept |
+
+**Publishing means enabling.** A workflow does nothing until it's published, no matter how complete it is. Unpublishing stops it without losing any work, so it's a safe pause rather than a deletion.
+
+<Tip>
+  Ask the assistant for the workflow's link rather than working from an ID. Every tool here returns one, and it opens the workflow in Softr where you can see the whole thing laid out.
+</Tip>
+
+## Finding the right step type
+
+Softr supports hundreds of trigger and action types. These tools let the assistant search them and read what a given type needs.
+
+| Tool | What it does |
+|---|---|
+| `list_node_types` | Searches the available trigger and action types |
+| `get_node_specifications` | Gets a step type's full input list, with which are required |
+| `get_workspace_integrations` | Lists the workspace's connected integrations, for steps that need one |
+| `get_dynamic_input_options` | Fetches the live options for an input whose values come from an integration |
+
+`get_dynamic_input_options` fills in the dropdowns you would otherwise pick from by hand — which Slack channel, which Trello board, which AI model. Those options live in the connected tool rather than in Softr, so they are fetched while the workflow is being built.
+
+See [Trigger Types](/workflows/trigger-types) for what can start a workflow.
+
+## Building the steps
+
+| Tool | What it does |
+|---|---|
+| `add_node` | Adds a step after an existing one |
+| `update_node_inputs` | Fills in a step's inputs, including references to earlier steps' output |
+| `rename_node` | Renames a step |
+| `duplicate_node` | Copies a step and inserts the copy after the original |
+| `delete_node` | Removes a step |
+| `replace_node` | Swaps a step for a different type |
+| `replace_trigger_node` | Changes the workflow's trigger |
+| `reorder_node` | Moves a step |
+| `reorder_multiple_nodes` | Moves a consecutive group of steps |
+| `add_branch_node` | Adds a branch, so the workflow can take different paths |
+| `create_branch` | Adds another path to an existing branch |
+| `update_node_continue_on_error` | Lets the workflow carry on when a step fails instead of stopping |
+| `update_node_note` | Adds or clears a note on a step |
+
+<Note>
+  **Branch and filter conditions can't be set through MCP yet.** The assistant can add a branch and its paths, but deciding what sends a run down each path is something you finish in the builder.
+</Note>
+
+## Testing
+
+| Tool | What it does |
+|---|---|
+| `test_node` | Runs a single step and saves its output as a sample |
+| `get_node_output` | Shows a step's saved output, or lists which steps still need testing |
+
+`get_node_output` without a specific step is the "is this finished?" check — it lists every step and whether it has been tested. Worth asking for before you publish.

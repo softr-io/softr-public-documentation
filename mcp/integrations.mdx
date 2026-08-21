@@ -1,0 +1,70 @@
+---
+title: "Integrations"
+sidebarTitle: "Integrations"
+description: "Browse the external data sources connected to a Softr workspace."
+'og:title': "MCP: Integrations – Softr Help Docs"
+'og:description': "Browse the external data sources connected to a Softr workspace."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "MCP: Integrations – Softr Help Docs"
+'twitter:description': "Browse the external data sources connected to a Softr workspace."
+icon: "plug"
+---
+
+An integration is an external data source connected to a workspace — an Airtable base, a Google Sheet, a Notion database, a Supabase project. You connect it once per workspace, and then any app, block, or workflow in that workspace can read from it.
+
+These five tools let an assistant explore what's connected and find the exact table it needs. They are all read-only. They exist to answer "what data is available here?" so the answer can be used somewhere else: wiring a table to a [vibe coding block](/mcp/vibe-coding), or filling in a [workflow step](/mcp/workflows) that reads from Airtable.
+
+<Note>
+  The builder calls these **integrations**; the tool names call them **data sources**. They are the same thing, so the assistant will follow whichever word you use.
+</Note>
+
+## Browsing is a drill-down
+
+These tools are one path, not five separate features. Each level needs an ID from the level above, so the assistant walks down from the workspace to the fields of one table.
+
+```
+list_data_sources                          workspace
+└── list_data_source_databases             a base, spreadsheet, or database
+    └── list_data_source_schemas           Supabase only
+        └── list_data_source_tables        a table or sheet
+            └── list_data_source_table_fields   its fields
+```
+
+| Tool | What it does |
+|---|---|
+| `list_data_sources` | Lists the integrations connected to a workspace |
+| `list_data_source_databases` | Lists the bases, spreadsheets, or databases inside one integration |
+| `list_data_source_schemas` | Lists the SQL schemas inside a database. Supabase only |
+| `list_data_source_tables` | Lists the tables or sheets |
+| `list_data_source_table_fields` | Lists a table's fields, their types, and how to reference them |
+
+**Supabase has an extra level.** Its structure is database → schema → table, so browsing it takes five steps instead of four. A Supabase connection usually has just one database, called `postgres`.
+
+## Which integrations are supported
+
+Softr connects to many kinds of data source, but only five of them can be browsed and connected to a block through MCP today:
+
+- **Softr Databases** — though [the database tools](/mcp/databases) do much more
+- **Airtable**
+- **Google Sheets**
+- **Notion**
+- **Supabase**
+
+Anything else connected to the workspace still appears in `list_data_sources`, so you can see what is there, but cannot be browsed or connected to a block through MCP yet. To use one of those in a block, connect it through the block's **Source** tab in the builder instead.
+
+<Note>
+  If an integration you expect is missing from a result, check that its type is one of the five above, and that it is connected to the workspace you are asking about rather than a different one.
+</Note>
+
+## Referencing fields in code
+
+`list_data_source_table_fields` returns each field's type and options, the table's primary field, and one thing that matters more than it looks: how fields must be referenced in code.
+
+| Integration | Fields are referenced by |
+|---|---|
+| Airtable, Google Sheets, Notion | Name |
+| Softr Databases, Supabase | ID — for Supabase, the SQL column name |
+
+<Warning>
+  Getting this wrong fails silently. Code using the wrong form compiles, saves, and looks correct in the builder — and then returns nothing when the page loads. If a block renders but its data is empty, this is the first thing to check.
+</Warning>
