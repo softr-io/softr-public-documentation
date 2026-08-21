@@ -2,11 +2,11 @@
 title: "App MCP Server"
 sidebarTitle: "App MCP server"
 description: "Let the users of your Softr app work with it through their own AI assistant, with the exact same permissions they have in the app."
-"og:title": "App MCP Server – Softr Help Docs"
-"og:description": "Let the users of your Softr app work with it through their own AI assistant, with the exact same permissions they have in the app."
-"og:image": "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
-"twitter:title": "App MCP Server – Softr Help Docs"
-"twitter:description": "Let the users of your Softr app work with it through their own AI assistant, with the exact same permissions they have in the app."
+og:title: "App MCP Server – Softr Help Docs"
+og:description: "Let the users of your Softr app work with it through their own AI assistant, with the exact same permissions they have in the app."
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+twitter:title: "App MCP Server – Softr Help Docs"
+twitter:description: "Let the users of your Softr app work with it through their own AI assistant, with the exact same permissions they have in the app."
 icon: "plug"
 ---
 
@@ -17,11 +17,7 @@ It turns your app into a surface an assistant can operate on behalf of the user.
 For example, if you've built a CRM or an ERP on Softr, a user could ask their assistant to check the stock left on a product, adjust a quantity, or add a new contact, and each action respects the same permissions that user has in the app itself.
 
 <Note>
-  This is different from the workspace-wide [Softr MCP
-  Server](/mcp/overview), which is for **you as the builder** — it reaches your
-  whole workspace, including its databases, apps, and workflows. The **App MCP
-  Server** is for **your app's users**, is scoped to a single published app,
-  uses that app's domain, and has its own OAuth credentials.
+  This is different from the workspace-wide [Softr MCP Server](/mcp/overview), which is for **you as the builder** — it reaches your whole workspace, including its databases, apps, and workflows. The **App MCP Server** is for **your app's users**, is scoped to a single published app, uses that app's domain, and has its own OAuth credentials.
 </Note>
 
 ## How permissions work
@@ -30,12 +26,12 @@ When an AI client connects, it does so **as a signed-in user of your app**, not 
 
 Concretely, the assistant's capabilities are derived from the **blocks you've built into the app**:
 
-| What the app contains             | What the assistant can do |
-| --------------------------------- | ------------------------- |
-| A list, grid, or table block      | **Read** records          |
-| A form or sign-up block           | **Create** records (only the fields shown in the form) |
-| A profile block or inline editing | **Update** records        |
-| A delete action                   | **Delete** records        |
+| What the app contains | What the assistant can do |
+| --- | --- |
+| A list, grid, or table block | **Read** records |
+| A form or sign-up block | **Create** records (only the fields shown in the form) |
+| A profile block or inline editing | **Update** records |
+| A delete action | **Delete** records |
 
 This means the MCP surface mirrors your app's screens:
 
@@ -44,9 +40,7 @@ This means the MCP surface mirrors your app's screens:
 - **User groups, page visibility, and data restrictions all still apply.** A user connecting through MCP sees exactly the records and actions their account would see when logged into the app normally.
 
 <Tip>
-  To expose more (or less) to AI clients, change what your app shows. Add a form
-  to allow record creation, add a list to allow reading, or restrict a block by
-  user group to limit access, and the MCP server updates to match.
+  To expose more (or less) to AI clients, change what your app shows. Add a form to allow record creation, add a list to allow reading, or restrict a block by user group to limit access, and the MCP server updates to match.
 </Tip>
 
 ## Enabling MCP for your app
@@ -67,7 +61,7 @@ This means the MCP surface mirrors your app's screens:
 
 Your app's MCP endpoint follows your app's published URL:
 
-```
+```text
 https://<your-app-domain>/v1/mcp
 ```
 
@@ -83,7 +77,7 @@ The setup dialog in MCP settings gives you a ready-to-use snippet for each suppo
   <Tab title="Claude (web & desktop)">
     <Steps>
       <Step title="Open the connector setup">
-        In Claude, go to **Customize → Connectors → + → Add custom connector**.
+        In Claude, go to **Customize → Connectors → \+ → Add custom connector**.
       </Step>
       <Step title="Add the server">
         Enter a name (for example, your app's name) and paste the **Server URL** from MCP settings.
@@ -94,9 +88,7 @@ The setup dialog in MCP settings gives you a ready-to-use snippet for each suppo
     </Steps>
 
     Claude uses dynamic client registration, so you don't need to paste a Client ID or Secret.
-
   </Tab>
-
   <Tab title="Claude Code">
     Claude Code is Anthropic's CLI. The setup snippet looks like this:
 
@@ -116,7 +108,7 @@ The setup dialog in MCP settings gives you a ready-to-use snippet for each suppo
       <Step title="Paste the Client Secret when prompted">
         Claude Code's interactive CLI displays:
 
-        ```
+        ```text
         Enter OAuth client secret:
         ```
 
@@ -126,26 +118,20 @@ The setup dialog in MCP settings gives you a ready-to-use snippet for each suppo
         After submitting the secret, Claude Code opens a browser window to complete OAuth authorization.
       </Step>
     </Steps>
-
   </Tab>
-
-<Tab title="ChatGPT">
-  <Steps>
-    <Step title="Enable Developer Mode">
-      In ChatGPT, go to **Settings → Connectors → Advanced** and enable
-      **Developer Mode**.
-    </Step>
-    <Step title="Create a custom connector">
-      Open **Settings → Connectors → Create**. Enter a name, paste the **Server
-      URL** from MCP settings, and leave the Authentication options as-is.
-    </Step>
-    <Step title="Connect">
-      Click **Create**, then **Connect**. ChatGPT opens a browser window to
-      authorize access to your app.
-    </Step>
-  </Steps>
-</Tab>
-
+  <Tab title="ChatGPT">
+    <Steps>
+      <Step title="Enable Developer Mode">
+        In ChatGPT, go to **Settings → Connectors → Advanced** and enable **Developer Mode**.
+      </Step>
+      <Step title="Create a custom connector">
+        Open **Settings → Connectors → Create**. Enter a name, paste the **Server URL** from MCP settings, and leave the Authentication options as-is.
+      </Step>
+      <Step title="Connect">
+        Click **Create**, then **Connect**. ChatGPT opens a browser window to authorize access to your app.
+      </Step>
+    </Steps>
+  </Tab>
   <Tab title="Other MCP clients">
     Any OAuth-capable MCP client can connect using just the Server URL. Most clients perform [dynamic client registration](https://datatracker.ietf.org/doc/html/rfc7591) automatically and don't need a pre-shared Client ID.
 
@@ -157,7 +143,6 @@ The setup dialog in MCP settings gives you a ready-to-use snippet for each suppo
     ```
 
     If your client requires a pre-registered Client ID and Secret, copy them from **Advanced settings**.
-
   </Tab>
 </Tabs>
 
@@ -165,10 +150,10 @@ The setup dialog in MCP settings gives you a ready-to-use snippet for each suppo
 
 Open the **Advanced settings** section in MCP settings to see and manage the OAuth credentials.
 
-| Field             | What it's for                                                                                                                                                    |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Client ID**     | Public identifier for your app's MCP OAuth client. Safe to share.                                                                                                |
-| **Client Secret** | Confidential credential. Used by clients that don't support dynamic client registration.                                            |
+| Field | What it's for |
+| --- | --- |
+| **Client ID** | Public identifier for your app's MCP OAuth client. Safe to share. |
+| **Client Secret** | Confidential credential. Used by clients that don't support dynamic client registration. |
 | **Redirect URIs** | Allowed OAuth redirect URIs. Add an entry for every client that needs a fixed redirect. Most clients fill this in automatically via dynamic client registration. |
 
 ### Adding redirect URIs
@@ -182,7 +167,6 @@ Some AI clients require their callback URL to be pre-registered on the OAuth ser
   <Step title="Add the URI">
     Click **Add redirect URI** and paste the callback URL the client provided.
   </Step>
-  <Step title="Save">Click **Save** in the footer to persist the change.</Step>
 </Steps>
 
 ## Turning MCP off
@@ -193,15 +177,10 @@ Toggle **Enable MCP** off and click **Save** to disable the server without remov
 
 <AccordionGroup>
   <Accordion title="My client still asks for the Client Secret after I pasted it inline">
-    Some CLIs (Claude Code included) treat `--client-secret` as a
-    *prompt-trigger flag*, not a value flag. Any value you append inline is
-    ignored and the CLI prompts interactively. This is intentional so the secret
-    doesn't appear in your shell history. Paste the secret at the prompt
-    instead.
+    Some CLIs (Claude Code included) treat `--client-secret` as a _prompt-trigger flag_, not a value flag. Any value you append inline is ignored and the CLI prompts interactively. This is intentional so the secret doesn't appear in your shell history. Paste the secret at the prompt instead.
   </Accordion>
+
   <Accordion title="OAuth authorization redirects to an error">
-    Check that the client's redirect URI is registered under **Advanced settings
-    → Redirect URIs**. Clients that support dynamic client registration handle
-    this automatically; clients with a fixed callback don't.
+    Check that the client's redirect URI is registered under **Advanced settings → Redirect URIs**. Clients that support dynamic client registration handle this automatically; clients with a fixed callback don't.
   </Accordion>
 </AccordionGroup>
