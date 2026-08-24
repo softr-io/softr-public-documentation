@@ -97,6 +97,7 @@
                   "workflows/integrations/apify",
                   "workflows/integrations/apollo",
                   "workflows/integrations/attio",
+                  "workflows/integrations/bitly",
                   "workflows/integrations/brevo",
                   "workflows/integrations/cal-com",
                   "workflows/integrations/calendly",
