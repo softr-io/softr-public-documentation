@@ -6,6 +6,8 @@ Connect SharePoint with your Softr applications to put the sites your team alrea
 
 The Softr SharePoint integration lets your workflows work with three parts of a SharePoint site: **lists**, **document libraries**, and **pages**. Read and write list items to use SharePoint lists as a backend for trackers, registers, and intake logs; create folders, upload files, and browse libraries to keep documents organised as your app is used; and create, publish, and clean up site pages and news posts from a workflow.
 
+Workflows can also run the other way round: a file arriving in a document library, a folder renamed, a list item edited, or a page published can be the thing that starts a workflow off.
+
 Once you connect your Microsoft account, Softr reads your sites, lists, document libraries, pages, and list columns live. You pick them from dropdowns rather than typing IDs, and the column choices always reflect the list you selected — so a column added in SharePoint shows up in your workflow without any re-configuration.
 
 ## Available Actions
@@ -84,6 +86,54 @@ The action reports the page's real state after publishing rather than assuming s
 
 Delete a page from a site, moving it to the site recycle bin. The result describes what was removed — file name, title, the URL it lived at, and whether it was published or still a draft.
 
+## Available Triggers
+
+Every SharePoint trigger checks the site on a schedule and starts your workflow once for each change it finds. Nothing that is already there when you turn the workflow on starts it — the first run is for what happens next.
+
+### List items
+
+#### List created
+
+Starts a workflow when a new list is created on the site you pick — useful when teams spin up their own trackers and you want them announced, registered, or wired into your app without anyone remembering to say so.
+
+#### List item created
+
+Starts a workflow when a new item is added to the list you pick. Editing an item that is already there does not start it.
+
+#### List item created or updated
+
+Starts a workflow when an item is added to the list, and again whenever an existing item changes. Use the `changeType` field to tell the two apart.
+
+### Files & folders
+
+The three file triggers take an optional **File types** — a comma-separated list of extensions such as `pdf, docx` — so a workflow that only handles contracts is not woken by every image someone drops into the library. Leave it blank to watch every file type.
+
+#### File added to folder
+
+Starts a workflow once for each file added to the folder you pick; leave the folder blank to watch the document library root. Files added to a subfolder do not start it — use **File added to folder or subfolders** for those. Editing a file that is already there does not start it, and neither does a file moved in from somewhere else, because SharePoint keeps the date it was originally created. New folders never start it.
+
+#### File added to folder or subfolders
+
+The same trigger, widened: it starts once for each file added anywhere beneath the folder you pick, however deeply nested, including files added straight to that folder.
+
+#### File created or updated
+
+Starts a workflow when a file is added to the folder you pick, and again whenever a file already in it changes. Use the `changeType` field to tell the two apart. Subfolders are not included. Bear in mind SharePoint also counts renaming a file, checking it in or out, and restoring an earlier version as a change, so not every run means the contents differ — compare `modifiedAt` or `size` against what you saw last if that matters. Several edits between two checks arrive as a single run carrying the file's latest state.
+
+#### Folder created or renamed
+
+Starts a workflow once for each folder added directly to the folder you pick, and again whenever one of those folders is renamed. `changeType` tells the two apart, and a rename also gives you the old name in `previousName`, so you can find the folder in your own records. A folder created and renamed between two checks arrives as a single creation under its final name — there is no earlier name to report, because nobody had seen the folder before.
+
+Folders created deeper down do not start it, and neither do files — pick one of the file triggers for those. A folder moved in from somewhere else does not start it either, because SharePoint keeps the date it was originally created; renaming it afterwards does. Deleting a folder never starts it, and neither does adding a file inside a folder you are watching, even though SharePoint updates that folder's modified date.
+
+### Pages
+
+#### Page created or updated
+
+Starts a workflow for every page on the site you pick — a site keeps them all in one place, so there is nothing further to narrow it to. `changeType` tells a new page from a changed one.
+
+Saving a draft counts as a change, as does editing the draft of a page that is already live, and publishing. Check `published` if your workflow should only act on what visitors can see, or `publishingLevel` if you are following the editing lifecycle — the two disagree for a live page that is currently checked out for editing. Several edits between two checks arrive as a single run carrying the page's latest state, so a long editing session does not start it once per keystroke. The page's content is not included: use **Get page by ID** with the ID from the trigger when you need the body.
+
 ## Key Benefits
 
 - **Your SharePoint site as a backend:** Power Softr apps from the lists and libraries your team already maintains — no migration, no duplicate source of truth.
@@ -91,6 +141,8 @@ Delete a page from a site, moving it to the site recycle bin. The result describ
 - **Right value, right column type:** Filter values are matched against the column's real type — text, number, date, or yes/no — so filtering works the way it does inside SharePoint.
 - **Work by ID or by condition:** Get, update, and delete items either by an ID carried from an earlier step or by a column value, so workflows work even when nothing upstream knows the item's ID.
 - **Documents where they belong:** Files uploaded through your app land in the correct library and folder, with predictable handling when a name is already taken.
+- **Both directions:** Write into SharePoint from your app, and start workflows from what happens on the site — a file arriving, a folder renamed, a list item edited, a page published.
+- **Creations and changes, told apart:** Triggers that cover both label every run with `changeType`, and a renamed folder carries its old name, so a workflow can branch without keeping its own history.
 - **Draft, then publish:** New pages start as drafts, so a workflow can assemble a page or news post and only make it visible once you are ready — in the same run or a later one.
 
 ## Example Use Cases
@@ -106,11 +158,14 @@ Delete a page from a site, moving it to the site recycle bin. The result describ
 | **Announcements from your app**      | Publish a SharePoint news post when something happens in Softr — a release goes out, a policy changes, a client signs. |
 | **Page per project or client**       | Create a draft page from a template of your own HTML when a project starts, then publish it once someone reviews it.  |
 | **Retire outdated pages**            | On a recurring schedule, get a page, check whether it is still current, and delete the ones that have gone stale.     |
+| **File lands, record follows**       | When a file arrives in a watched library folder, create the matching record in your app and notify whoever owns it.  |
+| **Folder renames stay in step**      | When a folder is created or renamed in a library, update the client record pointing at it so its links never go stale. |
+| **Announce what the site publishes** | When a page on the site is published, post it to your app's news feed or email the members it concerns.              |
 
 ## How to Connect Softr with SharePoint
 
 1. Open your Softr app and go to **Workflows**.
-2. Create a new workflow and add a SharePoint action.
+2. Create a new workflow and add a SharePoint action, or start it with a SharePoint trigger.
 3. Click **Connect SharePoint** and sign in with the Microsoft account that has access to the site you want to use.
 4. Authorize Softr to access your SharePoint sites.
 5. Pick the **Site**, then the **List**, **Document library**, or **Page** the action should work with.
