@@ -1,18 +1,26 @@
 ---
 title: "Applications"
 sidebarTitle: "Applications"
-description: "Let an AI assistant read your apps, preview changes, and publish them."
+description: "Let an AI assistant create blank apps, read your apps, preview changes, and publish them."
 'og:title': "MCP: Applications – Softr Help Docs"
-'og:description': "Let an AI assistant read your apps, preview changes, and publish them."
+'og:description': "Let an AI assistant create blank apps, read your apps, preview changes, and publish them."
 'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
 'twitter:title': "MCP: Applications – Softr Help Docs"
-'twitter:description': "Let an AI assistant read your apps, preview changes, and publish them."
+'twitter:description': "Let an AI assistant create blank apps, read your apps, preview changes, and publish them."
 icon: "window"
 ---
 
 These tools let an assistant understand how an app is built — its pages, its blocks, and who can see what — and then show you a change or make it live.
 
-Everything here is read-only except previewing and publishing. Currently, changes to an app's content can only be made through [vibe coding blocks](/mcp/vibe-coding).
+Everything here is read-only except creating a blank app, previewing, and publishing. Currently, changes to an existing app's content can only be made through [vibe coding blocks](/mcp/vibe-coding).
+
+## Creating an app
+
+| Tool | What it does |
+|---|---|
+| `create_application` | Creates a new blank app, optionally in a specific workspace and with a name, and returns its details |
+
+`create_application` spins up a fresh, empty app with a default home page and returns its id, name, and workspace. The new app is **not** published — use `preview_app` to look at it and `publish_app` when you want it live. By default it is created in your default workspace; pass a workspace to choose where it goes (use `list_workspaces` to find one). You can also pass a name for the app; omit it and Softr auto-generates one. From there, add content with [vibe coding blocks](/mcp/vibe-coding).
 
 ## Reading an app
 
