@@ -1,18 +1,18 @@
 ---
 title: "Applications"
 sidebarTitle: "Applications"
-description: "Let an AI assistant create blank apps, read your apps, manage their users, preview changes, and publish them."
+description: "Let an AI assistant create blank apps, read your apps, manage their users, toggle login, preview changes, and publish them."
 'og:title': "MCP: Applications – Softr Help Docs"
-'og:description': "Let an AI assistant create blank apps, read your apps, manage their users, preview changes, and publish them."
+'og:description': "Let an AI assistant create blank apps, read your apps, manage their users, toggle login, preview changes, and publish them."
 'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
 'twitter:title': "MCP: Applications – Softr Help Docs"
-'twitter:description': "Let an AI assistant create blank apps, read your apps, manage their users, preview changes, and publish them."
+'twitter:description': "Let an AI assistant create blank apps, read your apps, manage their users, toggle login, preview changes, and publish them."
 icon: "window"
 ---
 
 These tools let an assistant understand how an app is built — its pages, its blocks, and who can see what — and then show you a change or make it live.
 
-Everything here is read-only except creating a blank app, adding and removing app users, previewing, and publishing. Currently, changes to an existing app's content can only be made through [vibe coding blocks](/mcp/vibe-coding).
+Everything here is read-only except creating a blank app, adding and removing app users, toggling login, previewing, and publishing. Currently, changes to an existing app's content can only be made through [vibe coding blocks](/mcp/vibe-coding).
 
 ## Creating an app
 
@@ -54,6 +54,14 @@ These tools manage an app's **end users** — the people who log in to the publi
 | `remove_application_user` | Removes an end user from the app by email |
 
 `add_application_user` takes both a name and an email and creates the user in the app. It fails if a user with that email already exists there. `remove_application_user` deletes the user with the given email, and fails if no user with that email exists in the app. Both need write access to the app.
+
+## Login settings
+
+| Tool | What it does |
+|---|---|
+| `set_application_login` | Enables or disables end-user login for the app |
+
+`set_application_login` turns the app's end-user login on or off — pass `enabled=true` to turn it on, `enabled=false` to turn it off. Disabling login stops end users from signing in to the app; it is reversible, so calling it again with `enabled=true` restores login. It applies only to apps that support login — apps without login settings are rejected. Changes take effect on the next publish, like other app changes.
 
 ## Previewing and publishing
 
