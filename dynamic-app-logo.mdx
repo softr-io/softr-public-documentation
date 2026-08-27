@@ -105,11 +105,32 @@ Which table you point at depends on how your data is shaped.
     The simplest setup, and the one to reach for first. Add the image field directly to your users table and fill it in per user. Point the dialog at that table and map the field. This works well when logos are genuinely per-person, or when your user list is short enough that repeating a company logo across a handful of rows costs nothing.
   </Tab>
   <Tab title="One logo per client company">
-    In a client portal you usually store the logo once on a Companies (or Vendors, Suppliers, etc) table and link users to it with a Related Record field. Softr matches the **logged-in user** for the dynamic logo, so the image still has to be readable on the user's own row. Copy the logo image into an image field on the user record — through a [workflow](/workflows/workflows) when a user is created or their company changes, or by hand for a small list. Point the dialog at your users table and map that field.
+    In a client portal you usually store the logo once on a Companies table and link users to it. You don't need to duplicate that image onto every user — use a [Lookup](/softr-databases/related-record-lookup-and-rollup-fields) field to pull it through.
+
+    <Steps>
+      <Step title="Store the logo on the company">
+        Add a File field to your Companies table and upload each client's logo once there.
+      </Step>
+      <Step title="Link users to their company">
+        Make sure each user record has a Related Record field linked to the right company.
+      </Step>
+      <Step title="Add a Lookup field on the users table">
+        Create a **Lookup** field, set **Lookup source** to your linked record field, and set **Field to look up** to the company's logo field. The image now resolves on each user's row.
+      </Step>
+      <Step title="Map the Lookup field">
+        In the Configure dynamic logo dialog, pick your users table and select the Lookup field as the horizontal or square logo.
+      </Step>
+    </Steps>
+
+    Update a company's logo once and every user linked to it picks up the change — no per-user edits, and no workflow to keep copies in sync.
 
     <Warning>
-      Do not map a **linked record** field, and do not expect a [Lookup](/softr-databases/related-record-lookup-and-rollup-fields) of an image field to work. A linked record field can be selected in the dropdown but holds no image, and a lookup pointing at a File field resolves empty. Either choice leaves users on the default logo.
+      Map the **Lookup** field, not the linked record field itself. A linked record field can be selected in the dropdown but holds no image, so users would fall back to the default logo.
     </Warning>
+
+    <Note>
+      If a Lookup renders empty even though the company has a logo, check the company record itself rather than the Lookup. Re-linking the user to a freshly created company record is the quickest way to confirm the lookup is configured correctly.
+    </Note>
   </Tab>
 </Tabs>
 
@@ -139,7 +160,7 @@ It's also helpful to turn off the **multiple files** option here, since Softr wi
   </Accordion>
 
   <Accordion title="Only some users get their own logo">
-    Those users' rows are missing an image, or they have no row in the mapped table. Users added manually rather than [synced from your data source](/add-and-manage-users/syncing-users-with-a-data-source) are a common cause, since they may not exist in the table you mapped.
+    Those users' rows are missing an image, or they have no row in the mapped table. Users added manually rather than [synced from your data source](/add-and-manage-users/syncing-users-with-a-data-source) are a common cause, since they may not exist in the table you mapped. If you are using a Lookup field, check that the affected users are linked to a company at all, and that the company record has a logo. Users linked to the same company should all resolve identically. If one company's users are the only ones failing, the problem is that company record, not your configuration.
   </Accordion>
 
   <Accordion title="The square logo never appears">
