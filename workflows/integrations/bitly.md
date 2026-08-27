@@ -14,6 +14,18 @@ Whether you're building a marketing dashboard, a partner portal, or a referral p
 
 Shorten any URL into a Bitlink with an optional title, tags, and Bitly group — all set dynamically from your Softr workflow. Groups are chosen from a live dropdown pulled straight from your connected Bitly account, and the short link comes back ready to store in a record, send in an email, or show to your users.
 
+### Get link
+
+Retrieve an existing Bitlink — its destination URL, title, tags, and archived state — so later workflow steps can reuse or display it.
+
+### Update link
+
+Rename a Bitlink, replace its tags, or archive and unarchive it, keeping your link library tidy as your Softr data changes.
+
+### List links
+
+Pull the Bitlinks in a group, optionally filtered by a search term — perfect for finding an existing short link before creating a new one, or for showing a campaign's links inside your app.
+
 ## Key Benefits
 
 - **No-code simplicity:** Configure Bitly actions visually in Softr — no code required beyond the one-time access token setup.
