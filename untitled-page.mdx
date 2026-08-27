@@ -1,0 +1,168 @@
+---
+title: "Dynamic App Logo"
+---
+
+By default your app shows one logo to everyone. With **Dynamic logo** you can instead pull the logo from a field in your data, so each logged-in user sees a logo that belongs to them such as their own company's branding in a client portal, or their department's mark in an internal tool. It's also useful for co-branded apps or tools!
+
+You configure it in **Settings → General**, in the **Logo** section.
+
+<Frame caption="The Logo section in Settings → General, with the Dynamic logo toggle at the bottom.">
+  {/* SCREENSHOT TODO: In Studio, open Settings (gear icon, left toolbar) → General. Capture the full LOGO section: the logo type dropdown, the "Upload at least 1 size..." hint, the Horizontal and Square rows, and the Dynamic logo toggle in its OFF state. */}
+
+  ![Screenshot 2026 08 27 At 3 10 04 PM](/images/Screenshot-2026-08-27-at-3.10.04-PM.png "Screenshot 2026 08 27 At 3 10 04 PM")
+</Frame>
+
+## Before you start
+
+Dynamic logo reads images out of your data, so you need two things in place first.
+
+<Steps>
+  <Step title="A default logo">
+    Upload a **Horizontal** and, if you use it, a **Square** logo in the Logo section. This is what users see when no image is found for them, so it is worth setting even when most users have their own. See [General Settings](/application-settings/general-settings) for the rest of this panel.
+  </Step>
+  <Step title="A field holding each user's logo">
+    Add an image field to the table your logos live in and fill it in. In [Softr Databases](/softr-databases/field-types) this is a **File** field; in [Airtable](/data-sources/airtable) it is an attachment field. In other data sources it may be an attachment or file field of a similar nature.
+  </Step>
+</Steps>
+
+<Tip>
+  Softr recommends logo images at least **400px** in height, in **SVG** or **PNG**. Keep the horizontal (banner) and square (icon) versions as separate fields — the app uses whichever shape a given surface calls for.
+</Tip>
+
+## Turn on Dynamic logo
+
+<Steps>
+  <Step title="Open the setting">
+    In Studio, open **Settings** from the left toolbar, then **General**. Scroll to the **Logo** section.
+  </Step>
+  <Step title="Switch on Dynamic logo">
+    Turn on the **Dynamic logo** toggle at the bottom of the section. A **Configure** button appears below it, marked with a dot to show it still needs setting up.
+
+    ![Screenshot 2026 08 27 At 3 11 49 PM](/images/Screenshot-2026-08-27-at-3.11.49-PM.png "Screenshot 2026 08 27 At 3 11 49 PM")
+  </Step>
+  <Step title="Click Configure">
+    This opens the **Configure dynamic logo** dialog, where you point Softr at the fields holding your logos.
+  </Step>
+</Steps>
+
+<Frame caption="Turning on Dynamic logo reveals the Configure button.">
+  {/* SCREENSHOT TODO: Toggle Dynamic logo ON and capture the Logo section showing the toggle in its blue/ON state with the "Configure" button and its orange dot directly beneath. */}
+
+  ![Screenshot 2026 08 27 At 3 12 33 PM](/images/Screenshot-2026-08-27-at-3.12.33-PM.png "Screenshot 2026 08 27 At 3 12 33 PM")
+</Frame>
+
+## Map your logo fields
+
+The **Configure dynamic logo** dialog asks where the logos are stored. Work through it top to bottom — each choice narrows the next.
+
+<Frame caption="The Configure dynamic logo dialog.">
+  {/* SCREENSHOT TODO: Click Configure and capture the whole dialog: title "Configure dynamic logo", the "Where are the logos stored?" heading, and the Account, Database, Table, Horizontal logo field and Square logo field inputs. */}
+
+  ![Screenshot 2026 08 27 At 3 14 23 PM](/images/Screenshot-2026-08-27-at-3.14.23-PM.png "Screenshot 2026 08 27 At 3 14 23 PM")
+</Frame>
+
+<Steps>
+  <Step title="Account">
+    Pick the data source holding your logos. Every data source connected to your workspace is listed, and **Add another data source** at the bottom lets you connect a new one without leaving the dialog.
+  </Step>
+  <Step title="Database">
+    Choose the database or base within that account.
+  </Step>
+  <Step title="Table">
+    Choose the table. This should be the table your app's users come from, so that Softr can match the logged-in user to a row.
+  </Step>
+  <Step title="Horizontal logo field">
+    Choose the field storing the wide, banner-shaped logo. Image fields appear under **Suggested**; everything else is under **Other fields**. Use the search box if the table has many fields.
+  </Step>
+  <Step title="Square logo field">
+    Choose the field storing the square, icon-shaped logo. You can leave this as **None** if you only use the horizontal logo.
+  </Step>
+  <Step title="Save">
+    Click **Save** to close the dialog, then **Save** again at the bottom of the General settings panel. [Publish your app](/publishing/publishing-your-softr-app) for the change to reach your live users.
+  </Step>
+</Steps>
+
+<Note>
+  Both field dropdowns include a **None** option, so you can map only one shape and let the other fall back to your default logo.
+</Note>
+
+## What users see
+
+Softr looks up the logged-in user's row and uses the image in the mapped field. The logo appears wherever your app logo normally does — the [navigation menu](/application-settings/navigation-settings), the login page, and the [footer](/application-settings/footer-settings).
+
+**If no image is found for a user, they see the default app logo** you uploaded in the Logo section. That covers users whose logo field is empty, and users who have no matching row at all — so the app never renders without a logo.
+
+<Warning>
+  The login page is shown _before_ anyone signs in, so there is no user to look up yet. Expect the default logo there, and treat the dynamic logo as something users see once they are inside the app. If you need branded log in or sign up pages, try creating separate Utility pages for those with unique URLs for each client or company.
+</Warning>
+
+## Choosing where to store the logos
+
+Which table you point at depends on how your data is shaped.
+
+<Tabs>
+  <Tab title="Logo on the user record">
+    The simplest setup, and the one to reach for first. Add the image field directly to your users table and fill it in per user. Point the dialog at that table and map the field. This works well when logos are genuinely per-person, or when your user list is short enough that repeating a company logo across a handful of rows costs nothing.
+  </Tab>
+  <Tab title="One logo per client company">
+    In a client portal you usually store the logo once on a Companies (or Vendors, Suppliers, etc) table and link users to it with a Related Record field. Softr matches the **logged-in user** for the dynamic logo, so the image still has to be readable on the user's own row. Copy the logo image into an image field on the user record — through a [workflow](/workflows/workflows) when a user is created or their company changes, or by hand for a small list. Point the dialog at your users table and map that field.
+
+    <Warning>
+      Do not map a **linked record** field, and do not expect a [Lookup](/softr-databases/related-record-lookup-and-rollup-fields) of an image field to work. A linked record field can be selected in the dropdown but holds no image, and a lookup pointing at a File field resolves empty. Either choice leaves users on the default logo.
+    </Warning>
+  </Tab>
+</Tabs>
+
+## Keep the logo from disappearing
+
+If your logos live in a Softr Databases **File** field, check the field's **Expiring file links** setting.
+
+When that setting is on, Softr hands out links that stop working after a set period, customizable anywhere from 1 hour to 168 hours (7 days). That is useful for private documents, but a logo is meant to be public and permanent. Open the field, switch **Expiring file links** off, and your logo URLs will keep resolving.
+
+It's also helpful to turn off the **multiple files** option here, since Softr will only use the first file in the field. Storing more than one can become confusing if the wrong one is being show in the app.
+
+<Frame caption="The Expiring file links setting on a File field.">
+  {/* SCREENSHOT TODO: In a Softr Database, edit a File field and capture the field editor showing "Allow multiple files" and "Expiring file links" toggles, plus the "File links expire every" duration inputs that appear when it is on. */}
+
+  ![Screenshot 2026 08 27 At 3 13 43 PM](/images/Screenshot-2026-08-27-at-3.13.43-PM.png "Screenshot 2026 08 27 At 3 13 43 PM")
+</Frame>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Everyone still sees the default logo">
+    Softr falls back to the default whenever it cannot find an image for the user. Check that the mapped field actually holds an image on that user's row, that you picked the table your users come from, and that you saved both the dialog and the General settings panel and then published.
+  </Accordion>
+
+  <Accordion title="The logo shows in Studio but breaks later for users">
+    This is the signature of expiring file links. Turn that setting off on the File field holding your logos.
+  </Accordion>
+
+  <Accordion title="Only some users get their own logo">
+    Those users' rows are missing an image, or they have no row in the mapped table. Users added manually rather than [synced from your data source](/add-and-manage-users/syncing-users-with-a-data-source) are a common cause, since they may not exist in the table you mapped.
+  </Accordion>
+
+  <Accordion title="The square logo never appears">
+    Some surfaces only use the horizontal version. Check which one the surface is set to show — [Navigation settings](/application-settings/navigation-settings) and [Footer settings](/application-settings/footer-settings) each let you pick between the banner and square versions of your logo.
+  </Accordion>
+</AccordionGroup>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="General Settings" icon="gear" href="/application-settings/general-settings">
+    The rest of the app settings panel, including favicon and Softr branding.
+  </Card>
+
+  <Card title="Navigation settings" icon="bars" href="/application-settings/navigation-settings">
+    Choose which version of your logo the navigation bar shows.
+  </Card>
+
+  <Card title="Footer Settings" icon="window-minimize" href="/application-settings/footer-settings">
+    Choose which version of your logo the footer shows.
+  </Card>
+
+  <Card title="Application Theme" icon="palette" href="/styling/application-theme">
+    Colors, fonts, and the rest of your app's branding.
+  </Card>
+</CardGroup>

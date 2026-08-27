@@ -75,7 +75,6 @@
               "softr-databases/formula-glossary",
               "softr-databases/related-record-lookup-and-rollup-fields",
               "softr-databases/ai-agents",
-              "softr-databases/database-migration-tips",
               "softr-databases/datetime-formatting"
             ]
           },
@@ -452,7 +451,7 @@
               "application-settings/general-settings",
               "application-settings/app-history",
               "application-settings/advanced-settings",
-              "application-settings/migrating-app-versions"
+              "untitled-page"
             ]
           }
         ]
@@ -713,6 +712,14 @@
               "faq/integrations",
               "faq/app-settings",
               "faq/other"
+            ]
+          },
+          {
+            "group": "Migration Tips",
+            "icon": "arrow-down-left-and-arrow-up-right-to-center",
+            "pages": [
+              "softr-databases/database-migration-tips",
+              "application-settings/migrating-app-versions"
             ]
           },
           {
