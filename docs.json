@@ -175,6 +175,7 @@
               "data-sources/bigquery",
               "data-sources/sql-database",
               "data-sources/rest-api",
+              "data-sources/snowflake",
               "data-sources/choosing-a-data-source"
             ]
           }

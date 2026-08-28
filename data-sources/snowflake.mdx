@@ -1,0 +1,115 @@
+---
+title: "Snowflake"
+description: "Use Snowflake as a data source for your Softr app or dashboard."
+---
+
+Snowflake is a cloud data platform that stores and queries large analytical datasets. Connecting it to Softr lets you build dashboards, reports and internal tools on top of warehouse data, without exporting it anywhere first.
+
+You connect Snowflake once at the workspace level, then point individual blocks at the tables you want to show.
+
+<Note>
+  Softr authenticates to Snowflake with a [programmatic access token](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens), not a password. You generate the token in Snowsight and paste it into Softr.
+</Note>
+
+## Before you start
+
+Have these ready from your Snowflake account:
+
+- Your **account identifier**, in `orgname-account_name` form — for example `myorg-myaccount`. To find it in Snowsight, open the account selector and choose **View account details**. See Snowflake's [account identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier) reference if yours is in the older account-locator format.
+- The **user** Softr should authenticate as.
+- A **programmatic access token** for that user. In Snowsight, go to **Governance & security → Users & roles**, select the user, open **Programmatic access tokens** and choose **Generate new token**. Tokens expire after a maximum of 365 days, and your admin may have shortened that with an authentication policy.
+- A **network policy** that permits the connection. Snowflake requires one to _use_ a token, and requires one up front for service users. Your Snowflake admin can attach it to the account or to the single user — see [network policy requirements](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens).
+
+<Tip>
+  Give Softr a dedicated Snowflake user with read-only access to just the warehouse, role and database you intend to expose. It keeps the token's blast radius small, makes it easy to revoke, and lets you scope the network policy to that one user.
+</Tip>
+
+## Connect Snowflake to Softr
+
+<Steps>
+  <Step title="Open Integrations">
+    In the Softr dashboard, select **Integrations** in the left sidebar, then click **Connect new**.
+
+    <Frame caption="The Integrations page, where all external data sources are managed.">
+      ![The Softr dashboard Integrations page with the Connect new button highlighted](/images/snowflake/open-integrations.png)
+    </Frame>
+  </Step>
+  <Step title="Choose Snowflake">
+    Pick **Snowflake** from the **Select an integration** list.
+
+    <Frame caption="Snowflake in the integration picker.">
+      ![The Select an integration dialog with the Snowflake tile outlined in red](/images/snowflake/select-snowflake.png)
+    </Frame>
+  </Step>
+  <Step title="Enter your connection details">
+    Fill in the connection form:
+
+    | Field | Required | What to enter |
+    | --- | --- | --- |
+    | Name | Yes | A label for this connection inside Softr. |
+    | Account identifier | Yes | Your Snowflake account, in `orgname-account_name` form. |
+    | Warehouse | No | The warehouse to run queries against. |
+    | Role | No | The role Softr should assume. |
+    | Database | No | The database to scope the connection to. |
+    | User | Yes | The Snowflake user Softr authenticates as. |
+    | Programmatic access token | Yes | The token you generated in Snowsight. |
+
+    Leaving **Warehouse**, **Role** and **Database** empty uses the defaults configured for the user in Snowflake.
+
+    <Frame caption="The Snowflake connection form. User and Programmatic access token are both required.">
+      ![The Connect to Snowflake dialog with the User and Programmatic access token fields outlined in red](/images/snowflake/snowflake-credentials.png)
+    </Frame>
+  </Step>
+  <Step title="Connect">
+    Click **Connect**. The button stays disabled until every required field is filled. Once the connection succeeds, Snowflake appears in your Integrations list and is available to blocks across your apps.
+  </Step>
+</Steps>
+
+## Show Snowflake data in your app
+
+<Steps>
+  <Step title="Point a block at a Snowflake table">
+    Add a dynamic block — a List, Table or Chart — then open its **Block source** tab and select your Snowflake connection. Choose the database, schema and table you want to display.
+  </Step>
+  <Step title="Map fields">
+    Choose which Snowflake columns map to which fields in the block, the same way you would for any other data source. See [Visualize data with building blocks](/core-concepts-overview/visualize-data-with-building-blocks) for the mapping options each block type offers.
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Authentication fails with a valid token">
+    The usual cause is a missing network policy. Snowflake requires one before a programmatic access token can be used, and requires one up front for service users. Ask your Snowflake admin to confirm a policy is attached to the account or to the user Softr connects as.
+
+    Also check the token has not expired — 365 days is the maximum, and an authentication policy can shorten it.
+  </Accordion>
+
+  <Accordion title="The connection succeeds but no tables appear">
+    If you left **Warehouse**, **Role** or **Database** empty, Softr falls back to the user's defaults in Snowflake. If that user has no default warehouse or role, set them explicitly on the connection.
+  </Accordion>
+
+  <Accordion title="The account identifier is rejected">
+    Softr expects the `orgname-account_name` form, not the legacy account locator and not a full URL. Open the account selector in Snowsight and choose **View account details** to read the current identifier.
+  </Accordion>
+</AccordionGroup>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Choosing a data source" href="/data-sources/choosing-a-data-source">
+    Compare Snowflake against the other data sources Softr supports.
+  </Card>
+
+  <Card title="BigQuery" href="/data-sources/bigquery">
+    Another warehouse integration, with a similar dashboard-first setup.
+  </Card>
+
+  <Card title="SQL Database" href="/data-sources/sql-database">
+    Connect PostgreSQL, MySQL, SQL Server or MariaDB.
+  </Card>
+
+  <Card title="Snowflake documentation" href="https://docs.snowflake.com/en/user-guide/programmatic-access-tokens">
+    Snowflake's own reference for tokens, account identifiers and network policies.
+  </Card>
+</CardGroup>
