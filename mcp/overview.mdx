@@ -131,13 +131,15 @@ What each level allows:
 | Applications & Forms | Read only | Read apps, pages, blocks, user groups, and permissions; browse integrations |
 | | Full access | The above, plus creating and editing vibe coding blocks, previewing, and publishing |
 | Databases | View only | Read databases, tables, fields, views, and records; search and aggregate |
-| | Edit data | The above, plus creating and updating records |
-| | Full access | The above, plus creating and changing databases, tables, and fields |
+| | Edit data | The above, plus creating, updating, and deleting records |
+| | Full access | The above, plus creating, changing, and deleting databases, tables, and fields |
 | Workflows | Read only | Read workflows and their steps, and the outputs of steps already tested |
 | | Full access | The above, plus building, editing, testing, and publishing workflows |
 
 <Note>
   Levels are bundles, not a checklist. There is no way to grant editing without reading, or database schema changes without record access. Picking a level always includes everything below it.
+
+  Deleting travels with editing, too: **Edit data** lets an assistant delete records, and **Full access** lets it delete fields, tables, and whole databases. If you want a token that can never delete anything, the level to pick is **View only**. See [Deleting data](/mcp/databases#deleting-data) for the rules that still apply.
 </Note>
 
 ## Managing access
