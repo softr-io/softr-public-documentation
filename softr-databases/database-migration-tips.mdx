@@ -1,0 +1,257 @@
+---
+title: "Migrating from Airtable to Softr DB"
+permalink: "5F61VQ3Tr2syEd91hRt5W4"
+description: "Learn best practices for migrating your Airtable database to Softr DB"
+og:title: "Database Migration Tips – Softr Help Docs"
+og:description: "Learn best practices for migrating your database to Softr DB"
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+twitter:title: "Database Migration Tips – Softr Help Docs"
+twitter:description: "Learn best practices for migrating your database to Softr DB"
+sidebarTitle: "Migrating from Airtable to Softr DB"
+---
+
+## Why switch to Softr Databases
+
+<CardGroup cols={2}>
+  <Card title="Built to run operations at scale" icon="screwdriver-wrench">
+    Airtable performance can degrade as record counts, formulas, and linked data grow. Softr Databases are designed to manage data and power apps at scale—so systems stay fast and reliable as operations expand.
+  </Card>
+
+  <Card title="Scale without API limits" icon="gauge-high">
+    Softr Databases are native to the platform, so there are no external API rate limits throttling your app as your data and traffic grow. Record and storage limits scale with your plan.
+  </Card>
+
+  <Card title="Real business apps—not just data views" icon="key">
+    Airtable works well for internal data views. But when you need logins, user roles, granular permissions, workflows, and flexible design, Softr gives you everything you need to turn your data into custom business apps.
+  </Card>
+
+  <Card title="No per-seat pricing or hidden costs" icon="dollar-sign">
+    Airtable charges per-seat pricing and has strict record limits, even on its high-tier plans. Softr offers generous user and record limits without per-seat costs—making it easy to share apps across teams and clients.
+  </Card>
+
+  <Card title="Smarter AI Agents" icon="robot">
+    [Database AI Agents](/softr-databases/ai-agents) can trigger on record creation, on specific field updates, and on custom conditions. This is a level of control that isn’t available with external sources.
+  </Card>
+
+  <Card title="Import 3rd party data" icon="plug">
+    Airtable keeps you in its ecosystem. Softr connects to 100\+ data sources—including Airtable, Notion, SQL, HubSpot, and Google Sheets—plus third-party tools like Slack, QuickBooks, and DocuSign, letting you combine multiple data sources in one app.
+  </Card>
+</CardGroup>
+
+## Video
+
+<iframe src="https://www.youtube.com/embed/GTdgZzQvb8c?rel=0" width="100%" height="500px" title="YouTube video" />
+
+Moving your data into Softr Databases keeps your database and your app on one platform with no external API rate limits and native features like inline editing, Ask AI, and Database AI Agents. The built-in **Import data** tool makes the copy itself straightforward. It's non-destructive and leaves your original Airtable base untouched, but a smooth migration still takes a little planning.
+
+This page walks you through the full move like what to prepare, how to import your Airtable base step by step, and how to reconnect your app to the new database without breaking anything.
+
+<Note>
+  Importing **copies** your data into a new Softr database. Your Airtable base is never modified or deleted, so you can migrate at your own pace and keep Airtable running until you're confident everything works.
+</Note>
+
+## Before you start
+
+A few minutes of prep here saves a lot of rework later.
+
+<Steps>
+  <Step title="Work on copies, not your live setup">
+    Duplicate the app you want to migrate (or plan to create a version snapshot before you switch anything.  See [below](#reconnect-your-app-block-by-block)). If you'd rather rehearse the whole thing first, test the import on a duplicate Airtable base with a small amount of data before doing it for real.
+  </Step>
+  <Step title="Take stock of computed and linked fields">
+    Note where you rely on Lookups, Rollups, formulas, and linked records. Softr Databases supports all of these, but they're the fields most worth verifying after the import. If you have many of them, grouping them into a dedicated Airtable view first makes them easy to spot-check afterward.
+  </Step>
+  <Step title="Know what needs a second look">
+    Most fields (including linked records, attachments, and formulas) come across automatically. A handful of Airtable's system and computed fields behave differently in Softr and are worth reviewing once imported. See [What transfers, and what to double-check](#what-transfers-and-what-to-double-check).
+  </Step>
+</Steps>
+
+<Tip>
+  Migrating also future-proofs your app: because the data lives natively in Softr, you're no longer dependent on a third-party API or subject to its rate limits and per-collaborator pricing.
+</Tip>
+
+## Step-by-step: import your Airtable base
+
+This creates a new Softr database populated with a copy of your Airtable data.
+
+<Steps>
+  <Step title="Open the database creator">
+    In Softr Studio, go to **Databases** in the left sidebar and start a new database (or choose **Database** from the Home screen). The **Create new database** dialog opens.
+
+    <Frame caption="The Create new database dialog, with AI, Import data, Copy template, and Start blank options.">
+      {/* SCREENSHOT TODO: On the Home or Databases screen, click to create a new database and capture the "Create new database" modal showing the AI prompt box and the three options underneath: Import data, Copy template, Start blank. */}
+
+      <img
+        alt="Screenshot 2026 08 20 At 4 32 05 PM"
+        title="Screenshot 2026 08 20 At 4 32 05 PM"
+        lightAlt="Screenshot 2026 08 20 At 4 32 05 PM"
+        darkAlt="Screenshot 2026 08 20 At 4 32 05 PM"
+        src="/images/Screenshot-2026-08-20-at-4.33.05-PM.png"
+        className="dark:hidden"
+      />
+      <img
+        alt="Screenshot 2026 08 20 At 4 32 05 PM"
+        title="Screenshot 2026 08 20 At 4 32 05 PM"
+        lightAlt="Screenshot 2026 08 20 At 4 32 05 PM"
+        darkAlt="Screenshot 2026 08 20 At 4 32 05 PM"
+        src="images/Screenshot-2026-08-20-at-4.33.05-PM.png"
+        className="hidden dark:block"
+      />
+    </Frame>
+  </Step>
+  <Step title="Choose Import data">
+    Select **Import data**. Softr asks where your data is stored and offers **CSV file**, **Airtable**, and **Google Sheets**.
+
+    <Frame caption="Choosing a data source to import from: CSV file, Airtable, or Google Sheets.">
+      {/* SCREENSHOT TODO: In the Create new database flow, click "Import data" and capture the "Where is your data stored?" step showing the three source cards (CSV file, Airtable, Google Sheets). */}
+
+      ![Screenshot 2026 08 20 At 4 34 07 PM](/images/Screenshot-2026-08-20-at-4.34.07-PM.png "Screenshot 2026 08 20 At 4 34 07 PM")
+    </Frame>
+  </Step>
+  <Step title="Select Airtable">
+    Choose **Airtable** and click **Continue**.
+
+    <Frame caption="Select Airtable and click Continue">
+      ![Screenshot 2026 08 20 At 4 34 56 PM](/images/Screenshot-2026-08-20-at-4.34.56-PM.png "Screenshot 2026 08 20 At 4 34 56 PM")
+    </Frame>
+  </Step>
+  <Step title="Pick your Airtable account and base">
+    Under **Account**, select an already-connected Airtable account, or choose **Add another data source** to connect one. Then, under **Base**, search for and select the base you want to import. The whole base will be imported.
+
+    <Frame caption="Selecting the Airtable account and the base to import.">
+      {/* SCREENSHOT TODO: Capture the "Select Airtable base to import data from" step with the Account dropdown (showing a connected Airtable account / "Add another data source") and the Base dropdown with the searchable list of bases. */}
+
+      ![Screenshot 2026 08 20 At 4 36 59 PM](/images/Screenshot-2026-08-20-at-4.36.59-PM.png "Screenshot 2026 08 20 At 4 36 59 PM")
+    </Frame>
+
+    <Note>
+      Don't see your base? Make sure the base is shared with the connected Airtable token. When connecting a new account, authorizing **all current and future bases** avoids having to reconnect later.
+    </Note>
+  </Step>
+  <Step title="Start the import">
+    Click **Start import**. Softr copies your tables, records, linked records, and attachments into a new Softr database. Larger bases take longer, so give it a moment to finish.
+
+    <Note>
+      Since Softr must use Airtable's API to import the records, please note that the speed and effectiveness of the import will depend upon your Airtable plan's API allowances.
+    </Note>
+  </Step>
+  <Step title="Review the imported database">
+    Open the new database from **Databases** and check your tables. Confirm record counts look right, spot-check linked records and attachments, and review any formula, Lookup, or Rollup fields (see the next section).
+  </Step>
+</Steps>
+
+## What transfers, and what to double-check
+
+The import handles the vast majority of your data automatically. Use this as a post-import checklist for the fields worth a closer look.
+
+<AccordionGroup>
+  <Accordion title="Transfers automatically">
+    - **Records and standard fields** — text, numbers, dates, single/multi-select, checkboxes, and so on.
+    - **System fields** — Airtable’s _Created time_, _Last modified time_ and _Autonumber_.
+    - **Linked records** — relationships between tables are preserved.
+    - **Attachments and files** — copied into the Softr database.
+    - **Formulas** — Softr Databases use Airtable-compatible formula syntax, so most formulas come across with little or no change. See the [Formula glossary](/softr-databases/formula-glossary) for supported functions.
+  </Accordion>
+
+  <Accordion title="Review or re-create after importing">
+    - **System fields** — Airtable's _Created by and_ _Last modified by_ are computed by the source. Softr Databases has equivalent [field types](/softr-databases/field-types) and Softr will attempt to retain the original system field values; confirm they read the way you expect and re-create any your app depends on. 
+    - **Rich text** — long text with formatting comes in as Markdown.
+    - **Complex or unsupported formula functions** — most formulas migrate cleanly, but double-check any that use functions tied to Airtable's internal system info. Update those to their Softr equivalents where needed.
+    - **Lookups and Rollups** — supported in Softr ([Lookup & Rollup fields](/softr-databases/related-record-lookup-and-rollup-fields)); verify they resolve against the right linked table after import.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  Before you re-point a live app at the new database, read [Reconnect your app, block by block](#reconnect-your-app-block-by-block) — switching a block's data source resets some settings, so you'll want a rollback point in place first.
+</Warning>
+
+## Reconnect your app, block by block
+
+Once your data is in Softr Databases, point your app's blocks at it. The safest approach is to create a rollback point first using [App History](https://docs.softr.io/application-settings/app-history#app-history), then switch **one block at a time**, testing as you go.
+
+<Steps>
+  <Step title="Create a version snapshot for rollback">
+    Before changing any data sources, save a restore point from [App History](/application-settings/app-history). If a swap doesn't go as planned, you can roll the whole app back in one step.
+  </Step>
+  <Step title="Open a block's data source">
+    Select a block connected to Airtable, open the **Sources** tab in the block's settings panel, and open its source (for example, **Source 1**).
+
+    <Frame caption="A block's Sources tab, listing its data source.">
+      {/* SCREENSHOT TODO: Select a dynamic block, open the "Sources" tab in the right-hand settings panel, and capture the list showing "Source 1" with the "+ Add" option. */}
+
+      ![Block Sources tab](/images/database-migration-tips/block-sources-tab.png)
+    </Frame>
+  </Step>
+  <Step title="Switch the account to Softr Databases">
+    In the **Account** dropdown, change the source from your Airtable account to **Softr Databases**. Then choose the imported **Database** and the matching **Table**.
+
+    <Frame caption="Switching a block's Account from Airtable to Softr Databases, then selecting the database and table.">
+      {/* SCREENSHOT TODO: In the source detail view, open the Account dropdown and capture it showing both "Softr Databases" and the "Airtable" account (plus "Connect new"). Ideally include the Database and Table dropdowns below it. */}
+
+      ![Account dropdown showing Softr Databases and Airtable](/images/database-migration-tips/swap-account.png)
+    </Frame>
+
+    <Tip>
+      Because the import keeps your original field names, the block usually re-maps its fields with little manual work. Still, review the mapping — Softr can't always match every field automatically.
+    </Tip>
+  </Step>
+  <Step title="Re-check the block's settings">
+    After swapping the source, review anything that references specific fields:
+
+    - **Conditional filters** and [record filters](/user-groups-and-permissions/record-filters) on the block.
+    - **Search and inline filter** settings.
+    - **Tag / label colors**, if set to "as defined in data source."
+    - **Action buttons** — these stay connected, but their field references can reset, so open and confirm each one.
+  </Step>
+  <Step title="Test, then move to the next block">
+    Preview the block, confirm it shows the right data and that create/edit actions still work, then repeat for the next block. Working block-by-block keeps any issue small and easy to trace.
+  </Step>
+</Steps>
+
+## Update users and permissions
+
+User-related settings reference the data source directly, so they need attention after the switch.
+
+### User sync table
+
+If you sync app users from a data source, re-point the [user sync](/add-and-manage-users/syncing-users-with-a-data-source) table to the corresponding Softr Databases table.
+
+<Warning>
+  Toggle **off "Send user notification email"** while you set up or re-point the sync, so existing users aren't emailed a new login prompt during the migration.
+</Warning>
+
+<Note>
+  When Softr Databases is the source, the user table supports **2-way sync** — changes flow in both directions. To keep users matched correctly, don't edit a user's **email** directly in the source table.
+</Note>
+
+### User groups
+
+Re-map the conditional logic on your [user groups](/user-groups-and-permissions/user-groups) so the conditions point at the new fields. User groups may not fully sync until you **publish** the app, so publish before you judge whether they're working.
+
+### Global data restrictions
+
+[Global data restrictions](/user-groups-and-permissions/global-data-restrictions) are tied to a specific table in a specific data source, so they don't carry over automatically. Re-create them from scratch against the new Softr Databases tables.
+
+## Verify visibility and permissions
+
+If you re-mapped your user groups correctly, your page and block [visibility permissions](/core-concepts-overview/user-groups--permissions) should stay intact — but test them anyway. Sign in as a test user in each relevant group and confirm they see exactly what they should, and nothing they shouldn't, before you consider the migration done.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Softr Databases overview" icon="database" href="/softr-databases/softr-databases-overview">
+    Store your application data natively in Softr.
+  </Card>
+
+  <Card title="Choosing a data source" icon="scale-balanced" href="/data-sources/choosing-a-data-source">
+    Compare Softr Databases with Airtable and other sources.
+  </Card>
+
+  <Card title="Field types" icon="table-columns" href="/softr-databases/field-types">
+    Every field type available in Softr Databases.
+  </Card>
+
+  <Card title="App History" icon="clock-rotate-left" href="/application-settings/app-history">
+    Restore your app to an earlier version.
+  </Card>
+</CardGroup>
