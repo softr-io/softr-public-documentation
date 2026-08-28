@@ -162,10 +162,10 @@ The import handles the vast majority of your data automatically. Use this as a p
 </AccordionGroup>
 
 <Warning>
-  Before you re-point a live app at the new database, read [Reconnect your app, block by block](#reconnect-your-app-block-by-block) — switching a block's data source resets some settings, so you'll want a rollback point in place first.
+  Before you re-point a live app at the new database, read [Reconnect your app](#reconnect-your-app) — switching a block's data source resets some settings, so you'll want a rollback point in place first.
 </Warning>
 
-## Reconnect your app, block by block
+## Reconnect your app
 
 Once your data is in Softr Databases, point your app's blocks at it. The safest approach is to create a rollback point first using [App History](https://docs.softr.io/application-settings/app-history#app-history), then switch **one block at a time**, testing as you go.
 
@@ -179,7 +179,7 @@ Once your data is in Softr Databases, point your app's blocks at it. The safest 
     <Frame caption="A block's Sources tab, listing its data source.">
       {/* SCREENSHOT TODO: Select a dynamic block, open the "Sources" tab in the right-hand settings panel, and capture the list showing "Source 1" with the "+ Add" option. */}
 
-      ![Block Sources tab](/images/database-migration-tips/block-sources-tab.png)
+      ![Screenshot 2026 08 28 At 9 07 54 AM](/images/Screenshot-2026-08-28-at-9.07.54-AM.png "Screenshot 2026 08 28 At 9 07 54 AM")
     </Frame>
   </Step>
   <Step title="Switch the account to Softr Databases">
@@ -188,7 +188,7 @@ Once your data is in Softr Databases, point your app's blocks at it. The safest 
     <Frame caption="Switching a block's Account from Airtable to Softr Databases, then selecting the database and table.">
       {/* SCREENSHOT TODO: In the source detail view, open the Account dropdown and capture it showing both "Softr Databases" and the "Airtable" account (plus "Connect new"). Ideally include the Database and Table dropdowns below it. */}
 
-      ![Account dropdown showing Softr Databases and Airtable](/images/database-migration-tips/swap-account.png)
+      ![Screenshot 2026 08 28 At 9 08 39 AM](/images/Screenshot-2026-08-28-at-9.08.39-AM.png "Screenshot 2026 08 28 At 9 08 39 AM")
     </Frame>
 
     <Tip>
