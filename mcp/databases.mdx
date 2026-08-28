@@ -24,7 +24,7 @@ A few things shape the results you get.
 
 **Some fields cannot be written to.** Formula, lookup, rollup, and count fields are computed from other data. Created time, updated time, created by, updated by, autonumber, and record ID are managed by Softr. The assistant can read all of them but cannot set them, and cannot change a field's type after it is created.
 
-**Nothing can be deleted (yet, will be possible soon).** There is no tool to delete a record, table, field, or database. Removing data is something you do in the builder.
+**Deleting is possible, and permanent.** Records, fields, tables, and whole databases can all be removed through the assistant. There is no undo and nothing to restore from afterwards, so the assistant is expected to confirm with you before it deletes anything. See [Deleting data](#deleting-data).
 
 ## Schema
 
@@ -40,6 +40,7 @@ A few things shape the results you get.
 | `get_database` | Gets one database's details |
 | `create_database` | Creates a database in a workspace |
 | `update_database` | Renames a database or changes its description |
+| `delete_database` | Deletes a database with every table and record in it |
 
 ## Tables and fields
 
@@ -49,9 +50,11 @@ A few things shape the results you get.
 | `get_table` | Gets a table's full schema, including every field definition |
 | `create_table` | Creates a table with an initial set of fields |
 | `update_table` | Renames a table or changes its description |
+| `delete_table` | Deletes a table with its fields, views, and records. Cannot delete a database's only table |
 | `list_fields` | Lists a table's fields with their types and configuration |
 | `create_field` | Adds a field. Supports text, number, select, date, attachment, linked record, formula, rollup, and more |
 | `update_field` | Renames a field or changes its options. The type cannot be changed |
+| `delete_field` | Deletes a field and its value in every record. The primary field cannot be deleted |
 | `list_views` | Lists a table's saved views, which can be passed to `list_records` to apply their filters and sorts |
 
 ## Records
@@ -64,6 +67,8 @@ A few things shape the results you get.
 | `create_record` | Creates one record |
 | `create_records` | Creates up to 100 records in one call |
 | `update_record` | Updates fields on a record, leaving the others untouched |
+| `delete_record` | Deletes one record |
+| `delete_records` | Deletes up to 100 records in one call |
 
 ## Analytics
 
@@ -73,11 +78,32 @@ A few things shape the results you get.
 
 `aggregate_data` returns totals rather than rows, which makes it the right tool behind questions like "revenue by month" or "how many open tickets per assignee". It groups by at most two fields.
 
+## Deleting data
+
+Deletes are permanent. Nothing is kept in a trash you can restore from, so the assistant should tell you exactly what it is about to remove and wait for your go-ahead.
+
+A few rules apply, and they exist so an assistant cannot quietly take more than you meant.
+
+**Deleting something that still holds data takes a second, explicit attempt.** A database with tables in it, or a table with records in it, is refused the first time: the response says how much is inside, and the assistant has to repeat the call with a force flag to go through with it. Empty ones are deleted straight away. The refusal is a speed bump rather than a guarantee — a well-behaved assistant relays the count and asks you before retrying, and a count of 4,000 records is your cue to check it is the right table.
+
+**A database always keeps at least one table.** Deleting a database's only table is refused outright, and force does not override it — the same rule the builder applies. If you want the last table gone, what you actually want is the database gone, so ask for that instead and the table goes with it.
+
+**A table always keeps its primary field.** Every other field can be deleted. Deleting a field removes its values from every record, drops it from any view's filters and sorts, and marks formulas that referenced it invalid.
+
+**Two things are not tidied up for you when a field goes.** Deleting a linked record field leaves the matching field on the other table in place, still pointing at a relationship that no longer exists — remove it separately if the relationship is going away for good. Lookups and rollups that read through the deleted field are also left as they were. Worth checking what depends on a field before you remove it.
+
+**Batch record deletes are lenient about IDs.** `delete_records` takes up to 100 record IDs. IDs that no longer exist are skipped rather than failing the whole batch, and the result tells you how many records were actually deleted, so "deleted 8 of 10" means two were already gone.
+
+<Warning>
+  An assistant can delete anything the token you gave it can reach, and deletion cannot be withheld separately from editing — see [Permissions](/mcp/overview#permissions). A token set to **View only** can never delete; anything above that can. Prefer confirming deletes one at a time over letting an assistant work unattended across a database that matters.
+</Warning>
+
 ## Limits
 
 | | |
 |---|---|
 | Records per `create_records` call | 100 |
+| Record IDs per `delete_records` call | 100 |
 | Records returned per read | 200 |
 | Group-by fields in `aggregate_data` | 2 |
 
