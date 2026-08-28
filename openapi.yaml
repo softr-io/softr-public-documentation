@@ -806,7 +806,7 @@ paths:
                   properties:
                     condition:
                       $ref: '#/components/schemas/FilterCondition'
-                sort:
+                sorting:
                   type: array
                   items:
                     type: object
