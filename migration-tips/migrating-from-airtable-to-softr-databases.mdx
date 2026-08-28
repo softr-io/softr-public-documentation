@@ -1,19 +1,48 @@
 ---
-title: "Database Migration Tips"
+title: "Migrating from Airtable to Softr DB"
 permalink: "5F61VQ3Tr2syEd91hRt5W4"
-description: "Learn best practices for migrating your database to Softr DB"
+description: "Learn best practices for migrating your Airtable database to Softr DB"
 og:title: "Database Migration Tips – Softr Help Docs"
 og:description: "Learn best practices for migrating your database to Softr DB"
 og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
 twitter:title: "Database Migration Tips – Softr Help Docs"
 twitter:description: "Learn best practices for migrating your database to Softr DB"
+sidebarTitle: "Migrating from Airtable to Softr DB"
 ---
+
+## Why switch to Softr Databases
+
+<CardGroup cols={2}>
+  <Card title="Built to run operations at scale" icon="screwdriver-wrench">
+    Airtable performance can degrade as record counts, formulas, and linked data grow. Softr Databases are designed to manage data and power apps at scale—so systems stay fast and reliable as operations expand.
+  </Card>
+
+  <Card title="Scale without API limits" icon="gauge-high">
+    Softr Databases are native to the platform, so there are no external API rate limits throttling your app as your data and traffic grow. Record and storage limits scale with your plan.
+  </Card>
+
+  <Card title="Real business apps—not just data views" icon="key">
+    Airtable works well for internal data views. But when you need logins, user roles, granular permissions, workflows, and flexible design, Softr gives you everything you need to turn your data into custom business apps.
+  </Card>
+
+  <Card title="No per-seat pricing or hidden costs" icon="dollar-sign">
+    Airtable charges per-seat pricing and has strict record limits, even on its high-tier plans. Softr offers generous user and record limits without per-seat costs—making it easy to share apps across teams and clients.
+  </Card>
+
+  <Card title="Smarter AI Agents" icon="robot">
+    [Database AI Agents](/softr-databases/ai-agents) can trigger on record creation, on specific field updates, and on custom conditions. This is a level of control that isn’t available with external sources.
+  </Card>
+
+  <Card title="Import 3rd party data" icon="plug">
+    Airtable keeps you in its ecosystem. Softr connects to 100\+ data sources—including Airtable, Notion, SQL, HubSpot, and Google Sheets—plus third-party tools like Slack, QuickBooks, and DocuSign, letting you combine multiple data sources in one app.
+  </Card>
+</CardGroup>
 
 ## Video
 
 <iframe src="https://www.youtube.com/embed/GTdgZzQvb8c?rel=0" width="100%" height="500px" title="YouTube video" />
 
-Moving your data into Softr Databases keeps your database and your app on one platform with no external API rate limits, all Studio collaborators included, and native features like inline editing, Ask AI, and Database AI Agents. The built-in **Import data** tool makes the copy itself straightforward. It's non-destructive and leaves your original Airtable base untouched, but a smooth migration still takes a little planning.
+Moving your data into Softr Databases keeps your database and your app on one platform with no external API rate limits and native features like inline editing, Ask AI, and Database AI Agents. The built-in **Import data** tool makes the copy itself straightforward. It's non-destructive and leaves your original Airtable base untouched, but a smooth migration still takes a little planning.
 
 This page walks you through the full move like what to prepare, how to import your Airtable base step by step, and how to reconnect your app to the new database without breaking anything.
 
@@ -53,19 +82,19 @@ This creates a new Softr database populated with a copy of your Airtable data.
       {/* SCREENSHOT TODO: On the Home or Databases screen, click to create a new database and capture the "Create new database" modal showing the AI prompt box and the three options underneath: Import data, Copy template, Start blank. */}
 
       <img
-        src="/images/Screenshot-2026-08-20-at-4.33.05-PM.png"
         alt="Screenshot 2026 08 20 At 4 32 05 PM"
         title="Screenshot 2026 08 20 At 4 32 05 PM"
         lightAlt="Screenshot 2026 08 20 At 4 32 05 PM"
         darkAlt="Screenshot 2026 08 20 At 4 32 05 PM"
+        src="/images/Screenshot-2026-08-20-at-4.33.05-PM.png"
         className="dark:hidden"
       />
       <img
-        src="images/Screenshot-2026-08-20-at-4.33.05-PM.png"
         alt="Screenshot 2026 08 20 At 4 32 05 PM"
         title="Screenshot 2026 08 20 At 4 32 05 PM"
         lightAlt="Screenshot 2026 08 20 At 4 32 05 PM"
         darkAlt="Screenshot 2026 08 20 At 4 32 05 PM"
+        src="images/Screenshot-2026-08-20-at-4.33.05-PM.png"
         className="hidden dark:block"
       />
     </Frame>
@@ -118,13 +147,14 @@ The import handles the vast majority of your data automatically. Use this as a p
 <AccordionGroup>
   <Accordion title="Transfers automatically">
     - **Records and standard fields** — text, numbers, dates, single/multi-select, checkboxes, and so on.
+    - **System fields** — Airtable’s _Created time_, _Last modified time_ and _Autonumber_.
     - **Linked records** — relationships between tables are preserved.
     - **Attachments and files** — copied into the Softr database.
     - **Formulas** — Softr Databases use Airtable-compatible formula syntax, so most formulas come across with little or no change. See the [Formula glossary](/softr-databases/formula-glossary) for supported functions.
   </Accordion>
 
   <Accordion title="Review or re-create after importing">
-    - **System fields** — Airtable's _Created time_, _Last modified time_, _Created by_, _Last modified by_, and _Autonumber_ are computed by the source. Softr Databases has equivalent [field types](/softr-databases/field-types) and Softr will attempt to retain the original system field values; confirm they read the way you expect and re-create any your app depends on. 
+    - **System fields** — Airtable's _Created by and_ _Last modified by_ are computed by the source. Softr Databases has equivalent [field types](/softr-databases/field-types) and Softr will attempt to retain the original system field values; confirm they read the way you expect and re-create any your app depends on. 
     - **Rich text** — long text with formatting comes in as Markdown.
     - **Complex or unsupported formula functions** — most formulas migrate cleanly, but double-check any that use functions tied to Airtable's internal system info. Update those to their Softr equivalents where needed.
     - **Lookups and Rollups** — supported in Softr ([Lookup & Rollup fields](/softr-databases/related-record-lookup-and-rollup-fields)); verify they resolve against the right linked table after import.
@@ -205,26 +235,6 @@ Re-map the conditional logic on your [user groups](/user-groups-and-permissions/
 ## Verify visibility and permissions
 
 If you re-mapped your user groups correctly, your page and block [visibility permissions](/core-concepts-overview/user-groups--permissions) should stay intact — but test them anyway. Sign in as a test user in each relevant group and confirm they see exactly what they should, and nothing they shouldn't, before you consider the migration done.
-
-## Why switch to Softr Databases
-
-<CardGroup cols={2}>
-  <Card title="Scale without API limits" icon="gauge-high">
-    Softr Databases are native to the platform, so there are no external API rate limits throttling your app as your data and traffic grow. Record and storage limits scale with your plan.
-  </Card>
-
-  <Card title="Workspace members " icon="users">
-    Workspace members are easy to add on and cheaper than Airtable seats. Members also get automatic access to any apps as app users if desired.
-  </Card>
-
-  <Card title="Smarter AI Agents" icon="robot">
-    [Database AI Agents](/softr-databases/ai-agents) can trigger on record creation, on specific field updates, and on custom conditions. This is a level of control that isn't available with external sources.
-  </Card>
-
-  <Card title="Built for Softr apps" icon="bolt">
-    With data living natively in Softr, inline editing, Ask AI, and block rendering are faster, with no third-party middleware in between.
-  </Card>
-</CardGroup>
 
 ## Related
 

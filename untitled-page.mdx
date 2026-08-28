@@ -1,0 +1,274 @@
+---
+title: "Single Sign-on Overview"
+description: "How SSO works in Softr apps, when to use it, and how to configure SAML or OpenID with any identity provider."
+---
+
+Single Sign-on (SSO) lets the people who use your Softr app log in with the account they already have at work — their Microsoft, Google Workspace, Okta, or other identity provider account — instead of creating a separate Softr password. Your IT team stays in control of who has access, and your users get one less password to manage.
+
+This page explains how SSO works in Softr and walks through the configuration that is the same for every identity provider. Once you understand this flow, the provider-specific guides only tell you where to click inside that provider.
+
+<Note>
+  SSO (SAML and OpenID) is available on the [Enterprise plan](https://www.softr.io/pricing). If you are on another plan, [contact sales](https://www.softr.io/contact-sales) to discuss enabling it.
+</Note>
+
+<Warning>
+  **This page is about SSO for the users of your app.** If you want the _collaborators who build apps_ in your Softr workspace to log in to Softr Studio through your identity provider, that is a separate feature — see [SSO for Softr Studio](/security/sso-for-softr-studio).
+</Warning>
+
+## How SSO works in Softr
+
+In SSO terms your Softr app is the **service provider (SP)** and your identity provider (**IdP**) is the system that actually holds the accounts and checks the credentials. When someone signs in:
+
+1. They open your app and choose **Continue with SSO** on the login screen.
+2. Softr hands them off to your identity provider.
+3. The identity provider authenticates them — including any MFA, conditional access, or device policy you enforce there.
+4. The identity provider sends Softr a signed response containing the person's email and name.
+5. Softr signs them in and matches them to a user record in your app. Because step 3 happens entirely on your side, everything your IT team already enforces — MFA, session policy, deprovisioning when someone leaves — applies to your Softr app too, without Softr ever handling a password.
+
+<Frame caption="The SSO handoff between a Softr app and an identity provider.">
+  {/* SCREENSHOT TODO: Diagram (not a UI capture). Draw the five-step flow above: user → Softr login page → IdP → signed assertion/token back → Softr session. Label the Softr side "Service provider (SP)" and the other side "Identity provider (IdP)". */}
+
+  ![Diagram of the SSO flow between a Softr app and an identity provider](/images/single-sign-on-overview/sso-flow.png)
+</Frame>
+
+## SAML or OpenID?
+
+Softr supports both of the standards that identity providers use, and you pick one per app. Most providers support both, so if you have no preference, use whichever your provider's documentation treats as the default path.
+
+|  | SAML | OpenID (OIDC) |
+| --- | --- | --- |
+| What it is | An XML-based standard for exchanging authentication assertions | An identity layer on top of OAuth 2.0 |
+| What you give your IdP | **ACS URL** and **Audience URL** | **Callback URL** |
+| What you paste back into Softr | **Metadata.xml**, plus the **Email**, **First name** and **Last name** attribute keys | **Provider URL**, **Token service URL**, **Client ID**, **Client secret** |
+| Typical providers | Microsoft Entra ID (Azure AD), Okta, OneLogin, Google Workspace, Shibboleth, Keycloak | Outseta, Auth0, Keycloak, and any provider publishing an OIDC discovery endpoint |
+
+<Tip>
+  If your provider offers a pre-built catalog entry for SAML apps, you will usually get there faster with SAML: the provider generates the metadata for you and you paste a single XML document into Softr.
+</Tip>
+
+## Before you start
+
+Have these ready — the configuration screen asks for all of them and you will be switching between two browser tabs:
+
+<AccordionGroup>
+  <Accordion title="Admin access to your identity provider">
+    You need to be able to create a new application (sometimes called an app integration, enterprise application, or OAuth client) in your IdP, and to configure which attributes it sends.
+  </Accordion>
+
+  <Accordion title="A decision on SAML vs OpenID">
+    See the comparison above. You can change it later, but you will have to redo the setup on the provider side.
+  </Accordion>
+
+  <Accordion title="The email domains your users sign in with">
+    For example `acme.com` and `acme.co.uk`. These are optional, but setting them changes how the login screen behaves — see [Routing users to SSO automatically](#routing-users-to-sso-automatically).
+  </Accordion>
+
+  <Accordion title="A plan for user groups">
+    SSO controls _who can get in_. It does not by itself decide what each person can see. Plan how signed-in users map to [user groups](/user-groups-and-permissions/user-groups) before you roll SSO out.
+  </Accordion>
+</AccordionGroup>
+
+## Configure SSO
+
+<Steps>
+  <Step title="Open your app's authentication settings">
+    In Softr Studio, open your app and go to the **Users** tab, then the **Authentication** sub-tab. This is where every login method for the app is managed.
+
+    <Frame caption="The Authentication screen, where all of an app's login methods are configured.">
+      {/* SCREENSHOT TODO: In Studio, open an app → Users → Authentication. Capture the full screen showing Login (Enabled/Disabled), the Authentication method list (Email, Single Sign-on, Google Sign-in, Authenticator app (2FA), Permanent login link), Sign up, Onboarding flows, and Security. */}
+
+      ![The Authentication tab in Softr Studio](/images/single-sign-on-overview/authentication-tab.png)
+    </Frame>
+  </Step>
+  <Step title="Turn on Single Sign-on">
+    In the **Authentication method** list, switch the **Single Sign-on** toggle on. The **Single sign-on** configuration window opens straight away. Once the method is on, a gear icon appears next to it — use that to reopen the configuration at any time. An amber dot next to **Single Sign-on** means the method is enabled but not yet fully configured.
+
+    <Frame caption="The Single Sign-on toggle in the Authentication method list.">
+      {/* SCREENSHOT TODO: Capture the Authentication method rows with Single Sign-on toggled on, showing both the gear icon and the amber "not yet configured" dot. */}
+
+      ![Single Sign-on enabled in the Authentication method list](/images/single-sign-on-overview/enable-sso-toggle.png)
+    </Frame>
+  </Step>
+  <Step title="Choose your SSO type">
+    At the top of the window, set **SSO type** to **SAML** or **OpenID**. The fields below change to match your choice.
+
+    <Frame caption="The SSO type dropdown, offering SAML and OpenID.">
+      {/* SCREENSHOT TODO: Open the Single sign-on window and click the SSO type dropdown so both options (SAML, OpenID) are visible. */}
+
+      ![SSO type dropdown showing SAML and OpenID](/images/single-sign-on-overview/sso-type-dropdown.png)
+    </Frame>
+  </Step>
+  <Step title="Share Softr's details with your identity provider">
+    Under **1. Share the following details with your identity provider**, Softr shows the values your IdP needs in order to trust your app. Copy each one with the button at the end of the field.
+
+    <Tabs>
+      <Tab title="SAML">
+        - **ACS URL** — the Assertion Consumer Service sign-in URL, in the form `https://<your-app>.softr.app/saml/SSO`. Your identity provider posts its response here. Some providers call this the _Reply URL_, _Recipient_, or _Single sign-on URL_.
+        - **Audience URL** — the entity ID, a unique identifier for your app. Providers may label this _Audience (EntityID)_, _Identifier_, or _SP Entity ID_.
+      </Tab>
+      <Tab title="OpenID">
+        - **Callback URL** — the redirect URI, in the form `https://<your-app>.softr.app/open-id/code`. Providers may label this _Redirect URI_, _Sign-in redirect URI_, or _Callback URI_.
+      </Tab>
+    </Tabs>
+
+    <Frame caption="Softr shows the ACS URL and Audience URL to give to your identity provider.">
+      {/* SCREENSHOT TODO: Single sign-on window with SSO type = SAML, capturing section "1. Share the following details with your identity provider" with the ACS URL and Audience URL fields and their copy buttons. */}
+
+      ![ACS URL and Audience URL fields in the Single sign-on window](/images/single-sign-on-overview/saml-share-details.png)
+    </Frame>
+
+    <Note>
+      If your app uses a [custom domain](/publishing/add-a-custom-domain-to-your-app), confirm which hostname these URLs use before you register them with your provider — the values Softr shows here are the ones your provider must trust.
+    </Note>
+  </Step>
+  <Step title="Create the application in your identity provider">
+    Switch to your identity provider and create a new application, pasting in the URLs from the previous step. Then configure what the provider sends back:
+
+    - **For SAML**, add attributes for the user's email, first name, and last name, and make sure each is included in the SAML assertion. Note the exact attribute names — you need them in the next step.
+    - **For OpenID**, note the **Client ID** and **Client secret** the provider generates, along with its authorization and token endpoints.
+
+    The provider-specific guides at the bottom of this page cover this step in detail. If your provider is not listed yet, its own documentation for adding a custom SAML or OIDC application will use the same values.
+  </Step>
+  <Step title="Enter your identity provider's details in Softr">
+    Back in the **Single sign-on** window, fill in **2. Enter the following details from your identity provider**.
+
+    <Tabs>
+      <Tab title="SAML">
+        - **Metadata.xml** — paste the full metadata XML document from your provider.
+        - **Email key** / **First name key** / **Last name key** — the exact attribute names you configured in your IdP, so Softr knows which claim holds which value.
+      </Tab>
+      <Tab title="OpenID">
+        - **Provider URL** — your provider's OpenID Connect issuer or authorization URL.
+        - **Token service URL** — the endpoint Softr calls to exchange the authorization code for tokens.
+        - **Client ID** and **Client secret** — the credentials generated when you created the OAuth client.
+      </Tab>
+    </Tabs>
+
+    <Frame caption="The OpenID fields: Provider URL, Token service URL, Client ID, and Client secret.">
+      {/* SCREENSHOT TODO: Single sign-on window with SSO type = OpenID, capturing the Callback URL and the whole "2. Enter the following details from your identity provider" section. */}
+
+      ![OpenID configuration fields in the Single sign-on window](/images/single-sign-on-overview/openid-fields.png)
+    </Frame>
+  </Step>
+  <Step title="Set your SSO email domains (optional)">
+    In **SSO email domains**, list the domains your workforce signs in with, separated by commas — for example `acme.com, acme.co.uk`. If your app offers other login methods as well, anyone whose email address matches one of these domains is always sent to SSO instead. See [Routing users to SSO automatically](#routing-users-to-sso-automatically).
+  </Step>
+  <Step title="Save and publish">
+    Click **Save**. Then open the **Log in** utility page to check that **Continue with SSO** now appears, and publish your app so the change reaches your users.
+  </Step>
+</Steps>
+
+## What your users see
+
+You do not add an SSO block to a page. Softr's login screen is a built-in **utility page** called **Log in** (at `/login`), and enabling Single Sign-on adds a **Continue with SSO** button to it automatically.
+
+<Frame caption="The Log in utility page with Continue with SSO enabled.">
+  {/* SCREENSHOT TODO: In Studio, open Pages → Utility pages → Log in with SSO enabled. Capture the login card showing "Continue with Google", "Continue with SSO", the Email field, and the Continue button. */}
+
+  ![Softr login page showing a Continue with SSO button](/images/single-sign-on-overview/login-page-sso-button.png)
+</Frame>
+
+Select the login card in Studio to open the **Sign In** block settings, where you can adjust:
+
+- **Logo**, **Title & subtitle**, and the **Side section** (background image, heading, text, image) to brand the screen.
+- **Log in flows** — every authentication method enabled for the app is listed here with a visibility control, so you can hide a method on this screen without disabling it for the app.
+- **Consent message**, **Redirect to sign up**, and **reCAPTCHA**.
+
+<Frame caption="The Log in flows list in the Sign In block settings.">
+  {/* SCREENSHOT TODO: Select the login card on the Log in utility page and capture the right-hand Content panel, focused on the "LOG IN FLOWS" section listing Email, Google Sign-in and Single Sign-on with their visibility (eye) icons. */}
+
+  ![Log in flows section of the Sign In block settings](/images/single-sign-on-overview/log-in-flows.png)
+</Frame>
+
+### Routing users to SSO automatically
+
+The **SSO email domains** field decides how much choice your users get:
+
+- **Left empty** — the login screen shows every enabled method side by side, and each person picks one.
+- **Filled in** — anyone whose email address matches a listed domain is always directed to log in with SSO, even if other methods are available. Use this when your workforce must go through the identity provider while, say, external clients continue to use email.
+
+## How SSO users appear in your app
+
+Signed-in users show up under **Users → Users** like any other user. The **Auth method** column records how each person authenticates, so you can tell SSO users apart from those using email and password.
+
+<Frame caption="The Users list, with the Auth method column showing how each person signs in.">
+  {/* SCREENSHOT TODO: Users → Users. Capture the table showing the Email, Name, Status, User Groups, Creation method and Auth method columns. */}
+
+  ![Users list showing the Auth method column](/images/single-sign-on-overview/users-auth-method.png)
+</Frame>
+
+Authentication is only half of access control. Once someone is signed in, what they can see is governed by [user groups](/user-groups-and-permissions/user-groups), [page visibility](/user-groups-and-permissions/page-visibility), and [record filters](/user-groups-and-permissions/record-filters). Configure those before inviting your users in.
+
+<Note>
+  If you want the identity provider to create, update and deactivate Softr user records automatically rather than relying on people signing in, look at [SCIM User Provisioning](/add-and-manage-users/scim-provisioning), which is also on the Enterprise plan.
+</Note>
+
+## Using SSO alongside other login methods
+
+SSO does not have to be the only way in. Each method in the **Authentication method** list is independent, so a single app can offer SSO for employees and email login for external clients. Two things to keep in mind:
+
+- **SSO email domains** override the choice for matching addresses, as described above.
+- Hiding a method under **Log in flows** only changes that screen. To remove a method for the whole app, switch it off in **Users → Authentication**.
+
+## Turning SSO off
+
+Switching **Single Sign-on** off asks you to type `Remove Single Sign-on` to confirm, because it can lock people out.
+
+<Warning>
+  Removing SSO as an authentication method means anyone who only ever signed in through your identity provider may no longer be able to log in. Make sure those users have another way in (or that you intend to revoke their access) before you confirm.
+</Warning>
+
+## Good to know
+
+- **Softr is the service provider, never the identity provider.** You can let your identity provider log people in to Softr; you cannot use a Softr login to sign people in to other platforms.
+- **One SSO configuration per app.** The configuration window holds a single identity provider. The **SSO email domains** field accepts several domains for that one provider — it does not connect several providers to the same app.
+- **The configuration is per app**, not per workspace. An app you duplicate does not inherit a working SSO setup; register the new app's ACS/Callback URLs with your provider separately.
+
+## Provider guides
+
+<CardGroup cols={2}>
+  <Card title="SAML Single Sign-on" icon="key" href="/add-and-manage-users/saml-single-sign-on">
+    The SAML setup walked through end to end.
+  </Card>
+
+  <Card title="Microsoft Azure SAML Single Sign-on" icon="microsoft" href="/add-and-manage-users/microsoft-azure-saml-single-sign-on">
+    Connecting Microsoft Entra ID (Azure AD).
+  </Card>
+
+  <Card title="OpenId Single Sign-on" icon="fingerprint" href="/add-and-manage-users/openid-single-sign-on">
+    The OpenID Connect setup, using Outseta as the example.
+  </Card>
+
+  <Card title="Google Sign In" icon="google" href="/integrations/google-sign-in">
+    A lighter-weight alternative for Google accounts.
+  </Card>
+</CardGroup>
+
+Your identity provider's own documentation is the authority on its half of the setup. Useful starting points:
+
+- Microsoft Entra ID — [Enable SAML single sign-on for an enterprise application](https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/add-application-portal-setup-sso)
+- Okta — [Create SAML app integrations](https://help.okta.com/en-us/content/topics/apps/apps_app_integration_wizard_saml.htm)
+- Google Workspace — [Set up your own custom SAML app](https://support.google.com/a/answer/6087519)
+- OneLogin — [SAML Custom Connector (Advanced)](https://support.onelogin.com/kb/4266907/saml-custom-connector-advanced)
+- Auth0 — [Configure applications with OIDC Discovery](https://auth0.com/docs/get-started/applications/configure-applications-with-oidc-discovery)
+- Outseta — [Log users into multiple products with OpenID Connect SSO](https://go.outseta.com/support/kb/articles/amRZYjmJ/log-users-into-multiple-products-with-openid-connect-single-sign-on-sso)
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="User Authentication" icon="user-lock" href="/core-concepts-overview/user-authentication">
+    How authentication works in Softr apps.
+  </Card>
+
+  <Card title="SCIM User Provisioning" icon="users-gear" href="/add-and-manage-users/scim-provisioning">
+    Provision and deprovision users from your identity provider.
+  </Card>
+
+  <Card title="SSO for Softr Studio" icon="building-lock" href="/security/sso-for-softr-studio">
+    SSO for the collaborators who build your apps.
+  </Card>
+
+  <Card title="Softr App Security" icon="shield" href="/security/softr-app-security">
+    How Softr secures published apps.
+  </Card>
+</CardGroup>

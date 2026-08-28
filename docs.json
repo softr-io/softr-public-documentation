@@ -352,10 +352,11 @@
             "group": "Advanced Sign-in Options",
             "icon": "lock",
             "pages": [
+              "untitled-page",
               "add-and-manage-users/saml-single-sign-on",
-              "add-and-manage-users/microsoft-azure-saml-single-sign-on",
               "add-and-manage-users/openid-single-sign-on",
-              "add-and-manage-users/scim-provisioning"
+              "add-and-manage-users/scim-provisioning",
+              "add-and-manage-users/microsoft-azure-saml-single-sign-on"
             ]
           }
         ]
@@ -718,7 +719,7 @@
             "group": "Migration Tips",
             "icon": "arrow-down-left-and-arrow-up-right-to-center",
             "pages": [
-              "softr-databases/database-migration-tips",
+              "migration-tips/migrating-from-airtable-to-softr-databases",
               "application-settings/migrating-app-versions"
             ]
           },
