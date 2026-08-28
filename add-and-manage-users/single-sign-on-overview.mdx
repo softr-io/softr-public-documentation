@@ -26,8 +26,6 @@ In SSO terms your Softr app is the **service provider (SP)** and your identity p
 5. Softr signs them in and matches them to a user record in your app. Because step 3 happens entirely on your side, everything your IT team already enforces — MFA, session policy, deprovisioning when someone leaves — applies to your Softr app too, without Softr ever handling a password.
 
 <Frame caption="The SSO handoff between a Softr app and an identity provider.">
-  {/* SCREENSHOT TODO: Diagram (not a UI capture). Draw the five-step flow above: user → Softr login page → IdP → signed assertion/token back → Softr session. Label the Softr side "Service provider (SP)" and the other side "Identity provider (IdP)". */}
-
   ![Diagram of the SSO flow between a Softr app and an identity provider](/images/single-sign-on-overview/sso-flow.png)
 </Frame>
 
@@ -75,8 +73,6 @@ Have these ready — the configuration screen asks for all of them and you will 
     In Softr Studio, open your app and go to the **Users** tab, then the **Authentication** sub-tab. This is where every login method for the app is managed.
 
     <Frame caption="The Authentication screen, where all of an app's login methods are configured.">
-      {/* SCREENSHOT TODO: In Studio, open an app → Users → Authentication. Capture the full screen showing Login (Enabled/Disabled), the Authentication method list (Email, Single Sign-on, Google Sign-in, Authenticator app (2FA), Permanent login link), Sign up, Onboarding flows, and Security. */}
-
       ![The Authentication tab in Softr Studio](/images/single-sign-on-overview/authentication-tab.png)
     </Frame>
   </Step>
@@ -84,8 +80,6 @@ Have these ready — the configuration screen asks for all of them and you will 
     In the **Authentication method** list, switch the **Single Sign-on** toggle on. The **Single sign-on** configuration window opens straight away. Once the method is on, a gear icon appears next to it — use that to reopen the configuration at any time. An amber dot next to **Single Sign-on** means the method is enabled but not yet fully configured.
 
     <Frame caption="The Single Sign-on toggle in the Authentication method list.">
-      {/* SCREENSHOT TODO: Capture the Authentication method rows with Single Sign-on toggled on, showing both the gear icon and the amber "not yet configured" dot. */}
-
       ![Single Sign-on enabled in the Authentication method list](/images/single-sign-on-overview/enable-sso-toggle.png)
     </Frame>
   </Step>
@@ -93,8 +87,6 @@ Have these ready — the configuration screen asks for all of them and you will 
     At the top of the window, set **SSO type** to **SAML** or **OpenID**. The fields below change to match your choice.
 
     <Frame caption="The SSO type dropdown, offering SAML and OpenID.">
-      {/* SCREENSHOT TODO: Open the Single sign-on window and click the SSO type dropdown so both options (SAML, OpenID) are visible. */}
-
       ![SSO type dropdown showing SAML and OpenID](/images/single-sign-on-overview/sso-type-dropdown.png)
     </Frame>
   </Step>
@@ -112,8 +104,6 @@ Have these ready — the configuration screen asks for all of them and you will 
     </Tabs>
 
     <Frame caption="Softr shows the ACS URL and Audience URL to give to your identity provider.">
-      {/* SCREENSHOT TODO: Single sign-on window with SSO type = SAML, capturing section "1. Share the following details with your identity provider" with the ACS URL and Audience URL fields and their copy buttons. */}
-
       ![ACS URL and Audience URL fields in the Single sign-on window](/images/single-sign-on-overview/saml-share-details.png)
     </Frame>
 
@@ -145,8 +135,6 @@ Have these ready — the configuration screen asks for all of them and you will 
     </Tabs>
 
     <Frame caption="The OpenID fields: Provider URL, Token service URL, Client ID, and Client secret.">
-      {/* SCREENSHOT TODO: Single sign-on window with SSO type = OpenID, capturing the Callback URL and the whole "2. Enter the following details from your identity provider" section. */}
-
       ![OpenID configuration fields in the Single sign-on window](/images/single-sign-on-overview/openid-fields.png)
     </Frame>
   </Step>
@@ -163,8 +151,6 @@ Have these ready — the configuration screen asks for all of them and you will 
 You do not add an SSO block to a page. Softr's login screen is a built-in **utility page** called **Log in** (at `/login`), and enabling Single Sign-on adds a **Continue with SSO** button to it automatically.
 
 <Frame caption="The Log in utility page with Continue with SSO enabled.">
-  {/* SCREENSHOT TODO: In Studio, open Pages → Utility pages → Log in with SSO enabled. Capture the login card showing "Continue with Google", "Continue with SSO", the Email field, and the Continue button. */}
-
   ![Softr login page showing a Continue with SSO button](/images/single-sign-on-overview/login-page-sso-button.png)
 </Frame>
 
@@ -175,8 +161,6 @@ Select the login card in Studio to open the **Sign In** block settings, where yo
 - **Consent message**, **Redirect to sign up**, and **reCAPTCHA**.
 
 <Frame caption="The Log in flows list in the Sign In block settings.">
-  {/* SCREENSHOT TODO: Select the login card on the Log in utility page and capture the right-hand Content panel, focused on the "LOG IN FLOWS" section listing Email, Google Sign-in and Single Sign-on with their visibility (eye) icons. */}
-
   ![Log in flows section of the Sign In block settings](/images/single-sign-on-overview/log-in-flows.png)
 </Frame>
 
@@ -192,8 +176,6 @@ The **SSO email domains** field decides how much choice your users get:
 Signed-in users show up under **Users → Users** like any other user. The **Auth method** column records how each person authenticates, so you can tell SSO users apart from those using email and password.
 
 <Frame caption="The Users list, with the Auth method column showing how each person signs in.">
-  {/* SCREENSHOT TODO: Users → Users. Capture the table showing the Email, Name, Status, User Groups, Creation method and Auth method columns. */}
-
   ![Users list showing the Auth method column](/images/single-sign-on-overview/users-auth-method.png)
 </Frame>
 
