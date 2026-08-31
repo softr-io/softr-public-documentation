@@ -1,18 +1,18 @@
 ---
 title: "Applications"
 sidebarTitle: "Applications"
-description: "Let an AI assistant create blank apps, read your apps, manage their users, toggle login, preview changes, and publish them."
+description: "Let an AI assistant create blank apps, add pages, read your apps, manage their users, toggle login, preview changes, and publish them."
 'og:title': "MCP: Applications – Softr Help Docs"
-'og:description': "Let an AI assistant create blank apps, read your apps, manage their users, toggle login, preview changes, and publish them."
+'og:description': "Let an AI assistant create blank apps, add pages, read your apps, manage their users, toggle login, preview changes, and publish them."
 'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
 'twitter:title': "MCP: Applications – Softr Help Docs"
-'twitter:description': "Let an AI assistant create blank apps, read your apps, manage their users, toggle login, preview changes, and publish them."
+'twitter:description': "Let an AI assistant create blank apps, add pages, read your apps, manage their users, toggle login, preview changes, and publish them."
 icon: "window"
 ---
 
 These tools let an assistant understand how an app is built — its pages, its blocks, and who can see what — and then show you a change or make it live.
 
-Everything here is read-only except creating a blank app, adding and removing app users, toggling login, previewing, and publishing. Currently, changes to an existing app's content can only be made through [vibe coding blocks](/mcp/vibe-coding).
+Everything here is read-only except creating a blank app, adding a page, adding and removing app users, toggling login, previewing, and publishing. An assistant can add an empty page, but filling it with content is done through [vibe coding blocks](/mcp/vibe-coding) — and changes to an existing page's content are made the same way.
 
 ## Creating an app
 
@@ -21,6 +21,22 @@ Everything here is read-only except creating a blank app, adding and removing ap
 | `create_application` | Creates a new blank app, optionally in a specific workspace and with a name, and returns its details |
 
 `create_application` spins up a fresh, empty app with a default home page and returns its id, name, and workspace. The new app is **not** published — use `preview_app` to look at it and `publish_app` when you want it live. By default it is created in your default workspace; pass a workspace to choose where it goes (use `list_workspaces` to find one). You can also pass a name for the app; omit it and Softr auto-generates one. From there, add content with [vibe coding blocks](/mcp/vibe-coding).
+
+## Adding a page
+
+| Tool | What it does |
+|---|---|
+| `create_page` | Adds a new, empty page to an app and returns its id, path, and name |
+
+`create_page` takes a name and a path — the name is the label you see in Studio's page list, the path is the URL your visitors see (`/pricing`). Both are required, and both have to be unused in that app; the assistant will be told which one clashed if you pick something taken. A leading slash is added for you, so "pricing" and "/pricing" mean the same thing.
+
+The page arrives **empty**. It inherits the app's default visibility — logged-in users only if the app has login enabled, everyone otherwise — and lands at the top level of your page list, so move or nest it in Studio if you want it somewhere else. To put something on it, ask for a [vibe coding block](/mcp/vibe-coding) next.
+
+<Note>
+  You cannot create a page at `/`. That is your app's home page: it exists from the moment the app is created and is never added afterwards. To change what visitors land on, edit the home page you already have — `list_pages` will show it — or set a different page as the home page in Studio. The paths `/assets`, `/studio`, and `/health` are reserved by Softr and rejected too.
+</Note>
+
+A page you add is not live until you publish. Use `preview_app` to look at it first, then `publish_app` when you want it out there. A Studio tab you already have open won't show the new page until you reload it.
 
 ## Reading an app
 
