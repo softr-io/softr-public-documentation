@@ -68,8 +68,11 @@ These tools manage an app's **end users** — the people who log in to the publi
 |---|---|
 | `add_application_user` | Adds an end user to the app by name and email |
 | `remove_application_user` | Removes an end user from the app by email |
+| `set_application_user_activation` | Activates or deactivates an end user by email |
 
-`add_application_user` takes both a name and an email and creates the user in the app. It fails if a user with that email already exists there. `remove_application_user` deletes the user with the given email, and fails if no user with that email exists in the app. Both need write access to the app.
+`add_application_user` takes both a name and an email and creates the user in the app. It fails if a user with that email already exists there. `remove_application_user` deletes the user with the given email, and fails if no user with that email exists in the app. All of these need write access to the app.
+
+`set_application_user_activation` is the reversible alternative to removing: a deactivated user cannot sign in, but their account and data stay, and activating them again restores their previous status. Pass `active=true` to activate or `active=false` to deactivate; the call fails if no user with that email exists in the app.
 
 ## Login settings
 
