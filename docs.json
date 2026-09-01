@@ -178,6 +178,12 @@
               "data-sources/snowflake",
               "data-sources/choosing-a-data-source"
             ]
+          },
+          {
+            "group": "Import Data",
+            "pages": [
+              "migration-tips/migrating-from-airtable-to-softr-databases"
+            ]
           }
         ]
       },
@@ -720,7 +726,6 @@
             "group": "Migration Tips",
             "icon": "arrow-down-left-and-arrow-up-right-to-center",
             "pages": [
-              "migration-tips/migrating-from-airtable-to-softr-databases",
               "application-settings/migrating-app-versions"
             ]
           },
