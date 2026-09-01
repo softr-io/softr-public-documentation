@@ -79,6 +79,10 @@ These tools manage an app's **end users** — the people who log in to the publi
 
 `set_application_login` turns the app's end-user login on or off — pass `enabled=true` to turn it on, `enabled=false` to turn it off. Disabling login stops end users from signing in to the app; it is reversible, so calling it again with `enabled=true` restores login. It applies only to apps that support login — apps without login settings are rejected. Changes take effect on the next publish, like other app changes.
 
+<Note>
+  **Login cannot be disabled while the app still has users.** The call fails with an error saying so. Remove the app's users first (for example with `remove_application_user`), then disable login.
+</Note>
+
 ## Sign-up settings
 
 | Tool | What it does |
