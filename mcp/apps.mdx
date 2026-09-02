@@ -45,7 +45,7 @@ Before changing anything, the assistant needs to know what is there. This is how
 | Tool | What it does |
 |---|---|
 | `list_applications` | Lists the apps you can access, optionally filtered to one workspace |
-| `get_application` | Gets an app's details: name, workspace, domain, and home page |
+| `get_application` | Gets an app's details: name, workspace, domain, home page, and the configured email sender |
 | `list_pages` | Lists an app's pages with their paths, types, and whether they are enabled |
 | `get_page` | Gets a page and the blocks on it |
 | `get_block` | Gets a single block's configuration and visibility settings |
@@ -104,12 +104,19 @@ These tools manage an app's **end users** — the people who log in to the publi
 
 | Tool | What it does |
 |---|---|
-| `configure_application_email_sender` | Sets the name and address the app's emails are sent from |
+| `configure_application_email_sender` | Sets, picks, or resets the name and address the app's emails are sent from |
+| `list_workspace_email_senders` | Lists the sender addresses registered on a workspace and whether each is confirmed |
 
-`configure_application_email_sender` takes a sender `name` and `email`, registers the sender on the workspace, and assigns it to the app — the app's invites, magic links, and notifications will be sent from it. Calling it again with the same email updates the name rather than failing. Custom senders require a plan that includes them.
+`configure_application_email_sender` controls the sender the app's invites, magic links, and notifications go out from. What you pass selects what happens:
+
+- **`name` and `email`** — registers the sender on the workspace (or renames it if that email is already registered) and assigns it to the app. This changes workspace-wide state, so it needs workspace-wide write access and a plan that includes custom senders.
+- **`email` only** — assigns a sender that already exists on the workspace to the app. This only changes the app, so app-level write access is enough. Use `list_workspace_email_senders` to see what exists.
+- **neither** — resets the app to the default Softr sender (its subdomain's `@softr.app` address).
+
+To answer "what sender is my app using?", `get_application` includes an `emailSender` field with the sender's name, email, confirmation state, and whether it is the default one.
 
 <Note>
-  **The sender is not active until its address is confirmed.** Registering triggers a verification email to the sender address; until someone clicks that link, the app keeps sending from the default Softr address. The tool's response includes `confirmed` so you know which state you're in. Senders on your own domain additionally need DKIM and Return-Path DNS verification, which is done in Softr Studio.
+  **A newly registered sender is not active until its address is confirmed.** Registering triggers a verification email to the sender address; until someone clicks that link, the app keeps sending from the default Softr address. The tool's response includes `confirmed` so you know which state you're in. Senders on your own domain additionally need DKIM and Return-Path DNS verification, which is done in Softr Studio.
 </Note>
 
 ## Previewing and publishing
