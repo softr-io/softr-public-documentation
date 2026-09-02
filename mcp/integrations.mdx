@@ -10,7 +10,7 @@ description: "Browse the external data sources connected to a Softr workspace."
 icon: "plug"
 ---
 
-An integration is an external data source connected to a workspace — an Airtable base, a Google Sheet, a Notion database, a Supabase project. You connect it once per workspace, and then any app, block, or workflow in that workspace can read from it.
+An integration is an external data source connected to a workspace — an Airtable base, a Google Sheet, a Notion database, a monday.com board, a Supabase project. You connect it once per workspace, and then any app, block, or workflow in that workspace can read from it.
 
 These five tools let an assistant explore what's connected and find the exact table it needs. They are all read-only. They exist to answer "what data is available here?" so the answer can be used somewhere else: wiring a table to a [vibe coding block](/mcp/vibe-coding), or filling in a [workflow step](/mcp/workflows) that reads from Airtable.
 
@@ -24,46 +24,70 @@ These tools are one path, not five separate features. Each level needs an ID fro
 
 ```
 list_data_sources                          workspace
-└── list_data_source_databases             a base, spreadsheet, or database
-    └── list_data_source_schemas           Supabase only
-        └── list_data_source_tables        a table or sheet
+└── list_data_source_databases             a base, spreadsheet, doc, workspace, or database
+    └── list_data_source_schemas           only some integrations have this level
+        └── list_data_source_tables        a table, sheet, board, or list
             └── list_data_source_table_fields   its fields
 ```
 
 | Tool | What it does |
 |---|---|
 | `list_data_sources` | Lists the integrations connected to a workspace |
-| `list_data_source_databases` | Lists the bases, spreadsheets, or databases inside one integration |
-| `list_data_source_schemas` | Lists the SQL schemas inside a database. Supabase only |
-| `list_data_source_tables` | Lists the tables or sheets |
+| `list_data_source_databases` | Lists the top level inside one integration — bases, spreadsheets, docs, workspaces, projects, or databases |
+| `list_data_source_schemas` | Lists the middle level, for the integrations that have one |
+| `list_data_source_tables` | Lists the tables, sheets, boards, or lists |
 | `list_data_source_table_fields` | Lists a table's fields, their types, and how to reference them |
 
-**Supabase has an extra level.** Its structure is database → schema → table, so browsing it takes five steps instead of four. A Supabase connection usually has just one database, called `postgres`.
+### Some integrations have a middle level
+
+Most go straight from the top level to tables. Seven have something in between, so browsing them takes five steps instead of four:
+
+| Integrations | The middle level is |
+|---|---|
+| Supabase, PostgreSQL, SQL Server, Snowflake | a SQL schema |
+| BigQuery | a dataset |
+| SmartSuite | a solution |
+| ClickUp | a space |
+
+A SQL connection usually has just one database — for Supabase it is called `postgres`.
+
+For everything else, skip `list_data_source_schemas` and go straight from databases to tables. Calling it on an integration that has no middle level returns an error rather than an empty list, so that "no schemas" is never mistaken for a fact about your data.
+
+<Warning>
+  **MySQL, MariaDB and Xano look like they belong in the table above, and don't.** They treat the schema and the database as the same thing, so they have nothing to browse in between — list their tables directly.
+</Warning>
 
 ## Which integrations are supported
 
-Softr connects to many kinds of data source, but only five of them can be browsed and connected to a block through MCP today:
+Every data source type Softr supports can be browsed and connected to a block through MCP:
 
-- **Softr Databases** — though [the database tools](/mcp/databases) do much more
-- **Airtable**
-- **Google Sheets**
-- **Notion**
-- **Supabase**
+| Kind | Integrations |
+|---|---|
+| Softr's own | Softr Databases — though [the database tools](/mcp/databases) do much more |
+| Spreadsheets and docs | Airtable, Google Sheets, Microsoft Excel, Notion, Coda |
+| Project and work tools | monday.com, SmartSuite, ClickUp |
+| CRMs | HubSpot, Salesforce, Zoho CRM |
+| SQL databases | Supabase, PostgreSQL, MySQL, MariaDB, SQL Server, Snowflake, Xano, BigQuery |
+| Custom | REST API |
 
-Anything else connected to the workspace still appears in `list_data_sources`, so you can see what is there, but cannot be browsed or connected to a block through MCP yet. To use one of those in a block, connect it through the block's **Source** tab in the builder instead.
+Each has its own setup guide in the **Data Sources** section of these docs. Connect it to the workspace there first, and it becomes browsable through MCP.
+
+`list_data_sources` also returns integrations that are not data sources at all — Gmail, Slack, OpenAI and the other workflow connectors. Those appear so you can see what the workspace has, but there are no tables to browse inside them.
 
 <Note>
-  If an integration you expect is missing from a result, check that its type is one of the five above, and that it is connected to the workspace you are asking about rather than a different one.
+  If an integration you expect is missing from a result, check that it is connected to the workspace you are asking about rather than a different one. If a table is missing, check you are looking under the right top-level entry — a monday.com board only appears under the monday.com workspace that owns it.
 </Note>
 
 ## Referencing fields in code
 
 `list_data_source_table_fields` returns each field's type and options, the table's primary field, and one thing that matters more than it looks: how fields must be referenced in code.
 
-| Integration | Fields are referenced by |
+| Integrations | Fields are referenced by |
 |---|---|
-| Airtable, Google Sheets, Notion | Name |
-| Softr Databases, Supabase | ID — for Supabase, the SQL column name |
+| Softr Databases, SmartSuite, ClickUp, monday.com, Coda, HubSpot, Salesforce, Zoho CRM | **ID** |
+| Everything else — Airtable, Google Sheets, Excel, Notion, BigQuery, REST API, and every SQL database | **Name** |
+
+Rather than memorising that table, read `fieldReferenceKey` from the response: it says `"id"` or `"name"` for the table you just looked at. For SQL databases the two are the same string anyway, because a column's ID *is* its name.
 
 <Warning>
   Getting this wrong fails silently. Code using the wrong form compiles, saves, and looks correct in the builder — and then returns nothing when the page loads. If a block renders but its data is empty, this is the first thing to check.
