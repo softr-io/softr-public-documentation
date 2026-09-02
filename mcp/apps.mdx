@@ -1,18 +1,18 @@
 ---
 title: "Applications"
 sidebarTitle: "Applications"
-description: "Let an AI assistant create blank apps, add pages, read your apps, manage their users, toggle login, configure sign-up, preview changes, and publish them."
+description: "Let an AI assistant create blank apps, add pages, read your apps, manage their users, toggle login, configure sign-up and the email sender, preview changes, and publish them."
 'og:title': "MCP: Applications – Softr Help Docs"
-'og:description': "Let an AI assistant create blank apps, add pages, read your apps, manage their users, toggle login, configure sign-up, preview changes, and publish them."
+'og:description': "Let an AI assistant create blank apps, add pages, read your apps, manage their users, toggle login, configure sign-up and the email sender, preview changes, and publish them."
 'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
 'twitter:title': "MCP: Applications – Softr Help Docs"
-'twitter:description': "Let an AI assistant create blank apps, add pages, read your apps, manage their users, toggle login, configure sign-up, preview changes, and publish them."
+'twitter:description': "Let an AI assistant create blank apps, add pages, read your apps, manage their users, toggle login, configure sign-up and the email sender, preview changes, and publish them."
 icon: "window"
 ---
 
 These tools let an assistant understand how an app is built — its pages, its blocks, and who can see what — and then show you a change or make it live.
 
-Everything here is read-only except creating a blank app, adding a page, adding and removing app users, toggling login, configuring sign-up, previewing, and publishing. An assistant can add an empty page, but filling it with content is done through [vibe coding blocks](/mcp/vibe-coding) — and changes to an existing page's content are made the same way.
+Everything here is read-only except creating a blank app, adding a page, adding and removing app users, toggling login, configuring sign-up and the email sender, previewing, and publishing. An assistant can add an empty page, but filling it with content is done through [vibe coding blocks](/mcp/vibe-coding) — and changes to an existing page's content are made the same way.
 
 ## Creating an app
 
@@ -45,7 +45,7 @@ Before changing anything, the assistant needs to know what is there. This is how
 | Tool | What it does |
 |---|---|
 | `list_applications` | Lists the apps you can access, optionally filtered to one workspace |
-| `get_application` | Gets an app's details: name, workspace, domain, and home page |
+| `get_application` | Gets an app's details: name, workspace, domain, home page, and the configured email sender |
 | `list_pages` | Lists an app's pages with their paths, types, and whether they are enabled |
 | `get_page` | Gets a page and the blocks on it |
 | `get_block` | Gets a single block's configuration and visibility settings |
@@ -99,6 +99,25 @@ These tools manage an app's **end users** — the people who log in to the publi
 - `DOMAIN_RESTRICTED` — only people whose email is in `allowedDomains` can sign up
 
 `allowedDomains` is a list of email domains like `["example.com"]`; it is required for `DOMAIN_RESTRICTED` and cleared for the other policies. Like login, it applies only to apps that support sign-up — apps without login settings are rejected — and changes take effect on the next publish.
+
+## Email sender
+
+| Tool | What it does |
+|---|---|
+| `configure_application_email_sender` | Sets, picks, or resets the name and address the app's emails are sent from |
+| `list_workspace_email_senders` | Lists the sender addresses registered on a workspace and whether each is confirmed |
+
+`configure_application_email_sender` controls the sender the app's invites, magic links, and notifications go out from. What you pass selects what happens:
+
+- **`name` and `email`** — registers the sender on the workspace (or renames it if that email is already registered) and assigns it to the app. This changes workspace-wide state, so it needs workspace-wide write access and a plan that includes custom senders.
+- **`email` only** — assigns a sender that already exists on the workspace to the app. This only changes the app, so app-level write access is enough. Use `list_workspace_email_senders` to see what exists.
+- **neither** — resets the app to the default Softr sender (its subdomain's `@softr.app` address).
+
+To answer "what sender is my app using?", `get_application` includes an `emailSender` field with the sender's name, email, confirmation state, and whether it is the default one.
+
+<Note>
+  **A newly registered sender is not active until its address is confirmed.** Registering triggers a verification email to the sender address; until someone clicks that link, the app keeps sending from the default Softr address. The tool's response includes `confirmed` so you know which state you're in. Senders on your own domain additionally need DKIM and Return-Path DNS verification, which is done in Softr Studio.
+</Note>
 
 ## Previewing and publishing
 
