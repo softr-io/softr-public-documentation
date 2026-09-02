@@ -34,7 +34,7 @@ sidebarTitle: "Migrating from Airtable to Softr DB"
   </Card>
 
   <Card title="Import 3rd party data" icon="plug">
-    Airtable keeps you in its ecosystem. Softr connects to 100\+ data sources—including Airtable, Notion, SQL, HubSpot, and Google Sheets—plus third-party tools like Slack, QuickBooks, and DocuSign, letting you combine multiple data sources in one app.
+    Airtable keeps you in its ecosystem. Softr connects to 100+ data sources—including Airtable, Notion, SQL, HubSpot, and Google Sheets—plus third-party tools like Slack, QuickBooks, and DocuSign, letting you combine multiple data sources in one app.
   </Card>
 </CardGroup>
 
@@ -79,8 +79,6 @@ This creates a new Softr database populated with a copy of your Airtable data.
     In Softr Studio, go to **Databases** in the left sidebar and start a new database (or choose **Database** from the Home screen). The **Create new database** dialog opens.
 
     <Frame caption="The Create new database dialog, with AI, Import data, Copy template, and Start blank options.">
-      {/* SCREENSHOT TODO: On the Home or Databases screen, click to create a new database and capture the "Create new database" modal showing the AI prompt box and the three options underneath: Import data, Copy template, Start blank. */}
-
       <img
         alt="Screenshot 2026 08 20 At 4 32 05 PM"
         title="Screenshot 2026 08 20 At 4 32 05 PM"
@@ -103,8 +101,6 @@ This creates a new Softr database populated with a copy of your Airtable data.
     Select **Import data**. Softr asks where your data is stored and offers **CSV file**, **Airtable**, and **Google Sheets**.
 
     <Frame caption="Choosing a data source to import from: CSV file, Airtable, or Google Sheets.">
-      {/* SCREENSHOT TODO: In the Create new database flow, click "Import data" and capture the "Where is your data stored?" step showing the three source cards (CSV file, Airtable, Google Sheets). */}
-
       ![Screenshot 2026 08 20 At 4 34 07 PM](/images/Screenshot-2026-08-20-at-4.34.07-PM.png "Screenshot 2026 08 20 At 4 34 07 PM")
     </Frame>
   </Step>
@@ -119,8 +115,6 @@ This creates a new Softr database populated with a copy of your Airtable data.
     Under **Account**, select an already-connected Airtable account, or choose **Add another data source** to connect one. Then, under **Base**, search for and select the base you want to import. The whole base will be imported.
 
     <Frame caption="Selecting the Airtable account and the base to import.">
-      {/* SCREENSHOT TODO: Capture the "Select Airtable base to import data from" step with the Account dropdown (showing a connected Airtable account / "Add another data source") and the Base dropdown with the searchable list of bases. */}
-
       ![Screenshot 2026 08 20 At 4 36 59 PM](/images/Screenshot-2026-08-20-at-4.36.59-PM.png "Screenshot 2026 08 20 At 4 36 59 PM")
     </Frame>
 
@@ -174,25 +168,17 @@ Once your data is in Softr Databases, point your app's blocks at it. The safest 
     Before changing any data sources, save a restore point from [App History](/application-settings/app-history). If a swap doesn't go as planned, you can roll the whole app back in one step.
   </Step>
   <Step title="Open a block's data source">
-    Select a block connected to Airtable, open the **Sources** tab in the block's settings panel, and open its source (for example, **Source 1**).
+    Select a block connected to Airtable and open the **Source** tab in the block's settings panel. It shows the **Account**, **Base**, and **Table** the block reads from.
 
-    <Frame caption="A block's Sources tab, listing its data source.">
-      {/* SCREENSHOT TODO: Select a dynamic block, open the "Sources" tab in the right-hand settings panel, and capture the list showing "Source 1" with the "+ Add" option. */}
-
-      {/* SCREENSHOT TODO: Select a dynamic block, open the "Sources" tab in the right-hand settings panel, and capture the list showing "Source 1" with the "+ Add" option. */}
-
-      ![Block Sources tab](/images/database-migration-tips/block-sources-tab.png)
+    <Frame caption="A block's Source tab, showing the Airtable account, base, and table it reads from.">
+      ![The Source tab of a block's settings panel, with the Account, Base and Table dropdowns filled in from Airtable](/images/database-migration-tips/block-source-tab.png)
     </Frame>
   </Step>
   <Step title="Switch the account to Softr Databases">
     In the **Account** dropdown, change the source from your Airtable account to **Softr Databases**. Then choose the imported **Database** and the matching **Table**.
 
     <Frame caption="Switching a block's Account from Airtable to Softr Databases, then selecting the database and table.">
-      {/* SCREENSHOT TODO: In the source detail view, open the Account dropdown and capture it showing both "Softr Databases" and the "Airtable" account (plus "Connect new"). Ideally include the Database and Table dropdowns below it. */}
-
-      {/* SCREENSHOT TODO: In the source detail view, open the Account dropdown and capture it showing both "Softr Databases" and the "Airtable" account (plus "Connect new"). Ideally include the Database and Table dropdowns below it. */}
-
-      ![Account dropdown showing Softr Databases and Airtable](/images/database-migration-tips/swap-account.png)
+      ![The open Account dropdown, listing Softr Databases above the connected Airtable account](/images/database-migration-tips/swap-account.png)
     </Frame>
 
     <Tip>
