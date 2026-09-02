@@ -183,7 +183,8 @@
             "group": "Import Data",
             "pages": [
               "migration-tips/migrating-from-airtable-to-softr-databases"
-            ]
+            ],
+            "icon": "arrow-down-from-bracket"
           }
         ]
       },
