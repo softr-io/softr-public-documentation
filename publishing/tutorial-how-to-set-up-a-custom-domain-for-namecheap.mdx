@@ -2,35 +2,64 @@
 title: "Tutorial: How to set up a custom domain for Namecheap"
 permalink: "qEPAYHRZAa9vPPPjsaWs3a"
 description: "Connect a Namecheap domain to your Softr app."
-'og:title': "Tutorial: How to set up a custom domain for Namecheap – Softr Help Docs"
-'og:description': "Connect a Namecheap domain to your Softr app."
-'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
-'twitter:title': "Tutorial: How to set up a custom domain for Namecheap – Softr Help Docs"
-'twitter:description': "Connect a Namecheap domain to your Softr app."
+og:title: "Tutorial: How to set up a custom domain for Namecheap – Softr Help Docs"
+og:description: "Connect a Namecheap domain to your Softr app."
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+twitter:title: "Tutorial: How to set up a custom domain for Namecheap – Softr Help Docs"
+twitter:description: "Connect a Namecheap domain to your Softr app."
 ---
-<Note>Custom domain and extra custom domain slots depend on the subscription plan. See [plan comparison](https://www.softr.io/pricing). </Note>
+
+<Note>
+  Custom domain and extra custom domain slots depend on the subscription plan. See [plan comparison](https://www.softr.io/pricing). 
+</Note>
 
 <Steps>
-  <Step title="">
+  <Step>
     First, log in to your [Namecheap account dashboard](https://www.namecheap.com/myaccount/login/).
-    <Frame>![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-domain-for-namecheap/image1.png)</Frame>
+
+    <Frame>
+      ![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-domain-for-namecheap/image1.png)
+    </Frame>
   </Step>
-  <Step title="">
+  <Step>
     Next to the domain you want to point to Softr, click on **“Manage”**.
-    <Frame>![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-domain-for-namecheap/image2.png)</Frame>
+
+    <Frame>
+      ![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-domain-for-namecheap/image2.png)
+    </Frame>
   </Step>
-  <Step title="">
+  <Step>
     Click into the **“Advanced DNS”** tab. If you see **CNAME Record** and **URL Redirect Record** with parkingpage.namecheap like values please delete them.
-    <Frame>![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-domain-for-namecheap/image3.png)</Frame>
+
+    <Frame>
+      ![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-domain-for-namecheap/image3.png)
+    </Frame>
 
     If your screen doesn’t look like the image above, it’s most likely because you have your DNS pointed elsewhere. In other words, to create DNS records at Namecheap, you need to be using **“Namecheap BasicDNS”** which is included with every domain. You can check by going into the **“Domain”** tab.
   </Step>
-  <Step title="">
+  <Step>
     Click into the **“Advanced DNS”** tab and then click on “**Add New Record”.** If you see an A Record that already exists you will simply need to edit it (skip to the next step).
-    <Frame>![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-domain-for-namecheap/image4.png)</Frame>
+
+    <Frame>
+      ![Notion image](/publishing/images/tutorial-how-to-set-up-a-custom-domain-for-namecheap/image4.png)
+    </Frame>
   </Step>
-  <Step title="">
-    You will need to create an **A record** (with **@**)and a **CNAME** (with **www**)as well input the **IP address** provided by us (from **Settings => Custom Domain** in Softr Studio), as shown below.
-    <Frame caption="IP address">![IP address](/publishing/images/tutorial-how-to-set-up-a-custom-domain-for-namecheap/image5.png)</Frame><Frame caption="Setup in Namecheap">![Setup in Namecheap](/publishing/images/tutorial-how-to-set-up-a-custom-domain-for-namecheap/image6.png)</Frame>
+  <Step>
+    Add the two DNS records below. Softr shows you exactly what to create for your domain under **Settings → Custom domain**, once the domain has been added there.
+
+    | Type | Host | Value |
+    | --- | --- | --- |
+    | A Record | `@` | the IP address Softr shows you |
+    | CNAME Record | `www` | your root domain, for example `example.com` |
+
+    <Frame caption="Softr lists the exact records to create. Copy the Value column across to Namecheap.">
+      ![Softr’s Custom domain panel listing an A record on host @ pointing to an IP address, and a CNAME record on host www whose value is the root domain](/publishing/images/tutorial-how-to-set-up-a-custom-domain-for-namecheap/softr-dns-records.png)
+    </Frame>
+
+    <Warning>
+      In the **CNAME** row, the **Value** is your own root domain — for example `example.com` — **not** `@`. Namecheap uses `@` as shorthand for the root domain in the **Host** column, but it is not a valid CNAME value.
+    </Warning>
+
+    DNS changes can take a few hours to take effect.
   </Step>
 </Steps>
