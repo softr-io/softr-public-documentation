@@ -38,6 +38,12 @@ Post a comment on any issue, with full Markdown support and optional threaded re
 
 Attach any URL to an issue — the Softr record it came from, a document, or a customer conversation — so the team has the full context one click away.
 
+## Available Triggers
+
+### On issue event
+
+Start a workflow the moment an issue is created, updated, or deleted in a Linear team of your choice. Use it to sync issue changes back into your Softr database, notify stakeholders, or update customer-facing status pages in real time. You can listen to all issue events or only the ones you pick.
+
 ## Key Benefits
 
 - **No-code simplicity:** Configure every Linear action visually in Softr — no code required beyond the one-time API key setup.
