@@ -191,7 +191,16 @@ Softr offers a variety of field types to help you organize and manage data in yo
   - Optional time zone display
   - Supports calendar picker and time picker for easy input.
   - Can default to the current date and/or time
-  - Timezone is always displayed in your local timezone. For custom timezones, use a formula field to CONCATENATE the Date field, then use DATETIME\_FORMAT() to convert to another timezone. See [here](/softr-databases/57RHfyrVrq5xPojyELRnSu/formula-glossary/57RHfyrVrpgXaYL5w8E4uR#date-and-time-functions) for more information.
+  - Timezone is always displayed in your local timezone. For custom timezones, use a formula field to CONCATENATE the Date field, then use DATETIME_FORMAT() to convert to another timezone. See [here](/softr-databases/57RHfyrVrq5xPojyELRnSu/formula-glossary/57RHfyrVrpgXaYL5w8E4uR#date-and-time-functions) for more information.
+
+### Duration
+
+- Purpose: Stores a length of time, rather than a point in time.
+- Use Case: Perfect for fields like "Time Logged" or "Estimated Effort."
+- Features:
+  - Choose which units the value uses — milliseconds, seconds, minutes, hours, or days
+  - Minutes and hours are enabled by default, and values are entered and shown as `0h 00m`
+  - Can set a default value for newly created records
 
 ### Email
 
@@ -233,6 +242,15 @@ Softr offers a variety of field types to help you organize and manage data in yo
   - Customizable scale (e.g., 1–10 stars)
   - Visual star display
   - Can set a default value for newly created records.
+
+### Button
+
+- Purpose: Adds a button to every record that runs a [Softr Workflow](/workflows/workflows) when clicked.
+- Use Case: Perfect for row-level actions like "Send Reminder" or "Approve Request."
+- Features:
+  - Pick an existing workflow, or create a new one straight from the field settings
+  - Customizable button label (defaults to "Run")
+  - The button stays inactive until a workflow is selected
 
 ### Formula
 

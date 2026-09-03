@@ -1,0 +1,105 @@
+---
+title: "Database Snapshots"
+description: "Capture a point-in-time copy of a Softr database and restore it later as a separate, new database."
+---
+
+A **snapshot** is a point-in-time copy of a whole Softr database — its tables, fields, views, records, and the links between related records. Take one before any change you might want to walk back: a bulk import, a field type change, a mass delete, or the first run of a new workflow against real data.
+
+Restoring a snapshot creates a **new** database and leaves the original exactly as it is, so recovering data is never destructive — you get the old and the new side by side and decide what to do next.
+
+<Note>
+  Snapshots apply to the entire database. You cannot snapshot a single table or view.
+</Note>
+
+## Taking a snapshot
+
+<Steps>
+  <Step title="Open the Snapshots panel">
+    Open the database, click its name in the top-left corner, and choose **Snapshots**. The panel opens on the right.
+
+    <Frame caption="Click the database name, then choose Snapshots.">
+      ![The database menu in Softr Studio, expanded to show the Snapshots option alongside Rename, Localization, Duplicate, Audit Log, Diagram, Move to and Delete](/images/database-snapshots/open-snapshots-panel.png)
+    </Frame>
+  </Step>
+  <Step title="Take the snapshot">
+    Click **\+ Take a snapshot**, optionally give it a name, and confirm with **Take snapshot**.
+
+    <Frame caption="Naming a snapshot before taking it. The name is optional.">
+      ![The Take a snapshot dialog with the optional Name field filled in with 'Before Q3 equipment import'](/images/database-snapshots/take-snapshot-dialog.png)
+    </Frame>
+  </Step>
+  <Step title="Wait for it to become ready">
+    The snapshot appears in the panel straight away with a **CREATING…** badge, and the **Take a snapshot** button is disabled while it works. After a few seconds the badge changes to **READY** and the snapshot can be restored.
+  </Step>
+</Steps>
+
+<Tip>
+  If you leave the name blank, Softr calls the snapshot **Snapshot of \<database name>**. Every snapshot already shows the date and time it was taken underneath its name, so a name that records _why_ you took it — `Before Q3 equipment import` — is far more useful later than one that repeats the timestamp.
+</Tip>
+
+## Managing your snapshots
+
+The panel lists every snapshot for the database, newest first, each with its name, the date and time it was taken, and its status. Hovering a snapshot reveals its two actions.
+
+<Frame caption="Each ready snapshot can be restored to a new database (1) or deleted (2).">
+  ![The Snapshots panel listing two ready snapshots, with the restore and delete icons highlighted on the second row](/images/database-snapshots/snapshots-panel.png)
+</Frame>
+
+1. **Restore to a new database** — builds a new database from this snapshot.
+2. **Delete** — removes the snapshot.
+
+<Warning>
+  Deleting a snapshot is permanent and cannot be undone. Since restoring never overwrites anything, there is no benefit to clearing out snapshots you might still want — keep the ones that mark a meaningful "before" point.
+</Warning>
+
+## Restoring a snapshot
+
+Restoring does **not** roll your database back in place. It creates a separate copy, which means you can restore freely without risking the data you have now.
+
+<Steps>
+  <Step title="Start the restore">
+    Hover the snapshot you want and click **Restore to a new database**. Softr confirms what will happen before doing anything.
+
+    <Frame caption="The confirmation spells it out: a new database is created and the current one is left alone.">
+      ![The Restore to a new database confirmation dialog, reading 'A new database with the data of Before bulk equipment import will be created. The current database is not changed.'](/images/database-snapshots/restore-confirmation.png)
+    </Frame>
+  </Step>
+  <Step title="Open the restored database">
+    The new database appears in your **Databases** list as **Restored: \<original database name>**, with the tables, fields, views and records the snapshot captured.
+
+    <Frame caption="The restored copy sits alongside the original, which is unchanged.">
+      ![The Databases list showing 'Restored: Equipment Tracker by Softr' with 29 records above the original 'Equipment Tracker by Softr', also with 29 records](/images/database-snapshots/restored-database.png)
+    </Frame>
+  </Step>
+</Steps>
+
+The restored database is independent from that point on. Your apps keep reading from the original database until you connect them to the restored one, so you can open both, compare them, and copy across only what you need.
+
+## Snapshots vs. App History
+
+The two features protect different things, and one is not a substitute for the other:
+
+- **Snapshots** capture your **data** — the contents and structure of a database.
+- [**App History**](/application-settings/app-history) captures your **app** — its pages, blocks and settings. Restoring an earlier app version does not bring back deleted records.
+
+If you are about to make a change that touches both, take a snapshot _and_ note the app version before you start.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Softr Databases Overview" icon="database" href="/softr-databases/softr-databases-overview">
+    How Softr Databases work, and their structure limits.
+  </Card>
+
+  <Card title="Field Types" icon="list" href="/softr-databases/field-types">
+    Every field type available in a Softr database.
+  </Card>
+
+  <Card title="App History" icon="clock-rotate-left" href="/application-settings/app-history">
+    Restore an earlier version of your app.
+  </Card>
+
+  <Card title="Migrating from Airtable" icon="right-left" href="/migration-tips/migrating-from-airtable-to-softr-databases">
+    Move an Airtable base into Softr Databases.
+  </Card>
+</CardGroup>
