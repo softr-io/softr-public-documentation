@@ -76,7 +76,8 @@
               "softr-databases/related-record-lookup-and-rollup-fields",
               "softr-databases/ai-agents",
               "softr-databases/datetime-formatting",
-              "softr-databases/database-snapshots"
+              "softr-databases/database-snapshots",
+              "softr-databases/expanded-record-view"
             ]
           },
           {

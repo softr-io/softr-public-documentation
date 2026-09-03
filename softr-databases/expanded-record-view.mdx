@@ -1,0 +1,82 @@
+---
+title: "Expanded Record View"
+description: "Open a record in a Softr Database to read and edit all of its fields in one panel, move between records, and see its revision history."
+---
+
+A table only shows as many columns as fit across your screen, so a record with a long description, a dozen linked records and a cover image is impossible to take in from the grid. Expanding a record opens it in a panel that lists every field in the current view, one under another, with each value editable in place.
+
+## Expand a record
+
+<Steps>
+  <Step title="Open the table">
+    Open your database and select the table you want to work in.
+  </Step>
+  <Step title="Hover over the record">
+    Hover over the row. An expand icon — two diagonal arrows — appears at the right edge of the first column.
+  </Step>
+  <Step title="Click the expand icon">
+    The record opens in a panel over the table.
+  </Step>
+</Steps>
+
+<Frame caption="Hover over a row and the expand icon appears at the right edge of the first column.">
+  ![A row in a Softr Database table with the expand icon highlighted at the end of the first cell](/images/expanded-record-view/expand-a-record.png)
+</Frame>
+
+Every field in the view is listed in order, each with its field-type icon, its name, and its value in an editable control.
+
+<Frame caption="The expanded record, with each field stacked under the record's primary value.">
+  ![The expanded record panel for a project record, showing the project name, a long description, a status dropdown and a linked company record](/images/expanded-record-view/expanded-record-view.png)
+</Frame>
+
+Editing here works exactly as it does in the grid: change a value and it saves straight away — there is no save button. Read-only fields such as formulas, rollups and lookups appear greyed out and can't be edited from the panel, the same as in the table.
+
+<Note>
+  The expanded record follows the view it was opened from. A field you have hidden through the fields control is hidden here too — show it again in the view and it reappears in the panel.
+</Note>
+
+## Controls at the top of the panel
+
+<Frame caption="The controls in the expanded record's header.">
+  ![The expanded record header, with numbered markers on the record navigation arrows, the copy link icon and the revision history icon](/images/expanded-record-view/expanded-record-controls.png)
+</Frame>
+
+1. **Previous and next record.** Step through the records of the current view without going back to the grid. The arrows follow the view's own filters and sort order, and the upward arrow is greyed out on the first record, the downward arrow on the last.
+2. **Copy link to this record.** Copies a link that reopens the database with this record already expanded — useful for pointing a teammate at one row from a ticket or a chat message. Whoever opens it still needs access to the database.
+3. **Revision history.** Opens the history panel described below.
+
+The record's ID is shown beside these controls, and **Escape** or the **✕** closes the panel.
+
+## Revision history
+
+Revision history records every change made to the record: who made it, when, which field, and what the value was before and after.
+
+<Frame caption="Revision history opens alongside the record and lists each change with its previous and new value.">
+  ![The revision history panel showing two status changes on a record, each with the editor name, a timestamp, and the old value struck through beside the new one](/images/expanded-record-view/revision-history.png)
+</Frame>
+
+A banner at the top of the panel states how far back the history goes on your plan. Changes made before Softr started tracking revisions aren't shown — on older records the panel says so at the end of the list.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Database Snapshots" href="/softr-databases/database-snapshots">
+    Take a point-in-time copy of a database and restore it later.
+  </Card>
+
+  <Card title="Softr Databases Overview" href="/softr-databases/softr-databases-overview">
+    Create a database, add tables, and connect it to an app.
+  </Card>
+
+  <Card title="Field Types" href="/softr-databases/field-types">
+    What each field type stores and how it behaves.
+  </Card>
+
+  <Card title="Related Record, Lookup, and Rollup Fields" href="/softr-databases/related-record-lookup-and-rollup-fields">
+    Link records across tables and pull values between them.
+  </Card>
+
+  <Card title="Formula Glossary" href="/softr-databases/formula-glossary">
+    The functions available in formula fields.
+  </Card>
+</CardGroup>
