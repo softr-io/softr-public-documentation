@@ -14,6 +14,22 @@ Whether you're building a marketing dashboard, a member portal, or a referral pr
 
 Shorten any URL into a TinyURL link with an optional custom alias, short domain (tinyurl.com, tiny.one, or rotf.lol), tags, expiration date, and description — all set dynamically from your Softr workflow. The short link comes back ready to store in a record, send in an email, or show to your users.
 
+### Update link
+
+Change a link's metadata — move it to another domain, rename its alias, replace its tags or description, set a new expiration date, or toggle click-analytics collection. Pick the link from a live dropdown of the aliases in your connected TinyURL account.
+
+### Change destination
+
+Point an existing short link at a new destination URL, so links you've already shared start leading somewhere new — perfect for rotating promos behind one permanent short link. Available on paid TinyURL plans.
+
+### Archive link
+
+Deactivate a link and move it to your archived list when a campaign ends or a link shouldn't be used anymore — reversible from your TinyURL dashboard.
+
+### List links
+
+Retrieve the links in your connected TinyURL account — active or archived — to loop over them, sync them into a Softr table, or build reports.
+
 ## Key Benefits
 
 - **No-code simplicity:** Configure TinyURL actions visually in Softr — no code required beyond the one-time API token setup.
