@@ -140,6 +140,7 @@
                   "workflows/integrations/supabase",
                   "workflows/integrations/tally",
                   "workflows/integrations/telegram",
+                  "workflows/integrations/tinyurl",
                   "workflows/integrations/trello",
                   "workflows/integrations/twilio",
                   "workflows/integrations/typeform",
