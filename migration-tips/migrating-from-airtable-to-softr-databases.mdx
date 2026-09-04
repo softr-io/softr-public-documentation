@@ -56,7 +56,7 @@ A few minutes of prep here saves a lot of rework later.
 
 <Steps>
   <Step title="Work on copies, not your live setup">
-    Duplicate the app you want to migrate (or plan to create a version snapshot before you switch anything.  See [below](#reconnect-your-app-block-by-block)). If you'd rather rehearse the whole thing first, test the import on a duplicate Airtable base with a small amount of data before doing it for real.
+    Duplicate the app you want to migrate (or plan to create a version snapshot before you switch anything.  See [below](#reconnect-your-app)). If you'd rather rehearse the whole thing first, test the import on a duplicate Airtable base with a small amount of data before doing it for real.
   </Step>
   <Step title="Take stock of computed and linked fields">
     Note where you rely on Lookups, Rollups, formulas, and linked records. Softr Databases supports all of these, but they're the fields most worth verifying after the import. If you have many of them, grouping them into a dedicated Airtable view first makes them easy to spot-check afterward.
@@ -69,6 +69,16 @@ A few minutes of prep here saves a lot of rework later.
 <Tip>
   Migrating also future-proofs your app: because the data lives natively in Softr, you're no longer dependent on a third-party API or subject to its rate limits and per-collaborator pricing.
 </Tip>
+
+## Lessons from a real migration
+
+Base Flows, the Softr agency that moved [Child's Play Charity](https://www.softr.io/customer-stories/childs-play-charity) off Airtable, migrated 4,000+ records in three weeks. These are the lessons from that project, and most of them are decisions you make before you import anything.
+
+- **Consolidate redundant tables first.** Merging separate tables that hold the same entity into one is usually the single biggest fix for duplicate records.
+- **Dedupe before the migration, not after.** Match suspected duplicates against a unique identifier — a tax ID, a registration or account number — before anyone touches the new database. Names alone are misleading.
+- **Fix field types on the way in.** Numbers stored as text in Airtable will break rollups, sorting, and formulas once they're live.
+- **Freeze, don't sync.** A short data freeze with a manual catch-up list is simpler and safer than running a temporary Airtable-to-Softr sync.
+- **If your app already exists, consider rebuilding rather than remapping.** Building a new app on the new database and cutting over to it can be faster than remapping an existing app block by block, and it keeps the old app as a fallback until you're ready to cancel Airtable. See [Reconnect your app](#reconnect-your-app) for the block-by-block route.
 
 ## Step-by-step: import your Airtable base
 
@@ -156,7 +166,7 @@ The import handles the vast majority of your data automatically. Use this as a p
 </AccordionGroup>
 
 <Warning>
-  Before you re-point a live app at the new database, read [Reconnect your app, block by block](#reconnect-your-app-block-by-block) — switching a block's data source resets some settings, so you'll want a rollback point in place first.
+  Before you re-point a live app at the new database, read [Reconnect your app, block by block](#reconnect-your-app) — switching a block's data source resets some settings, so you'll want a rollback point in place first.
 </Warning>
 
 ## Reconnect your app
@@ -243,5 +253,9 @@ If you re-mapped your user groups correctly, your page and block [visibility per
 
   <Card title="App History" icon="clock-rotate-left" href="/application-settings/app-history">
     Restore your app to an earlier version.
+  </Card>
+
+  <Card title="Child's Play Charity case study" icon="book-open" href="https://www.softr.io/customer-stories/childs-play-charity">
+    How Base Flows migrated 4,000+ records off Airtable in three weeks.
   </Card>
 </CardGroup>
