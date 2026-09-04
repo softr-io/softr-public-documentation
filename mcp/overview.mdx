@@ -48,71 +48,13 @@ Use this URL when adding Softr as an MCP server in your AI tool.
 
 ## Authentication
 
-Softr's MCP server supports two authentication methods. Both offer fine-grained control over what the AI tool can access.
+Softr's MCP server supports two ways to sign in. Both let you choose exactly what the AI tool can reach.
 
-### OAuth (recommended)
+**OAuth** is the normal route, and what Claude, Claude Code, ChatGPT, Codex, Cursor and most other clients use. You give the client the MCP server URL, and Softr shows you an authorization screen where you pick what to grant. Most clients negotiate the OAuth details themselves — a Client ID only has to be entered by hand in clients that cannot register with Softr on their own, such as Cursor.
 
-OAuth is the simplest way to connect. Softr has pre-built OAuth integrations for the following AI tools:
+**A personal access token** covers custom clients, your own MCP build, and any tool with no OAuth support. Create one under **API tokens** in your account menu.
 
-| AI Tool | OAuth Client ID |
-|---|---|
-| Claude (claude.ai) | `db31b760-e758-4f52-b15b-93b0262a1290` |
-| Cursor (cursor.com) | `4d2556b2-cfc8-4608-bd76-8dbe7e605f68` |
-| ChatGPT (chatgpt.com) | `aa73bf7b-c5b6-4031-b771-25108bf6c132` |
-| Mistral AI (mistral.ai) | `522bfc02-e64f-43cd-87ef-552507ecb967` |
-
-When you connect via OAuth, you are taken to a Softr authorization screen where you choose which permissions to grant. Only the permissions you approve are available to the AI tool, and you can revoke access at any time.
-
-<Steps>
-  <Step title="Open your AI tool's MCP settings">
-    In Claude, Cursor, ChatGPT, or Mistral AI, navigate to the section where you add MCP servers or external connectors.
-  </Step>
-  <Step title="Add the Softr MCP server URL">
-    Enter `https://mcp.softr.io/mcp` as the server URL.
-  </Step>
-  <Step title="Enter the Client ID">
-    When prompted for a Client ID, paste the value from the table above that corresponds to your AI tool. If asked for a Client Secret, leave it blank — Softr's OAuth clients are public and do not require one.
-  </Step>
-  <Step title="Authenticate with Softr">
-    Click **Connect** or **Authorize**. You will be redirected to Softr to log in and approve the requested permissions.
-  </Step>
-  <Step title="Choose your permissions">
-    On the Softr authorization screen, pick what the tool can access and how much it can do. See [Permissions](#permissions) below.
-  </Step>
-</Steps>
-
-<Note>
-  The AI tool cannot ask for specific permissions in advance. You always choose them yourself on Softr's authorization screen.
-</Note>
-
-### Personal access token
-
-Use a personal access token if you are connecting a custom AI tool, building your own MCP client, or using any tool not listed above.
-
-<Steps>
-  <Step title="Create a token">
-    Go to **Settings → API tokens** and click **Create**. Give the token a name and an expiry (never, 1 year, 90 days, or 30 days).
-  </Step>
-  <Step title="Choose what it can access">
-    On the **Define scopes** step, pick the workspaces the token covers and the permissions it carries. See [Permissions](#permissions) below.
-  </Step>
-  <Step title="Configure your AI tool">
-    Add the MCP server with Bearer token authentication:
-
-    ```json
-    {
-      "mcpServers": {
-        "softr": {
-          "url": "https://mcp.softr.io/mcp",
-          "headers": {
-            "Authorization": "Bearer YOUR_API_TOKEN"
-          }
-        }
-      }
-    }
-    ```
-  </Step>
-</Steps>
+[Connect your AI assistant](/mcp/connect) has the exact steps for every tool, the Client IDs for the clients that ask for one, and what the authorization screen is granting.
 
 ## Permissions
 
@@ -144,7 +86,7 @@ What each level allows:
 
 ## Managing access
 
-Go to **Settings → API tokens** to see and remove access at any time.
+Go to **API tokens** in your account menu to see and remove access at any time.
 
 - **Personal access tokens** can be edited, regenerated, or deleted.
 - **Authorized apps** lists the AI tools you connected with OAuth, with a **Revoke** button for each. Revoking one immediately invalidates the tokens it was issued.

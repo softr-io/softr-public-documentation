@@ -1,0 +1,291 @@
+---
+title: "Connect your AI assistant"
+sidebarTitle: "Connect"
+description: "Step-by-step setup for Claude, Claude Code, ChatGPT, Codex, Cursor and any other MCP client."
+icon: "link"
+---
+
+Softr's MCP server works with any client that speaks the [Model Context Protocol](https://modelcontextprotocol.io). The setup is the same everywhere — point the client at one URL, then approve what it can reach in your workspace — but every tool buries that setting in a different place. This page has the exact route for each.
+
+If you are not sure what the assistant will be able to do once it is connected, start with the [Softr MCP server overview](/mcp/overview).
+
+## MCP server URL
+
+```text
+https://mcp.softr.io/mcp
+```
+
+This is the only value you need for Claude, ChatGPT, Codex, Cursor and most other clients. There is nothing to install and no API key to paste.
+
+<Tip>
+  Working with your Softr workspace over MCP does not consume Softr AI credits. The AI tool you connect uses its own model and its own quota.
+</Tip>
+
+## Get the setup guide inside Softr
+
+Softr Studio has the same instructions built in, with the server URL ready to copy. Click your workspace name at the top of the left sidebar, then **API tokens** or **Use Softr**.
+
+<Frame caption="The account menu in Softr Studio. Both API tokens and Use Softr lead to the MCP setup guide.">
+  ![Softr Studio account menu with API tokens and Use Softr highlighted](/images/connect/find-setup-guide.png)
+</Frame>
+
+Pick your tool and Softr walks you through it, screen by screen.
+
+<Frame caption="The in-product setup guide, with a tab for Claude, ChatGPT, Cursor and everything else.">
+  ![Connect your AI tools to Softr MCP dialog showing four tool tabs and the MCP server URL](/images/connect/setup-guide-modal.png)
+</Frame>
+
+## Claude
+
+Works in Claude on the web, in the desktop app and in Cowork.
+
+<Steps>
+  <Step title="Open the connector settings">
+    In Claude, go to **Customize → Connectors**, click **\+**, then **Add custom connector**.
+
+    On a Team or Enterprise plan only an Owner can add a custom connector. If you don't see the **\+**, ask an Owner to add Softr once — after that every member connects to it themselves from the same screen.
+  </Step>
+  <Step title="Enter the name and the server URL">
+    Name it `Softr`, paste `https://mcp.softr.io/mcp` as the remote MCP server URL, and click **Continue**.
+
+    <Frame caption="Claude's Add custom connector dialog with the Softr server URL filled in.">
+      ![Add custom connector dialog in Claude with the name Softr and the MCP server URL entered](/images/connect/claude-add-connector.png)
+    </Frame>
+  </Step>
+  <Step title="Click Add">
+    Claude detects Softr's authentication and OAuth client settings for you. Leave them as they are and click **Add**.
+  </Step>
+  <Step title="Authorize your Softr account">
+    Click **Connect**, choose what Claude can reach, and click **Allow**. See [What you are approving](#what-you-are-approving).
+  </Step>
+  <Step title="Try it">
+    Start a new chat and ask _"List my Softr apps."_
+  </Step>
+</Steps>
+
+## Claude Code
+
+Claude Code adds MCP servers from the command line.
+
+<Steps>
+  <Step title="Add the server">
+    ```bash
+    claude mcp add --transport http softr https://mcp.softr.io/mcp
+    ```
+
+    Add `--scope user` to make Softr available in every project rather than only the current one.
+  </Step>
+  <Step title="Authenticate">
+    Run `/mcp` inside Claude Code, select **softr** and choose **Authenticate**. Softr's authorization screen opens in your browser — see [What you are approving](#what-you-are-approving).
+
+    Until you do, `claude mcp list` reports the server as **Needs authentication**.
+  </Step>
+  <Step title="Try it">
+    Ask Claude Code to list your Softr apps.
+  </Step>
+</Steps>
+
+## ChatGPT
+
+Custom MCP servers in ChatGPT arrive as plugins, which requires developer mode.
+
+<Steps>
+  <Step title="Enable developer mode">
+    Open ChatGPT **Settings → Security and login → Developer mode** and switch it on.
+
+    <Frame caption="Developer mode in ChatGPT's security settings. It has to be on before you can add a custom MCP server.">
+      ![ChatGPT security and login settings with the Developer mode toggle switched on](/images/connect/chatgpt-developer-mode.png)
+    </Frame>
+  </Step>
+  <Step title="Add Softr as a plugin">
+    Open **Plugins**, click **\+**, then fill in the details: name it `Softr`, keep **Connection** set to **Server URL** and paste `https://mcp.softr.io/mcp`, and leave **Authentication** on **OAuth**.
+
+    Tick **I understand and want to continue** to accept the custom MCP server notice, then click **Create**.
+
+    <Frame caption="ChatGPT's New Plugin dialog. Name, server URL and OAuth are the only fields Softr needs.">
+      ![New Plugin dialog in ChatGPT with the name Softr, the MCP server URL and OAuth authentication](/images/connect/chatgpt-new-plugin.png)
+    </Frame>
+  </Step>
+  <Step title="Authorize your Softr account">
+    Click **Connect**, choose what ChatGPT can reach, and click **Allow**. See [What you are approving](#what-you-are-approving).
+  </Step>
+  <Step title="Try it">
+    Start a new chat and ask _"List my Softr apps."_
+  </Step>
+</Steps>
+
+## Codex
+
+The Codex CLI, the Codex IDE extension and the ChatGPT desktop app share one MCP configuration, so you only set this up once.
+
+<Steps>
+  <Step title="Add the server">
+    ```bash
+    codex mcp add softr --url https://mcp.softr.io/mcp
+    ```
+
+    Or add it to `~/.codex/config.toml` by hand:
+
+    ```toml
+    [mcp_servers.softr]
+    url = "https://mcp.softr.io/mcp"
+    ```
+  </Step>
+  <Step title="Sign in">
+    ```bash
+    codex mcp login softr
+    ```
+
+    Softr's authorization screen opens in your browser — see [What you are approving](#what-you-are-approving). Run `codex mcp list` to confirm the server is there, or `/mcp` in the Codex TUI.
+  </Step>
+  <Step title="Try it">
+    Ask Codex to list your Softr apps.
+  </Step>
+</Steps>
+
+<Note>
+  Softr does not support OAuth Dynamic Client Registration. Codex negotiates a [Client ID Metadata Document](https://developers.openai.com/codex/mcp) instead, which needs no configuration from you. If a login fails, fall back to a [personal access token](#personal-access-tokens).
+</Note>
+
+## Cursor
+
+<Steps>
+  <Step title="Open the MCP settings">
+    In Cursor, go to **Customize → MCPs** and click **New MCP Server**.
+
+    Softr's [in-product setup guide](#get-the-setup-guide-inside-softr) also has an **Add to Cursor** button that opens Cursor with these details pre-filled.
+  </Step>
+  <Step title="Add Softr as a server">
+    Paste the following into `mcp.json` and save:
+
+    ```json
+    {
+      "mcpServers": {
+        "Softr": {
+          "url": "https://mcp.softr.io/mcp",
+          "auth": {
+            "CLIENT_ID": "4d2556b2-cfc8-4608-bd76-8dbe7e605f68"
+          }
+        }
+      }
+    }
+    ```
+
+    Cursor doesn't register OAuth clients dynamically, so it needs Softr's Cursor client ID. It goes in `~/.cursor/mcp.json` to use Softr in every project, or `.cursor/mcp.json` for one project — see [Cursor's MCP documentation](https://cursor.com/docs/mcp).
+  </Step>
+  <Step title="Authorize your Softr account">
+    Softr appears under **Needs Attention**. Click **Authenticate**, choose what Cursor can reach, and click **Allow**. See [What you are approving](#what-you-are-approving).
+
+    <Frame caption="Cursor's MCPs tab: New MCP Server adds the server, Authenticate signs it in to Softr.">
+      ![Cursor Customize MCPs tab with New MCP Server marked 1 and the Softr entry's Authenticate link marked 2](/images/connect/cursor-add-mcp-server.png)
+    </Frame>
+  </Step>
+  <Step title="Try it">
+    Start a new chat and ask _"List my Softr apps."_
+  </Step>
+</Steps>
+
+## Other MCP clients
+
+Softr works with any client that supports remote MCP servers over streamable HTTP — Mistral, Windsurf, n8n, Zapier, your own build.
+
+<Steps>
+  <Step title="Find the MCP settings">
+    Look for **MCP**, **Connector**, **Integration**, **App** or **Tool** in the client's settings.
+  </Step>
+  <Step title="Add Softr as a remote server">
+    Add a custom or remote MCP server and enter `https://mcp.softr.io/mcp`. Choose **OAuth** if the client asks for an authentication method.
+  </Step>
+  <Step title="Authorize your Softr account">
+    Follow the client's sign-in flow, choose what it can reach, and click **Allow**. See [What you are approving](#what-you-are-approving).
+  </Step>
+</Steps>
+
+### If the client asks for a Client ID
+
+Some clients can't register themselves with Softr and ask you for OAuth credentials. Softr has pre-registered clients for the tools below:
+
+| AI tool | OAuth Client ID |
+| --- | --- |
+| Claude (claude.ai) | `db31b760-e758-4f52-b15b-93b0262a1290` |
+| Cursor (cursor.com) | `4d2556b2-cfc8-4608-bd76-8dbe7e605f68` |
+| ChatGPT (chatgpt.com) | `aa73bf7b-c5b6-4031-b771-25108bf6c132` |
+| Mistral AI (mistral.ai) | `522bfc02-e64f-43cd-87ef-552507ecb967` |
+
+Leave the Client Secret blank — Softr's OAuth clients are public and don't use one. For any other client, use a [personal access token](#personal-access-tokens) instead.
+
+## What you are approving
+
+However you connect, the last step is the same Softr screen. You choose which projects the tool can reach and how much it can do in each of three areas, then click **Allow**.
+
+<Frame caption="Softr's authorization screen. Access sets which projects are covered; Permissions sets what the tool can do in each area.">
+  ![Softr authorization screen showing Access set to Everything and Full access on Applications & Forms, Databases and Workflows](/images/connect/authorize-softr-access.png)
+</Frame>
+
+The AI tool cannot request particular permissions in advance — you always pick them here, and you can change or revoke them later. For what each level allows, see [Permissions](/mcp/overview#permissions).
+
+<Warning>
+  **Full access** on Databases lets an assistant delete records, fields, tables and whole databases. If you want a connection that can never delete anything, set Databases to **View only**. See [Deleting data](/mcp/databases#deleting-data).
+</Warning>
+
+## Personal access tokens
+
+Use a token when you are building your own MCP client, or connecting a tool that has no OAuth support.
+
+<Steps>
+  <Step title="Create the token">
+    Go to **API tokens** in your account menu and click **Create**. Give it a name and an expiry — never, 1 year, 90 days or 30 days.
+  </Step>
+  <Step title="Choose what it can access">
+    On the **Define scopes** step, pick the workspaces the token covers and the permissions it carries, exactly as on the authorization screen above.
+  </Step>
+  <Step title="Send it as a bearer token">
+    ```json
+    {
+      "mcpServers": {
+        "softr": {
+          "url": "https://mcp.softr.io/mcp",
+          "headers": {
+            "Authorization": "Bearer YOUR_API_TOKEN"
+          }
+        }
+      }
+    }
+    ```
+  </Step>
+</Steps>
+
+## Managing and removing access
+
+**API tokens** in your account menu is also where you take access away.
+
+- **Personal access tokens** can be edited, regenerated or deleted.
+- **Authorized apps** lists every tool you connected with OAuth, with a **Revoke** button for each. Revoking one invalidates its tokens immediately.
+
+<Note>
+  **Authorized apps** only appears once you have authorized at least one tool, so it is missing if you have only ever used personal access tokens.
+</Note>
+
+## Connecting an app instead of a workspace
+
+This page is for builders connecting their Softr workspace. If you want the _users_ of one of your apps to work with it through their own AI assistant, with their own app permissions, that is a different server — see [App MCP server](/app-mcp-server).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Softr MCP server" icon="plug" href="/mcp/overview">
+    What the assistant can do once it is connected, and how permissions work.
+  </Card>
+
+  <Card title="Databases" icon="table" href="/mcp/databases">
+    Query, edit and structure your Softr databases through an AI assistant.
+  </Card>
+
+  <Card title="Applications" icon="window" href="/mcp/apps">
+    Create apps, add pages, manage app users, preview and publish.
+  </Card>
+
+  <Card title="App MCP server" icon="share-nodes" href="/app-mcp-server">
+    Let the users of your app work with it through their own AI assistant.
+  </Card>
+</CardGroup>

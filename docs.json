@@ -661,6 +661,7 @@
             "icon": "plug",
             "pages": [
               "mcp/overview",
+              "mcp/connect",
               "mcp/databases",
               "mcp/apps",
               "mcp/vibe-coding",
