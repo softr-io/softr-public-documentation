@@ -147,6 +147,7 @@
                   "workflows/integrations/xano",
                   "workflows/integrations/xero",
                   "workflows/integrations/zendesk",
+                  "workflows/integrations/zoho-crm",
                   "workflows/integrations/zoom"
                 ]
               }
