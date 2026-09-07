@@ -38,7 +38,11 @@ List records from a module. Zoho requires an explicit field selection, so you ch
 
 ### Search records
 
-Find records in a module by email, phone, keyword, or a Zoho criteria expression such as `((Last_Name:equals:Doe)and(Company:starts_with:Acme))`. Fill in exactly one of the four search inputs per step, and page through the results by page number.
+Find records in a module with the same condition builder the other look-up actions use. The field list comes from the module's own schema, so your custom fields are there to filter on and a field the module does not have cannot be asked for. Set the page size (up to 200) and page through the results by page number.
+
+Zoho's search is a single flat chain of comparisons, which sets a few limits. One filter uses either **all** or **any**, not both, and holds at most 10 comparisons — "is none of" and conditions on dates each expand to more than one. "Is any of" matches up to 100 values. The conditions that translate are is, is not, starts with, greater or less than (or equal to), is between, is not between, is any of, is all of and is none of; contains, ends with and is empty have no equivalent in Zoho's search. Anything Zoho cannot express is reported before the search runs, naming the condition at fault, and Zoho's own message is shown when it rejects a request.
+
+On date and date-time fields a condition covers whole days, so "is" on a date matches every record from that day rather than one exact timestamp, and relative ranges such as the last 7 days resolve when the workflow runs.
 
 ## Key Benefits
 
@@ -57,7 +61,7 @@ Find records in a module by email, phone, keyword, or a Zoho criteria expression
 | **Member sign-up sync** | When a new user signs up to your portal, create or update the matching Contact so the CRM always has the current record. |
 | **Self-serve customer portal** | Let members view and edit their own Contact record from inside your Softr app. |
 | **Deal pipeline updates** | When a status changes in Softr, update the linked Deal so your pipeline stays current. |
-| **Duplicate check before outreach** | Search by email or phone before you create a record, then update the existing one instead of adding a copy. |
+| **Duplicate check before outreach** | Search for a matching record by email, name, or any other field before you create one, then update the existing record instead of adding a copy. |
 | **Internal sales dashboard** | List Deals or Accounts from Zoho CRM in a Softr table, and let your team update them without a full CRM seat. |
 | **Account enrichment** | Get a record by ID mid-workflow to read current field values, then branch on them in later steps. |
 
