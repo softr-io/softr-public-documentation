@@ -1,3 +1,9 @@
+---
+title: "Zoho CRM"
+sidebarTitle: "Zoho CRM"
+description: "Connect Zoho CRM with your Softr workflows to create, update, and look up CRM records."
+---
+
 # Zoho CRM integration
 
 Connect Zoho CRM with your Softr applications to capture leads, keep contacts current, and move deals forward automatically. Push data from your forms and portals into Zoho CRM, or pull records back into your app — all without writing code.
