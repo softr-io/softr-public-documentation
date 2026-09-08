@@ -49,6 +49,7 @@ Before changing anything, the assistant needs to know what is there. This is how
 | `list_pages` | Lists an app's pages with their paths, types, and whether they are enabled |
 | `get_page` | Gets a page and the blocks on it |
 | `get_block` | Gets a single block's configuration and visibility settings |
+| `get_user_connection` | Gets the table that authenticates the app's end users, and its fields |
 
 ## Permissions and user groups
 
@@ -66,7 +67,6 @@ An assistant can create a custom group, rename it, change who is in it, or remov
 
 | Tool | What it does |
 |---|---|
-| `get_user_connection` | Reads the table that authenticates your end users, and its fields |
 | `create_user_group` | Creates a custom group, from a member list or from a rule |
 | `update_user_group` | Renames a group, or replaces its members or its rule |
 | `delete_user_group` | Deletes a custom group |
@@ -82,7 +82,7 @@ Switching between them is a switch rather than a merge: giving a group a member 
   **Members and rules are replaced, not added to.** "Add Dana to Managers" means reading the group's current members and sending the whole list back with Dana included. An assistant should do that for you — but it is why members can disappear if one gets it wrong, so say who should end up in the group and check the result.
 </Warning>
 
-A rule points at a field on the table that authenticates your end users, using that field's ID rather than its name — which is what `get_user_connection` is for. The same holds for a rule about a dropdown field: it matches the option's ID, not the label you see. Both come back from that one call.
+A rule points at a field on the table that authenticates your end users, using that field's ID rather than its name — which is what `get_user_connection` above is for. The same holds for a rule about a dropdown field: it matches the option's ID, not the label you see. Both come back from that one call.
 
 <Note>
   **A rule naming a field that does not exist matches nobody, and reports no error.** So a rule-based group that comes back empty when you expected members is the first thing worth checking. Rules about the user's own email address or its domain are the exception — those need no lookup at all.
