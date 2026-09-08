@@ -1,18 +1,18 @@
 ---
 title: "Applications"
 sidebarTitle: "Applications"
-description: "Let an AI assistant create blank apps, add pages, read your apps, manage their users, toggle login, configure sign-up and the email sender, preview changes, and publish them."
+description: "Let an AI assistant create blank apps, add pages, read your apps, manage their users and user groups, toggle login, configure sign-up and the email sender, preview changes, and publish them."
 'og:title': "MCP: Applications – Softr Help Docs"
-'og:description': "Let an AI assistant create blank apps, add pages, read your apps, manage their users, toggle login, configure sign-up and the email sender, preview changes, and publish them."
+'og:description': "Let an AI assistant create blank apps, add pages, read your apps, manage their users and user groups, toggle login, configure sign-up and the email sender, preview changes, and publish them."
 'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
 'twitter:title': "MCP: Applications – Softr Help Docs"
-'twitter:description': "Let an AI assistant create blank apps, add pages, read your apps, manage their users, toggle login, configure sign-up and the email sender, preview changes, and publish them."
+'twitter:description': "Let an AI assistant create blank apps, add pages, read your apps, manage their users and user groups, toggle login, configure sign-up and the email sender, preview changes, and publish them."
 icon: "window"
 ---
 
 These tools let an assistant understand how an app is built — its pages, its blocks, and who can see what — and then show you a change or make it live.
 
-Everything here is read-only except creating a blank app, adding a page, adding and removing app users, toggling login, configuring sign-up and the email sender, previewing, and publishing. An assistant can add an empty page, but filling it with content is done through [vibe coding blocks](/mcp/vibe-coding) — and changes to an existing page's content are made the same way.
+Everything here is read-only except creating a blank app, adding a page, adding and removing app users, creating and changing user groups, toggling login, configuring sign-up and the email sender, previewing, and publishing. An assistant can add an empty page, but filling it with content is done through [vibe coding blocks](/mcp/vibe-coding) — and changes to an existing page's content are made the same way.
 
 ## Creating an app
 
@@ -52,13 +52,59 @@ Before changing anything, the assistant needs to know what is there. This is how
 
 ## Permissions and user groups
 
-Softr apps gate what end users see with [user groups](/user-groups-and-permissions/user-groups). These tools let the assistant read that setup, which is useful both for answering questions about it and for getting visibility right when it builds something new.
+Softr apps gate what end users see with [user groups](/user-groups-and-permissions/user-groups). These tools let the assistant read that setup, which is useful both for answering questions about it and for getting visibility right when it builds something new. It can also change the groups themselves — see [Creating and changing user groups](#creating-and-changing-user-groups).
 
 | Tool | What it does |
 |---|---|
 | `list_user_groups` | Lists the app's user groups, their type, and their members |
 | `get_access_control` | Gives an overview of the app's access control setup |
 | `get_page_permissions` | Shows which user groups can view, edit, add, or delete on a page |
+
+## Creating and changing user groups
+
+An assistant can create a custom group, rename it, change who is in it, or remove it.
+
+| Tool | What it does |
+|---|---|
+| `get_user_connection` | Reads the table that authenticates your end users, and its fields |
+| `create_user_group` | Creates a custom group, from a member list or from a rule |
+| `update_user_group` | Renames a group, or replaces its members or its rule |
+| `delete_user_group` | Deletes a custom group |
+
+A group is one of two kinds, and never both:
+
+- **Manual** — an explicit list of app-user email addresses.
+- **Condition-based** — a rule checked against each app user's own record, so people join and leave the group as their data changes.
+
+Switching between them is a switch rather than a merge: giving a group a member list drops any rule it had, and giving it a rule drops its member list.
+
+<Warning>
+  **Members and rules are replaced, not added to.** "Add Dana to Managers" means reading the group's current members and sending the whole list back with Dana included. An assistant should do that for you — but it is why members can disappear if one gets it wrong, so say who should end up in the group and check the result.
+</Warning>
+
+A rule points at a field on the table that authenticates your end users, using that field's ID rather than its name — which is what `get_user_connection` is for. The same holds for a rule about a dropdown field: it matches the option's ID, not the label you see. Both come back from that one call.
+
+<Note>
+  **A rule naming a field that does not exist matches nobody, and reports no error.** So a rule-based group that comes back empty when you expected members is the first thing worth checking. Rules about the user's own email address or its domain are the exception — those need no lookup at all.
+</Note>
+
+Rules are checked against a users table, so an app without end-user login can only have manual groups. `get_user_connection` says so plainly rather than letting an assistant invent a rule.
+
+Three more limits worth knowing:
+
+- The predefined groups — **Logged in users**, **Visitors**, **Everyone** — cannot be renamed, changed, or deleted. Only custom groups can.
+- Names are unique within an app, ignoring case, so "Managers" and "managers" cannot both exist.
+- Creating a group is capped by your plan's allowance for custom user groups. Changing and deleting are not, so an app left over that limit by a downgrade can still be tidied up.
+
+## Deleting a user group
+
+<Warning>
+  **This cannot be undone, and it takes access with it.** Deleting a group removes its sign-in and sign-out redirections and drops it from every [data restriction](/user-groups-and-permissions/global-data-restrictions) that named it — and a restriction that granted access to this group alone is removed outright. Because access is default-deny, data your app reads can become unreachable to its users, which is how this bites an app built from code rather than from pages.
+</Warning>
+
+Page permissions and block or action-button visibility behave differently: they keep the deleted group's ID, and the builder shows it as **Deleted group**. Nothing breaks, but anything that was visible only to that group is now visible to nobody until you fix it.
+
+So after a delete, check what the group was gating. To change who is in a group rather than remove the group, use `update_user_group`.
 
 ## Managing app users
 
