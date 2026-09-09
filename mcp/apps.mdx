@@ -66,11 +66,14 @@ These tools manage an app's **end users** — the people who log in to the publi
 
 | Tool | What it does |
 |---|---|
+| `list_application_users` | Lists or searches the app's end users, with paging |
 | `add_application_user` | Adds an end user to the app by name and email |
 | `remove_application_user` | Removes an end user from the app by email |
 | `set_application_user_activation` | Activates or deactivates an end user by email |
 
-`add_application_user` takes both a name and an email and creates the user in the app. It fails if a user with that email already exists there. `remove_application_user` deletes the user with the given email, and fails if no user with that email exists in the app. All of these need write access to the app.
+`list_application_users` returns the app's users page by page — first 10 by default, with `limit` (up to 100) and a 0-based `page`, plus the `total` and whether there is more. Pass `query` to search: a case-insensitive fragment matched against each user's email and name, exactly like the search box on the app's Users tab. Each user comes back with their id, email, name, status, whether they are active, when they were added, when they last signed in, and the custom [user groups](/user-groups-and-permissions/user-groups) they belong to. Listing only needs read access to the app.
+
+`add_application_user` takes both a name and an email and creates the user in the app. It fails if a user with that email already exists there. `remove_application_user` deletes the user with the given email, and fails if no user with that email exists in the app. These need write access to the app.
 
 `set_application_user_activation` is the reversible alternative to removing: a deactivated user cannot sign in, but their account and data stay, and activating them again restores their previous status. Pass `active=true` to activate or `active=false` to deactivate; the call fails if no user with that email exists in the app.
 
