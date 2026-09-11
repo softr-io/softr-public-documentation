@@ -68,7 +68,7 @@ End-user login needs a table to authenticate against. Until an app has one, it h
 | Tool | What it does |
 |---|---|
 | `create_user_connection` | Connects an existing table as the one that authenticates the app's end users |
-| `remove_user_connection` | Disconnects it again |
+| `remove_user_connection` | Disconnects the app's users table, leaving its existing users in place |
 
 The assistant browses to the table the same way it would for any data source — data source, then database, then table — and maps which of its fields hold what. Only the email field is required, since that is how an end user is identified; a name and avatar field are worth mapping too, because the app shows both.
 
