@@ -76,7 +76,7 @@ The assistant browses to the table the same way it would for any data source —
   **Connecting a table does not switch login on.** That is a separate setting — see [Login settings](#login-settings) — and who may sign up is [Sign-up settings](#sign-up-settings).
 </Note>
 
-Connecting asks for a user sync, which is what turns the table's rows into app users. One only runs if two-way user sync is switched on for the app, and that is off by default, so a freshly connected table usually shows no users yet. The assistant tells you which happened rather than assuming.
+Connecting asks for a user sync, which is what turns the table's rows into app users. Apps are created with sync from source switched on, so this normally runs — but it can be paused from the users tab, and a paused app connects the table without importing anybody. The assistant tells you which happened rather than assuming.
 
 ### Pointing an app at a different table
 
@@ -86,7 +86,9 @@ An app has one users table. To move it to another, the assistant replaces the co
   **Replacing does not move your users across.** They stay associated with the old table and can no longer sign in. The assistant will refuse a replacement until you have said you want it, and should tell you which table is connected before you decide.
 </Warning>
 
-Disconnecting is gentler than it sounds, and is the one to reach for if you simply want the app to stop syncing: your existing app users remain and can still sign in, they just stop being updated from the table. New rows stop becoming users, rule-based groups can no longer be written, and the table itself is untouched. Reconnecting the same table restores the connection — though the users only re-sync if two-way sync is on.
+Disconnecting is gentler than it sounds: your existing app users remain and can still sign in, they just stop being updated from the table. New rows stop becoming users, rule-based groups can no longer be written, and the table itself is untouched. Reconnecting the same table restores the connection, and re-syncs the users unless sync from source is paused.
+
+If all you want is to stop syncing without disconnecting, pause it from the users tab instead — that leaves the connection in place.
 
 ## Creating and changing user groups
 
