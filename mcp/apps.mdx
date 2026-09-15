@@ -12,7 +12,7 @@ icon: "window"
 
 These tools let an assistant understand how an app is built — its pages, its blocks, and who can see what — and then show you a change or make it live.
 
-Everything here is read-only except creating a blank app, adding a page, adding and removing app users, creating and changing user groups, toggling login, configuring sign-up and the email sender, previewing, and publishing. An assistant can add an empty page, but filling it with content is done through [vibe coding blocks](/mcp/vibe-coding) — and changes to an existing page's content are made the same way.
+Everything here is read-only except creating a blank app, adding a page, adding and removing app users, creating and changing user groups, toggling login, configuring sign-up, the email sender, and the app's subdomain and custom domain, previewing, and publishing. An assistant can add an empty page, but filling it with content is done through [vibe coding blocks](/mcp/vibe-coding) — and changes to an existing page's content are made the same way.
 
 ## Creating an app
 
@@ -195,6 +195,21 @@ To answer "what sender is my app using?", `get_application` includes an `emailSe
 
 <Note>
   **A newly registered sender is not active until its address is confirmed.** Registering triggers a verification email to the sender address; until someone clicks that link, the app keeps sending from the default Softr address. The tool's response includes `confirmed` so you know which state you're in. Senders on your own domain additionally need DKIM and Return-Path DNS verification, which is done in Softr Studio.
+</Note>
+
+## Subdomain and custom domain
+
+| Tool | What it does |
+|---|---|
+| `set_application_subdomain` | Changes the `something.softr.app` address the app is served on |
+| `set_application_domain` | Connects, replaces, or disconnects the app's custom domain |
+
+`set_application_subdomain` changes the label in front of the app's zone — pass `my-app` to get `my-app.softr.app`. The zone itself can't be changed, the label must be a valid DNS label (a-z, 0-9, hyphens), and the subdomain must not be in use by another app.
+
+`set_application_domain` takes a bare hostname like `app.example.com`; an apex domain like `example.com` is stored as `www.example.com`, so read the domain back from the response. Omit the domain to disconnect it and return to the subdomain. Custom domains require a plan that includes them.
+
+<Note>
+  **Neither change is live immediately.** The published app keeps serving on its old address until you republish it. A custom domain additionally only works once its DNS points at Softr — that setup happens in your DNS provider and Softr Studio, not through these tools.
 </Note>
 
 ## Previewing and publishing
