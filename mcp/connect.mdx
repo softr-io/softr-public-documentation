@@ -87,27 +87,18 @@ Claude Code adds MCP servers from the command line.
 
 ## ChatGPT
 
-Custom MCP servers in ChatGPT arrive as plugins, which requires developer mode.
+Softr is in ChatGPT's plugin directory, so there is no server URL to paste and no developer mode to switch on.
 
 <Steps>
-  <Step title="Enable developer mode">
-    Open ChatGPT **Settings → Security and login → Developer mode** and switch it on.
+  <Step title="Add the Softr plugin">
+    Open [Softr in ChatGPT's plugin directory](https://chatgpt.com/plugins/plugin_asdk_app_6aa42fc7bb8c8191a23a2979f3b05e44) and click **Connect**.
 
-    <Frame caption="Developer mode in ChatGPT's security settings. It has to be on before you can add a custom MCP server.">
-      ![ChatGPT security and login settings with the Developer mode toggle switched on](/images/connect/chatgpt-developer-mode.png)
-    </Frame>
-  </Step>
-  <Step title="Add Softr as a plugin">
-    Open **Plugins**, click **\+**, then fill in the details: name it `Softr`, keep **Connection** set to **Server URL** and paste `https://mcp.softr.io/mcp`, and leave **Authentication** on **OAuth**.
-
-    Tick **I understand and want to continue** to accept the custom MCP server notice, then click **Create**.
-
-    <Frame caption="ChatGPT's New Plugin dialog. Name, server URL and OAuth are the only fields Softr needs.">
-      ![New Plugin dialog in ChatGPT with the name Softr, the MCP server URL and OAuth authentication](/images/connect/chatgpt-new-plugin.png)
+    <Frame caption="Softr's page in ChatGPT's plugin directory. Connect starts the authorization.">
+      ![Softr's plugin page in ChatGPT with the Connect button](/images/connect/chatgpt-softr-plugin.png)
     </Frame>
   </Step>
   <Step title="Authorize your Softr account">
-    Click **Connect**, choose what ChatGPT can reach, and click **Allow**. See [What you are approving](#what-you-are-approving).
+    Choose what ChatGPT can reach, and click **Allow**. See [What you are approving](#what-you-are-approving).
   </Step>
   <Step title="Try it">
     Start a new chat and ask _"List my Softr apps."_
