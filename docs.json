@@ -769,8 +769,8 @@
         "label": "Community"
       },
       {
-        "href": "https://softr-academy.softr.app/",
-        "label": "Softr Academy"
+        "href": "https://www.softr.io/partners",
+        "label": "Hire an Expert"
       }
     ],
     "primary": {
@@ -789,11 +789,15 @@
             "label": "Sign Up"
           },
           {
+            "href": "https://www.softr.io/partners",
+            "label": "Hire an Expert"
+          },
+          {
             "href": "https://www.softr.io/blog",
             "label": "Blog"
           },
           {
-            "href": "https://twitter.com/softr_io",
+            "href": "https://www.linkedin.com/company/softr",
             "label": "Follow Us"
           },
           {
