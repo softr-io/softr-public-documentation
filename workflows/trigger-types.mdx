@@ -212,7 +212,7 @@ Runs a workflow repeatedly on a schedule you define.
 
 ## Integration Triggers
 
-Integration triggers connect Softr Workflows to third-party services. Softr Tables, Calendly, and Attio are **Instant**, while other services use background polling.
+Integration triggers connect Softr Workflows to third-party services. Softr Tables, Calendly, Attio, and Zoho CRM are **Instant**, while other services use background polling.
 
 ### Softr Tables
 Softr Tables triggers fire instantly since version 1.1.0, ensuring high performance.
@@ -304,6 +304,20 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 **When to use:** Sync new Attio records into a Softr database, notify a team when a deal is updated, or kick off a follow-up workflow when a task is created.
 
+### Zoho CRM
+
+| Event | Execution type |
+|---|---|
+| Record created | **Instant** |
+| Record updated | **Instant** |
+| Record deleted | **Instant** |
+
+**Configuration:** Requires a connected Zoho CRM account. Each trigger watches one module — Leads, Contacts, Accounts, or Deals.
+
+> **Tip:** Zoho CRM triggers are Instant — Zoho notifies Softr as soon as the change happens. The output carries the record ID; **Record updated** also lists the changed fields and their new values. Chain **Get record** to read the full record. A bulk edit or import starts one run per affected record.
+
+**When to use:** Notify a team when a lead is created, act on a deal stage change, or keep your Softr database in step with the CRM when records are deleted.
+
 ---
 
 ## Trigger Comparison Table
@@ -337,5 +351,8 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 | Record updated | Attio | Instant | Any |
 | Record deleted | Attio | Instant | Any |
 | Task created | Attio | Instant | Any |
+| Record created | Zoho CRM | Instant | Any |
+| Record updated | Zoho CRM | Instant | Any |
+| Record deleted | Zoho CRM | Instant | Any |
 
 ---
