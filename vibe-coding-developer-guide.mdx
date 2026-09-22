@@ -644,13 +644,15 @@ export default function Block() {
 
 ## Comments
 
-Comments live on records. They're configured once for the whole app in **Settings → Comments**, and the hooks in `@/lib/comments` give you one thread per record. You lay the thread out however the block needs. The app owns its data, its copy and its permissions.
+Comments live on records. They're set up once for the whole app in **Settings → Comments**. The hooks in `@/lib/comments` give you one thread per record — you lay it out, the app owns the data, the copy and the permissions.
 
-Don't build your own thread on top of a datasource field. Comments written that way are invisible to every other block in the app and to the builder's moderation tools.
+Don't build your own thread on top of a datasource field. Comments written that way are invisible to every other block in the app, and to the builder's moderation tools.
 
 ### `useCommentsSettings`
 
-Every label, placeholder, empty-state message and the sort direction comes from here. A builder editing them in Settings → Comments expects the change to show up right away, with no republish, so read them from the hook instead of hardcoding strings. Don't expose them as `useTextSetting` either — that's a second source of truth, and it quietly wins over the app's own settings.
+Every label, placeholder, empty-state message and the sort direction comes from here. A builder edits them in Settings → Comments and expects the change to show up right away, with no republish. So read them from the hook — don't hardcode strings.
+
+Don't expose them as `useTextSetting` either. That's a second source of truth, and it quietly overrides the app's settings.
 
 ```tsx
 function useCommentsSettings(options: {
@@ -676,9 +678,9 @@ function useCommentsSettings(options: {
 } | null
 ```
 
-**`displayAs` picks which settings you get.** Settings → Comments holds two independent sets of display options, one per layout. Pass `"BLOCK"` for a thread in the block's own flow, `"SIDE_PANEL"` for a docked panel. Pass the wrong one and the builder's edits look like they do nothing.
+**`displayAs` picks which settings you get.** Settings → Comments has two separate sets of display options, one per layout. Pass `"BLOCK"` for a thread in the block's own flow, `"SIDE_PANEL"` for a docked panel. Pass the wrong one and the builder's edits look like they do nothing.
 
-**Keep the field names when you destructure.** `commentListTitle` is the "Comment list title" setting, `submitButtonLabel` is "Submit button label". Rename it to `title` and you lose the link to the control the builder edits.
+**Keep the field names when you destructure.** `commentListTitle` is the "Comment list title" setting, `submitButtonLabel` is "Submit button label". Rename it to `title` and the link to the control the builder edits is gone.
 
 **`null` means render no comments UI at all.** You get it when the app has no comment settings, when that table isn't registered for comments, or when the viewer can't see the thread. It's not an error, and it's not a reason to fall back to something of your own.
 
