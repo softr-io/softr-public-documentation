@@ -1,0 +1,157 @@
+---
+title: "Run Custom Code"
+permalink: "workflows-actions-run-custom-code"
+sidebarTitle: "Run Custom Code"
+description: "Run JavaScript or Python inside a workflow, call HTTP APIs with fetch, and let your connected integrations authenticate those calls without a key in the code."
+og:title: "Run Custom Code - Softr Help Docs"
+og:description: "Run JavaScript or Python inside a workflow, call HTTP APIs with fetch, and let your connected integrations authenticate those calls without a key in the code."
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+---
+
+# Run Custom Code
+
+The **Run Custom Code** action runs **JavaScript** or **Python** inside your workflow. Use it for logic that formulas cannot express: parsing complex JSON, multi-step transformations, or calls to an API that has no dedicated action yet. The code can call HTTP APIs with `fetch`, and the integrations you attach to the step authenticate those calls for you.
+
+<Note>Run Custom Code is available on paid plans.</Note>
+
+<Tip>You don't need to write code from scratch. Click **Help me write code** in the code editor, describe what you want in plain language, and the AI assistant generates the code for you.</Tip>
+
+## How the step works
+
+1. **Data to use in the code**: name the values your code needs and map them to outputs of earlier steps. The code reads them from `inputData`.
+2. **Integrations the code can call**: attach the connected integrations the code may talk to. Each one gets an **alias**, a short name the code can use.
+3. **Language** and **Code**: write the body of a function. Whatever you `return` becomes the output of the step, available to later steps as `body`.
+
+<Frame caption="Run Custom Code action with JavaScript extracting a domain from an email">![Run Custom Code action with JavaScript](/workflows/images/workflows/advanced/run-custom-code.png)</Frame>
+
+## Reading input data
+
+Every entry of **Data to use in the code** is a key of `inputData`. A value that is exactly one variable keeps its type: a number stays a number, a record stays an object, a list stays an array.
+
+<CodeGroup>
+```javascript JavaScript
+const email = inputData.email;
+const items = inputData.items;
+return { domain: email.split('@')[1], count: items.length };
+```
+
+```python Python
+email = inputData['email']
+items = inputData['items']
+return {'domain': email.split('@')[1], 'count': len(items)}
+```
+</CodeGroup>
+
+## Returning a result
+
+Return any JSON-compatible value: an object, a list, a string, a number or a boolean. Later steps reference it through the variable menu as `body`, or a field of it. A thrown error or a raised exception fails the step, and the message appears in the run details and in **Test your step**.
+
+## Calling APIs with `fetch`
+
+Both languages offer `fetch(url, options)`. It sends an HTTP request and returns a response object. In JavaScript you `await` it; in Python it is a plain call.
+
+<CodeGroup>
+```javascript JavaScript
+const res = await fetch('https://api.example.com/v1/contacts', {
+  method: 'POST',
+  headers: { 'X-Request-Source': 'softr' },
+  body: { email: inputData.email, name: inputData.name },
+});
+if (!res.ok) {
+  throw new Error(`Contact API answered ${res.status}: ${await res.text()}`);
+}
+return await res.json();
+```
+
+```python Python
+res = fetch('https://api.example.com/v1/contacts', {
+    'method': 'POST',
+    'headers': {'X-Request-Source': 'softr'},
+    'body': {'email': inputData['email'], 'name': inputData['name']},
+})
+if not res.ok:
+    raise RuntimeError(f'Contact API answered {res.status}: {res.text()}')
+return res.json()
+```
+</CodeGroup>
+
+**Options**
+
+| Option | Meaning |
+|---|---|
+| `method` | `GET` by default; `POST`, `PUT`, `PATCH`, `DELETE` and the others work as expected. |
+| `headers` | An object of header names and values. |
+| `body` | A string is sent as it is. An object or a list is sent as JSON with `Content-Type: application/json`. In JavaScript, `URLSearchParams` is sent form-encoded. |
+| `integration` | The alias of an attached integration that should authenticate this call. Needed only when two attached integrations share a host. |
+
+**Response**
+
+| Member | Meaning |
+|---|---|
+| `status`, `ok` | The HTTP status code, and whether it is in the 200 range. |
+| `headers` | The response headers with lower-case names. JavaScript: `res.headers.get('content-type')`. Python: `res.headers['content-type']`. |
+| `text()`, `json()` | The body as text or parsed JSON. In JavaScript both are `await`ed. |
+| `arrayBuffer()` (JavaScript), `bytes()` (Python) | The raw body, for binary answers. |
+
+### Letting an integration authenticate the call
+
+Attach the integrations your code talks to under **Integrations the code can call**. When the code calls a URL on the API host of an attached integration, the request carries that integration's credentials automatically. The code never sees a token, and nothing you paste into the code is needed.
+
+<CodeGroup>
+```javascript JavaScript
+// "salesforce" is attached to the step; the call to its API host is authenticated for you.
+const res = await fetch(`${inputData.instanceUrl}/services/data/v60.0/sobjects/Account`, {
+  method: 'POST',
+  body: { Name: inputData.companyName },
+});
+return { created: res.ok, account: await res.json() };
+```
+
+```python Python
+# Two attached integrations share the host api.hubapi.com; the alias picks the one to use.
+res = fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
+    'method': 'POST',
+    'body': {'properties': {'email': inputData['email']}},
+    'integration': 'sales_hubspot',
+})
+return res.json()
+```
+</CodeGroup>
+
+- The credentials are only added when the URL points at the provider's own API host. A call to any other host goes out without them, whatever alias you pass.
+- You can attach every integration the **Call API** action can authenticate with. Database connections, Softr Databases, Softr Apps, Telegram and Trello cannot be attached, because their credentials have no HTTP header form.
+- An alias is a short name of letters, digits and underscores, unique within the step. It defaults to the integration type, such as `salesforce` or `rest_api`.
+
+<Warning>Do not put API keys or tokens into the code or into **Data to use in the code**. Connect the service as an integration and attach it to the step instead. The credential then stays out of your workflow definition and out of the run details.</Warning>
+
+### Calls without an integration
+
+`fetch` also reaches any public host without an attached integration. The request is sent exactly as you wrote it, including any headers you set. Private networks, `localhost` and cloud metadata addresses are blocked.
+
+## Runtimes and limits
+
+| | JavaScript | Python |
+|---|---|---|
+| **Runtime** | Node.js 24 | Python 3.12 |
+| **Available** | `fetch`, `URL`, `URLSearchParams`, `TextEncoder`, `TextDecoder`, `structuredClone`, timers, `JSON`, `Math`, `Date`, regular expressions, top-level `await` | `fetch`, class definitions, and these standard modules: `json`, `re`, `math`, `statistics`, `decimal`, `fractions`, `datetime`, `zoneinfo`, `time`, `calendar`, `random`, `secrets`, `collections`, `itertools`, `functools`, `operator`, `string`, `textwrap`, `unicodedata`, `difflib`, `html`, `base64`, `hashlib`, `hmac`, `uuid`, `struct`, `copy`, `heapq`, `bisect`, `typing`, `enum`, `dataclasses`, `csv`, `io` (`StringIO`, `BytesIO`), `urllib.parse` |
+| **Not available** | `require`, `import`, `Buffer`, `crypto`, the file system, environment variables | `os`, `sys`, `subprocess`, `open`, `requests`, `urllib.request`, third-party packages |
+
+| Limit | Value |
+|---|---|
+| Run time of one step | About two minutes; the step then fails with **Execution timed out**. |
+| JavaScript busy loop | A stretch of synchronous code longer than two seconds, with no `await`, is stopped. |
+| Python CPU time | Two seconds of CPU time per run; waiting for `fetch` does not count. |
+| `fetch` calls | Up to 20 per second per run. |
+| Response size | Up to about 6 MB per `fetch` response. |
+
+## When something fails
+
+- A **script error** fails the step with the message of the error or exception. Test the step to see it while you write the code.
+- A **`fetch` error** is raised as an exception in your code, so you can catch it. Its message names the reason: a blocked host, an unknown alias, too many calls, or a target that did not answer.
+- **Execution timed out** means the run hit the two-minute limit, or the CPU limit in Python.
+
+## Versions
+
+Steps created with an earlier version of Run Custom Code keep working. Opening such a step in the workflow editor upgrades it to the current version, which offers everything the earlier versions had plus `fetch` and integrations.
+
+<Tip>Building workflows as code? The [Softr Workflows CLI](https://github.com/softr-io/softr-workflows-cli) keeps every Run Custom Code step in a real `.js` or `.py` file next to the workflow definition.</Tip>
