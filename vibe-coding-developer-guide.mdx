@@ -642,6 +642,73 @@ export default function Block() {
 
 ---
 
+## Comments
+
+Comments live on records. They're configured once for the whole app in **Settings → Comments**, and the hooks in `@/lib/comments` give you one thread per record. You lay the thread out however the block needs. The app owns its data, its copy and its permissions.
+
+Don't build your own thread on top of a datasource field. Comments written that way are invisible to every other block in the app and to the builder's moderation tools.
+
+### `useCommentsSettings`
+
+Every label, placeholder, empty-state message and the sort direction comes from here. A builder editing them in Settings → Comments expects the change to show up right away, with no republish, so read them from the hook instead of hardcoding strings. Don't expose them as `useTextSetting` either — that's a second source of truth, and it quietly wins over the app's own settings.
+
+```tsx
+function useCommentsSettings(options: {
+  /** Which layout you're building. The two layouts have separate display settings. */
+  displayAs: "BLOCK" | "SIDE_PANEL";
+  /** Which datasource the thread is on. Required on a multi-datasource block. */
+  from?: string;
+}): {
+  commentListTitle: string;         // may be empty — render no heading rather than an empty one
+  commentBoxPlaceholder: string;
+  submitButtonLabel: string;
+  deleteButtonLabel: string;
+  loadMoreCommentsButtonLabel: string;
+  emptyStateMessage: string;        // shown instead of the list when the thread is empty
+  notificationsToggleLabel: string;
+  sortDirection: "NEWEST_ON_TOP" | "OLDEST_ON_TOP";
+  surface: boolean;                 // whether each comment sits on its own card
+  showVerticalLine: boolean;        // whether a line joins consecutive comments into one thread
+  commentPanelDisplayMode: "PUSH_MAIN_CONTENT" | "COVER_MAIN_CONTENT";  // SIDE_PANEL only
+  canPost: boolean;                 // false for a viewer who can read the thread but not post
+  quickReactions: Array<{ emoji: string; label: string }>;  // the only emoji this surface can post
+  allowMentions: boolean;           // false when the app has mentions turned off
+} | null
+```
+
+**`displayAs` picks which settings you get.** Settings → Comments holds two independent sets of display options, one per layout. Pass `"BLOCK"` for a thread in the block's own flow, `"SIDE_PANEL"` for a docked panel. Pass the wrong one and the builder's edits look like they do nothing.
+
+**Keep the field names when you destructure.** `commentListTitle` is the "Comment list title" setting, `submitButtonLabel` is "Submit button label". Rename it to `title` and you lose the link to the control the builder edits.
+
+**`null` means render no comments UI at all.** You get it when the app has no comment settings, when that table isn't registered for comments, or when the viewer can't see the thread. It's not an error, and it's not a reason to fall back to something of your own.
+
+```tsx
+import { useCommentsSettings } from "@/lib/comments";
+
+export default function Block() {
+  const settings = useCommentsSettings({ displayAs: "BLOCK" });
+
+  if (!settings) return null;
+
+  return (
+    <section>
+      {settings.commentListTitle && <h2>{settings.commentListTitle}</h2>}
+
+      {settings.canPost && (
+        <form>
+          <textarea placeholder={settings.commentBoxPlaceholder} />
+          <button type="submit">{settings.submitButtonLabel}</button>
+        </form>
+      )}
+    </section>
+  );
+}
+```
+
+The rest of `@/lib/comments` builds the thread itself: `useComments`, `useCommentCreate`, `useCommentDelete`, `useCommentReactions`, `useCommentComposer`, `useMentionSuggestions` and `useCommentSubscription`.
+
+---
+
 ## Editable Settings
 
 Editable settings let builders modify block content through the editor UI (**Content → Settings** tab) without touching code. Always use them for any text, images, icons, or lists that might change between block instances.
@@ -727,7 +794,26 @@ export default function Block() {
 
 ### `useNavigationSetting`
 
-Returns `{ action: "OPEN_URL" | "OPEN_PAGE"; destination: string; openIn: "SELF" | "TAB" } | { action: "OPEN_CHAT" } | { action: "TRIGGER_CUSTOM_WORKFLOW" }`.
+Returns one of:
+
+```ts
+{
+  action: "OPEN_URL" | "OPEN_PAGE";
+  destination: string;
+  openIn: "SELF" | "TAB" | "MODAL";
+  modalSize: "SM" | "MD" | "LG" | "XL";  // only used when openIn is "MODAL"
+  modalType: "POPUP" | "SLIDING";        // only used when openIn is "MODAL"
+}
+| { action: "OPEN_CHAT"; actionId: string | undefined }
+| { action: "TRIGGER_CUSTOM_WORKFLOW"; actionId: string | undefined }
+```
+
+The builder picks the action and how it opens. Your code just passes the value to `NavigationAction` or `navigate()`.
+
+`initialValue` sets the starting point, and takes a looser shape than what you get back:
+
+- Link: `{ destination, action?, openIn?, modalSize?, modalType? }`. `action` comes from `destination` — starts with `/` means `OPEN_PAGE`, anything else `OPEN_URL`. `openIn` defaults to `TAB`.
+- Chat or workflow: `{ action: "OPEN_CHAT" }` or `{ action: "TRIGGER_CUSTOM_WORKFLOW" }`. The builder picks which action it points at, so there's nothing else to set.
 
 ```tsx
 import { NavigationAction } from "@/components/navigation-action";
@@ -762,6 +848,61 @@ The `NavigationAction` component also accepts optional `recordId?: string` and `
   View details
 </NavigationAction>
 ```
+
+### `useNavigation`
+
+Some things aren't links — a chart segment, a table row, a countdown, a form that just submitted. For those, call `navigate()` from `useNavigation`. It takes the same setting `NavigationAction` takes and opens it the same way, so the builder's choice still applies.
+
+Call it once per block. The setting is an argument, so one `navigate` handles every destination.
+
+```tsx
+import { useNavigation, useNavigationSetting } from "@/lib/editable-settings";
+import { useRecordCreate, q } from "@/lib/datasource";
+import { Button } from "@/components/ui/button";
+
+export default function Block() {
+  const navigate = useNavigation();
+
+  const afterSubmit = useNavigationSetting({
+    name: "after-submit",
+    label: "After Submit",
+    initialValue: { destination: "/thank-you", openIn: "SELF" },
+  });
+
+  const createRecord = useRecordCreate({
+    fields: q.select({ name: "FIELD_ID1" }),
+    onSuccess: () => navigate(afterSubmit),
+  });
+
+  return <Button onClick={() => createRecord.mutate({ name: "New user" })}>Submit</Button>;
+}
+```
+
+The second argument takes the same `recordId` and `datasourceId` as `NavigationAction`, for a destination that points at one record:
+
+```tsx
+<BarChart
+  onBarClick={(bar) =>
+    navigate(detailsLink, { recordId: bar.id, datasourceId: "d347bd84-7dc5-4d19-bc98-68417c6ae147" })
+  }
+/>
+```
+
+What `navigate()` does, per setting:
+
+| Setting | What happens |
+| --- | --- |
+| `OPEN_PAGE` / `OPEN_URL`, `openIn: "SELF"` | Navigates the app there |
+| `OPEN_PAGE` / `OPEN_URL`, `openIn: "TAB"` | Opens in a new tab |
+| `OPEN_PAGE` / `OPEN_URL`, `openIn: "MODAL"` | Opens in a modal, with the builder's `modalSize` and `modalType` |
+| `OPEN_CHAT` | Opens the AI chat for that action |
+| `TRIGGER_CUSTOM_WORKFLOW` | Runs the workflow with `recordId` and `datasourceId` |
+
+`recordId` gets added to page and URL destinations as `?recordId=<id>`. It's skipped for `#section`, `mailto:`, `tel:` and `sms:` destinations — nowhere to put it.
+
+If the setting points at an action the builder deleted or hid, `navigate()` does nothing. No error, no toast, so don't bother guarding the call.
+
+Use `NavigationAction` whenever a real link will do. An anchor gives you middle-click, "open in new tab" and the browser's hover preview. A click handler loses all three. And don't fall back to `window.open` or `window.location` — those hardcode the destination, so the builder can't change it anymore.
 
 ### `useArraySetting`
 
