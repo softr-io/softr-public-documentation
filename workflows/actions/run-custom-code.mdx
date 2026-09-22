@@ -142,6 +142,7 @@ return res.json()
 | JavaScript busy loop | A stretch of synchronous code longer than two seconds, with no `await`, is stopped. |
 | Python CPU time | Two seconds of CPU time per run; waiting for `fetch` does not count. |
 | `fetch` calls | Up to 20 per second per run. |
+| Request body | Up to 5 MB per `fetch`; a bigger body fails before it is sent. |
 | Response size | Up to about 6 MB per `fetch` response. |
 
 ## When something fails
