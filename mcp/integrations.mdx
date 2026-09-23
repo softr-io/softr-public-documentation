@@ -10,12 +10,14 @@ description: "Browse the external data sources connected to a Softr workspace."
 icon: "plug"
 ---
 
-An integration is an external data source connected to a workspace — an Airtable base, a Google Sheet, a Notion database, a monday.com board, a Supabase project. You connect it once per workspace, and then any app, block, or workflow in that workspace can read from it.
+An integration is an external service connected to a workspace. You connect it once, and then any app, block, or workflow in that workspace can use it. Most of the ones you will browse here hold data — an Airtable base, a Google Sheet, a Notion database, a monday.com board, a Supabase project — and those are the workspace's **data sources**.
 
 These five tools let an assistant explore what's connected and find the exact table it needs. They are all read-only. They exist to answer "what data is available here?" so the answer can be used somewhere else: wiring a table to a [vibe coding block](/mcp/vibe-coding), or filling in a [workflow step](/mcp/workflows) that reads from Airtable.
 
 <Note>
-  The builder calls these **integrations**; the tool names call them **data sources**. They are the same thing, so the assistant will follow whichever word you use.
+  **A data source is a kind of integration, not another word for one.** Every data source is an integration; the reverse is not true. Gmail, Slack and OpenAI are integrations with no records in them, so there is nothing to browse inside them and they are not data sources.
+
+  That is why the tool names split the way they do: `list_integrations` lists everything the workspace has connected, and the `list_data_source_*` tools browse inside the entries that actually hold data. Either word gets you to the right place — the assistant works out which you mean.
 </Note>
 
 ## Browsing is a drill-down
@@ -23,7 +25,7 @@ These five tools let an assistant explore what's connected and find the exact ta
 These tools are one path, not five separate features. Each level needs an ID from the level above, so the assistant walks down from the workspace to the fields of one table.
 
 ```
-list_data_sources                          workspace
+list_integrations                          workspace
 └── list_data_source_databases             a base, spreadsheet, doc, workspace, or database
     └── list_data_source_schemas           only some integrations have this level
         └── list_data_source_tables        a table, sheet, board, or list
@@ -32,7 +34,7 @@ list_data_sources                          workspace
 
 | Tool | What it does |
 |---|---|
-| `list_data_sources` | Lists the integrations connected to a workspace |
+| `list_integrations` | Lists the integrations connected to a workspace |
 | `list_data_source_databases` | Lists the top level inside one integration — bases, spreadsheets, docs, workspaces, projects, or databases |
 | `list_data_source_schemas` | Lists the middle level, for the integrations that have one |
 | `list_data_source_tables` | Lists the tables, sheets, boards, or lists |
@@ -71,8 +73,6 @@ Every data source type Softr supports can be browsed and connected to a block th
 | Custom | REST API |
 
 Each has its own setup guide in the **Data Sources** section of these docs. Connect it to the workspace there first, and it becomes browsable through MCP.
-
-`list_data_sources` also returns integrations that are not data sources at all — Gmail, Slack, OpenAI and the other workflow connectors. Those appear so you can see what the workspace has, but there are no tables to browse inside them.
 
 <Note>
   If an integration you expect is missing from a result, check that it is connected to the workspace you are asking about rather than a different one. If a table is missing, check you are looking under the right top-level entry — a monday.com board only appears under the monday.com workspace that owns it.
