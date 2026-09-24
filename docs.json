@@ -48,7 +48,8 @@
             "pages": [
               "start-here/welcome",
               "start-here/ai-co-builder",
-              "start-here/create-an-app-from-a-template"
+              "start-here/create-an-app-from-a-template",
+              "how-to-guides/how-to-create-your-own-template"
             ]
           },
           {
@@ -63,6 +64,36 @@
               "core-concepts-overview/user-groups--permissions",
               "core-concepts-overview/style-your-app",
               "core-concepts-overview/publish-your-application"
+            ]
+          },
+          {
+            "group": "Use Cases",
+            "pages": [
+              "how-to-guides/what-internal-tools-can-you-build-with-softr",
+              "how-to-guides/how-to-create-a-client-portal",
+              "how-to-guides/how-to-create-a-membership-site"
+            ]
+          },
+          {
+            "group": "Workspace and Billing",
+            "pages": [
+              "workspace-and-billing/accessing-my-account",
+              "workspace-and-billing/my-profile",
+              "workspace-and-billing/billing",
+              "workspace-and-billing/pricing-and-plans",
+              "workspace-and-billing/transfer-workspace-ownership",
+              "workspace-and-billing/workspaces-and-applications",
+              "workspace-and-billing/ai-credits",
+              "how-to-guides/how-to-share-access-with-support"
+            ]
+          },
+          {
+            "group": "Affiliate and Referral Programs",
+            "pages": [
+              "affiliate-and-referral-programs/partner-with-softr",
+              "affiliate-and-referral-programs/softrs-affiliate-program",
+              "affiliate-and-referral-programs/softrs-referral-program",
+              "affiliate-and-referral-programs/softr-universe"
             ]
           }
         ]
@@ -82,7 +113,11 @@
                   "building-blocks/grid-block",
                   "building-blocks/layout-list-with-small-cards",
                   "building-blocks/layout-list-with-timeline",
-                  "building-blocks/layout-inbox"
+                  "building-blocks/layout-inbox",
+                  "how-to-guides/how-to-create-a-blog",
+                  "how-to-guides/how-to-create-a-blog-from-a-data-source",
+                  "how-to-guides/how-to-filter-list-data-from-the-url",
+                  "how-to-guides/how-to-filter-list-by-page-url-parameters"
                 ]
               },
               {
@@ -173,7 +208,8 @@
                   "building-blocks/partner",
                   "building-blocks/x-twitter-grid",
                   "building-blocks/quick-links",
-                  "building-blocks/pricing"
+                  "building-blocks/pricing",
+                  "how-to-guides/personalize-your-app-by-adding-welcome-message"
                 ]
               },
               {
@@ -246,7 +282,8 @@
                 "icon": "upload",
                 "pages": [
                   "publishing/publishing-your-softr-app",
-                  "publishing/unpublishing-your-app"
+                  "publishing/unpublishing-your-app",
+                  "how-to-guides/how-to-create-a-mobile-app-from-a-softr-app"
                 ]
               },
               {
@@ -346,7 +383,8 @@
                 "group": "Peer-to-Peer Chat",
                 "icon": "message",
                 "pages": [
-                  "integrations/atomchat"
+                  "integrations/atomchat",
+                  "how-to-guides/how-to-enable-peer-to-peer-chat"
                 ]
               },
               {
@@ -427,6 +465,15 @@
             "pages": [
               "migration-tips/migrating-from-airtable-to-softr-databases"
             ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              "troubleshooting/troubleshooting-airtable-errors",
+              "troubleshooting/troubleshooting-airtable-api-call-limit-exceeded",
+              "troubleshooting/troubleshooting-google-sheets-errors",
+              "troubleshooting/troubleshooting-hubspot-errors"
+            ]
           }
         ]
       },
@@ -487,7 +534,9 @@
               "user-groups-and-permissions/page-visibility",
               "user-groups-and-permissions/page-rules",
               "user-groups-and-permissions/global-data-restrictions",
-              "user-groups-and-permissions/options-filters"
+              "user-groups-and-permissions/options-filters",
+              "how-to-guides/add-users-to-user-groups-based-on-stripe-attributes",
+              "how-to-guides/how-to-make-pagesblocks-accessible-only-to-company-users"
             ]
           },
           {
@@ -668,61 +717,6 @@
               "custom-code/custom-code-snippets",
               "custom-code/custom-code-events-and-style-selectors",
               "custom-code/spa-custom-code-guidelines"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Resources",
-        "icon": "book-open",
-        "groups": [
-          {
-            "group": "How-to Guides",
-            "pages": [
-              "how-to-guides/how-to-enable-peer-to-peer-chat",
-              "how-to-guides/how-to-create-your-own-template",
-              "how-to-guides/how-to-create-a-blog",
-              "how-to-guides/how-to-create-a-blog-from-a-data-source",
-              "how-to-guides/personalize-your-app-by-adding-welcome-message",
-              "how-to-guides/what-internal-tools-can-you-build-with-softr",
-              "how-to-guides/how-to-create-a-client-portal",
-              "how-to-guides/how-to-create-a-membership-site",
-              "how-to-guides/how-to-share-access-with-support",
-              "how-to-guides/add-users-to-user-groups-based-on-stripe-attributes",
-              "how-to-guides/how-to-make-pagesblocks-accessible-only-to-company-users",
-              "how-to-guides/how-to-create-a-mobile-app-from-a-softr-app",
-              "how-to-guides/how-to-filter-list-data-from-the-url",
-              "how-to-guides/how-to-filter-list-by-page-url-parameters"
-            ]
-          },
-          {
-            "group": "Troubleshooting",
-            "pages": [
-              "troubleshooting/troubleshooting-airtable-errors",
-              "troubleshooting/troubleshooting-airtable-api-call-limit-exceeded",
-              "troubleshooting/troubleshooting-google-sheets-errors",
-              "troubleshooting/troubleshooting-hubspot-errors"
-            ]
-          },
-          {
-            "group": "Workspace and Billing",
-            "pages": [
-              "workspace-and-billing/accessing-my-account",
-              "workspace-and-billing/my-profile",
-              "workspace-and-billing/billing",
-              "workspace-and-billing/pricing-and-plans",
-              "workspace-and-billing/transfer-workspace-ownership",
-              "workspace-and-billing/workspaces-and-applications",
-              "workspace-and-billing/ai-credits"
-            ]
-          },
-          {
-            "group": "Affiliate and Referral Programs",
-            "pages": [
-              "affiliate-and-referral-programs/partner-with-softr",
-              "affiliate-and-referral-programs/softrs-affiliate-program",
-              "affiliate-and-referral-programs/softrs-referral-program",
-              "affiliate-and-referral-programs/softr-universe"
             ]
           }
         ]
