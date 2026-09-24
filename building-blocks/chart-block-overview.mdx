@@ -8,7 +8,6 @@ og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/
 twitter:title: "Chart Block Overview – Softr Help Docs"
 twitter:description: "Adding charts to your Softr app."
 ---
-
 <Note>
   Chart block is available for users on the [Professional plan and above](https://www.softr.io/pricing).
 </Note>
@@ -164,3 +163,143 @@ div[category='Chart'] span[class*='message'] {
 }
 </style>
 ```
+
+## Chart types
+
+Pick the chart type in the **Type** setting of the Chart block.
+
+### Bar chart
+
+<Note>Bar chart block is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+<Frame caption="Bar Chart">![Bar Chart](/building-blocks/images/type-bar-chart/image1.png)</Frame>
+
+This [chart](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg) type lets you display your data through simple bars.
+
+<Info>Not sure how to setup charts? Learn more here → [Chart Block Overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg). </Info>
+
+### Stacked bar chart
+
+<Note>Stacked bar chart block is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+
+The Stacked Bar chart layout allows you to compare data in a part-to-whole manner, over time or across categories.
+
+The setup is similar to that of a [Bar Chart](/building-blocks/chart-block-overview#bar-chart) with a unique feature: it allows the presentation of subcategories within a single bar (stacked), as opposed to showing each subcategory with a separate bar.
+
+#### Example
+
+Let’s say you are a sales manager and you want to analyze bookings by month, split by deal owners. You want to both understand what is the total sum of won deals, as well as how each sales person (deal owner) contributed.
+
+Here is the output chart we aim at preparing:
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image1.png)</Frame>
+
+**Setting up the chart**
+
+Take a look at the Airtable base example. It has different deals at different sales stages, close dates and deal owners.
+<Frame caption="Airtable base with sales information">![Airtable base with sales information](/building-blocks/images/type-stacked-bar-chart/image2.png)</Frame>
+
+Having a base, let’s add a Stacked Bar Chart block, and configure it.
+
+<Columns cols={2}>
+<p>**Conditional filters** – let’s take into account only the deals with a Deal stage: Won</p>
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image3.png)</Frame>
+</Columns><Columns cols={2}>
+
+<p>**Aggregate function** – we want to SUM all the deal values</p>
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image4.png)</Frame>
+</Columns>
+
+**Groupings**
+
+<Columns cols={2}>
+
+<p>Then we want to group these won deal values by the deal close date, with a month time interval →</p>
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image5.png)</Frame>
+</Columns>
+<Columns cols={2}>
+
+<p>Finally, we want to further group the data by deal owners →</p>
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image6.png)</Frame>
+</Columns>
+
+The Stacked Bar Chart block is ready:
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image7.png)</Frame>
+
+#### Show and hide data point labels
+
+Sometimes labels on stacked bars can look a bit too crowded, so among options shared with other chart types, the Stacked Bar Chart has an additional option to decide whether to show data point labels on stacked bars.
+<Frame>![Notion image](/building-blocks/images/type-stacked-bar-chart/image8.png)</Frame>
+<Info>Whether the label will be shown or not, a data point **tooltip** still shows up upon hovering over the bars.</Info>
+<Frame caption="Show data point labels: ON">![Show data point labels: ON](/building-blocks/images/type-stacked-bar-chart/image9.png)</Frame><Frame caption="Show data point labels: OFF">![Show data point labels: OFF](/building-blocks/images/type-stacked-bar-chart/image10.png)</Frame>
+<Info>Learn more about setting up charts → [Chart Block Overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg). </Info>
+
+### Line chart
+
+<Note>Line chart block is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+<Frame caption="Line Chart">![Line Chart](/building-blocks/images/type-line-chart/image1.png)</Frame>
+
+The **Line Chart** [chart](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg) type represents the data through lines connected by nods.
+
+<Info>Not sure how to setup charts? Learn more here → [Chart Block Overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg). </Info>
+
+#### FAQ
+
+<AccordionGroup>
+  <Accordion title="How to plot daily values in a line chart using a Sheets data source in Softr?">
+    Use a DATE column type in your data source, enable Group by, and set the interval to days. This will aggregate the data by day and display it as a line chart for the different days.
+  </Accordion>
+</AccordionGroup>
+
+### Area chart
+
+<Note>Area chart block is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+<Frame caption="Area Chart">![Area Chart](/building-blocks/images/type-area-chart/image1.png)</Frame>
+
+The **Area Chart** is basically a [Line chart](/building-blocks/chart-block-overview#line-chart), where the area below the lines is color-filled.
+
+<Info>Not sure how to setup charts? Learn more here → [Chart Block Overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg). </Info>
+
+### Scatter chart
+
+<Note>Scatter chart block is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+<Frame caption="Scatter Chart">![Scatter Chart](/building-blocks/images/type-scatter-chart/image1.png)</Frame>
+
+The **Scatter** type is similar to the [Line Chart](/building-blocks/chart-block-overview#line-chart) with the only difference that there are no connecting lines between the nodes.
+
+<Info>Not sure how to setup charts? Learn more here → [Chart Block Overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg). </Info>
+
+### Pie chart
+
+<Note>Pie chart block is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+
+**Pie Chart** is a circular graphic that is divided into slices to show numerical proportion. The setup of the **Pie Chart** block is similar to that of the **Bar Chart** described [here](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg), but there are some differences related to the unique characteristics of this chart type, which we’re going to discuss here.
+
+The following image illustrates a pie chart that uses the same the income/expense data from Airtable we used in our [chart block overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg).
+<Frame caption="Pie chart">![Pie chart](/building-blocks/images/type-pie-chart/image1.png)</Frame>
+
+We’ve used the same **Sum aggregate function**, and we can see that each slice shows the sum of incomes and expenses for a given month, and what’s the proportion of each slice (e.g. 23.81% for January). At the top of the chart, there’s the **Legend** section, which indicates which color corresponds to which record or group of records. So, let’s see how the Legend is configured.
+
+#### Chart legend
+
+First of all, you can choose whether you want to display a Legend or not. If the toggle is enabled, you can change the **Legend position** as well as switch the **Legend direction** between **vertical** and **horizontal** options.
+<Frame caption="Legend settings">![Legend settings](/building-blocks/images/type-pie-chart/image2.gif)</Frame>
+<Info>Not sure how to setup charts? Learn more here → [Chart Block Overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg). </Info>
+
+### Donut chart
+
+<Note>Donut chart block is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+<Frame caption="Donut Chart">![Donut Chart](/building-blocks/images/type-donut-chart/image1.png)</Frame>
+
+The Donut Chart is a [Pie Chart](/building-blocks/chart-block-overview#pie-chart) with its center cut out to look like a donut.
+
+<Info>Not sure how to setup charts? Learn more here → [Chart Block Overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg). </Info>
+
+### Rose chart
+
+<Note>Rose chart block is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+<Frame caption="Rose Chart">![Rose Chart](/building-blocks/images/type-rose-chart/image1.png)</Frame>
+
+The **Rose Chart** is a radial graph with multiple axes radiating out from the centre. Instead of points being plotted along an axis, bars are drawn to show the quantity of each variable. **Rose Charts** are commonly used to indicate wind speed or noise levels.
+
+The setup of the block is similar to that of the [Pie Chart](/building-blocks/chart-block-overview#pie-chart).
+
+<Info>Not sure how to setup charts? Learn more here → [Chart Block Overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/chart-block-overview/48LkSKXWY8TrBwjqBVXMqg). </Info>

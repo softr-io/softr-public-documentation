@@ -103,23 +103,18 @@
         "icon": "browser",
         "groups": [
           {
-            "group": "Building Blocks",
+            "group": "Dynamic Blocks",
             "pages": [
-              {
-                "group": "List",
-                "icon": "list",
-                "pages": [
-                  "building-blocks/list-block",
-                  "building-blocks/grid-block",
-                  "building-blocks/layout-list-with-small-cards",
-                  "building-blocks/layout-list-with-timeline",
-                  "building-blocks/layout-inbox",
-                  "how-to-guides/how-to-create-a-blog",
-                  "how-to-guides/how-to-create-a-blog-from-a-data-source",
-                  "how-to-guides/how-to-filter-list-data-from-the-url",
-                  "how-to-guides/how-to-filter-list-by-page-url-parameters"
-                ]
-              },
+              "building-blocks/list-block",
+              "building-blocks/grid-block",
+              "building-blocks/layout-inbox",
+              "building-blocks/table-block-",
+              "building-blocks/calendar",
+              "building-blocks/kanban",
+              "building-blocks/map",
+              "building-blocks/organizational-chart",
+              "building-blocks/chart-block-overview",
+              "building-blocks/summary-cards",
               {
                 "group": "Item Details",
                 "icon": "circle-info",
@@ -130,13 +125,6 @@
                   "building-blocks/use-case-embedding-calendly-in-list-details",
                   "building-blocks/use-case-filtering-other-lists-by-a-list-detail-block-data",
                   "building-blocks/use-case-hiding-blocks-based-on-current-record-data"
-                ]
-              },
-              {
-                "group": "Table",
-                "icon": "table",
-                "pages": [
-                  "building-blocks/table-block-"
                 ]
               },
               {
@@ -151,27 +139,21 @@
                 ]
               },
               {
-                "group": "Charts",
-                "icon": "chart-column",
+                "group": "Pricing and Billing",
+                "icon": "credit-card",
                 "pages": [
-                  "building-blocks/chart-block-overview",
-                  "building-blocks/type-bar-chart",
-                  "building-blocks/type-stacked-bar-chart",
-                  "building-blocks/type-line-chart",
-                  "building-blocks/type-area-chart",
-                  "building-blocks/type-scatter-chart",
-                  "building-blocks/type-pie-chart",
-                  "building-blocks/type-donut-chart",
-                  "building-blocks/type-rose-chart",
-                  "building-blocks/summary-cards"
+                  "building-blocks/pricing",
+                  "integrations/simple-checkout-form",
+                  "integrations/simple-billing-block",
+                  "integrations/stripe-customer-portal"
                 ]
               },
               {
-                "group": "Block Containers",
-                "icon": "cube",
+                "group": "Vibe Coding",
+                "icon": "wand-magic-sparkles",
                 "pages": [
-                  "building-blocks/column-container",
-                  "building-blocks/tabs"
+                  "vibe-coding",
+                  "vibe-coding-developer-guide"
                 ]
               },
               {
@@ -187,39 +169,24 @@
                 ]
               },
               {
-                "group": "Other Dynamic Blocks",
-                "icon": "bolt",
+                "group": "List How-to Guides",
+                "icon": "book-open",
                 "pages": [
-                  "building-blocks/calendar",
-                  "building-blocks/kanban",
-                  "building-blocks/organizational-chart",
-                  "building-blocks/map"
-                ]
-              },
-              {
-                "group": "Static Blocks",
-                "icon": "image",
-                "pages": [
-                  "building-blocks/header",
-                  "building-blocks/hero",
-                  "building-blocks/cta",
-                  "building-blocks/feature",
-                  "building-blocks/feature-grid",
-                  "building-blocks/partner",
-                  "building-blocks/x-twitter-grid",
-                  "building-blocks/quick-links",
-                  "building-blocks/pricing",
-                  "how-to-guides/personalize-your-app-by-adding-welcome-message"
-                ]
-              },
-              {
-                "group": "Vibe Coding",
-                "icon": "wand-magic-sparkles",
-                "pages": [
-                  "vibe-coding",
-                  "vibe-coding-developer-guide"
+                  "how-to-guides/how-to-create-a-blog",
+                  "how-to-guides/how-to-create-a-blog-from-a-data-source",
+                  "how-to-guides/how-to-filter-list-data-from-the-url",
+                  "how-to-guides/how-to-filter-list-by-page-url-parameters"
                 ]
               }
+            ]
+          },
+          {
+            "group": "Static Blocks",
+            "pages": [
+              "building-blocks/static-blocks",
+              "building-blocks/column-container",
+              "building-blocks/tabs",
+              "how-to-guides/personalize-your-app-by-adding-welcome-message"
             ]
           },
           {
@@ -394,11 +361,7 @@
                   "integrations/stripe-checkout",
                   "integrations/buy-me-a-coffee",
                   "integrations/gumroad",
-                  "integrations/paypal",
-                  "integrations/layout-pricing-in-card-view-with-details",
-                  "integrations/stripe-customer-portal",
-                  "integrations/simple-billing-block",
-                  "integrations/simple-checkout-form"
+                  "integrations/paypal"
                 ]
               },
               {
@@ -976,15 +939,15 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/cta/oPDoXzSUpMuKki92WuBDDH",
-      "destination": "/building-blocks/cta"
+      "destination": "/building-blocks/static-blocks#cta"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/feature-grid/5ik7RjqWWAkDQwhW1sFcf9",
-      "destination": "/building-blocks/feature-grid"
+      "destination": "/building-blocks/static-blocks#feature-grid"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/feature/n7KnNydZxMifxWX5CK6ZTz",
-      "destination": "/building-blocks/feature"
+      "destination": "/building-blocks/static-blocks#feature"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH",
@@ -992,11 +955,11 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/header/5dpe9Tntz67ejVpCGGWDnR",
-      "destination": "/building-blocks/header"
+      "destination": "/building-blocks/static-blocks#header"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/hero/avyLWEvNZNUqYewF51kMLA",
-      "destination": "/building-blocks/hero"
+      "destination": "/building-blocks/static-blocks#hero"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/item-details-block-/4bE8XaFbJp45wkAwuWiz8f",
@@ -1012,11 +975,11 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/layout-list-with-small-cards/9PKEKRws6aNYjuh7cgtHNa",
-      "destination": "/building-blocks/layout-list-with-small-cards"
+      "destination": "/building-blocks/list-block#list-with-small-cards"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/layout-list-with-timeline/ePuVavv5Na7EfL8V5XHh6b",
-      "destination": "/building-blocks/layout-list-with-timeline"
+      "destination": "/building-blocks/list-block#list-with-timeline"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/link-expired/54HYs3JEjZq4hE6TqDeWvG",
@@ -1048,7 +1011,7 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/partner/mio7YbrncvNjaqZ7VpBwA9",
-      "destination": "/building-blocks/partner"
+      "destination": "/building-blocks/static-blocks#partner"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/permission-denied-401/54HYs3JEk1EoiwpFbPzVSF",
@@ -1056,7 +1019,7 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/quick-links/54HYs3JEjYNuEi25KC6ZYn",
-      "destination": "/building-blocks/quick-links"
+      "destination": "/building-blocks/static-blocks#quick-links"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/signup/54HYs3JEjYZA33S96fP3de",
@@ -1080,35 +1043,35 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-area-chart/qN1S4vWvKS3xq3f2xSvrjd",
-      "destination": "/building-blocks/type-area-chart"
+      "destination": "/building-blocks/chart-block-overview#area-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-bar-chart/hs9Nn3rYv1PJFoJADwMWk6",
-      "destination": "/building-blocks/type-bar-chart"
+      "destination": "/building-blocks/chart-block-overview#bar-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-donut-chart/ieqgDDiqD4DGt9cobe1JRB",
-      "destination": "/building-blocks/type-donut-chart"
+      "destination": "/building-blocks/chart-block-overview#donut-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-line-chart/sr4V2LjKyhGdzbmAmEcwwy",
-      "destination": "/building-blocks/type-line-chart"
+      "destination": "/building-blocks/chart-block-overview#line-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-pie-chart/wqQRQCAV5nf6jGvbJnNsGV",
-      "destination": "/building-blocks/type-pie-chart"
+      "destination": "/building-blocks/chart-block-overview#pie-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-rose-chart/kXK3DCA2rLVQ6KZRYjDDzm",
-      "destination": "/building-blocks/type-rose-chart"
+      "destination": "/building-blocks/chart-block-overview#rose-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-scatter-chart/kcFBHiVfrXgQJ9dcGXQ2XV",
-      "destination": "/building-blocks/type-scatter-chart"
+      "destination": "/building-blocks/chart-block-overview#scatter-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-stacked-bar-chart/63JhkgrVPm2v1v14XL9rM7",
-      "destination": "/building-blocks/type-stacked-bar-chart"
+      "destination": "/building-blocks/chart-block-overview#stacked-bar-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-creating-a-user-profile-with-item-details/e4isniZBZBRV1zxEEU8dct",
@@ -1132,7 +1095,7 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/x-twitter-grid/pdito8zDFjPR9gFvFuMHwk",
-      "destination": "/building-blocks/x-twitter-grid"
+      "destination": "/building-blocks/static-blocks#x-twitter-grid"
     },
     {
       "source": "/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/actions-adding-and-editing-data-/41p6U2eZs87asLz6dV5AMy",
@@ -1388,7 +1351,7 @@
     },
     {
       "source": "/integrations/etS18kJqm1fuD58KCsjC3z/layout-pricing-in-card-view-with-details/pNspR4mKu6spj1KSzRf4p7",
-      "destination": "/integrations/layout-pricing-in-card-view-with-details"
+      "destination": "/building-blocks/pricing#layout-pricing-in-card-view-with-details"
     },
     {
       "source": "/integrations/etS18kJqm1fuD58KCsjC3z/mailchimp/2GvSLRGrgMfe8S3drMWao1",
@@ -1777,6 +1740,82 @@
     {
       "source": "/building-blocks/use-case-creating-a-user-profile-with-item-details",
       "destination": "/building-blocks/account-settings"
+    },
+    {
+      "source": "/building-blocks/layout-list-with-small-cards",
+      "destination": "/building-blocks/list-block#list-with-small-cards"
+    },
+    {
+      "source": "/building-blocks/layout-list-with-timeline",
+      "destination": "/building-blocks/list-block#list-with-timeline"
+    },
+    {
+      "source": "/building-blocks/type-bar-chart",
+      "destination": "/building-blocks/chart-block-overview#bar-chart"
+    },
+    {
+      "source": "/building-blocks/type-stacked-bar-chart",
+      "destination": "/building-blocks/chart-block-overview#stacked-bar-chart"
+    },
+    {
+      "source": "/building-blocks/type-line-chart",
+      "destination": "/building-blocks/chart-block-overview#line-chart"
+    },
+    {
+      "source": "/building-blocks/type-area-chart",
+      "destination": "/building-blocks/chart-block-overview#area-chart"
+    },
+    {
+      "source": "/building-blocks/type-scatter-chart",
+      "destination": "/building-blocks/chart-block-overview#scatter-chart"
+    },
+    {
+      "source": "/building-blocks/type-pie-chart",
+      "destination": "/building-blocks/chart-block-overview#pie-chart"
+    },
+    {
+      "source": "/building-blocks/type-donut-chart",
+      "destination": "/building-blocks/chart-block-overview#donut-chart"
+    },
+    {
+      "source": "/building-blocks/type-rose-chart",
+      "destination": "/building-blocks/chart-block-overview#rose-chart"
+    },
+    {
+      "source": "/integrations/layout-pricing-in-card-view-with-details",
+      "destination": "/building-blocks/pricing#layout-pricing-in-card-view-with-details"
+    },
+    {
+      "source": "/building-blocks/hero",
+      "destination": "/building-blocks/static-blocks#hero"
+    },
+    {
+      "source": "/building-blocks/cta",
+      "destination": "/building-blocks/static-blocks#cta"
+    },
+    {
+      "source": "/building-blocks/feature",
+      "destination": "/building-blocks/static-blocks#feature"
+    },
+    {
+      "source": "/building-blocks/feature-grid",
+      "destination": "/building-blocks/static-blocks#feature-grid"
+    },
+    {
+      "source": "/building-blocks/quick-links",
+      "destination": "/building-blocks/static-blocks#quick-links"
+    },
+    {
+      "source": "/building-blocks/partner",
+      "destination": "/building-blocks/static-blocks#partner"
+    },
+    {
+      "source": "/building-blocks/x-twitter-grid",
+      "destination": "/building-blocks/static-blocks#x-twitter-grid"
+    },
+    {
+      "source": "/building-blocks/header",
+      "destination": "/building-blocks/static-blocks#header"
     }
   ]
 }
