@@ -36,46 +36,37 @@ record.
 
 ## Add the skill
 
-One command installs the skill into the agent directories it finds on your machine:
+Pick your agent. Where an agent can install the repository as a plugin and keep it updated, that route comes first; every
+other agent takes a copy of the skill and updates it on request. As agents add a plugin mechanism of their own, they
+get a section of their own here.
+
+### Claude Code
+
+Claude Code installs the whole repository as a plugin and keeps it updated: it refreshes the marketplace in the
+background and picks up new versions of the skills. Inside Claude Code:
+
+```text
+/plugin marketplace add softr-io/softr-io-skills
+/plugin install softr@softr-io-skills
+```
+
+`/plugin marketplace update softr-io-skills` refreshes by hand; `/plugin uninstall softr@softr-io-skills` removes it.
+
+### Every other agent
+
+Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode and most other agents read skills from `.agents/skills/` in a
+project or in your home directory. The [`skills`](https://github.com/vercel-labs/skills) CLI puts a copy there and links
+it wherever an agent expects its own directory:
 
 ```bash
 npx skills add softr-io/softr-io-skills --skill softr-workflows
 ```
 
-<Tabs>
-  <Tab title="Claude Code">
-    Run the command in your project to add the skill to that project, or with `-g` to add it for every project:
+Run it in a project to add the skill to that project, or with `-g` to add it for every project. The copy does not
+update on its own: run `npx skills update` to bring every installed skill up to date.
 
-    ```bash
-    npx skills add softr-io/softr-io-skills --skill softr-workflows -a claude-code -g
-    ```
-
-    The repository is also a Claude Code plugin. Inside Claude Code:
-
-    ```text
-    /plugin marketplace add softr-io/softr-io-skills
-    /plugin install softr@softr-io-skills
-    ```
-  </Tab>
-  <Tab title="Cursor">
-    ```bash
-    npx skills add softr-io/softr-io-skills --skill softr-workflows -a cursor
-    ```
-
-    The repository also carries a Cursor plugin manifest, so it can be added as a plugin where Cursor offers that.
-  </Tab>
-  <Tab title="Codex and others">
-    ```bash
-    npx skills add softr-io/softr-io-skills --skill softr-workflows -a '*'
-    ```
-
-    `-a '*'` installs into every agent the `skills` tool detects. Any agent that reads `SKILL.md` files can also take the
-    folder `skills/softr-workflows` straight from the
-    [repository](https://github.com/softr-io/softr-io-skills/tree/master/skills/softr-workflows).
-  </Tab>
-</Tabs>
-
-Run the same command again to update the skill; `npx skills update` updates every installed skill at once.
+Any agent that reads `SKILL.md` files can also take the folder `skills/softr-workflows` straight from the
+[repository](https://github.com/softr-io/softr-io-skills/tree/master/skills/softr-workflows).
 
 ## The agent installs the CLI
 
