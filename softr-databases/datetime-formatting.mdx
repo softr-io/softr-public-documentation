@@ -152,3 +152,11 @@ Modifies the pattern that immediately follows to be padded with spaces. The pad 
 - Any unrecognized letter is an error
 - Any non-letter character, other than `[`, `]`, `{`, `}`, `#` and the single quote will be output directly
 - Despite this, it is recommended to use single quotes around all characters that you want to output directly to ensure that future changes do not break your application
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How to convert a date from a webhook to a format accepted by Softr Databases when using Make?">
+    If the date coming from the webhook isn’t in the format accepted by Softr Databases, convert it inside Make before sending it to Softr. A common approach is to use a Make formula to reformat the date, for example: set a variable with formatDate(inputDate; YYYY-MM-DD) and then pass that formatted value to the Softr module. This ensures the date matches the Softr Databases requirement (YYYY-MM-DD). The Make–Softr integration documentation is available, but date-format specifics may not be covered; using a date-formatting formula is a practical workaround applicable to similar scenarios.
+  </Accordion>
+</AccordionGroup>

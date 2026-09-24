@@ -94,3 +94,11 @@ Now, let’s test the setup and see how it works from the user’s perspective.
 
 To test our setup, we are going to log into our application with one of the project manager users and add a new task to the list. The following gif illustrates that.
 <Frame caption="Adding a new task">![Adding a new task](/actions/images/add-record/image13.gif)</Frame>
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How can I automatically assign the logged-in user as the Owner of a new record (without showing an Owner field on the form) in Softr?">
+    Use a hidden field in the form and map it to the logged-in user as the Owner. Set the hidden field to pass the logged-in user value (for example, Logged-in user → User ID or the user’s email) to the Owner/User field in your backend table. Then ensure the Owner/User field is configured to receive that ID (or email) from the form submission. After configuring this mapping, the new record will be automatically linked to the currently signed-in user without exposing the Owner field on the form.
+  </Accordion>
+</AccordionGroup>

@@ -90,3 +90,31 @@ Below you will find a table of estimated (albeit subjective) comparison of diffe
 <Note>
   Reading down the table, **Softr Databases** is the only option that pairs unlimited concurrent users with low setup effort — and, because it is native to the platform, it has no external API rate limits to throttle your app. Each external source gives up at least one of those: spreadsheets and project tools cap out on concurrency, warehouses and SQL need real technical setup, and CRMs get expensive quickly. If your data does not already live somewhere, [start with Softr Databases](/softr-databases/softr-databases-overview).
 </Note>
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Which data source works best with Softr?">
+    Softr Database is the most optimized data source for the platform and integrates seamlessly to help you build apps efficiently. It eliminates the need to purchase external tools, allowing you to create a database from scratch, use the AI co-builder to accelerate development, or import data via CSVs or Airtable migration. While Softr Database offers the best native experience, you retain full flexibility to connect to any other supported data sources if preferred.
+  </Accordion>
+
+  <Accordion title="What is DSV2 and what data sources have been upgraded?">
+    DSV2 is Softr's enhanced way of connecting to external data sources, significantly improving app performance.
+
+    All 17 available data sources (Airtable, Notion, Hubspot, Coda, Clickup, etc.) have been upgraded except for the REST API. This means new features now work with these sources:
+
+    * Ask AI
+    * Comments
+    * Kanban and Map blocks
+    * Calendar conditional coloring
+    * Inline editing in tables
+    * Workflows UI actions
+    * Dynamic app logos
+    * Chart custom coloring and number formatting
+    * Multi-sorting
+
+    Speed is improved across the board, including instant user group changes and faster data loading.
+
+    **Note:** Blocks connected to Airtable with a specific view won’t work with DSV2. To fix this, replicate the Airtable view's filters and sorting in Softr. Once disconnected, the block will automatically use DSV2.
+  </Accordion>
+</AccordionGroup>

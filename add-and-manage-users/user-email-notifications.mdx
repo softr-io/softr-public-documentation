@@ -188,3 +188,27 @@ After setting your custom sender details, the DKIM setup option will become avai
 * **Enhanced security:** DKIM helps verify that your emails are indeed from your domain, reducing the risk of phishing attacks.
 
 * **Consistency:** Automating DKIM setup through Postmark's API saves time and ensures reliable email delivery.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How can I change which email to use to send emails from my Softr app?">
+    Check [Email Signature](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/general-settings/7YdGy1J8X2tjJSv8BGvWQU) in the app settings.
+  </Accordion>
+
+  <Accordion title="How to set up notifications to get an email when a new user account is created on my Softr app?">
+    If you’re using [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) as a [data source for your users](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9). You can set an automation in Airtable [this way](https://support.airtable.com//docs/creating-custom-notifications-using-airtable-automations).
+  </Accordion>
+
+  <Accordion title="How to get notified when a new user account is created in Softr?">
+    Our upcoming Workflow product will make it easier to set up notification systems under specific conditions such as having a new app user. In the meantime, you can use an external automation tool such as Make or Zapier to send emails when a new user is added to your Softr database. Check with Make or Zapier how to configure the workflow to trigger on a new record in your Softr database and send the notification to you.
+  </Accordion>
+
+  <Accordion title="How to customize the reply address for invitation emails in Softr (no-reply vs. personal email)">
+    Softr invitation emails don’t have a separate configurable “Reply-To” field. If you leave the From email empty, the email is sent from subdomain@softr.app and replies go to the same address. To customize where replies go, set a From email address (e.g., a no-reply or domain-specific address) and test it. If you use a domain email (like @yourdomain or @softr.io), make sure the address is verified (DKIM/verification may be required) and, if needed, use an allowed domain such as [no-reply@softr.io](mailto:no-reply@softr.io). If you don’t have a custom domain, you can still use the [Softr.io](http://softr.io/) domain for the From address after it’s verified. After configuring and testing, ensure the test invitation reflects the desired From/Reply behavior.
+  </Accordion>
+
+  <Accordion title="How to locate the email customization setting in Softr?">
+    Navigate to the Users tab and open the Notifications section to find the email customization setting.
+  </Accordion>
+</AccordionGroup>

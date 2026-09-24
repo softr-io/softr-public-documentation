@@ -38,22 +38,22 @@
     }
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": " ",
-        "pages": [
+        "tab": "Get Started",
+        "icon": "rocket",
+        "groups": [
           {
-            "group": "Start Here",
-            "icon": "hand-wave",
+            "group": "Quick Start",
             "pages": [
               "start-here/welcome",
               "start-here/ai-co-builder",
-              "start-here/create-an-app-from-a-template"
+              "start-here/create-an-app-from-a-template",
+              "how-to-guides/how-to-create-your-own-template"
             ]
           },
           {
-            "group": "Core Concepts Overview",
-            "icon": "lightbulb",
+            "group": "App Building 101",
             "pages": [
               "core-concepts-overview/pages-and-navigation",
               "core-concepts-overview/create-a-database",
@@ -67,8 +67,330 @@
             ]
           },
           {
+            "group": "Use Cases",
+            "pages": [
+              "how-to-guides/what-internal-tools-can-you-build-with-softr",
+              "how-to-guides/how-to-create-a-client-portal",
+              "how-to-guides/how-to-create-a-membership-site"
+            ]
+          },
+          {
+            "group": "Workspace and Billing",
+            "pages": [
+              "workspace-and-billing/accessing-my-account",
+              "workspace-and-billing/my-profile",
+              "workspace-and-billing/billing",
+              "workspace-and-billing/pricing-and-plans",
+              "workspace-and-billing/transfer-workspace-ownership",
+              "workspace-and-billing/workspaces-and-applications",
+              "workspace-and-billing/ai-credits",
+              "how-to-guides/how-to-share-access-with-support"
+            ]
+          },
+          {
+            "group": "Affiliate and Referral Programs",
+            "pages": [
+              "affiliate-and-referral-programs/partner-with-softr",
+              "affiliate-and-referral-programs/softrs-affiliate-program",
+              "affiliate-and-referral-programs/softrs-referral-program",
+              "affiliate-and-referral-programs/softr-universe"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Apps",
+        "icon": "browser",
+        "groups": [
+          {
+            "group": "Dynamic Blocks",
+            "pages": [
+              "building-blocks/list-block",
+              "building-blocks/grid-block",
+              "building-blocks/layout-inbox",
+              "building-blocks/table-block-",
+              "building-blocks/calendar",
+              "building-blocks/kanban",
+              "building-blocks/map",
+              "building-blocks/organizational-chart",
+              "building-blocks/chart-block-overview",
+              "building-blocks/summary-cards",
+              {
+                "group": "Item Details",
+                "icon": "circle-info",
+                "pages": [
+                  "building-blocks/item-details-block-",
+                  "building-blocks/linked-list",
+                  "building-blocks/comments-block",
+                  "building-blocks/use-case-embedding-calendly-in-list-details",
+                  "building-blocks/use-case-filtering-other-lists-by-a-list-detail-block-data",
+                  "building-blocks/use-case-hiding-blocks-based-on-current-record-data"
+                ]
+              },
+              {
+                "group": "Forms",
+                "icon": "pen-to-square",
+                "pages": [
+                  "softr-forms",
+                  "building-blocks/conditional-forms",
+                  "building-blocks/advanced-form-features",
+                  "building-blocks/use-case-job-submission-with-hidden-fields",
+                  "building-blocks/tutorial-sending-form-data-to-a-data-source"
+                ]
+              },
+              {
+                "group": "Pricing and Billing",
+                "icon": "credit-card",
+                "pages": [
+                  "building-blocks/pricing",
+                  "integrations/simple-checkout-form",
+                  "integrations/simple-billing-block",
+                  "integrations/stripe-customer-portal"
+                ]
+              },
+              {
+                "group": "Vibe Coding",
+                "icon": "wand-magic-sparkles",
+                "pages": [
+                  "vibe-coding",
+                  "vibe-coding-developer-guide"
+                ]
+              },
+              {
+                "group": "Utility Page Blocks",
+                "icon": "sliders",
+                "pages": [
+                  "building-blocks/account-settings",
+                  "building-blocks/signup",
+                  "building-blocks/onboarding-flow",
+                  "building-blocks/link-expired",
+                  "building-blocks/permission-denied-401",
+                  "building-blocks/page-not-found-404"
+                ]
+              },
+              {
+                "group": "List How-to Guides",
+                "icon": "book-open",
+                "pages": [
+                  "how-to-guides/how-to-create-a-blog",
+                  "how-to-guides/how-to-create-a-blog-from-a-data-source",
+                  "how-to-guides/how-to-filter-list-data-from-the-url",
+                  "how-to-guides/how-to-filter-list-by-page-url-parameters"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Static Blocks",
+            "pages": [
+              "building-blocks/static-blocks",
+              "building-blocks/column-container",
+              "building-blocks/tabs",
+              "how-to-guides/personalize-your-app-by-adding-welcome-message"
+            ]
+          },
+          {
+            "group": "Actions",
+            "pages": [
+              "actions/action-buttons-overview",
+              "actions/add-record",
+              "actions/edit-record",
+              "actions/one-click-update",
+              "actions/delete-record",
+              "actions/call-api",
+              "actions/download-file",
+              "actions/mapping-fields-for-actions",
+              "actions/item-on-click-actions",
+              "actions/export",
+              "actions/ask-ai"
+            ]
+          },
+          {
+            "group": "Styling",
+            "pages": [
+              "styling/application-theme",
+              "styling/block-styles-and-formatting"
+            ]
+          },
+          {
+            "group": "Application Settings",
+            "pages": [
+              {
+                "group": "Page and Block Settings",
+                "icon": "table-layout",
+                "pages": [
+                  "application-settings/footer-settings",
+                  "application-settings/page-settings",
+                  "application-settings/utility-pages",
+                  "application-settings/navigation-settings",
+                  "application-settings/page-and-block-embed",
+                  "application-settings/block-actions",
+                  "application-settings/block-version-update"
+                ]
+              },
+              {
+                "group": "App Settings",
+                "icon": "sliders",
+                "pages": [
+                  "application-settings/general-settings",
+                  "application-settings/app-history",
+                  "application-settings/advanced-settings",
+                  "dynamic-app-logo",
+                  "application-settings/migrating-app-versions"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Publishing",
+            "pages": [
+              {
+                "group": "Publishing",
+                "icon": "upload",
+                "pages": [
+                  "publishing/publishing-your-softr-app",
+                  "publishing/unpublishing-your-app",
+                  "how-to-guides/how-to-create-a-mobile-app-from-a-softr-app"
+                ]
+              },
+              {
+                "group": "Custom Domain",
+                "icon": "link",
+                "pages": [
+                  "publishing/add-a-custom-domain-to-your-app",
+                  "publishing/tutorial-how-to-set-up-a-custom-domain-for-namecheap",
+                  "publishing/tutorial-how-to-set-up-a-custom-subdomain-for-namecheap",
+                  "publishing/add-an-extra-custom-domain-to-your-workspace"
+                ]
+              },
+              {
+                "group": "SEO",
+                "icon": "magnifying-glass",
+                "pages": [
+                  "publishing/softr-seo-checklist",
+                  "publishing/site-seo",
+                  "publishing/page-seo",
+                  "publishing/item-details-seo"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              {
+                "group": "AI",
+                "icon": "brain",
+                "pages": [
+                  "integrations/open-ai"
+                ]
+              },
+              {
+                "group": "Authentication",
+                "icon": "key",
+                "pages": [
+                  "integrations/google-sign-in"
+                ]
+              },
+              {
+                "group": "Automation",
+                "icon": "robot",
+                "pages": [
+                  "integrations/make",
+                  "integrations/zapier"
+                ]
+              },
+              {
+                "group": "Cookies",
+                "icon": "cookie",
+                "pages": [
+                  "integrations/iubenda-cookie-solution"
+                ]
+              },
+              {
+                "group": "Document Management",
+                "icon": "file-pdf",
+                "pages": [
+                  "integrations/documint"
+                ]
+              },
+              {
+                "group": "Email",
+                "icon": "envelope",
+                "pages": [
+                  "integrations/mailchimp",
+                  "integrations/mailerlite"
+                ]
+              },
+              {
+                "group": "Forms",
+                "icon": "pen-to-square",
+                "pages": [
+                  "integrations/typeform"
+                ]
+              },
+              {
+                "group": "Live Chat",
+                "icon": "comments",
+                "pages": [
+                  "integrations/crisp",
+                  "integrations/drift-chat",
+                  "integrations/hubspot-chat",
+                  "integrations/intercom"
+                ]
+              },
+              {
+                "group": "Maps",
+                "icon": "map",
+                "pages": [
+                  "integrations/google-maps"
+                ]
+              },
+              {
+                "group": "Peer-to-Peer Chat",
+                "icon": "message",
+                "pages": [
+                  "integrations/atomchat",
+                  "how-to-guides/how-to-enable-peer-to-peer-chat"
+                ]
+              },
+              {
+                "group": "Payments",
+                "icon": "credit-card",
+                "pages": [
+                  "integrations/stripe-checkout",
+                  "integrations/buy-me-a-coffee",
+                  "integrations/gumroad",
+                  "integrations/paypal"
+                ]
+              },
+              {
+                "group": "User Analytics",
+                "icon": "chart-line",
+                "pages": [
+                  "integrations/facebook-pixel",
+                  "integrations/google-analytics",
+                  "integrations/google-tag-manager",
+                  "integrations/microsoft-clarity"
+                ]
+              },
+              {
+                "group": "Translating",
+                "icon": "language",
+                "pages": [
+                  "integrations/weglot"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Data",
+        "icon": "database",
+        "groups": [
+          {
             "group": "Softr Databases",
-            "icon": "database",
             "pages": [
               "softr-databases/softr-databases-overview",
               "softr-databases/field-types",
@@ -81,8 +403,124 @@
             ]
           },
           {
-            "group": "Softr Workflows",
-            "icon": "random",
+            "group": "Data Sources",
+            "pages": [
+              "data-sources/airtable",
+              "data-sources/hubspot",
+              "data-sources/salesforce",
+              "data-sources/notion",
+              "data-sources/coda",
+              "data-sources/google-sheets",
+              "data-sources/mondaycom",
+              "data-sources/smartsuite-",
+              "data-sources/clickup",
+              "data-sources/xano",
+              "data-sources/supabase",
+              "data-sources/bigquery",
+              "data-sources/sql-database",
+              "data-sources/rest-api",
+              "data-sources/snowflake",
+              "data-sources/choosing-a-data-source"
+            ]
+          },
+          {
+            "group": "Import Data",
+            "pages": [
+              "migration-tips/migrating-from-airtable-to-softr-databases"
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              "troubleshooting/troubleshooting-airtable-errors",
+              "troubleshooting/troubleshooting-airtable-api-call-limit-exceeded",
+              "troubleshooting/troubleshooting-google-sheets-errors",
+              "troubleshooting/troubleshooting-hubspot-errors"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Users & Security",
+        "icon": "shield-halved",
+        "groups": [
+          {
+            "group": "Users",
+            "pages": [
+              {
+                "group": "App Users Basics",
+                "icon": "user-plus",
+                "pages": [
+                  "add-and-manage-users/add-users-to-a-softr-app",
+                  "add-and-manage-users/users-menu",
+                  "add-and-manage-users/syncing-users-with-a-data-source",
+                  "add-and-manage-users/add-or-import-users-manually",
+                  "add-and-manage-users/internal-vs-external-users",
+                  "add-and-manage-users/user-email-notifications",
+                  "add-and-manage-users/automated-user-invitations"
+                ]
+              },
+              {
+                "group": "User-related Blocks",
+                "icon": "user-check",
+                "pages": [
+                  "add-and-manage-users/signup-form",
+                  "add-and-manage-users/signin-form",
+                  "add-and-manage-users/signin-with-email-code",
+                  "add-and-manage-users/sign-in-with-sms-code-deprecated",
+                  "add-and-manage-users/user-profile",
+                  "add-and-manage-users/forgot-password-form",
+                  "add-and-manage-users/reset-password-form"
+                ]
+              },
+              {
+                "group": "Advanced Sign-in Options",
+                "icon": "lock",
+                "pages": [
+                  "add-and-manage-users/single-sign-on-overview",
+                  "add-and-manage-users/saml-single-sign-on",
+                  "add-and-manage-users/openid-single-sign-on",
+                  "add-and-manage-users/scim-provisioning",
+                  "add-and-manage-users/microsoft-azure-saml-single-sign-on"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "User Groups and Permissions",
+            "pages": [
+              "user-groups-and-permissions/user-groups",
+              "user-groups-and-permissions/conditional-filters",
+              "user-groups-and-permissions/record-filters",
+              "user-groups-and-permissions/action-button-visibility",
+              "user-groups-and-permissions/block-visibility",
+              "user-groups-and-permissions/page-visibility",
+              "user-groups-and-permissions/page-rules",
+              "user-groups-and-permissions/global-data-restrictions",
+              "user-groups-and-permissions/options-filters",
+              "how-to-guides/add-users-to-user-groups-based-on-stripe-attributes",
+              "how-to-guides/how-to-make-pagesblocks-accessible-only-to-company-users"
+            ]
+          },
+          {
+            "group": "Security and Compliance",
+            "pages": [
+              "security/sso-for-softr-studio",
+              "security/softr-app-security",
+              "security/phishing",
+              "security/hipaa-compliance",
+              "security/fed-ramp-compliance",
+              "security/ferpa-compliance"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Workflows & Agents",
+        "icon": "random",
+        "groups": [
+          {
+            "group": "Workflows",
             "pages": [
               "workflows/workflows",
               "workflows/trigger-types",
@@ -154,454 +592,19 @@
             ]
           },
           {
-            "group": "Softr Agents",
-            "icon": "robot",
+            "group": "Agents",
             "pages": [
               "agents/overview"
             ]
-          },
-          "softr-forms",
-          {
-            "group": "Data Sources",
-            "icon": "hard-drive",
-            "pages": [
-              "data-sources/airtable",
-              "data-sources/hubspot",
-              "data-sources/salesforce",
-              "data-sources/notion",
-              "data-sources/coda",
-              "data-sources/google-sheets",
-              "data-sources/mondaycom",
-              "data-sources/smartsuite-",
-              "data-sources/clickup",
-              "data-sources/xano",
-              "data-sources/supabase",
-              "data-sources/bigquery",
-              "data-sources/sql-database",
-              "data-sources/rest-api",
-              "data-sources/snowflake",
-              "data-sources/choosing-a-data-source"
-            ]
-          },
-          {
-            "group": "Import Data",
-            "pages": [
-              "migration-tips/migrating-from-airtable-to-softr-databases"
-            ],
-            "icon": "arrow-down-from-bracket"
           }
         ]
       },
       {
-        "group": "Building Blocks",
-        "icon": "cube",
-        "pages": [
-          {
-            "group": "List",
-            "icon": "list",
-            "pages": [
-              "building-blocks/list-block",
-              "building-blocks/grid-block",
-              "building-blocks/layout-list-with-small-cards",
-              "building-blocks/layout-list-with-timeline",
-              "building-blocks/layout-inbox"
-            ]
-          },
-          {
-            "group": "Item Details",
-            "icon": "circle-info",
-            "pages": [
-              "building-blocks/item-details-block-",
-              "building-blocks/linked-list",
-              "building-blocks/comments-block",
-              "building-blocks/use-case-creating-a-user-profile-with-item-details",
-              "building-blocks/use-case-embedding-calendly-in-list-details",
-              "building-blocks/use-case-filtering-other-lists-by-a-list-detail-block-data",
-              "building-blocks/use-case-hiding-blocks-based-on-current-record-data"
-            ]
-          },
-          {
-            "group": "Table",
-            "icon": "table",
-            "pages": [
-              "building-blocks/table-block-"
-            ]
-          },
-          {
-            "group": "Conditional Forms",
-            "icon": "pen-to-square",
-            "pages": [
-              "building-blocks/conditional-forms",
-              "building-blocks/advanced-form-features",
-              "building-blocks/use-case-job-submission-with-hidden-fields",
-              "building-blocks/tutorial-sending-form-data-to-a-data-source"
-            ]
-          },
-          {
-            "group": "Charts",
-            "icon": "chart-column",
-            "pages": [
-              "building-blocks/chart-block-overview",
-              "building-blocks/type-bar-chart",
-              "building-blocks/type-stacked-bar-chart",
-              "building-blocks/type-line-chart",
-              "building-blocks/type-area-chart",
-              "building-blocks/type-scatter-chart",
-              "building-blocks/type-pie-chart",
-              "building-blocks/type-donut-chart",
-              "building-blocks/type-rose-chart",
-              "building-blocks/summary-cards"
-            ]
-          },
-          {
-            "group": "Block Containers",
-            "icon": "cube",
-            "pages": [
-              "building-blocks/column-container",
-              "building-blocks/tabs"
-            ]
-          },
-          {
-            "group": "Utility Page Blocks",
-            "icon": "sliders",
-            "pages": [
-              "building-blocks/account-settings",
-              "building-blocks/signup",
-              "building-blocks/onboarding-flow",
-              "building-blocks/link-expired",
-              "building-blocks/permission-denied-401",
-              "building-blocks/page-not-found-404"
-            ]
-          },
-          {
-            "group": "Other Dynamic Blocks",
-            "icon": "bolt",
-            "pages": [
-              "building-blocks/calendar",
-              "building-blocks/kanban",
-              "building-blocks/organizational-chart",
-              "building-blocks/map"
-            ]
-          },
-          {
-            "group": "Static Blocks",
-            "icon": "image",
-            "pages": [
-              "building-blocks/header",
-              "building-blocks/hero",
-              "building-blocks/cta",
-              "building-blocks/feature",
-              "building-blocks/feature-grid",
-              "building-blocks/partner",
-              "building-blocks/x-twitter-grid",
-              "building-blocks/quick-links",
-              "building-blocks/pricing"
-            ]
-          },
-          {
-            "group": "Vibe Coding",
-            "icon": "wand-magic-sparkles",
-            "pages": [
-              "vibe-coding",
-              "vibe-coding-developer-guide"
-            ]
-          }
-        ]
-      },
-      {
-        "group": " ",
-        "pages": [
-          {
-            "group": "Actions",
-            "icon": "pen-to-square",
-            "pages": [
-              "actions/action-buttons-overview",
-              "actions/add-record",
-              "actions/edit-record",
-              "actions/one-click-update",
-              "actions/delete-record",
-              "actions/call-api",
-              "actions/download-file",
-              "actions/mapping-fields-for-actions",
-              "actions/item-on-click-actions",
-              "actions/export",
-              "actions/ask-ai"
-            ]
-          }
-        ]
-      },
-      {
-        "group": "Add and Manage Users",
-        "icon": "user",
-        "pages": [
-          {
-            "group": "App Users Basics",
-            "icon": "user-plus",
-            "pages": [
-              "add-and-manage-users/add-users-to-a-softr-app",
-              "add-and-manage-users/users-menu",
-              "add-and-manage-users/syncing-users-with-a-data-source",
-              "add-and-manage-users/add-or-import-users-manually",
-              "add-and-manage-users/internal-vs-external-users",
-              "add-and-manage-users/user-email-notifications",
-              "add-and-manage-users/automated-user-invitations"
-            ]
-          },
-          {
-            "group": "User-related Blocks",
-            "icon": "user-check",
-            "pages": [
-              "add-and-manage-users/signup-form",
-              "add-and-manage-users/signin-form",
-              "add-and-manage-users/signin-with-email-code",
-              "add-and-manage-users/sign-in-with-sms-code-deprecated",
-              "add-and-manage-users/user-profile",
-              "add-and-manage-users/forgot-password-form",
-              "add-and-manage-users/reset-password-form"
-            ]
-          },
-          {
-            "group": "Advanced Sign-in Options",
-            "icon": "lock",
-            "pages": [
-              "add-and-manage-users/single-sign-on-overview",
-              "add-and-manage-users/saml-single-sign-on",
-              "add-and-manage-users/openid-single-sign-on",
-              "add-and-manage-users/scim-provisioning",
-              "add-and-manage-users/microsoft-azure-saml-single-sign-on"
-            ]
-          }
-        ]
-      },
-      {
-        "group": " ",
-        "pages": [
-          {
-            "group": "User Groups and Permissions",
-            "icon": "users",
-            "pages": [
-              "user-groups-and-permissions/user-groups",
-              "user-groups-and-permissions/conditional-filters",
-              "user-groups-and-permissions/record-filters",
-              "user-groups-and-permissions/action-button-visibility",
-              "user-groups-and-permissions/block-visibility",
-              "user-groups-and-permissions/page-visibility",
-              "user-groups-and-permissions/page-rules",
-              "user-groups-and-permissions/global-data-restrictions",
-              "user-groups-and-permissions/options-filters"
-            ]
-          }
-        ]
-      },
-      {
-        "group": " ",
-        "pages": [
-          {
-            "group": "Styling",
-            "icon": "palette",
-            "pages": [
-              "styling/application-theme",
-              "styling/block-styles-and-formatting"
-            ]
-          }
-        ]
-      },
-      {
-        "group": "Publishing",
-        "icon": "globe",
-        "pages": [
-          {
-            "group": "Publishing",
-            "icon": "upload",
-            "pages": [
-              "publishing/publishing-your-softr-app",
-              "publishing/unpublishing-your-app"
-            ]
-          },
-          {
-            "group": "Custom Domain",
-            "icon": "link",
-            "pages": [
-              "publishing/add-a-custom-domain-to-your-app",
-              "publishing/tutorial-how-to-set-up-a-custom-domain-for-namecheap",
-              "publishing/tutorial-how-to-set-up-a-custom-subdomain-for-namecheap",
-              "publishing/add-an-extra-custom-domain-to-your-workspace"
-            ]
-          },
-          {
-            "group": "SEO",
-            "icon": "magnifying-glass",
-            "pages": [
-              "publishing/softr-seo-checklist",
-              "publishing/site-seo",
-              "publishing/page-seo",
-              "publishing/item-details-seo"
-            ]
-          }
-        ]
-      },
-      {
-        "group": "Application Settings",
-        "icon": "gear",
-        "pages": [
-          {
-            "group": "Page and Block Settings",
-            "icon": "table-layout",
-            "pages": [
-              "application-settings/footer-settings",
-              "application-settings/page-settings",
-              "application-settings/utility-pages",
-              "application-settings/navigation-settings",
-              "application-settings/page-and-block-embed",
-              "application-settings/block-actions",
-              "application-settings/block-version-update"
-            ]
-          },
-          {
-            "group": "App Settings",
-            "icon": "sliders",
-            "pages": [
-              "application-settings/general-settings",
-              "application-settings/app-history",
-              "application-settings/advanced-settings",
-              "dynamic-app-logo"
-            ]
-          }
-        ]
-      },
-      {
-        "group": " ",
-        "pages": [
-          {
-            "group": "Custom Code",
-            "icon": "code",
-            "pages": [
-              "custom-code/custom-code-block-overview",
-              "custom-code/custom-code-snippets",
-              "custom-code/custom-code-events-and-style-selectors",
-              "custom-code/spa-custom-code-guidelines"
-            ]
-          }
-        ]
-      },
-      {
-        "group": "Integrations",
-        "icon": "plug",
-        "pages": [
-          {
-            "group": "AI",
-            "icon": "brain",
-            "pages": [
-              "integrations/open-ai"
-            ]
-          },
-          {
-            "group": "Authentication",
-            "icon": "key",
-            "pages": [
-              "integrations/google-sign-in"
-            ]
-          },
-          {
-            "group": "Automation",
-            "icon": "robot",
-            "pages": [
-              "integrations/make",
-              "integrations/zapier"
-            ]
-          },
-          {
-            "group": "Cookies",
-            "icon": "cookie",
-            "pages": [
-              "integrations/iubenda-cookie-solution"
-            ]
-          },
-          {
-            "group": "Document Management",
-            "icon": "file-pdf",
-            "pages": [
-              "integrations/documint"
-            ]
-          },
-          {
-            "group": "Email",
-            "icon": "envelope",
-            "pages": [
-              "integrations/mailchimp",
-              "integrations/mailerlite"
-            ]
-          },
-          {
-            "group": "Forms",
-            "icon": "pen-to-square",
-            "pages": [
-              "integrations/typeform"
-            ]
-          },
-          {
-            "group": "Live Chat",
-            "icon": "comments",
-            "pages": [
-              "integrations/crisp",
-              "integrations/drift-chat",
-              "integrations/hubspot-chat",
-              "integrations/intercom"
-            ]
-          },
-          {
-            "group": "Maps",
-            "icon": "map",
-            "pages": [
-              "integrations/google-maps"
-            ]
-          },
-          {
-            "group": "Peer-to-Peer Chat",
-            "icon": "message",
-            "pages": [
-              "integrations/atomchat"
-            ]
-          },
-          {
-            "group": "Payments",
-            "icon": "credit-card",
-            "pages": [
-              "integrations/stripe-checkout",
-              "integrations/buy-me-a-coffee",
-              "integrations/gumroad",
-              "integrations/paypal",
-              "integrations/layout-pricing-in-card-view-with-details",
-              "integrations/stripe-customer-portal",
-              "integrations/simple-billing-block",
-              "integrations/simple-checkout-form"
-            ]
-          },
-          {
-            "group": "User Analytics",
-            "icon": "chart-line",
-            "pages": [
-              "integrations/facebook-pixel",
-              "integrations/google-analytics",
-              "integrations/google-tag-manager",
-              "integrations/microsoft-clarity"
-            ]
-          },
-          {
-            "group": "Translating",
-            "icon": "language",
-            "pages": [
-              "integrations/weglot"
-            ]
-          }
-        ]
-      },
-      {
-        "group": " ",
-        "pages": [
+        "tab": "Developers",
+        "icon": "code",
+        "groups": [
           {
             "group": "Softr API",
-            "icon": "code-branch",
             "pages": [
               "softr-api/api-setup-and-endpoints",
               "softr-api/use-case-adding-users-through-zapier",
@@ -658,8 +661,7 @@
             ]
           },
           {
-            "group": "Softr MCP server",
-            "icon": "plug",
+            "group": "MCP Servers",
             "pages": [
               "mcp/overview",
               "mcp/connect",
@@ -667,95 +669,17 @@
               "mcp/apps",
               "mcp/vibe-coding",
               "mcp/integrations",
-              "mcp/workflows"
-            ]
-          },
-          "app-mcp-server",
-          {
-            "group": "Security",
-            "icon": "lock",
-            "pages": [
-              "security/sso-for-softr-studio",
-              "security/softr-app-security",
-              "security/phishing",
-              "security/hipaa-compliance",
-              "security/fed-ramp-compliance",
-              "security/ferpa-compliance"
+              "mcp/workflows",
+              "app-mcp-server"
             ]
           },
           {
-            "group": "How to Guides",
-            "icon": "book-open",
+            "group": "Custom Code",
             "pages": [
-              "how-to-guides/how-to-enable-peer-to-peer-chat",
-              "how-to-guides/how-to-create-your-own-template",
-              "how-to-guides/how-to-create-a-blog",
-              "how-to-guides/how-to-create-a-blog-from-a-data-source",
-              "how-to-guides/personalize-your-app-by-adding-welcome-message",
-              "how-to-guides/what-internal-tools-can-you-build-with-softr",
-              "how-to-guides/how-to-create-a-client-portal",
-              "how-to-guides/how-to-create-a-membership-site",
-              "how-to-guides/how-to-share-access-with-support",
-              "how-to-guides/add-users-to-user-groups-based-on-stripe-attributes",
-              "how-to-guides/how-to-make-pagesblocks-accessible-only-to-company-users",
-              "how-to-guides/how-to-create-a-mobile-app-from-a-softr-app",
-              "how-to-guides/how-to-filter-list-data-from-the-url",
-              "how-to-guides/how-to-filter-list-by-page-url-parameters"
-            ]
-          },
-          {
-            "group": "Troubleshooting",
-            "icon": "wrench",
-            "pages": [
-              "troubleshooting/troubleshooting-airtable-errors",
-              "troubleshooting/troubleshooting-airtable-api-call-limit-exceeded",
-              "troubleshooting/troubleshooting-google-sheets-errors",
-              "troubleshooting/troubleshooting-hubspot-errors"
-            ]
-          },
-          {
-            "group": "FAQ",
-            "icon": "circle-question",
-            "pages": [
-              "faq/domain-setup",
-              "faq/pages-theme-general-settings",
-              "faq/memberships",
-              "faq/softr-subscription-plans-and-account-settings",
-              "faq/translations",
-              "faq/blocks",
-              "faq/integrations",
-              "faq/app-settings",
-              "faq/other"
-            ]
-          },
-          {
-            "group": "Migration Tips",
-            "icon": "arrow-down-left-and-arrow-up-right-to-center",
-            "pages": [
-              "application-settings/migrating-app-versions"
-            ]
-          },
-          {
-            "group": "Workspace and Billing",
-            "icon": "credit-card",
-            "pages": [
-              "workspace-and-billing/accessing-my-account",
-              "workspace-and-billing/my-profile",
-              "workspace-and-billing/billing",
-              "workspace-and-billing/pricing-and-plans",
-              "workspace-and-billing/transfer-workspace-ownership",
-              "workspace-and-billing/workspaces-and-applications",
-              "workspace-and-billing/ai-credits"
-            ]
-          },
-          {
-            "group": "Affiliate and Referral Programs",
-            "icon": "handshake",
-            "pages": [
-              "affiliate-and-referral-programs/partner-with-softr",
-              "affiliate-and-referral-programs/softrs-affiliate-program",
-              "affiliate-and-referral-programs/softrs-referral-program",
-              "affiliate-and-referral-programs/softr-universe"
+              "custom-code/custom-code-block-overview",
+              "custom-code/custom-code-snippets",
+              "custom-code/custom-code-events-and-style-selectors",
+              "custom-code/spa-custom-code-guidelines"
             ]
           }
         ]
@@ -1015,15 +939,15 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/cta/oPDoXzSUpMuKki92WuBDDH",
-      "destination": "/building-blocks/cta"
+      "destination": "/building-blocks/static-blocks#cta"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/feature-grid/5ik7RjqWWAkDQwhW1sFcf9",
-      "destination": "/building-blocks/feature-grid"
+      "destination": "/building-blocks/static-blocks#feature-grid"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/feature/n7KnNydZxMifxWX5CK6ZTz",
-      "destination": "/building-blocks/feature"
+      "destination": "/building-blocks/static-blocks#feature"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH",
@@ -1031,11 +955,11 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/header/5dpe9Tntz67ejVpCGGWDnR",
-      "destination": "/building-blocks/header"
+      "destination": "/building-blocks/static-blocks#header"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/hero/avyLWEvNZNUqYewF51kMLA",
-      "destination": "/building-blocks/hero"
+      "destination": "/building-blocks/static-blocks#hero"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/item-details-block-/4bE8XaFbJp45wkAwuWiz8f",
@@ -1051,11 +975,11 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/layout-list-with-small-cards/9PKEKRws6aNYjuh7cgtHNa",
-      "destination": "/building-blocks/layout-list-with-small-cards"
+      "destination": "/building-blocks/list-block#list-with-small-cards"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/layout-list-with-timeline/ePuVavv5Na7EfL8V5XHh6b",
-      "destination": "/building-blocks/layout-list-with-timeline"
+      "destination": "/building-blocks/list-block#list-with-timeline"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/link-expired/54HYs3JEjZq4hE6TqDeWvG",
@@ -1087,7 +1011,7 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/partner/mio7YbrncvNjaqZ7VpBwA9",
-      "destination": "/building-blocks/partner"
+      "destination": "/building-blocks/static-blocks#partner"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/permission-denied-401/54HYs3JEk1EoiwpFbPzVSF",
@@ -1095,7 +1019,7 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/quick-links/54HYs3JEjYNuEi25KC6ZYn",
-      "destination": "/building-blocks/quick-links"
+      "destination": "/building-blocks/static-blocks#quick-links"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/signup/54HYs3JEjYZA33S96fP3de",
@@ -1119,39 +1043,39 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-area-chart/qN1S4vWvKS3xq3f2xSvrjd",
-      "destination": "/building-blocks/type-area-chart"
+      "destination": "/building-blocks/chart-block-overview#area-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-bar-chart/hs9Nn3rYv1PJFoJADwMWk6",
-      "destination": "/building-blocks/type-bar-chart"
+      "destination": "/building-blocks/chart-block-overview#bar-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-donut-chart/ieqgDDiqD4DGt9cobe1JRB",
-      "destination": "/building-blocks/type-donut-chart"
+      "destination": "/building-blocks/chart-block-overview#donut-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-line-chart/sr4V2LjKyhGdzbmAmEcwwy",
-      "destination": "/building-blocks/type-line-chart"
+      "destination": "/building-blocks/chart-block-overview#line-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-pie-chart/wqQRQCAV5nf6jGvbJnNsGV",
-      "destination": "/building-blocks/type-pie-chart"
+      "destination": "/building-blocks/chart-block-overview#pie-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-rose-chart/kXK3DCA2rLVQ6KZRYjDDzm",
-      "destination": "/building-blocks/type-rose-chart"
+      "destination": "/building-blocks/chart-block-overview#rose-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-scatter-chart/kcFBHiVfrXgQJ9dcGXQ2XV",
-      "destination": "/building-blocks/type-scatter-chart"
+      "destination": "/building-blocks/chart-block-overview#scatter-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/type-stacked-bar-chart/63JhkgrVPm2v1v14XL9rM7",
-      "destination": "/building-blocks/type-stacked-bar-chart"
+      "destination": "/building-blocks/chart-block-overview#stacked-bar-chart"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-creating-a-user-profile-with-item-details/e4isniZBZBRV1zxEEU8dct",
-      "destination": "/building-blocks/use-case-creating-a-user-profile-with-item-details"
+      "destination": "/building-blocks/account-settings"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-embedding-calendly-in-list-details/pUraLKqtjajCRizCqhAJLR",
@@ -1171,7 +1095,7 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/x-twitter-grid/pdito8zDFjPR9gFvFuMHwk",
-      "destination": "/building-blocks/x-twitter-grid"
+      "destination": "/building-blocks/static-blocks#x-twitter-grid"
     },
     {
       "source": "/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/actions-adding-and-editing-data-/41p6U2eZs87asLz6dV5AMy",
@@ -1279,39 +1203,39 @@
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/app-settings/hs2HHCddYNA2u2vB5seuMC",
-      "destination": "/faq/app-settings"
+      "destination": "/application-settings/general-settings"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/blocks/97N45ePTwJLPEbuS4SGww4",
-      "destination": "/faq/blocks"
+      "destination": "/core-concepts-overview/visualize-data-with-building-blocks"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/domain-setup/hZQgTBnTWKi7KEjurVHqgd",
-      "destination": "/faq/domain-setup"
+      "destination": "/publishing/add-a-custom-domain-to-your-app"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/integrations/7Rcao9HgZ4i94wXc732HoZ",
-      "destination": "/faq/integrations"
+      "destination": "/custom-code/custom-code-snippets"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/memberships/nsoAVKHcvs95VDciGsoexV",
-      "destination": "/faq/memberships"
+      "destination": "/core-concepts-overview/user-authentication"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/other/9rNQ2iZKhZDjUsYTc7TFAj",
-      "destination": "/faq/other"
+      "destination": "/start-here/welcome"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/pages-theme-general-settings/4jAedFtkENGHjHiirzryYC",
-      "destination": "/faq/pages-theme-general-settings"
+      "destination": "/application-settings/page-settings"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/softr-subscription-plans-and-account-settings/5XrTAnfkMXPyaZxM4zimAT",
-      "destination": "/faq/softr-subscription-plans-and-account-settings"
+      "destination": "/workspace-and-billing/billing"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/translations/jxbCJk2jQBBs81EHXqesGW",
-      "destination": "/faq/translations"
+      "destination": "/integrations/weglot"
     },
     {
       "source": "/how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/add-users-to-user-groups-based-on-stripe-attributes/g1A2tEtjvmiCtGL1hgJmMe",
@@ -1427,7 +1351,7 @@
     },
     {
       "source": "/integrations/etS18kJqm1fuD58KCsjC3z/layout-pricing-in-card-view-with-details/pNspR4mKu6spj1KSzRf4p7",
-      "destination": "/integrations/layout-pricing-in-card-view-with-details"
+      "destination": "/building-blocks/pricing#layout-pricing-in-card-view-with-details"
     },
     {
       "source": "/integrations/etS18kJqm1fuD58KCsjC3z/mailchimp/2GvSLRGrgMfe8S3drMWao1",
@@ -1699,7 +1623,7 @@
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn",
-      "destination": "/faq"
+      "destination": "/start-here/welcome"
     },
     {
       "source": "/troubleshooting/c7mbQk6nyqGUTGoVjojr9E",
@@ -1772,6 +1696,126 @@
     {
       "source": "/displaying-and-creating-data/vikC2AWEpQGkZd4jGyoVxo/list-conditional-filters/mDnn7jnpPiYmJcT99jpt7m",
       "destination": "/user-groups-and-permissions/conditional-filters"
+    },
+    {
+      "source": "/faq/app-settings",
+      "destination": "/application-settings/general-settings"
+    },
+    {
+      "source": "/faq/blocks",
+      "destination": "/core-concepts-overview/visualize-data-with-building-blocks"
+    },
+    {
+      "source": "/faq/domain-setup",
+      "destination": "/publishing/add-a-custom-domain-to-your-app"
+    },
+    {
+      "source": "/faq/integrations",
+      "destination": "/custom-code/custom-code-snippets"
+    },
+    {
+      "source": "/faq/memberships",
+      "destination": "/core-concepts-overview/user-authentication"
+    },
+    {
+      "source": "/faq/other",
+      "destination": "/start-here/welcome"
+    },
+    {
+      "source": "/faq/pages-theme-general-settings",
+      "destination": "/application-settings/page-settings"
+    },
+    {
+      "source": "/faq/softr-subscription-plans-and-account-settings",
+      "destination": "/workspace-and-billing/billing"
+    },
+    {
+      "source": "/faq/translations",
+      "destination": "/integrations/weglot"
+    },
+    {
+      "source": "/faq",
+      "destination": "/start-here/welcome"
+    },
+    {
+      "source": "/building-blocks/use-case-creating-a-user-profile-with-item-details",
+      "destination": "/building-blocks/account-settings"
+    },
+    {
+      "source": "/building-blocks/layout-list-with-small-cards",
+      "destination": "/building-blocks/list-block#list-with-small-cards"
+    },
+    {
+      "source": "/building-blocks/layout-list-with-timeline",
+      "destination": "/building-blocks/list-block#list-with-timeline"
+    },
+    {
+      "source": "/building-blocks/type-bar-chart",
+      "destination": "/building-blocks/chart-block-overview#bar-chart"
+    },
+    {
+      "source": "/building-blocks/type-stacked-bar-chart",
+      "destination": "/building-blocks/chart-block-overview#stacked-bar-chart"
+    },
+    {
+      "source": "/building-blocks/type-line-chart",
+      "destination": "/building-blocks/chart-block-overview#line-chart"
+    },
+    {
+      "source": "/building-blocks/type-area-chart",
+      "destination": "/building-blocks/chart-block-overview#area-chart"
+    },
+    {
+      "source": "/building-blocks/type-scatter-chart",
+      "destination": "/building-blocks/chart-block-overview#scatter-chart"
+    },
+    {
+      "source": "/building-blocks/type-pie-chart",
+      "destination": "/building-blocks/chart-block-overview#pie-chart"
+    },
+    {
+      "source": "/building-blocks/type-donut-chart",
+      "destination": "/building-blocks/chart-block-overview#donut-chart"
+    },
+    {
+      "source": "/building-blocks/type-rose-chart",
+      "destination": "/building-blocks/chart-block-overview#rose-chart"
+    },
+    {
+      "source": "/integrations/layout-pricing-in-card-view-with-details",
+      "destination": "/building-blocks/pricing#layout-pricing-in-card-view-with-details"
+    },
+    {
+      "source": "/building-blocks/hero",
+      "destination": "/building-blocks/static-blocks#hero"
+    },
+    {
+      "source": "/building-blocks/cta",
+      "destination": "/building-blocks/static-blocks#cta"
+    },
+    {
+      "source": "/building-blocks/feature",
+      "destination": "/building-blocks/static-blocks#feature"
+    },
+    {
+      "source": "/building-blocks/feature-grid",
+      "destination": "/building-blocks/static-blocks#feature-grid"
+    },
+    {
+      "source": "/building-blocks/quick-links",
+      "destination": "/building-blocks/static-blocks#quick-links"
+    },
+    {
+      "source": "/building-blocks/partner",
+      "destination": "/building-blocks/static-blocks#partner"
+    },
+    {
+      "source": "/building-blocks/x-twitter-grid",
+      "destination": "/building-blocks/static-blocks#x-twitter-grid"
+    },
+    {
+      "source": "/building-blocks/header",
+      "destination": "/building-blocks/static-blocks#header"
     }
   ]
 }

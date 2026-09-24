@@ -285,3 +285,19 @@ To utilize record-specific data in your conditional logic:
 
 - **Testing**: Thoroughly test the form by navigating through different records on the details page to ensure that the conditional logic triggers as expected for different data scenarios.
 - **Troubleshooting**: If a condition doesn’t work, double-check the field mappings and the logical statements used in your conditions. Ensure there are no discrepancies between the field names in the database and those referenced in your form settings.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How do I make forms in Softr retrieve the webpage URL user is submitting the form from?">
+    You will need to create a [hidden field](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/advanced-form-features/jCim5VWZePgZuaRsUZBnpG) and pass it as the value {PAGE}.
+  </Accordion>
+
+  <Accordion title="Can Softr Forms send submissions directly to an external webhook (for example Make) and store the response back into a table (e.g. Airtable)?">
+    Yes. In the form settings, you can select a destination for submissions and specify a webhook URL (e.g., from Make) to receive the submitted form results. Your webhook-based workflow can then process the data and log the response back to your table in your data source.
+  </Accordion>
+
+  <Accordion title="How can I ensure a form submission is attributed to the currently logged-in user and that filtering uses the correct user context (not the admin)?">
+    The behavior depends on how you built your conditions. Check the page where the form is placed and review the filtering criteria on the data source. Ensure the user identity field (e.g., the field used to store who filled the form) is bound to the logged-in user context rather than a static value. If necessary, align the form submission so the identity is populated automatically from the current user (instead of the admin) and make sure the list block’s filter uses the same user basis (e.g., the logged-in user identity). If you’re currently relying on a manual or hardcoded value, update it to reference the logged-in user context (or the user’s email/ID). In short: it depends on how the condition is built; verify the page, the form’s data bindings, and the data source filtering to ensure they all reference the active user context. If you can share the page details or a short video, we can pinpoint the exact mismatch.
+  </Accordion>
+</AccordionGroup>

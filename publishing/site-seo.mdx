@@ -9,3 +9,46 @@ description: "Configuring SEO settings for your Softr app."
 'twitter:description': "Configuring SEO settings for your Softr app."
 ---
 Your Softr app’s SEO settings are available in the SEO section of your [App Settings](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/general-settings/7YdGy1J8X2tjJSv8BGvWQU), where you can verify your site with Google, customize the robots.txt file, and apply URL redirects.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How to prevent Google from indexing my Softr app?">
+    Add the following instructions to the **robots.txt** field in your app's **Settings => SEO**:
+
+    ```javascript
+    User-agent: *
+    Disallow: /
+    ```
+
+    If youneed to disallow specific page(s), indicate the exact slug(s). Here's an example:
+
+    ```javascript
+    Disallow: /about_us_test
+
+    Disallow: /products/test_product
+
+    Disallow: /products/
+    ```
+  </Accordion>
+
+  <Accordion title="How to generate a sitemap?">
+    Please, be informed that the sitemap is generated automatically under **yourdomain.com/sitemap.xml**
+  </Accordion>
+
+  <Accordion title="How to set and fix a custom favicon and related SEO/Social images in Softr so that search engines and social platforms display the correct logo?">
+    Set your own logo as the favicon in Settings \> General. After updating, click Save and Publish the app to apply changes. If the favicon still shows Softr’s default in search results, request re-indexing for all app pages (not just the home page) so search engines pick up the new favicon. In addition, configure the SEO and Social fields: SEO controls what search engines index and display in search results, while Social controls how the page looks when shared on social platforms. While not mandatory, it’s recommended to configure both to ensure the correct logo and description appear. If issues persist, open a support request with a guest collaborator to allow the technical team to investigate and verify the favicon and indexing setup across all pages.
+  </Accordion>
+
+  <Accordion title="How to generate a sitemap in Softr while excluding certain pages from indexing for Google?">
+    To generate a sitemap that excludes specific pages from indexing, first disable the indexing option for those pages in the page settings \> SEO. Then republish the app. After that, regenerate the sitemap by adding /generate-sitemap to the end of the homepage URL (for example: http://your-domain/generate-sitemap). Note that there won’t be a visible status change; wait a few minutes, close the tab, and then check the sitemap to confirm the result.
+  </Accordion>
+
+  <Accordion title="How to remove Softr branding when sharing a Softr website and set a custom social share image in Softr?">
+    To remove Softr branding when sharing a Softr site, go to Home Page Settings → SEO → Edit Title and Description and publish your changes. If you’re concerned about the image, also check the Social Image section under SEO and upload your own image there. This sets a custom image for social sharing and can help eliminate the default Softr branding in previews.
+  </Accordion>
+
+  <Accordion title="How can I customize the social share preview (image, title, and description) for my Softr app, and why might the changes take time to appear?">
+    To customize the social share preview, go to Page settings \> Social and set the desired title and description, and publish the app. If you want to change the image as well, update the social image (often on the homepage) and publish. Be aware that changes may not appear immediately due to caching and propagation delays. After publishing, give it some time for caches to refresh across platforms (e.g., Slack link previews). If issues persist, ensure you updated the social settings on the page you are sharing and that you’ve published the latest changes before testing again.
+  </Accordion>
+</AccordionGroup>
