@@ -179,6 +179,35 @@ Follow these steps to set it up:
 
 * [How to enable users to comment on the details page?](/697c2ac57a3c40a8b5c14cc7bcf8947c?pvs=25)
 
-* [Use Case: Creating a User Profile with List Details](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-creating-a-user-profile-with-item-details/e4isniZBZBRV1zxEEU8dct)
+* [Account Settings](/building-blocks/account-settings)
 
 * [Use Case: Embedding Calendly in List Details](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-embedding-calendly-in-list-details/pUraLKqtjajCRizCqhAJLR)
+
+## Related guides
+
+- [How to Create a Blog?](/how-to-guides/how-to-create-a-blog)
+- [How to Create a Blog from a Data Source?](/how-to-guides/how-to-create-a-blog-from-a-data-source)
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Can I link a List Details block to a Table?">
+    Yes, you can add a button to a table row and link the List Details block to the Table (it is similar to [connecting](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/item-details-block-/4bE8XaFbJp45wkAwuWiz8f) the List Details block to the List block).
+  </Accordion>
+
+  <Accordion title="How to display a video on the video detail page in Softr?">
+    Map the video URL to the video field type on your item. You can simply paste the YouTube link (or other video URL) into the video field, and there is no need to embed the video manually. This ensures the video appears correctly on the video detail page.
+  </Accordion>
+
+  <Accordion title="How can I format a year field in Softr to show a four-digit year (without thousands separators) on item detail pages?">
+    To display a clean four-digit year without thousands separators on item detail pages, disable thousand separators and any decimal formatting for the year field. In practice: 1) Click the block (the item-details block) and look at the right panel under Content. 2) Find the item field that is connected to the year from your datasource and edit it there. 3) Ensure decimal places are set to None and the thousand separators toggle is off. These changes apply to the year field across similar pages as well. For reference, you can also consult the documentation linked in the chat for the item-details-block setup.
+  </Accordion>
+
+  <Accordion title="How to embed a media player in the item details block in Softr?">
+    Embed the media player's code into the base rich text field and connect it to an embed field type on the details page.
+  </Accordion>
+
+  <Accordion title="How to show a date only (no time) for a date field in Softr?">
+    To display a date without the time in Softr, use the Date field settings and toggle Show time off. This hides the time portion and shows the date only. Ensure you are using the Date field (not a Date/Time display) for the field in question.
+  </Accordion>
+</AccordionGroup>

@@ -108,3 +108,19 @@ For instance, if you have a `yourdomain.com/about-us` page that you want to add,
 
 You can also append entire URLs as the `next-page` value like `https://yourdomain.com/details?recordId=XXXX` to “deep link” someone to a specific record after logging in.
 </Tip>
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How to log out in Softr?">
+    If you are logged in, you should see a sign out button in the navigation once it is enabled.
+  </Accordion>
+
+  <Accordion title="How to update a user's email address in Softr">
+    Update the user's email address in your Users table (the one connected to the Users section of the app). Note that after updating, the user with the old email will still appear under the Softr app’s Users section, so you should select the old record in the Softr app and delete it from there.
+  </Accordion>
+
+  <Accordion title="How to track user activity and login details in Softr">
+    Softr does not include built-in analytics for detailed user activity. To analyze user behavior, use an external analytics tool such as Google Analytics by integrating it with your app. In the Users section of the dashboard, there is a Last seen time that shows when a user was last active, but tracking exact login and logout times is not available. To track what users view or download, integrate an analytics tool (e.g., Google Analytics) into your app.
+  </Accordion>
+</AccordionGroup>

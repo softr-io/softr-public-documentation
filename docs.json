@@ -44,7 +44,7 @@
         "icon": "rocket",
         "groups": [
           {
-            "group": "Start Here",
+            "group": "Quick Start",
             "pages": [
               "start-here/welcome",
               "start-here/ai-co-builder",
@@ -52,7 +52,7 @@
             ]
           },
           {
-            "group": "Core Concepts",
+            "group": "App Building 101",
             "pages": [
               "core-concepts-overview/pages-and-navigation",
               "core-concepts-overview/create-a-database",
@@ -92,7 +92,6 @@
                   "building-blocks/item-details-block-",
                   "building-blocks/linked-list",
                   "building-blocks/comments-block",
-                  "building-blocks/use-case-creating-a-user-profile-with-item-details",
                   "building-blocks/use-case-embedding-calendly-in-list-details",
                   "building-blocks/use-case-filtering-other-lists-by-a-list-detail-block-data",
                   "building-blocks/use-case-hiding-blocks-based-on-current-record-data"
@@ -706,20 +705,6 @@
             ]
           },
           {
-            "group": "FAQ",
-            "pages": [
-              "faq/domain-setup",
-              "faq/pages-theme-general-settings",
-              "faq/memberships",
-              "faq/softr-subscription-plans-and-account-settings",
-              "faq/translations",
-              "faq/blocks",
-              "faq/integrations",
-              "faq/app-settings",
-              "faq/other"
-            ]
-          },
-          {
             "group": "Workspace and Billing",
             "pages": [
               "workspace-and-billing/accessing-my-account",
@@ -1133,7 +1118,7 @@
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-creating-a-user-profile-with-item-details/e4isniZBZBRV1zxEEU8dct",
-      "destination": "/building-blocks/use-case-creating-a-user-profile-with-item-details"
+      "destination": "/building-blocks/account-settings"
     },
     {
       "source": "/building-blocks/vikC2AWEpQGkZd4jGyoVxo/use-case-embedding-calendly-in-list-details/pUraLKqtjajCRizCqhAJLR",
@@ -1261,39 +1246,39 @@
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/app-settings/hs2HHCddYNA2u2vB5seuMC",
-      "destination": "/faq/app-settings"
+      "destination": "/application-settings/general-settings"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/blocks/97N45ePTwJLPEbuS4SGww4",
-      "destination": "/faq/blocks"
+      "destination": "/core-concepts-overview/visualize-data-with-building-blocks"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/domain-setup/hZQgTBnTWKi7KEjurVHqgd",
-      "destination": "/faq/domain-setup"
+      "destination": "/publishing/add-a-custom-domain-to-your-app"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/integrations/7Rcao9HgZ4i94wXc732HoZ",
-      "destination": "/faq/integrations"
+      "destination": "/custom-code/custom-code-snippets"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/memberships/nsoAVKHcvs95VDciGsoexV",
-      "destination": "/faq/memberships"
+      "destination": "/core-concepts-overview/user-authentication"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/other/9rNQ2iZKhZDjUsYTc7TFAj",
-      "destination": "/faq/other"
+      "destination": "/start-here/welcome"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/pages-theme-general-settings/4jAedFtkENGHjHiirzryYC",
-      "destination": "/faq/pages-theme-general-settings"
+      "destination": "/application-settings/page-settings"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/softr-subscription-plans-and-account-settings/5XrTAnfkMXPyaZxM4zimAT",
-      "destination": "/faq/softr-subscription-plans-and-account-settings"
+      "destination": "/workspace-and-billing/billing"
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn/translations/jxbCJk2jQBBs81EHXqesGW",
-      "destination": "/faq/translations"
+      "destination": "/integrations/weglot"
     },
     {
       "source": "/how-to-guides/ioi5BbuQ2RDM7aHPrpXnjG/add-users-to-user-groups-based-on-stripe-attributes/g1A2tEtjvmiCtGL1hgJmMe",
@@ -1681,7 +1666,7 @@
     },
     {
       "source": "/faq/jUGRWwEkWw4akSEa5z5EDn",
-      "destination": "/faq"
+      "destination": "/start-here/welcome"
     },
     {
       "source": "/troubleshooting/c7mbQk6nyqGUTGoVjojr9E",
@@ -1754,6 +1739,50 @@
     {
       "source": "/displaying-and-creating-data/vikC2AWEpQGkZd4jGyoVxo/list-conditional-filters/mDnn7jnpPiYmJcT99jpt7m",
       "destination": "/user-groups-and-permissions/conditional-filters"
+    },
+    {
+      "source": "/faq/app-settings",
+      "destination": "/application-settings/general-settings"
+    },
+    {
+      "source": "/faq/blocks",
+      "destination": "/core-concepts-overview/visualize-data-with-building-blocks"
+    },
+    {
+      "source": "/faq/domain-setup",
+      "destination": "/publishing/add-a-custom-domain-to-your-app"
+    },
+    {
+      "source": "/faq/integrations",
+      "destination": "/custom-code/custom-code-snippets"
+    },
+    {
+      "source": "/faq/memberships",
+      "destination": "/core-concepts-overview/user-authentication"
+    },
+    {
+      "source": "/faq/other",
+      "destination": "/start-here/welcome"
+    },
+    {
+      "source": "/faq/pages-theme-general-settings",
+      "destination": "/application-settings/page-settings"
+    },
+    {
+      "source": "/faq/softr-subscription-plans-and-account-settings",
+      "destination": "/workspace-and-billing/billing"
+    },
+    {
+      "source": "/faq/translations",
+      "destination": "/integrations/weglot"
+    },
+    {
+      "source": "/faq",
+      "destination": "/start-here/welcome"
+    },
+    {
+      "source": "/building-blocks/use-case-creating-a-user-profile-with-item-details",
+      "destination": "/building-blocks/account-settings"
     }
   ]
 }
