@@ -1,0 +1,127 @@
+---
+title: "Softr Workflows CLI"
+sidebarTitle: "Workflows CLI"
+description: "Let your coding agent build, test and publish Softr Workflows from files on your machine: add one skill, and the agent installs and operates the CLI."
+'og:title': "Softr Workflows CLI – Softr Help Docs"
+'og:description': "Let your coding agent build, test and publish Softr Workflows from files on your machine: add one skill, and the agent installs and operates the CLI."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Softr Workflows CLI – Softr Help Docs"
+'twitter:description': "Let your coding agent build, test and publish Softr Workflows from files on your machine: add one skill, and the agent installs and operates the CLI."
+icon: "terminal"
+---
+
+The Softr Workflows CLI (`softr-workflows`) treats a [workflow](/workflows/workflows) like a small project on your
+machine: the workflow is a `softr-workflows.jsonc` file, every **Run custom code** step is a real JavaScript or Python
+file next to it, and the CLI moves both to and from Softr. Nothing runs on your machine: every test and every run
+happens in Softr, exactly as in the builder.
+
+It is made for coding agents. A **skill** tells the agent what the CLI is for, how to install it, how to log in and
+how to work with it, so adding the skill is the only step you take. After that you describe the workflow you want, and
+the agent creates it, writes the code, tests every step and publishes it, with the files in your project as the
+record.
+
+<Note>
+  The CLI offers a small, deliberate set of step types: the generic triggers (webhook, schedules, Softr Databases and
+  Softr app events, incoming email), the control steps (branch, filter, loop, wait), **Respond to webhook**, **Call
+  API** and **Run custom code**. Workflows made of many third-party integration steps are built in the builder or through
+  the [Softr MCP server](/mcp/workflows), which reaches every step type.
+</Note>
+
+## Before you start
+
+- A Softr workspace where you can open Workflows.
+- [Node.js](https://nodejs.org) 22 or newer on the machine the agent runs on.
+- A coding agent that reads skills in the [Agent Skills](https://agentskills.io) format: Claude Code, Cursor, Codex and
+  most others.
+
+## Add the skill
+
+One command installs the skill into the agent directories it finds on your machine:
+
+```bash
+npx skills add softr-io/softr-io-skills --skill softr-workflows
+```
+
+<Tabs>
+  <Tab title="Claude Code">
+    Run the command in your project to add the skill to that project, or with `-g` to add it for every project:
+
+    ```bash
+    npx skills add softr-io/softr-io-skills --skill softr-workflows -a claude-code -g
+    ```
+
+    The repository is also a Claude Code plugin. Inside Claude Code:
+
+    ```text
+    /plugin marketplace add softr-io/softr-io-skills
+    /plugin install softr@softr-io-skills
+    ```
+  </Tab>
+  <Tab title="Cursor">
+    ```bash
+    npx skills add softr-io/softr-io-skills --skill softr-workflows -a cursor
+    ```
+
+    The repository also carries a Cursor plugin manifest, so it can be added as a plugin where Cursor offers that.
+  </Tab>
+  <Tab title="Codex and others">
+    ```bash
+    npx skills add softr-io/softr-io-skills --skill softr-workflows -a '*'
+    ```
+
+    `-a '*'` installs into every agent the `skills` tool detects. Any agent that reads `SKILL.md` files can also take the
+    folder `skills/softr-workflows` straight from the
+    [repository](https://github.com/softr-io/softr-io-skills/tree/master/skills/softr-workflows).
+  </Tab>
+</Tabs>
+
+Run the same command again to update the skill; `npx skills update` updates every installed skill at once.
+
+## The agent installs the CLI
+
+You do not install the CLI yourself. The first time the agent needs it, it checks for the command and installs it:
+
+```bash
+softr-workflows --version
+npm install -g @softr/workflows-cli
+```
+
+You can do the same by hand. `npm update -g @softr/workflows-cli` brings a global install up to date, and
+`npx @softr/workflows-cli@latest` runs the latest release without installing anything.
+
+## Log in
+
+The agent asks you to log in once. `softr-workflows login` opens your browser on Softr's authorization screen, where you
+approve the CLI for your workspaces; the CLI keeps the token in `~/.softr/credentials.json` and renews it on its own.
+When there is no browser on that machine, the agent prints the URL for you to open elsewhere, or you create a
+[personal API token](/mcp/connect#personal-access-tokens) in Softr Studio and pass it with `login --token`.
+
+The CLI has exactly the rights you have in Softr, never more, and `softr-workflows logout` forgets the token.
+
+## Your first workflow
+
+Ask for the outcome, not the steps. For example:
+
+> Create a Softr workflow that receives a webhook with a lead, scores it in Python, and answers the webhook with the
+> score.
+
+The agent runs `init`, adds the steps, writes the code files, pushes them, tests each step against real data, verifies
+the whole workflow and, when you confirm, publishes it. The trigger's URL and a link to the workflow in Softr Studio are
+in its output, and the workflow opens in the builder like any other.
+
+## Learn more
+
+<CardGroup cols={2}>
+  <Card title="softr-io-skills on GitHub" icon="github" href="https://github.com/softr-io/softr-io-skills">
+    The skill and its references, in the Agent Skills format.
+  </Card>
+  <Card title="@softr/workflows-cli on npm" icon="npm" href="https://www.npmjs.com/package/@softr/workflows-cli">
+    The CLI package, with the full command reference in its README.
+  </Card>
+  <Card title="Workflows" icon="random" href="/workflows/workflows">
+    Triggers, steps and how workflows run.
+  </Card>
+  <Card title="Softr MCP server" icon="plug" href="/mcp/workflows">
+    Build workflows with every step type through an AI assistant.
+  </Card>
+</CardGroup>
