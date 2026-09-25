@@ -168,6 +168,8 @@ The **Run Custom Code** action executes **JavaScript** or **Python** inside your
 
 <Note>Run Custom Code is available on paid plans.</Note>
 
+**Cryptography in the code:** JavaScript offers Node's `crypto` module and `Buffer`, so hashing, HMAC signatures and RSA decryption work in the step, for example `crypto.privateDecrypt({ key: inputData.privateKeyPem, padding: crypto.constants.RSA_PKCS1_PADDING }, Buffer.from(inputData.encryptedToken, 'base64'))`. Python offers the `rsa` package next to `base64`: `rsa.decrypt(base64.b64decode(inputData['encryptedToken']), rsa.PrivateKey.load_pkcs1(inputData['privateKeyPem'].encode()))`. The `rsa` package reads PKCS#1 keys, the `BEGIN RSA PRIVATE KEY` form; convert a PKCS#8 key once with `openssl pkcs8 -in key-pkcs8.pem -nocrypt | openssl rsa -out key-pkcs1.pem`. Store the private key as an input variable of the step rather than in the code text.
+
 **Example:** A Call API step returns a complex JSON response with nested objects. Use Run Custom Code to extract just the fields you need (e.g., pull out `response.data.items[0].name`) and return them as clean variables for the next step.
 
 ---
