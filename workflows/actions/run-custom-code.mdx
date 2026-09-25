@@ -133,7 +133,7 @@ return res.json()
 | | JavaScript | Python |
 |---|---|---|
 | **Runtime** | Node.js 24 | Python 3.12 |
-| **Available** | `fetch`, `crypto` (the Node.js `crypto` module: hashes, HMAC, RSA, AES, signatures, random values), `Buffer`, `URL`, `URLSearchParams`, `TextEncoder`, `TextDecoder`, `structuredClone`, timers, `JSON`, `Math`, `Date`, regular expressions, top-level `await` | `fetch`, class definitions, the `rsa` package (RSA with PKCS#1 v1.5 padding), and these standard modules: `json`, `re`, `math`, `statistics`, `decimal`, `fractions`, `datetime`, `zoneinfo`, `time`, `calendar`, `random`, `secrets`, `collections`, `itertools`, `functools`, `operator`, `string`, `textwrap`, `unicodedata`, `difflib`, `html`, `base64`, `hashlib`, `hmac`, `uuid`, `struct`, `copy`, `heapq`, `bisect`, `typing`, `enum`, `dataclasses`, `csv`, `io` (`StringIO`, `BytesIO`), `urllib.parse` |
+| **Available** | `fetch`, `crypto` (the Node.js `crypto` module: hashes, HMAC, RSA, AES, signatures, random values), `Buffer`, `URL`, `URLSearchParams`, `TextEncoder`, `TextDecoder`, `structuredClone`, timers, `JSON`, `Math`, `Date`, regular expressions, top-level `await` | `fetch`, class definitions, `rsa` (RSA with PKCS#1 v1.5 padding, PKCS#1 or PKCS#8 keys), and these standard modules: `json`, `re`, `math`, `statistics`, `decimal`, `fractions`, `datetime`, `zoneinfo`, `time`, `calendar`, `random`, `secrets`, `collections`, `itertools`, `functools`, `operator`, `string`, `textwrap`, `unicodedata`, `difflib`, `html`, `base64`, `hashlib`, `hmac`, `uuid`, `struct`, `copy`, `heapq`, `bisect`, `typing`, `enum`, `dataclasses`, `csv`, `io` (`StringIO`, `BytesIO`), `urllib.parse` |
 | **Not available** | `require`, `import`, the file system, environment variables | `os`, `sys`, `subprocess`, `open`, `requests`, `urllib.request`, other third-party packages |
 
 | Limit | Value |
@@ -147,20 +147,16 @@ return res.json()
 
 ### RSA in Python
 
-The `rsa` package reads private keys in PKCS#1 form, the `BEGIN RSA PRIVATE KEY` PEM. A key in PKCS#8 form, `BEGIN PRIVATE KEY`, is converted once on your machine before you store it in the step's data:
-
-```
-openssl pkcs8 -in key-pkcs8.pem -nocrypt | openssl rsa -out key-pkcs1.pem
-```
+`rsa` follows the API of the `rsa` package: `PrivateKey.load_pkcs1` and `PublicKey.load_pkcs1` read PEM or DER keys in PKCS#1 or PKCS#8 form, `decrypt` and `verify` accept the ciphertext or signature as base64 text, and `encrypt`, `sign` and the two error types work as in the package. Store the private key as an input variable of the step.
 
 ```python
-import rsa, base64
-key = rsa.PrivateKey.load_pkcs1(inputData['privateKeyPem'].encode())
-token = rsa.decrypt(base64.b64decode(inputData['encryptedToken']), key).decode()
+import rsa
+key = rsa.PrivateKey.load_pkcs1(inputData['privateKeyPem'])
+token = rsa.decrypt(inputData['encryptedToken'], key).decode()
 return {'token': token}
 ```
 
-In JavaScript, `crypto.privateDecrypt` reads both key forms directly.
+In JavaScript, `crypto.privateDecrypt` with `RSA_PKCS1_PADDING` does the same with a `Buffer` of the decoded token.
 
 ## When something fails
 
