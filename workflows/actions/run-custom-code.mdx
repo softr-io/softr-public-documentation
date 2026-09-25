@@ -133,8 +133,8 @@ return res.json()
 | | JavaScript | Python |
 |---|---|---|
 | **Runtime** | Node.js 24 | Python 3.12 |
-| **Available** | `fetch`, `URL`, `URLSearchParams`, `TextEncoder`, `TextDecoder`, `structuredClone`, timers, `JSON`, `Math`, `Date`, regular expressions, top-level `await` | `fetch`, class definitions, and these standard modules: `json`, `re`, `math`, `statistics`, `decimal`, `fractions`, `datetime`, `zoneinfo`, `time`, `calendar`, `random`, `secrets`, `collections`, `itertools`, `functools`, `operator`, `string`, `textwrap`, `unicodedata`, `difflib`, `html`, `base64`, `hashlib`, `hmac`, `uuid`, `struct`, `copy`, `heapq`, `bisect`, `typing`, `enum`, `dataclasses`, `csv`, `io` (`StringIO`, `BytesIO`), `urllib.parse` |
-| **Not available** | `require`, `import`, `Buffer`, `crypto`, the file system, environment variables | `os`, `sys`, `subprocess`, `open`, `requests`, `urllib.request`, third-party packages |
+| **Available** | `fetch`, `crypto` (the Node.js `crypto` module: hashes, HMAC, RSA, AES, signatures, random values), `Buffer`, `URL`, `URLSearchParams`, `TextEncoder`, `TextDecoder`, `structuredClone`, timers, `JSON`, `Math`, `Date`, regular expressions, top-level `await` | `fetch`, class definitions, the `rsa` package (RSA with PKCS#1 v1.5 padding), and these standard modules: `json`, `re`, `math`, `statistics`, `decimal`, `fractions`, `datetime`, `zoneinfo`, `time`, `calendar`, `random`, `secrets`, `collections`, `itertools`, `functools`, `operator`, `string`, `textwrap`, `unicodedata`, `difflib`, `html`, `base64`, `hashlib`, `hmac`, `uuid`, `struct`, `copy`, `heapq`, `bisect`, `typing`, `enum`, `dataclasses`, `csv`, `io` (`StringIO`, `BytesIO`), `urllib.parse` |
+| **Not available** | `require`, `import`, the file system, environment variables | `os`, `sys`, `subprocess`, `open`, `requests`, `urllib.request`, other third-party packages |
 
 | Limit | Value |
 |---|---|
@@ -144,6 +144,23 @@ return res.json()
 | `fetch` calls | Up to 20 per second per run. |
 | Request body | Up to 5 MB per `fetch`; a bigger body fails before it is sent. |
 | Response size | Up to about 6 MB per `fetch` response. |
+
+### RSA in Python
+
+The `rsa` package reads private keys in PKCS#1 form, the `BEGIN RSA PRIVATE KEY` PEM. A key in PKCS#8 form, `BEGIN PRIVATE KEY`, is converted once on your machine before you store it in the step's data:
+
+```
+openssl pkcs8 -in key-pkcs8.pem -nocrypt | openssl rsa -out key-pkcs1.pem
+```
+
+```python
+import rsa, base64
+key = rsa.PrivateKey.load_pkcs1(inputData['privateKeyPem'].encode())
+token = rsa.decrypt(base64.b64decode(inputData['encryptedToken']), key).decode()
+return {'token': token}
+```
+
+In JavaScript, `crypto.privateDecrypt` reads both key forms directly.
 
 ## When something fails
 
