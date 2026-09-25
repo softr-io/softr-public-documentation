@@ -88,6 +88,13 @@
               "workflows/trigger-types",
               "workflows/advanced-concepts",
               {
+                "group": "Actions",
+                "icon": "bolt",
+                "pages": [
+                  "workflows/actions/run-custom-code"
+                ]
+              },
+              {
                 "group": "Integrations",
                 "icon": "plug",
                 "pages": [
