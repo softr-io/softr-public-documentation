@@ -37,6 +37,22 @@ The framework reference is in the [Vibe Coding Developer Guide](/vibe-coding-dev
 | `get_vibe_coding_block_code` | Gets a block's source code and its current settings |
 | `get_vibe_coding_block_settings` | Gets a block's settings, actions, and data sources without the code |
 
+## Deleting a block
+
+| Tool | What it does |
+|---|---|
+| `delete_vibe_coding_block` | Removes a vibe coding block from its page |
+
+Only vibe coding blocks can be deleted this way. Every other block — headers, lists, forms, navigation — is removed in the builder; the assistant will tell you so rather than finding a way around it.
+
+Deleting takes the block's data source connections with it, so there is nothing to disconnect first. The workspace integration stays connected, and no other block on the page is touched.
+
+<Warning>
+  **Deleting cannot be undone from the assistant.** Version history goes with the block, and neither restoring nor duplicating a version can bring a deleted block back. If what you want is the block as it was a few edits ago, ask for a rollback instead — that keeps the block. If you might still want it, ask for a copy with `duplicate_vibe_coding_block_from_version`, or just hide it.
+</Warning>
+
+The block disappears from the builder straight away, but the live app keeps showing it until the app is published.
+
 ## Editing code
 
 | Tool | What it does |

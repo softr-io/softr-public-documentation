@@ -43,7 +43,7 @@ Delete multiple HubSpot records at once, ideal for bulk clean-up workflows trigg
 - **No-code CRM automation:** Wire your Softr forms, sign-ups, and record actions to HubSpot visually — no developers, no Zapier zaps to maintain.
 - **Two-way data flow:** Push new records into HubSpot and pull existing ones back into Softr lists and detail pages, all from the same workflow builder.
 - **Built for customer portals:** Give members a branded Softr experience while your team continues to work in HubSpot — both sides stay in sync.
-- **Works across every HubSpot object:** Contacts, Companies, Deals, Tickets, and your custom objects are all supported with the same simple actions.
+- **Works across every HubSpot object:** Contacts, Companies, Deals, Tickets, Notes, Tasks, Leads, Projects, Products, Line Items, Invoices, Subscriptions, Listings, Appointments, and your custom objects are all supported with the same simple actions.
 - **Bulk operations included:** Update or delete many records in a single step when you need to act on a whole segment at once.
 
 ## Example Use Cases
