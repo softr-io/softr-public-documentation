@@ -8,11 +8,9 @@ og:description: "Run JavaScript or Python inside a workflow: read the data of ea
 og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
 ---
 
-import { AppliesTo } from '/snippets/AppliesTo.mdx';
-
 # Run Custom Code
 
-<AppliesTo versions="1.0.0, 1.1.0" />
+> **Applies to:** Run Custom Code 1.0.0, 1.1.0
 
 The **Run Custom Code** action runs **JavaScript** or **Python** inside your workflow. Use it for logic that formulas cannot express: parsing complex JSON, multi-step transformations, or a calculation that would need deeply nested branches.
 
@@ -55,6 +53,9 @@ Both languages come with a cryptography module. The code can hash values, comput
 
 ### JavaScript: `crypto` and `Buffer`
 
+> **Version history**
+> - Added to 1.0.0 and 1.1.0 in September 2026.
+
 `crypto` is the Node.js `crypto` module: `createHash`, `createHmac`, `privateDecrypt`, `publicEncrypt`, `sign`, `verify`, `randomUUID` and the rest of it. `Buffer` converts between text, base64, hex and raw bytes.
 
 ```javascript
@@ -67,6 +68,9 @@ return { token: decrypted.toString('utf8'), signature };
 ```
 
 ### Python: `rsa`
+
+> **Version history**
+> - Added to 1.0.0 and 1.1.0 in September 2026.
 
 `import rsa` gives you the API of the `rsa` package: `rsa.PrivateKey.load_pkcs1` and `rsa.PublicKey.load_pkcs1` read a PEM or DER key in PKCS#1 or PKCS#8 form, `rsa.decrypt` and `rsa.verify` accept the ciphertext or signature as base64 text or as bytes, and `rsa.encrypt`, `rsa.sign`, `rsa.DecryptionError` and `rsa.VerificationError` work as in the package. Padding is PKCS#1 v1.5.
 
@@ -120,7 +124,7 @@ Python code has no network access. In JavaScript, `localhost` and the cloud meta
 
 ## Versions
 
-Steps created with an earlier version of Run Custom Code keep working. The marker at the top of this page names the versions the page applies to; a marker under a heading names the versions that section applies to. Without a marker, a section applies to every version of the page.
+Steps created with an earlier version of Run Custom Code keep working. The **Applies to** line at the top of this page names the versions the page covers. An **Applies to** line under a heading names the versions that section applies to; without one, a section applies to every version of the page. A **Version history** block under a heading lists what changed for that part.
 
 | Version | What changed |
 |---|---|
