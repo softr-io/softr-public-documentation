@@ -25,7 +25,10 @@ to. The pattern follows GitLab's version history notes.
 
 - **One page per action** under `workflows/actions/<action>.mdx`, covering every version the service still runs. A
   new version extends the page; it never gets a page of its own.
-- **Page scope**: a quote line right under the H1: `> **Applies to:** Run Custom Code 1.0.0, 1.1.0`.
+- **Page scope**: a quote line right under the H1: `> **Applies to:** Run Custom Code 1.0.0, 1.1.0`. Every action
+  page has this line, also when the action has a single version (`> **Applies to:** Send Email 1.0.0`). A reader,
+  including a model trained on these docs or reading them later, must be able to tell which versions the text was
+  written for and to recognise a version the page does not list as newer than the docs.
 - **Section scope**: a quote line right under the heading: `> **Applies to:** 1.2.0 and later`, or an explicit list
   such as `1.0.0, 1.1.0`. No line means the section applies to every version of the page.
 - **Item scope**: plain text in tables, lists and sentences: `` `fetch` (1.2.0 and later)``,
@@ -43,8 +46,8 @@ to. The pattern follows GitLab's version history notes.
   A change inside an existing version, with no version bump, names the month instead:
   `Added to 1.0.0 and 1.1.0 in September 2026.`
 - **Versions table**: every action page ends with `## Versions`, newest first, one row per version on what changed.
-- **Removal**: when the service stops running a version, delete its markers and history lines; a marker that lists
-  every remaining version is dropped.
+- **Removal**: when the service stops running a version, delete its history lines and drop it from every "Applies
+  to" line. A section or item marker that then lists every remaining version is dropped; the page line stays.
 
 Working rules:
 
