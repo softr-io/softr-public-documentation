@@ -85,7 +85,7 @@ return res.json()
 |---|---|
 | `method` | `GET` by default; `POST`, `PUT`, `PATCH`, `DELETE` and the others work as expected. |
 | `headers` | An object of header names and values. |
-| `body` | A string is sent as it is. An object or a list is sent as JSON with `Content-Type: application/json`. In JavaScript, `URLSearchParams` is sent form-encoded. |
+| `body` | A string is sent as it is, as `text/plain` unless you set `Content-Type`. An object or a list is sent as JSON with `Content-Type: application/json`. In JavaScript, `URLSearchParams` is sent form-encoded. |
 | `integration` | The alias of an attached integration that should authenticate this call. Needed only when two attached integrations share a host. |
 
 **Response**
