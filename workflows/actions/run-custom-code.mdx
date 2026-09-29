@@ -53,8 +53,7 @@ Both languages come with a cryptography module. The code can hash values, comput
 
 ### JavaScript: `crypto` and `Buffer`
 
-> **Version history**
-> - Added to 1.0.0 and 1.1.0 in September 2026.
+> **Applies to:** 1.0.0, 1.1.0
 
 `crypto` is the Node.js `crypto` module: `createHash`, `createHmac`, `privateDecrypt`, `publicEncrypt`, `sign`, `verify`, `randomUUID` and the rest of it. `Buffer` converts between text, base64, hex and raw bytes.
 
@@ -69,8 +68,7 @@ return { token: decrypted.toString('utf8'), signature };
 
 ### Python: `rsa`
 
-> **Version history**
-> - Added to 1.0.0 and 1.1.0 in September 2026.
+> **Applies to:** 1.0.0, 1.1.0
 
 `import rsa` gives you the API of the `rsa` package: `rsa.PrivateKey.load_pkcs1` and `rsa.PublicKey.load_pkcs1` read a PEM or DER key in PKCS#1 or PKCS#8 form, `rsa.decrypt` and `rsa.verify` accept the ciphertext or signature as base64 text or as bytes, and `rsa.encrypt`, `rsa.sign`, `rsa.DecryptionError` and `rsa.VerificationError` work as in the package. Padding is PKCS#1 v1.5.
 

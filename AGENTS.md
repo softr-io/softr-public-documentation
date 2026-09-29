@@ -42,18 +42,18 @@ to. The pattern follows GitLab's version history notes.
   > **Removed in:** 1.2.0. Use `fetch` instead.
   ```
 
-- **Version history**: a quote block right under the heading (after the lines above when they exist), only when it
-  adds to them: a change inside the versions the section applies to, or a change made to existing versions without
-  a version bump. Never "Introduced in 1.2.0" under "Applies to: 1.2.0 and later", and no removal entry next to a
-  "Removed in" line — they already say it. Oldest entry first, one verb per line:
+- **Version history**: a quote block right under the heading (after the lines above when they exist), only for a
+  change inside the versions the section applies to. Never "Introduced in 1.2.0" under "Applies to: 1.2.0 and
+  later", and no removal entry next to a "Removed in" line — they already say it. A capability added to versions
+  that already exist is no history either: the docs describe what a version offers, not when it got it, so the
+  section just carries the "Applies to" line of those versions. Oldest entry first, one verb per line:
 
   ```markdown
   > **Version history**
   > - Changed in 1.3.0: the response is now ...
-  > - Added to 1.0.0 and 1.1.0 in September 2026.
+  > - Changed in 1.4.0: ...
   ```
 
-  A change inside an existing version, with no version bump, names the month instead of a version.
 - **Versions table**: every action page ends with `## Versions`, newest first, one row per version on what changed.
 - **Removal**: when the service stops running a version, delete its history lines and drop it from every "Applies
   to" line. A section or item marker that then lists every remaining version is dropped; the page line stays.
