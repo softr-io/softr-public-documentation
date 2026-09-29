@@ -14,10 +14,10 @@ This fits the way Softr apps are built for marketing teams and agencies: a sched
 
 Get LinkedIn Ads account or campaign metrics for a date range, as rows to write into a table — impressions, reach, clicks, landing page clicks, spend, CTR, CPC, CPM, conversions, conversion value, and leads.
 
-- **Days are in UTC.** LinkedIn reports each day in UTC, not in the ad account's time zone, so a day's numbers can differ slightly from what you see in Campaign Manager when your account uses another time zone.
+- **Days are in UTC.** LinkedIn reports each day in UTC, not in the ad account's time zone, so a day's numbers can differ slightly from what you see in Campaign Manager when your account uses another time zone. Relative dates (**Today**, **Yesterday**, and the others) are resolved in the workflow's time zone.
 - **Keep it fresh on a schedule.** Conversions keep arriving for weeks after a click. Run the workflow on a schedule that re-pulls the last 7 to 30 days — for example with the start date set to **30 days ago** and the end date to **Today** — and update existing rows by `date_start` and `campaign_id` (or `date_start` and `ad_account_id` for account-level reports) instead of adding duplicates.
 - **Row limit.** Returns up to 500 rows. If `truncated` is true, shorten the date range, use a coarser granularity or filter to one campaign.
-- **Approximate metrics.** LinkedIn rounds metrics for member privacy, so daily rows can add up to slightly more or less than a total for the same range. Reach and frequency are empty for ranges longer than 92 days.
+- **Approximate metrics.** LinkedIn rounds metrics for member privacy, so daily rows can add up to slightly more or less than a total for the same range. Reach and frequency are empty for ranges longer than 92 days. With total granularity, dates more than 6 months back are rounded to whole months.
 
 ## Key Benefits
 
@@ -41,7 +41,7 @@ Get LinkedIn Ads account or campaign metrics for a date range, as rows to write 
 
 1. Open your Softr app and go to **Workflows**.
 2. Create a new workflow — for a report, start it with a **Recurring schedule** trigger — and add the **LinkedIn Ads** action **Get performance report**.
-3. Click **Connect to LinkedIn Ads**, sign in to LinkedIn, and give Softr permission to access your ad accounts. The LinkedIn user you sign in with needs a role on the ad accounts you want to report on.
-4. Choose the ad account, the date range (a relative day such as **Yesterday**, **30 days ago** or **Start of this month**, or an exact date), the level (account or campaign), and the granularity (daily, monthly, or total). Optionally pick one campaign.
+3. Click **Connect to LinkedIn Ads**, sign in to LinkedIn, and give Softr permission to access your ad accounts. The LinkedIn user you sign in with needs a role on the ad accounts you want to report on; Viewer is enough.
+4. Choose the ad account, the date range (a relative day such as **Yesterday**, **30 days ago** or **Start of this month**, **Start of last month** or **End of last month**, or an exact date), the level (account or campaign), and the granularity (daily, monthly, or total). Optionally pick one campaign.
 5. Add a loop over the report's `rows` and write each row to your Softr table.
 6. Save and activate your workflow.
