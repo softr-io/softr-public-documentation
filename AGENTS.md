@@ -34,15 +34,14 @@ to. The pattern follows GitLab's version history notes.
 - **Item scope**: plain text in tables, lists and sentences: `` `fetch` (1.2.0 and later)``,
   `` `http`, `https` (1.0.0, 1.1.0)``.
 - **Version history**: a quote block right under the heading (after the "Applies to" line when both exist), only
-  when it says something the "Applies to" line cannot: a change inside the versions the section applies to, or a
-  change made to existing versions without a version bump. Never "Introduced in 1.2.0" under "Applies to: 1.2.0
-  and later", and never "Removed in 1.2.0" under "Applies to: 1.0.0, 1.1.0" — the line already says it; a
-  pointer to the replacement goes into the text instead. Oldest entry first, one verb per line:
+  when it adds to the "Applies to" line: a change inside the versions the section applies to, a change made to
+  existing versions without a version bump, or a removal with a pointer to the replacement. Never "Introduced in
+  1.2.0" under "Applies to: 1.2.0 and later" — the line already says it. Oldest entry first, one verb per line:
 
   ```markdown
   > **Version history**
   > - Changed in 1.3.0: the response is now ...
-  > - Removed in 1.4.0.
+  > - Removed in 1.4.0. Use ... instead.
   ```
 
   A change inside an existing version, with no version bump, names the month instead:
