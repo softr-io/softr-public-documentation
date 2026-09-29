@@ -51,9 +51,6 @@ Return any JSON-compatible value: an object, a list, a string, a number or a boo
 ## Calling APIs with `fetch`
 
 > **Applies to:** 1.2.0 and later
->
-> **Version history**
-> - Introduced in 1.2.0.
 
 Both languages offer `fetch(url, options)`. It sends an HTTP request and returns a response object. In JavaScript you `await` it; in Python it is a plain call.
 
@@ -139,11 +136,8 @@ return res.json()
 ## Calling HTTP APIs with `http` and `https`
 
 > **Applies to:** 1.0.0, 1.1.0
->
-> **Version history**
-> - Removed in 1.2.0. Use `fetch` instead.
 
-JavaScript can call HTTP APIs with the Node.js `http` and `https` modules. Return the promise of the result; the step waits for it.
+JavaScript can call HTTP APIs with the Node.js `http` and `https` modules. Return the promise of the result; the step waits for it. From 1.2.0, use [`fetch`](#calling-apis-with-fetch) instead.
 
 ```javascript
 return new Promise((resolve, reject) => {
