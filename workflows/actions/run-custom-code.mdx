@@ -137,8 +137,7 @@ return res.json()
 
 > **Applies to:** 1.0.0, 1.1.0
 >
-> **Version history**
-> - Removed in 1.2.0. Use [`fetch`](#calling-apis-with-fetch) instead.
+> **Removed in:** 1.2.0. Use [`fetch`](#calling-apis-with-fetch) instead.
 
 JavaScript can call HTTP APIs with the Node.js `http` and `https` modules. Return the promise of the result; the step waits for it.
 
@@ -220,7 +219,7 @@ return {'token': token}
 
 ## Versions
 
-Steps created with an earlier version of Run Custom Code keep working. Opening such a step in the workflow editor upgrades it to the current version; code that used `http` or `https` must switch to `fetch` then. The **Applies to** line at the top of this page names the versions the page covers. An **Applies to** line under a heading names the versions that section applies to; without one, a section applies to every version of the page. A **Version history** block under a heading lists what changed for that part.
+Steps created with an earlier version of Run Custom Code keep working. Opening such a step in the workflow editor upgrades it to the current version; code that used `http` or `https` must switch to `fetch` then. The **Applies to** line at the top of this page names the versions the page covers. An **Applies to** line under a heading names the versions that section applies to; without one, a section applies to every version of the page. A **Removed in** line names the version that dropped that part, and a **Version history** block lists what changed inside it.
 
 | Version | What changed |
 |---|---|
