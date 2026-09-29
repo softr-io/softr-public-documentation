@@ -136,8 +136,11 @@ return res.json()
 ## Calling HTTP APIs with `http` and `https`
 
 > **Applies to:** 1.0.0, 1.1.0
+>
+> **Version history**
+> - Removed in 1.2.0. Use [`fetch`](#calling-apis-with-fetch) instead.
 
-JavaScript can call HTTP APIs with the Node.js `http` and `https` modules. Return the promise of the result; the step waits for it. From 1.2.0, use [`fetch`](#calling-apis-with-fetch) instead.
+JavaScript can call HTTP APIs with the Node.js `http` and `https` modules. Return the promise of the result; the step waits for it.
 
 ```javascript
 return new Promise((resolve, reject) => {
