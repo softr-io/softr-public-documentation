@@ -128,6 +128,7 @@ return res.json()
 - The credentials are only added when the URL points at the provider's own API host. A call to any other host goes out without them, whatever alias you pass.
 - You can attach every integration the **Call API** action can authenticate with. Database connections, Softr Databases, Softr Apps, Telegram and Trello cannot be attached, because their credentials have no HTTP header form.
 - An alias is a short name of letters, digits and underscores, unique within the step. It defaults to the integration type, such as `salesforce` or `rest_api`.
+- A REST API integration has no provider host, so it never authenticates a call by host alone. Name its alias in the call, and its headers go to whatever host that call names.
 
 <Warning>Do not put API keys or tokens into the code or into **Data to use in the code**. Connect the service as an integration and attach it to the step instead. The credential then stays out of your workflow definition and out of the run details.</Warning>
 
@@ -209,7 +210,8 @@ return {'token': token}
 | Synchronous JavaScript | Two seconds of code without a promise in between. | Two seconds of code without an `await` in between. |
 | Python CPU time | Two of the three seconds. | Two seconds; waiting for `fetch` does not count. |
 | Python memory | 256 MB. | 256 MB. |
-| `fetch` calls | – | Up to 20 per second per run. |
+| `fetch` calls | – | Up to 20 per second per run, and up to 10 open at the same time. |
+| One `fetch` | – | The target must answer within 30 seconds, or the call fails. |
 | Request body | – | Up to 5 MB per `fetch`; a bigger body fails before it is sent. |
 | Response size | – | Up to about 6 MB per `fetch` response. |
 
