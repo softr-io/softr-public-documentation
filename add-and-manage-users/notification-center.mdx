@@ -1,0 +1,139 @@
+---
+title: "Notification Center"
+sidebarTitle: "Notification center"
+description: "Give logged-in users of your app an inbox for comments, mentions and workflow notifications, and customize what it says."
+---
+
+The notification center is an inbox inside your published app. Logged-in users open it from the navigation menu to catch up on what needs their attention: comments and mentions on records they follow, and custom notifications that you send from a workflow.
+
+Notifications wait in the inbox until the user reads them, so nothing is lost if they weren't online when it was sent. Unlike push notifications, the inbox needs no browser permission from the user.
+
+<Note>
+  In-app notifications are available on paid plans, starting with the Professional plan. On a plan that doesn't include them, the toggle shows a plan badge and can't be turned on.
+</Note>
+
+## What appears in the inbox
+
+The inbox collects two kinds of notifications:
+
+- **Comments and mentions.** When someone comments on a thread a user follows, or mentions them in a [Comments block](/building-blocks/comments-block), the user gets a notification in the inbox.
+- **Custom notifications from workflows.** Any workflow can send a notification to one or more users with the [Send Notification](/workflows/actions/send-notification) action — for example, when a task is assigned to them, an invoice is due or a request needs approval.
+
+Notifications only go to **logged-in users** of your app. Visitors who aren't signed in never see the inbox.
+
+## Turn on the notification center
+
+<Steps>
+  <Step title="Open the Notifications settings">
+    In Softr Studio, open your app and go to **Users** in the top bar, then select the **Notifications** tab.
+  </Step>
+  <Step title="Switch on In-app notifications">
+    Under **Other channels**, turn on the **In-app notifications** toggle (1). This adds a **Notifications** link to your app's navigation menu. Use **Notification inbox** (2) to customize the inbox — see [Customize the inbox](#customize-the-inbox) below.
+
+    <Frame caption="The In-app notifications toggle and the Notification inbox settings link, under Other channels.">
+      ![Users > Notifications tab in Softr Studio with the In-app notifications toggle switched on, and the Notification inbox link below it](/images/notification-center/in-app-notifications-toggle.png)
+    </Frame>
+  </Step>
+  <Step title="Publish your app">
+    Changes to notification settings take effect once you [publish your app](/publishing/publishing-your-softr-app). Notifications are only delivered from a published app.
+  </Step>
+</Steps>
+
+<Tip>
+  **Push notifications** sit right below the in-app toggle. They reach users in their browser or device even when your app isn't open, but users must allow them first. You can use both channels together — the [Send Notification](/workflows/actions/send-notification) action lets you pick Push, In-app or both for every message.
+</Tip>
+
+## Customize the inbox
+
+Click **Notification inbox** next to the toggle to open **Notification inbox settings**. Every text your users see in the inbox can be changed here, so you can rename it or translate it into your app's language.
+
+### General
+
+- **Link label and icon** — the name and icon of the link in your navigation menu. It's **Notifications** with a bell icon by default.
+- **All notifications tab** — the **Tab name** of the tab that lists every notification (**All** by default) and the **Empty state message** shown when there are none.
+- **Unread notifications tab** — the **Tab name** of the tab that lists only unread notifications (**Unread** by default) and its **Empty state message**.
+
+<Frame caption="The General tab of Notification inbox settings, where you set the navigation link and the tab names.">
+  ![Notification inbox settings dialog, General tab, with fields for the link label and icon, the All notifications tab and the Unread notifications tab](/images/notification-center/notification-inbox-general.png)
+</Frame>
+
+### Actions
+
+- **Filters** — the labels of the two filter options: **All notifications** and **Comments only**.
+- **Mark as read** — the labels (and icons) of the **Mark as read** and **Mark as unread** actions on a single notification, and the label of **Mark all as read**.
+
+<Frame caption="The Actions tab of Notification inbox settings, where you rename the filters and the read/unread actions.">
+  ![Notification inbox settings dialog, Actions tab, with label fields for the All notifications and Comments only filters, Mark as read, Mark as unread and Mark all as read](/images/notification-center/notification-inbox-actions.png)
+</Frame>
+
+Click **Save** to keep your changes, then publish your app so users see them.
+
+## Send notifications from a workflow
+
+To send your own notifications to the inbox, add the **Send Notification** action to a workflow.
+
+<Steps>
+  <Step title="Add the action">
+    In a workflow, add a step, choose **Softr Apps**, then **Send Notification**.
+  </Step>
+  <Step title="Choose the In-app channel">
+    Under **Channels** (1), keep **In-app** selected. Remove **Push** if you only want the notification to go to the inbox.
+  </Step>
+  <Step title="Pick the recipient">
+    In **User email** (2), enter the email of the user to notify, or map it from an earlier step with **@** — for example, the email of the user who triggered the workflow. The recipient must be a user of the selected app.
+  </Step>
+  <Step title="Write the message">
+    Fill in the **Notification title** and, optionally, the **Notification body** (3). Both accept values from earlier steps, so you can include a record name, a due date or a status.
+
+    Optionally, set **Open URL on click** to the page the user should land on when they click the notification. It must start with your app's domain. If you leave it empty, clicking the notification opens your app's home page.
+
+    <Frame caption="The Send Notification action set to the In-app channel, with a recipient, title and body.">
+      ![Send Notification step settings in a Softr workflow, with Channels set to In-app, a user email, a notification title and a notification body](/images/notification-center/send-notification-action.png)
+    </Frame>
+  </Step>
+</Steps>
+
+For every setting of the action, see [Send Notification](/workflows/actions/send-notification).
+
+<Warning>
+  The action only delivers from a **published** app with **In-app notifications** turned on. If your app isn't published yet, a real test of the step fails with an "Application is not published" error.
+</Warning>
+
+## What your users see
+
+Once the notification center is on, logged-in users see a **Notifications** link at the top of your app's navigation menu (1). Clicking it opens the inbox as a panel next to the menu.
+
+<Frame caption="The notification inbox, opened from the Notifications link in the navigation menu, with the filter menu open.">
+  ![A Softr app with the Notifications link at the top of the navigation menu and the inbox panel open, showing the All and Unread tabs and the filter menu with All notifications and Comments only](/images/notification-center/notification-inbox-end-user.png)
+</Frame>
+
+In the inbox, users can:
+
+- Switch between **All** notifications and **Unread** ones.
+- Use the filter icon (2) to show **All notifications** or **Comments only**.
+- Mark a single notification as read or unread, or use the **⋯** menu to **Mark all as read**.
+- Click a notification to open the page it links to.
+
+<Note>
+  To check how a notification looks, log in to your **published** app as the recipient and open the inbox after the workflow runs.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Send Notification" icon="bell" href="/workflows/actions/send-notification">
+    Every setting of the workflow action that sends push and in-app notifications.
+  </Card>
+
+  <Card title="Comments block" icon="comments" href="/building-blocks/comments-block">
+    Let users comment on records and mention each other.
+  </Card>
+
+  <Card title="User email notifications" icon="envelope" href="/add-and-manage-users/user-email-notifications">
+    Edit the email templates and sender details for your app.
+  </Card>
+
+  <Card title="Workflows" icon="diagram-project" href="/workflows/workflows">
+    Automate tasks and processes in your Softr apps.
+  </Card>
+</CardGroup>
