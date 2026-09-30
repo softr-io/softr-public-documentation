@@ -172,3 +172,11 @@ Google Sheets doesn’t have built-in field types like Airtable, but you can org
 * **Rating** – Use integer values from 1 to 5.
 
 * **File Uploads:** Google Sheets doesn’t support direct file uploads. Use URLs instead.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="What is the maximum number of columns Softr can read from a Google Sheet, and what steps should I take if not all columns are loaded?">
+    Softr can read up to 512 columns from a Google Sheet. To ensure all columns are loaded, make sure: (1) the Softr Record ID field is the last column in the sheet, and (2) every column has a header. If headers are missing, some columns may not be read or displayed correctly.
+  </Accordion>
+</AccordionGroup>

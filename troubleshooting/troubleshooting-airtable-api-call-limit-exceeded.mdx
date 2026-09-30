@@ -83,3 +83,19 @@ If you're facing issues with Airtable API call limits being exceeded, follow the
     If issues persist, contact us via support chat.
   </Step>
 </Steps>
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How to resolve a 'request limit exceeded' error in Softr?">
+    If you see 'request limit exceeded' on a Softr page, this usually relates to the data source (e.g., Airtable) rather than the Softr page itself. Try the following steps: 1) Check your Airtable connection and make sure the database is connected properly. 2) Review the block settings and data sources in your Softr app to ensure they are configured correctly. 3) Check your Airtable account for any API call limits or usage restrictions (look under Account settings). 4) If needed, re-authenticate the connection to Airtable from the Softr app. 5) If you cannot access or modify the data source due to permissions, you may need to adjust ownership or access rights, or connect a new database and use that with the blocks in the app. 6) After making changes, test the page again to confirm the issue is resolved. If the problem persists, provide the studio URL and any relevant screenshots to support for further investigation.
+  </Accordion>
+
+  <Accordion title="How to troubleshoot Airtable data not pulling into Softr due to API rate limits?">
+    If Softr stops pulling data from Airtable and you see a 'Request limit exceeded' message, this indicates that the Airtable API quota has been reached. To resolve: 1) Check how many Airtable API calls are being performed from your account and by whom (including collaborators). 2) Have the workspace owner verify whether the allowed monthly public API call limit has been exceeded. 3) If the quota is exhausted and not automatically renewed, consider upgrading your Airtable plan to increase API call limits. 4) After adjusting quota, retry the data source connection in Softr to restore data fetch. If access permissions are an issue, add a guest collaborator as needed and ensure the correct page/block URLs are being used.
+  </Accordion>
+
+  <Accordion title="What does the Airtable API request limit exceeded error mean and how can I resolve it?">
+    The error means you have hit Airtable's API rate limit, which is 5 requests per second per base. This can occur when multiple dynamic blocks load on a page or when several users access the page at once, causing API calls to exceed the limit. The system waits for Airtable to respond (about 20 seconds), but if responses take longer, the error may appear. The limit cannot be bypassed. To mitigate this, you can: use a Personal Access Token instead of OAuth for the connection, or switch to a data source without such strict API call limits. Additional long-term options include waiting for the monthly quota to reset, upgrading to a higher API-limit plan with Airtable, or switching to a different data source such as Softr’s database, which does not have the same API limits.
+  </Accordion>
+</AccordionGroup>

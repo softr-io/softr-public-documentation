@@ -71,3 +71,15 @@ It’s important to understand some things before you migrate!
     <Frame>![Notion image](/application-settings/images/migrating-app-versions/image5.png)</Frame>
   </Step>
 </Steps>
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How to test a new v2 version of a Softr app without impacting existing customers and production workflows?">
+    A recommended approach is to copy the product and run tests on the copied version, so you can validate changes without touching the live app. If you need to perform production-like checks, you can publish the copied app to test its behavior and then unpublish it from Settings \> General to keep the custom domain intact. Avoid DNS switching between apps for testing, as it can introduce complications. If needed, you can share the test URL with the tech team for review. For version control, consider using snapshots to retrieve a previous state, but be aware this still carries some risk if a deployment occurs inadvertently.
+  </Accordion>
+
+  <Accordion title="How to migrate to a new app version in Softr with minimal downtime and how to handle sign-up and log-in pages?">
+    Refer to the official migration guide for Softr: [https://docs.softr.io/application-settings/n3K2UEfpC9BpHgakMzUU5Y/migrating-app-versions/4ASdHE4RECmauL82yzcVam](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/migrating-app-versions/4ASdHE4RECmauL82yzcVam). The guide covers how to migrate to a new app version and considerations for updating authentication-related pages such as sign-up and log-in. Use the documentation to plan the migration steps, review any required changes to authentication flows, and coordinate timing to minimize downtime. If questions arise during the process, support is available to assist.
+  </Accordion>
+</AccordionGroup>

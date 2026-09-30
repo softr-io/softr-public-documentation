@@ -24,3 +24,15 @@ The **Action Buttons** are available from the **Actions** tab in block settings 
 
 The only exception is the [Kanban](https://www.notion.so/3513ac5b44034e1093cf96231dde3997) block, where there’s also a **Drag and drop** toggle that lets you choose whether you want to allow your users to drag and drop the board items or not.
 <Frame caption="Drag and drop toggle on Kanban block">![Drag and drop toggle on Kanban block](/actions/images/action-buttons-overview/image2.png)</Frame>
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How to show a form only after pressing a button in Softr and prefill it with a record ID?">
+    Use a List and List Details setup. Add an action button that navigates to the details page, where the form lives, so the form is not shown until the button is pressed. To pass the record ID, ensure the details page and the form are on the same page and use the record context. If you need the form to open via a URL (prefilled), create prefilled form URLs and save them in your database; on the list, configure the action button to open URL and select the prefilled URL for that record. This allows the form to be shown only after the button press and to prepopulate fields with the appropriate record ID.
+  </Accordion>
+
+  <Accordion title="How do I switch to a rich text editor for a button field, and what will it look like on the frontend?">
+    Use the Rich text field option for the button to enable rich text editing instead of a plain text field. With the Rich text field, the frontend will render the formatted content accordingly. If you need a visual reference of the frontend rendering, apply the Rich text field to the button and check the result in the live view.
+  </Accordion>
+</AccordionGroup>

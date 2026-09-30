@@ -113,3 +113,15 @@ You can create as many onboarding flows as needed—each one will be treated as 
 - Onboarding flows are **only shown once**, on the user's first signup/login
 - You can set up **multiple flows per app** and control visibility with [Page Rules](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/page-rules/6zZKpehWhQhCGH9XXAFrpT).
 - All onboarding flows live under [**Utility Pages**](https://docs.softr.io/application-settings/n3K2UEfpC9BpHgakMzUU5Y/utility-pages/49UoDpTpTPbkoKVwksoqfh), and can be managed like any other Utility page
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How can I ensure the Onboarding flow updates the existing user record instead of creating a new row in my data source?">
+    Use the correct onboarding configuration: ensure you select the Complete user profile option for the Onboarding flow instead of Add new record. The Add New Record action in dynamic blocks is not part of the Onboarding flow and will create a new row in your data source (e.g., Softr Databases, Airtable). If you want users to update their existing data, configure the Onboarding flow to edit existing user data (Complete user profile). After changing this, test the flow to confirm updates apply to the current user rather than adding a new record. If the issue persists, provide a screenshot of your onboarding setup so we can verify the configuration.
+  </Accordion>
+
+  <Accordion title="How can I prevent the automatically created onboarding page from being indexed or appearing in search results?">
+    If you don’t need the onboarding page, delete the Onboarding flow page from your pages. You can create another onboarding flow later via a block if needed.
+  </Accordion>
+</AccordionGroup>

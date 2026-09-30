@@ -22,8 +22,24 @@ After making sure you have a [Stripe account](https://stripe.com/docs), [Product
     <Frame caption="Adding Stripe authentication keys on Softr">![Adding Stripe authentication keys on Softr](/integrations/images/stripe-checkout/image1.png)</Frame>
   </Step>
   <Step title="Step 2:Add a Checkout to your Application">
-    To collect payments from your users, you can either use the [Simple Checkout Form](/integrations/etS18kJqm1fuD58KCsjC3z/simple-checkout-form/tKt3f5cV2CxsFLGM1aaNYX) or link to a Stripe checkout from your site (e.g. using the [Pricing block](/integrations/etS18kJqm1fuD58KCsjC3z/layout-pricing-in-card-view-with-details/pNspR4mKu6spj1KSzRf4p7)).
+    To collect payments from your users, you can either use the [Simple Checkout Form](/integrations/etS18kJqm1fuD58KCsjC3z/simple-checkout-form/tKt3f5cV2CxsFLGM1aaNYX) or link to a Stripe checkout from your site (e.g. using the [Pricing block](/building-blocks/pricing#layout-pricing-in-card-view-with-details)).
 
     You can also add a [Simple Billing Form](/integrations/etS18kJqm1fuD58KCsjC3z/simple-billing-block/9oj8iqzqLhBWFHVt2UAY1K) or connect a [Stripe Custome Portal](/integrations/etS18kJqm1fuD58KCsjC3z/stripe-customer-portal/3B7NhNtJ4RvipBwi7FwUtF) to allow your users to view and edit their billing details.
   </Step>
 </Steps>
+
+## Related guides
+
+- [Add Users to User Groups Based on Stripe Attributes](/how-to-guides/add-users-to-user-groups-based-on-stripe-attributes)
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How to set up an appointment booking form and enable payment in Softr">
+    To set up an appointment and collect payment in Softr, create a form block where users can choose a date/time and enter their details. If you prefer real scheduling, you can embed external scheduling tools like Calendly or TidyCal directly into Softr. For payments, use Softr's Stripe integration by adding a checkout block or a payment button so users can pay right after booking. Typical flow: the user fills out the appointment form (or books via Calendly), and then completes the payment via Stripe on the Softr app.
+  </Accordion>
+
+  <Accordion title="How to redirect users to a Softr page after completing a Stripe Checkout payment">
+    To have users redirected after a Stripe Checkout payment, use the Stripe Checkout button and configure the Redirect to URL option with the specific Softr page URL where you want users to land after the payment. Make sure the page URL is correctly entered. Also verify the setup on your end: ensure the recurring payment toggle matches your Stripe configuration (use it if the product is recurring in Stripe) and use the correct Price IDs in the Stripe Checkout details. After updating these settings, publish your application before testing. If a static post-payment redirect is desired, you can also define a static link in your app for the redirection after completion.
+  </Accordion>
+</AccordionGroup>

@@ -33,3 +33,24 @@ As of now, the user group redirects are applied to all the signin/signup options
 * [SAML Single SIgn-On](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/saml-single-sign-on/j9hELMUfGtAGqoNzejgoif)
 
 * [OpenID](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/openid-single-sign-on/hqqStep7RUmiSMb6qnGLkq)
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How to manage post-sign-in redirects by user group and onboarding status in Softr?">
+    In Softr, control where users land after sign-in by using custom user groups and page rules:
+
+    - Create a custom user group for users who have completed onboarding.
+    - Set the post-login redirect for that group to the desired page (e.g., User Dashboard).
+    - For users who have not completed onboarding (e.g., Undefined), direct them to the Onboarding page after sign-in.
+    - After onboarding is completed, those users will follow the redirect defined for their group (or the post-onboarding landing rule you configure).
+    - If users are already onboarded, they will be redirected to the page defined as the after-sign-in page; if you want different behavior, adjust the page rules so that the onboarding flow is skipped for those groups.
+    - If you’re unsure where to set these redirects, refer to the article on creating custom user groups and configuring post-login redirects based on group data: [https://docs.softr.io/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3)
+
+    Note: Ensure you are editing the page rules for the correct user group and that the onboarding state (Not started / Completed) is aligned with your desired landing pages.
+  </Accordion>
+
+  <Accordion title="How to redirect from one page to another based on a condition in Softr?">
+    There is no option for that. However, you can achieve something like that using JavaScript custom code and adding it to the [Custom Code](/0392ff65acfe4b1c96923c1aac7982f7) area of the page.
+  </Accordion>
+</AccordionGroup>

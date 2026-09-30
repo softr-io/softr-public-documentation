@@ -88,3 +88,20 @@ You can manage your user groups by navigating to Users > User Groups and hoverin
 ## Security
 
 <Tip>Softr viability checks and record conditional filters are applied on the server side, and there is no way to trick the system. Learn more about [Softr App Security](/security/ummZ2CWNHXZCHzsZwbEwET/softr-app-security/1xC7Hgkvo67AnHKyebr1uC).</Tip>
+
+## Related guides
+
+- [How to Create a Client Portal?](/how-to-guides/how-to-create-a-client-portal)
+- [How to Create a Membership Site?](/how-to-guides/how-to-create-a-membership-site)
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How many user groups are included on the Softr Free plan and how do I access custom user groups?">
+    On the Softr Free plan, the two user groups are the default ones: logged-in and non-logged-in users. Custom user groups are not available on the Free plan and will be removed after the trial period. To use custom user groups, you need the Professional plan or higher.
+  </Accordion>
+
+  <Accordion title="How to onboard client users and assign them to a user group while keeping data isolated in Softr?">
+    Use Softr’s Onboarding flow to present the available user groups to the end user during signup; after choosing a group, the user will be added to that group. If automatic group assignment is needed beyond the built‑in onboarding, you can use the form block to collect new user emails and store them in the same datasource linked to the Users tab, then use a sync process to add the user to the app. To keep data isolated between clients, you can add the logged‑in user’s company data as a hidden field in the form to determine their group, and you can also collect additional onboarding data (e.g., who invited them, their company) via the onboarding flow. The onboarding flow supports adding fields to gather this extra information. This setup helps maintain confidentiality by ensuring users only access data related to their own client.
+  </Accordion>
+</AccordionGroup>

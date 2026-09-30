@@ -46,7 +46,7 @@ In your Softr application, go to the [Settings](/application-settings/n3K2UEfpC9
 
 Access your domain's DNS settings in your domain registrar's or DNS host's dashboard.
 
-Every DNS host has its own way of updating DNS settings. Please, read the help documentation of your DNS host if you are not familiar with it yet. Also, check out our [FAQ](/faq/jUGRWwEkWw4akSEa5z5EDn/domain-setup/hZQgTBnTWKi7KEjurVHqgd) on domain setup.
+Every DNS host has its own way of updating DNS settings. Please, read the help documentation of your DNS host if you are not familiar with it yet. Also, check the [FAQ](#faq) at the end of this page.
 
 **Add an A record and CNAME**
 
@@ -113,7 +113,7 @@ In your Softr application, go to the [Settings](/application-settings/n3K2UEfpC9
 
 Access your domain's DNS settings in your domain registrar's or DNS host's dashboard.
 
-Every DNS host has its own way of updating DNS settings. Please, read the help documentation of your DNS host if you are not familiar with it yet. Also, check out our [FAQ](/faq/jUGRWwEkWw4akSEa5z5EDn/domain-setup/hZQgTBnTWKi7KEjurVHqgd) on domain setup.
+Every DNS host has its own way of updating DNS settings. Please, read the help documentation of your DNS host if you are not familiar with it yet. Also, check the [FAQ](#faq) at the end of this page.
 
 **Add an A record**
 
@@ -211,5 +211,33 @@ Below are some common questions we get about custom domains. Click the toggle to
 
   <Accordion title="Can I self-host my Softr app on my own server?">
     No, we do not currently offer self-hosting.
+  </Accordion>
+
+  <Accordion title="How do I set up SSL for my domain?">
+    You don’t need to set it up. SSL is provided for free out of the box.
+  </Accordion>
+
+  <Accordion title="Custom domain can’t be connected. What should I do?">
+    Apart from the steps described [here](/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/add-a-custom-domain-to-your-app/93K5bLJN3n91MRo9uRGdAf), there are cases when the custom domain is not working because the app has not been published.
+  </Accordion>
+
+  <Accordion title="How to add one more custom domain?">
+    Currently, each subscription plan provided a limited number of custom domain slots (3 for the Business plan). However, we are able to provide additional domain slots upon request.
+  </Accordion>
+
+  <Accordion title="How to fix a CNAME DNS error when configuring a custom domain in Softr">
+    If you encounter a CNAME DNS error while linking a custom domain in Softr, first check the DNS profile to ensure the CNAME is configured correctly. If an incorrect record is present, delete it. Then open your Softr app and publish it again to apply the changes. Make sure you add the correct domain (for example, the apex domain like yourdomain.es, not an incorrect variant) and publish once more. After publishing, allow some time for DNS propagation and verify the site loads with a valid SSL certificate. If issues persist, recheck the DNS configuration and repeat the publish step.
+  </Accordion>
+
+  <Accordion title="How to fix HTTP 404 error when accessing a Softr app after configuring a custom domain?">
+    If you encounter an HTTP 404 error after configuring a custom domain, check your DNS configuration for extra A records. In the reported case, an extra A record caused the issue. Delete the extra A record so that only the required A record remains (pointing to the expected IP, e.g., 3.33.251.168). After removing the stray A record, the site loaded correctly.
+  </Accordion>
+
+  <Accordion title="How to display a domain without www (naked domain) in Softr?">
+    Displaying a domain without www is not supported. Softr follows best practices by using a canonical domain setup with redirects so users don’t have to type the www version, and modern browsers typically don’t display the www prefix. This means while the site can be reached via the non-www domain, the platform itself does not render the site with www removed as a separate display option.
+  </Accordion>
+
+  <Accordion title="How to configure a subdomain to point to Softr without affecting the main domain?">
+    To point a subdomain to Softr while keeping the main domain functional, configure the DNS so that only the subdomain’s record (A or CNAME) directs to Softr, without altering the main domain’s records. Avoid creating conflicting records for the subdomain (such as other A/CNAME records) and allow DNS propagation time after changes. Softr cannot modify DNS settings from our side; contact your domain registrar or hosting provider to set the subdomain correctly (for example, [subdomain.yourdomain.com](http://subdomain.yourdomain.com/) → Softr endpoint). If the main site stops loading, review and revert conflicting DNS changes affecting the root domain.
   </Accordion>
 </AccordionGroup>
