@@ -91,7 +91,8 @@
                 "group": "Actions",
                 "icon": "bolt",
                 "pages": [
-                  "workflows/actions/run-custom-code"
+                  "workflows/actions/run-custom-code",
+                  "workflows/actions/send-notification"
                 ]
               },
               {
@@ -136,7 +137,6 @@
                   "workflows/integrations/outlook",
                   "workflows/integrations/pinecone",
                   "workflows/integrations/postmark",
-                  "workflows/integrations/push-notifications",
                   "workflows/integrations/quickbooks",
                   "workflows/integrations/replicate",
                   "workflows/integrations/resend",
@@ -816,6 +816,10 @@
     ]
   },
   "redirects": [
+    {
+      "source": "/workflows/integrations/push-notifications",
+      "destination": "/workflows/actions/send-notification"
+    },
     {
       "source": "/mcp-server",
       "destination": "/mcp/overview"
