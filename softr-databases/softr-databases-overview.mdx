@@ -19,11 +19,15 @@ Because it is native to the platform, Softr Databases offers several key advanta
 
 Think of it like a smarter spreadsheet—but perfectly optimized for building apps.
 
+<Frame>![A Projects table in Softr Databases, with fields for name, client, status, budget, progress, due date, owner, and summary](/softr-databases/images/softr-databases-overview/projects-table.png)</Frame>
+
 Softr gives you a few easy ways to get started with your database:
 
 - **Start from scratch**: Set up your own tables and fields based on what your app needs.
 - **Use a template**: Pick from ready-made templates (like CRM, job board, or inventory) to get started faster.
 - **Import**: Bring your existing data into Softr with a simple import. Currently supporting CSV and Airtable import, with more import options coming soon.
+
+<Frame>![The three ways to start a database: start from scratch, use a template, or import your data from CSV or Airtable](/softr-databases/images/softr-databases-overview/ways-to-start.webp)</Frame>
 
 <Note>
   Softr Databases are available on all Softr plans with some record limits. For details, check out the Pricing Page.
@@ -42,6 +46,8 @@ Here’s how to create your first database and understand the key pieces along t
     - Import from CSV
     - Import from Airtable
     - Import from Google Sheets (coming soon)
+
+    <Frame>![A table in Softr Databases. Numbers point to the table tabs, the fields, the Add field button, and the Add record button](/softr-databases/images/softr-databases-overview/table-view-annotated.png)</Frame>
   </Step>
   <Step title="Add Fields">
     Fields are the pieces of information you want to store about each item. These are the columns in your table.
@@ -62,9 +68,15 @@ Here’s how to create your first database and understand the key pieces along t
     - **Date** – for deadlines or schedules
     - **File/Image** – for uploading documents or pictures
     - **Relationship** – to connect one table to another, like linking a project to a client
+
+    <Frame>![A table where each column has a type: Text, Number, Date, File, and Relationship](/softr-databases/images/softr-databases-overview/field-types.webp)</Frame>
+
+    <Frame>![The field editor for a Select field. Numbers point to the field type, the options, the Add option button, and the multicolor toggle](/softr-databases/images/softr-databases-overview/field-editor-annotated.png)</Frame>
   </Step>
   <Step title="Add More Tables/Fields/Records as Needed">
     As your app grows, you may add more tables—such as Projects, Orders, or Support Tickets—or add more fields to collect new data, like Notes, Payment Status, and Company contacts.
+
+    <Frame>![Three tables, Clients, Projects, and Tasks, linked by relationship fields](/softr-databases/images/softr-databases-overview/relationships.webp)</Frame>
 
     That’s it—you’ve just built the foundation of your app with a well-structured database!
   </Step>
@@ -81,6 +93,8 @@ Once you've created your database, you’re ready to build and connect to your a
     1. Go to the **Block source** **tab** and select Softr Databases
     2. Pick the **Database** you want to use.
 
+    <Frame>![The Source tab of a List block. Numbers point to the Source tab, Softr Databases as the account, the database, and the table](/softr-databases/images/softr-databases-overview/block-source-annotated.png)</Frame>
+
     <Note>
       **Important:** Each Database table can only connect to one Softr block. For example, if you want to display **Projects** in a List block, you’ll need to map it to the **Projects table** in your base. If you also want to show **Tasks**, you’ll need to add a separate block and connect it to the **Tasks table**.
     </Note>
@@ -91,6 +105,8 @@ Once you've created your database, you’re ready to build and connect to your a
   </Step>
   <Step title="Map Database fields to item fields">
     When you connect your table to a block, you can choose which **columns** to display and map to block fields.. This lets you control how your data appears in the app.
+
+    <Frame>![Fields of a Projects table mapped to the fields of a List block: title, image, and status](/softr-databases/images/softr-databases-overview/table-to-block.webp)</Frame>
 
     <Note>
       Database fields work like **spreadsheet columns**, but each has a specific type (e.g., text, image, checkbox). To keep everything working smoothly, make sure to **match field types correctly** when setting up the connection.
