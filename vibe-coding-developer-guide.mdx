@@ -713,7 +713,7 @@ The rest of `@/lib/comments` builds the thread itself: `useComments`, `useCommen
 
 ## Editable Settings
 
-Editable settings let builders modify block content through the editor UI (**Content → Settings** tab) without touching code. Always use them for any text, images, icons, or lists that might change between block instances.
+Editable settings let builders modify block content through the editor UI (**Content → Settings** tab) without touching code. Always use them for any text, images, icons, colors, or lists that might change between block instances.
 
 Import from `@/lib/editable-settings`.
 
@@ -906,6 +906,39 @@ If the setting points at an action the builder deleted or hid, `navigate()` does
 
 Use `NavigationAction` whenever a real link will do. An anchor gives you middle-click, "open in new tab" and the browser's hover preview. A click handler loses all three. And don't fall back to `window.open` or `window.location` — those hardcode the destination, so the builder can't change it anymore.
 
+### `useColorSetting`
+
+Returns a CSS color `string`. Use for a color the builder picks — title color, button background, etc. It shows up as a color picker in the Content tab.
+
+`initialValue` is a theme color name or a hex (`"#1A2B3C"`). Default is `"foreground"`. Theme names:
+
+`background`, `foreground`, `card`, `card-foreground`, `popover`, `popover-foreground`, `primary`, `primary-foreground`, `secondary`, `secondary-foreground`, `muted`, `muted-foreground`, `accent`, `accent-foreground`, `destructive`, `border`, `input`, `ring`
+
+```tsx
+import { useColorSetting, useTextSetting } from "@/lib/editable-settings";
+
+export default function Block() {
+  const title = useTextSetting({ name: "title", label: "Title", initialValue: "Welcome" });
+  const titleColor = useColorSetting({
+    name: "title-color",
+    label: "Title Color",
+    initialValue: "foreground",
+  });
+
+  return (
+    <h1 className="text-2xl font-semibold" style={{ color: titleColor }}>
+      {title}
+    </h1>
+  );
+}
+```
+
+A theme name follows the app theme until the builder picks a color. The picker shows the current theme color, and once the builder changes it, a hex is saved.
+
+Pass the value through inline `style`, not a Tailwind class — classes like `text-[...]` are built at compile time and won't pick up the builder's color.
+
+Pick the `initialValue` that matches the element's current look, so nothing changes until the builder edits it: `text-foreground` → `"foreground"`, `bg-primary` → `"primary"`.
+
 ### `useArraySetting`
 
 Returns an array of items with a consistent shape. Use for feature lists, team members, FAQs, testimonials, etc.
@@ -977,7 +1010,9 @@ export default function Block() {
 }
 ```
 
-**Schema field types:** `"text"`, `"image"`, `"video"`, `"vibeCodingBlockIcon"`
+**Schema field types:** `"text"`, `"image"`, `"video"`, `"vibeCodingBlockIcon"`, `"color"`
+
+A `"color"` field comes back as a CSS color, same as `useColorSetting`.
 
 **Constraints:**
 - Schema cannot contain nested arrays — for list-like text, use a `"text"` field with a separator (e.g. comma) and split it in code
