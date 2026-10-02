@@ -4,27 +4,45 @@ title: "Trigger Types"
 
 # Summary
 
-Triggers define when a workflow runs. Every workflow starts with exactly one trigger — the event or condition that kicks off the sequence of actions. Softr Workflows supports three categories of triggers: Softr-native triggers, built-in triggers, and integration triggers from third-party services.
+Triggers define when a workflow runs. Every workflow starts with exactly one trigger: the event or condition that starts the sequence of actions. Click **Add trigger** in the workflow builder to open the **Select a trigger** window. It lists Softr triggers, built-in triggers, and triggers from integrations.
+
+<Frame caption="The Select a trigger window: Softr, built-in, and integration triggers">![The Select a trigger window with Softr Databases, Softr Apps, built-in triggers, and integrations](/workflows/images/workflows/trigger-types/trigger-picker.webp)</Frame>
+
+Each trigger shows how it starts the workflow:
+
+- **Instant**: the workflow starts the moment the event happens.
+- **1 min**: Softr checks for new events about every minute, so the workflow starts within about a minute.
 
 ---
 
 ## Softr Triggers
 
-Softr-native triggers respond to events inside your Softr account — your databases, apps, and email inbox.
+Softr triggers respond to events inside your Softr account: your databases and your apps.
 
 ### Softr Databases
 
-Database triggers fire based on changes to records in your Softr databases. All database triggers are **Instant** — they fire immediately when the event occurs, with no polling delay.
+Database triggers fire based on changes to records in your Softr databases. Open **Softr Databases** in the trigger window to see them all.
+
+<Frame caption="The Softr Databases triggers, with the way each one starts the workflow">![The six Softr Databases triggers with their Instant or 1 min badges](/workflows/images/workflows/trigger-types/triggers-softr-databases.webp)</Frame>
+
+| Trigger | Starts |
+|---|---|
+| Record added | 1 min |
+| Record deleted | 1 min |
+| Record updated | 1 min |
+| Record meets conditions | Instant |
+| Record enters view | Instant |
+| Run manually | Instant |
 
 #### Record added
 
 Fires when a new record is created in the selected table.
 
 **Configuration:**
-1. **Account** — Select your Softr Databases account
-2. **Database** — Choose the database
-3. **Table** — Choose the table to watch for new records
-4. **Conditions** (optional) — Add field-level conditions to only trigger when the new record matches specific criteria
+1. **Account**: Select your Softr Databases account
+2. **Database**: Choose the database
+3. **Table**: Choose the table to watch for new records
+4. **Conditions** (optional): Add field-level conditions to only trigger when the new record matches specific criteria
 
 **When to use:** Kick off onboarding sequences when a new client record is created, or notify your team in Slack when a new lead is added.
 
@@ -35,10 +53,10 @@ Fires when a new record is created in the selected table.
 Fires when a record is removed from the selected table.
 
 **Configuration:**
-1. **Account** — Select your Softr Databases account
-2. **Database** — Choose the database
-3. **Table** — Choose the table to watch for deletions
-4. **Conditions** (optional) — Filter by field values on the record being deleted
+1. **Account**: Select your Softr Databases account
+2. **Database**: Choose the database
+3. **Table**: Choose the table to watch for deletions
+4. **Conditions** (optional): Filter by field values on the record being deleted
 
 **When to use:** Log deleted records to an audit table, or send a confirmation email when a user cancels a subscription.
 
@@ -49,12 +67,12 @@ Fires when a record is removed from the selected table.
 Fires when any field on an existing record changes.
 
 **Configuration:**
-1. **Account** — Select your Softr Databases account
-2. **Database** — Choose the database
-3. **Table** — Choose the table to watch
-4. **Conditions** (optional) — Scope the trigger to specific field values (e.g., only fire when `Status` is `"Active"`)
+1. **Account**: Select your Softr Databases account
+2. **Database**: Choose the database
+3. **Table**: Choose the table to watch
+4. **Conditions** (optional): Scope the trigger to specific field values (for example, only fire when `Status` is `"Active"`)
 
-> **Tip:** If you only want to react to a specific field changing, combine this trigger with a [Filter](./workflows-advanced-concepts#filter) action at the start of your workflow to check the exact field.
+> **Tip:** If you only want to react to a specific field changing, combine this trigger with a [Filter](/workflows/advanced-concepts#filter) action at the start of your workflow to check the exact field.
 
 **When to use:** Sync record changes to a Google Sheet, or send a notification when a project's status is updated.
 
@@ -62,96 +80,114 @@ Fires when any field on an existing record changes.
 
 #### Record meets conditions
 
-Fires when a record matches a set of field-level conditions you define — useful when you care about a specific state, not just any update.
+Fires when a record matches a set of field-level conditions you define. Use it when you care about a specific state, not just any update.
 
 **Configuration:**
-1. **Account** — Select your Softr Databases account
-2. **Database** — Choose the database
-3. **Table** — Choose the table
-4. **Conditions** — Define one or more field conditions (e.g., `Status` **Is** `"Approved"`)
+1. **Account**: Select your Softr Databases account
+2. **Database**: Choose the database
+3. **Table**: Choose the table
+4. **Conditions**: Define one or more field conditions (for example, `Status` **Is** `"Approved"`)
 
 **When to use:** Trigger an approval email exactly when a record's status field is set to `"Approved"`, rather than on every update.
 
 ---
 
-#### Record enters the view
+#### Record enters view
 
-Fires when a record appears in a saved database view — for example, when a filter on the view is satisfied.
+Fires when a record appears in a saved database view, for example when a filter on the view is satisfied.
 
 **Configuration:**
-1. **Account** — Select your Softr Databases account
-2. **Database** — Choose the database
-3. **Table** — Choose the table
-4. **View** — Select the saved view to watch
+1. **Account**: Select your Softr Databases account
+2. **Database**: Choose the database
+3. **Table**: Choose the table
+4. **View**: Select the saved view to watch
 
-**When to use:** Automate actions tied to view-based segments, such as sending a follow-up email to all records that enter a "High Priority" filtered view.
+**When to use:** Automate actions tied to view-based segments, such as sending a follow-up email to every record that enters a "High Priority" view.
+
+---
+
+#### Run manually
+
+Fires when a workspace member runs the workflow by hand from Softr Databases.
+
+**When to use:** Run a workflow on demand, such as a one-off cleanup, a bulk export, or a report that someone requests when they need it.
 
 ---
 
 ### Softr Apps
 
-App triggers fire based on user activity within your published Softr applications. These triggers fall into two distinct execution models: **Synchronous** (Interactive) and **Polling** (Background).
+App triggers fire based on activity in your Softr apps. Open **Softr Apps** in the trigger window to see them. They come in two groups: **UI triggers** and **Data triggers**.
 
-#### Synchronous Triggers (Interactive)
-Synchronous triggers maintain a live connection between the user's browser and the workflow runner. **Only these triggers support the [Show Wait Screen](./workflows-advanced-concepts#managing-the-loading-state) and [End User Interactions](./workflows-advanced-concepts#closing-the-loop-with-ui-feedback) actions.**
+<Frame caption="The Softr Apps triggers: data triggers and UI triggers">![The Softr Apps triggers, grouped as Data triggers and UI triggers](/workflows/images/workflows/trigger-types/triggers-softr-apps.webp)</Frame>
+
+#### UI triggers
+
+UI triggers are **Instant**. They keep a live connection between the user's browser and the workflow. **Only these triggers support the [Show Wait Screen](/workflows/advanced-concepts#wait-screen) and [End User Interactions](/workflows/advanced-concepts#end-user-interactions) actions.**
 
 ##### Submit form
 Fires instantly when a user submits a form block in your Softr app.
+
 **Configuration:**
-- **Application** — Select the Softr app
-- **Form Block** — Select the specific form block to watch
+- **Application**: Select the Softr app
+- **Form Block**: Select the specific form block to watch
+
 **When to use:** Process form data with AI or custom logic and show an immediate success toast or redirect.
 
 ##### Run custom workflow
 Fires instantly when a user clicks a button configured with the "Run custom workflow" action.
+
 **Configuration:**
-- **Application** — Select the Softr app
-- **Button** — Map the workflow to a specific button in your interface
-**When to use:** Create high-UX features like "Upvote", "Approve", or "Generate Summary" that provide instant visual feedback.
+- **Application**: Select the Softr app
+- **Button**: Map the workflow to a specific button in your interface
 
-##### Record created (UI)
-Fires when a user creates a record through a List block's 'Add' action inside the app.
-**When to use:** Redirect a user to a custom onboarding page immediately after they create their first project.
+**When to use:** Create features like "Upvote", "Approve", or "Generate Summary" that give instant visual feedback.
 
-##### Record updated (UI)
-Fires when a user edits an existing record through a List block's 'Edit' action inside the app.
-**When to use:** Validate an update and show a confirmation loading screen while a backend sync occurs.
+##### Add record
+Fires instantly when a user submits an **Add Record** form in your app.
+
+**When to use:** Redirect a user to a custom onboarding page right after they create their first project.
+
+##### Edit record
+Fires instantly when a user submits an **Edit Record** form in your app.
+
+**When to use:** Validate an update and show a confirmation loading screen while a backend sync runs.
 
 ---
 
-#### Polling Triggers (Background)
-These triggers use a background service to check for updates approximately every **1 minute**.
+#### Data triggers
+
+Data triggers check for updates about every **1 minute**.
 
 ##### User added
-Fires when a new user account is created in the selected Softr app.
-**When to use:** Send a welcome email, create a corresponding record in your database, or add the user to a Slack channel.
+Fires when a new user is created in the selected Softr app.
+
+**When to use:** Send a welcome email, create a matching record in your database, or add the user to a Slack channel.
 
 ##### Comment added
-Fires when a user posts a comment anywhere in the selected Softr app.
+Fires when a user adds a comment in the selected Softr app.
+
 **When to use:** Notify a team member when a client leaves a comment.
-
----
-
-### Softr Email
-
-> **Note:** The Softr Email trigger requires a **Basic plan** or higher.
-
-#### Email received
-
-Fires instantly when an email arrives at your Softr inbound email address.
-
-**Execution type:** Instant
-
-**Configuration:**
-- No additional fields required. Softr provides a unique inbound email address for your account. Any email sent to that address activates workflows using this trigger.
-
-**When to use:** Parse incoming email notifications from other services, route support emails into your database, or trigger follow-up workflows when a specific type of email arrives.
 
 ---
 
 ## Built-in Triggers
 
 Built-in triggers are general-purpose triggers that don't depend on a specific app or integration.
+
+### Email received
+
+> **Note:** The Email received trigger requires a **Basic plan** or higher.
+
+Fires instantly when an email arrives at your Softr inbound email address.
+
+**Execution type:** Instant
+
+**Configuration:**
+- No additional fields required. Softr provides a unique inbound email address for your account. Any email sent to that address starts workflows that use this trigger.
+
+**When to use:** Parse incoming email notifications from other services, route support emails into your database, or start a follow-up workflow when a specific type of email arrives.
+
+---
 
 ### Webhook
 
@@ -162,12 +198,12 @@ Built-in triggers are general-purpose triggers that don't depend on a specific a
 Softr auto-generates a unique POST endpoint URL for each workflow that uses this trigger. Any external service or application can send an HTTP POST request to that URL to start the workflow.
 
 **Configuration:**
-- **Webhook URL** — Auto-generated; copy and paste into the external service
-- **CORS origins** — (Optional) Restrict which domains can send requests to this endpoint
+- **Webhook URL**: Auto-generated; copy and paste into the external service
+- **CORS origins**: (Optional) Restrict which domains can send requests to this endpoint
 
 > **Tip:** Use the Webhook trigger to start workflows from Softr button clicks, form submissions on external sites, or any service that supports outbound webhooks.
 
-**When to use:** Connect Softr Workflows to any tool that supports webhooks — Stripe payment events, Typeform submissions, Shopify orders, or your own application.
+**When to use:** Connect Softr Workflows to any tool that supports webhooks, such as Stripe payment events, Typeform submissions, Shopify orders, or your own application.
 
 ---
 
@@ -178,7 +214,7 @@ Runs a workflow exactly once at a date and time you specify.
 **Execution type:** Scheduled (runs once)
 
 **Configuration:**
-- **Date/time picker** — Select the exact date and time for the single run
+- **Date/time picker**: Select the exact date and time for the single run
 
 **When to use:** Schedule a one-off data migration, send a time-specific announcement email, or prepare data before a product launch.
 
@@ -191,7 +227,7 @@ Runs a workflow repeatedly on a schedule you define.
 **Execution type:** Scheduled (repeating)
 
 **Configuration:**
-1. **Frequency** — Choose from:
+1. **Frequency**: Choose from:
    - Every 1 minute
    - Every 5 minutes
    - Every 10 minutes
@@ -202,9 +238,9 @@ Runs a workflow repeatedly on a schedule you define.
    - Every day at...
    - Every week at...
    - Every month at...
-2. **Time** — Time picker (shown for daily, weekly, and monthly frequencies)
-3. **Timezone** — Timezone selector (defaults to Los Angeles time)
-4. **Run on weekends?** — Toggle to include or skip Saturday and Sunday runs
+2. **Time**: Time picker (shown for daily, weekly, and monthly frequencies)
+3. **Timezone**: Timezone selector (defaults to Los Angeles time)
+4. **Run on weekends?**: Toggle to include or skip Saturday and Sunday runs
 
 **When to use:** Send a daily digest email, run a nightly data sync, generate a weekly report, or poll an external system on a regular interval.
 
@@ -212,15 +248,9 @@ Runs a workflow repeatedly on a schedule you define.
 
 ## Integration Triggers
 
-Integration triggers connect Softr Workflows to third-party services. Softr Tables, Calendly, Attio, and Zoho CRM are **Instant**, while other services use background polling.
+Integration triggers connect Softr Workflows to third-party services. Each service needs a connected account. Calendly, Attio, and Zoho CRM are **Instant**, while other services use background checks about every minute.
 
-### Softr Tables
-Softr Tables triggers fire instantly since version 1.1.0, ensuring high performance.
-| Event | Execution type |
-|---|---|
-| Record created | **Instant** |
-| Record updated | **Instant** |
-| Record deleted | **Instant** |
+The trigger window also lists triggers for ClickUp, Microsoft Excel, Granola, Fathom, Cal.com, DocuSign, HubSpot, Xero, Slack, QuickBooks, Jotform, Fillout, Tally, Typeform, Stripe, SharePoint, and Linear. Open the integration in the window to see its events. Each integration page lists its triggers and actions.
 
 ---
 
@@ -228,7 +258,7 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 | Event | Execution type |
 |---|---|
-| Record updated | 1-minute polling |
+| Record updated | 1-min |
 
 **Configuration:** Requires a connected Airtable account. Select the base and table to watch.
 
@@ -240,7 +270,7 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 | Event | Execution type |
 |---|---|
-| Email received | 1-minute polling |
+| Email received | 1-min |
 
 **Configuration:** Requires a connected Gmail account (OAuth). Optionally filter by sender, subject, or label.
 
@@ -252,7 +282,7 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 | Event | Execution type |
 |---|---|
-| Row added | 1-minute polling |
+| Row added | 1-min |
 
 **Configuration:** Requires a connected Google account (OAuth). Select the spreadsheet and sheet to watch.
 
@@ -264,8 +294,8 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 | Event | Execution type |
 |---|---|
-| Record created | 1-minute polling |
-| Record updated | 1-minute polling |
+| Record created | 1-min |
+| Record updated | 1-min |
 
 **Configuration:** Requires a connected Notion account (OAuth). Select the database to watch.
 
@@ -283,7 +313,7 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 **Configuration:** Requires a connected Calendly account (OAuth).
 
-> **Tip:** Calendly triggers are Instant — they fire via webhook as soon as the event occurs in Calendly, making them ideal for time-sensitive automations like sending immediate confirmation emails or creating records right after a meeting is booked.
+> **Tip:** Calendly triggers are Instant. They fire via webhook as soon as the event occurs in Calendly, making them ideal for time-sensitive automations like sending immediate confirmation emails or creating records right after a meeting is booked.
 
 **When to use:** Create a database record when someone books a meeting, send a reminder sequence when a meeting is scheduled, or log no-shows for follow-up.
 
@@ -300,7 +330,7 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 **Configuration:** Requires a connected Attio account. Optionally scope record triggers to a single object (People, Companies, Deals, or a custom object); leave empty to fire for all objects.
 
-> **Tip:** Attio triggers are Instant — they fire via webhook as soon as the change happens in Attio. **Record updated** fires once per changed attribute.
+> **Tip:** Attio triggers are Instant. They fire via webhook as soon as the change happens in Attio. **Record updated** fires once per changed attribute.
 
 **When to use:** Sync new Attio records into a Softr database, notify a team when a deal is updated, or kick off a follow-up workflow when a task is created.
 
@@ -312,9 +342,9 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 | Record updated | **Instant** |
 | Record deleted | **Instant** |
 
-**Configuration:** Requires a connected Zoho CRM account. Each trigger watches one module — Leads, Contacts, Accounts, or Deals.
+**Configuration:** Requires a connected Zoho CRM account. Each trigger watches one module: Leads, Contacts, Accounts, or Deals.
 
-> **Tip:** Zoho CRM triggers are Instant — Zoho notifies Softr as soon as the change happens. The output carries the record ID; **Record updated** also lists the changed fields and their new values. Chain **Get record** to read the full record. A bulk edit or import starts one run per affected record.
+> **Tip:** Zoho CRM triggers are Instant. Zoho notifies Softr as soon as the change happens. The output carries the record ID; **Record updated** also lists the changed fields and their new values. Chain **Get record** to read the full record. A bulk edit or import starts one run per affected record.
 
 **When to use:** Notify a team when a lead is created, act on a deal stage change, or keep your Softr database in step with the CRM when records are deleted.
 
@@ -324,26 +354,27 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 | Trigger | Category | Execution type | Plan requirement |
 |---|---|---|---|
-| Record added | Softr Databases | Instant | Any |
-| Record deleted | Softr Databases | Instant | Any |
-| Record updated | Softr Databases | Instant | Any |
+| Record added | Softr Databases | 1-min | Any |
+| Record deleted | Softr Databases | 1-min | Any |
+| Record updated | Softr Databases | 1-min | Any |
 | Record meets conditions | Softr Databases | Instant | Any |
-| Record enters the view | Softr Databases | Instant | Any |
-| User added | Softr Apps | 1-min polling | Any |
-| Comment added | Softr Apps | 1-min polling | Any |
-| **Submit form** | Softr Apps | Synchronous | Any |
-| **Run custom workflow** | Softr Apps | Synchronous | Any |
-| **Record created (UI)** | Softr Apps | Synchronous | Any |
-| **Record updated (UI)** | Softr Apps | Synchronous | Any |
-| Email received | Softr Email | Instant | Basic+ |
+| Record enters view | Softr Databases | Instant | Any |
+| Run manually | Softr Databases | Instant | Any |
+| User added | Softr Apps (data) | 1-min | Any |
+| Comment added | Softr Apps (data) | 1-min | Any |
+| **Submit form** | Softr Apps (UI) | Instant | Any |
+| **Run custom workflow** | Softr Apps (UI) | Instant | Any |
+| **Add record** | Softr Apps (UI) | Instant | Any |
+| **Edit record** | Softr Apps (UI) | Instant | Any |
+| Email received | Built-in | Instant | Basic+ |
 | Webhook | Built-in | Instant | Professional+ |
 | One-time schedule | Built-in | Scheduled (once) | Any |
 | Recurring schedule | Built-in | Scheduled (repeating) | Any |
-| Record updated | Airtable | 1-min polling | Any |
-| Email received | Gmail | 1-min polling | Any |
-| Row added | Google Sheets | 1-min polling | Any |
-| Record created | Notion | 1-min polling | Any |
-| Record updated | Notion | 1-min polling | Any |
+| Record updated | Airtable | 1-min | Any |
+| Email received | Gmail | 1-min | Any |
+| Row added | Google Sheets | 1-min | Any |
+| Record created | Notion | 1-min | Any |
+| Record updated | Notion | 1-min | Any |
 | Invitee Scheduled | Calendly | Instant | Any |
 | Invitee Canceled | Calendly | Instant | Any |
 | Invitee No Show | Calendly | Instant | Any |
