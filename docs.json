@@ -680,6 +680,13 @@
           },
           "app-mcp-server",
           {
+            "group": "Agent skills",
+            "icon": "wand-magic-sparkles",
+            "pages": [
+              "skills/workflows-cli"
+            ]
+          },
+          {
             "group": "Security",
             "icon": "lock",
             "pages": [
