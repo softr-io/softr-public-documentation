@@ -30,7 +30,9 @@ You don't script every step. You describe what the agent is for and give it tool
 When you create an agent, you first choose **how it runs**. This can be changed later.
 
 - **App agent:** Users chat with this agent from selected apps. Use it for support assistants, in-app helpers, and anything a person talks to directly.
-- **Schedule agent:** Runs on a recurring schedule, with no live user. Use it for recurring reports, data cleanup, sync jobs, and other background tasks.
+- **Scheduled agent:** Runs on a recurring schedule, with no live user. Use it for recurring reports, data cleanup, sync jobs, and other background tasks.
+
+<Frame caption="The Choose an agent type dialog">![The Choose an agent type dialog with App agent and Scheduled agent](/agents/images/overview/choose-agent-type.webp)</Frame>
 
 ### The app as context for an App agent
 
@@ -51,9 +53,11 @@ So the agent can only do what that user can already do in the app:
 <Steps>
   <Step title="Create an agent">
     From your Softr dashboard, open **Agents** in the left sidebar. Click **Create**, or **Create your first agent** if you have none yet.
+
+    <Frame caption="The Agents page lists every agent in your workspace">![The Agents page with six agent cards, each marked Live or Draft](/agents/images/overview/agents-list.webp)</Frame>
   </Step>
   <Step title="Choose an agent type">
-    In the **Choose an agent type** dialog, pick **App agent** (users chat with it from your apps) or **Schedule agent** (runs on a recurring schedule). Click **Next**. You can switch types later in the agent's configuration.
+    In the **Choose an agent type** dialog, pick **App agent** (users chat with it from your apps) or **Scheduled agent** (runs on a recurring schedule). Click **Next**. You can switch types later in the agent's configuration.
   </Step>
   <Step title="Set up the agent profile">
     In the editor, give your agent a title and set up its profile:
@@ -61,21 +65,33 @@ So the agent can only do what that user can already do in the app:
     - **Model:** Choose the AI model that powers the agent. Models are grouped by cost, so you can balance capability and price (see [Choosing a model](#choosing-a-model)).
     - **Reasoning effort:** For models that support it, choose how much the model thinks before it answers: **Off**, **Low**, **Medium**, or **High**. Higher effort gives better results on complex tasks, but it is slower and costs more.
     - **Instructions:** Describe how the agent behaves and responds. State its goal, what it must always do, and what it must never do.
+
+    <Frame caption="The agent editor: connected apps, tools, knowledge, and instructions">![The agent editor with frames around Connected apps, Tools, Knowledge, and Instructions](/agents/images/overview/agent-editor-annotated.webp)</Frame>
   </Step>
   <Step title="Connect it to your apps or add a schedule">
     Depending on the agent type:
 
-    - **App agent:** In the **Connected apps** card, click **Connect app** to choose the Softr apps where the agent is available. You can **Test** the agent in each connected app.
-    - **Schedule agent:** In the **Triggers** card, click **Add trigger** to create a recurring schedule. Set the frequency and a timezone. You can also add a message that starts each run.
+    - **App agent:** In the **Connected apps** card, click the **+** button to choose the Softr apps where the agent is available. You can **Test** the agent in each connected app.
+    - **Scheduled agent:** In the **Schedules** card, click the **+** button to create a recurring schedule. Set the frequency and a timezone. You can also add a message that starts each run.
+
+    <Frame caption="The Connect apps dialog">![The Connect apps dialog listing the apps in the workspace](/agents/images/overview/connect-apps.webp)</Frame>
+
+    <Frame caption="The Add schedule dialog">![The Add schedule dialog with frequency, time, and weekends](/agents/images/overview/add-schedule.webp)</Frame>
   </Step>
   <Step title="Add tools">
-    In the **Tools** card, click **Add a tool** to choose what the agent can do, such as read and write records in a data source, send an email, or post to Slack. Set each tool's authentication. You can also require confirmation before the tool runs. See [Tools & actions](#tools--actions).
+    In the **Tools** card, click the **+** button to choose what the agent can do, such as read and write records in a data source, send an email, or post to Slack. Set each tool's authentication. You can also require confirmation before the tool runs. See [Tools & actions](#tools--actions).
+
+    <Frame caption="The tool picker: Softr and built-in tools, and integrations">![The Choose a tool window with categories, Softr and built-in tools, and integrations](/agents/images/overview/choose-a-tool.webp)</Frame>
   </Step>
   <Step title="Add knowledge (optional)">
-    In the **Knowledge** card, click **Add knowledge** to upload files or insert links the agent can search when answering. See [Knowledge](#knowledge).
+    In the **Knowledge** card, click the **+** button to upload files or insert links the agent can search when answering. See [Knowledge](#knowledge).
+
+    <Frame caption="The Add knowledge dialog">![The Add knowledge dialog with Upload file and Insert link](/agents/images/overview/add-knowledge.webp)</Frame>
   </Step>
   <Step title="Test and turn it on">
     Use the **Test agent** panel on the right to run the agent and watch its responses and tool calls. When you're happy, enable the **Agent enabled** toggle and click **Turn on** to publish it. If you edit a published agent, a banner tells you that your draft differs from the live version. Click **Update** to publish your changes.
+
+    <Frame caption="The Test agent panel shows the tool calls and the answer">![The Test agent panel with two tool calls and a streamed answer](/agents/images/overview/test-agent-panel.webp)</Frame>
   </Step>
 </Steps>
 
@@ -115,7 +131,7 @@ Native actions include:
 When you add a tool, you configure:
 
 - **Authentication:** Choose **Per user authentication** (uses each user's own account or permissions) or **Shared authentication** (uses one shared account or connection).
-- **Ask for confirmation:** When on, the agent shows a summary and waits for the user's approval before it runs the action. Schedule agents don't have this option, because they run without a live user.
+- **Ask for confirmation:** When on, the agent shows a summary and waits for the user's approval before it runs the action. Scheduled agents don't have this option, because they run without a live user.
 - **Configure input fields:** For each field, choose **Agent decides** (the agent fills it in at run time) or **Custom** (you set a fixed value the agent can't change).
 
 ## Connecting an MCP server
@@ -188,6 +204,8 @@ Open the **Runs** panel to review every run. Each run records:
 - **Credits charged** and **Token usage** (input, cached, output, total)
 - **Finish reason**, plus a **Run failed** badge and a **Show errors only** filter for troubleshooting
 
+<Frame caption="A run with its details and transcript">![A successful run with its model, duration, tool calls, and the transcript](/agents/images/overview/run-details.webp)</Frame>
+
 ## Pricing and credits
 
 Agent runs use **AI credits**. The credits a run uses depend on the model, the number and size of tool calls, knowledge search, and output length.
@@ -211,7 +229,7 @@ Every Softr plan, including Free, comes with a monthly amount of AI credits. If 
     Yes. Create an **App agent** and connect it to one or more Softr apps. Your users then chat with it inside the app. You choose the apps where it appears.
   </Accordion>
   <Accordion title="Can an agent run automatically without a user?">
-    Yes. Create a **Schedule agent** and add a recurring schedule with a timezone. It runs unattended on that schedule. Use it for reports, cleanup, and sync jobs.
+    Yes. Create a **Scheduled agent** and add a recurring schedule with a timezone. It runs unattended on that schedule. Use it for reports, cleanup, and sync jobs.
   </Accordion>
   <Accordion title="Can I connect my own tools?">
     Yes. Add a **Custom MCP** server, or pick a predefined one, to give the agent external tools through the Model Context Protocol. You set an Allow, Ask, or Deny permission for each tool.
