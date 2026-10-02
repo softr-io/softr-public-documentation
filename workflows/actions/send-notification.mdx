@@ -1,0 +1,106 @@
+---
+title: "Send Notification"
+permalink: "workflows-actions-send-notification"
+sidebarTitle: "Send Notification"
+description: "Notify users of your published app from a workflow, as a browser push notification, in the app's notification inbox, or both."
+og:title: "Send Notification - Softr Help Docs"
+og:description: "Notify users of your published app from a workflow, as a browser push notification, in the app's notification inbox, or both."
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+---
+
+# Send Notification
+
+> **Applies to:** Send Notification 1.0.0, 1.1.0
+
+Send notifications to your app users directly from a Softr Workflow. Notify users about new messages, status changes, task assignments, or any other event — as a push notification in their browser, in the app's notification inbox, or both.
+
+## Overview
+
+> **Version history**
+> - Introduced in 1.0.0 as **Send Push Notification**, with push as the only channel.
+> - Changed in 1.1.0: renamed to **Send Notification**, with a choice of channels.
+
+The **Send Notification** action is a native Softr feature that lets you notify one or more specific users of your published app. It delivers through two channels:
+
+* **Push** — appears in the user's browser or device notification center, even when they're not actively using your app. Ideal for time-sensitive updates.
+* **In-app** (1.1.0 and later) — appears in the notification inbox inside your app, next to comment and mention notifications. It waits there until the user reads it, even if they weren't online when it was sent.
+
+Each notification includes a **title**, **body**, and an optional **URL** to open when the user clicks it.
+
+## Prerequisites
+
+Before using the Send Notification action in a Workflow, enable the channel(s) you want to use in your app:
+
+1. Open your Softr app and go to **Users → Notifications**.
+2. For **Push**, enable push notifications for the device type(s) you want to support — **Mobile**, **Desktop**, or both.
+3. For **In-app**, turn on **In-app notifications**. Use **Notification inbox** to customize the inbox button and texts.
+4. Publish your app.
+
+Once push is enabled, users who visit your published app will be prompted to allow notifications in their browser. Only users who have granted permission will receive push notifications from your workflows.
+
+In-app notifications need no permission from the user: a recipient sees them in the inbox after logging in to your app.
+
+<Note>In-app notifications are available on paid plans. If your plan doesn't include them, the toggle shows a plan badge and can't be turned on.</Note>
+
+## Settings
+
+| Field | Description |
+| :- | :- |
+| **App** | The published app whose users will be notified. Defaults to the current app. |
+| **Channels** (1.1.0 and later) | Where to deliver the notification: **Push**, **In-app**, or both. A new step has both selected. |
+| **User email** | One or more users to notify. Recipients must be users of the selected application. Map a user email from an earlier workflow step, or provide multiple emails separated by commas. |
+| **Notification title** | The notification heading (displayed in bold). Keep it short and clear. |
+| **Notification body** *(optional)* | The notification message text. Describe what happened or what action is needed. |
+| **Open URL on click** *(optional)* | The page to open when the user clicks the notification. Only URLs that start with your app's domain are accepted. Defaults to your app's home page if left empty. |
+
+<Warning>
+  If a channel is not enabled for the selected app, the action shows a warning:
+
+  * **"Push notification is not enabled for this app. Please enable it here."**
+  * **"App notifications are not enabled for this app. Please enable it here."** (1.1.0 and later)
+
+  The **here** link takes you directly to **Users → Notifications** in your app settings. Until the channel is enabled and the app is published, notifications on that channel are not delivered.
+</Warning>
+
+## Key Benefits
+
+* **Instant delivery:** Push notifications appear in the user's browser or OS notification center in real time.
+* **Nothing gets missed:** In-app notifications stay in the inbox until the user reads them.
+* **No email required:** Reach specific users directly without sending an email.
+* **Clickable deep links:** Drive users to a specific page or record by setting a URL in the notification.
+* **Native to Softr:** No third-party service or API key required — notifications are built into every published Softr app.
+
+## Example Use Cases
+
+| Use Case | Description |
+| :- | :- |
+| **Task assignment** | Notify a user when a new task is assigned to them in your project management app. |
+| **Status change alert** | Alert a customer when their order or support ticket status is updated. |
+| **New message or comment** | Let users know when someone replies to their post or leaves a comment. |
+| **Approval required** | Prompt a manager to review and approve a pending request. |
+| **Deadline reminder** | Send a reminder before a due date using a scheduled workflow trigger. |
+
+## How to Add a Notification Action to a Workflow
+
+1. Open your Softr workspace and go to **Workflows**.
+2. Create a new workflow or open an existing one.
+3. Add an action step, select **Softr Apps**, then choose **Send Notification**.
+4. In the **Settings** panel on the right, pick the **App** and **Channels**, then configure the **User email**, **Notification title**, **Notification body**, and optionally **Open URL on click**.
+5. Map dynamic values from earlier steps (e.g., use the triggered user's email as the recipient, or the record name in the notification body).
+6. Test the action using the **Testing** tab — for push, make sure at least one user has subscribed to notifications in your published app.
+7. Turn on your workflow.
+
+<Tip>
+  To test push notifications, open your published app in a browser, allow notifications when prompted, then trigger the workflow. The notification will appear in your browser's notification center.
+
+  To test in-app notifications, log in to your published app as the recipient and open the notification inbox after the workflow runs.
+</Tip>
+
+## Versions
+
+Steps created with an earlier version of Send Notification keep working. The **Applies to** line at the top of this page names the versions the page covers. An item marked with a version applies from that version on; everything else applies to every version of the page. A **Version history** block under a heading lists what changed for that part.
+
+| Version | What changed |
+|---|---|
+| 1.1.0 | Renamed from **Send Push Notification** to **Send Notification**. Adds **Channels** (**Push**, **In-app**); a new step has both selected. A 1.0.0 step opened in the builder is upgraded to 1.1.0 with **Push** only, so it keeps sending exactly what it did before — add **In-app** to also reach the inbox. |
+| 1.0.0 | The first version, as **Send Push Notification**: push only. |

@@ -88,6 +88,14 @@
               "workflows/trigger-types",
               "workflows/advanced-concepts",
               {
+                "group": "Actions",
+                "icon": "bolt",
+                "pages": [
+                  "workflows/actions/run-custom-code",
+                  "workflows/actions/send-notification"
+                ]
+              },
+              {
                 "group": "Integrations",
                 "icon": "plug",
                 "pages": [
@@ -129,7 +137,6 @@
                   "workflows/integrations/outlook",
                   "workflows/integrations/pinecone",
                   "workflows/integrations/postmark",
-                  "workflows/integrations/push-notifications",
                   "workflows/integrations/quickbooks",
                   "workflows/integrations/replicate",
                   "workflows/integrations/resend",
@@ -344,7 +351,8 @@
               "add-and-manage-users/add-or-import-users-manually",
               "add-and-manage-users/internal-vs-external-users",
               "add-and-manage-users/user-email-notifications",
-              "add-and-manage-users/automated-user-invitations"
+              "add-and-manage-users/automated-user-invitations",
+              "add-and-manage-users/notification-center"
             ]
           },
           {
@@ -816,6 +824,10 @@
     ]
   },
   "redirects": [
+    {
+      "source": "/workflows/integrations/push-notifications",
+      "destination": "/workflows/actions/send-notification"
+    },
     {
       "source": "/mcp-server",
       "destination": "/mcp/overview"

@@ -23,3 +23,7 @@ Then start the dev server from the repo root:
 ```bash
 mint dev
 ```
+
+## Conventions
+
+How pages are written, including the version lines on workflow action pages: [CONVENTIONS.md](CONVENTIONS.md).
