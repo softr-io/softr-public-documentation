@@ -26,6 +26,8 @@ There are a few ways in which you can use conditional filtering to only show spe
 
 * **Show only records relevant to current details page’s record**: In linked list setups, filter sub-items based on the selected main record (e.g., show tasks linked to the current project via a record ID match). This creates hierarchical views, like a project details page displaying only associated tasks.
 
+<Frame caption="Example: a record filter that shows each logged-in user only the tasks assigned to their email.">![A Tasks table filtered so that Maria sees only her tasks and Leo sees only his, using the logged-in user email](/user-groups-and-permissions/images/record-filters/record-filter-per-user.webp)</Frame>
+
 ## Tips and Tricks
 
 * You can combine filters to create complex logic using “And” and “Or” type filtering to achieve the desired result. In the event you need cascading or sub-grouping of filters, a tab container can help by branching each block out into the needed sub-grouping.
