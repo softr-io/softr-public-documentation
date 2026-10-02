@@ -37,30 +37,39 @@ Unlike external automation tools, Workflows are native to Softr, so they can res
     </Frame>
   </Step>
   <Step title="Select a trigger">
-    Start by selecting a trigger for your workflow **to define when it runs**. Choose from the following:
+    Start by selecting a trigger for your workflow **to define when it runs**. The trigger picker has three lists:
 
-    **External Triggers**
+    - **Softr:** Triggers for [Softr Databases](/softr-databases/softr-databases-overview) and Softr Apps.
+    - **Built-in:** Email received, Webhook, One-time schedule, and Recurring schedule.
+    - **Integrations:** Triggers for 24 tools, including Airtable, Gmail, Google Sheets, Notion, HubSpot, Slack, and Stripe.
 
-    - **Airtable:** When a new record is created or an existing record is updated.
-    - **Gmail:** When a new email is received.
-    - **Google Sheets:** When a new row is created.
-
-    **Softr Triggers**
-
-    - **Softr Apps:** Run a custom workflow when a user triggers a "Run Custom Workflow" action button in the app UI. You can also trigger a workflow when a new user is created.
-    - **Softr Databases:** Trigger a workflow when a record is **created**, **updated**, or **deleted,** or **meets certain conditions** (for example, run only when **Status changes to "Approved"** or **Sentiment = "negative"**).
-
-    **Built-in Triggers**
-
-    - **Webhook:** Start a workflow from any external app that can send an HTTP request.
-    - **One-time schedule:** Run a workflow once at a specific time.
-    - **Recurring schedule:** Run a workflow on a scheduled frequency.
-
-    **Note:** Triggers can reference your Softr app and Database directly—no external connectors required.
-
-    <Frame>
-      ![Notion image](/workflows/images/workflows/image3.png)
+    <Frame caption="The trigger picker.">
+      ![The Select a trigger window with the Softr, Built-in, and Integrations lists](/workflows/images/workflows/trigger-picker.webp)
     </Frame>
+
+    Select a tool or a built-in trigger to see what it offers. A badge on each trigger shows how it starts. **Instant** triggers run right away. The other triggers check for new data at an interval, and the shortest interval depends on your plan.
+
+    **Softr Databases** triggers run when:
+
+    - **Record added**, **Record deleted**, or **Record updated:** A record changes in a table.
+    - **Record meets conditions:** A record matches conditions that you set, for example when **Status** changes to "Approved" or **Sentiment** is "negative".
+    - **Record enters view:** A record enters the selected view.
+    - **Run manually:** A workspace member runs the workflow by hand.
+
+    <Frame caption="The Softr Databases triggers.">
+      ![The triggers of Softr Databases: Record added, Record deleted, Record updated, Record meets conditions, Record enters view, and Run manually](/workflows/images/workflows/triggers-softr-databases.webp)
+    </Frame>
+
+    **Softr Apps** triggers are in two groups:
+
+    - **Data triggers:** **User added** and **Comment added**.
+    - **UI triggers:** **Run custom workflow** (a user clicks a Run Custom Workflow action button), **Submit form**, **Add record**, and **Edit record**.
+
+    <Frame caption="The Softr Apps triggers.">
+      ![The triggers of Softr Apps: User added, Comment added, Run custom workflow, Submit form, Add record, and Edit record](/workflows/images/workflows/triggers-softr-apps.webp)
+    </Frame>
+
+    **Note:** Triggers can reference your Softr app and Database directly, with no external connector.
   </Step>
   <Step title="Add actions">
     Actions define what happens after the trigger. You can run simple to complex workflows depending on what you need. Common actions include:
@@ -80,8 +89,16 @@ Unlike external automation tools, Workflows are native to Softr, so they can res
 
     <Frame caption="A workflow on the canvas: a trigger, branches by a condition, and actions.">![A workflow in the editor. Numbers point to the trigger, the branches, and an action](/workflows/images/workflows/canvas-annotated.webp)</Frame>
 
-    <Frame>
-      ![Notion image](/workflows/images/workflows/image4.png)
+    The action picker lists actions by category on the left: Most used, AI, Communication, Data, Payments, Events, Documents, Logic, and Utilities. Use the search to find an action by name.
+
+    <Frame caption="The action picker.">
+      ![The Select an action window. Numbers point to the categories, the search, the Softr and built-in actions, and the integrations](/workflows/images/workflows/action-picker-annotated.webp)
+    </Frame>
+
+    Select **Softr Databases** to see its actions, such as adding, updating, finding, and deleting records.
+
+    <Frame caption="The Softr Databases actions.">
+      ![The actions of Softr Databases: Add record, Update record, Update multiple records, Find record, Find multiple records, Delete record, and Delete multiple records](/workflows/images/workflows/actions-softr-databases.webp)
     </Frame>
   </Step>
   <Step title="Add settings and conditions">
