@@ -46,8 +46,8 @@ This means the MCP surface mirrors your app's screens:
 ## Enabling MCP for your app
 
 <Steps>
-  <Step title="Open MCP settings">
-    In the app's left sidebar, open **Settings → MCP**.
+  <Step title="Open the App as MCP settings">
+    In the app's left sidebar, open **Settings → App as MCP**.
   </Step>
   <Step title="Enable MCP">
     Click **Enable MCP**. Softr generates an OAuth Client ID and Client Secret for this app.
@@ -65,13 +65,13 @@ Your app's MCP endpoint follows your app's published URL:
 https://<your-app-domain>/v1/mcp
 ```
 
-For example, if your app is published at `https://acme.softr.app`, the MCP server URL is `https://acme.softr.app/v1/mcp`. If you've added a custom domain, the MCP URL uses that domain. You can copy the exact URL from the **Server URL** field in MCP settings.
+For example, if your app is published at `https://acme.softr.app`, the MCP server URL is `https://acme.softr.app/v1/mcp`. If you've added a custom domain, the MCP URL uses that domain. You can copy the exact URL from the **Server URL** field in the App as MCP settings.
 
 ## Connecting an AI tool
 
 For most clients, the **Server URL** is the only thing you need. You paste it into the client, and the client opens a browser window where the user signs in to the app and approves the connection over OAuth. Nothing else has to be shared. The Client ID and Secret in **Advanced settings** are only needed for the few clients that can't register themselves automatically.
 
-The setup dialog in MCP settings gives you a ready-to-use snippet for each supported client. You can also follow the steps manually.
+The setup dialog in the App as MCP settings gives you a ready-to-use snippet for each supported client. You can also follow the steps manually.
 
 <Tabs>
   <Tab title="Claude (web & desktop)">
@@ -80,7 +80,7 @@ The setup dialog in MCP settings gives you a ready-to-use snippet for each suppo
         In Claude, go to **Customize → Connectors → \+ → Add custom connector**.
       </Step>
       <Step title="Add the server">
-        Enter a name (for example, your app's name) and paste the **Server URL** from MCP settings.
+        Enter a name (for example, your app's name) and paste the **Server URL** from the App as MCP settings.
       </Step>
       <Step title="Authorize">
         Click **Add**. Claude opens a browser window to authorize the connection to your app via OAuth.
@@ -103,7 +103,7 @@ The setup dialog in MCP settings gives you a ready-to-use snippet for each suppo
         ```
       </Step>
       <Step title="Run the command">
-        Copy the command from the **Claude Code** setup card in MCP settings and run it in your terminal. The Client ID is already filled in.
+        Copy the command from the **Claude Code** setup card in the App as MCP settings and run it in your terminal. The Client ID is already filled in.
       </Step>
       <Step title="Paste the Client Secret when prompted">
         Claude Code's interactive CLI displays:
@@ -125,7 +125,7 @@ The setup dialog in MCP settings gives you a ready-to-use snippet for each suppo
         In ChatGPT, go to **Settings → Connectors → Advanced** and enable **Developer Mode**.
       </Step>
       <Step title="Create a custom connector">
-        Open **Settings → Connectors → Create**. Enter a name, paste the **Server URL** from MCP settings, and leave the Authentication options as-is.
+        Open **Settings → Connectors → Create**. Enter a name, paste the **Server URL** from the App as MCP settings, and leave the Authentication options as-is.
       </Step>
       <Step title="Connect">
         Click **Create**, then **Connect**. ChatGPT opens a browser window to authorize access to your app.
@@ -148,7 +148,7 @@ The setup dialog in MCP settings gives you a ready-to-use snippet for each suppo
 
 ## Advanced settings
 
-Open the **Advanced settings** section in MCP settings to see and manage the OAuth credentials.
+Open the **Advanced settings** section in the App as MCP settings to see and manage the OAuth credentials.
 
 | Field | What it's for |
 | --- | --- |
@@ -162,7 +162,7 @@ Some AI clients require their callback URL to be pre-registered on the OAuth ser
 
 <Steps>
   <Step title="Open Advanced settings">
-    Expand **Advanced settings** in your app's MCP settings.
+    Expand **Advanced settings** in the App as MCP settings.
   </Step>
   <Step title="Add the URI">
     Click **Add redirect URI** and paste the callback URL the client provided.
