@@ -9,9 +9,12 @@ description: "Display data as a Kanban board."
 'twitter:description': "Display data as a Kanban board."
 ---
 <Note>Kanban block is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
-<Frame>![Notion image](/building-blocks/images/kanban/image1.png)</Frame>
 
-The Kanban block allows you to display data from a [data source](/4230abecf813402aa2926466c313290a) in a [Kanban Board](https://en.wikipedia.org/wiki/Kanban_board) layout. Most of the setup such as connecting the data source or configuring inline filters and search is similar to that of the [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) block, so let's skip those sections and proceed to the settings that are unique for this block.
+<Frame caption="A Kanban board of tasks in a Softr app.">![A Kanban board with four columns: To do, In progress, In review, and Done](/building-blocks/images/kanban/board.webp)</Frame>
+
+The Kanban block shows records from a [data source](/4230abecf813402aa2926466c313290a) as cards in columns, like a [Kanban board](https://en.wikipedia.org/wiki/Kanban_board). Each column is one value of a field, such as a status.
+
+This page uses a table in [Softr Databases](/softr-databases/softr-databases-overview). Connecting the data source, inline filters, and search work like they do in the [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) block. So this page covers the settings that are specific to the Kanban block.
 
 <Tip>You can let users **Drag and Drop** items, [Add Records](/actions/ntEfT9zSJk6aY54G6W5KGU/add-record/3LrUMpQY4BKfDDQj6eb8h8), [Edit Records](/actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx), and more in the **Actions** tab of block settings through [Action Buttons](/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq).</Tip>
 
@@ -19,35 +22,74 @@ The Kanban block allows you to display data from a [data source](/4230abecf81340
 **Build with AI:** Instead of configuring manually, you can add a Kanban block instantly with the **AI Co-Builder**. Just click the AI icon in the editor and type: *"Create a Kanban board of my tasks grouped by their priority."*
 </Tip>
 
-To demonstrate how the block works, we'll use an [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) base that contains a list of tasks. It has such fields as Assignee, Task Status, Task Description, etc. as shown below.
-<Frame caption="Task list on Airtable">![Task list on Airtable](/building-blocks/images/kanban/image2.png)</Frame>
+## Prepare your data
 
-## Group By
+To show how the block works, we'll use a **Tasks** table in a Softr Databases database. It has five fields:
 
-Let's navigate to the **Content** tab of the block settings and look into the **Grouping** option. Here, you select the field by which you want to group the board items. If, for instance, the field has 3 values, the board will consist of 3 columns (each column is assigned one of the field values) and the records will be grouped accordingly.
+- **Task** (Short Text)
+- **Details** (Long Text)
+- **Status** (Select) with the options To do, In progress, In review, and Done
+- **Priority** (Select) with the options High, Medium, and Low
+- **Assignee email** (Email)
 
-<Frame caption="The Content tab of the Kanban block: the title and the Group by field.">![The Content tab of the Kanban block. Numbers point to the board title and the Group by field](/building-blocks/images/kanban/content-tab-annotated.webp)</Frame>
+<Frame caption="The Tasks table in Softr Databases.">![The Tasks table in Softr Databases, with the fields Task, Details, Status, Priority, and Assignee email](/building-blocks/images/kanban/tasks-table.webp)</Frame>
 
-In our example, we have grouped by the task **Status** field. Therefore, we have four columns (**To Do, In Progress, Done**) and tasks are grouped under each column based on their status.
-<Frame caption="Grouping by the task Status field">![Grouping by the task Status field](/building-blocks/images/kanban/image3.png)</Frame>
+Learn more about the available [field types](/softr-databases/field-types).
 
-## Mapping the fields
+## Connect the block to your table
 
-In the **Item Fields**, you map the fields that should be shown on board cards. In our example, we have connected the **Image**, **Name**, **Assignee email**, and **Description** fields as you can see in the screenshot below.
-<Frame caption="Mapping the fields">![Mapping the fields](/building-blocks/images/kanban/image4.png)</Frame>
+1. Add a Kanban block to your page.
+2. Open the **Source** tab of the block settings.
+3. Select **Softr Databases** as the account.
+4. Select the database, then select the table.
 
-## Conditional Filters
+<Frame caption="The Source tab: the account, the database, and the table.">![The Source tab of the Kanban block. Numbers point to the Source tab, the Softr Databases account, the database, and the table](/building-blocks/images/kanban/source-tab-annotated.webp)</Frame>
 
-Kanban's conditional filters work similar to those of the [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) block and are also located in the **Source** tab of block settings. For our use case, it could be relevant to configure them so that each logged-in **Assignee** only sees his/her tasks. To achieve that, we need to set up a filter to show each user only the tasks where the **Assignee** fields corresponds to his/her email.
-<Frame caption="Setting a conditional filter">![Setting a conditional filter](/building-blocks/images/kanban/image5.png)</Frame>
+## Group by
 
-Here's what **john@softr.io** will see after logging in and navigating to the board.
-<Frame caption="User sees only his tasks">![User sees only his tasks](/building-blocks/images/kanban/image6.gif)</Frame>
+Open the **Content** tab. Under **Group by**, select the field that sets the columns. In our example, we select **Status**.
 
-## Moving Board Cards
+The board gets one column for each option of the field: To do, In progress, In review, and Done. Each card sits in the column that matches its value.
 
-If the **Drag and drop** toggle is enabled under **Actions**, logged-in users can drag and drop board items. It’s also possible to let only specific user groups perform the action through [visibility settings](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/action-button-visibility/tqpb8TkUD4U4DCAUA2hjKo) of the toggle.
-<Frame caption="Drag and drop">![Drag and drop](/building-blocks/images/kanban/image7.png)</Frame>
+<Frame caption="The Content tab: the title of the board, Group by, and the columns.">![The Content tab of the Kanban block. Numbers point to the title, the Group by field, and the columns](/building-blocks/images/kanban/group-by-annotated.webp)</Frame>
 
-If a user moves and item from one column to another, the corresponding value of the card will be updated as well. Below we move a task from the **To Do** column to **In** **Progress**. As you can see, its **Status** field value changes to **Done** on Airtable.
-<Frame caption="Changing task status">![Changing task status](/building-blocks/images/kanban/image8.gif)</Frame>
+By default, **Show all available options** is on, so every option of the field becomes a column. Turn it off to choose the columns yourself.
+
+## Choose what shows on each card
+
+Under **Item fields**, map the fields that appear on the cards. In our example, **Task** is the heading, **Details** is the text, and **Priority** is a tag.
+
+The footer shows two short fields side by side, such as a tag or a date.
+
+Under **Column options**, choose the style of the board (Standard, Minimal, or Joined), the column width, and the height. You can also show the card count and hide overflowing columns.
+
+<Frame caption="Item fields and column options.">![The Content tab of the Kanban block, further down. Numbers point to the item fields, the footer fields, and the column options](/building-blocks/images/kanban/card-fields-annotated.webp)</Frame>
+
+## Show each user only their tasks
+
+Kanban's conditional filters work like those of the [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) block. They are in the **Source** tab, under **Record filters**.
+
+For our example, each logged-in user should see only their own tasks. To do that, add a condition: **Assignee email** is the logged-in user's email.
+
+1. Under **Record filters**, click **Add condition**.
+2. Select the **Assignee email** field.
+3. Select **Is**.
+4. Select the logged-in user's email as the value.
+
+<Frame caption="A record filter: Assignee email is the logged-in user's email.">![The Record filters section of the Kanban block. Numbers point to the match setting and to the condition on the Assignee email field](/building-blocks/images/kanban/record-filter-annotated.webp)</Frame>
+
+Here is what **maria@acme.com** sees after logging in and opening the board.
+
+<Frame caption="The board of one logged-in user.">![A Kanban board that shows only the tasks assigned to one user](/building-blocks/images/kanban/board-one-user.webp)</Frame>
+
+## Move cards between columns
+
+If the **Drag and drop** toggle is on under **Actions**, logged-in users can drag cards between columns. You can also let only specific user groups move cards, through the [visibility settings](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/action-button-visibility/tqpb8TkUD4U4DCAUA2hjKo) of the toggle.
+
+<Frame caption="Dragging a card from In progress to In review.">![A card in the middle of a drag from the In progress column to the In review column](/building-blocks/images/kanban/drag-card.webp)</Frame>
+
+When a user moves a card to another column, the value of the card changes in the table too. In our example, we move **Design onboarding checklist** from **In progress** to **In review**. In Softr Databases, its **Status** changes to **In review**.
+
+<Frame caption="Before the move, the Status of the task is In progress.">![The Tasks table before the move. The Status of Design onboarding checklist is In progress](/building-blocks/images/kanban/status-before.webp)</Frame>
+
+<Frame caption="After the move, the Status of the task is In review.">![The Tasks table after the move. The Status of Design onboarding checklist is In review](/building-blocks/images/kanban/status-after.webp)</Frame>
