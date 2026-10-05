@@ -273,6 +273,19 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 ---
 
+### HubSpot
+
+| Event | Execution type |
+|---|---|
+| Record created | 1-minute polling |
+| Record updated | 1-minute polling |
+
+**Configuration:** Requires a connected HubSpot account (OAuth). Select the object to watch — Contacts, Companies, Deals, Tickets, or any other supported object, including custom objects.
+
+**When to use:** Notify your team when a new lead lands in HubSpot, add new CRM records to a Softr database, or act on a deal stage change.
+
+---
+
 ### Calendly
 
 | Event | Execution type |
@@ -344,6 +357,8 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 | Row added | Google Sheets | 1-min polling | Any |
 | Record created | Notion | 1-min polling | Any |
 | Record updated | Notion | 1-min polling | Any |
+| Record created | HubSpot | 1-min polling | Any |
+| Record updated | HubSpot | 1-min polling | Any |
 | Invitee Scheduled | Calendly | Instant | Any |
 | Invitee Canceled | Calendly | Instant | Any |
 | Invitee No Show | Calendly | Instant | Any |
