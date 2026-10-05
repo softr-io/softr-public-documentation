@@ -82,10 +82,11 @@ You can do the same by hand. `npm update -g @softr/workflows-cli` brings a globa
 
 ## Log in
 
-The agent asks you to log in once. `softr-workflows login` opens your browser on Softr's authorization screen, where you
-approve the CLI for your workspaces; the CLI keeps the token in `~/.softr/credentials.json` and renews it on its own.
-When there is no browser on that machine, the agent prints the URL for you to open elsewhere, or you create a
-[personal API token](/mcp/connect#personal-access-tokens) in Softr Studio and pass it with `login --token`.
+The agent asks you to log in once. In a terminal, `softr-workflows login` offers two ways and recommends the first:
+the browser, which opens Softr's authorization screen where you approve the CLI for your workspaces, or a
+[personal API token](/mcp/connect#personal-access-tokens) you created in Softr Studio. The CLI keeps the token in
+`~/.softr/credentials.json` and renews it on its own. When there is no browser on that machine, the agent prints the
+URL for you to open elsewhere, or you pass the token with `login --token`.
 
 The CLI has exactly the rights you have in Softr, never more, and `softr-workflows logout` forgets the token.
 
