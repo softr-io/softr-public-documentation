@@ -41,26 +41,18 @@ Pick your tool below. Every route ends on the same Softr authorization screen �
 
 <Tabs>
   <Tab title="Claude">
-    Works in Claude on the web, in the desktop app and in Cowork.
+    Works in Claude on the web, in the desktop app and in Cowork. Softr is in Claude's connector directory, so there is no server URL to paste.
 
     <Steps>
-      <Step title="Open the connector settings">
-        In Claude, go to **Customize → Connectors**, click **\+**, then **Add custom connector**.
+      <Step title="Add the Softr connector">
+        Open [Softr in Claude's connector directory](https://claude.ai/directory/softr) and click **Connect to Claude**.
 
-        On a Team or Enterprise plan only an Owner can add a custom connector. If you don't see the **\+**, ask an Owner to add Softr once — after that every member connects to it themselves from the same screen.
-      </Step>
-      <Step title="Enter the name and the server URL">
-        Name it `Softr`, paste `https://mcp.softr.io/mcp` as the remote MCP server URL, and click **Continue**.
-
-        <Frame caption="Claude's Add custom connector dialog with the Softr server URL filled in.">
-          ![Add custom connector dialog in Claude with the name Softr and the MCP server URL entered](/images/connect/claude-add-connector.png)
+        <Frame caption="Softr's page in Claude's connector directory. Connect to Claude starts the authorization.">
+          ![Softr's connector page in Claude with the Connect to Claude button](/images/connect/claude-softr-connector.png)
         </Frame>
       </Step>
-      <Step title="Click Add">
-        Claude detects Softr's authentication and OAuth client settings for you. Leave them as they are and click **Add**.
-      </Step>
       <Step title="Authorize your Softr account">
-        Click **Connect**, choose what Claude can reach, and click **Allow**.
+        Choose what Claude can reach, and click **Allow**.
       </Step>
       <Step title="Try it">
         Start a new chat and ask _"List my Softr apps."_
