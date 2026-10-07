@@ -680,12 +680,12 @@
           },
           "app-mcp-server",
           {
-            "group": "Agent skills",
-            "icon": "wand-magic-sparkles",
-            "pages": [
-              "skills/workflows-cli"
-            ]
-          },
+              "group": "Softr CLI",
+              "icon": "terminal",
+              "pages": [
+                "cli/overview"
+              ]
+            },
           {
             "group": "Security",
             "icon": "lock",
