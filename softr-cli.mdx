@@ -26,19 +26,11 @@ full command reference, with every option, is the README on the
 - For agents: one that reads skills in the [Agent Skills](https://agentskills.io) format. Claude Code, Cursor, Codex and
   most others do.
 
-## Install
+## Set up for a coding agent (recommended)
 
-By hand:
-
-```bash
-npm install -g @softr/cli        # then: softr --help
-npx @softr/cli@latest --help     # or run the latest release without installing
-```
-
-`npm update -g @softr/cli` brings a global install up to date.
-
-With an agent, you install nothing: the `softr-cli` skill tells the agent how to install and update the CLI and how to
-log you in, and every other Softr skill assumes it. Add the skills once, for the agent you use.
+With an agent you do not install the CLI: you add the Softr skills, and the `softr-cli` skill tells the agent how to
+install and update the CLI and how to log you in. Every other Softr skill, such as `softr-workflows`, builds on it. Add
+the skills once, for the agent you use.
 
 ### Claude Code
 
@@ -68,6 +60,22 @@ update on its own: `npx skills update` brings every installed skill up to date.
 
 Any agent that reads `SKILL.md` files can also take a folder straight from the
 [skills repository](https://github.com/softr-io/softr-io-skills/tree/master/skills).
+
+## Install the CLI yourself
+
+<Note>
+  Using a coding agent? Skip this section. The `softr-cli` skill installs and updates the CLI for you, and this page's
+  sections below describe what the agent does with it.
+</Note>
+
+For your own use in a terminal:
+
+```bash
+npm install -g @softr/cli        # then: softr --help
+npx @softr/cli@latest --help     # or run the latest release without installing
+```
+
+`npm update -g @softr/cli` brings a global install up to date. Node.js 22 or newer is required either way.
 
 ## Log in
 
