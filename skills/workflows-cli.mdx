@@ -10,22 +10,15 @@ description: "Let your coding agent work with Softr from files on your machine: 
 icon: "terminal"
 ---
 
-The Softr CLI (`softr`) treats a [workflow](/workflows/workflows) like a small project on your
-machine: the workflow is a `softr-workflows.jsonc` file, every **Run custom code** step is a real JavaScript or Python
-file next to it, and the CLI moves both to and from Softr. Nothing runs on your machine: every test and every run
-happens in Softr, exactly as in the builder.
+The Softr CLI (`softr`) lets a coding agent work with your Softr workspace from files on your machine. It is made
+for agents: a **skill** tells the agent what the CLI is for, how to install it, how to log in and how to work with it,
+so adding the skill is the only step you take. After that you describe what you want, and the agent does the work,
+with the files in your project as the record.
 
-It is made for coding agents. A **skill** tells the agent what the CLI is for, how to install it, how to log in and
-how to work with it, so adding the skill is the only step you take. After that you describe the workflow you want, and
-the agent creates it, writes the code, tests every step and publishes it, with the files in your project as the
-record.
-
-<Note>
-  The CLI offers a small, deliberate set of step types: the generic triggers (webhook, schedules, Softr Databases and
-  Softr app events, incoming email), the control steps (branch, filter, loop, wait), **Respond to webhook**, **Call
-  API** and **Run custom code**. Workflows made of many third-party integration steps are built in the builder or through
-  the [Softr MCP server](/mcp/workflows), which reaches every step type.
-</Note>
+Today the CLI covers logging in, your workspaces and their connected integrations, and
+[workflows](/workflows/workflows). More areas of Softr follow; this page stays the place to add the skill, and the
+[package page on npm](https://www.npmjs.com/package/@softr/cli) keeps the full command reference, so there is one
+place for the details.
 
 ## Before you start
 
@@ -90,6 +83,24 @@ URL for you to open elsewhere, or you pass the token with `login --token`.
 
 The CLI has exactly the rights you have in Softr, never more, and `softr logout` forgets the token.
 
+## What it covers today
+
+- **Global:** `softr login`, `softr whoami` and `softr logout`; the workspaces your token reaches and the integrations
+  connected in a workspace, which the agent needs for steps that use one.
+- **Workflows:** a workflow is a small project on your machine. The definition is a `softr-workflows.jsonc` file,
+  every **Run custom code** step is a real JavaScript or Python file next to it, and the CLI moves both to and from
+  Softr. Nothing runs on your machine: every test and every run happens in Softr, exactly as in the builder.
+
+<Note>
+  The CLI offers a small, deliberate set of step types: the generic triggers (webhook, schedules, Softr Databases and
+  Softr app events, incoming email), the control steps (branch, filter, loop, wait), **Respond to webhook**, **Call
+  API** and **Run custom code**. Workflows made of many third-party integration steps are built in the builder or through
+  the [Softr MCP server](/mcp/workflows), which reaches every step type.
+</Note>
+
+The command reference, with every option, is in the README on the
+[package page on npm](https://www.npmjs.com/package/@softr/cli).
+
 ## Your first workflow
 
 Ask for the outcome, not the steps. For example:
@@ -108,7 +119,7 @@ in its output, and the workflow opens in the builder like any other.
     The skill and its references, in the Agent Skills format.
   </Card>
   <Card title="@softr/cli on npm" icon="npm" href="https://www.npmjs.com/package/@softr/cli">
-    The CLI package, with the full command reference in its README.
+    The full command reference, in the package README.
   </Card>
   <Card title="Workflows" icon="random" href="/workflows/workflows">
     Triggers, steps and how workflows run.
