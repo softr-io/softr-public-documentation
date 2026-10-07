@@ -1,5 +1,5 @@
 ---
-title: "Softr Workflows CLI"
+title: "Softr CLI for Workflows"
 sidebarTitle: "Workflows CLI"
 description: "Let your coding agent build, test and publish Softr Workflows from files on your machine: add one skill, and the agent installs and operates the CLI."
 'og:title': "Softr Workflows CLI – Softr Help Docs"
@@ -10,7 +10,7 @@ description: "Let your coding agent build, test and publish Softr Workflows from
 icon: "terminal"
 ---
 
-The Softr Workflows CLI (`softr-workflows`) treats a [workflow](/workflows/workflows) like a small project on your
+The Softr CLI (`softr`) treats a [workflow](/workflows/workflows) like a small project on your
 machine: the workflow is a `softr-workflows.jsonc` file, every **Run custom code** step is a real JavaScript or Python
 file next to it, and the CLI moves both to and from Softr. Nothing runs on your machine: every test and every run
 happens in Softr, exactly as in the builder.
@@ -73,22 +73,22 @@ Any agent that reads `SKILL.md` files can also take the folder `skills/softr-wor
 You do not install the CLI yourself. The first time the agent needs it, it checks for the command and installs it:
 
 ```bash
-softr-workflows --version
-npm install -g @softr/workflows-cli
+softr --version
+npm install -g @softr/cli
 ```
 
-You can do the same by hand. `npm update -g @softr/workflows-cli` brings a global install up to date, and
-`npx @softr/workflows-cli@latest` runs the latest release without installing anything.
+You can do the same by hand. `npm update -g @softr/cli` brings a global install up to date, and
+`npx @softr/cli@latest` runs the latest release without installing anything.
 
 ## Log in
 
-The agent asks you to log in once. In a terminal, `softr-workflows login` offers two ways and recommends the first:
+The agent asks you to log in once. In a terminal, `softr login` offers two ways and recommends the first:
 the browser, which opens Softr's authorization screen where you approve the CLI for your workspaces, or a
 [personal API token](/mcp/connect#personal-access-tokens) you created in Softr Studio. The CLI keeps the token in
 `~/.softr/credentials.json` and renews it on its own. When there is no browser on that machine, the agent prints the
 URL for you to open elsewhere, or you pass the token with `login --token`.
 
-The CLI has exactly the rights you have in Softr, never more, and `softr-workflows logout` forgets the token.
+The CLI has exactly the rights you have in Softr, never more, and `softr logout` forgets the token.
 
 ## Your first workflow
 
@@ -107,7 +107,7 @@ in its output, and the workflow opens in the builder like any other.
   <Card title="softr-io-skills on GitHub" icon="github" href="https://github.com/softr-io/softr-io-skills">
     The skill and its references, in the Agent Skills format.
   </Card>
-  <Card title="@softr/workflows-cli on npm" icon="npm" href="https://www.npmjs.com/package/@softr/workflows-cli">
+  <Card title="@softr/cli on npm" icon="npm" href="https://www.npmjs.com/package/@softr/cli">
     The CLI package, with the full command reference in its README.
   </Card>
   <Card title="Workflows" icon="random" href="/workflows/workflows">
