@@ -680,12 +680,12 @@
           },
           "app-mcp-server",
           {
-              "group": "Softr CLI",
-              "icon": "terminal",
-              "pages": [
-                "cli/overview"
-              ]
-            },
+            "group": "Softr CLI",
+            "icon": "terminal",
+            "pages": [
+              "cli/overview"
+            ]
+          },
           {
             "group": "Security",
             "icon": "lock",
