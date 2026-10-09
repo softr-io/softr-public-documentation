@@ -679,6 +679,7 @@
             ]
           },
           "app-mcp-server",
+          "softr-cli",
           {
             "group": "Security",
             "icon": "lock",
