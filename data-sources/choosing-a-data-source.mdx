@@ -9,32 +9,36 @@ twitter:title: "Choosing a Data Source – Softr Help Docs"
 twitter:description: "Compare and contrast data sources"
 ---
 
-## Choosing a Data Source
+## Choosing a data source
 
-The best data source for your Softr application depends on where your data lives and how you plan to scale. If you're starting from scratch and don't have a database yet, we highly recommend using **Softr Databases**. It’s the most seamless way to build, as it’s built directly into the Softr Studio, offers the best performance with no API rate limits, and is included in your subscription.
+The best data source for your Softr application depends on where your data lives and how you plan to scale. If you're starting from scratch and don't have a database yet, we highly recommend using **Softr Databases**. It’s built directly into the Softr Studio, has no API rate limits, and is included in your subscription.
 
 If you already have your data elsewhere, you have a few options:
 
 - **Migrating to Softr Databases**: If your data is currently in a spreadsheet or Airtable, you might consider moving it into Softr Databases for better performance and easier management. We offer a **one-click migration tool for Airtable** that copies your entire base, and you can easily **import CSV files** from any spreadsheet.
 - **Connecting your current source**: If you prefer to keep your data where it is, Softr connects natively to over 20 different data sources. This is a great option if you already have complex workflows or other tools connected to your data.
 
+<Frame caption="Three ways to bring data into a Softr app.">![Three cards: create a Softr Database if you have no database yet, import from Airtable, CSV or Google Sheets, or connect another tool](/data-sources/images/choosing-a-data-source/three-ways-to-bring-data.webp)</Frame>
+
+To move an existing Airtable base, follow [Migrating from Airtable to Softr DB](/migration-tips/migrating-from-airtable-to-softr-databases).
+
 When evaluating which path to take, consider the following factors:
 
 - Number of records
 - Number of concurrent users
-- Data source security capabilities
+- Data source security
 - Technical skill
-- Pricepoint
+- Price
 
 Let’s look at each of these in a bit more detail.
 
-### Number of Records
+### Number of records
 
 Softr can scale to any number of records you need to bring in and display, however there are two things that will determine how many records you can use with Softr - your Softr subscription plan and the data source you are using. Softr categorizes data sources into two camps - Basic (like Airtable and Sheets) and Advanced (like SQL and BigQuery). **Softr Databases** sits in a unique position, offering high record limits (often 1 million+) while remaining as simple to use as basic sources.
 
 Additionally, each of these data sources may also have their own limits on the number of records or rows you can have, which Softr is also bound by depending on your account limits with those providers. If you’re building an app that uses record-heavy databases like messaging, notifications, or have lots of users, you’ll want to take this into consideration. Using **Softr Databases** ensures you are only bound by your Softr plan limits.
 
-### Number of Concurrent Users
+### Number of concurrent users
 
 Concurrent users are much more important than the total number of users in an app, because concurrent users are the number of users who will be using the app at the _same time_. Softr uses a data source API/connection directly in realtime. These data sources often limit how often you can get data from their service - this is called rate limiting. Rate limiting varies by data source and can affect how quickly Softr is allowed to fetch data from your data source.
 
@@ -42,21 +46,21 @@ Concurrent users are much more important than the total number of users in an ap
 
 In terms of users, you may have 50,000 users in total, but only 200 are using it at any given time - Airtable or Sheets would be a great datasource for you. However, with apps with tens of thousands of concurrent users, you will definitely want to be using **Softr Databases**, SQL, Supabase, Xano, or another more scalable data source for your app. Every user in your app is fetching data from your data source. The more dynamic blocks, users, and actions you have in your app, the higher the rate limit your data source needs.
 
-### Data Source Security Capabilities
+### Data source security
 
 Softr does not store or sync data from your data source, although we employ 24 hour caching to ensure your app remains speedy. We rely on connecting to a data source directly and pulling or pushing data at the time of need. Because of this, you should take into consideration a data source’s policies around storage, caching, deletion, encryption, and AI modeling before using it as a data source for your Softr app. If you need a HIPAA compliant data source, the data source itself needs to support it. If you require the data to be encrypted at rest, you need to make sure the data source itself does this.
 
 Since Softr does proxy requests through our servers and store your data source credentials, we make available all of our security policies on our [Security](https://www.softr.io/security) page. Softr is also SOC2 Type II compliant and we provide a standard vendor risk assessment form as well (VRA) - please contact us via the support chat on our website to request more information.
 
-### Technical Skill
+### Technical skill
 
 While Softr is quite easy to use, the data source you connect to is not always as simple. The data source you choose should match the skill level of the app builder. Simple data sources like **Softr Databases**, Airtable, Sheets, Smartsuite, Hubspot, and Monday are much less technical than Supabase, Xano, SQL, or REST APIs. If you feel that you need a highly scalable, but more technical data source and don’t have the skills, we have numerous [Softr Certified Partners](https://www.softr.io/partners) who would be glad to help you build what you need!
 
-### Pricepoint
+### Price
 
 When choosing a data source, you will likely also be evaluating the cost differences between the various services. You’ll want to use the above criteria to help you determine the scope and needs of your app, then find a data source with a plan structure and price that works for you.
 
-## Data Source Comparison
+## Data source comparison
 
 Below you will find a table of estimated (albeit subjective) comparison of different data sources and their strengths and weaknesses. Note that we don’t track a data source’s own plans and features so always verify for yourself. The table is what we at Softr have seen work as median results when used in Softr apps.
 
@@ -66,7 +70,7 @@ Below you will find a table of estimated (albeit subjective) comparison of diffe
 
 |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
-| **Data Source** | **Number of Records** | **Recommended Concurrent Users** | **Data Security Capabilities** | **Technical Skill** | **Pricepoint** |
+| **Data Source** | **Number of Records** | **Recommended Concurrent Users** | **Data security** | **Technical skill** | **Price** |
 | Softr Databases | 1 million + | Unlimited | Medium | Low | \$ |
 | Airtable | Up to 500,000 | 200-300 | Medium | Low | \$\$ |
 | Google Sheets | 1 million + | 50-100 | Low | Low | \$ |
@@ -88,5 +92,5 @@ Below you will find a table of estimated (albeit subjective) comparison of diffe
 | Baserow | Up to 500,000 | 200-300 | Medium | Low | \$ |
 
 <Note>
-  Reading down the table, **Softr Databases** is the only option that pairs unlimited concurrent users with low setup effort — and, because it is native to the platform, it has no external API rate limits to throttle your app. Each external source gives up at least one of those: spreadsheets and project tools cap out on concurrency, warehouses and SQL need real technical setup, and CRMs get expensive quickly. If your data does not already live somewhere, [start with Softr Databases](/softr-databases/softr-databases-overview).
+  **Softr Databases** is the only option in the table that pairs unlimited concurrent users with low technical skill. It is native to the platform, so no external API rate limit throttles your app. Each external source gives up at least one of these. Spreadsheets and project tools cap out on concurrency. Warehouses and SQL need technical setup. CRMs get expensive quickly. If your data does not already live somewhere, [start with Softr Databases](/softr-databases/softr-databases-overview).
 </Note>
