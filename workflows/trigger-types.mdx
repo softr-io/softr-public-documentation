@@ -256,7 +256,7 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 **Configuration:** Requires a connected Outlook account (Microsoft 365, Outlook.com or Hotmail). Pick the **Folder** to watch — leave it empty to watch the Inbox. Optionally fill **From** with one or more sender addresses, separated by commas, to run only for emails from them.
 
-> **Tip:** The trigger runs once for each email that arrives in the folder after the workflow is turned on. Emails already in the folder, emails moved into it later, and emails that land in its subfolders do not run it — pick the subfolder itself for those. Non-inline attachments are passed on as files.
+> **Tip:** The trigger runs once for each email that arrives in the folder after the workflow is turned on. Emails already in the folder and emails that land in its subfolders do not run it — pick the subfolder itself for those. An email moved in from another folder runs it only if it was received within a few minutes of the newest email the trigger has seen. Non-inline attachments are passed on as files.
 
 > **Note:** Outlook connections made before this trigger existed can send email but not read it. If the folder list or the test shows *"Softr can't read emails with this Outlook connection yet. Reconnect your Outlook account to allow reading emails."*, reconnect the same account; workflows that use it keep working.
 
