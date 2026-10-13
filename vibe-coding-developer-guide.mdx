@@ -1,6 +1,5 @@
 ---
 title: "Vibe Coding — Developer Guide"
-hidden: true
 icon: "code"
 description: "Write code directly in the Vibe Coding Block for full control over markup, logic, and data"
 ---
@@ -84,6 +83,32 @@ By default, block occupies full width of the page but special classes - `contain
 
 Import data hooks from `@/lib/datasource`. Use these when you want to display records from your connected data source. All data fetching hooks follow a query builder pattern so you can be quite expressive with your queries.
 
+### One or many datasources
+
+A block can connect to multiple datasources. When it does, every fetch or mutation needs to say which datasource it targets. The `datasource.define` utility gives you readable aliases for that. Declare it once at the top of the file, then pass the alias as `from` on each hook:
+
+```tsx
+import { datasource, useRecords, q } from "@/lib/datasource";
+
+const ds = datasource.define({
+  orders: "ds_id_1",
+  customers: "ds_id_2",
+});
+
+const ordersSelect = q.select({ product: "field1", total: "field2" });
+const customersSelect = q.select({ name: "field3", email: "field4" });
+
+export default function Block() {
+  const { data: orders } = useRecords({ from: ds.orders, select: ordersSelect });
+  const { data: customers } = useRecords({ from: ds.customers, select: customersSelect });
+  // ...
+}
+```
+
+With a single datasource you can skip `datasource.define` and omit `from`. The hooks then default to that one datasource. As soon as a block has more than one, leaving out `from` throws an error, since the hook can't tell which datasource the call belongs to.
+
+Every record hook takes `from` the same way: `useRecords`, `useRecord`, `useLinkedRecords`, `useFieldOptions`, `useMetric`, `useChartData`, `useRecordCreate`, `useRecordUpdate`, and `useRecordDelete`. `useUpload` and `useCurrentRecordId` work at the app level and thus `from` is not applicable to them.
+
 ### Defining a select query
 
 Field mappings have to be static, we also use static analysis to determine which fields your block actually uses so we don't overfetch and don't accidentally expose potentially sensitive data.
@@ -97,6 +122,10 @@ const select = q.select({
   createdAt: "FIELD_ID3",
 });
 ```
+
+<Note>
+For **Airtable, Notion, and Google Sheets ** datasources do not use field IDs in this context — use the **field name** as the value instead (e.g. `title: "Name"` rather than `title: "fldXXXXXX"`).
+</Note>
 
 So something like this is not allowed as it breaks static analysis:
 
@@ -130,6 +159,7 @@ export default function Block() {
       email: "FIELD_ID2",
     }),
     count: 6,            // records per page, default 6, max 100
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
     // where: ...,       // optional filter
     // orderBy: ...,     // optional sort
     // enabled: ...,     // optional boolean to defer loading (e.g. until component is visible)
@@ -175,6 +205,7 @@ export default function Block() {
       description: "FIELD_ID2",
     }),
     recordId,
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
   });
 
   if (status === "pending") return <div>Loading...</div>;
@@ -263,6 +294,7 @@ export default function Block() {
     sortOrder: "ASC",     // "ASC" | "DESC"
     search: "",           // optional search term
     enabled: true,        // set false to defer loading (e.g. until dropdown opens)
+    // from: ds.orders,   // datasource alias, required when the block has multiple datasources
     // count: ...,        // optional page size, defaults to 100, max 1000
   });
 
@@ -277,6 +309,8 @@ export default function Block() {
   );
 }
 ```
+
+Each item only carries its `id` and `title` (the linked table's primary field). To read other fields off those records, connect the linked table as its own datasource and query it with `useRecords`. See [One or many datasources](#one-or-many-datasources).
 
 ---
 
@@ -305,6 +339,7 @@ export default function Block() {
     }),
     onSuccess: (newRecord) => toast.success("Created!"),
     onError: (error) => toast.error(error.message),
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
   });
 
   return (
@@ -344,6 +379,7 @@ export default function Block() {
       toast.success("Updated!");
     },
     onError: (error) => toast.error(error.message),
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
   });
 
   const onUpdateClick = () => {
@@ -375,6 +411,7 @@ export default function Block() {
       toast.success("Deleted!");
     },
     onError: (error) => toast.error(error.message),
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
   });
 
   const onDeleteClick = () => {
@@ -382,6 +419,16 @@ export default function Block() {
     mutate("RECORD_ID"); // ID of the record to delete
   };
 }
+```
+
+### Phone fields
+
+When writing to a `PHONE` field, the value must be in unformatted international format: `+` followed by digits only (e.g. `+12125550100`). Some datasources (such as Monday.com) reject values that contain spaces, dashes, or parentheses. Strip all non-digit characters except the leading `+` before submitting:
+
+```tsx
+const sanitizePhone = (raw: string) => raw.replace(/[^\d+]/g, "").replace(/(?!^)\+/g, "");
+
+mutate({ phone: sanitizePhone(inputValue) });
 ```
 
 ---
@@ -478,8 +525,39 @@ export default function Block() {
 Available fields:
  - `id`: `string | null` (only present when user sync is enabled)
  - `fullName`: `string | null`
+ - `firstName`: `string | null`
+ - `lastName`: `string | null`
  - `email`: `string | null`
  - `avatar`: `string | null`
+
+### Custom user properties
+
+Beyond the reserved fields above, any custom fields that exist on your user record are available under `user.properties`. Pass a `properties` map to alias each field to a readable name, the same way a `select` query works.
+
+```tsx
+import { useCurrentUser } from "@/lib/user";
+
+export default function Block() {
+  const user = useCurrentUser({
+    properties: {
+      stripeId: "FIELD_ID1",
+      plan: "FIELD_ID2",
+    },
+  });
+
+  if (!user) return <div>Please log in to continue.</div>;
+
+  return (
+    <div className="container py-8">
+      <div className="content">
+        <p className="font-semibold">Welcome, {user.fullName}!</p>
+        {user.properties.stripeId && <p className="text-muted-foreground text-sm">Stripe ID: {user.properties.stripeId}</p>}
+        {user.properties.plan && <p className="text-muted-foreground text-sm">Your plan: {user.properties.plan}</p>}
+      </div>
+    </div>
+  );
+}
+```
 
 
 ---
@@ -497,6 +575,7 @@ export default function Block() {
   const { data, status } = useMetric({
     select: q.select({ revenue: "$REVENUE_FIELD_ID" }),
     metric: metric.sum("revenue"),
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
     // where: q.date("createdAt").gte("2025-01-01"),
   });
 
@@ -528,6 +607,7 @@ export default function Block() {
     orderBy: q.asc("date"),
     metric: { revenue: metric.sum("revenue") },
     groupBy: metric.groupBy("date", metric.bucket.month.long),
+    // from: ds.orders,  // datasource alias, required when the block has multiple datasources
   });
 
   if (status === "pending") return <div>Loading...</div>;
@@ -562,9 +642,78 @@ export default function Block() {
 
 ---
 
+## Comments
+
+Comments live on records. They're set up once for the whole app in **Settings → Comments**. The hooks in `@/lib/comments` give you one thread per record — you lay it out, the app owns the data, the copy and the permissions.
+
+Don't build your own thread on top of a datasource field. Comments written that way are invisible to every other block in the app, and to the builder's moderation tools.
+
+### `useCommentsSettings`
+
+Every label, placeholder, empty-state message and the sort direction comes from here. A builder edits them in Settings → Comments and expects the change to show up right away, with no republish. So read them from the hook — don't hardcode strings.
+
+Don't expose them as `useTextSetting` either. That's a second source of truth, and it quietly overrides the app's settings.
+
+```tsx
+function useCommentsSettings(options: {
+  /** Which layout you're building. The two layouts have separate display settings. */
+  displayAs: "BLOCK" | "SIDE_PANEL";
+  /** Which datasource the thread is on. Required on a multi-datasource block. */
+  from?: string;
+}): {
+  commentListTitle: string;         // may be empty — render no heading rather than an empty one
+  commentBoxPlaceholder: string;
+  submitButtonLabel: string;
+  deleteButtonLabel: string;
+  loadMoreCommentsButtonLabel: string;
+  emptyStateMessage: string;        // shown instead of the list when the thread is empty
+  notificationsToggleLabel: string;
+  sortDirection: "NEWEST_ON_TOP" | "OLDEST_ON_TOP";
+  surface: boolean;                 // whether each comment sits on its own card
+  showVerticalLine: boolean;        // whether a line joins consecutive comments into one thread
+  commentPanelDisplayMode: "PUSH_MAIN_CONTENT" | "COVER_MAIN_CONTENT";  // SIDE_PANEL only
+  canPost: boolean;                 // false for a viewer who can read the thread but not post
+  quickReactions: Array<{ emoji: string; label: string }>;  // the only emoji this surface can post
+  allowMentions: boolean;           // false when the app has mentions turned off
+} | null
+```
+
+**`displayAs` picks which settings you get.** Settings → Comments has two separate sets of display options, one per layout. Pass `"BLOCK"` for a thread in the block's own flow, `"SIDE_PANEL"` for a docked panel. Pass the wrong one and the builder's edits look like they do nothing.
+
+**Keep the field names when you destructure.** `commentListTitle` is the "Comment list title" setting, `submitButtonLabel` is "Submit button label". Rename it to `title` and the link to the control the builder edits is gone.
+
+**`null` means render no comments UI at all.** You get it when the app has no comment settings, when that table isn't registered for comments, or when the viewer can't see the thread. It's not an error, and it's not a reason to fall back to something of your own.
+
+```tsx
+import { useCommentsSettings } from "@/lib/comments";
+
+export default function Block() {
+  const settings = useCommentsSettings({ displayAs: "BLOCK" });
+
+  if (!settings) return null;
+
+  return (
+    <section>
+      {settings.commentListTitle && <h2>{settings.commentListTitle}</h2>}
+
+      {settings.canPost && (
+        <form>
+          <textarea placeholder={settings.commentBoxPlaceholder} />
+          <button type="submit">{settings.submitButtonLabel}</button>
+        </form>
+      )}
+    </section>
+  );
+}
+```
+
+The rest of `@/lib/comments` builds the thread itself: `useComments`, `useCommentCreate`, `useCommentDelete`, `useCommentReactions`, `useCommentComposer`, `useMentionSuggestions` and `useCommentSubscription`.
+
+---
+
 ## Editable Settings
 
-Editable settings let builders modify block content through the editor UI (**Content → Settings** tab) without touching code. Always use them for any text, images, icons, or lists that might change between block instances.
+Editable settings let builders modify block content through the editor UI (**Content → Settings** tab) without touching code. Always use them for any text, images, icons, colors, or lists that might change between block instances.
 
 Import from `@/lib/editable-settings`.
 
@@ -647,7 +796,26 @@ export default function Block() {
 
 ### `useNavigationSetting`
 
-Returns `{ action: "OPEN_URL" | "OPEN_PAGE"; destination: string; openIn: "SELF" | "TAB" } | { action: "OPEN_CHAT" } | { action: "TRIGGER_CUSTOM_WORKFLOW" }`.
+Returns one of:
+
+```ts
+{
+  action: "OPEN_URL" | "OPEN_PAGE";
+  destination: string;
+  openIn: "SELF" | "TAB" | "MODAL";
+  modalSize: "SM" | "MD" | "LG" | "XL";  // only used when openIn is "MODAL"
+  modalType: "POPUP" | "SLIDING";        // only used when openIn is "MODAL"
+}
+| { action: "OPEN_CHAT"; actionId: string | undefined }
+| { action: "TRIGGER_CUSTOM_WORKFLOW"; actionId: string | undefined }
+```
+
+The builder picks the action and how it opens. Your code just passes the value to `NavigationAction` or `navigate()`.
+
+`initialValue` sets the starting point, and takes a looser shape than what you get back:
+
+- Link: `{ destination, action?, openIn?, modalSize?, modalType? }`. `action` comes from `destination` — starts with `/` means `OPEN_PAGE`, anything else `OPEN_URL`. `openIn` defaults to `TAB`.
+- Chat or workflow: `{ action: "OPEN_CHAT" }` or `{ action: "TRIGGER_CUSTOM_WORKFLOW" }`. The builder picks which action it points at, so there's nothing else to set.
 
 ```tsx
 import { NavigationAction } from "@/components/navigation-action";
@@ -674,6 +842,102 @@ export default function Block() {
   );
 }
 ```
+
+The `NavigationAction` component also accepts optional `recordId?: string` and `datasourceId?: string` props. When rendering record-specific links/actions, pass both the current record ID and the datasource it belongs to. `datasourceId` is required whenever `recordId` is present — it tells the runtime which datasource the selected record comes from. Also, in the case of a link, it dynamically adds a URL parameter to the final URL `?recordId=<id>`.
+
+```tsx
+<NavigationAction navigation={detailsLink} recordId={item.id} datasourceId="d347bd84-7dc5-4d19-bc98-68417c6ae147">
+  View details
+</NavigationAction>
+```
+
+### `useNavigation`
+
+Some things aren't links — a chart segment, a table row, a countdown, a form that just submitted. For those, call `navigate()` from `useNavigation`. It takes the same setting `NavigationAction` takes and opens it the same way, so the builder's choice still applies.
+
+Call it once per block. The setting is an argument, so one `navigate` handles every destination.
+
+```tsx
+import { useNavigation, useNavigationSetting } from "@/lib/editable-settings";
+import { useRecordCreate, q } from "@/lib/datasource";
+import { Button } from "@/components/ui/button";
+
+export default function Block() {
+  const navigate = useNavigation();
+
+  const afterSubmit = useNavigationSetting({
+    name: "after-submit",
+    label: "After Submit",
+    initialValue: { destination: "/thank-you", openIn: "SELF" },
+  });
+
+  const createRecord = useRecordCreate({
+    fields: q.select({ name: "FIELD_ID1" }),
+    onSuccess: () => navigate(afterSubmit),
+  });
+
+  return <Button onClick={() => createRecord.mutate({ name: "New user" })}>Submit</Button>;
+}
+```
+
+The second argument takes the same `recordId` and `datasourceId` as `NavigationAction`, for a destination that points at one record:
+
+```tsx
+<BarChart
+  onBarClick={(bar) =>
+    navigate(detailsLink, { recordId: bar.id, datasourceId: "d347bd84-7dc5-4d19-bc98-68417c6ae147" })
+  }
+/>
+```
+
+What `navigate()` does, per setting:
+
+| Setting | What happens |
+| --- | --- |
+| `OPEN_PAGE` / `OPEN_URL`, `openIn: "SELF"` | Navigates the app there |
+| `OPEN_PAGE` / `OPEN_URL`, `openIn: "TAB"` | Opens in a new tab |
+| `OPEN_PAGE` / `OPEN_URL`, `openIn: "MODAL"` | Opens in a modal, with the builder's `modalSize` and `modalType` |
+| `OPEN_CHAT` | Opens the AI chat for that action |
+| `TRIGGER_CUSTOM_WORKFLOW` | Runs the workflow with `recordId` and `datasourceId` |
+
+`recordId` gets added to page and URL destinations as `?recordId=<id>`. It's skipped for `#section`, `mailto:`, `tel:` and `sms:` destinations — nowhere to put it.
+
+If the setting points at an action the builder deleted or hid, `navigate()` does nothing. No error, no toast, so don't bother guarding the call.
+
+Use `NavigationAction` whenever a real link will do. An anchor gives you middle-click, "open in new tab" and the browser's hover preview. A click handler loses all three. And don't fall back to `window.open` or `window.location` — those hardcode the destination, so the builder can't change it anymore.
+
+### `useColorSetting`
+
+Returns a CSS color `string`. Use for a color the builder picks — title color, button background, etc. It shows up as a color picker in the Content tab.
+
+`initialValue` is a theme color name or a hex (`"#1A2B3C"`). Default is `"foreground"`. Theme names:
+
+`background`, `foreground`, `card`, `card-foreground`, `popover`, `popover-foreground`, `primary`, `primary-foreground`, `secondary`, `secondary-foreground`, `muted`, `muted-foreground`, `accent`, `accent-foreground`, `destructive`, `border`, `input`, `ring`
+
+```tsx
+import { useColorSetting, useTextSetting } from "@/lib/editable-settings";
+
+export default function Block() {
+  const title = useTextSetting({ name: "title", label: "Title", initialValue: "Welcome" });
+  const titleColor = useColorSetting({
+    name: "title-color",
+    label: "Title Color",
+    initialValue: "foreground",
+  });
+
+  return (
+    <h1 className="text-2xl font-semibold" style={{ color: titleColor }}>
+      {title}
+    </h1>
+  );
+}
+```
+
+A theme name follows the app theme until the builder picks a color. The picker shows the current theme color, and once the builder changes it, a hex is saved.
+
+Pass the value through inline `style`, not a Tailwind class — classes like `text-[...]` are built at compile time and won't pick up the builder's color.
+
+Pick the `initialValue` that matches the element's current look, so nothing changes until the builder edits it: `text-foreground` → `"foreground"`, `bg-primary` → `"primary"`.
 
 ### `useArraySetting`
 
@@ -746,7 +1010,9 @@ export default function Block() {
 }
 ```
 
-**Schema field types:** `"text"`, `"image"`, `"video"`, `"vibeCodingBlockIcon"`
+**Schema field types:** `"text"`, `"image"`, `"video"`, `"vibeCodingBlockIcon"`, `"color"`
+
+A `"color"` field comes back as a CSS color, same as `useColorSetting`.
 
 **Constraints:**
 - Schema cannot contain nested arrays — for list-like text, use a `"text"` field with a separator (e.g. comma) and split it in code
@@ -851,7 +1117,7 @@ export default function Block() {
 
 ## Fetching field options
 
-Use `useFieldOptions` to fetch available options for SELECT or multi-select fields. This is useful for building filters, dropdowns, badges, or any UI that needs to display the available choices from the datasource without hardcoding them.
+Use `useFieldOptions` to fetch available options for SELECT or multi-select fields. This is useful for building filters, dropdowns, badges, or any UI that needs to display the available choices from the datasource without hardcoding them. Like the other data hooks, it accepts a `from` alias (`useFieldOptions({ from: ds.orders, select, field })`), required when the block has multiple datasources.
 
 Example to build a filter UI using `useFieldOptions`:
 
@@ -913,5 +1179,107 @@ export default function Block() {
       </div>
     </div>
   );
+}
+```
+
+---
+
+## Fetching from a REST API
+
+When using a REST API as a datasource, call it with `useProxyFetch` from `@/lib/datasource`. The proxy attaches authentication for you, so don't send tokens, API keys, or auth headers yourself.
+
+`useProxyFetch` returns a function with the same signature as `fetch`. [TanStack Query](https://tanstack.com/query) (or a similar data-fetching library) pairs nicely with it for caching and request state, and we strongly recommend it over fetching inside a `useEffect`.
+
+<Warning>
+**Caveats**: the proxy currently only supports text payloads. Streams, `FormData`, and file uploads won't work.
+</Warning>
+
+### Reading data
+
+```tsx
+import { useQuery } from "@tanstack/react-query";
+import { useProxyFetch } from "@/lib/datasource";
+
+export default function Block() {
+  const proxyFetch = useProxyFetch();
+
+  const { data, status, error } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const res = await proxyFetch("https://api.example.com/products");
+      if (!res.ok) throw new Error("Failed to fetch products");
+      return res.json();
+    },
+  });
+
+  if (status === "pending") return <div>Loading...</div>;
+  if (status === "error") return <div>{error.message}</div>;
+
+  return (
+    <div className="container py-6">
+      <div className="content space-y-2">
+        {data.map((item) => (
+          <div key={item.id}>{item.name}</div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+### Mutating data
+
+Wrap writes in `useMutation` and invalidate the affected queries on success so the UI refetches:
+
+```tsx
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useProxyFetch } from "@/lib/datasource";
+import { toast } from "sonner";
+
+function useCreateProduct() {
+  const proxyFetch = useProxyFetch();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (input: { name: string; price: number }) => {
+      const res = await proxyFetch("https://api.example.com/products", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input),
+      });
+      if (!res.ok) throw new Error("Failed to create product");
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+      toast.success("Created");
+    },
+  });
+}
+```
+
+### Multiple datasources
+
+When a block has more than one datasource, `useProxyFetch` needs to know which one to route the request to, so pass the datasource alias as its argument. With a single datasource you can call `useProxyFetch()` with no argument; once there's more than one, leaving it out throws an error. Define the aliases with `datasource.define`, the same pattern the record hooks use:
+
+```tsx
+import { useQuery } from "@tanstack/react-query";
+import { datasource, useProxyFetch } from "@/lib/datasource";
+
+const ds = datasource.define({
+  store: "ds_id_1",
+});
+
+function useProducts() {
+  const proxyFetch = useProxyFetch(ds.store);
+
+  return useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const res = await proxyFetch("https://api.example.com/products");
+      if (!res.ok) throw new Error("Failed to fetch products");
+      return res.json();
+    },
+  });
 }
 ```

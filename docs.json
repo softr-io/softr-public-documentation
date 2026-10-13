@@ -75,8 +75,9 @@
               "softr-databases/formula-glossary",
               "softr-databases/related-record-lookup-and-rollup-fields",
               "softr-databases/ai-agents",
-              "softr-databases/database-migration-tips",
-              "softr-databases/datetime-formatting"
+              "softr-databases/datetime-formatting",
+              "softr-databases/database-snapshots",
+              "softr-databases/expanded-record-view"
             ]
           },
           {
@@ -87,19 +88,83 @@
               "workflows/trigger-types",
               "workflows/advanced-concepts",
               {
+                "group": "Actions",
+                "icon": "bolt",
+                "pages": [
+                  "workflows/actions/run-custom-code",
+                  "workflows/actions/send-notification"
+                ]
+              },
+              {
                 "group": "Integrations",
                 "icon": "plug",
                 "pages": [
                   "workflows/integrations/overview",
+                  "workflows/integrations/activecampaign",
+                  "workflows/integrations/airtable",
+                  "workflows/integrations/anthropic",
+                  "workflows/integrations/apify",
+                  "workflows/integrations/apollo",
+                  "workflows/integrations/attio",
+                  "workflows/integrations/bitly",
+                  "workflows/integrations/brevo",
+                  "workflows/integrations/cal-com",
+                  "workflows/integrations/calendly",
+                  "workflows/integrations/clickup",
+                  "workflows/integrations/coda",
+                  "workflows/integrations/docs-automator",
+                  "workflows/integrations/documint",
+                  "workflows/integrations/docusign",
+                  "workflows/integrations/asana",
                   "workflows/integrations/fathom",
+                  "workflows/integrations/fillout",
+                  "workflows/integrations/gemini",
+                  "workflows/integrations/gmail",
+                  "workflows/integrations/google-calendar",
+                  "workflows/integrations/google-sheets",
                   "workflows/integrations/granola",
+                  "workflows/integrations/hubspot",
+                  "workflows/integrations/jira",
+                  "workflows/integrations/jotform",
+                  "workflows/integrations/linear",
+                  "workflows/integrations/linkup",
+                  "workflows/integrations/firecrawl",
+                  "workflows/integrations/microsoft-excel",
+                  "workflows/integrations/mistral",
+                  "workflows/integrations/monday",
+                  "workflows/integrations/notion",
+                  "workflows/integrations/openai",
+                  "workflows/integrations/outlook",
+                  "workflows/integrations/pinecone",
+                  "workflows/integrations/postmark",
+                  "workflows/integrations/quickbooks",
                   "workflows/integrations/replicate",
+                  "workflows/integrations/resend",
+                  "workflows/integrations/salesforce",
+                  "workflows/integrations/sharepoint",
                   "workflows/integrations/slack",
+                  "workflows/integrations/stripe",
+                  "workflows/integrations/supabase",
+                  "workflows/integrations/tally",
+                  "workflows/integrations/telegram",
+                  "workflows/integrations/tinyurl",
+                  "workflows/integrations/trello",
+                  "workflows/integrations/twilio",
+                  "workflows/integrations/typeform",
+                  "workflows/integrations/xano",
+                  "workflows/integrations/xero",
                   "workflows/integrations/zendesk",
-                  "workflows/integrations/zoom",
-                  "workflows/integrations/linkup"
+                  "workflows/integrations/zoho-crm",
+                  "workflows/integrations/zoom"
                 ]
               }
+            ]
+          },
+          {
+            "group": "Softr Agents",
+            "icon": "robot",
+            "pages": [
+              "agents/overview"
             ]
           },
           "softr-forms",
@@ -109,6 +174,7 @@
             "pages": [
               "data-sources/airtable",
               "data-sources/hubspot",
+              "data-sources/salesforce",
               "data-sources/notion",
               "data-sources/coda",
               "data-sources/google-sheets",
@@ -120,8 +186,16 @@
               "data-sources/bigquery",
               "data-sources/sql-database",
               "data-sources/rest-api",
+              "data-sources/snowflake",
               "data-sources/choosing-a-data-source"
             ]
+          },
+          {
+            "group": "Import Data",
+            "pages": [
+              "migration-tips/migrating-from-airtable-to-softr-databases"
+            ],
+            "icon": "arrow-down-from-bracket"
           }
         ]
       },
@@ -277,7 +351,8 @@
               "add-and-manage-users/add-or-import-users-manually",
               "add-and-manage-users/internal-vs-external-users",
               "add-and-manage-users/user-email-notifications",
-              "add-and-manage-users/automated-user-invitations"
+              "add-and-manage-users/automated-user-invitations",
+              "add-and-manage-users/notification-center"
             ]
           },
           {
@@ -297,10 +372,11 @@
             "group": "Advanced Sign-in Options",
             "icon": "lock",
             "pages": [
+              "add-and-manage-users/single-sign-on-overview",
               "add-and-manage-users/saml-single-sign-on",
-              "add-and-manage-users/microsoft-azure-saml-single-sign-on",
               "add-and-manage-users/openid-single-sign-on",
-              "add-and-manage-users/scim-provisioning"
+              "add-and-manage-users/scim-provisioning",
+              "add-and-manage-users/microsoft-azure-saml-single-sign-on"
             ]
           }
         ]
@@ -396,7 +472,7 @@
               "application-settings/general-settings",
               "application-settings/app-history",
               "application-settings/advanced-settings",
-              "application-settings/migrating-app-versions"
+              "dynamic-app-logo"
             ]
           }
         ]
@@ -589,7 +665,21 @@
               }
             ]
           },
-          "mcp-server",
+          {
+            "group": "Softr MCP server",
+            "icon": "plug",
+            "pages": [
+              "mcp/overview",
+              "mcp/connect",
+              "mcp/databases",
+              "mcp/apps",
+              "mcp/vibe-coding",
+              "mcp/integrations",
+              "mcp/workflows"
+            ]
+          },
+          "app-mcp-server",
+          "softr-cli",
           {
             "group": "Security",
             "icon": "lock",
@@ -648,6 +738,13 @@
             ]
           },
           {
+            "group": "Migration Tips",
+            "icon": "arrow-down-left-and-arrow-up-right-to-center",
+            "pages": [
+              "application-settings/migrating-app-versions"
+            ]
+          },
+          {
             "group": "Workspace and Billing",
             "icon": "credit-card",
             "pages": [
@@ -681,8 +778,8 @@
         "label": "Community"
       },
       {
-        "href": "https://softr-academy.softr.app/",
-        "label": "Softr Academy"
+        "href": "https://www.softr.io/partners?from=docs",
+        "label": "Hire an Expert"
       }
     ],
     "primary": {
@@ -701,11 +798,15 @@
             "label": "Sign Up"
           },
           {
+            "href": "https://www.softr.io/partners?from=docs",
+            "label": "Hire an Expert"
+          },
+          {
             "href": "https://www.softr.io/blog",
             "label": "Blog"
           },
           {
-            "href": "https://twitter.com/softr_io",
+            "href": "https://www.linkedin.com/company/softr",
             "label": "Follow Us"
           },
           {
@@ -717,6 +818,14 @@
     ]
   },
   "redirects": [
+    {
+      "source": "/workflows/integrations/push-notifications",
+      "destination": "/workflows/actions/send-notification"
+    },
+    {
+      "source": "/mcp-server",
+      "destination": "/mcp/overview"
+    },
     {
       "source": "/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq",
       "destination": "/actions/action-buttons-overview"

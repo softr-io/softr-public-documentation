@@ -1,0 +1,231 @@
+---
+title: "Applications"
+sidebarTitle: "Applications"
+description: "Let an AI assistant create blank apps, add pages, read your apps, manage their users and user groups, toggle login, configure sign-up and the email sender, preview changes, and publish them."
+'og:title': "MCP: Applications – Softr Help Docs"
+'og:description': "Let an AI assistant create blank apps, add pages, read your apps, manage their users and user groups, toggle login, configure sign-up and the email sender, preview changes, and publish them."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "MCP: Applications – Softr Help Docs"
+'twitter:description': "Let an AI assistant create blank apps, add pages, read your apps, manage their users and user groups, toggle login, configure sign-up and the email sender, preview changes, and publish them."
+icon: "window"
+---
+
+These tools let an assistant understand how an app is built — its pages, its blocks, and who can see what — and then show you a change or make it live.
+
+Everything here is read-only except creating a blank app, adding a page, adding and removing app users, creating and changing user groups, toggling login, configuring sign-up, the email sender, and the app's subdomain and custom domain, previewing, and publishing. An assistant can add an empty page, but filling it with content is done through [vibe coding blocks](/mcp/vibe-coding) — and changes to an existing page's content are made the same way.
+
+## Creating an app
+
+| Tool | What it does |
+|---|---|
+| `create_application` | Creates a new blank app, optionally in a specific workspace and with a name, and returns its details |
+
+`create_application` spins up a fresh, empty app with a default home page and returns its id, name, and workspace. The new app is **not** published — use `preview_app` to look at it and `publish_app` when you want it live. By default it is created in your default workspace; pass a workspace to choose where it goes (use `list_workspaces` to find one). You can also pass a name for the app; omit it and Softr auto-generates one. From there, add content with [vibe coding blocks](/mcp/vibe-coding).
+
+## Adding a page
+
+| Tool | What it does |
+|---|---|
+| `create_page` | Adds a new, empty page to an app and returns its id, path, and name |
+
+`create_page` takes a name and a path — the name is the label you see in Studio's page list, the path is the URL your visitors see (`/pricing`). Both are required, and both have to be unused in that app; the assistant will be told which one clashed if you pick something taken. A leading slash is added for you, so "pricing" and "/pricing" mean the same thing.
+
+The page arrives **empty**. It inherits the app's default visibility — logged-in users only if the app has login enabled, everyone otherwise — and lands at the top level of your page list, so move or nest it in Studio if you want it somewhere else. To put something on it, ask for a [vibe coding block](/mcp/vibe-coding) next.
+
+<Note>
+  You cannot create a page at `/`. That is your app's home page: it exists from the moment the app is created and is never added afterwards. To change what visitors land on, edit the home page you already have — `list_pages` will show it — or set a different page as the home page in Studio. The paths `/assets`, `/studio`, and `/health` are reserved by Softr and rejected too.
+</Note>
+
+A page you add is not live until you publish. Use `preview_app` to look at it first, then `publish_app` when you want it out there. A Studio tab you already have open won't show the new page until you reload it.
+
+## Reading an app
+
+Before changing anything, the assistant needs to know what is there. This is how it finds the page you meant when you say "the dashboard", and the block you meant when you say "the chart at the top".
+
+| Tool | What it does |
+|---|---|
+| `list_applications` | Lists the apps you can access, optionally filtered to one workspace |
+| `get_application` | Gets an app's details: name, workspace, domain, home page, and the configured email sender |
+| `list_pages` | Lists an app's pages with their paths, types, and whether they are enabled |
+| `get_page` | Gets a page and the blocks on it |
+| `get_block` | Gets a single block's configuration and visibility settings |
+| `get_user_connection` | Gets the table that authenticates the app's end users: which data source, database and table it is, and its fields |
+
+## Permissions and user groups
+
+Softr apps gate what end users see with [user groups](/user-groups-and-permissions/user-groups). These tools let the assistant read that setup, which is useful both for answering questions about it and for getting visibility right when it builds something new. It can also change the groups themselves — see [Creating and changing user groups](#creating-and-changing-user-groups).
+
+| Tool | What it does |
+|---|---|
+| `list_user_groups` | Lists the app's user groups, their type, and their members |
+| `get_access_control` | Gives an overview of the app's access control setup |
+| `get_page_permissions` | Shows which user groups can view, edit, add, or delete on a page |
+
+## Connecting a users table
+
+End-user login needs a table to authenticate against. Until an app has one, it has no end users to speak of and its groups can only be manual lists of email addresses.
+
+| Tool | What it does |
+|---|---|
+| `create_user_connection` | Connects an existing table as the one that authenticates the app's end users |
+| `remove_user_connection` | Disconnects the app's users table, leaving its existing users in place |
+
+The assistant browses to the table the same way it would for any data source — data source, then database, then table — and maps which of its fields hold what. Only the email field is required, since that is how an end user is identified; a name and avatar field are worth mapping too, because the app shows both.
+
+<Note>
+  **Connecting a table does not switch login on.** That is a separate setting — see [Login settings](#login-settings) — and who may sign up is [Sign-up settings](#sign-up-settings).
+</Note>
+
+Connecting asks for a user sync, which is what turns the table's rows into app users. Apps are created with sync from source switched on, so this normally runs — but it can be paused from the users tab, and a paused app connects the table without importing anybody. The assistant tells you which happened rather than assuming.
+
+### Pointing an app at a different table
+
+An app has one users table. To move it to another, the assistant replaces the connection rather than disconnecting and reconnecting — replacing validates the new table first, so a mistake leaves the app on the table it already had.
+
+<Warning>
+  **Replacing does not move your users across.** They stay associated with the old table and can no longer sign in. The assistant will refuse a replacement until you have said you want it, and should tell you which table is connected before you decide.
+</Warning>
+
+Disconnecting is gentler than it sounds: your existing app users remain and can still sign in, they just stop being updated from the table. New rows stop becoming users, rule-based groups can no longer be written, and the table itself is untouched. Reconnecting the same table restores the connection, and re-syncs the users unless sync from source is paused.
+
+If all you want is to stop syncing without disconnecting, pause it from the users tab instead — that leaves the connection in place.
+
+## Creating and changing user groups
+
+An assistant can create a custom group, rename it, change who is in it, or remove it.
+
+| Tool | What it does |
+|---|---|
+| `create_user_group` | Creates a custom group, from a member list or from a rule |
+| `update_user_group` | Renames a group, or replaces its members or its rule |
+| `delete_user_group` | Deletes a custom group |
+
+A group is one of two kinds, and never both:
+
+- **Manual** — an explicit list of app-user email addresses.
+- **Condition-based** — a rule checked against each app user's own record, so people join and leave the group as their data changes.
+
+Switching between them is a switch rather than a merge: giving a group a member list drops any rule it had, and giving it a rule drops its member list.
+
+<Warning>
+  **Members and rules are replaced, not added to.** "Add Dana to Managers" means reading the group's current members and sending the whole list back with Dana included. An assistant should do that for you — but it is why members can disappear if one gets it wrong, so say who should end up in the group and check the result.
+</Warning>
+
+A rule points at a field on the table that authenticates your end users, using that field's ID rather than its name — which is what `get_user_connection` above is for. The same holds for a rule about a dropdown field: it matches the option's ID, not the label you see. Both come back from that one call.
+
+<Note>
+  **A rule naming a field that does not exist matches nobody, and reports no error.** So a rule-based group that comes back empty when you expected members is the first thing worth checking. Rules about the user's own email address or its domain are the exception — those need no lookup at all.
+</Note>
+
+Rules are checked against a users table, so an app without end-user login can only have manual groups. `get_user_connection` says so plainly rather than letting an assistant invent a rule — and `create_user_connection` is how you fix it, after which rules work.
+
+Three more limits worth knowing:
+
+- The predefined groups — **Logged in users**, **Visitors**, **Everyone** — cannot be renamed, changed, or deleted. Only custom groups can.
+- Names are unique within an app, ignoring case, so "Managers" and "managers" cannot both exist.
+- Creating a group is capped by your plan's allowance for custom user groups. Changing and deleting are not, so an app left over that limit by a downgrade can still be tidied up.
+
+## Deleting a user group
+
+<Warning>
+  **This cannot be undone, and it takes access with it.** Deleting a group removes its sign-in and sign-out redirections and drops it from every [data restriction](/user-groups-and-permissions/global-data-restrictions) that named it — and a restriction that granted access to this group alone is removed outright. Because access is default-deny, data your app reads can become unreachable to its users, which is how this bites an app built from code rather than from pages.
+</Warning>
+
+Page permissions and block or action-button visibility behave differently: they keep the deleted group's ID, and the builder shows it as **Deleted group**. Nothing breaks, but anything that was visible only to that group is now visible to nobody until you fix it.
+
+So after a delete, check what the group was gating. To change who is in a group rather than remove the group, use `update_user_group`.
+
+## Managing app users
+
+These tools manage an app's **end users** — the people who log in to the published app — not builders or collaborators.
+
+| Tool | What it does |
+|---|---|
+| `list_application_users` | Lists or searches the app's end users, with paging |
+| `add_application_user` | Adds an end user to the app by name and email |
+| `remove_application_user` | Removes an end user from the app by email |
+| `set_application_user_activation` | Activates or deactivates an end user by email |
+
+`list_application_users` returns the app's users page by page — first 10 by default, with `limit` (up to 100) and a 0-based `page`, plus the `total` and whether there is more. Pass `query` to search: a case-insensitive fragment matched against each user's email and name, exactly like the search box on the app's Users tab. Each user comes back with their id, email, name, status, whether they are active, when they were added, when they last signed in, and the custom [user groups](/user-groups-and-permissions/user-groups) they belong to. Listing only needs read access to the app.
+
+`add_application_user` takes both a name and an email and creates the user in the app. It fails if a user with that email already exists there. `remove_application_user` deletes the user with the given email, and fails if no user with that email exists in the app. These need write access to the app.
+
+`set_application_user_activation` is the reversible alternative to removing: a deactivated user cannot sign in, but their account and data stay, and activating them again restores their previous status. Pass `active=true` to activate or `active=false` to deactivate; the call fails if no user with that email exists in the app.
+
+## Login settings
+
+| Tool | What it does |
+|---|---|
+| `set_application_login` | Enables or disables end-user login for the app |
+
+`set_application_login` turns the app's end-user login on or off — pass `enabled=true` to turn it on, `enabled=false` to turn it off. Disabling login stops end users from signing in to the app; it is reversible, so calling it again with `enabled=true` restores login. It applies only to apps that support login — apps without login settings are rejected. Changes take effect on the next publish, like other app changes.
+
+<Note>
+  **Login cannot be disabled while the app still has users.** The call fails with an error saying so. Remove the app's users first (for example with `remove_application_user`), then disable login.
+</Note>
+
+## Sign-up settings
+
+| Tool | What it does |
+|---|---|
+| `configure_application_sign_up` | Sets who can sign up for the app |
+
+`configure_application_sign_up` controls whether — and who — end users can sign up. Set `policy` to one of:
+
+- `DISABLED` — no one can sign up
+- `OPEN_TO_PUBLIC` — anyone can sign up
+- `DOMAIN_RESTRICTED` — only people whose email is in `allowedDomains` can sign up
+
+`allowedDomains` is a list of email domains like `["example.com"]`; it is required for `DOMAIN_RESTRICTED` and cleared for the other policies. Like login, it applies only to apps that support sign-up — apps without login settings are rejected — and changes take effect on the next publish.
+
+## Email sender
+
+| Tool | What it does |
+|---|---|
+| `configure_application_email_sender` | Sets, picks, or resets the name and address the app's emails are sent from |
+| `list_workspace_email_senders` | Lists the sender addresses registered on a workspace and whether each is confirmed |
+
+`configure_application_email_sender` controls the sender the app's invites, magic links, and notifications go out from. What you pass selects what happens:
+
+- **`name` and `email`** — registers the sender on the workspace (or renames it if that email is already registered) and assigns it to the app. This changes workspace-wide state, so it needs workspace-wide write access and a plan that includes custom senders.
+- **`email` only** — assigns a sender that already exists on the workspace to the app. This only changes the app, so app-level write access is enough. Use `list_workspace_email_senders` to see what exists.
+- **neither** — resets the app to the default Softr sender (its subdomain's `@softr.app` address).
+
+To answer "what sender is my app using?", `get_application` includes an `emailSender` field with the sender's name, email, confirmation state, and whether it is the default one.
+
+<Note>
+  **A newly registered sender is not active until its address is confirmed.** Registering triggers a verification email to the sender address; until someone clicks that link, the app keeps sending from the default Softr address. The tool's response includes `confirmed` so you know which state you're in. Senders on your own domain additionally need DKIM and Return-Path DNS verification, which is done in Softr Studio.
+</Note>
+
+## Subdomain and custom domain
+
+| Tool | What it does |
+|---|---|
+| `set_application_subdomain` | Changes the `something.softr.app` address the app is served on |
+| `set_application_domain` | Connects, replaces, or disconnects the app's custom domain |
+
+`set_application_subdomain` changes the label in front of the app's zone — pass `my-app` to get `my-app.softr.app`. The zone itself can't be changed, the label must be a valid DNS label (a-z, 0-9, hyphens), and the subdomain must not be in use by another app.
+
+`set_application_domain` takes a bare hostname like `app.example.com`; an apex domain like `example.com` is stored as `www.example.com`, so read the domain back from the response. Omit the domain to disconnect it and return to the subdomain. Custom domains require a plan that includes them.
+
+<Note>
+  **Neither change is live immediately.** The published app keeps serving on its old address until you republish it. A custom domain additionally only works once its DNS points at Softr — that setup happens in your DNS provider and Softr Studio, not through these tools.
+</Note>
+
+## Previewing and publishing
+
+| Tool | What it does |
+|---|---|
+| `preview_app` | Builds a preview of the app as it stands right now, unpublished changes included, and returns a link |
+| `publish_app` | Makes the app's current state live for real users |
+
+`preview_app` is how you look at a change before anyone else does. It builds the app from the current builder state, so it includes work that has not been published, and you can ask it to open on a specific page so you land where the change is. It publishes nothing — the live app and its visitors are untouched.
+
+<Warning>
+  **A preview link is a credential, not just an address.** It signs whoever opens it in as the person who asked for the preview, and stays valid for about a day. Don't post one in a shared channel or a ticket. Ask for a fresh link rather than reusing an old one — each one also rebuilds the preview, so a new link is the only way to see your latest changes.
+</Warning>
+
+`publish_app` makes changes live. Two things to know before you ask for it:
+
+- **It publishes the whole app**, not the page or block you were working on. Every unpublished change goes live at once, including ones made earlier or by someone else. If other people are working in the same app, check with them first.
+- **It cannot be undone from here.** There is no unpublish tool yet, so an assistant can take an app live but cannot take it back down. To do that, unpublish the app yourself in Studio, under the app's **Settings → General**.

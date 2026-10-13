@@ -9,68 +9,126 @@ twitter:title: "How to Create Your Own Template? – Softr Help Docs"
 twitter:description: "You can turn your own app into a template to be cloned by other Softr users! "
 ---
 
+You can turn any app you've built in Softr into a **template** that other people can clone into their own workspace, complete with its pages, blocks, styling, connected database, and workflows. Share it with a link or submit it to be featured on [**Softr Universe**](/affiliate-and-referral-programs/softr-universe).
+
 <Note>
-  Creating templates is available for apps using **Airtable** as a data source.
+  Creating a template works for apps built on **Softr Databases** as well as apps connected to **Airtable**. (Earlier, template creation was limited to Airtable-based apps — that's no longer the case.) When someone clones your template, Softr copies the app along with its data source and workflows so they get a working starting point, not an empty shell.
 </Note>
 
-## Why would I want to create my own template?
+## Why create a template
 
-- Speed up the development process as a freelancer/agency.
-- Sell templates online as a creator (using services like [Gumroad](https://gumroad.com/))
-- Use it as a lead generation tool for your business.
-- Showcase your no-code skills to build a brand.
+Templates are a fast way to package and reuse work you've already done:
 
-## How do I create a template?
+- **Speed up client and agency work** — build an app once and spin up a fresh copy for each new client instead of starting from scratch.
+- **Sell your work** — package an app as a template and sell it, for example through a [**Gumroad**](/integrations/gumroad) storefront.
+- **Generate leads** — offer a useful template for free to attract potential customers to your product or service.
+- **Showcase your no-code expertise** — publish polished templates to build a reputation in the community.
 
-**Step 1:** Click on the dropdown menu next to the application name and choose **Create a template**.
+## Create a template
 
-<Frame caption="Create a template">
-  ![Create a template](/how-to-guides/images/how-to-create-your-own-template/image1.png)
-</Frame>
+<Steps>
+  <Step title="Open your Applications">
+    In Softr Studio, go to **Applications** in the left sidebar. Your apps are listed under the **All** tab.
 
+    <Frame caption="The Applications dashboard, listing your apps.">
+      {/* SCREENSHOT TODO: In Studio, open Applications from the left nav and capture the app list under the "All" tab, with the "All" / "Templates" tabs visible at the top. */}
 
-**Step 2:** Fill out template info
+      ![Screenshot 2026 08 10 At 11 55 44 AM](/images/Screenshot-2026-08-10-at-11.55.44-AM.png "Screenshot 2026 08 10 At 11 55 44 AM")
+    </Frame>
+  </Step>
+  <Step title="Open the app's actions menu">
+    Hover over the app you want to turn into a template and click the **⋯** (more actions) button on its card. The menu includes **Duplicate**, **Share**, **Move**, **Create a template**, **View connections**, **Change thumbnail**, and **Delete**.
 
-<Frame caption="Template details">
-  ![Template details](/how-to-guides/images/how-to-create-your-own-template/image2.png)
-</Frame>
+    <Frame caption="The ⋯ menu on an app card, with 'Create a template' highlighted.">
+      {/* SCREENSHOT TODO: Hover an app card, click the "⋯" button, and capture the open dropdown showing all items with "Create a template" in focus. */}
 
+      ![Screenshot 2026 08 10 At 11 56 41 AM](/images/Screenshot-2026-08-10-at-11.56.41-AM.png "Screenshot 2026 08 10 At 11 56 41 AM")
+    </Frame>
+  </Step>
+  <Step title="Select Create a template">
+    Choose **Create a template**. The **Create a template from this app** dialog opens.
+  </Step>
+  <Step title="Fill in the template details">
+    Complete the fields in the dialog:
 
-- **Template name:** Give it a short and sweet name.
-- **Description (50-500 characters):** Share more about what the template is for and how it works.
-- **Thumbnail:** Give it a pretty cover
-- **Softr Database:** Any Softr database used in your Softr app automatically becomes a part of the template.
-- **For Airtable, access the public link to copy your base:** This allows others to copy your template base to be able to use the template properly. Make sure that the link is **read-only** with **copy data** function enabled.
+    - **Template name** — a short, descriptive name.
+    - **Description** — a few sentences describing what the template does.
+    - **Thumbnail** — click **Upload thumbnail** to add a preview image that represents the template.
 
-<Frame caption="Creating a public link to the base">
-  ![Creating a public link to the base](/how-to-guides/images/how-to-create-your-own-template/image3.gif)
-</Frame>
+    <Frame caption="The 'Create a template from this app' dialog.">
+      {/* SCREENSHOT TODO: Capture the full "Create a template from this app" dialog showing the Template name, Description, and Thumbnail (Upload thumbnail) fields, the "Heads up!" notice, and the Cancel / Create template buttons. */}
 
-## Where will the template be displayed?
+      ![Screenshot 2026 08 10 At 11 57 33 AM](/images/Screenshot-2026-08-10-at-11.57.33-AM.png "Screenshot 2026 08 10 At 11 57 33 AM")
+    </Frame>
+
+    <Warning>
+      As the dialog's **Heads up!** notice reminds you: make sure you're not sharing personal or sensitive data within your template. Anyone who clones the template receives a copy of the connected data.
+    </Warning>
+  </Step>
+  <Step title="Create the template">
+    Click **Create template**. Your new template is saved to your workspace and appears under the **Templates** tab (see below).
+  </Step>
+</Steps>
 
 <Tip>
-  **We do not show your templates to other Softr users.**
+  For an app connected to **Airtable**, make sure the underlying Airtable base is set up so that clones get their own editable copy of the data — typically by sharing the base with a public, read-only link that has **"Allow viewers to copy data out of this base"** enabled. See [**Airtable**](/data-sources/airtable) for how Softr connects to Airtable.
+
+  {/* VERIFY: The Airtable public-link / copy-data step is carried over from the previous version of this doc and from community answers. It was NOT re-verified live in this pass because the test account had no Airtable-connected app — the dialog for a Softr Database app shows only name/description/thumbnail. Confirm the current Airtable flow in Studio before publishing. */}
 </Tip>
 
-Created templates can be found in your workspace’s **My templates** folder. You can share it with others via a link or submit it to be featured on [Softr Universe](/affiliate-and-referral-programs/wgsQBqYoQV7PZw8qDxYQRC/softr-universe/w9AMPpwoVEczgfhp5XKuVZ).
+## Find and manage your templates
 
-To access only your templates, click on My Templates on the left toolbar of your Softr Workspace:
+Templates you create live under **Applications → Templates**. If you haven't made any yet, you'll see _"You have not created any custom templates."_ with a link to learn how.
 
-<Frame>
-  ![Notion image](/how-to-guides/images/how-to-create-your-own-template/image4.png)
+<Frame caption="The Templates tab under Applications, where your custom templates are collected.">
+  {/* SCREENSHOT TODO: In Applications, click the "Templates" tab and capture the list of custom templates (or the empty state if none exist). */}
+
+  ![Screenshot 2026 08 10 At 11 58 45 AM](/images/Screenshot-2026-08-10-at-11.58.45-AM.png "Screenshot 2026 08 10 At 11 58 45 AM")
 </Frame>
 
+## Share your template
 
-## Sharing your template with others
+Your template isn't visible to anyone else automatically. You can distribute it in two ways.
 
-You can share your template, by copying it’s publicly accessible link (a Softr subdomain or your own custom domain) then adding this onto the end of the link:
+<Tabs>
+  <Tab title="Share a direct link">
+    Share your template's link directly with the people you want to be able to clone it. Anyone who opens the link can duplicate the template into their own Softr workspace.
 
-`/?show-toolbar=true`
+    <Frame>
+      ![Screenshot 2026 08 10 At 11 59 32 AM](/images/Screenshot-2026-08-10-at-11.59.32-AM.png "Screenshot 2026 08 10 At 11 59 32 AM")
+    </Frame>
 
-The final share link will look something like this for example: `https://portal.yourapp.com/?show-toolbar=true`
+    {/* VERIFY: The exact "get a shareable link" entry point (and whether the legacy `?show-toolbar=true` URL parameter on a published app is still the mechanism) was not re-verified live in this pass. Confirm the current sharing flow in Studio and update this section with the precise clicks before publishing. */}
+  </Tab>
+  <Tab title="Submit to Softr Universe">
+    Submit your template to [**Softr Universe**](/affiliate-and-referral-programs/softr-universe) to have it featured in Softr's public gallery, where the wider community can discover and clone it.
 
-A toolbar will appear when using this link that will allow others to copy this template to their own Softr workspaces.
+    <Frame>
+      ![Screenshot 2026 08 10 At 11 59 32 AM 1](/images/Screenshot-2026-08-10-at-11.59.32-AM-1.png "Screenshot 2026 08 10 At 11 59 32 AM 1")
+    </Frame>
+  </Tab>
+</Tabs>
 
-<Frame>
-  ![Notion image](/how-to-guides/images/how-to-create-your-own-template/image5.png)
-</Frame>
+<Note>
+  When someone clones your template, permissions configured on individual blocks (such as visibility or edit permissions) may be reset in their copy, and data-source–specific configuration is preserved only when their workspace connects to a compatible data source. Have them review the app's connections after cloning.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Create an App From a Template" icon="wand-magic-sparkles" href="/start-here/create-an-app-from-a-template">
+    The other side of the flow — start a new app from an existing template.
+  </Card>
+
+  <Card title="Softr Universe" icon="globe" href="/affiliate-and-referral-programs/softr-universe">
+    Submit your template to be featured in Softr's public gallery.
+  </Card>
+
+  <Card title="Softr Databases Overview" icon="database" href="/softr-databases/softr-databases-overview">
+    How Softr's built-in database powers your app and its templates.
+  </Card>
+
+  <Card title="Choosing a Data Source" icon="table-list" href="/data-sources/choosing-a-data-source">
+    Compare Softr Databases, Airtable, and other sources for your app.
+  </Card>
+</CardGroup>

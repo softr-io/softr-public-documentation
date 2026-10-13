@@ -42,8 +42,8 @@ Post automated messages to any public or private Slack channel, keeping your tea
 
 ## How to Connect Softr with Slack
 
-1. Open your Softr app and go to **Integrations → Slack**.
-2. Click **Connect Slack** and authorize your Slack workspace.
-3. Select the Slack actions you want to include in your workflows.
+1. Open your Softr app and go to **Workflows**.
+2. Create a new workflow and add a Slack action.
+3. Click **Connect to Slack** and authorize your Slack workspace.
 4. Define triggers and customize your messages.
-5. Save and activate your workflow
+5. Save and activate your workflow.

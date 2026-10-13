@@ -486,6 +486,26 @@ If Price is 27, the result is 20.
 
 ---
 
+**`MROUND(number, multiple)`**
+
+Rounds a number to the nearest multiple of the given number. It rounds up or down, whichever multiple is closer.
+
+**Example:**
+
+```plain
+MROUND({Revenue}, 1000)
+```
+
+If Revenue is 93291.13, the result is 93000.
+
+```plain
+MROUND({Price}, 0.05)
+```
+
+If Price is 2.34, the result is 2.35.
+
+---
+
 **`ABS(number)`**
 
 Returns the absolute value of a number.

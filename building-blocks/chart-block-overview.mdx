@@ -2,13 +2,16 @@
 title: "Chart Block Overview"
 permalink: "48LkSKXWY8TrBwjqBVXMqg"
 description: "Adding charts to your Softr app."
-'og:title': "Chart Block Overview – Softr Help Docs"
-'og:description': "Adding charts to your Softr app."
-'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
-'twitter:title': "Chart Block Overview – Softr Help Docs"
-'twitter:description': "Adding charts to your Softr app."
+og:title: "Chart Block Overview – Softr Help Docs"
+og:description: "Adding charts to your Softr app."
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+twitter:title: "Chart Block Overview – Softr Help Docs"
+twitter:description: "Adding charts to your Softr app."
 ---
-<Note>Chart block is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+
+<Note>
+  Chart block is available for users on the [Professional plan and above](https://www.softr.io/pricing).
+</Note>
 
 Using the Chart block, you can add different types of charts to your Softr app. The charts get the data from [data sources](/4230abecf813402aa2926466c313290a).
 
@@ -17,23 +20,43 @@ In the following articles, you can get familiar with different chart layouts tha
 To start configuring the chart, you first need to link it to a [data source](/4230abecf813402aa2926466c313290a) to start displaying your data. We are going to use [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) for that purpose. So, let’s start.
 
 <Tip>
-If you make an update in your data source, **it will take 15 min** until that change is reflected in your chart in preview, and live mode.
+  If you make an update in your data source, **it will take 15 min** until that change is reflected in your chart in preview, and live mode.
 
-Learn more about data sampling and data freshness at the end of this article.
+  Learn more about data sampling and data freshness at the end of this article.
 </Tip>
 
 ## Linking a data source
-<Frame caption="Linking an Airtable base and table">![Linking an Airtable base and table](/building-blocks/images/chart-block-overview/image1.png)</Frame>
+
+<Frame caption="Linking an Airtable base and table">
+  <img
+    src="/images/Screenshot-2026-08-11-at-3.55.09-PM.png"
+    alt="Linking an Airtable base and table"
+    lightAlt="Linking an Airtable base and table"
+    darkAlt="Linking an Airtable base and table"
+    className="dark:hidden"
+  />
+  <img
+    src="/images/Screenshot-2026-08-11-at-3.55.09-PM-1.png"
+    alt="Linking an Airtable base and table"
+    lightAlt="Linking an Airtable base and table"
+    darkAlt="Linking an Airtable base and table"
+    className="hidden dark:block"
+  />
+</Frame>
 
 This part is similar to the [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) block settings, where you need to connect a data sourcefrom the **Data** tabto get your chart data.
 
-<Tip>Please note, that you first need to have your [data source](/4230abecf813402aa2926466c313290a) linked in **Settings => Data Sources** to be able to connect a specific database.</Tip>
+<Tip>
+  Please note, that you first need to have your [data source](/4230abecf813402aa2926466c313290a) linked in **Settings =\> Data Sources** to be able to connect a specific database.
+</Tip>
 
 ### Conditional Filters
 
 Under the **Source** tab, you also have the **Conditional Filters** section. Chart **Conditional Filters** work similar to [List conditional filters](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m).
 
-<Tip>If you want to refer to an Airtable Linked Record in your condition, use a relevant **Lookup Field** (supported), not a Linked Record itself (not supported).</Tip>
+<Tip>
+  If you want to refer to an Airtable Linked Record in your condition, use a relevant **Lookup Field** (supported), not a Linked Record itself (not supported).
+</Tip>
 
 ## Features
 
@@ -41,17 +64,11 @@ Now, let's see what we have in the **Features** tab of block's settings.
 
 ### **Title and Subtitle**
 
-Here you set a **Title** and **Subtitle** for the block.
-<Frame caption="Title and subtitle">![Title and subtitle](/building-blocks/images/chart-block-overview/image2.png)</Frame>
-
 ### **Type**
 
 Next, you have the **Type** parameter where you select between different chart types. Let’s select the **Bar Chart** type and move on to configuring our data.
 
 ### Metrics
-
-Here’s when we start connecting our data to display it through the chart. We’re going to use an Airtable table with a database of quarterly incomes and expenses as shown below.
-<Frame caption="Airtable table with data">![Airtable table with data](/building-blocks/images/chart-block-overview/image3.png)</Frame>
 
 As you can see, each record has a **Type** field, a **Sub-type**, and a corresponding value, which is negative in case of expenses.
 
@@ -59,43 +76,20 @@ Let’s say we want to display the sum of incomes and expenses for each month.
 
 For that, we have to define what is our metric. In our case incomes and expenses are stored in Airtable **Value** field, and the metric should be a sum of those.
 
-In the chart block settings, we need to choose **Aggregate function** → Sum, and **Field** → Value
-<Frame>![Notion image](/building-blocks/images/chart-block-overview/image4.png)</Frame>
-
 The **Aggregate function** has the following options:
 
-* **Sum**. Calculates the Sum of all the values for a given category.
-
-* **Average**. Calculates the average of all the values for a given category.
-
-* **Min**. Picks the smallest value of all the values of the category.
-
-* **Max**. Picks the biggest value of all the values of the category.
-
-* **Count distinct values**. Adds up the number of records that **contain a unique value**.
-
-* **Count all**. Adds up the number of records present in a given grouping category.
+- **Sum**. Calculates the Sum of all the values for a given category.
+- **Average**. Calculates the average of all the values for a given category.
+- **Min**. Picks the smallest value of all the values of the category.
+- **Max**. Picks the biggest value of all the values of the category.
+- **Count distinct values**. Adds up the number of records that **contain a unique value**.
+- **Count all**. Adds up the number of records present in a given grouping category.
 
 ### Groupings
-
-Under **Groupings**, we need to select the field by which we want our metric to be grouped and shown on the X-axis. In our case it is the **Date** field.
-<Frame>![Notion image](/building-blocks/images/chart-block-overview/image5.png)</Frame>
-
-As a result, we have the following chart that shows the sum of incomes and expenses for each month.
-<Frame>![Notion image](/building-blocks/images/chart-block-overview/image6.png)</Frame>
 
 Now, let’s explore each setup option in greater detail.
 
 **Time interval**
-
-When using **date** or **timestamp** fields, you can further group your date-like records by Time interval option:
-<Frame>![Notion image](/building-blocks/images/chart-block-overview/image7.png)</Frame>
-
-Let’s say our time interval is set to month:
-<Frame caption="Time interval: month">![Time interval: month](/building-blocks/images/chart-block-overview/image8.png)</Frame>
-
-When we change time interval to a year, metric values get aggregated for each year:
-<Frame caption="Time interval: year">![Time interval: year](/building-blocks/images/chart-block-overview/image9.png)</Frame>
 
 For the **day** and **month** time intervals you can choose relevant **display formats**:
 
@@ -109,40 +103,18 @@ For the **day** and **month** time intervals you can choose relevant **display f
 
 Next, we have the **Sort by** dropdown, which will have the following options:
 
-* **Categories // A-Z.** Order by the **Category** field values from A to Z.
-
-* **Categories // Z-A.** Order by the **Category** field values from Z to A.
-
-* **Values // A-Z.** Order by the **Value** field values from A to Z.
-
-* **Values // Z-A.** Order by the **Value** field values from Z to A.
+- **Categories // A-Z.** Order by the **Category** field values from A to Z.
+- **Categories // Z-A.** Order by the **Category** field values from Z to A.
+- **Values // A-Z.** Order by the **Value** field values from A to Z.
+- **Values // Z-A.** Order by the **Value** field values from Z to A.
 
 Example: If our **Group by** field is the Date field, and we select “**Categories //A-Z,”** we’ll have the following ordering: 2019-01, 2019-02, 2019-03, etc. (by alphabetical order), as on the screenshot above.
 
-We can also sort by the **Value** field. So, if we select **“Values // Z-A,”** the month with the highest value will come first, and chart bars will be sorted in ascending order as shown below.
-<Frame>![Notion image](/building-blocks/images/chart-block-overview/image10.png)</Frame>
-
 **Max categories**
-
-Further on, we can select how many categories (i.e. chart bars) should be displayed at most. So, if we set the number to 2, only the first two months will be visible on our chart.
-<Frame>![Notion image](/building-blocks/images/chart-block-overview/image11.png)</Frame>
-
-Lastly, we have two toggles. The first lets you **Show axis label**, which is the **Date** field in our example.
-<Frame>![Notion image](/building-blocks/images/chart-block-overview/image12.png)</Frame>
 
 **Include empty cells**
 
-The last toggle lets you choose whether you want to **include empty cells** in the category field. In the example below, we’ve removed one of the values in the Date field.
-<Frame>![Notion image](/building-blocks/images/chart-block-overview/image13.png)</Frame>
-
-So, with “Include empty cells” toggle turned on, the chart will look as follows.
-<Frame>![Notion image](/building-blocks/images/chart-block-overview/image14.png)</Frame>
-
 **Sub-grouping**
-
-Next, you can enable the **Sub-grouping** toggle to split up the chart into subcategories. In our data, we have a **Sub-type** field that indicates the exact type of each income or expense record. So, we’re going to segment our data by this field. The following image shows the resulting bar chart, where each month has four bars corresponding to each Sub-type value.
-<Frame>![Notion image](/building-blocks/images/chart-block-overview/image15.png)</Frame>
-<Tip>If you want to refer to an Airtable Linked Record in your grouping, use a relevant **Lookup Field** (supported), not a Linked Record itself (not supported).</Tip>
 
 Lastly, we can choose to **Treat empty cells as 0** as well as **Show axis label**.
 
@@ -150,13 +122,7 @@ Lastly, we can choose to **Treat empty cells as 0** as well as **Show axis label
 
 ### **Orientation**
 
-This option can be used to change the orientation of the chart from horizontal to vertical.
-<Frame caption="Switching chart orientation">![Switching chart orientation](/building-blocks/images/chart-block-overview/image16.gif)</Frame>
-
 ### Show zoom
-
-When this option is enabled, the users will be able to zoom into any area of the chart. There's also a **Zoom out** option that reverts the last zoom in action. See below how that works.
-<Frame caption="Zoom in and out">![Zoom in and out](/building-blocks/images/chart-block-overview/image17.gif)</Frame>
 
 ### Show tooltip
 
@@ -170,23 +136,20 @@ When this option is enabled, the users will be able to download the chart to the
 
 ### Charts in edit mode
 
-* Data sampling - only a small sample of records is used to generate your charts in edit mode to optimize performance
-
-* Data freshness - data shown in edit mode is real-time.
+- Data sampling - only a small sample of records is used to generate your charts in edit mode to optimize performance
+- Data freshness - data shown in edit mode is real-time.
 
 ### Charts in preview mode
 
-* Data sampling - all the specified records are being shown, limited by the max number of “records per dynamic block” specified in your plan.
-
-* Data freshness - data refreshes every 15 minutes. 
-  + Chartsinclude the Information about when the data on the chart was last refreshed.
-  + App builders can instantly refresh data in preview mode. Instant data refresh is only available in preview mode for testing purposes. Not available to your end users in the live app.
+- Data sampling - all the specified records are being shown, limited by the max number of “records per dynamic block” specified in your plan.
+- Data freshness - data refreshes every 15 minutes.
+  - Charts include the Information about when the data on the chart was last refreshed.
+  - App builders can instantly refresh data in preview mode. Instant data refresh is only available in preview mode for testing purposes. Not available to your end users in the live app.
 
 ### Charts in live mode
 
-* Data sampling - all the specified records are being shown, limited by the max number of “records per dynamic block” specified in your plan.
-
-* Data freshness - data refreshes every 15 minutes. Chartsinclude the Information about when the data on the chart was last refreshed.
+- Data sampling - all the specified records are being shown, limited by the max number of “records per dynamic block” specified in your plan.
+- Data freshness - data refreshes every 15 minutes. Chartsinclude the Information about when the data on the chart was last refreshed.
 
 ### Hiding data freshness information
 

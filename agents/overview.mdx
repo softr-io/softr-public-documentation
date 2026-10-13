@@ -1,0 +1,225 @@
+---
+title: "Softr Agents"
+sidebarTitle: "Overview"
+description: "Build AI agents that chat with your users and automate tasks across your apps and data."
+'og:title': "Softr Agents – Softr Help Docs"
+'og:description': "Build AI agents that chat with your users and automate tasks across your apps and data."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Softr Agents – Softr Help Docs"
+'twitter:description': "Build AI agents that chat with your users and automate tasks across your apps and data."
+---
+
+## Overview
+
+Softr Agents let you build an AI assistant that can hold a conversation, follow your instructions, and take real actions across your apps, databases, and connected services.
+
+Instead of scripting every step of an automation, you describe what the agent is for and give it a set of tools. The agent then decides which tools to use, and in what order, to answer a question or complete a task. An agent can:
+
+- **Chat** with your app users and respond in natural language.
+- **Search a knowledge base** you upload (files or links) to give grounded answers.
+- **Take actions** — read and write records in your data sources, send emails or Slack messages, search the web, and call external services.
+- **Remember** relevant details about a user across the conversation.
+- **Run on a schedule**, unattended, to handle recurring work.
+
+<Info>
+  **Agents vs. Database AI Agents.** This page covers standalone **Agents** — conversational assistants you connect to your apps or run on a schedule. These are different from [Database AI Agents](/softr-databases/ai-agents), which auto-fill and enrich individual fields inside a Softr Database table. You can use both, and they complement each other.
+</Info>
+
+## Agent types
+
+When you create an agent, you first choose **how it runs**. This can be changed later.
+
+- **App agent** — Users can chat with this agent from selected apps. Best for support assistants, in-app helpers, and anything a person interacts with directly.
+- **Schedule agent** — Runs automatically on a recurring schedule, with no live user in the loop. Best for recurring reports, data cleanup, sync jobs, and other background tasks.
+
+### The app as context for an App agent
+
+When you connect an App agent to a Softr app, the app itself becomes a source of tools and data for the agent — the same way the [App MCP Server](/app-mcp-server) exposes an app to external AI assistants. The agent can read and act on your app's data, but always **as the signed-in user who's chatting with it**, never as an admin or as the app itself.
+
+That means the agent's reach inside the app is capped by what that user could already do through the app's interface:
+
+- **The blocks you've built determine what's possible.** A list, grid, or table lets the agent **read** records; a form lets it **create** records (only the fields the form shows); a profile or inline editing lets it **update**; a delete action lets it **delete**.
+- **If there's no block for a table, the agent can't touch that table**, even if the underlying data source contains it.
+- **User groups, page visibility, and data restrictions all still apply.** Each user interacting with the agent sees exactly the records and actions their account would see when using the app normally.
+
+<Tip>
+  To widen or narrow what an App agent can do with your app's data, change what the app shows — add a form to allow record creation, add a list to allow reading, or restrict a block by user group to limit access. See [App MCP Server](/app-mcp-server) for the full model of how an app exposes its data.
+</Tip>
+
+## Step-by-step: Create your first agent
+
+<Steps>
+  <Step title="Create an agent">
+    From your Softr dashboard, open **Agents** in the left sidebar, then click **Create** (or **Create your first agent** if you don't have any yet).
+  </Step>
+  <Step title="Choose an agent type">
+    In the **Choose an agent type** dialog, pick **App agent** (users chat with it from your apps) or **Schedule agent** (runs on a recurring schedule), then click **Next**. You can switch types later from the agent's configuration.
+  </Step>
+  <Step title="Set up the agent profile">
+    In the editor, give your agent a title and configure its profile:
+
+    - **Model** — Choose the AI model that powers the agent. Models are grouped by cost so you can balance capability against price (see [Choosing a model](#choosing-a-model)).
+    - **Reasoning effort** — For models that support it, choose how much the model thinks before answering: **Off**, **Low**, **Medium**, or **High**. Higher effort improves quality on complex tasks but is slower and costs more.
+    - **Instructions** — Define how the agent should behave and respond. Describe its goal, what it should always do, and what it should never do.
+  </Step>
+  <Step title="Connect it to your apps or add a schedule">
+    Depending on the agent type:
+
+    - **App agent:** In the **Connected apps** card, click **Connect app** to choose which Softr app(s) the agent is available in. You can **Test** the agent inside each connected app.
+    - **Schedule agent:** In the **Triggers** card, click **Add trigger** to create a recurring schedule. Set the frequency and a timezone, and optionally a message that starts each run.
+  </Step>
+  <Step title="Add tools">
+    In the **Tools** card, click **Add a tool** to choose what the agent can do — for example, read and write records in a data source, send an email, or post to Slack. Configure each tool's authentication and, optionally, require confirmation before it runs. See [Tools & actions](#tools--actions).
+  </Step>
+  <Step title="Add knowledge (optional)">
+    In the **Knowledge** card, click **Add knowledge** to upload files or insert links the agent can search when answering. See [Knowledge](#knowledge).
+  </Step>
+  <Step title="Test and turn it on">
+    Use the **Test agent** panel on the right to run the agent and watch its responses and tool calls. When you're happy, enable the **Agent enabled** toggle and click **Turn on** to publish it. If you edit a published agent, a banner reminds you that you're editing a draft that differs from the live version — click **Update** to publish your changes.
+  </Step>
+</Steps>
+
+## Choosing a model
+
+Softr offers models from several providers, grouped by cost tier. Pick based on the task:
+
+| When you need… | Consider |
+|----------------|----------|
+| The most demanding reasoning, coding, and agentic tool use | A top-tier model (e.g. a flagship GPT, Claude Opus, or Gemini Pro model) |
+| A strong balance of capability, speed, and cost | A mid-tier model (e.g. Claude Sonnet or a Gemini Flash model) |
+| Fast, cost-efficient handling of simple, high-volume tasks | A lightweight model (e.g. a mini/nano/lite model or Claude Haiku) |
+
+<Tip>
+  Start with a balanced model and only move up to a flagship model if the agent struggles with multi-step reasoning. For simple, repetitive tasks, a lightweight model keeps costs down.
+</Tip>
+
+**Bring your own key (BYOK).** On higher plans, you can supply your own LLM provider API key so agent usage is billed to your provider account instead of consuming Softr AI credits.
+
+## Tools & actions
+
+Tools are the capabilities an agent can invoke when responding. Actions are tools wired to a specific integration — for example, "Slack: send channel message" or "Google Sheets: create row."
+
+Native actions include:
+
+- **Softr** — Read, create, update, and delete records.
+- **Google Sheets** — Read, create, update, and delete rows.
+- **HubSpot** — Read, create, update, and delete objects (e.g. contacts, deals).
+- **Gmail** — Send emails and create drafts.
+- **Slack** — Send channel messages, send direct messages, and find users.
+- **Send email** — Send an email using Softr's built-in email service.
+
+<Note>
+  **Airtable, Notion, and monday.com** connect through a [predefined MCP server](#predefined-mcp-servers) rather than individual actions — connecting one gives the agent that service's full set of tools. Other data and productivity services (Attio, Apollo, Supabase, Linear, and more) are available the same way.
+</Note>
+
+When you add a tool, you configure:
+
+- **Authentication** — Choose **Per user authentication** (uses each user's own account or permissions) or **Shared authentication** (uses one shared account or connection).
+- **Ask for confirmation** — When on, the agent shows a summary and waits for the user's approval before executing the action. (Not available for schedule agents, which run without a live user.)
+- **Configure input fields** — For each field, choose **Agent decides** (the agent fills it at run time) or **Custom** (you set a fixed value the agent can't change).
+
+## Connecting an MCP server
+
+Agents can connect to external tool servers using the Model Context Protocol (MCP) to expose additional tools. You can connect a **predefined MCP server** in a few clicks, or add a **Custom MCP** server with your own URL.
+
+### Predefined MCP servers
+
+Softr ships with ready-made connections whose server URLs are already configured — you just authenticate. These include:
+
+- **Softr Databases** — Read and manage your database tables.
+- **Airtable** — Read and manage bases, tables, and records.
+- **Notion** — Search and edit pages and databases.
+- **monday.com** — Manage boards, items, and updates.
+- **Attio** — Manage CRM records, lists, and notes.
+- **Apollo** — Search contacts and enrich leads.
+- **Brevo** — Manage contacts and email campaigns.
+- **Calendly** / **Cal.com** — Schedule and manage bookings.
+- **Fathom** / **Granola** — Access meeting recordings, summaries, and notes.
+- **Linear** — Manage issues, projects, and cycles.
+- **Supabase** — Query and manage your database.
+- **Clay** — Enrich and research data.
+- **Apify** — Run scrapers and automation actors.
+- **Replicate** — Run and manage AI models.
+- **Atlassian** — Work with Jira issues and Confluence pages.
+
+Pick a predefined server, authorize it, then choose which of its tools the agent can use.
+
+<Tip>
+  A native **tool** (under [Tools & actions](#tools--actions)) gives the agent a single, tightly scoped action with per-field control. A predefined MCP server exposes a service's full set of tools at once. Choose native actions when you want to limit exactly what the agent can do, and MCP when you want broader access.
+</Tip>
+
+### Custom MCP server
+
+To connect your own MCP server, provide:
+
+- **Name** — A label for the server (e.g. "Internal knowledge base").
+- **Server URL** — The MCP server endpoint.
+- **Authentication** — **OAuth**, **Headers** (e.g. an `Authorization` header), or none.
+
+For each tool the server exposes, set a permission:
+
+- **Allow** — Always allow the call without prompting.
+- **Ask** — Require user approval before the call runs (auto-approved for scheduled runs).
+- **Deny** — Never allow the call; the tool isn't offered to the agent.
+
+<Note>
+  Write actions (those that change data) default to requiring approval, while read-only tools are safer to allow. Review permissions before turning the agent on.
+</Note>
+
+## Knowledge
+
+Add files or links the agent can search when answering. Uploaded files (PDF, TXT, MD) and links are indexed so the agent can find and cite relevant passages.
+
+Each source moves through a status as it's processed:
+
+- **Pending** → **Indexing** → **Ready** — the source is available for the agent to search.
+- **Failed** — indexing didn't complete; remove and re-add the source.
+
+Knowledge is how you ground an agent in your own content — product docs, policies, FAQs — so it answers from your material instead of guessing.
+
+## Testing & runs
+
+Use the **Test agent** panel to run the agent and watch it work: its streamed response, the tools it calls, and any tasks it plans.
+
+Open the **Runs** panel to review every execution. Each run records:
+
+- **Model** and **Provider**
+- **Duration** and **Tool calls**
+- **Credits charged** and **Token usage** (input, cached, output, total)
+- **Finish reason**, plus a **Run failed** badge and a **Show errors only** filter for troubleshooting
+
+## Pricing and credits
+
+Agent runs consume **AI credits**. Credit usage depends on factors like the model you choose, the number and size of tool calls, knowledge search, and output length.
+
+Every Softr plan (including Free) comes with a monthly allotment of AI credits. If you use them up, AI features pause until your credits reset with your plan, or you add more with a credit add-on. On higher plans, you can also [bring your own API key](#choosing-a-model) so usage is billed to your provider instead. [Learn more about AI credits →](/workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/ai-credits/5VRMhf7Q6xvy7AJqyiQLx5)
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="What's the difference between Agents and Database AI Agents?">
+    **Agents** (this page) are standalone AI assistants that chat with your users or run on a schedule, and can take actions across your apps, data sources, and connected services.
+
+    **[Database AI Agents](/softr-databases/ai-agents)** work inside a Softr Database table to auto-fill, tag, summarize, or enrich individual fields when records are created or updated.
+
+    Both consume AI credits, and you can use them together — for example, a Database AI Agent classifies a record, and a standalone Agent follows up based on that value.
+  </Accordion>
+  <Accordion title="Do I need to code to build an agent?">
+    No. You configure agents visually — pick a model, write plain-language instructions, add tools and knowledge, and turn it on. Connecting a custom MCP server is optional and only needed if you want to expose your own external tools.
+  </Accordion>
+  <Accordion title="Can my app users chat with an agent?">
+    Yes. Create an **App agent** and connect it to one or more Softr apps. Your users can then chat with it directly inside the app. You control which apps it appears in.
+  </Accordion>
+  <Accordion title="Can an agent run automatically without a user?">
+    Yes. Create a **Schedule agent** and add a recurring schedule with a timezone. It runs unattended on that schedule — useful for reports, cleanup, and sync jobs.
+  </Accordion>
+  <Accordion title="Can I connect my own tools?">
+    Yes. Add a **Custom MCP** server (or pick from the built-in presets) to give the agent access to external tools over the Model Context Protocol, with per-tool Allow / Ask / Deny permissions.
+  </Accordion>
+  <Accordion title="Which model should I pick?">
+    Start with a balanced mid-tier model. Move up to a flagship model for demanding multi-step reasoning, or down to a lightweight model for simple, high-volume tasks. See [Choosing a model](#choosing-a-model).
+  </Accordion>
+  <Accordion title="How are agents billed?">
+    Agent runs consume AI credits, included with every plan. Usage depends on the model, tool calls, knowledge search, and output length. On higher plans you can bring your own API key. [Learn more about AI credits →](/workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/ai-credits/5VRMhf7Q6xvy7AJqyiQLx5)
+  </Accordion>
+</AccordionGroup>

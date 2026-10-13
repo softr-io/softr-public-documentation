@@ -1,136 +1,244 @@
 ---
 title: "Workspaces and Applications"
 permalink: "kTbEWSYXhBCbtTB4K9dpKs"
-description: "How apps and collaboration are organized."
-'og:title': "Workspaces and Applications – Softr Help Docs"
-'og:description': "How apps and collaboration are organized."
-'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
-'twitter:title': "Workspaces and Applications – Softr Help Docs"
-'twitter:description': "How apps and collaboration are organized."
+description: "How workspaces, projects, members and teams are organized in Softr."
+og:title: "Workspaces and Applications – Softr Help Docs"
+og:description: "How workspaces, projects, members and teams are organized in Softr."
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+twitter:title: "Workspaces and Applications – Softr Help Docs"
+twitter:description: "How workspaces, projects, members and teams are organized in Softr."
 ---
-When you log into your Softr account, you are taken to your workspace, which contains all the workspace applications as well as links to some useful resources on the left sidebar.
-<Frame caption="Softr Workspace">![Softr Workspace](/workspace-and-billing/images/workspaces-and-applications/image1.png)</Frame>
 
-By default, you’ll have at least one workspace where your first application resides. You can add more applications to your workspace, create new workspaces, or join other workspaces as a collaborator. So, let’s add a new workspace and see what the setup looks like.
+A workspace is where your Softr projects live (apps, databases, workflows, forms and agents) together with the people who build them. Each workspace has its own plan and billing, its own members, and can have teams that keep some projects private to a group.
 
-You can add a new workspace from the menu in the bottom left corner of the dashboard.
-<Frame caption="Adding a new workspace">![Adding a new workspace](/workspace-and-billing/images/workspaces-and-applications/image2.png)</Frame>
+When you log in to Softr Studio, you land on **Home** in your current workspace. The workspace switcher at the top of the left sidebar shows which workspace you're in and which plan it's on.
 
-In the pop-up that opens next, you should provide a workspace name and can also add a custom icon.
-<Frame caption="Workspace name and icon">![Workspace name and icon](/workspace-and-billing/images/workspaces-and-applications/image3.png)</Frame>
+<Frame caption="Softr Studio Home. The workspace switcher sits at the top of the left sidebar.">
+  ![Softr Studio Home screen with an arrow pointing at the workspace switcher in the top-left corner, which shows the workspace name and its plan](/images/workspaces-and-applications/studio-home.png)
+</Frame>
 
-Next, you can invite your first collaborators or skip this step.
-<Frame caption="Inviting collaborators">![Inviting collaborators](/workspace-and-billing/images/workspaces-and-applications/image4.png)</Frame>
-<Tip>Workspace collaborators can access and edit all the applications in the workspace. However, they can’t move (to another workspace) or remove any of the applications. Additionally, they can invite new **workspace collaborators** but can’t remove them.</Tip>
+Every project in the workspace is listed under **All projects** in the left sidebar, with tabs for **Apps**, **Databases**, **Workflows**, **Forms**, **Agents** and **Integrations**.
 
-**In the “Overview of workspace roles and permissions” section of this article you can find a detailed overview of each role’s permissions.**
+## Create a new workspace
 
-All your workspaces will be available in the bottom left-side menu, where you can also switch between them. The current workspace along with its **Settings**, **Members**, and **Billing** options, will be shown under **Active Workspace.**
-<Frame caption="List of workspaces along with the active workspace">![List of workspaces along with the active workspace](/workspace-and-billing/images/workspaces-and-applications/image5.png)</Frame>
+You get one workspace when you sign up. You can create more, for example one per client or one for a side project on its own plan, and other people can invite you into their workspaces.
 
-Next, we are going to look into workspace settings, workspace plans and billing, roles and permissions, and more.
+<Steps>
+  <Step title="Open Switch workspace">
+    Click the workspace switcher at the top of the left sidebar, hover **Switch workspace**, and click **Add**.
+
+    <Frame caption="Add sits at the bottom of the Switch workspace list.">
+      ![Workspace menu open with the Switch workspace submenu showing the current workspace with a check mark and an arrow pointing at Add](/images/workspaces-and-applications/add-workspace.png)
+    </Frame>
+  </Step>
+  <Step title="Name the workspace">
+    Enter a **Workspace Name**, choose a **Workspace icon** if you like, and click **Create workspace**.
+
+    <Frame caption="The New Workspace dialog.">
+      ![New Workspace dialog with a Workspace Name field, a Workspace icon swatch, and Cancel and Create workspace buttons](/images/workspaces-and-applications/new-workspace-dialog.png)
+    </Frame>
+  </Step>
+  <Step title="Invite people">
+    Add the people you'll build with. See [Invite members](#invite-members).
+  </Step>
+</Steps>
+
+To move between workspaces, open the switcher, hover **Switch workspace**, and pick one. A check mark shows the workspace you're in.
+
+## The workspace menu
+
+Clicking the workspace switcher opens the workspace menu. The top section manages the workspace you're in; the section below it is for your own account. Show below are options for the current workspace (1) and where to Switch workspaces (2).
+
+<Frame caption="The workspace menu: options for the current workspace (1) and Switch workspace (2).">
+  ![Workspace menu with a box around Settings, Plan & billing, Members and Audit logs marked 1, and an arrow marked 2 pointing at Switch workspace](/images/workspaces-and-applications/workspace-menu.png)
+</Frame>
+
+- **Settings**: the workspace name, icon and ID.
+- **Plan & billing**: the workspace's plan, usage, AI credits and payment details.
+- **Members**: who is in the workspace and their role.
+- **Audit logs**: a record of activity in the workspace.
+- **Switch workspace**: move to another workspace or create a new one.
+- **My account**, **API tokens** and **Use Softr from** apply to your own account in every workspace. See [Connect your AI assistant](/mcp/connect) for **Use Softr from**.
 
 ## Workspace settings
 
-In **Workspace settings**, as a workspace **Owner**, you can modify the name of the workspace as well as customize its icon.
-<Frame caption="Workspace settings">![Workspace settings](/workspace-and-billing/images/workspaces-and-applications/image6.png)</Frame>
+**Settings** opens **Workspace info**. Here the workspace owner can:
 
-## Workspace collaborators
+1. Rename the workspace: edit **Workspace name** and click **Save**.
+2. Copy the **Workspace ID**, which support and the Softr API may ask for.
 
-In the **Collaborators** tab, you can invite new workspace collaborators, configure the permissions of the existing ones, or [Transfer Workspace Ownership](/workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/transfer-workspace-ownership/s2GKnonVNH2yQeqhmZC8yV).
-<Tip>The option to invite new collaborators is available to both the owner and existing collaborators on the workspace.</Tip>
-<Frame caption="Collaborators">![Collaborators](/workspace-and-billing/images/workspaces-and-applications/image7.png)</Frame>
+You can also change the **Workspace icon** here.
 
-When you click on a collaborator entry in the list, a pop-up with the collaborator’s profile will open.
-<Frame caption="Collaborator profile">![Collaborator profile](/workspace-and-billing/images/workspaces-and-applications/image8.png)</Frame>
+<Frame caption="Workspace info: the workspace name (1) and the Workspace ID copy button (2).">
+  ![Workspace info page with an arrow marked 1 pointing at the Workspace name field and its Save button, and an arrow marked 2 pointing at the Workspace ID copy button](/images/workspaces-and-applications/workspace-settings.png)
+</Frame>
 
-If you’re the workspace **Owner**, you can see what permissions the collaborator has and can make changes to them. In the screenshot above, we have a **guest collaborator** (we’ll discuss this role in a bit), which means that this person only has access to specific app(s) within the workspace. In such cases, you have the option of adding the guest collaborator as a **workspace collaborator** to grant access to the whole workspace.
+## Invite members
 
-<Tip>Using the **Revoke access from all** option, you can remove the given account from all of the applications in the workspace at once.</Tip>
+**Members** lists everyone in the workspace with their role. The workspace owner is marked **Workspace owner**.
 
-## Workspace plans and billing
+<Frame caption="The Members page. Invite is in the top-right corner.">
+  ![Members page listing the workspace owner with the Owner role, and an arrow pointing at the Invite button](/images/workspaces-and-applications/workspace-members.png)
+</Frame>
 
-Each workspace has its distinct subscription plan, and all the workspace collaborators can use the features that are available under that subscription plan.
+To add someone:
 
-<Note>Maximum number of workspace collaborators depends on the subscription plan. Legacy plans have collaborator limits, while current pricing offers unlimited collaborators. See [plan comparison](https://www.softr.io/pricing). </Note>
+<Steps>
+  <Step title="Click Invite">
+    On the **Members** page, click **Invite**.
+  </Step>
+  <Step title="Enter their email">
+    Type the person's email address and select **Add** in the suggestion that appears. Repeat for anyone else you want to invite.
+  </Step>
+  <Step title="Send the invite">
+    Click **Invite** to send the invitations.
+  </Step>
+</Steps>
 
-In the Plans and billing section of the workspace, you can make changes to your subscription plan (e.g. upgrade it) or modify your billing info. You can learn more about this in our articles on [billing](/workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/billing/mMHQVxZ4Td6M91w6qjSrEy) and [pricing](/workspace-and-billing/jZP6yaeXMiJCuB6HhS4xKd/pricing-and-plans/7KRUMnHZSU6oMLjzJM84ie).
-<Frame caption="Workspace “Plan and billing” tab">![Workspace “Plan and billing” tab](/workspace-and-billing/images/workspaces-and-applications/image9.png)</Frame>
-<Tip>**Only workspace owners** have access to the “Plans and billing” section of the workspace.</Tip>
+<Frame caption="Invite members to the workspace by email.">
+  ![Invite members dialog with an email address typed in the field, an Invite button, and the workspace owner listed below](/images/workspaces-and-applications/invite-members.png)
+</Frame>
 
-## Guest collaborators
+Members see every project that isn't inside a team. To give someone access to one project only, share that project instead. See [Share a single project](#share-a-single-project).
 
-Now, let’s discuss the third role we have on workspaces **apart from the Owner and Collaborator**. It’s called a **Guest Collaborator** and is basically an application-level collaborator that has access to specific application(s) within the workspace but not the whole workspace.
+## Share a single project
 
-You can invite Guest Collaborators directly from the application by clicking on the corresponding button on the application as shown below.
-<Frame caption="Adding a guest collaborator">![Adding a guest collaborator](/workspace-and-billing/images/workspaces-and-applications/image10.png)</Frame>
+You can share one app, database or workflow without giving someone the rest of the workspace. This is how you bring in a freelancer, an agency or a client to work on a single project.
 
-The button will open a pop-up where you can enter the email of the guest and send an invite.
+Open the sharing dialog in either of two ways:
 
-<Tip>Guest collaborators only have access to the application they have been invited to and can’t access any other app in the workspace.</Tip>
+- On **All projects**, click the **⋯** menu on the project card and choose **Share**.
+- Inside the project in Studio, click the **Share** icon in the top bar, next to Preview and **Publish**.
 
-It’s also possible to add Guest Collaborators from inside the app as shown below.
-<Frame caption="Adding Guest Collaborators from inside the app">![Adding Guest Collaborators from inside the app](/workspace-and-billing/images/workspaces-and-applications/image11.png)</Frame>
+<Frame caption="Share in a project's menu on All projects.">
+  ![Project card menu open with Duplicate, Share, Move to, Create a template, View connections, Change thumbnail and Delete, and an arrow pointing at Share](/images/workspaces-and-applications/project-menu-share.png)
+</Frame>
 
-## Overview of workspace roles and permissions
+<Frame caption="The Share icon in the Studio top bar.">
+  ![Softr Studio top bar with an arrow pointing at the Share icon to the left of the Preview and Publish buttons](/images/workspaces-and-applications/share-from-studio.png)
+</Frame>
 
-We’ve briefly discussed some of the things different workspace roles can and can’t do, but here you can find a complete list of permissions for each role.
+In the dialog, type a name or email, select **Add**, pick a role, and click **Invite**.
 
-**Owner can**
+<Frame caption="Share a project by email and choose the role they get.">
+  ![Share Untitled Application dialog with an email address and the Editor role selected in the invite field, the Invite button, and the project owner listed below](/images/workspaces-and-applications/share-project.png)
+</Frame>
 
-* Edit/delete workspace;
+The dialog lists everyone who has access and their role. When you share an app, the people you share it with also get indirect access to the databases and integrations the app is connected to, so they can keep building. The **connected items** link at the bottom of the dialog shows which ones.
 
-* Modify the workspace subscription plan and change billing info;
+## Teams
 
-* Add/remove Collaborators;
+A team is a private space inside the workspace, with its own projects and its own members. Projects in a team are visible only to the members of that team and the workspace owner. Anything not in a team stays visible to every workspace member under **All projects**.
 
-* Add/remove Guest Collaborators;
+To create a team, go to **All projects**, click **Add team**, enter a name and click **Next**.
 
-* Create, move, and delete apps within the workspace.
+<Frame caption="Create a team from All projects.">
+  ![Add new team dialog with a Name field, an icon picker, and Cancel and Next buttons](/images/workspaces-and-applications/add-team.png)
+</Frame>
 
-**Collaborator (workspace collaborator) can**
+<Note>
+  How many teams you can create depends on your workspace's plan. See [Pricing and Plans](/workspace-and-billing/pricing-and-plans).
+</Note>
 
-* Leave the workspace;
+## Roles and permissions
 
-* Add another Collaborator;
+Access in Softr works at three levels: the workspace, teams, and individual projects.
 
-* Add a Guest Collaborator;
+### Workspace roles
 
-* Create an app within the workspace.
+| Role | What they can do |
+| --- | --- |
+| **Owner** | One per workspace. Full control of settings, plan and billing, members, teams and every project. The owner can [transfer ownership](/workspace-and-billing/transfer-workspace-ownership) to another member. |
+| **Member** | Sees and builds every project that isn't in a team, plus the teams they're added to and anything shared with them directly. |
+| **Guest** | Sees nothing by default. A guest only has access to the teams or projects shared with them, which suits freelancers, agencies and clients. |
 
-**Guest collaborator (application collaborator) can**
+### Project roles
 
-* Leave the workspace.
+These are the roles you choose in a project's **Share** dialog.
 
-## Moving applications across workspaces
+| Role | What they can do |
+| --- | --- |
+| **Owner** | Can share, edit and delete the project. Each project has one owner, and ownership can be handed over with **Change owner**. The workspace owner has the same rights on every project. |
+| **Editor** | Can edit the project, but can't manage who has access. |
+| **Viewer** | Read-only access. When you share an app, Viewer is listed as coming soon. |
 
-<Note>Moving applications is available for users on the [Professional plan and above](https://www.softr.io/pricing).</Note>
+<Tip>
+  A person's access is the highest role they hold at any level. Adding someone to a team or sharing a project with them can widen their access, but never narrows access they already have.
+</Tip>
 
-This option is **only available to workspace Owners**, allowing them to move the application from one of the workspaces they own to another workspace where they are either an **Owner** or a **Collaborator**.
+## Plan and billing
 
-When moving an application from one workspace to another, the receiving workspace needs to satisfy certain conditions depending on the features that your application has:
+Each workspace is billed on its own, with its own plan. Everyone who works in the workspace uses the features that plan includes.
 
-* If the application has 2 or more [Edit Permission](/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq) rules OR a Single Sign-on block ([SAML](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/saml-single-sign-on/j9hELMUfGtAGqoNzejgoif) or [OpenId](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/openid-single-sign-on/hqqStep7RUmiSMb6qnGLkq)), only **Business** plan workspaces can receive the application.
+**Plan & billing** shows:
 
-* If the application [has more than 5 users](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/add-or-import-users-manually/g5R1bGnBTFJ3sWLR8Mgdng), the receiving workspace needs to be either **Professional** or **Business**.
+- the current plan, and the options to change or downgrade it,
+- usage against your plan's limits: app users, published apps, custom domains, database records, file storage and workflow actions,
+- your AI credits, with the option to buy more,
+- your payment method, billing details and invoices.
 
-* If the application has a [custom code block](/custom-code/3idxDhKqz1qPdqBuWbs61G/custom-code-block-overview/6XNrxFopUEiwbWipq81Eq1), the following subscription plans can receive it: **Starter, Professional,** and **Business**.
+<Frame caption="Plan & billing shows the plan, usage and AI credits for this workspace.">
+  ![Plan & billing page with the current plan on the left, usage cards for Apps, Databases and Workflows in the middle, and AI credits on the right](/images/workspaces-and-applications/plan-and-billing.png)
+</Frame>
 
-* If the application doesn't contain any of the above-mentioned features, **any plan** (including the Free plan) can receive it.
+Only the workspace owner can manage the plan and billing. For details, see [Billing](/workspace-and-billing/billing), [Pricing and Plans](/workspace-and-billing/pricing-and-plans) and [AI Credits](/workspace-and-billing/ai-credits).
 
-<Tip>When moving an application, **Guest Collaborators** will be moved along with the app.</Tip>
+## Move a project
 
-When moving an app, you may need to re-add and re-map data sources - Softr will prompt you to do this with a popup modal. To move an app, simply click the three dots on the app and select **Move**, then choose the workspace you would like to move the app to.
-<Frame>![Notion image](/workspace-and-billing/images/workspaces-and-applications/image12.png)</Frame>
+You can move a project to another workspace, or into a team within the same workspace.
 
-## **Duplicating and deleting applications**
+<Steps>
+  <Step title="Open Move to">
+    On **All projects**, click the **⋯** menu on the project card and choose **Move to**.
 
-If you need to make a copy of an existing application in its current state, you can do so by choosing **Duplicate** in the application menu.
-<Frame caption="Duplicating an app">![Duplicating an app](/workspace-and-billing/images/workspaces-and-applications/image13.png)</Frame>
+    <Frame caption="Move to in a project's menu.">
+      ![Project card menu open with an arrow pointing at Move to](/images/workspaces-and-applications/project-menu-move.png)
+    </Frame>
+  </Step>
+  <Step title="Choose the destination">
+    Pick the destination workspace from the dropdown, then choose **All projects** or a team in that workspace, and click **Move**.
 
-After performing the action, a copy of the application will be created, and you’ll be taken right into the studio, where you can start editing. The copy will appear in the same workspace next to the original one.
+    <Frame caption="The Move dialog. Here the workspace has no teams yet, so there is nowhere else to move the app.">
+      ![Move Untitled Application to dialog with a workspace dropdown, All projects marked Current, and Cancel and Move buttons](/images/workspaces-and-applications/move-project.png)
+    </Frame>
+  </Step>
+</Steps>
 
-<Tip>Both workspace **Owners and Collaborators** can duplicate applications.</Tip>
+<Note>
+  The destination workspace's plan needs to support the features the project uses, such as its number of app users or single sign-on. If the project uses data sources connected in the current workspace, you may need to reconnect them after the move.
+</Note>
 
-Finally, you have the option of deleting any of the applications with the workspace **if you’re the workspace** **Owner**. You just need to click **Delete** in the application menu and confirm the action in the dialog box that appears afterwards.
-<Frame caption="Deleting an app">![Deleting an app](/workspace-and-billing/images/workspaces-and-applications/image14.png)</Frame>
+## Duplicate or delete a project
+
+Both options are in the project's **⋯** menu on **All projects**.
+
+<Frame caption="Duplicate (1) and Delete (2) in a project's menu.">
+  ![Project card menu with an arrow marked 1 pointing at Duplicate and an arrow marked 2 pointing at Delete](/images/workspaces-and-applications/project-menu-duplicate-delete.png)
+</Frame>
+
+- **Duplicate** makes a copy of the project in its current state, in the same workspace.
+- **Delete** removes the project. Confirm in the dialog that follows. Only the project's owner, or the workspace owner, can delete it.
+
+<Warning>
+  Deleting a project removes it for everyone who has access to it. If you might need a copy, duplicate it first.
+</Warning>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Transfer Workspace Ownership" icon="arrow-right-arrow-left" href="/workspace-and-billing/transfer-workspace-ownership">
+    Hand the workspace over to another member.
+  </Card>
+
+  <Card title="Pricing and Plans" icon="tags" href="/workspace-and-billing/pricing-and-plans">
+    What each plan includes.
+  </Card>
+
+  <Card title="Billing" icon="credit-card" href="/workspace-and-billing/billing">
+    Payment methods, invoices and plan changes.
+  </Card>
+
+  <Card title="AI Credits" icon="sparkles" href="/workspace-and-billing/ai-credits">
+    How AI credits work and are billed.
+  </Card>
+</CardGroup>

@@ -1,0 +1,118 @@
+---
+title: "Softr MCP Server"
+sidebarTitle: "Overview"
+description: "Connect an AI assistant to your Softr workspace to work with data, build apps, and create workflows."
+'og:title': "Softr MCP Server – Softr Help Docs"
+'og:description': "Connect an AI assistant to your Softr workspace to work with data, build apps, and create workflows."
+'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+'twitter:title': "Softr MCP Server – Softr Help Docs"
+'twitter:description': "Connect an AI assistant to your Softr workspace to work with data, build apps, and create workflows."
+icon: "plug"
+---
+
+[Model Context Protocol (MCP)](https://modelcontextprotocol.io) is an open standard that lets AI assistants securely connect to external tools and data. Softr's MCP server gives an assistant like Claude, ChatGPT, or Cursor direct access to your Softr workspace — so you can query and edit your data, read and build apps, write custom code blocks, and create workflows, all in plain language.
+
+It is the same workspace you see in Softr Studio, reached a different way. Anything the assistant does happens as you, with your permissions, and shows up in the builder like any other change.
+
+## What you can do
+
+| Area | What the assistant can do |
+|---|---|
+| [Databases](/mcp/databases) | Query, filter, and aggregate your data; create records; build and change tables and fields |
+| [Applications](/mcp/apps) | Create a blank app; add pages; read apps, pages, blocks, and permissions; list, search, add, remove, activate, and deactivate app users; enable or disable login; configure sign-up, the email sender, and the app's subdomain and custom domain; preview an app; publish it |
+| [Vibe coding blocks](/mcp/vibe-coding) | Create and edit custom code blocks on an app's pages, and manage their settings, visibility, and version history |
+| [Integrations](/mcp/integrations) | Browse the external data sources connected to a workspace |
+| [Workflows](/mcp/workflows) | Build workflows step by step, test each step, and publish them |
+
+## How Softr is organized
+
+Almost every tool asks for a workspace, so it helps to know how the pieces fit together. A **workspace** is the top-level container, and everything else belongs to one:
+
+```
+Workspace
+├── Applications ── pages ── blocks (including vibe coding blocks)
+├── Databases ───── tables ── fields, views, records
+├── Workflows ───── steps
+└── Integrations ── the external data sources apps and blocks read from
+```
+
+`list_workspaces` returns the workspaces you can reach, with their IDs. It is how the assistant turns "my Sales workspace" into the ID that every other tool needs, so it is often the first call in a conversation.
+
+## MCP server URL
+
+```
+https://mcp.softr.io/mcp
+```
+
+Use this URL when adding Softr as an MCP server in your AI tool.
+
+## Authentication
+
+Softr's MCP server supports two ways to sign in. Both let you choose exactly what the AI tool can reach.
+
+**OAuth** is the normal route, and what Claude, Claude Code, ChatGPT, Codex, Cursor and most other clients use. You give the client the MCP server URL, and Softr shows you an authorization screen where you pick what to grant. Most clients negotiate the OAuth details themselves — a Client ID only has to be entered by hand in clients that cannot register with Softr on their own, such as Cursor.
+
+**A personal access token** covers custom clients, your own MCP build, and any tool with no OAuth support. Create one under **API tokens** in your account menu.
+
+[Connect your AI assistant](/mcp/connect) has the exact steps for every tool, the Client IDs for the clients that ask for one, and what the authorization screen is granting.
+
+## Permissions
+
+Whether you connect with OAuth or a personal access token, you choose permissions the same way: pick which workspaces are covered, then set an access level for each of three areas.
+
+| Area | Access levels |
+|---|---|
+| **Applications & Forms** | Full access · Read only · None |
+| **Databases** | Full access · Edit data · View only · None |
+| **Workflows** | Full access · Read only · None |
+
+What each level allows:
+
+| Area | Level | What it allows |
+|---|---|---|
+| Applications & Forms | Read only | Read apps, pages, blocks, user groups, permissions, and the fields of the table that authenticates end users; browse integrations |
+| | Full access | The above, plus adding pages, creating and editing vibe coding blocks, creating, changing, and deleting user groups, previewing, and publishing |
+| Databases | View only | Read databases, tables, fields, views, and records; search and aggregate |
+| | Edit data | The above, plus creating, updating, and deleting records |
+| | Full access | The above, plus creating, changing, and deleting databases, tables, and fields |
+| Workflows | Read only | Read workflows and their steps, and the outputs of steps already tested |
+| | Full access | The above, plus building, editing, testing, and publishing workflows |
+
+<Note>
+  Levels are bundles, not a checklist. There is no way to grant editing without reading, or database schema changes without record access. Picking a level always includes everything below it.
+
+  Deleting travels with editing, too: **Edit data** lets an assistant delete records, and **Full access** lets it delete fields, tables, and whole databases. If you want a token that can never delete anything, the level to pick is **View only**. See [Deleting data](/mcp/databases#deleting-data) for the rules that still apply.
+</Note>
+
+## Managing access
+
+Go to **API tokens** in your account menu to see and remove access at any time.
+
+- **Personal access tokens** can be edited, regenerated, or deleted.
+- **Authorized apps** lists the AI tools you connected with OAuth, with a **Revoke** button for each. Revoking one immediately invalidates the tokens it was issued.
+
+<Note>
+  The **Authorized apps** section only appears once you have authorized at least one app, so it will be missing if you have only ever used personal access tokens.
+</Note>
+
+## Example prompts
+
+Once connected, you can work with your workspace in plain language:
+
+- _"Create a new blank app in my workspace."_
+- _"Add a user named Jane Doe with email jane@example.com to my app."_
+- _"Deactivate the user jane@example.com in my app."_
+- _"Change my app's subdomain to my-crm.softr.app."_
+- _"Connect app.acme.com to my app."_
+- _"List my app's users — who hasn't signed in yet?"_
+- _"Disable login for my app."_
+- _"Only let people with an example.com email sign up for my app."_
+- _"Send my app's emails from support@acme.com as Acme Support."_
+- _"What email sender is configured on my app?"_
+- _"List all databases in my workspace."_
+- _"Search the Orders table for everything still pending and sort by date."_
+- _"Add a Priority field to Tasks with options Low, Medium, and High."_
+- _"Build me a chart block on the dashboard page showing revenue by month."_
+- _"What user groups can edit the Clients page?"_
+- _"Create a workflow that sends me a Slack message whenever a new order comes in."_
+- _"Show me what the app looks like right now."_

@@ -1,58 +1,184 @@
 ---
-title: "Google Sign In"
+title: "Google Sign-in"
 permalink: "2hBabh9UqoE8W7aWrfPVFd"
-description: "Adding an authentication option with Google Sign In."
-'og:title': "Google Sign In – Softr Help Docs"
-'og:description': "Adding an authentication option with Google Sign In."
-'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
-'twitter:title': "Google Sign In – Softr Help Docs"
-'twitter:description': "Adding an authentication option with Google Sign In."
+description: "Let people into your Softr app with their Google account — create an OAuth client in Google Cloud, then paste the credentials into your app's authentication settings."
+og:title: "Google Sign-in – Softr Help Docs"
+og:description: "Let people into your Softr app with their Google account — create an OAuth client in Google Cloud, then paste the credentials into your app's authentication settings."
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+twitter:title: "Google Sign-in – Softr Help Docs"
+twitter:description: "Let people into your Softr app with their Google account — create an OAuth client in Google Cloud, then paste the credentials into your app's authentication settings."
 ---
-To enable Google Sign In on the [Signup](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/signup-form/tPe3uxmdcUNeFYuaLTR1o9) and [Sign In](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/signin-form/gYwm7wWsqb2bRyJFUreSzN) forms, you first need to integrate **Google Sign In** by adding **Google App Client ID** and **Secret** credentials here. Let's go through the steps of getting the credentials.
 
-## Creating a Project
+Google Sign-in puts a **Continue with Google** button on your app's sign-in and sign-up forms. People who already have a Google account get in with one click, and you never hold a password for them.
 
-To start with, you need to create a project (if you don't have one yet) in your Google Cloud Platform.
-<Frame caption="Creating a project">![Creating a project](/integrations/images/google-sign-in/image1.png)</Frame>
+Setting it up happens in two places: you create an OAuth client in the Google Cloud console, then paste its client ID and secret into Softr. Keep both tabs open — you will be moving between them.
 
-In the next screen, add the project details (organization and location will be autofilled based on your email, but you can change them) and hit **Create** to create the project.
-<Frame caption="Project details">![Project details](/integrations/images/google-sign-in/image2.png)</Frame>
+<Note>
+  Google Sign-in is one of the methods on the [sign-in form](/add-and-manage-users/signin-form), alongside email and password. It is not the same as [SSO](/add-and-manage-users/single-sign-on-overview), which hands authentication to your own identity provider over SAML or OpenID. You can switch both on at once.
+</Note>
 
-From your project dashboard, go to **APIs & Services** section.
-<Frame caption="Navigating to APIs & Services">![Navigating to APIs & Services](/integrations/images/google-sign-in/image3.png)</Frame>
+## Before you start
 
-This is where you create your credentials, but before that, you need to configure the [Consent Screen](https://developers.google.com/workspace/marketplace/configure-oauth-consent-screen). Let's see how.
+<AccordionGroup>
+  <Accordion title="A Google account that can create Cloud projects">
+    Creating a project needs the `resourcemanager.projects.create` permission. Personal Google accounts have it; a work account in a Google Cloud organization often does not, and the **No organization** row in the project picker will be marked with a warning triangle. If that happens, ask whoever administers your Google Cloud organization to create the project — or to grant you the permission — and carry on from step 2.
+  </Accordion>
 
-## Configuring the Consent Screen
+  <Accordion title="Your app's URL, exactly as visitors see it">
+    Open your published app and copy the address out of the browser bar. On a Softr subdomain that is `https://yourapp.softr.app`, with no `www.`; on a [custom domain](/publishing/add-a-custom-domain-to-your-app) it is whatever host you connected. You need the scheme and host only — no trailing slash, no path.
+  </Accordion>
+</AccordionGroup>
 
-In the **APIs & Services section**, navigate to **Credentials** and click on **CONFIGURE CONSENT SCREEN**.
-<Frame caption="Configure Consent Screen">![Configure Consent Screen](/integrations/images/google-sign-in/image4.png)</Frame>
+## Create your Google OAuth client
 
-Next, choose **External** for the **User Type** and click **Create**.
-<Frame caption="User type">![User type](/integrations/images/google-sign-in/image5.png)</Frame>
+<Steps>
+  <Step title="Create a Google Cloud project">
+    In the [Google Cloud console](https://console.cloud.google.com/projectcreate), give the project a name. Google derives a project ID from it, which cannot be changed later. If your account belongs to an organization you also have to pick a **Parent resource**. Click **Create**.
 
-In the next page, you need to fill in your app details. Here, it's important to add your Softr domain to the **Authorized Domains**. To do that, you need to click **Add Domain** under the corresponding section and fill in your domain as shown below.
-<Tip>If your Softr app is on a Softr subdomain (e.g. john.softr.app), then you need to add "softr.app" as the authorized domain. If you've connected a custom domain (e.g. [yourdomain.com](http://yourdomain.com/)), just add your domain as it is.</Tip>
-<Frame caption="Authorized domain setup">![Authorized domain setup](/integrations/images/google-sign-in/image6.png)</Frame>
+    <Frame caption="Naming a new project in the Google Cloud console.">
+      ![The New Project form with a project name filled in and the Create button below it](/images/google-sign-in/create-google-cloud-project.png)
+    </Frame>
 
-In the next steps, you can define **Scopes**, add **Test Users**, and finalize the setup. As soon as you're, done, click **Back to Dashboard** at the bottom of the screen. Now, let's proceed to creating the credentials to connect your app from Softr.
+    <Tip>
+      Already have a project for this app? Skip this step and pick it from the project picker in the console's top bar instead.
+    </Tip>
+  </Step>
+  <Step title="Name the app people will consent to">
+    Go to **Google Auth Platform → Branding**. **App name** and **User support email** are what people see on Google's consent screen the first time they sign in, so use the name of your portal rather than the project ID. Click **Save**.
 
-## Creating Credentials
+    <Frame caption="App name and support email on the Branding page.">
+      ![The App information section of the Branding page, with the app name and user support email fields outlined](/images/google-sign-in/branding-app-information.png)
+    </Frame>
 
-From the **Credentials** section click on **Create Credentials** and choose **OAuth client ID**.
-<Frame caption="Create credentials">![Create credentials](/integrations/images/google-sign-in/image7.png)</Frame>
+    <Note>
+      On a brand-new project, opening Google Auth Platform starts a short **Get started** wizard that asks for the app name, support email, audience and a contact address in one pass. Complete it and you arrive at these pages with the work already done. Google documents the rest of the branding options in [Manage OAuth App Branding](https://support.google.com/cloud/answer/15549049).
+    </Note>
+  </Step>
+  <Step title="Choose who can sign in — and publish the app">
+    Open **Audience**. Two settings on this page decide who gets in.
 
-In the next screen, you need to select the **Application type** as **Web application** and add your full domain (e.g. www.john.softr.app or www.yourdomain.com) under **Authorized JavaScript origins** **URIs** and **Authorized redirect URIs**.
-<Tip>Make sure to have `www` in the URIs.</Tip>
-<Frame caption="OAuth client ID setup">![OAuth client ID setup](/integrations/images/google-sign-in/image8.png)</Frame>
+    <Frame caption="Publishing status and user type on the Audience page.">
+      ![The Audience page showing publishing status Testing and user type External](/images/google-sign-in/audience-publishing-status.png)
+    </Frame>
 
-As soon as you complete the setup, a pop-up will appear with your **Client ID** and **Client Secret**.
-<Frame caption="Client ID and Client Secret">![Client ID and Client Secret](/integrations/images/google-sign-in/image9.png)</Frame>
+    1. **Publishing status.** A new project starts in **Testing**, and while it is in Testing only the Google accounts listed under **Test users** can sign in — up to 100 of them. Click **Publish app** to move it into production.
+    2. **User type.** **External** lets anyone with a Google account sign in. **Internal** appears only if your Google account belongs to a Google Workspace organization, and limits sign-in to that organization.
 
-Just copy those values in the Authentication Tab of the Users menu. Turn on the Google Sign-in toggle, then click the gear icon to open the setup dialog.
-<Frame caption="Turn on the Google Sign-in toggle, the click the gear icon.">![Turn on the Google Sign-in toggle, the click the gear icon.](/integrations/images/google-sign-in/image10.png)</Frame>
+    <Warning>
+      Leaving the project in **Testing** is the most common reason a correctly configured Google Sign-in still fails: everyone who is not on the test-user list is refused. Publish the app before you point real users at it. Google's [Manage App Audience](https://support.google.com/cloud/answer/15549945) covers the limits in full.
+    </Warning>
 
-Paste the client ID and secret into the respective fields. Be sure to select Internal or External users like you did on the Google cloud console side. If you select internal, you need to define the allowed domains for signup/login.
-<Frame>![Notion image](/integrations/images/google-sign-in/image11.png)</Frame>
+    Note which **User type** you picked. You set the same value on the Softr side.
+  </Step>
+  <Step title="Create the OAuth client">
+    Go to **Clients → Create client**. Set **Application type** to **Web application** and give the client a name. The name is only used to identify the client in the console; nobody signing in ever sees it.
 
-Once these are pasted in, click Save and you’re done!
+    <Frame caption="Choosing the Web application client type.">
+      ![The Create OAuth client ID form with application type set to Web application and a client name entered](/images/google-sign-in/create-oauth-client-type.png)
+    </Frame>
+  </Step>
+  <Step title="Add your app's URL to both lists">
+    Under **Authorized JavaScript origins**, click **Add URI** and paste your app's URL. Then do the same under **Authorized redirect URIs**. Click **Create**.
+
+    <Frame caption="The same app URL added as a JavaScript origin and a redirect URI.">
+      ![The two URI lists on the OAuth client form, each holding the app's URL](/images/google-sign-in/oauth-client-uris.png)
+    </Frame>
+
+    <Note>
+      Match the origin your visitors actually load, character for character. A Softr subdomain has no `www.` — `https://acme-portal.softr.app`, not `https://www.acme-portal.softr.app`, which does not resolve. On a custom domain, include `www.` only if that is the host people land on.
+    </Note>
+
+    <Tip>
+      Google registers the domains of these URIs as **Authorized domains** on your consent screen automatically, so there is no separate step for that. Changes to a client can take anywhere from five minutes to a few hours to take effect.
+    </Tip>
+  </Step>
+  <Step title="Copy the client ID and secret">
+    Google shows the new client's ID and secret as soon as it is created. Copy both before you close the panel.
+
+    <Warning>
+      Google no longer lets you view a client secret after creation — the client's page shows only its last four characters. If you lose it, open the client and use **Add secret** to issue a new one, then update Softr with the new value.
+    </Warning>
+  </Step>
+</Steps>
+
+## Add the credentials to Softr
+
+<Steps>
+  <Step title="Switch Google Sign-in on">
+    In Softr Studio, open your app and go to **Users → Authentication**. Turn on the **Google Sign-in** toggle (1), then click the gear (2) to open its settings.
+
+    <Frame caption="The Google Sign-in row in the Authentication method list.">
+      ![The Authentication method list with the Google Sign-in toggle switched on and its gear icon beside it](/images/google-sign-in/enable-google-sign-in.png)
+    </Frame>
+
+    <Note>
+      An amber dot next to a method means **Setup is incomplete** — it is switched on but has no working configuration yet. It clears once you save valid credentials.
+    </Note>
+  </Step>
+  <Step title="Paste the credentials">
+    Paste the **Google client ID** and **Google client secret** you copied from the console (1). Then set **User type** (2) to the same value you chose on the Audience page.
+
+    <Frame caption="The Google Sign-in settings dialog with Internal selected.">
+      ![The Google Sign-in settings dialog showing the client ID and secret fields, the user type control, and the email domains field](/images/google-sign-in/google-sign-in-settings.png)
+    </Frame>
+
+    With **Internal**, a **Google Sign-in email domains** field appears. Anyone whose email address is on one of these domains is always sent to Google to log in, even when your app also offers email or SSO. Choosing **External** hides the field, because an external client accepts any Google account.
+
+    <Frame caption="With External selected, the email domains field is not shown.">
+      ![The same dialog with user type set to External and no email domains field beneath it](/images/google-sign-in/google-sign-in-settings-external.png)
+    </Frame>
+  </Step>
+  <Step title="Save and publish">
+    Click **Save**, then publish your app so the change reaches the live site. The amber dot beside **Google Sign-in** should disappear.
+  </Step>
+</Steps>
+
+## What people see
+
+**Continue with Google** appears above the email field on both the sign-in and the [sign-up form](/add-and-manage-users/signup-form). The first time someone uses it, Google shows a consent screen carrying the app name and support email you set under **Branding**.
+
+<Frame caption="The Continue with Google button on a published app's login page.">
+  ![An app login page with Continue with Google above the SSO button and the email field](/images/google-sign-in/continue-with-google.png)
+</Frame>
+
+Signing in this way creates or matches a record in your app's [users list](/add-and-manage-users/users-menu) on the email address the Google account carries.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Google refuses the request before showing the account chooser">
+    The URL registered on the OAuth client does not match the address the browser is on. Compare them character for character: `http` against `https`, `www.` present or absent, and no trailing slash. If you have just changed the client, give it a few minutes — Google warns that client changes can take up to a few hours to propagate.
+  </Accordion>
+
+  <Accordion title="Some people can sign in and others cannot">
+    Either the Google Cloud project is still in **Testing**, in which case only the accounts on the test-user list are allowed, or the client's **User type** is **Internal** and the people being refused are outside your Google Workspace organization. Both live on the **Audience** page.
+  </Accordion>
+
+  <Accordion title="The amber dot beside Google Sign-in will not clear">
+    Softr marks a method **Setup is incomplete** until it has a client ID and secret saved. Reopen the gear and check both fields are filled and saved.
+  </Accordion>
+
+  <Accordion title="Only people on certain domains are sent to Google">
+    That is the **Google Sign-in email domains** field doing its job. Clear it if you want those people to be able to use email or SSO as well.
+  </Accordion>
+</AccordionGroup>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Sign-in form" icon="right-to-bracket" href="/add-and-manage-users/signin-form">
+    Every authentication method your app can offer, and how the form behaves.
+  </Card>
+
+  <Card title="Single Sign-on Overview" icon="key" href="/add-and-manage-users/single-sign-on-overview">
+    SAML and OpenID, for when authentication should sit with your own identity provider.
+  </Card>
+
+  <Card title="Internal vs external users" icon="users" href="/add-and-manage-users/internal-vs-external-users">
+    How Softr counts the people who sign in to your app.
+  </Card>
+
+  <Card title="Google: set up OAuth 2.0" icon="google" href="https://support.google.com/cloud/answer/15549257">
+    Google's own reference for OAuth clients, consent and credentials.
+  </Card>
+</CardGroup>
