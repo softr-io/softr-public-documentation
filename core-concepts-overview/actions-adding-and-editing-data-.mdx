@@ -8,68 +8,67 @@ description: "Adding actions your users can perform in the application."
 'twitter:title': "Actions: Adding and editing data  – Softr Help Docs"
 'twitter:description': "Adding actions your users can perform in the application."
 ---
-Actions make your app interactive, allowing users to do more than just view data—they can create, update, and engage with it. In Softr, there are three types of actions:
+Actions make your app interactive. Users can do more than view data: they can create it, update it, and act on it. Softr has three types of actions:
 
-* **Data actions:** Let users manage information by adding, updating, or deleting records directly within the app.
+* **Data actions:** Let users add, update, or delete records directly in the app.
 
-* **Navigation actions:** Help users navigate smoothly by linking to other pages, scrolling to specific areas, or opening external links.
+* **Navigation actions:** Send users to another page, scroll to a section, or open an external link.
 
-* **Advanced actions:** Enable more complex operations, like triggering API calls to perform actions in external systems (e.g., Zapier/Make)
+* **Advanced actions:** Run more complex operations, such as an API call that triggers an action in an external system (for example, Zapier or Make).
 
-These interactive features empower users to do more with your app, making it dynamic and highly functional.
+For actions that run in the background, with no user clicking a button, use [workflows](/workflows/workflows).
 
 <iframe src="https://www.youtube.com/embed/c5CHppiTUMA?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
 
 ### **Data actions**
 
-Data Actions empower users to manage and manipulate records directly within your app, enhancing its interactivity and usability. These actions can be configured on **dynamic blocks** such as [List](https://www.notion.so/List-block-14d9a723d69180d7b3feda1d90653ed6?pvs=21), Grid, [Kanban](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/kanban/7y9bp8Z1ZkTZwpVRY8Ug1K), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe), [Calendar](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/calendar/rdfXqxaPkTFioEbjBBAZai), [Inbox](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/layout-inbox/9cbSp8Mvwru9g6L6RM4uJ5), and [Item details](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/item-details-block-/4bE8XaFbJp45wkAwuWiz8f).
+Data actions let users manage records directly in your app. You configure them on **dynamic blocks** such as [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), Grid, [Kanban](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/kanban/7y9bp8Z1ZkTZwpVRY8Ug1K), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe), [Calendar](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/calendar/rdfXqxaPkTFioEbjBBAZai), [Inbox](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/layout-inbox/9cbSp8Mvwru9g6L6RM4uJ5), and [Item details](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/item-details-block-/4bE8XaFbJp45wkAwuWiz8f).
 
-* [Add record](/actions/ntEfT9zSJk6aY54G6W5KGU/add-record/3LrUMpQY4BKfDDQj6eb8h8): Create new entries in your data.
+* [Add record](/actions/ntEfT9zSJk6aY54G6W5KGU/add-record/3LrUMpQY4BKfDDQj6eb8h8): Create a new record.
 
-* [Edit record:](/actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx) Modify the details of a specific record.
+* [Edit record:](/actions/ntEfT9zSJk6aY54G6W5KGU/edit-record/irSJXPF1gCMXNmfsQFscvx) Change the details of one record.
 
-* [One-click update](/actions/ntEfT9zSJk6aY54G6W5KGU/one-click-update/8BaX5i6KLZhZCrSZERGnej): Apply predefined updates to a record with a single click.
+* [One-click update](/actions/ntEfT9zSJk6aY54G6W5KGU/one-click-update/8BaX5i6KLZhZCrSZERGnej): Apply a predefined update to a record with one click.
 
-* [Delete record:](/actions/ntEfT9zSJk6aY54G6W5KGU/delete-record/peV9LGdJbM9sKHKynqopkH) Remove a record from your data.
+* [Delete record:](/actions/ntEfT9zSJk6aY54G6W5KGU/delete-record/peV9LGdJbM9sKHKynqopkH) Delete a record.
 
 **Example:** In a Sales CRM, users can edit client details and log activity with clients.
-<Frame>![Notion image](/core-concepts-overview/images/actions-adding-and-editing-data-/image1.png)</Frame>
+<Frame caption="A contact's details page with Edit and Delete actions, and a Log activity button">![A CRM contact record with Edit and Delete buttons and an activity log with a Log activity button](/core-concepts-overview/images/actions-adding-and-editing-data-/crm-edit-delete-actions.webp)</Frame>
 <Info>
 
-Some actions differ depending on the block you are using. For more information on available actions, refer to the specific block documentation.
+The available actions depend on the block. See the documentation of each block for its actions.
 
 </Info>
 
 ### **Navigation actions**
 
-These actions enhance app navigation by directing users to specific pages or external destinations. They are available for both dynamic and static blocks.
+These actions send users to a page or an external destination. They work on both dynamic and static blocks.
 
-* [Open page](/actions/ntEfT9zSJk6aY54G6W5KGU/item-on-click-actions/f1ns7phZfNNvgwXA6tTN3M): Navigate to another page within your app.
+* [Open page](/actions/ntEfT9zSJk6aY54G6W5KGU/item-on-click-actions/f1ns7phZfNNvgwXA6tTN3M): Go to another page in your app.
 
-* [Open details page](/actions/ntEfT9zSJk6aY54G6W5KGU/item-on-click-actions/f1ns7phZfNNvgwXA6tTN3M): Open a detailed view of a selected record.
+* [Open details page](/actions/ntEfT9zSJk6aY54G6W5KGU/item-on-click-actions/f1ns7phZfNNvgwXA6tTN3M): Open the details page of the selected record.
 
-* [Open URL](/actions/ntEfT9zSJk6aY54G6W5KGU/item-on-click-actions/f1ns7phZfNNvgwXA6tTN3M): Redirect users to an external link.
+* [Open URL](/actions/ntEfT9zSJk6aY54G6W5KGU/item-on-click-actions/f1ns7phZfNNvgwXA6tTN3M): Send users to an external link.
 
-* [Scroll to](/actions/ntEfT9zSJk6aY54G6W5KGU/item-on-click-actions/f1ns7phZfNNvgwXA6tTN3M): Move the view to a specific section within the block.
+* [Scroll to](/actions/ntEfT9zSJk6aY54G6W5KGU/item-on-click-actions/f1ns7phZfNNvgwXA6tTN3M): Scroll to a section of the page.
 
-**Example: I**n a Sales CRM app, clicking an account manager’s name in a list can **Open a details page** to display their profile.
-<Frame>![Notion image](/core-concepts-overview/images/actions-adding-and-editing-data-/image2.gif)</Frame>
+**Example:** In a Sales CRM app, clicking an account manager’s name in a list can **Open details page** to show their profile.
+<Frame caption="Clicking a name opens the details page">![A user clicks a name in a list and the details page opens](/core-concepts-overview/images/actions-adding-and-editing-data-/image2.gif)</Frame>
 <Info>
 
-Some actions differ depending on the block you are using. For more information on available actions, refer to the specific block documentation.
+The available actions depend on the block. See the documentation of each block for its actions.
 
 </Info>
 
 ### **Advanced actions**
 
-These actions enable more complex operations and custom integrations.
+These actions cover more complex operations and custom integrations.
 
-* **Block-specific actions:** Certain blocks offer additional interactive options tailored to their purpose. For example, the [Kanban](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/kanban/7y9bp8Z1ZkTZwpVRY8Ug1K) block includes drag-and-drop functionality, enabling users to move cards between columns. Refer to the specific block documentation for detailed guidance.
+* **Block-specific actions:** Some blocks offer extra actions that fit their purpose. For example, the [Kanban](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/kanban/7y9bp8Z1ZkTZwpVRY8Ug1K) block lets users drag cards between columns. See the documentation of each block for details.
 
-* [Export](/actions/ntEfT9zSJk6aY54G6W5KGU/export/mnrvzncWeoSfwWJscZCAxC)**/**[Download](/actions/ntEfT9zSJk6aY54G6W5KGU/download-file/8Sr2y4CREVcW2GEEDYUhfJ): Export visible records as PDF and CSV
+* [Export](/actions/ntEfT9zSJk6aY54G6W5KGU/export/mnrvzncWeoSfwWJscZCAxC)**/**[Download](/actions/ntEfT9zSJk6aY54G6W5KGU/download-file/8Sr2y4CREVcW2GEEDYUhfJ): Export the visible records as PDF or CSV.
 
-* [Call API](/actions/ntEfT9zSJk6aY54G6W5KGU/call-api/i9f1s3w9wib3oRmS4HZ7MX): Trigger a custom API call for advanced workflows. *(Available for Professional, Business, and Enterprise plans)*
+* [Call API](/actions/ntEfT9zSJk6aY54G6W5KGU/call-api/i9f1s3w9wib3oRmS4HZ7MX): Send a custom API call. *(Available for Professional, Business, and Enterprise plans)*
 
-**Example:** In a real estate management app, when a user clicks 'Request an appointment,' you can trigger Zapier to send a Slack notification to the realtor.
-<Frame>![Video: Configure a webhook URL through automation platforms like Zapier](/core-concepts-overview/images/actions-adding-and-editing-data-/image3.png)</Frame>
-[Video: Configure a webhook URL through automation platforms like Zapier](https://youtu.be/J8zqFmAFRLM?si=klO-dK1OTAZy5u_m)
+**Example:** In a real estate management app, a user clicks **Request an appointment**. The action triggers Zapier, which sends a Slack notification to the realtor.
+[Watch the video: configure a webhook URL through automation platforms like Zapier](https://youtu.be/J8zqFmAFRLM?si=klO-dK1OTAZy5u_m)

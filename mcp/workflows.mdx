@@ -10,19 +10,23 @@ description: "Build, test, and publish Softr workflows through an AI assistant."
 icon: "random"
 ---
 
-[Workflows](/workflows/workflows) automate work in the background: something happens, and Softr responds by sending an email, updating a record, calling an API, or whatever else you need. These tools let an assistant build one for you — choosing a trigger, adding the steps, wiring them together, testing them, and turning the workflow on.
+[Workflows](/workflows/workflows) automate work in the background: something happens, and Softr responds by sending an email, updating a record, calling an API, or whatever else you need. These tools let an assistant build one for you. It chooses a trigger, adds the steps, connects them, tests them, and turns the workflow on.
+
+<Frame caption="A workflow in the builder: a trigger, steps, and branches. The assistant builds the same structure.">
+  ![A workflow canvas with a trigger, a branch step and an action step, each marked with a numbered label](/mcp/images/workflows/workflow-canvas-annotated.webp)
+</Frame>
 
 <Note>
-  The tool names say "node" where the builder says **step**. They're the same thing — a node is one step in the workflow.
+  The tool names say "node" where the builder says **step**. They mean the same thing: a node is one step in the workflow.
 </Note>
 
 ## How the assistant builds a workflow
 
-Workflows are built one step at a time: pick a trigger, add a step, fill in its inputs, test it, then move on to the next.
+The assistant builds a workflow one step at a time: pick a trigger, add a step, fill in its inputs, test it, then move on to the next.
 
-**A step's output can only be used once that step has been tested.** Later steps usually need data from earlier ones, and those references only work after the earlier step has actually run. So the assistant tests as it builds rather than at the end — and every step needs a passing test, including final ones that nothing reads from.
+**A step's output can only be used once that step has been tested.** Later steps usually need data from earlier ones, and those references only work after the earlier step has run. So the assistant tests as it builds, not at the end. Every step needs a passing test, including final steps that nothing reads from.
 
-**Testing can have real effects.** Some steps can be tested with mock data. Others can't, and testing one makes a real call — sending the actual email, writing the actual row.
+**Testing can have real effects.** Some steps can be tested with mock data. Others can't, and testing one makes a real call: it sends the actual email or writes the actual row.
 
 ## Creating and managing workflows
 
@@ -37,15 +41,15 @@ Workflows are built one step at a time: pick a trigger, add a step, fill in its 
 | `publish_workflow` | Turns the workflow on, so it starts running on its trigger |
 | `unpublish_workflow` | Turns it off. The steps are kept |
 
-**Publishing means enabling.** A workflow does nothing until it's published, no matter how complete it is. Unpublishing stops it without losing any work, so it's a safe pause rather than a deletion.
+**Publishing means enabling.** A workflow does nothing until you publish it, however complete it is. Unpublishing stops it and keeps all your work, so it's a safe pause, not a deletion.
 
 <Tip>
-  Ask the assistant for the workflow's link rather than working from an ID. Every tool here returns one, and it opens the workflow in Softr where you can see the whole thing laid out.
+  Ask the assistant for the workflow's link, not its ID. Every tool here returns a link. It opens the workflow in Softr, where you can see the whole workflow.
 </Tip>
 
 ## Finding the right step type
 
-Softr supports hundreds of trigger and action types. These tools let the assistant search them and read what a given type needs.
+Softr offers many trigger and action types. These tools let the assistant search them and read what each type needs.
 
 | Tool | What it does |
 |---|---|
@@ -54,7 +58,7 @@ Softr supports hundreds of trigger and action types. These tools let the assista
 | `get_workspace_integrations` | Lists the workspace's connected integrations, for steps that need one |
 | `get_dynamic_input_options` | Fetches the live options for an input whose values come from an integration |
 
-`get_dynamic_input_options` fills in the dropdowns you would otherwise pick from by hand — which Slack channel, which Trello board, which AI model. Those options live in the connected tool rather than in Softr, so they are fetched while the workflow is being built.
+`get_dynamic_input_options` fills in the dropdowns you would otherwise pick by hand: which Slack channel, which Trello board, which AI model. Those options live in the connected tool, not in Softr, so the assistant fetches them while it builds the workflow.
 
 See [Trigger Types](/workflows/trigger-types) for what can start a workflow.
 
@@ -77,7 +81,7 @@ See [Trigger Types](/workflows/trigger-types) for what can start a workflow.
 | `update_node_note` | Adds or clears a note on a step |
 
 <Note>
-  **Branch and filter conditions can't be set through MCP yet.** The assistant can add a branch and its paths, but deciding what sends a run down each path is something you finish in the builder.
+  **Branch and filter conditions can't be set through MCP yet.** The assistant can add a branch and its paths. You set what sends a run down each path in the builder.
 </Note>
 
 ## Testing
@@ -87,4 +91,4 @@ See [Trigger Types](/workflows/trigger-types) for what can start a workflow.
 | `test_node` | Runs a single step and saves its output as a sample |
 | `get_node_output` | Shows a step's saved output, or lists which steps still need testing |
 
-`get_node_output` without a specific step is the "is this finished?" check — it lists every step and whether it has been tested. Worth asking for before you publish.
+`get_node_output` without a specific step is the "is this finished?" check. It lists every step and whether it has been tested. Ask for it before you publish.

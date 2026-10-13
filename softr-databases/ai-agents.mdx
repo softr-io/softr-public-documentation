@@ -17,25 +17,25 @@ Database AI Agents are AI helpers that live inside your Softr Databases fields. 
 <Steps>
   <Step title="Add an AI field">
     Open your table in Softr Databases. Add a new **AI field**, or edit an existing text field and toggle on **Let AI auto-fill this field** in the AI tab.
-    <Frame>![Notion image](/softr-databases/images/ai-agents/image1.png)</Frame>
+    <Frame caption="Open the AI tab of the field editor and turn on Let AI auto-fill this field.">![The AI tab of a long text field, with Let AI auto-fill this field turned on](/softr-databases/images/ai-agents/ai-field-settings.webp)</Frame>
   </Step>
   <Step title="Pick a model and write your prompt">
     Pick the AI model. You can choose from models by leading providers like Anthropic, OpenAI, and Gemini, depending on the balance of speed, accuracy, and cost you need. Then write your own prompt, like *‘Summarize the resume into key skills’*, or start with a ready-made template. Use **@** to reference other database fields in your prompts.
-    <Frame>![Notion image](/softr-databases/images/ai-agents/image2.png)</Frame>
+    <Frame caption="Pick a model and write the prompt. Type @ to insert another field.">![The model dropdown set to GPT-4.1 and a prompt that references the Company name field](/softr-databases/images/ai-agents/model-and-prompt.webp)</Frame>
   </Step>
   <Step title="Set when the agent runs">
     Under the **Run When** section, set whether the agent is triggered manually OR runs automatically when a record is created or updated. Add **Only run if…** filters so the agent triggers only when conditions are met (e.g. run only if **Status = ‘Approved’**). This prevents unnecessary runs and saves credits.
-    <Frame>![Notion image](/softr-databases/images/ai-agents/image3.png)</Frame>
+    <Frame caption="Choose when the agent runs, and add Only run if filters.">![The Run When section with triggers for manual runs, new records and updated records, plus Skip when value already exists](/softr-databases/images/ai-agents/run-when.webp)</Frame>
   </Step>
   <Step title="Preview and save">
     Under **Preview**, select a record to generate a preview of what the agent will populate and how many AI credits it will consume. Click **Save** when you’re ready to activate the agent.
-    <Frame>![Notion image](/softr-databases/images/ai-agents/image4.png)</Frame>
+    <Frame caption="Run a preview on one record. The coin count shows the credits used.">![The Preview section with a record selected, the generated result and the credit count](/softr-databases/images/ai-agents/preview-and-credits.webp)</Frame>
   </Step>
 </Steps>
 
 ## Web Search
 
-AI Agents can search the web to enrich your data — for example, pulling the latest company info, fact-checking details, or adding context. Toggle on **Allow web search** in the AI settings, then specify in your prompt what to look up and how to format it (e.g. ‘Find the latest average delivery rates in Ontario; extract the number and cite the domain in brackets’).
+AI Agents can search the web to enrich your data, for example, pulling the latest company info, fact-checking details, or adding context. Toggle on **Allow web search** in the AI settings, then specify in your prompt what to look up and how to format it (e.g. ‘Find the latest average delivery rates in Ontario; extract the number and cite the domain in brackets’).
 
 ## AI Settings & Conditions
 
@@ -44,10 +44,10 @@ You’re fully in control of **when** and **how** your AI agents run:
 * **Allow manual edits:** Toggle this on to enable review on AI-generated fields.
 
 * **Model**: Choose from dozens of models by leading providers like Anthropic, OpenAI, and Gemini, depending on the task and the balance of speed, accuracy, and cost you need.
-<Frame>![Notion image](/softr-databases/images/ai-agents/image5.png)</Frame>
+<Frame caption="Each model shows a short description and its relative credit cost.">![The model list with a description and credit cost for each model](/softr-databases/images/ai-agents/model-picker.webp)</Frame>
 
 * **Run mode options:** 
-  + **Triggered manually:** Run the agent only when you click — useful for testing or expensive operations.
+  + **Triggered manually:** Run the agent only when you click. Useful for testing or expensive operations.
   + **New record is created:** Runs automatically when a new record is added.
   + **Existing record is updated:** Runs automatically when an existing record is updated.
   + **Skip when value already exists:** Prevents the agent from running if the field already has data (so existing values aren’t overwritten).
@@ -56,7 +56,7 @@ You’re fully in control of **when** and **how** your AI agents run:
 ## Agent Templates
 
 Start from a ready-made agent template by clicking **Template** in the AI field settings to see a task description that you can customize to your needs.
-<Frame>![Notion image](/softr-databases/images/ai-agents/image6.png)</Frame>
+<Frame caption="Start from a template, then edit the prompt.">![The Template menu with Summarize text, Categorize text, Write, Extract and Translate](/softr-databases/images/ai-agents/prompt-templates.webp)</Frame>
 
 ## AI Credits & Billing
 

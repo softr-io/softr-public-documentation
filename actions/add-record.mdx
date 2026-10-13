@@ -12,85 +12,85 @@ description: "Letting users add new records to your data."
 
 ### Adding the Button
 
-This [Action Button](/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq) is available under **Topbar Buttons** and lets users add new records/rows to your [data source](https://www.notion.so/4230abecf813402aa2926466c313290a). Add Record buttons are only available on List Blocks and can be added by clicking on the List Block, selecting the Actions tab, clicking the **+ Add Topbar Button**, then choosing **Add Record** from the dropdown.
-<Frame>![Notion image](/actions/images/add-record/image1.png)</Frame>
-<Tip>By default, you’ll have one **Add record** button added to your block, which you can remove if needed.</Tip>
+This [action button](/actions/ntEfT9zSJk6aY54G6W5KGU/action-buttons-overview/idg8Fqf2kjFwcx6kyP3jNq) is available under **Topbar Buttons**. It lets users add new records to your data source, such as a [Softr Database](/softr-databases/softr-databases-overview) table. Add record buttons are available on List blocks. To add one, select the List block, open the **Actions** tab, click **+ Add Topbar Button**, and choose **Add Record** from the dropdown.
+<Frame>![The Actions tab of a List block with the Add topbar button option highlighted](/actions/images/add-record/image1.png)</Frame>
+<Tip>By default, your block has one **Add record** button. You can remove it.</Tip>
 
 ### Adding Form Fields
 
-When you give users the option to add a new record, they’ll likely need some fields to fill out. Once the button has been added, you can:
+Users need fields to fill in when they add a record. Once you add the button, you can:
 
-1. Give the button a label
+1. Give the button a label.
 
-2. Add fields that the user should be able to fill out for the new record. Each field will have its own set of options, but at minimum each will have a label, a placeholder, whether its required or not, and a way to map it to your data source.
-<Frame>![Notion image](/actions/images/add-record/image2.png)</Frame>
+2. Add the fields that users fill in for the new record. Each field has a label, a placeholder, a required switch, and a **Map to** setting that links it to a field in your data source.
+<Frame>![The Actions tab of a List block with an Add record button and its fields](/actions/images/add-record/image2.png)</Frame>
 
 ### About the Modal
 
-You won’t be able to see the live form that the users will see when adding a record unless you preview or use the app live. However, you can set the title of the **Add Record** modal as well as what the Add and Cancel buttons say. You can preview the modal by clicking the eye icon in the upper right of the section. If you need to change the theme of the modal such as background, text color, button color, etc., you can do that in the [Theme](/styling/7qXYEkNvWQamR6vcLXzZnF/application-theme/91YGSL2aDJajXdbPBhitbc) menu tab.
-<Frame>![Notion image](/actions/images/add-record/image3.png)</Frame>
+The modal is the form that users see when they add a record. You can set the title of the **Add Record** modal and the text of its Add and Cancel buttons. To see the live form, preview the app or use it live. You can also preview the modal with the eye icon in the upper right of the section. To change the look of the modal (background, text color, button color), use the [Theme](/styling/7qXYEkNvWQamR6vcLXzZnF/application-theme/91YGSL2aDJajXdbPBhitbc) menu tab.
+<Frame>![The settings of the Add record modal: title and button texts](/actions/images/add-record/image3.png)</Frame>
 
 ### Setting the On Form Submission
 
-In this section of the Add Record button, you can set the Success message that appears the user when the submit, as well as the Action that happens upon submitting the form. You have several choices here:
+Here you set the success message that users see after they submit the form, and the action that runs next. You can choose:
 
-* **Open new record’s details page** - This will immediately send the user to a details page displaying the new records details. If you do not have a details page for this type of record, you will be asked to create one.
+* **Open new record’s details page:** Sends the user to a details page for the new record. If you have no details page for this type of record, Softr asks you to create one.
 
-* **Close the modal** - This will close the popup and return the user to the original screen before clicking the Add Record button.
+* **Close the modal:** Closes the popup and returns the user to the screen they came from.
 
-* **Open a page** - This will link the user to a page in your app that you specify
+* **Open a page:** Sends the user to a page in your app.
 
-* **Open an external URL** - This will send the user to a URL link that you specify
-<Frame>![Notion image](/actions/images/add-record/image4.png)</Frame>
+* **Open an external URL:** Sends the user to a URL you set.
+<Frame>![The On form submission settings: success message and next action](/actions/images/add-record/image4.png)</Frame>
 
 ### Button Visibility
 
-After the button has been created, you can click on the yellow highlighted branching icon to set visibility conditions based on a Logged-in User’s [User Group](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3).
-<Frame>![Notion image](/actions/images/add-record/image5.png)</Frame>
+After you create the button, click the yellow branching icon to set visibility conditions based on the logged-in user’s [user group](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3).
+<Frame>![The branching icon that opens the button visibility settings](/actions/images/add-record/image5.png)</Frame>
 
 ## Example
 
-So, let’s see how you can set this action up and what features are available. We’re going to use a [List block](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) connected to an [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) data source, which shows a list of tasks for a hypothetical product development team and has three fields: **Name** (the name of the task), **Assignee** (who it is assigned to), and **Status** (the current progress status of the task). We want to enable an “Add new task” button to allow development team members add new tasks to the list.
+Let’s set up this action. We use a [List block](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) connected to a Tasks table in a [Softr Database](/softr-databases/softr-databases-overview). The list shows the tasks of a product development team. Each task has a **Task** name, a **Status** (the progress of the task), and a **Priority**. The table can have more fields. We want an “Add new task” button so team members can add tasks to the list.
 <Frame caption="List of tasks">![List of tasks](/actions/images/add-record/image6.png)</Frame>
 
-First, we are going to configure the button label.
+First, we set the button label.
 <Frame caption="Button label">![Button label](/actions/images/add-record/image7.png)</Frame>
 
-Then, we are going to customize other texts for the button. As you can see in the following gif, it’s also possible to preview the **Add record** pop-up, through which users are going to add new record details.
+Then we customize the other texts of the button. The following gif also shows how to preview the **Add record** pop-up, where users enter the details of a new record.
 <Frame caption="Setting up button texts and previewing the modal">![Setting up button texts and previewing the modal](/actions/images/add-record/image8.gif)</Frame>
 
-Next, we need to specify the field from our data source that are going to be available when adding a new record. To do that, we need to hit the **Add field** at the top of the button settings and add the necessary fields. To add a new task, we need to specify its **Name**, **Assignee**, and **Status**. Therefore, we are going to add a Text field and map it to the **Name** field on Airtable as well as add two dropdown fields and map them to **Assignee** and **Status**, as these two are single-select fields in our Airtable data source.
+Next, we choose which fields of the data source users fill in. Click **Add field** in the button settings and add each field. A new task needs a **Task** name, a **Status**, and a **Priority**. We add a Text field and map it to the **Task** field of the table. We add two dropdown fields and map them to **Status** and **Priority**, because both are select fields in the table.
 <Frame caption="Adding fields for the add new task functionality">![Adding fields for the add new task functionality](/actions/images/add-record/image9.gif)</Frame>
-<Info>Among other fields, you can also add a [Signature field](/displaying-and-creating-data/vikC2AWEpQGkZd4jGyoVxo/layout-customizable-form/jCim5VWZePgZuaRsUZBnpG#signature-field) to capture eSignatures when adding records. </Info>
-<Warning>Note that [computed fields](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX#airtable-computed-fields) will not appear in the list of mappable fields for the form.</Warning>
-<Warning>You cannot add or edit records located in synced tables.</Warning>
+<Info>You can also add a [Signature field](/displaying-and-creating-data/vikC2AWEpQGkZd4jGyoVxo/layout-customizable-form/jCim5VWZePgZuaRsUZBnpG#signature-field) to capture eSignatures when users add records.</Info>
+<Warning>Computed fields, such as formula, lookup, and rollup fields, don’t appear in the list of mappable fields for the form.</Warning>
+<Warning>You can’t add or edit records in synced tables.</Warning>
 
-Now, we need to define who can see and use the button (see [button visibility](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/action-button-visibility/tqpb8TkUD4U4DCAUA2hjKo)).
+Now we define who can see and use the button (see [button visibility](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/action-button-visibility/tqpb8TkUD4U4DCAUA2hjKo)).
 
 <Tip>
 Button visibility options depend on the subscription plan:
 
 → On Free and Starter plans you can decide who can see the button (All Users, Logged-in Users, or Non Logged-in Users)
 
-→ On Professional plan you can also configure conditional visibilitybut can’t set [custom user groups](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3).
+→ On the Professional plan you can also configure conditional visibility, but you can’t set [custom user groups](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3).
 
-→ On Business plan you have access to all the features in Button Visibility.
+→ On the Business plan you have access to all the features in Button Visibility.
 See [plan comparison](https://www.softr.io/pricing).
 </Tip>
 
-The users of our task list are the same people who are working on those tasks, so we are going to [connect the same Airtable base](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9) with tasks and assignees to Softr as a user database.
-<Frame caption="Airtable table with the list of tasks and assignees.">![Airtable table with the list of tasks and assignees.](/actions/images/add-record/image10.png)</Frame>
-<Tip>The users sync between Softr and data source is one-way (from Softr to data source), so, if you connect a data source with users without having them [in Softr](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/users-menu/5JTzjtbvp8Skemd26A9ho9) first, you’ll need to create the same users in Softr as well to establish the connection.</Tip>
+The users of our task list are the team members who work on those tasks. Their emails are in the **Assignee email** field of the Tasks table, next to each task.
+<Frame caption="The Tasks table in a Softr Database: each task has a status and an assignee email.">![The Tasks table of a Softr Database with the fields Task, Details, Status, Priority and Assignee email](/actions/images/add-record/tasks-table-softr-databases.webp)</Frame>
+<Tip>Users who sign in to your app must exist as [users in Softr](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/users-menu/5JTzjtbvp8Skemd26A9ho9). If your users live in another data source, see [Syncing users with a data source](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9).</Tip>
 
-We are also going to create a [user group](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3) that includes project managers only.
+We also create a [user group](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/user-groups/6XQfKMeKHUvBcAjKvLs3g3) for project managers only.
 <Frame caption="Creating a user group for project managers.">![Creating a user group for project managers.](/actions/images/add-record/image11.png)</Frame>
 
-Next, we are going to set up button visibility so that only the **Project Managers** user group is able to access the button.
+Next, we set the button visibility so that only the **Project Managers** user group can see the button.
 <Frame caption="Setting button visibility">![Setting button visibility](/actions/images/add-record/image12.gif)</Frame>
 
-Now, let’s test the setup and see how it works from the user’s perspective.
+Now let’s test the setup from the user’s side.
 
 ### Testing adding new tasks
 
-To test our setup, we are going to log into our application with one of the project manager users and add a new task to the list. The following gif illustrates that.
+To test the setup, we sign in to the app as a project manager and add a new task to the list. The following gif shows it.
 <Frame caption="Adding a new task">![Adding a new task](/actions/images/add-record/image13.gif)</Frame>

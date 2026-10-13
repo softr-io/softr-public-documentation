@@ -8,37 +8,35 @@ description: "Setting up conditions to filter the list data."
 'twitter:title': "Conditional Filters – Softr Help Docs"
 'twitter:description': "Setting up conditions to filter the list data."
 ---
-The conditional filtering feature allows you to filter the list, as well as other dynamic blocks, based on the defined conditions.
+Conditional filters show only the records that meet the conditions you define. They work on the List block and on other dynamic blocks.
 
 <Info>Conditional filtering is also used when you want to display a main list of items, and upon selecting a specific item, show its details along with its associated sub-items. Learn about [Linked List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/linked-list/bWjTdKhbftofSEKRSxMFz9). </Info>
 
-It's available through **Conditional Filters** in the block settings sidebar under the **Source** section.
-<Frame>![Notion image](/user-groups-and-permissions/images/conditional-filters/image1.png)</Frame>
+In the Studio, this section is called **Record filters**. Find it in the **Source** tab of the block settings. See also [Record filters](/user-groups-and-permissions/record-filters).
+<Frame caption="The Record filters section in the Source tab of a block.">![The Record filters section with the any-or-all selector and the Add condition button](/user-groups-and-permissions/images/conditional-filters/record-filters-section.webp)</Frame>
 
-Now, let's see how it works.
+First, use the dropdown at the top to choose whether **any** or **all** of the conditions must be met.
+<Frame caption="“Any” or “All” of the conditions">![The any-or-all dropdown with Any and All options](/user-groups-and-permissions/images/conditional-filters/any-or-all.webp)</Frame>
 
-First of all, from the dropdown selector at the top, you can choose whether **any** or **all** of the defined conditions should be met for filtering the information.
-<Frame caption="“Any” or “All” of the conditions">![“Any” or “All” of the conditions](/user-groups-and-permissions/images/conditional-filters/image2.png)</Frame>
-
-Additional conditions can be joined with:
+Extra conditions join with:
 
 * AND (when "All" is selected)
 
 * OR (when "Any" is selected)
-<Frame>![Notion image](/user-groups-and-permissions/images/conditional-filters/image3.png)</Frame>
+<Frame caption="The second condition starts with And when “All” is selected.">![A second condition joined with And](/user-groups-and-permissions/images/conditional-filters/and-condition.webp)</Frame>
 
-Moving on, let's see how the **Condition** is configured. There are three fields in **Condition Settings:**
+Each condition has three parts: a field, a condition, and a value.
 
 ## **1. Field**
 
-Here, you need to select a field from the specified data source base, for which the condition will be defined.
+Select the field of the data source table that the condition tests.
 
 ## 2. Condition
-<Frame>![Notion image](/user-groups-and-permissions/images/conditional-filters/image4.png)</Frame>
+<Frame caption="The conditions available for a text-like field.">![The condition dropdown listing Is, Is not, Contains, Does not contain, Is any of, Is none of, and Is empty](/user-groups-and-permissions/images/conditional-filters/condition-operators.webp)</Frame>
 
-The following options are available for defining a relationship between the [Field](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU) and the [Value](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU).
+The condition describes how the field relates to the value. The available conditions depend on the field type.
 
-**Text-like** **Fields**, e.g. emails, formulas, URLs, single select fields – can be used with the following available conditions:
+**Text-like fields**, such as emails, formulas, URLs, and single select fields, can be used with the following available conditions:
 
 * **Is** – the Field value needs to match the Valueexactly
 
@@ -60,7 +58,7 @@ The following options are available for defining a relationship between the [Fie
 
 * **Ends with** – the Field value ends with the Value
 
-**Numeric Fields** can be used with the following available conditions:
+**Numeric fields** can be used with the following available conditions:
 
 * =
 
@@ -80,7 +78,7 @@ The following options are available for defining a relationship between the [Fie
 
 * Is not empty
 
-**Array-like Fields**, e.g. multi-select fields, linked records, tags, lookup fields can be used with the following available conditions:
+**Array-like fields**, such as multi-select fields, linked records, tags, and lookup fields, can be used with the following available conditions:
 
 * Includes any of
 
@@ -94,7 +92,7 @@ The following options are available for defining a relationship between the [Fie
 
 * Is not empty
 
-**Boolean Fields**, e.g. checkbox fields:
+**Boolean fields**, such as checkbox fields:
 
 * Is
 
@@ -104,52 +102,45 @@ The following options are available for defining a relationship between the [Fie
 
 * Is not empty
 
-<Info>At the moment Date fields can be used with the same conditions as Text-like Fields. </Info>
+<Info>Date fields currently use the same conditions as text-like fields.</Info>
 
 ## 3. Value
 
-Here, you have two options. Let's consider each one separately.
+You have two options.
 
 ### Entering a specific value
 
-You can enter a specific value for the selected field so that only the records having that value are displayed.
+Enter a value. The block then shows only the records that have that value.
 
 <Tip>If the **value contains a space**, you'd need to copy it from somewhere else instead of typing it in.</Tip>
 
-Let's say we have a list of employees in [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) and want to display only the ones whose position is Project Manager.
-<Frame caption="A list of employees in Airtable">![A list of employees in Airtable](/user-groups-and-permissions/images/conditional-filters/image5.png)</Frame>
-
-Below you can see how we apply a conditional filter to show only the entries that meet this condition.
-<Frame caption="Applying a conditional filter to the list">![Applying a conditional filter to the list](/user-groups-and-permissions/images/conditional-filters/image6.gif)</Frame>
+For example, a Tasks table in [Softr Databases](/softr-databases/softr-databases-overview) has a Status field. To show only the tasks in progress, set the condition to **Status is In progress**.
+<Frame caption="A Tasks table with Task, Details, Status, Priority, and Assignee email fields.">![A Tasks table in Softr Databases with Status and Assignee email columns](/user-groups-and-permissions/images/conditional-filters/tasks-table-status-and-assignee.webp)</Frame>
 
 ### **Using Logged-in user's parameters**
 
-Using this option, you can set a condition to filter the list for each logged-in user personally, so that each user only sees entries related to him/her.
+Use this option to filter the block for each logged-in user, so that each user sees only their own records.
 
-By default, you'll have user's **Email** and **Email-Domain** options here. However, if you've [connected users to a data source](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9), all the fields from the data source will also become available for your choice. Below, you can see how we add fields from the connected Airtable table.
-<Frame caption="Fields added from the connected Airtable base">![Fields added from the connected Airtable base](/user-groups-and-permissions/images/conditional-filters/image7.gif)</Frame>
+By default, you can use the user's **Email** and **Email domain**. If you've [connected users to a data source](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9), all the fields of that data source are available too.
 
-Let's consider a specific example to make it clear how this works and in which cases it can be applied. Let's imagine you have a task list on [Airtable](/data-sources/1YYStCJukT15Lh2j93qo9A/airtable/jHX7kfH7QvkVcELQvS3VoX) with such fields as **Assignee, Description, and Status**. The **Assignee** field contains the emails of the users to which the task is assigned.
-<Frame caption="Task list on Airtable">![Task list on Airtable](/user-groups-and-permissions/images/conditional-filters/image8.png)</Frame>
+Here is an example. The Tasks table has the fields **Task**, **Status**, and **Assignee email**. The Assignee email field holds the email of the user who owns the task.
 
-To be able to view their tasks, the users need to log into the system and navigate to the page with the list. However, you want each user to see only his/her tasks, and that can be achieved with a single condition. In **Condition Settings** we are going to set the **Field** to **Assignee** and **Action** to **Logged in User's Email**. This way the logged in user will only see those entries of the list, where the **Assignee** field corresponds to his/her email address. The below GIF illustrates this.
-<Frame caption="Testing the conditional filter">![Testing the conditional filter](/user-groups-and-permissions/images/conditional-filters/image9.gif)</Frame>
+Each user should see only their tasks. One condition does this. Set the **Field** to **Assignee email** and the value to the **logged-in user's Email**. The block then shows only the tasks where Assignee email matches the email of the user who is logged in.
+<Frame caption="One table and one condition give each user a different view.">![Maria sees her three tasks and Leo sees his three tasks, from the same Tasks table with the same record filter](/user-groups-and-permissions/images/conditional-filters/record-filter-per-user.webp)</Frame>
 
-That's it. This way, you can set a condition for any of the fields in your list and filter the list accordingly for your logged in users.
+You can set a condition like this for any field of your block.
 
-<Tip>More attributes will be added soon to allow for more advanced filtering based on additional user attributes such as user roles, statuses, and so on.</Tip>
-
-Now, let’s consider some specific value use cases to see how you can handle them.
+<Tip>Softr plans to add more user attributes for filtering, such as user roles and statuses.</Tip>
 
 ### Use Case: **Using a Checkbox field in a Conditional Filter**
 
-Airtable has a Checkbox field type which you might want to use in a conditional filter.
+You can filter on a Checkbox field.
 
-<Tip>The list block doesn't have a Checkbox field type (the [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe) block has it though), but you can still use it in a conditional filter (if you have it on Airtable) even without displaying it.</Tip>
+<Tip>The List block can't display a Checkbox field (the [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe) block can). You can still use it in a conditional filter without displaying it.</Tip>
 
-If you want to display the records that have the checkbox checked, you can use the **is not empty** condition as shown below. And vice versa, if you want to filter the unchecked records, you can use the **is empty** condition.
-<Frame caption="'is not empty' condition for showing checked items">!["is not empty" condition for showing checked items](/user-groups-and-permissions/images/conditional-filters/image10.png)</Frame>
+To show the records with the checkbox checked, use the **is not empty** condition. To show the unchecked records, use **is empty**.
+<Frame caption="“is not empty” shows the checked items.">![A condition on a checkbox field with the is not empty operator](/user-groups-and-permissions/images/conditional-filters/checkbox-is-not-empty.webp)</Frame>
 
 ## Security
 
-<Tip>Softr viability checks and record conditional filters are applied on the server side, and there is no way to trick the system. Learn more about [Softr App Security](/security/ummZ2CWNHXZCHzsZwbEwET/softr-app-security/1xC7Hgkvo67AnHKyebr1uC).</Tip>
+<Tip>Softr applies visibility checks and record filters on the server side, so users cannot bypass them. Learn more about [Softr App Security](/security/ummZ2CWNHXZCHzsZwbEwET/softr-app-security/1xC7Hgkvo67AnHKyebr1uC).</Tip>
