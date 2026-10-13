@@ -250,7 +250,7 @@ Runs a workflow repeatedly on a schedule you define.
 
 Integration triggers connect Softr Workflows to third-party services. Each service needs a connected account. Calendly, Attio, and Zoho CRM are **Instant**, while other services use background checks about every minute.
 
-The trigger window also lists triggers for ClickUp, Microsoft Excel, Granola, Fathom, Cal.com, DocuSign, HubSpot, Xero, Slack, QuickBooks, Jotform, Fillout, Tally, Typeform, Stripe, SharePoint, and Linear. Open the integration in the window to see its events. Each integration page lists its triggers and actions.
+The trigger window also lists triggers for ClickUp, Microsoft Excel, Granola, Fathom, Cal.com, DocuSign, Xero, Slack, QuickBooks, Jotform, Fillout, Tally, Typeform, Stripe, SharePoint, and Linear. Open the integration in the window to see its events. Each integration page lists its triggers and actions.
 
 ---
 
@@ -300,6 +300,19 @@ The trigger window also lists triggers for ClickUp, Microsoft Excel, Granola, Fa
 **Configuration:** Requires a connected Notion account (OAuth). Select the database to watch.
 
 **When to use:** Sync Notion database entries to Softr, or trigger notifications when a Notion page is updated.
+
+---
+
+### HubSpot
+
+| Event | Execution type |
+|---|---|
+| Record created | 1-min |
+| Record updated | 1-min |
+
+**Configuration:** Requires a connected HubSpot account (OAuth). Select the object to watch — Contacts, Companies, Deals, Tickets, or any other supported object, including custom objects.
+
+**When to use:** Notify your team when a new lead lands in HubSpot, add new CRM records to a Softr database, or act on a deal stage change.
 
 ---
 
@@ -375,6 +388,8 @@ The trigger window also lists triggers for ClickUp, Microsoft Excel, Granola, Fa
 | Row added | Google Sheets | 1-min | Any |
 | Record created | Notion | 1-min | Any |
 | Record updated | Notion | 1-min | Any |
+| Record created | HubSpot | 1-min | Any |
+| Record updated | HubSpot | 1-min | Any |
 | Invitee Scheduled | Calendly | Instant | Any |
 | Invitee Canceled | Calendly | Instant | Any |
 | Invitee No Show | Calendly | Instant | Any |

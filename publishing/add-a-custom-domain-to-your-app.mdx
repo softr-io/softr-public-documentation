@@ -1,12 +1,12 @@
 ---
 title: "Add a Custom Domain to Your App"
 permalink: "93K5bLJN3n91MRo9uRGdAf"
-description: "How to apply a custom domain to your Softr app."
+description: "How to connect or buy a custom domain for your Softr app."
 og:title: "Add a Custom Domain to Your App – Softr Help Docs"
-og:description: "How to apply a custom domain to your Softr app."
+og:description: "How to connect or buy a custom domain for your Softr app."
 og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
 twitter:title: "Add a Custom Domain to Your App – Softr Help Docs"
-twitter:description: "How to apply a custom domain to your Softr app."
+twitter:description: "How to connect or buy a custom domain for your Softr app."
 ---
 
 <Note>
@@ -15,193 +15,205 @@ twitter:description: "How to apply a custom domain to your Softr app."
 
 ## Overview
 
-### About Custom Domains
+Every Softr app gets a free Softr domain, for example `myportal.softr.app`. You can change it at any time in the **Publish** menu or in **Settings → General → Domains**.
 
-When you publish your Softr app on the web for others to see, you need a dedicated place on the web for it to live. Web domains help you provide a brand-able, dedicated link or URL for people to be able to access your app anywhere in the world. There are two main types of domain: top-level domains (TLD) and subdomains.
+You can also publish your app on a domain you own. Softr supports two kinds of custom domain:
 
-- **Top-level domains** are structured like this: `example.com`
-- **Subdomains** are structured like this: `portal.example.com`
+- **Root domains**, for example `example.com`. Softr also adds `www.example.com` for you.
+- **Subdomains**, for example `portal.example.com`.
 
-Both TLDs and subdomains are supported by Softr, but who owns the domain also matters. Softr provides you with unlimited subdomains for your apps on our `softr.app`TLD, for example: `myportal.softr.app` The Softr TLD is owned by us, but you can add your own custom domain as well.
+Each app can have one custom domain. Each custom domain counts towards the custom domain limit of your workspace plan.
 
-Your application can be published on:
+Softr uses [Entri](https://www.entri.com/) to set up your domain. Entri signs in to your domain provider and adds the DNS records for you, so you do not have to edit DNS settings yourself. If you prefer, you can still [add the DNS records manually](#add-the-dns-records-manually).
 
-- A subdomain provided by Softr – gets assigned to your application by default, right after you create the application. You can change this to be whatever you like as long as the subdomain is not taken by someone else. You can set this in the **Publish** button of Softr Studio.
-- Your own top-level domain (TLD)
-- Your own subdomain
+## Connect a domain you own
 
-## Adding a Custom Domain (Top-level domain)
+### 1. Start the setup
 
-In this guide, we'll show you how you can publish your application to your own custom domain (_example.com_). Custom domain boosts your credibility and helps to build up your brand.
+In your Softr app, go to **Settings → General**. In the **Domains** section, click **Connect** next to **Custom domain**.
 
-### **1. Add a custom domain**
+You can also start from the **Publish** menu: click **Add custom domain**.
 
-In your Softr application, go to the [Settings](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/general-settings/7YdGy1J8X2tjJSv8BGvWQU) **=> Custom Domain** page and add your own custom domain in the following format **"yourdomain.com"**. It will also add the full domain **"[www.yourdomain.com](http://www.yourdomain.com)"** by default.
-
-<Frame caption="Adding a custom domain">
-  ![Adding a custom domain](/publishing/images/add-a-custom-domain-to-your-app/image1.png)
+<Frame caption="The Domains section in General settings">
+  ![The Domains section in General settings](/publishing/images/add-a-custom-domain-to-your-app/connect-domain-settings.png)
 </Frame>
 
-### **2. Update the DNS**
+### 2. Enter your domain
 
-Access your domain's DNS settings in your domain registrar's or DNS host's dashboard.
+Enter the domain you want to use, for example `example.com` or `portal.example.com`, then click **Continue**. Softr detects if it is a root domain or a subdomain.
 
-Every DNS host has its own way of updating DNS settings. Please, read the help documentation of your DNS host if you are not familiar with it yet. Also, check out our [FAQ](/faq/jUGRWwEkWw4akSEa5z5EDn/domain-setup/hZQgTBnTWKi7KEjurVHqgd) on domain setup.
+<Frame caption="Enter the domain you want to connect">
+  ![Enter the domain you want to connect](/publishing/images/add-a-custom-domain-to-your-app/connect-domain-enter-domain.png)
+</Frame>
 
-**Add an A record and CNAME**
+### 3. Continue to Entri
 
-You will need to create an **A record** and a **CNAME**
+Softr shows the domain you are about to connect. Click **Continue** to open Entri. Click **Back** to change the domain.
+
+Softr saves the domain on your app when you click **Continue**. If you close Entri before you finish, the domain stays in your settings and you can finish the setup later.
+
+<Frame caption="Softr uses Entri to set up your domain">
+  ![Softr uses Entri to set up your domain](/publishing/images/add-a-custom-domain-to-your-app/connect-domain-entri-intro.png)
+</Frame>
+
+### 4. Sign in to your domain provider
+
+Follow the steps in Entri. Entri finds your domain provider (for example GoDaddy, Namecheap, or Cloudflare), asks you to sign in, and adds the DNS records that Softr needs.
+
+<Tip>
+  If someone else manages your DNS, for example your IT team, Entri can send them a link so they can finish the setup for you.
+</Tip>
+
+### 5. Wait for the DNS changes
+
+When Entri is done, you go back to Softr. The domain shows a loading icon while the DNS changes take effect. This can take up to a few hours.
+
+<Frame caption="The domain waits for the DNS changes">
+  ![The domain waits for the DNS changes](/publishing/images/add-a-custom-domain-to-your-app/connect-domain-pending.png)
+</Frame>
+
+When the domain shows a green check mark, it is connected.
+
+<Frame caption="A connected domain">
+  ![A connected domain](/publishing/images/add-a-custom-domain-to-your-app/connect-domain-connected.png)
+</Frame>
+
+### 6. Publish your app
+
+Click **Publish** in the top navigation bar. Your custom domain shows in the **Publish** menu. Click **Publish** to launch your app on the domain.
+
+<Frame caption="Publish your app on the custom domain">
+  ![Publish your app on the custom domain](/publishing/images/add-a-custom-domain-to-your-app/publish-custom-domain.png)
+</Frame>
+
+SSL is installed automatically when the domain points to Softr and the app is published.
+
+## Buy a new domain
+
+If you do not have a domain yet, you can buy one without leaving Softr.
+
+1. Go to **Settings → General → Domains**.
+2. Under **Custom domain**, click **Buy a domain**.
+3. Search for a domain and complete the purchase in Entri.
+
+Entri registers the domain and sets up the DNS records as part of the purchase. Softr then adds the domain to your app. Publish your app to launch it on the new domain.
+
+<Note>
+  You need a free custom domain slot before you buy a domain. If your workspace has used all its slots, Softr asks you to upgrade your plan or add an extra domain slot first.
+</Note>
+
+## Check the domain status
+
+The **Domains** section shows the status of your custom domain next to its name.
+
+| Status | What it means |
+| --- | --- |
+| Loading icon | The DNS records are set up and waiting to take effect. This can take up to a few hours. |
+| Green check mark | The domain is connected. |
+| Warning icon | Softr cannot find the DNS records for the domain. |
+
+Click the refresh icon next to **Custom domain** to check the DNS records again.
+
+If Softr cannot find the DNS records, a warning shows above the domain. Click **Run setup** to open Entri again for the same domain.
+
+<Frame caption="Softr cannot find the DNS records">
+  ![Softr cannot find the DNS records](/publishing/images/add-a-custom-domain-to-your-app/connect-domain-not-connected.png)
+</Frame>
+
+## Add the DNS records manually
+
+You do not have to use Entri. After you enter your domain in Softr, the **Domains** section shows the DNS records your domain needs. Add them yourself in your domain registrar's or DNS host's dashboard. Click the copy icon next to a value to copy it.
+
+Every DNS host has its own way to update DNS settings. Read the help documentation of your DNS host if you are not familiar with it. Also see our [FAQ](/faq/jUGRWwEkWw4akSEa5z5EDn/domain-setup/hZQgTBnTWKi7KEjurVHqgd) on domain setup.
+
+<Warning>
+  Do not edit existing records in your DNS. **Add new records** for your Softr app.
+</Warning>
+
+### Root domain
+
+For a root domain such as `example.com`, add an **A record** and a **CNAME** record:
 
 | Type | Host | Value |
 | --- | --- | --- |
-| **A record** | `@` | the IP address shown on your Custom Domain page — currently `35.158.87.123` |
-| **CNAME** | `www` | your own root domain, for example `yourdomain.com` |
+| **A record** | `@` | the IP address shown in the **Domains** section, currently `35.158.87.123` |
+| **CNAME** | `www` | your own root domain, for example `example.com` |
 
 <Warning>
-  The **CNAME** record’s **Value** is your own root domain — `yourdomain.com` — **not** `@`. Registrars use `@` as shorthand for the root domain in the **Host** column only; it is not a valid CNAME value.
+  The **CNAME** record's **Value** is your own root domain, `example.com`, **not** `@`. Registrars use `@` as shorthand for the root domain in the **Host** column only. It is not a valid CNAME value.
 </Warning>
 
-<Warning>
-  Do not edit existing records in your DNS - you should **add new CNAME and A records** for your Softr app.
-</Warning>
+### Subdomain
 
-<Frame caption="Custom domain setup">
-  ![Custom domain setup](/publishing/images/add-a-custom-domain-to-your-app/image2.png)
-</Frame>
+For a subdomain such as `portal.example.com`, add one **A record**:
 
-To verify that your DNS settings are correct, and that your domain is correctly pointing to Softr, **check the status** of your domain name in your DNS settings.
+| Type | Host | Value |
+| --- | --- | --- |
+| **A record** | the subdomain part of the URL, for example `portal` | the IP address shown in the **Domains** section, currently `35.158.87.123` |
 
-<Tip>
-  DNS changes may take a few minutes for your A name records to propagate everywhere. If you still run into any issues with your domain verification, reach out to your DNS provider to make sure the records are set correctly.
-</Tip>
-
-### **3. Publish your application to your custom domain**
-
-Now if you click on the Publish button within your Softr studio's top navigation bar, you should see your custom domain in the menu that opens. Clickthe **Publish** button, and you are almost done.
-
-<Frame caption="Publishing the custom domain">
-  ![Publishing the custom domain](/publishing/images/add-a-custom-domain-to-your-app/image3.png)
-</Frame>
-
-It may take **up to 48 hours** before changes are successfully made from your DNS host, so that you are able to open your application with your domain.
-
-<Tip>
-  When the DNS records in your **Settings => Custom Domain** page show up as **Connected** in green color, your domain is functional.
-</Tip>
-
-## Adding a Custom Subdomain
-
-In this guide, we'll show you how you can publish your application to your own custom **subdomain** (e.g. _myportal.example.com_).
-
-### **1. Add a custom subdomain**
-
-In your Softr application, go to the [Settings](/application-settings/n3K2UEfpC9BpHgakMzUU5Y/general-settings/7YdGy1J8X2tjJSv8BGvWQU) **=> Custom Domain** page and and add your own custom subdomain in the following format **"my.domain.com"**.
-
-<Frame caption="Adding a custom subdomain">
-  ![Adding a custom subdomain](/publishing/images/add-a-custom-domain-to-your-app/image4.png)
+<Frame caption="The DNS record for a subdomain">
+  ![The DNS record for a subdomain](/publishing/images/add-a-custom-domain-to-your-app/connect-subdomain-records.png)
 </Frame>
 
 <Tip>
-  If you already have a domain purchased from a provider, you can add as many subdomains as you like with that provider for free. You just need to add the DNS records on the provider side. Each custom subdomain still counts towards your custom domain plan limit in Softr. 
+  If you already own a domain, you can add as many subdomains as you like with your provider for free. Each custom subdomain you connect still counts towards the custom domain limit of your Softr plan.
 </Tip>
-
-<Note>
-  Custom domain and extra custom domain slots depend on the subscription plan. See [plan comparison](https://www.softr.io/pricing). 
-</Note>
-
-### **2. Update the DNS**
-
-Access your domain's DNS settings in your domain registrar's or DNS host's dashboard.
-
-Every DNS host has its own way of updating DNS settings. Please, read the help documentation of your DNS host if you are not familiar with it yet. Also, check out our [FAQ](/faq/jUGRWwEkWw4akSEa5z5EDn/domain-setup/hZQgTBnTWKi7KEjurVHqgd) on domain setup.
-
-**Add an A record**
-
-You will need to create an **A record** as follows:
-
-- For the **A record**, set the host to the subdomain part of the URL ("my" in our example)**;**
-- Input the IP address we've provided for you: “**35.158.87.123”**
-
-<Warning>
-  Do not edit existing records in your DNS - you should **add a new A record** for your Softr app.
-</Warning>
-
-<Frame caption="Custom subdomain setup">
-  ![Custom subdomain setup](/publishing/images/add-a-custom-domain-to-your-app/image5.png)
-</Frame>
-
-To verify that your DNS settings are correct, and that your subdomain is correctly pointing to Softr, **check the status** of your domain name in your DNS settings.
 
 <Tip>
-  DNS changes may take a few minutes for your A name records to propagate everywhere. If you still run into any issues with your domain verification, reach out to your DNS provider to make sure the records are set correctly.
+  **EXAMPLE:** See our example tutorial for a Namecheap subdomain setup [here](/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/tutorial-how-to-set-up-a-custom-subdomain-for-namecheap/3xKMZspFwCRukmmLYE649b).
 </Tip>
 
-### **3. Publish your application to your custom subdomain**
+## Remove a custom domain
 
-Now, if you click on the **Publish** button within your Softr studio's top navigation bar, you should see your custom subdomain in the menu that opens. Clickthe **Publish** button, and you are almost done.
-
-<Frame caption="Publishing the custom subdomain">
-  ![Publishing the custom subdomain](/publishing/images/add-a-custom-domain-to-your-app/image6.png)
-</Frame>
-
-It may take **up to 48 hours** before changes are successfully made from your DNS host, so that you are able to open your application with your subdomain.
-
-<Tip>
-  When the DNS records in your **Settings => Custom Domain** page show up as **Connected** in green color, your subdomain is functional.
-</Tip>
-
-If your subdomain is not working correctly after 48 hours, contact your domain provider’s support. If your DNS settings are correct and you are still experiencing issues with your published application, contact us and we'll assist.
-
-<Frame caption="Subdomain not connected">
-  ![Subdomain not connected](/publishing/images/add-a-custom-domain-to-your-app/image7.png)
-</Frame>
-
-<Tip>
-  **EXAMPLE:** Please, check out our example tutorial for a Namecheap subdomain setup [here](/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/tutorial-how-to-set-up-a-custom-subdomain-for-namecheap/3xKMZspFwCRukmmLYE649b).
-</Tip>
+In **Settings → General → Domains**, click **Remove** next to **Custom domain**, then click **Remove connection**. Your app is no longer available on that domain. The DNS records stay with your domain provider until you delete them there.
 
 ## Troubleshooting when a domain does not work correctly
 
-If your domain is not working correctly after 48 hours:
+If your domain is not working correctly after a few hours:
 
-- **CNAME** should point to your custom domain, not \{domain\}.softr.app
-- If your domain registrar doesn’t allow for @ to be used in **A Record**, Leave A record value empty, and add **www** for **CNAME**
-- SSL is being installed automatically once you point to the right domain **and** [**Publish the app**](/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/publishing-your-softr-app/gRrb1u7eLmRTrXyg3UNGkQ).
+- Click **Run setup** in the **Domains** section to run the Entri setup again.
+- The **CNAME** record should point to your custom domain, not to `{domain}.softr.app`.
+- If your domain registrar does not allow `@` in the **A record** host, leave the host empty, and use **www** for the **CNAME** host.
+- SSL is installed automatically once the domain points to Softr **and** you [publish the app](/publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/publishing-your-softr-app/gRrb1u7eLmRTrXyg3UNGkQ).
 
-If your DNS settings are correct and you are still experiencing issues with your published application, contact your domain provider’s support, or contact us and we'll assist.
-
-<Frame caption="Not connected">
-  ![Not connected](/publishing/images/add-a-custom-domain-to-your-app/image8.png)
-</Frame>
+If your DNS settings are correct and you still have issues after 48 hours, contact your domain provider's support, or contact us and we'll assist.
 
 ## FAQ
 
 Below are some common questions we get about custom domains. Click the toggle to reveal each answer.
 
 <AccordionGroup>
+  <Accordion title="What is Entri?">
+    [Entri](https://www.entri.com/) is a service that connects to your domain provider and sets up DNS records for you. Softr uses it so you can connect or buy a domain without editing DNS settings yourself. When you click **Continue**, you agree to Entri's [Terms of Service](https://www.entri.com/terms-of-service) and [Privacy Policy](https://www.entri.com/privacy-policy).
+  </Accordion>
+
+  <Accordion title="Do I have to use Entri?">
+    No. You can [add the DNS records manually](#add-the-dns-records-manually) in your domain provider's dashboard.
+  </Accordion>
+
   <Accordion title="I already have a website, but I want to publish my Softr app to a custom domain, what should I do?">
-    If your website is website.com, the most common approach is to add a subdomain to Softr like portal.website.com or app.website.com. This ensures they share the same top-level domain, while having distinct URLs based on their purpose. You’ll begin to notice that many web apps you use on a daily basis do this as well.
+    If your website is website.com, the most common approach is to add a subdomain to Softr like portal.website.com or app.website.com. This ensures they share the same top-level domain, while having distinct URLs based on their purpose. Many web apps you use every day do this as well.
   </Accordion>
 
   <Accordion title="My app says that the connection is not secure, what should I do?">
-    If you have waited 24 hours and the connection you still cannot access the app, try these steps:
+    If you have waited 24 hours and you still cannot access the app, try these steps:
 
     - Check the website URL in [https://dnschecker.org/](https://dnschecker.org/) to see any issues.
-    - Make sure you have the right DNS with the right IP address: **35.158.87.123**
-    - Try removing the domain from Softr and re-adding to re-initialize the SSL certificate
-    - Make sure the app is published
-    - Be sure to allow cookies for your site in your browser
+    - Make sure you have the right DNS records with the right IP address: **35.158.87.123**
+    - Try removing the domain from Softr and adding it again to re-initialize the SSL certificate.
+    - Make sure the app is published.
+    - Be sure to allow cookies for your site in your browser.
   </Accordion>
 
   <Accordion title="Will a subdomain overwrite the site I have on my top-level domain, or vice versa?">
     No, subdomains and top-level domains are handled differently and are seen as separate sites by the DNS.
   </Accordion>
 
-  <Accordion title="What if I’m using Cloudflare with Softr for DNS/SSL?">
-    If you are using Cloudflare with Softr, please use **DNS Only** Records instead of **Proxied** ones. See the image below.
+  <Accordion title="What if I'm using Cloudflare with Softr for DNS/SSL?">
+    If you are using Cloudflare with Softr, use **DNS Only** records instead of **Proxied** ones. See the image below.
 
     <Frame>
-      ![Notion image](/publishing/images/add-a-custom-domain-to-your-app/image9.png)
+      ![Cloudflare DNS only record](/publishing/images/add-a-custom-domain-to-your-app/image9.png)
     </Frame>
   </Accordion>
 

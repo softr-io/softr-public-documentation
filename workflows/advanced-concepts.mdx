@@ -154,7 +154,7 @@ You name each output field yourself, and those names become available as variabl
 
 ## Run Custom Code
 
-The **Run Custom Code** action executes **JavaScript** or **Python** inside your workflow. It's the escape hatch for logic that formulas can't express - parsing complex JSON, applying multi-step transformations, or computing values that would require deeply nested branches. The full reference, including the cryptography modules, is on the [Run Custom Code](/workflows/actions/run-custom-code) page.
+The **Run Custom Code** action executes **JavaScript** or **Python** inside your workflow. It's the escape hatch for logic that formulas can't express - parsing complex JSON, applying multi-step transformations, or computing values that would require deeply nested branches. The code can also call HTTP APIs with `fetch`, and the integrations you attach to the step authenticate those calls. The full reference, including the cryptography modules, is on the [Run Custom Code](/workflows/actions/run-custom-code) page.
 
 **How inputs and outputs work:**
 
@@ -166,7 +166,7 @@ The **Run Custom Code** action executes **JavaScript** or **Python** inside your
 
 <Frame caption="Run Custom Code action with JavaScript extracting a domain from an email">![Run Custom Code action with JavaScript](/workflows/images/workflows/advanced/run-custom-code.webp)</Frame>
 
-<Note>Run Custom Code is available on paid plans.</Note>
+<Note>Run Custom Code is available on the [Pro plan and above](https://www.softr.io/pricing).</Note>
 
 **Example:** A Call API step returns a complex JSON response with nested objects. Use Run Custom Code to extract just the fields you need (e.g., pull out `response.data.items[0].name`) and return them as clean variables for the next step.
 
