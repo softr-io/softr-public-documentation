@@ -83,7 +83,10 @@ In a terminal, `softr login` offers two ways and recommends the first: the brows
 screen where you approve the CLI for your workspaces, or a
 [personal API token](/mcp/connect#personal-access-tokens) you created in Softr Studio. The CLI keeps the token in
 `~/.softr/credentials.json` and renews it on its own. When there is no browser on that machine, `login` prints the
-URL to open elsewhere, or you pass the token with `login --token`. An agent asks you to do this once.
+URL to open elsewhere, or you run `softr login --token` and paste the token at the prompt, which hides it. For
+scripts, pipe the token in (`softr login --token < token.txt`) or set `SOFTR_TOKEN`; the CLI does not take the token
+as a command-line value, so it never lands in your shell history. An agent asks you to do this once, in your own
+terminal.
 
 The CLI has exactly the rights you have in Softr, never more; `softr whoami` shows them and `softr logout` forgets
 the token.
