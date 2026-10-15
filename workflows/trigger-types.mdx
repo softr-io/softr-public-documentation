@@ -248,6 +248,22 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 ---
 
+### Outlook
+
+| Event | Execution type |
+|---|---|
+| Email received | 1-minute polling |
+
+**Configuration:** Requires a connected Outlook account (Microsoft 365, Outlook.com or Hotmail). Pick the **Folder** to watch; it defaults to the Inbox. Optionally fill **From** with one or more sender addresses, separated by commas, to run only for emails from them.
+
+> **Tip:** The trigger runs once for each email that arrives in the folder after the workflow is turned on. Emails already in the folder and emails that land in its subfolders do not run it — pick the subfolder itself for those. An email moved in from another folder runs it only if it was received within a few minutes of the newest email the trigger has seen. Non-inline attachments are passed on as files.
+
+> **Note:** Outlook connections made before this trigger existed can send email but not read it. If the folder list or the test shows *"Softr can't read emails with this Outlook connection yet. Reconnect your Outlook account to allow reading emails."*, reconnect the same account; workflows that use it keep working.
+
+**When to use:** Start a workflow when an order confirmation or a support request arrives, log incoming emails to your database, or route emails from specific senders to the right team.
+
+---
+
 ### Google Sheets
 
 | Event | Execution type |
@@ -354,6 +370,7 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 | Recurring schedule | Built-in | Scheduled (repeating) | Any |
 | Record updated | Airtable | 1-min polling | Any |
 | Email received | Gmail | 1-min polling | Any |
+| Email received | Outlook | 1-min polling | Any |
 | Row added | Google Sheets | 1-min polling | Any |
 | Record created | Notion | 1-min polling | Any |
 | Record updated | Notion | 1-min polling | Any |

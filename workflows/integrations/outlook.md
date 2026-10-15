@@ -1,6 +1,6 @@
 # Outlook integration
 
-Connect Outlook with your Softr applications to send transactional emails, customer confirmations, and internal alerts straight from your no-code app. Keep your members, your team, and your shared inboxes in sync — without leaving Softr.
+Connect Outlook with your Softr applications to send transactional emails, customer confirmations, and internal alerts straight from your no-code app — and to start workflows when an email arrives. Keep your members, your team, and your shared inboxes in sync — without leaving Softr.
 
 ## Overview
 
@@ -13,6 +13,12 @@ Whether you're confirming a booking from a member portal, alerting a shared supp
 ### Send email
 
 Send an email from your connected Outlook account to one or more recipients, with a custom subject, body, and optional CC, BCC, and attachments — all triggered by events inside your Softr app.
+
+## Available Triggers
+
+### Email received
+
+Start a workflow whenever a new email lands in an Outlook folder you pick — optionally only for emails from specific senders — with the sender, recipients, subject, body, and attachments ready to use in the next steps.
 
 ## Key Benefits
 
@@ -31,14 +37,15 @@ Send an email from your connected Outlook account to one or more recipients, wit
 | **Internal team alerts**          | Notify a shared Outlook inbox whenever a new lead, support ticket, or high-priority record lands in your app. |
 | **Status change notifications**   | Email a customer when their order, application, or request moves to a new status in your Softr database.      |
 | **Approval and review requests**  | Send an approver an email with the relevant record details whenever a member submits something for review.    |
+| **Inbound email to records**       | Turn order confirmations, support requests, or replies arriving in an Outlook folder into records in your Softr database. |
 | **Scheduled digests and reports** | Email weekly or daily summaries of new records, sign-ups, or activity to managers and stakeholders.           |
 
 ## How to Connect Softr with Outlook
 
 1. Open your Softr app and go to **Workflows**.
-2. Create a new workflow and add the **Send email** Outlook action.
+2. Create a new workflow and add the **Send email** Outlook action, or start it with the **Email received** Outlook trigger.
 3. Click **Connect to Outlook** and sign in with your Microsoft 365 account.
-4. Approve the requested permissions so Softr can send email on your behalf.
+4. Approve the requested permissions so Softr can send and read email on your behalf.
 5. Choose the trigger that should send it (form submission, sign-up, record update, schedule).
 6. Fill in recipients, subject, and body — using fields from your Softr forms, records, or previous workflow steps to personalize the message.
 7. Save and activate your workflow.
