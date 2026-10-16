@@ -21,9 +21,9 @@ The API is organized around four core resources:
 - **Database** — A top-level container that belongs to a workspace. Each database holds one or more tables.
 - **Table** — A structured collection of records, similar to a spreadsheet or database table. Each table has a set of fields and one or more views.
 - **Field** — A column definition on a table. Fields have a type (e.g. `SINGLE_LINE_TEXT`, `NUMBER`, `SELECT`) and optional configuration. Some fields are read-only (computed or system-managed).
-- **Record** — A single row of data in a table. Record values are stored in a `fields` object, keyed by field ID (or field name if you pass `?fieldNames=true`).
+- **Record** — A single row of data in a table. Record values are stored in a `fields` object, keyed by field ID. Responses can use field names instead (`?fieldNames=true`); requests always use field IDs.
 
-All resources are identified by UUIDs.
+Every resource is identified by its ID.
 
 ## Authentication
 
@@ -52,7 +52,7 @@ curl -X GET 'https://tables-api.softr.io/api/v1/databases/{databaseId}/tables/{t
   -H 'Softr-Api-Key: <your-token>'
 ```
 
-**3. Create a record:**
+**3. Create a record** (the keys are field IDs; [Get Single Table](/softr-api/softr-database-api/tables/get-single-table) lists a table's fields with their IDs):
 
 ```bash
 curl -X POST 'https://tables-api.softr.io/api/v1/databases/{databaseId}/tables/{tableId}/records' \
@@ -60,8 +60,8 @@ curl -X POST 'https://tables-api.softr.io/api/v1/databases/{databaseId}/tables/{
   -H 'Content-Type: application/json' \
   -d '{
     "fields": {
-      "Name": "Jane Doe",
-      "Email": "jane@example.com"
+      "<name field ID>": "Jane Doe",
+      "<email field ID>": "jane@example.com"
     }
   }'
 ```
@@ -140,7 +140,7 @@ Stop when `offset >= metadata.total`.
 
 ## Using Field Names
 
-By default, the `fields` object in record responses uses **field IDs** as keys (UUIDs). Pass `?fieldNames=true` on any record endpoint to use **human-readable field names** instead:
+By default, the `fields` object in record responses uses **field IDs** as keys. Pass `?fieldNames=true` on any record endpoint to get **human-readable field names** in the response instead:
 
 ```bash
 # With field IDs (default)
@@ -151,6 +151,9 @@ GET .../records
 GET .../records?fieldNames=true
 → { "fields": { "Full Name": "Jane Doe" } }
 ```
+
+`fieldNames` changes the response only. The `fields` of a create or update request and the field references of a
+search (`leftSide`, `sortingField`) always take field IDs; a field name there fails with `Unknown field`.
 
 ## Quick Links
 
