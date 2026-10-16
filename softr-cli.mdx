@@ -116,7 +116,8 @@ its output, and the workflow opens in the builder like any other.
 
 ## Databases
 
-The `softr db` commands create and shape Softr Databases: databases, their tables, fields and views. A database gets a
+The `softr db` commands create and shape Softr Databases (databases, their tables, fields and views) and read and
+write their records. A database gets a
 directory of its own, with a `softr-db.jsonc` file that names it and a cache of its tables and fields that the CLI keeps
 up to date. Next to your workflow directories, it gives the agent the table and field ids a workflow needs. Every
 change goes to Softr at once.
@@ -127,7 +128,8 @@ change goes to Softr at once.
 > follow-up date.
 
 The agent creates the database and its directory, adds the table and its fields, and shows you the result. It asks
-before it deletes anything. `softr db --help` lists the commands.
+before it deletes anything. Records use field names in both directions, and they are never stored on your machine.
+`softr db --help` lists the commands.
 
 ## Learn more
 
