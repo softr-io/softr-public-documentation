@@ -264,8 +264,10 @@ To answer "what sender is my app using?", `application_get` includes an `emailSe
 
 These are the same settings as **Settings → Mobile app** in Studio. Turning the feature on fills in what you leave out: the app's name, a short name cut from it, and a white theme color. It needs a Business plan or higher. Turning it off stops everyone from installing the app.
 
+How people install the app depends on how it was built. An app built from blocks shows Softr's install button once the feature is on; its image, position and platforms are set in Studio, not through MCP. An app built from code shows no install button until one is added to its code, so ask for one in the same conversation.
+
 <Note>
-  **The icon can't be set through MCP.** The app is not installable until it has one, so upload a square 512×512 PNG under **Settings → Mobile app** in Studio. The settings alone don't add an install button either: the app needs one in its own code. People who already installed the app keep its old name and icon.
+  **The icon can't be set through MCP.** The app is not installable until it has one, so upload a square 512×512 PNG under **Settings → Mobile app** in Studio. People who already installed the app keep its old name and icon.
 </Note>
 
 ## Subdomain and custom domain
