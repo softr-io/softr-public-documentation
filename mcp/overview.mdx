@@ -18,11 +18,11 @@ It is the same workspace you see in Softr Studio, reached a different way. Anyth
 
 | Area | What the assistant can do |
 |---|---|
-| [Databases](/mcp/databases) | Query, filter, and aggregate your data; create records; build and change tables and fields |
-| [Applications](/mcp/apps) | Create a blank app; add pages; read apps, pages, blocks, and permissions; list, search, add, remove, activate, and deactivate app users; enable or disable login; configure sign-up, the email sender, and the app's subdomain and custom domain; preview an app; publish it |
+| [Databases](/mcp/databases) | Query, filter, and aggregate your data; create records and attach files; build and change tables, fields, and views |
+| [Applications](/mcp/apps) | Create and rename apps; add pages; build navigation menus; read apps, pages, blocks, and permissions; list, search, add, remove, activate, and deactivate app users; manage user groups and data restrictions; configure login, sign-up, sessions, the email sender, the installable app, and the app's subdomain and custom domain; preview an app; publish it |
 | [Vibe coding blocks](/mcp/vibe-coding) | Create and edit custom code blocks on an app's pages, and manage their settings, visibility, and version history |
 | [Integrations](/mcp/integrations) | Browse the external data sources connected to a workspace |
-| [Workflows](/mcp/workflows) | Build workflows step by step, test each step, and publish them |
+| [Workflows](/mcp/workflows) | Build workflows step by step, test them, publish them, and read their runs |
 
 ## How Softr is organized
 
@@ -36,7 +36,11 @@ Workspace
 └── Integrations ── the external data sources apps and blocks read from
 ```
 
-`list_workspaces` returns the workspaces you can reach, with their IDs. It is how the assistant turns "my Sales workspace" into the ID that every other tool needs, so it is often the first call in a conversation.
+`workspace_list` returns the workspaces you can reach, with their IDs. It is how the assistant turns "my Sales workspace" into the ID that every other tool needs, so it is often the first call in a conversation.
+
+## Sending feedback to Softr
+
+When you ask for something no tool can do, or a tool behaves differently from its description, the assistant can pass it on to the Softr team with `send_feedback`. It sends a short note in the assistant's own words, leaving out personal data and record contents. For anything other than a missing capability, a bug, or an unclear tool description, the assistant shows you the text and sends it only once you agree. Feedback changes nothing in your workspace.
 
 ## MCP server URL
 
@@ -116,3 +120,5 @@ Once connected, you can work with your workspace in plain language:
 - _"What user groups can edit the Clients page?"_
 - _"Create a workflow that sends me a Slack message whenever a new order comes in."_
 - _"Show me what the app looks like right now."_
+- _"Add a sidebar menu with links to Dashboard, Clients, and Invoices."_
+- _"Why did my order workflow fail last night?"_
