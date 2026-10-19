@@ -12,7 +12,7 @@ icon: "window"
 
 These tools let an assistant understand how an app is built — its pages, its blocks, and who can see what — and then show you a change or make it live.
 
-Most of these tools only read. The ones that change something create or rename an app, add a page, manage navigation menus, app users, user groups and data restrictions, change the app's login, sign-up, session, email sender, installable-app, subdomain and custom-domain settings, preview it, and publish it. An assistant can add an empty page, but filling it with content is done through [vibe coding blocks](/mcp/vibe-coding) — and changes to an existing page's content are made the same way.
+Most of these tools only read. The ones that change something create or rename an app, add a page, manage navigation menus, app users, user groups and data restrictions, change the app's login, sign-up, session, email sender, subdomain and custom-domain settings, preview it, and publish it. An assistant can add an empty page, but filling it with content is done through [vibe coding blocks](/mcp/vibe-coding) — and changes to an existing page's content are made the same way.
 
 ## Creating and renaming an app
 
@@ -255,20 +255,6 @@ To answer "what sender is my app using?", `application_get` includes an `emailSe
 </Note>
 
 `workspace_verify_email_sender` reports both checks for a sender, and returns the two DNS records to add at your DNS provider. Ask for the check once you have added them. DNS changes usually show up within minutes but can take up to 24 hours, so a record that is not verified yet is worth checking again later.
-
-## Installable app (PWA)
-
-| Tool | What it does |
-|---|---|
-| `application_update_pwa_settings` | Turns installable-app support on or off, and sets the installed app's name, short name, and theme color |
-
-These are the same settings as **Settings → Mobile app** in Studio. Turning the feature on fills in what you leave out: the app's name, a short name cut from it, and a white theme color. It needs a Business plan or higher. Turning it off stops everyone from installing the app.
-
-How people install the app depends on how it was built. An app built from blocks shows Softr's install button once the feature is on; its image, position and platforms are set in Studio, not through MCP. An app built from code shows no install button until one is added to its code, so ask for one in the same conversation.
-
-<Note>
-  **The icon can't be set through MCP.** The app is not installable until it has one, so upload a square 512×512 PNG under **Settings → Mobile app** in Studio. People who already installed the app keep its old name and icon.
-</Note>
 
 ## Subdomain and custom domain
 
