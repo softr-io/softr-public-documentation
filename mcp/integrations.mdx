@@ -12,7 +12,7 @@ icon: "plug"
 
 An integration is an external service connected to a workspace. You connect it once, and then any app, block, or workflow in that workspace can use it. Most of the ones you will browse here hold data — an Airtable base, a Google Sheet, a Notion database, a monday.com board, a Supabase project — and those are the workspace's **data sources**.
 
-These five tools let an assistant explore what's connected and find the exact table it needs. They are all read-only. They exist to answer "what data is available here?" so the answer can be used somewhere else: wiring a table to a [vibe coding block](/mcp/vibe-coding), or filling in a [workflow step](/mcp/workflows) that reads from Airtable.
+These six tools let an assistant explore what's connected, find the exact table it needs, and look at a few of its real records. They are all read-only. They exist to answer "what data is available here, and what does it look like?" so the answer can be used somewhere else: wiring a table to a [vibe coding block](/mcp/vibe-coding), or filling in a [workflow step](/mcp/workflows) that reads from Airtable.
 
 <Note>
   **A data source is a kind of integration, not another word for one.** Every data source is an integration; the reverse is not true. Gmail, Slack and OpenAI are integrations with no records in them, so there is nothing to browse inside them and they are not data sources.
@@ -22,14 +22,15 @@ These five tools let an assistant explore what's connected and find the exact ta
 
 ## Browsing is a drill-down
 
-These tools are one path, not five separate features. Each level needs an ID from the level above, so the assistant walks down from the workspace to the fields of one table.
+These tools are one path, not six separate features. Each level needs an ID from the level above, so the assistant walks down from the workspace to the fields of one table, and then to a sample of its records.
 
 ```
 integration_list                          workspace
 └── integration_list_databases             a base, spreadsheet, doc, workspace, or database
     └── integration_list_schemas           only some integrations have this level
         └── integration_list_tables        a table, sheet, board, or list
-            └── integration_list_table_fields   its fields
+            ├── integration_list_table_fields   its fields
+            └── integration_get_sample_records  a few of its real records
 ```
 
 | Tool | What it does |
@@ -39,6 +40,7 @@ integration_list                          workspace
 | `integration_list_schemas` | Lists the middle level, for the integrations that have one |
 | `integration_list_tables` | Lists the tables, sheets, boards, or lists |
 | `integration_list_table_fields` | Lists a table's fields, their types, and how to reference them |
+| `integration_get_sample_records` | Reads the first records of a table, with the distinct values each field holds in that sample |
 
 ### Some integrations have a middle level
 
@@ -92,3 +94,29 @@ Rather than memorising that table, read `fieldReferenceKey` from the response: i
 <Warning>
   Getting this wrong fails silently. Code using the wrong form compiles, saves, and looks correct in the builder — and then returns nothing when the page loads. If a block renders but its data is empty, this is the first thing to check.
 </Warning>
+
+## Reading real values before building
+
+A field list says a column is called `Status` and holds text. It does not say whether the values are `open` and `sold` or `Open` and `Sold`, which roles your users table actually contains, how dates are written in a sheet, or which tab of a spreadsheet holds the data. An assistant that builds without knowing produces an app that saves `"Sold"` into a source that only accepts `"sold"`, or user groups for roles nobody has.
+
+`integration_get_sample_records` closes that gap. Given the same IDs as `integration_list_table_fields` plus the app being built, it returns:
+
+| Part of the response | What it holds |
+|---|---|
+| `records` | The first records of the table — 20 by default, up to 100 — each with its ID and its field values, keyed the way `fieldReferenceKey` says. Text longer than 500 characters is cut. |
+| `valueSummary` | For every field, the distinct values seen in those records (at most 20, in the order they first appear), how many records left it empty, and whether there were more values than fit. Fields whose values are objects — attachments, linked records — are marked `complex`; read those from `records` instead. |
+| `fields` | Every field of the table with its ID, name, type, and the reference to use, so a narrower follow-up call can name just the columns it cares about. |
+| `totalCount` | How many records the table has, when the source reports it. |
+
+The assistant can pass `fields` to read only some columns and `limit` to read more rows — the usual way to learn all the options of a status column is to ask for that one field with a higher limit.
+
+<Note>
+  **It is a sample, not a query.** Everything in the response comes from the records that were read; a value missing from the sample may still exist further down the table. For searching and filtering, connect the table to the app and query it from there, or use [the database tools](/mcp/databases) when the table is a Softr Database.
+</Note>
+
+Two things to know about how it reads:
+
+- **It reads through an app.** The tool takes an application ID because Softr reads external data on behalf of an app, not of a workspace. For a [vibe coding app](/mcp/vibe-coding) that is the app being built; create it first. The same read is what the app will use once the table is connected, so nothing is done twice.
+- **The first read of a new table may need a retry.** For Airtable, Google Sheets, Notion and the other synced sources, the first time any Softr app reads a table Softr starts syncing it. A small table finishes within the call; a large one may not, and the tool answers with a conflict asking the assistant to retry in about ten seconds. SQL sources such as Supabase are read live and do not have this step.
+
+The sample is available with **Applications & Forms: Read only** access to the app's workspace, plus the integration being connected to that workspace. It supports every integration in the table above except Softr Databases, which have [their own record tools](/mcp/databases).
