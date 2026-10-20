@@ -12,7 +12,7 @@ icon: "wand-magic-sparkles"
 
 [Vibe coding blocks](/vibe-coding) are custom React components you add to a page when the built-in blocks don't do what you need. These tools let an assistant write and maintain them from outside Softr Studio — so you can ask for a block in the same conversation where you explored the data it should show.
 
-The framework reference is in the [Vibe Coding Developer Guide](/vibe-coding-developer-guide). The assistant reads the current version of it with `get_vibe_coding_docs` before writing code.
+The framework reference is in the [Vibe Coding Developer Guide](/vibe-coding-developer-guide). The assistant reads the current version of it with `vibe_coding_block_get_docs` before writing code.
 
 ## Good to know
 
@@ -32,23 +32,23 @@ The framework reference is in the [Vibe Coding Developer Guide](/vibe-coding-dev
 
 | Tool | What it does |
 |---|---|
-| `get_vibe_coding_docs` | Fetches the current vibe coding framework documentation |
-| `create_vibe_coding_block` | Creates a block on an existing page |
-| `get_vibe_coding_block_code` | Gets a block's source code and its current settings |
-| `get_vibe_coding_block_settings` | Gets a block's settings, actions, and data sources without the code |
+| `vibe_coding_block_get_docs` | Fetches the current vibe coding framework documentation |
+| `vibe_coding_block_create` | Creates a block on an existing page |
+| `vibe_coding_block_get_code` | Gets a block's source code and its current settings |
+| `vibe_coding_block_get_settings` | Gets a block's settings, actions, and data sources without the code |
 
 ## Deleting a block
 
 | Tool | What it does |
 |---|---|
-| `delete_vibe_coding_block` | Removes a vibe coding block from its page |
+| `vibe_coding_block_delete` | Removes a vibe coding block from its page |
 
 Only vibe coding blocks can be deleted this way. Every other block — headers, lists, forms, navigation — is removed in the builder; the assistant will tell you so rather than finding a way around it.
 
 Deleting takes the block's data source connections with it, so there is nothing to disconnect first. The workspace integration stays connected, and no other block on the page is touched.
 
 <Warning>
-  **Deleting cannot be undone from the assistant.** Version history goes with the block, and neither restoring nor duplicating a version can bring a deleted block back. If what you want is the block as it was a few edits ago, ask for a rollback instead — that keeps the block. If you might still want it, ask for a copy with `duplicate_vibe_coding_block_from_version`, or just hide it.
+  **Deleting cannot be undone from the assistant.** Version history goes with the block, and neither restoring nor duplicating a version can bring a deleted block back. If what you want is the block as it was a few edits ago, ask for a rollback instead — that keeps the block. If you might still want it, ask for a copy with `vibe_coding_block_duplicate_from_version`, or just hide it.
 </Warning>
 
 The block disappears from the builder straight away, but the live app keeps showing it until the app is published.
@@ -57,16 +57,16 @@ The block disappears from the builder straight away, but the live app keeps show
 
 | Tool | What it does |
 |---|---|
-| `update_vibe_coding_block_code` | Replaces a block's source code |
-| `update_vibe_coding_block_code_search_replace` | Makes a targeted edit to part of the code |
+| `vibe_coding_block_update_code` | Replaces a block's source code |
+| `vibe_coding_block_update_code_search_replace` | Makes a targeted edit to part of the code |
 
 ## Settings and visibility
 
 | Tool | What it does |
 |---|---|
-| `update_vibe_coding_block_settings` | Changes the block's editable settings |
-| `set_vibe_coding_block_visibility` | Controls who can see the block and which devices it renders on |
-| `set_vibe_coding_block_action_visibility` | Controls which user groups can run the block's actions |
+| `vibe_coding_block_update_settings` | Changes the block's editable settings |
+| `vibe_coding_block_set_visibility` | Controls who can see the block and which devices it renders on |
+| `vibe_coding_block_set_action_visibility` | Controls which user groups can run the block's actions |
 
 Editable settings are the fields you would fill in on the block's panel in the builder — a title, a label, a threshold. Changing one doesn't touch the code.
 
@@ -74,9 +74,9 @@ Editable settings are the fields you would fill in on the block's panel in the b
 
 | Tool | What it does |
 |---|---|
-| `list_vibe_coding_block_versions` | Lists a block's versions, newest first |
-| `restore_vibe_coding_block_version` | Rolls a block back to an earlier version |
-| `duplicate_vibe_coding_block_from_version` | Creates a new block on the same page from one of an existing block's versions, leaving the original alone |
+| `vibe_coding_block_list_versions` | Lists a block's versions, newest first |
+| `vibe_coding_block_restore_version` | Rolls a block back to an earlier version |
+| `vibe_coding_block_duplicate_from_version` | Creates a new block on the same page from one of an existing block's versions, leaving the original alone |
 
 Duplicating from a version is the safe way to try an alternative: you keep the working block and get a second one to experiment on.
 
@@ -86,10 +86,10 @@ A block that shows data needs a data source connected to it. The source is an in
 
 | Tool | What it does |
 |---|---|
-| `connect_vibe_coding_block_data_source` | Connects a table or sheet to the block, making it available to the code |
-| `disconnect_vibe_coding_block_data_source` | Removes a connection |
-| `set_vibe_coding_block_data_source_sort` | Sets the default sort order for a connected source |
-| `set_vibe_coding_block_data_source_record_filters` | Sets which records are visible through a connected source |
+| `vibe_coding_block_connect_data_source` | Connects a table or sheet to the block, making it available to the code |
+| `vibe_coding_block_disconnect_data_source` | Removes a connection |
+| `vibe_coding_block_set_data_source_sort` | Sets the default sort order for a connected source |
+| `vibe_coding_block_set_data_source_record_filters` | Sets which records are visible through a connected source |
 
 Sort order and record filters are the same settings as the **Source** tab in the builder.
 
