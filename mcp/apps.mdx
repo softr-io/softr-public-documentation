@@ -41,6 +41,22 @@ The page arrives **empty**. It inherits the app's default visibility — logged-
 
 A page you add is not live until you publish. Use `application_preview` to look at it first, then `application_publish` when you want it out there. A Studio tab you already have open won't show the new page until you reload it.
 
+## Deleting a page
+
+| Tool | What it does |
+|---|---|
+| `application_page_delete` | Permanently deletes a page and the blocks on it |
+
+`application_page_delete` removes a page you no longer want, such as one the assistant created by mistake. It cannot be undone: the page, its blocks and their version history are gone, so the assistant confirms with you first unless you already asked for that page to be deleted. If you only want the page empty, ask for its blocks to be removed instead.
+
+Pages nested under the deleted one in Studio's page list are kept and move up one level into its place, unless you ask for them to be deleted too. Navigation menu items that link to the page are not removed with it.
+
+<Note>
+  The home page and your app's own utility pages, such as the log-in and sign-up pages, cannot be deleted. A copy of a utility page can be. To delete the current home page, set a different page as the home page in Studio first.
+</Note>
+
+The page disappears from Studio straight away, but your live app keeps serving it until you publish again.
+
 ## Navigation menus
 
 An app's navigation is the menu its pages show: a top bar, a sidebar, or a bottom bar on mobile. An app can have several navigations, and each page shows one of them or none.
@@ -88,6 +104,9 @@ Softr apps gate what end users see with [user groups](/user-groups-and-permissio
 | `application_list_user_groups` | Lists the app's user groups, their type, and their members |
 | `application_get_access_overview` | Gives an overview of the app's access control setup: its user groups and how many redirections and data restrictions it has |
 | `application_page_get_permissions` | Shows which user groups can view, edit, add, or delete on a page |
+| `application_page_set_permissions` | Sets who can view a page: all users, logged-in users, specific user groups, or visitors who are not logged in |
+
+`application_page_set_permissions` changes a page's **Who can view** setting, the same one as on the page's Visibility settings in Studio. It covers the whole page, so a visitor it leaves out cannot open the page whatever its blocks allow. To narrow a page to particular [user groups](/user-groups-and-permissions/user-groups), it has to be set to logged-in users, and the groups you name replace the ones the page had before. Moving a page back to all users also clears its groups. It works on regular pages only, not on utility pages such as log-in or sign-up. Like other app changes, it goes live on the next publish.
 
 ## Connecting a users table
 
@@ -207,6 +226,8 @@ These tools manage an app's **end users** — the people who log in to the publi
 | `application_set_login` | Enables or disables end-user login for the app |
 
 `application_set_login` turns the app's end-user login on or off — pass `enabled=true` to turn it on, `enabled=false` to turn it off. Disabling login stops end users from signing in to the app; it is reversible, so calling it again with `enabled=true` restores login. It applies only to apps that support login — apps without login settings are rejected. Changes take effect on the next publish, like other app changes.
+
+Turning login off does not change any page's own **Who can view** setting. A page still set to logged-in users can then not be opened by anyone, so when you want the app public, also set those pages to all users with `application_page_set_permissions`.
 
 <Note>
   **Login cannot be disabled while the app still has users.** The call fails with an error saying so. Remove the app's users first (for example with `application_remove_user`), then disable login.
