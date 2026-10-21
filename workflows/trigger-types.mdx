@@ -347,6 +347,19 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 
 **When to use:** Notify a team when a lead is created, act on a deal stage change, or keep your Softr database in step with the CRM when records are deleted.
 
+### Trello
+
+| Event | Execution type |
+|---|---|
+| On card event | **Instant** |
+| On checklist item event | **Instant** |
+
+**Configuration:** Requires a connected Trello account and a board. Optionally pick the events to listen to — card created, updated, moved to another list, archived, deleted, or commented on; checklist item created, completed, marked incomplete, updated, or deleted. Leave empty for all events of the trigger.
+
+> **Tip:** Trello triggers are Instant — Softr registers a webhook on the board when you publish the workflow and removes it when you unpublish. Trello only sends the fields that changed; chain **Card: Get** to read the full card. See [Trello integration](/workflows/integrations/trello) for the outputs.
+
+**When to use:** Update a Softr record when a card moves to "Done", notify a client when a comment is added to their card, or track onboarding progress as checklist items are completed.
+
 ---
 
 ## Trigger Comparison Table
@@ -386,5 +399,7 @@ Softr Tables triggers fire instantly since version 1.1.0, ensuring high performa
 | Record created | Zoho CRM | Instant | Any |
 | Record updated | Zoho CRM | Instant | Any |
 | Record deleted | Zoho CRM | Instant | Any |
+| On card event | Trello | Instant | Any |
+| On checklist item event | Trello | Instant | Any |
 
 ---
