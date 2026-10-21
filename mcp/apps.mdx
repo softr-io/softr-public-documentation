@@ -47,9 +47,9 @@ A page you add is not live until you publish. Use `application_preview` to look 
 |---|---|
 | `application_page_delete` | Permanently deletes a page and the blocks on it |
 
-`application_page_delete` removes a page you no longer want, such as one the assistant created by mistake. It cannot be undone: the page, its blocks and their version history are gone, so the assistant confirms with you first unless you already asked for that page to be deleted. If you only want the page empty, ask for its blocks to be removed instead.
+`application_page_delete` removes a page you no longer want, such as one the assistant created by mistake. The assistant cannot bring the page or its blocks back, so it confirms with you first unless you already asked for that page to be deleted. If you only want the page empty, ask for its blocks to be removed instead.
 
-Pages nested under the deleted one in Studio's page list are kept and move up one level into its place, unless you ask for them to be deleted too. Navigation menu items that link to the page are not removed with it.
+Pages nested under the deleted one in Studio's page list are kept and move up one level into its place, unless you ask for them to be deleted too. Deleting them too is refused if one of them is a page that cannot be deleted (see below). Navigation menu items that link to the page are not removed with it.
 
 <Note>
   The home page and your app's own utility pages, such as the log-in and sign-up pages, cannot be deleted. A copy of a utility page can be. To delete the current home page, set a different page as the home page in Studio first.
@@ -106,7 +106,7 @@ Softr apps gate what end users see with [user groups](/user-groups-and-permissio
 | `application_page_get_permissions` | Shows which user groups can view, edit, add, or delete on a page |
 | `application_page_set_permissions` | Sets who can view a page: all users, logged-in users, specific user groups, or visitors who are not logged in |
 
-`application_page_set_permissions` changes a page's **Who can view** setting, the same one as on the page's Visibility settings in Studio. It covers the whole page, so a visitor it leaves out cannot open the page whatever its blocks allow. To narrow a page to particular [user groups](/user-groups-and-permissions/user-groups), it has to be set to logged-in users, and the groups you name replace the ones the page had before. Moving a page back to all users also clears its groups. It works on regular pages only, not on utility pages such as log-in or sign-up. Like other app changes, it goes live on the next publish.
+`application_page_set_permissions` changes a page's **Who can view** setting, the same one as on the page's Visibility settings in Studio. It covers the whole page, so a visitor it leaves out cannot open the page whatever its blocks allow. To narrow a page to particular [user groups](/user-groups-and-permissions/user-groups), it has to be set to logged-in users, and the groups you name replace the ones the page had before. Moving a page from logged-in users to any other setting also clears its groups. It works on regular pages only, not on utility pages such as log-in or sign-up. Like other app changes, it goes live on the next publish.
 
 ## Connecting a users table
 
