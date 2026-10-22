@@ -62,31 +62,32 @@ To use Supabase in Softr, you need to connect your Supabase project as a data so
     3. Type in the pool size number (should be 45 or greater)
 
     4. Click Save
-    <Frame>![Notion image](/data-sources/images/supabase/image5.png)</Frame>
+    <Frame>![Pool size field in the Supabase Database settings](/data-sources/images/supabase/image5.png)</Frame>
   </Step>
   <Step title="Connect Supabase to Softr">
-    1. **Log in to Softr** and go to **Data Sources** in the left-hand menu.
+    1. **Log in to Softr** and open the [Softr Studio dashboard](https://studio.softr.io/dashboard/integrations). Click **Integrations** in the left menu.
 
-    2. Click the **Connect Data Source** button in the upper-right corner.
+    2. Click **Connect new**.
 
-    3. Select **Supabase**, then click **Continue**.
-    <Frame caption="Click on Connect Datasource">![Click on Connect Datasource](/data-sources/images/supabase/image6.png)</Frame>
+    <Frame>![The Integrations page of the dashboard, with the Connect new button](/data-sources/images/shared/integrations.png)</Frame>
+
+    3. In the **Select an integration** window, click **Supabase**.
+
+    <Frame>![The Select an integration window, with Supabase selected](/data-sources/images/supabase/select-integration-supabase.png)</Frame>
   </Step>
   <Step title="Enter your Supabase credentials in Softr">
-    1. Copy and paste your Supabase credentials into the appropriate fields in Softr:<br/>
+    1. Copy and paste your Supabase credentials into the matching fields in Softr:<br/>
        * **Host**
-       * **Database**
        * **Port** (`5432` by default)
+       * **Database**
        * **User**
        * **Password**
 
-    2. Enter a **custom name** for your connection (optional).
+    2. Enter a **Name** for your connection. This name is optional.
 
-    3. Click **Connect** to complete the setup.
-    <Frame caption="Fill in the fields with the info from Supabase, then click Connect in the lower Right">![Fill in the fields with the info from Supabase, then click Connect in the lower Right](/data-sources/images/supabase/image7.png)</Frame>
+    3. Click **Connect**.
 
-    You should end up with something like this:
-    <Frame caption="Example connection information">![Example connection information](/data-sources/images/supabase/image8.png)</Frame>
+    <Frame caption="The Connect to Supabase database window, with the fields to fill in">![The Connect to Supabase database window, with the Host, Database, User and Password fields and the Connect button](/data-sources/images/supabase/connect-supabase-credentials.png)</Frame>
   </Step>
   <Step title="Restrict IP Access (Optional)">
     If you need to restrict IP addresses inside Supabase, add **Softr’s IP addresses** to your allowed list:
@@ -114,7 +115,7 @@ Once your Supabase account is connected, you can use it in any Softr application
     3. Pick the **table** you want to use or **add a new** **query**
 
     4. Optionally, select the **primary field**.
-    <Frame>![Notion image](/data-sources/images/supabase/image9.png)</Frame>
+    <Frame>![The Source tab of a block with the Supabase database, schema and table fields](/data-sources/images/supabase/image9.png)</Frame>
   </Step>
   <Step title="Map Supabase fields to item fields">
     When you connect your table to a block, you can choose which Supabase **properties** to display and map to a Softr field. This lets you control how your data appears in Softr.
