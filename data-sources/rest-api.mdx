@@ -14,7 +14,7 @@ With the REST API connector, you can:
 
 * Import **real estate listings from Zillow, inventory from Shopify, or invoices from Stripe**
 
-* Connect to **public APIs** (e.g., APIsList, Public APIs, RapidAPI)
+* Connect to **public APIs** (for example, APIsList, Public APIs, or RapidAPI)
 
 * Integrate **new CRMs and productivity tools**
 
@@ -29,152 +29,223 @@ REST API is not a supported data source for the [Users](/add-and-manage-users/px
 
 ## **1. Connect a REST API to Softr**
 
-To set up a REST API connection in Softr, follow these steps:
+You connect a REST API once per workspace. Then you can use it in all your apps.
 
 <Steps>
-  <Step title="Add Rest API as data source">
-    1. **Log in to Softr** and navigate to [**Data Sources**](https://studio.softr.io/dashboard/data-sources).
+  <Step title="Open Integrations">
+    1. In the Softr Studio dashboard, click **Integrations** in the left menu.
 
-    2. Click **Connect Data Source**.
-    <Frame>![Notion image](/data-sources/images/rest-api/image1.png)</Frame>
+    2. Click **Connect new**.
 
-    1. Choose **REST API** from the list.
+    <Frame>![The Integrations page of the dashboard, with the Connect new button](/data-sources/images/rest-api/integrations.png)</Frame>
 
-    2. If the API you need is listed as a **template**, select it. Otherwise, choose **Add Manually**.
-    <Frame>![Notion image](/data-sources/images/rest-api/image2.png)</Frame>
+    3. In the **Select an integration** window, click **Rest API**.
+
+    <Frame>![The Select an integration window, with Rest API selected](/data-sources/images/rest-api/select-integration.png)</Frame>
+  </Step>
+  <Step title="Connect your account">
+    Fill in the **Connect your account** window:
+
+    1. **Provider**: Enter a name for the API, for example "Stripe". You'll see this name in your list of integrations.
+
+    2. **Authentication type**: Select **API key** or **OAuth**. The API's own documentation tells you which one it uses.
+
+    3. **Base URL**: Enter the root address of the API, for example `https://api.stripe.com`. The base URL is optional. The Vibe Coding block needs it.
+
+    4. Fill in the fields of your authentication type (see below).
+
+    5. Click **Continue**.
+
+    <Frame>![The Connect your account window for a Stripe API key](/data-sources/images/rest-api/connect-api-key.png)</Frame>
+
+    **API key**
+
+    * Select **Bearer token** when the API expects `Authorization: Bearer <key>`. Then paste the key in **API key**.
+
+    * Select **Custom header** when the API expects the key in another header. Enter the header name in **Header**, then paste the key in **API key**.
+
+    The blue box shows the exact header that Softr sends with every request.
+
+    **OAuth**
+
+    1. Copy the **OAuth Redirect URL** and add it to the OAuth app settings of the API.
+
+    2. Enter the **Authorization URL**, the **Access token URL**, the **Client ID**, the **Client secret**, and the **Scopes** from the API's documentation.
+
+    3. If the API needs extra parameters, turn on **Advanced settings**. Then add the authorize, access token, or refresh token parameters.
+
+    4. Click **Continue**, then sign in to the API in the window that opens.
+
+    <Frame>![The Connect your account window with OAuth selected](/data-sources/images/rest-api/connect-oauth.png)</Frame>
+
     <Warning>
 
-    **Important**: How the APIs function and are setup can vary greatly. This document is not meant to be a step-by-step guide for any one service or API, but rather a showcase of Softr’s REST API connection setup.
+    **Important**: Each API works differently. This page shows how Softr's REST API connection works. It isn't a step-by-step guide for one specific API.
 
-    If you need help setting up your REST API beyond the scope of this help document, we highly recommend reaching out to one of our [Softr Certified Partners](https://www.softr.io/partners) who can help guide or build for you.
+    If you need help with an API beyond the scope of this page, reach out to one of our [Certified Softr Experts](https://www.softr.io/softr-experts). They can guide you or build it for you.
 
     </Warning>
   </Step>
-  <Step title="Set up default headers">
-    Most REST APIs require some parameters to be placed in the header of the API call. You can add or remove as many headers as you need in the Softr setup, but here they should be headers that apply to all API endpoints. Headers that are only required for certain endpoints should be left out of this step - they can be added later on if needed.
+  <Step title="Add API resources (endpoints)">
+    A resource is one API call that you save and reuse in your apps, for example "Invoices" or "Create invoice". Resources support the **GET** and **POST** methods.
 
-    1. **Name**: This is a name for the REST datasource and while it is required, it can be whatever you like that helps you identify the datasource in your dashboard.
+    1. On the **Integrations** page, click the **...** menu of your REST API integration.
 
-    2. **Headers**: In this section you will add or remove headers needed for all endpoints in the REST API. Typically headers like `Authorization` and `Content-Type` are required, but this varies between APIs. There are two fields for each header - the header **Name** and the header **Value**.
+    2. Click **Edit resources**.
 
-    3. Click **Continue** when you’re finished setting up headers.
+    <Frame>![The menu of a REST API integration, with Edit resources](/data-sources/images/rest-api/edit-resources.png)</Frame>
 
-    In our Stripe example, the only required header is the `Authorization` header that contains our Stripe API Key.
-    <Frame>![Notion image](/data-sources/images/rest-api/image3.png)</Frame>
-  </Step>
-  <Step title="Add API Resources (Endpoints)">
-    Resources are the different endpoints of an API and they currently support GET and POST endpoints. In our Stripe template, we already have two resources setup - one to get a list of customers from the customers endpoint in the Stripe API, and one to get a single customer. Now let’s setup one to get a list of invoices. To add a resource, click on **Add Resource**.
-    <Frame>![Notion image](/data-sources/images/rest-api/image4.png)</Frame>
+    3. In the **Resources** window, click **Add**.
 
-    On the Add Resource screen, you’ll notice a variety of fields and options to fill out or select.
-
-    * **Name**: The name field is subjective and serves to help you identify it in your list of other Resources you may have added for this REST API connection.
-
-    * **HTTP Method**: This dropdown supports GET and POST methods for API endpoints. It should match the endpoint documentation for the REST API you are using.
-
-    * **URL**: This is the endpoint URL that Softr should call. You can get it from the documentation of the REST API you are using.
-
-    * **Execute**: Once you have filled out the other parts of the request (A, B, C, and E), you can use this Execute button to perform a test call to the API endpoint. Softr requires a successful response in order to add and save the API Resource.
-
-    * **Additional Resource Settings**: This panel is where you can adjust several different parameters and settings for the API Resource. Because every API is different, you may need to use all of these tabs, but you also may not need any of them. You’ll need to refer to the API’s documentation for this. More information about this section can be found in the Additional Resource Settings section below.
-
-    <Info>
-
-    At minimum, this step needs a name (A), the HTTP Method (B), and a URL endpoint to call (C).
-    </Info>
-    <Frame>![Notion image](/data-sources/images/rest-api/image5.png)</Frame>
-
-    After you have setup all required fields for the API Resource and have received a successful response from the API, you can click the **Add** button to add it to the REST API Connection. This makes it easy to collect all the endpoints of a single REST API into a single connection that you can use in all of your Softr apps.
+    <Frame>![The Resources window of the Stripe integration, with five resources](/data-sources/images/rest-api/resources.png)</Frame>
 
     <Tip>
 
-    You will likely need to adjust other settings and the schema so don’t stop here! Check out those sections down below!
+    You can also add a resource from a block. In the block's **Source** tab, open the **Resource** dropdown and click **Add resource**.
+
     </Tip>
-    <Frame>![Notion image](/data-sources/images/rest-api/image6.png)</Frame>
+
+    4. Fill in the resource:
+
+    * **Name**: A name that helps you find the resource in the list.
+
+    * **HTTP method**: **GET** to read data, or **POST** to send data. Use the method from the API's documentation.
+
+    * **URL**: The endpoint that Softr calls, for example `https://api.stripe.com/v1/invoices`.
+
+    5. Click **Execute** to send a test request to the API.
+
+    <Frame>![A new resource with its name, HTTP method, URL, and the Execute button](/data-sources/images/rest-api/resource-form.png)</Frame>
+
+    6. When the test request succeeds, click **Save**.
+
+    <Info>
+
+    Softr saves a resource only after a successful **Execute**. When you change the request (URL, headers, URL params, placeholders, body, or pagination), click **Execute** again.
+
+    </Info>
+
+    <Tip>
+
+    You'll often need the optional sections and the schema too. Read the sections below before you save.
+
+    </Tip>
   </Step>
 </Steps>
 
-## **2. Configure Additional Settings**
+## **2. Configure the optional sections**
+
+Below the **Execute** button, the resource has more sections. Turn on a section with its toggle. Every API is different, so you may need all of these sections or none of them. Check the API's documentation.
 
 ### **Headers**
 
-The headers tab makes it easy to add in additional headers that may be needed for a specific endpoint (in addition to the headers you setup in Step 2 above).
-<Frame>![Notion image](/data-sources/images/rest-api/image7.png)</Frame>
+The **Headers** section always shows the authentication header of the integration. Click **Add** to add a header that only this resource needs.
 
-### **URL Params**
+<Frame>![The Headers and URL params sections of a resource](/data-sources/images/rest-api/headers-url-params.png)</Frame>
 
-In the URL parameters section you can add parameters to the call that will be appended to the URL. Of course you can also add them to the URL field directly, but it’s better to add them here since it’s possible that not all calls will need certain URL Params. You should add these as key/value pairs (Name and Value). You’ll need to search the REST APIs documentation to find these keys and also what types of values you can send here. In the example below, we are using a customer query parameter to tell the Invoices endpoint to get the invoices of a specific customer. Check out the Stripe docs below and how we use the query param in the call:
-<Frame>![Notion image](/data-sources/images/rest-api/image8.png)</Frame><Frame>![Notion image](/data-sources/images/rest-api/image9.png)</Frame>
+### **URL params**
 
-You can send static or dynamic values in URL params. In the above example, the customer that we need to get invoices for will likely change based on who is logged in so we’re using a Placeholder `{LOGGED_IN_USER: StripeID}` to tell Softr that this value will change and should be determined by the `StripeID` field of whoever is logged into the app. More about Placeholders below:
+Use **URL params** to add query parameters to the URL. Add each parameter as a name and a value. You can also type them in the URL field, but this section keeps them easier to read and change.
+
+Find the parameter names and values in the API's documentation. In the example above, the `customer` parameter tells the Stripe invoices endpoint to return the invoices of one customer:
+
+<Frame>![The customer parameter in the Stripe documentation for listing invoices](/data-sources/images/rest-api/stripe-invoices-docs.png)</Frame>
+
+A parameter value can be static or dynamic. The customer changes with the person who is logged in. Thus the example uses the placeholder `{LOGGED_IN_USER:StripeID}`. Softr replaces it with the `StripeID` field of the logged-in user.
 
 ### **Placeholders**
 
-Placeholders are a great way to send variables or dynamic data to and from the REST API. Sending static parameters to an API will typically always yield a similar result. By putting in placeholders, we can send data that is based on user actions, selected records, or logged-in user data. There are three dynamic value placeholders you can use to access and send data across pages and blocks:
+Placeholders send dynamic data to the API, based on the logged-in user, the selected record, or the filters and search of a block. Write a placeholder in curly braces, for example `{placeholderName}`, in the URL, the URL params, or the body.
 
-* `{LOGGED_IN_USER: <FIELD NAME>}` - used to access and input Logged-in user data into the API call
+You can use three kinds of dynamic placeholders:
 
-* `{recordId}` - used to access and input currently-selected record data into the API call
+* `{LOGGED_IN_USER:<FIELD NAME>}`: Sends a field of the logged-in user.
 
-* `{filter.<FIELD NAME FROM API>}` - used to pass filter and search fields as a part of the API request
+* `{recordId}`: Sends the ID of the selected record.
 
-In the example below, you can see that the `{LOGGED_IN_USER: StripeID}` placeholder we used in the previous step is now shown as a placeholder name where we can put in some sample data to test with. In the live app, this static value of `cus4hJudnpo56` won’t be used, it’s just for setup purposes.
-<Frame>![Notion image](/data-sources/images/rest-api/image10.png)</Frame>
+* `{filter.<FIELD NAME FROM API>}`: Sends the value of a search or filter in a block.
 
-You can also use placeholder to filter a list detail or list by a certain field value by using `{filter.<FIELD NAME FROM API>}` This is incredibly helpful for allowing people to filter a REST API with search and filtering in Softr blocks, or for setting static conditional filters. For example:
-<Frame caption="Use the filter placeholder to filter by dynamic values against the API.">![Use the filter placeholder to filter by dynamic values against the API.](/data-sources/images/rest-api/image11.jpeg)</Frame><Frame caption="Search by dynamic field values that are stored in the API setup.">![Search by dynamic field values that are stored in the API setup.](/data-sources/images/rest-api/image12.png)</Frame>
+When a request has placeholders, the **Placeholders** section lists them. Enter a sample value for each one, so that **Execute** can test the request. Your live app doesn't use these sample values.
+
+<Frame>![The Placeholders section with a sample value for the logged-in user's Stripe ID](/data-sources/images/rest-api/placeholders.png)</Frame>
+
+Use a `{filter.<FIELD NAME FROM API>}` placeholder to filter or search the API from a block. In the example below, the **Search customers** resource sends the search text to Stripe in the `query` URL param:
+
+<Frame caption="Use the filter placeholder to filter by dynamic values against the API.">![A resource that sends the filter.email placeholder in a URL param](/data-sources/images/rest-api/filter-placeholder.png)</Frame>
+
+Then turn on the search bar of the block in its **Content** tab:
+
+<Frame caption="Turn on the search bar of the block so that people can search the API.">![The List block settings with the search bar turned on](/data-sources/images/rest-api/block-search.png)</Frame>
+
 <Tip>
 
-Anything inside of `{}` will be used as a placeholder and placeholders can be used anywhere inside the setup window - headers, URL field, URL params, body etc.
+Softr treats anything inside `{}` as a placeholder.
 
-`{LOGGED_IN_USER: <FIELD NAME>}` is supported for getting logged-in user data and using it in the API request.<br/>
-`{filter.<FIELD NAME FROM API>}` is supported for filtering by a dynamic value against an API if the API supports it<br/>
-`{recordId}`is supported for sending current record information in the API request
+`{LOGGED_IN_USER:<FIELD NAME>}` sends data of the logged-in user in the API request.<br/>
+`{filter.<FIELD NAME FROM API>}` filters by a dynamic value, if the API supports it.<br/>
+`{recordId}` sends the current record in the API request.
 
 </Tip>
 
 ### **Body**
 
-You can use the body tab when your HTTP Method is set to POST to send data to an API endpoint. This is really helpful when using an Add Record button on list blocks. Suppose we have a list of Stripe Invoices in our app and we want people to be able to create a new invoice directly via the Stripe API. We might use the Stripe documentation to come up with a body to send as a part of a POST request like this:
-<Frame>![Notion image](/data-sources/images/rest-api/image13.png)</Frame>
+The **Body** section shows when the HTTP method is **POST**. Use it to send data to the API, for example from an **Add record** button on a List block. Write the body as JSON. Use the API's documentation to know which keys to send.
 
-**Pagination**
+In this example, the **Create invoice** resource creates a Stripe invoice for the logged-in user:
 
-Most APIs will return a limited number of records, but there will often be many more records than can be returned. You can use the Pagination tab to define what parameters to use to get the next page of results. All APIs work differently, so this will vary widely across REST APIs, but in general the standard fields here will work. In the event that they do not, you can write a transformer function to handle this for you (more on Transformers below).
+<Frame>![The Body section of a POST resource that creates a Stripe invoice](/data-sources/images/rest-api/body.png)</Frame>
 
-In our Stripe example, we are using Stripe’s `next_page` parameter to cycle through the Invoices and the `limit` parameter to tell the Stripe API how many invoice records it should send us each time we call it.
-<Frame>![Notion image](/data-sources/images/rest-api/image14.png)</Frame>
+### **Pagination**
 
-**Transformer**
+Most APIs return a limited number of records per request. Use the **Pagination** section to tell Softr how to get the next page of results. Softr uses cursor pagination:
 
-You can use the transformer tab to write vanilla Javascript for manipulating and refining the response you get back from the API. This is really helpful for extracting nested JSON objects from a response or even performing numerical calculations and adding them to the final response as a new field. (We’re a big fan of using AI to help write these functions!)
-<Frame>![Notion image](/data-sources/images/rest-api/image15.png)</Frame>
+* **Response parameter - cursor**: Where the cursor of the next page is in the response (**Body** or **Header**), and its name. Turn on **Transformer function** if you need JavaScript to read the cursor.
 
-## 3. Response and Schema Setup
+* **Request parameter - cursor**: Where Softr sends the cursor in the next request, and the parameter name.
 
-After you click the Execute button and get a response from the API, a new pane will appear in the bottom part of the window (you may need to scroll down). Here we have several tabs where we can monitor what the API responses are and how we handle them in Softr. **Don’t forget, you need to Execute a test call in order to see these options!**
+* **Request parameter - limit**: The parameter that sets the number of records per page, and its value.
+
+In the Stripe example, Softr sends the ID of the last invoice as `starting_after`, and asks for 25 invoices per page with `limit`.
+
+<Frame>![The Pagination section with the cursor and limit parameters for Stripe](/data-sources/images/rest-api/pagination.png)</Frame>
+
+### **Transformer**
+
+Use the **Transformer** section to change the API response with JavaScript. A transformer can extract a nested list from the response, or calculate a new field. AI tools are good at writing these functions.
+
+In the Stripe example, `return response.data;` keeps only the list of invoices in the `data` key of the response.
+
+<Frame>![The Transformer section with return response.data](/data-sources/images/rest-api/transformer.png)</Frame>
+
+## 3. Check the response and the schema
+
+When you click **Execute** and the request succeeds, three tabs show below the sections: **Schema**, **Transformed JSON**, and **Raw JSON**. Scroll down to see them.
 
 **Schema**
 
-Once you’ve gotten a response from the JSON, you can check the schema (structure) of the response in the Schema tab. You also have several options for setup here
+The **Schema** tab lists the fields of the response. Softr Studio shows these fields when you set up a block. Each field has four settings:
 
-1. **Key**: The key is the name of the parameter being returned in the response. This should match what is returned by the API and is what is shown in the Softr Studio UI when you map fields.
+1. **Key**: The name of the field in the response.
 
-2. **Type**: The type helps Softr understand how this number should be displayed in your app and also can be used for filtering and visibility conditions. It can be one of several types: TEXT, NUMBER, BOOLEAN (true/false), DATE, DATETIME, TIMESTAMP, OBJECT, ARRAY, EMAIL, or URL.
+2. **Type**: How Softr shows and filters the field. The types are TEXT, NUMBER, BOOLEAN, DATE, DATETIME, TIMESTAMP, OBJECT, ARRAY, EMAIL, and URL.
 
-3. **Enabled**: You can choose to enable or disable each schema parameter to have Softr ignore it in the Studio UI.
+3. **Enabled**: Clear this checkbox to hide the field in Softr Studio.
 
-4. **ID Field**: This toggle is used to tell Softr which field should be used as the unique ID for each record.
-<Frame>![Notion image](/data-sources/images/rest-api/image16.png)</Frame>
+4. **Is ID field**: Turn on this toggle for the field that identifies each record. When no field is the ID field, Softr shows a warning.
+
+<Frame>![The Schema tab with the Key, Type, Enabled, and Is ID field settings](/data-sources/images/rest-api/schema.png)</Frame>
 
 **Transformed JSON**
 
-This field will display the final JSON that is created by any Transformer functions you have setup in the API call. Any JSON displayed here is used to determine what you see in the Schema tab.
-<Frame>![Notion image](/data-sources/images/rest-api/image17.png)</Frame>
+The **Transformed JSON** tab shows the response after your transformer runs. The **Schema** tab is built from this JSON.
+
+<Frame>![The Transformed JSON tab with the list of Stripe invoices](/data-sources/images/rest-api/transformed-json.png)</Frame>
 
 **Raw JSON**
 
-This tab displays the JSON from the response from the API just as it comes, without any transformers or modification from Softr. The Raw JSON is very helpful in determining what Transformers to write, if any. For most use cases, this should be the first tab that you check. Compare the result in the screenshot below with the result in the screenshot above. Notice how in this example, we are using dot notation in a Transformer function to extract the `data` key from the response since it contains an ARRAY of objects that are invoices.
+The **Raw JSON** tab shows the response exactly as the API sent it. Check this tab first: it shows which transformer you need, if any. In the Stripe example, the invoices are in the `data` key, so the transformer returns `response.data`.
+
+<Frame>![The Raw JSON tab with the full Stripe response](/data-sources/images/rest-api/raw-json.png)</Frame>
 
 ## **FAQs**
    <AccordionGroup>
@@ -182,7 +253,7 @@ This tab displays the JSON from the response from the API just as it comes, with
 Yes! You can use **POST** requests to create new records.
    </Accordion>
    <Accordion title="How do I add authentication for my API?">
-Add **Authorization** headers with API keys or tokens.
+Select **API key** or **OAuth** when you connect the API. Softr adds the authentication header to every request.
    </Accordion>
    <Accordion title="Can I connect multiple APIs to one Softr app?">
 Yes! You can add multiple REST API connections and use them across different blocks.
