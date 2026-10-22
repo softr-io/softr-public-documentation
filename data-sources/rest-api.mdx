@@ -20,7 +20,7 @@ With the REST API connector, you can:
 
 * Fetch and create data using any **standard HTTP REST API**
 
-<Info>Rest API is available on Business and Enterprise plans.</Info>
+<Info>Rest API is available on all plans, including Free.</Info>
 <Tip>
 
 REST API is not a supported data source for the [Users](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9) of your application.
@@ -72,11 +72,23 @@ You connect a REST API once per workspace. Then you can use it in all your apps.
 
     2. Enter the **Authorization URL**, the **Access token URL**, the **Client ID**, the **Client secret**, and the **Scopes** from the API's documentation.
 
-    3. If the API needs extra parameters, turn on **Advanced settings**. Then add the authorize, access token, or refresh token parameters.
-
-    4. Click **Continue**, then sign in to the API in the window that opens.
+    3. Click **Continue**, then sign in to the API in the window that opens.
 
     <Frame>![The Connect your account window with OAuth selected](/data-sources/images/rest-api/connect-oauth.png)</Frame>
+
+    **OAuth advanced settings**
+
+    Some APIs need extra parameters in the OAuth requests. The API's documentation lists them. To add them, turn on **Advanced settings** before you click **Continue**. Then click **Add Parameter** in the group that the API names:
+
+    * **Authorize parameters**: Softr adds them to the authorization URL, where the person signs in.
+
+    * **Access token parameters**: Softr sends them when it gets the first access token.
+
+    * **Refresh token parameters**: Softr sends them when it refreshes an expired access token.
+
+    For example, Google returns a refresh token only when the authorization URL has `access_type=offline` and `prompt=consent`. Without a refresh token, the connection stops working when the first access token expires.
+
+    <Frame>![OAuth advanced settings with the access_type and prompt authorize parameters for Google](/data-sources/images/rest-api/oauth-advanced.png)</Frame>
 
     <Warning>
 
@@ -87,7 +99,7 @@ You connect a REST API once per workspace. Then you can use it in all your apps.
     </Warning>
   </Step>
   <Step title="Add API resources (endpoints)">
-    A resource is one API call that you save and reuse in your apps, for example "Invoices" or "Create invoice". Resources support the **GET** and **POST** methods.
+    A resource is one API call that you save and reuse in your apps, for example "Invoices" or "Customers by email". Resources support the **GET** and **POST** methods.
 
     1. On the **Integrations** page, click the **...** menu of your REST API integration.
 
@@ -109,7 +121,7 @@ You connect a REST API once per workspace. Then you can use it in all your apps.
 
     * **Name**: A name that helps you find the resource in the list.
 
-    * **HTTP method**: **GET** to read data, or **POST** to send data. Use the method from the API's documentation.
+    * **HTTP method**: **GET** for most endpoints. Select **POST** only when the API's documentation uses POST to return data (see [Body](#body)).
 
     * **URL**: The endpoint that Softr calls, for example `https://api.stripe.com/v1/invoices`.
 
@@ -155,13 +167,15 @@ A parameter value can be static or dynamic. The customer changes with the person
 
 ### **Placeholders**
 
-Placeholders send dynamic data to the API, based on the logged-in user, the selected record, or the filters and search of a block. Write a placeholder in curly braces, for example `{placeholderName}`, in the URL, the URL params, or the body.
+Placeholders send dynamic data to the API, based on the logged-in user, the page, or the filters and search of a block. Write a placeholder in curly braces, for example `{placeholderName}`, in the URL, the URL params, or the body. Softr doesn't replace placeholders in headers.
 
-You can use three kinds of dynamic placeholders:
+You can use four kinds of dynamic placeholders:
 
-* `{LOGGED_IN_USER:<FIELD NAME>}`: Sends a field of the logged-in user.
+* `{LOGGED_IN_USER:<FIELD NAME>}`: Sends a field of the logged-in user. `{LOGGED_IN_USER:EMAIL}` and `{LOGGED_IN_USER:NAME}` send the email and the name of the user.
 
-* `{recordId}`: Sends the ID of the selected record.
+* `{recordId}`: Sends the ID of the record that the page shows (the `recordId` in the page URL).
+
+* `{URL_PARAM:<PARAMETER NAME>}`: Sends the value of a parameter in the page URL.
 
 * `{filter.<FIELD NAME FROM API>}`: Sends the value of a search or filter in a block.
 
@@ -169,7 +183,7 @@ When a request has placeholders, the **Placeholders** section lists them. Enter 
 
 <Frame>![The Placeholders section with a sample value for the logged-in user's Stripe ID](/data-sources/images/rest-api/placeholders.png)</Frame>
 
-Use a `{filter.<FIELD NAME FROM API>}` placeholder to filter or search the API from a block. In the example below, the **Search customers** resource sends the search text to Stripe in the `query` URL param:
+Use a `{filter.<FIELD NAME FROM API>}` placeholder to filter or search the API from a block. In the example below, the **Customers by email** resource sends the search text to Stripe in the `email` URL param. When the block has no search or filter value, Softr removes a URL param whose value is only a filter placeholder, so the API returns all the records.
 
 <Frame caption="Use the filter placeholder to filter by dynamic values against the API.">![A resource that sends the filter.email placeholder in a URL param](/data-sources/images/rest-api/filter-placeholder.png)</Frame>
 
@@ -183,17 +197,24 @@ Softr treats anything inside `{}` as a placeholder.
 
 `{LOGGED_IN_USER:<FIELD NAME>}` sends data of the logged-in user in the API request.<br/>
 `{filter.<FIELD NAME FROM API>}` filters by a dynamic value, if the API supports it.<br/>
-`{recordId}` sends the current record in the API request.
+`{recordId}` sends the current record in the API request.<br/>
+`{URL_PARAM:<PARAMETER NAME>}` sends a parameter of the page URL in the API request.
 
 </Tip>
 
 ### **Body**
 
-The **Body** section shows when the HTTP method is **POST**. Use it to send data to the API, for example from an **Add record** button on a List block. Write the body as JSON. Use the API's documentation to know which keys to send.
+The **Body** section shows when the HTTP method is **POST**. Some APIs use POST to return data, for example search endpoints, GraphQL APIs, or previews. Write the body as JSON. Use the API's documentation to know which keys to send.
 
-In this example, the **Create invoice** resource creates a Stripe invoice for the logged-in user:
+In this example, the **Upcoming invoice** resource gets a preview of the next Stripe invoice of the logged-in user:
 
-<Frame>![The Body section of a POST resource that creates a Stripe invoice](/data-sources/images/rest-api/body.png)</Frame>
+<Frame>![The Body section of a POST resource that previews the next Stripe invoice](/data-sources/images/rest-api/body.png)</Frame>
+
+<Warning>
+
+A REST API data source is read-only. Softr calls a resource each time a block loads its data, so never use a resource to create, change, or delete data. To send data to an API, use the [Call API](/actions/call-api) action on a block button, or the **Call API** action in [Softr Workflows](/workflows/workflows).
+
+</Warning>
 
 ### **Pagination**
 
@@ -250,7 +271,7 @@ The **Raw JSON** tab shows the response exactly as the API sent it. Check this t
 ## **FAQs**
    <AccordionGroup>
    <Accordion title="Can I use REST API to update data in Softr?">
-Yes! You can use **POST** requests to create new records.
+No. A REST API data source is read-only: blocks can show its data, but the **Add record** and **Edit record** buttons aren't available. To send data to an API, use the [Call API](/actions/call-api) action on a block button, or the **Call API** action in [Softr Workflows](/workflows/workflows).
    </Accordion>
    <Accordion title="How do I add authentication for my API?">
 Select **API key** or **OAuth** when you connect the API. Softr adds the authentication header to every request.
