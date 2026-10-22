@@ -34,18 +34,21 @@ To connect HubSpot, you must have HubSpot Super Admin access.
 
 <Steps>
   <Step title="Add HubSpot data source to your workspace">
-    1. In your [Softr Dashboard](https://studio.softr.io/dashboard/data-sources), navigate to **Data Sources** in the left menu.
+    1. In Softr Studio, click **Integrations** in the left menu.
 
-    2. Click **Connect Data Source.**
+    2. Click **Connect new.**
+    <Frame caption="The Integrations page, with the Connect new button.">![The Integrations page, with the Connect new button](/data-sources/images/shared/integrations.png)</Frame>
 
-    3. Select **HubSpot** and proceed to authenticate your account.
-    <Frame caption="Adding new or editing existing data sources.">![Adding new or editing existing data sources.](/data-sources/images/hubspot/image1.png)</Frame>
+    3. In the **Select an integration** window, click **HubSpot.**
+    <Frame caption="The Select an integration window.">![The Select an integration window with the HubSpot tile highlighted](/data-sources/images/hubspot/select-hubspot-picker.png)</Frame>
+
+    4. Proceed to authenticate your account.
   </Step>
   <Step title="Grant access to HubSpot">
     1. Sign in to your HubSpot account.
 
     2. Select which account you want to connect to Softr.
-    <Frame>![Notion image](/data-sources/images/hubspot/image2.png)</Frame>
+    <Frame>![HubSpot account chooser with the Choose Account button](/data-sources/images/hubspot/hubspot-choose-account.png)</Frame>
   </Step>
 </Steps>
 
@@ -65,7 +68,7 @@ Once your HubSpot account is connected, you can use the authorized account acros
 
     **Important:** You can connect only one object type to one block. For example, if you want to show a list of clients, you can select the **Companies** object. If you would like to show **Tickets**, you will need to add another **dynamic block**.
     </Warning>
-    <Frame caption="Selecting HubSpot objects.">![Selecting HubSpot objects.](/data-sources/images/hubspot/image3.png)</Frame>
+    <Frame caption="Selecting HubSpot objects.">![The Source panel with a HubSpot connection and the Object list open](/data-sources/images/hubspot/select-object-source.png)</Frame>
 
     ### Supported HubSpot Objects
 
@@ -104,7 +107,7 @@ Once your HubSpot account is connected, you can use the authorized account acros
     <Note>
       Some objects appear only when your HubSpot account can share them. Softr hides an object
       when HubSpot does not grant access to it, so the list you see can be shorter than the list
-      above. Invoices and Subscriptions, for example, need Commerce Hub.
+      above. Invoices and Subscriptions, for example, need extra HubSpot permissions.
 
       If you expect an object and it is missing, reconnect the HubSpot data source and approve
       the access HubSpot asks for. The object appears right after that.
@@ -114,7 +117,7 @@ Once your HubSpot account is connected, you can use the authorized account acros
     When you select the object type you want to show, you can customize which object properties you want to visualize alongside. Each HubSpot object has **predefined field types** like text, dropdowns, and date pickers. Since Softr also has its field types, it's important to **map fields correctly** to ensure your data appears as expected.
 
     For example, if a HubSpot **deal property** contains an image stored as a **File type**, you should map it to a **Softr Image field** in a **List block** so it displays correctly.
-    <Frame caption="Mapping HubSpot object properties.">![Mapping HubSpot object properties.](/data-sources/images/hubspot/image4.png)</Frame>
+    <Frame caption="Mapping HubSpot object properties.">![The Item fields panel mapping a HubSpot image property to an image field](/data-sources/images/hubspot/map-object-fields.png)</Frame>
   </Step>
 </Steps>
 
