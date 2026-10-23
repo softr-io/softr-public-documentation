@@ -127,6 +127,7 @@
                   "workflows/integrations/jira",
                   "workflows/integrations/jotform",
                   "workflows/integrations/linear",
+                  "workflows/integrations/linkedin-ads",
                   "workflows/integrations/linkup",
                   "workflows/integrations/firecrawl",
                   "workflows/integrations/microsoft-excel",
