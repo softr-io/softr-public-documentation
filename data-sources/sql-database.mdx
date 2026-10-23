@@ -8,60 +8,57 @@ description: "Connect your PostgreSQL, MySQL, SQL Server and MariaDB databases t
 'twitter:title': "SQL Database – Softr Help Docs"
 'twitter:description': "Connect your PostgreSQL, MySQL, SQL Server and MariaDB databases to Softr apps."
 ---
-In Softr, you can easily build powerful, data-driven applications by using **PostgreSQL, MySQL, SQL Server, and MariaDB** as data sources.
+In Softr, you can build data-driven apps with **PostgreSQL, MySQL, SQL Server, and MariaDB** as data sources.
 
 With SQL data sources, you can:
 
-* Integrate your structured data into **custom apps and dashboards**
+* Show your structured data in **custom apps and dashboards**
 
 * Enable **secure access** for internal teams and external partners
 
 * Scale without hitting **record limitations**
 
-<Info>SQL data sources is available on Business and Enterprise plans.</Info>
+<Info>SQL data sources are available on Business and Enterprise plans.</Info>
 
 ## **1. Connect your SQL database to Softr**
 
-To use the SQL database in Softr, you must first **link your account**. Before connecting, make sure you have:
+Before you connect, make sure you have:
 
-* Access to your **SQL database credentials** (hostname, database name, username, and password).
+* Your **SQL database credentials**: host, port, database name, user, and password.
 
-* Necessary **permissions to access and modify** the database.
+* Permission to access the database.
 
 <Steps>
-  <Step title="Open Data Sources in Softr">
-    1. Log in to Softr and go to [Data Sources](https://studio.softr.io/dashboard/data-sources) in the left-hand menu.
+  <Step title="Open Integrations">
+    1. In the [Softr Studio dashboard](https://studio.softr.io/dashboard/integrations), click **Integrations** in the left menu.
 
-    2. Click **Connect Data Source**.
-    <Frame caption="Add, edit, or remove a datasource using the buttons on the dashboard">![Add, edit, or remove a datasource using the buttons on the dashboard](/data-sources/images/sql-database/image1.png)</Frame>
-  </Step>
-  <Step title="Select your SQL database">
-    Choose one of the following supported databases:
+    2. Click **Connect new**.
 
-    * **PostgreSQL**
+    <Frame>![The Integrations page of the dashboard, with the Connect new button](/data-sources/images/shared/integrations.png)</Frame>
 
-    * **MySQL**
+    3. In the **Select an integration** window, click **PostgreSQL**, **MySQL**, **SQL Server**, or **MariaDB**.
 
-    * **SQL Server**
-
-    * **MariaDB**
+    <Frame caption="The Select an integration window with PostgreSQL selected">![The Select an integration window with PostgreSQL selected](/data-sources/images/sql-database/select-postgresql-integration.png)</Frame>
   </Step>
   <Step title="Enter your database credentials">
-    After selecting your database type, enter the following credentials:
+    The connect window asks for these fields:
 
-    * **Host** – The database server address (e.g., `db.example.com`)
+    * **Name**: A name that helps you recognize the connection in Softr.
 
-    * **Port** – Default ports: `5432` (PostgreSQL), `3306` (MySQL & MariaDB), `1433` (SQL Server)
+    * **Host**: The database server address, for example `db.example.com`.
 
-    * **Database Name** – The name of your database
+    * **Port**: The port your server uses. Softr fills in the default port for the database type: `5432` for PostgreSQL, `3306` for MySQL and MariaDB, and `1433` for SQL Server.
 
-    * **User** – Your database username
+    * **Database**: The name of your database.
 
-    * **Password** – Your database password
-      <Frame>![Notion image](/data-sources/images/sql-database/image2.png)</Frame>
+    * **User**: Your database username.
+
+    * **Password**: Your database password.
+
+    <Frame caption="The Connect to PostgreSQL database window">![The Connect to PostgreSQL database window with the Name, Host, Port, Database, User, and Password fields filled in](/data-sources/images/sql-database/connect-postgresql.png)</Frame>
   </Step>
   <Step title="Confirm your setup">
-    Click **Connect** to verify and establish the connection. If the connection fails, double-check your credentials and try again.
+    Click **Connect** to verify and establish the connection. If the connection fails, check your credentials and try again.
   </Step>
 </Steps>
 
@@ -71,22 +68,26 @@ Once your SQL account is connected, you can use it in any Softr application.
 
 <Steps>
   <Step title="Connect your data to a dynamic block">
-    To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your SQL table:
+    To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (for example, [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), or [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your SQL table:
 
-    1. Go to the Block **source** **tab** and select your SQL integration.
+    1. Go to the block **Source** tab and select your SQL account in **Account**.
 
-    2. Select the **database** you want to connect.
+    2. Select the **database** you want to use.
 
-    3. Pick the **table** you want to use or **add a new** **query**
+    3. For PostgreSQL and SQL Server, select the **schema**. MySQL and MariaDB have no schema field.
 
-    4. Optionally, select the **primary field**.<br/>
-       <Frame caption="Connect your data to a dynamic block">![Connect your data to a dynamic block](/data-sources/images/sql-database/image3.png)</Frame>
+    4. Select the **table** you want to use, or add a new **query**.
+
+    5. Optionally, select the **primary field**.
+
+    <Frame caption="The Source tab of a List block connected to a PostgreSQL table">![The Source tab of a List block with the Account, Database, Schema, and Table fields filled in](/data-sources/images/sql-database/list-source-panel.png)</Frame>
   </Step>
   <Step title="Map Fields">
     When you connect your table to a block, you can choose which table **properties** to display and map to Softr fields. This lets you control how your data appears in Softr.
 
     **Example:** If you have an **email field** in the SQL database, select **an email field** in Softr.
-    <Frame caption="Map SQL fields">![Map SQL fields](/data-sources/images/sql-database/image4.png)</Frame>
+
+    <Frame caption="Mapping an image field">![The Avatar URL field window with Display type set to Image](/data-sources/images/sql-database/map-image-field.png)</Frame>
   </Step>
 </Steps>
 ### **Restricting IP Access**
