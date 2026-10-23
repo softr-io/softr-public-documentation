@@ -18,33 +18,35 @@ This integration allows you to:
 
 * Securely manage and scale your backend
 
+<Info>Xano is available on the Professional, Business, and Enterprise plans.</Info>
+
 <Warning>**Data Connector** is a Xano add-on that you will need in order to connect Xano to your Softr apps. [Learn more](https://docs.xano.com/database/database-connector)</Warning>
 
 <iframe src="https://www.youtube.com/embed/MO9RhoTSHTQ?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
 
 ## **1. Connect Xano to Softr**
 
-To use Xano in Softr, you need to connect your Xano instance as a data source. Note that one connected, all workspaces inside an instance will be available inside your Softr apps.
+To use Xano in Softr, you need to connect your Xano instance as a data source. Note that once connected, all workspaces inside an instance will be available inside your Softr apps.
 
 <Steps>
   <Step title="Open the database connector in Xano">
     1. **Log in to Xano** and go to the **server instance** you want to connect.
 
     2. Click the **gear icon** next to the server instance.<br/>
-       <Frame caption="Click on the gear icon next to the server instance you want to connect to.">![Click on the gear icon next to the server instance you want to connect to.](/data-sources/images/xano/image1.png)</Frame>
+       <Frame caption="Click on the gear icon next to the server instance you want to connect to.">![Click on the gear icon next to the server instance you want to connect to.](/data-sources/images/xano/xano-instance-gear-icon.png)</Frame>
 
     3. In the menu on the right, select **Database Connector**.<br/>
-       <Frame caption="Select the Database Connector option">![Select the Database Connector option](/data-sources/images/xano/image2.png)</Frame>
+       <Frame caption="Select the Database Connector option">![Select the Database Connector option](/data-sources/images/xano/xano-manage-instance-menu.png)</Frame>
   </Step>
   <Step title="Generate your instance’s public IP and credentials">
     In order for Softr to be able to access your instance, you’ll need to create a publicly accessible IP address and get some credentials so that only those with the credentials can access it.
 
     1. Click the **GET buttons** to generate:<br/>
        * A **public IP address** (required for Softr to access Xano)
-       * **Access credentials** (used to authenticate Softr)<Frame caption="Click the GET buttons to generate a public IP and server credentials.">![Click the GET buttons to generate a public IP and server credentials.](/data-sources/images/xano/image3.png)</Frame>
+       * **Access credentials** (used to authenticate Softr)<Frame caption="Click the GET buttons to generate a public IP and server credentials.">![Click the GET buttons to generate a public IP and server credentials.](/data-sources/images/xano/xano-database-connector-get-buttons.png)</Frame>
 
     2. **Copy and securely store your credentials**. By default, they are hidden for security reasons. Click **Show credentials**, then copy and save them in a secure location.<br/>
-       <Frame caption="Click on Show credentials to reveal them">![Click on Show credentials to reveal them](/data-sources/images/xano/image4.png)</Frame>
+       <Frame caption="Click on Show credentials to reveal them">![Click on Show credentials to reveal them](/data-sources/images/xano/xano-show-credentials.png)</Frame>
   </Step>
   <Step title="Allow Softr’s IP addresses in Xano">
     1. Go to the **Settings tab** in the Database Connector.
@@ -55,36 +57,37 @@ To use Xano in Softr, you need to connect your Xano instance as a data source. N
        * `52.58.246.121`
 
     3. Click **Save**.<br/>
-       <Frame caption="Click on the settings tab, add Softr’s IP addresses, then click Save.">![Click on the settings tab, add Softr’s IP addresses, then click Save.](/data-sources/images/xano/image5.png)</Frame>
+       <Frame caption="Click on the settings tab, add Softr’s IP addresses, then click Save.">![Click on the settings tab, add Softr’s IP addresses, then click Save.](/data-sources/images/xano/xano-allowlist-softr-ips.png)</Frame>
   </Step>
   <Step title="Connect Xano in Softr">
-    1. **Log in to Softr** and go to [Data Sources](https://studio.softr.io/dashboard/data-sources) in the left-hand menu.
+    1. In the [Softr Studio dashboard](https://studio.softr.io/dashboard/integrations), click **Integrations** in the left menu.
 
-    2. Click **Connect Data Source** in the upper-right corner.
+    2. Click **Connect new**.<br/>
+       <Frame caption="The Integrations page, with the Connect new button">![The Integrations page of the dashboard, with the Connect new button](/data-sources/images/shared/integrations.png)</Frame>
 
-    3. Select **Xano** from the list of data sources.
-    <Frame caption="Click on Connect Datasource">![Click on Connect Datasource](/data-sources/images/xano/image6.png)</Frame>
+    3. In the **Select an integration** window, click **Xano**.<br/>
+       <Frame caption="The Select an integration window, with Xano selected">![The Select an integration window, with the Xano tile highlighted](/data-sources/images/xano/xano-select-integration-picker.png)</Frame>
   </Step>
   <Step title="Enter your Xano credentials in Softr">
     Note that you have Full Access credentials as well as Read-Only credentials, so make sure to use the correct ones for your use case. We always recommend using the Full Access credentials so you don’t have to re-authenticate later if you expand your Softr apps’ capabilities.
 
-    1. Copy and paste your Xano credentials into the appropriate fields in Softr:<br/>
+    1. Copy and paste your Xano credentials into the appropriate fields in the **Connect to Xano database** window:
        * **User**
-       * **Pass**
+       * **Password**
        * **Host**
        * **Database**
 
-    2. **Set the Port to** `5432` (default for Xano).
+    2. Leave **Port** set to `5432` (default for Xano).
 
-    3. Enter a **custom name** for your connection (optional).<br/>
-       <Frame caption="Fill in the fields with the parts of your server credentials.">![Fill in the fields with the parts of your server credentials.](/data-sources/images/xano/image7.png)</Frame>
+    3. Enter a **Name** for your connection (optional). Leave **Environment** set to `live`.<br/>
+       <Frame caption="Fill in the fields with the parts of your server credentials.">![Fill in the fields with the parts of your server credentials.](/data-sources/images/xano/xano-connect-credentials.png)</Frame>
        <Warning>
           If you copy your credentials and they paste in as ***xxxxxxxxxxx*** then you need to unhide them before copying, as explained in Step 3.
        </Warning>
   </Step>
   <Step title="Click 'Connect' to complete setup">
     Once all fields are correctly filled in, click **Connect** to finalize the connection.
-    <Frame caption="Click Connect once you’ve pasted in your credentials.">![Click Connect once you’ve pasted in your credentials.](/data-sources/images/xano/image8.png)</Frame>
+    <Frame caption="Click Connect once you’ve pasted in your credentials.">![Click Connect once you’ve pasted in your credentials.](/data-sources/images/xano/xano-click-connect.png)</Frame>
   </Step>
 </Steps>
 
@@ -96,19 +99,27 @@ Once your Xano account is connected, you can use it in any Softr application.
   <Step title="Connect your data to a dynamic block">
     To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your Xano table:
 
-    1. Go to the Block **source** **tab** and select your Xano integration.
+    1. Open the **Source** tab of the block settings.
 
-    2. Select the **workspace** you want to connect.
+    2. In **Account**, select your Xano connection.
 
-    3. Pick the **table** you want to use or **add a new** **query**
+    3. In **Workspace**, select the workspace you want to connect.
 
-    4. Optionally, select the **primary field**.<br/>
-       <Frame caption="Connect Xano table to dynamic block">![Connect Xano table to dynamic block](/data-sources/images/xano/image9.png)</Frame>
+    4. In **Table**, pick the table you want to use, or select the **Query** tab to add a new query.
+
+    5. Optionally, select the **primary field**.<br/>
+       <Frame caption="Connect Xano table to dynamic block">![The Source tab of a List block, with the Xano account, workspace, and table fields](/data-sources/images/xano/xano-source-tab-table.png)</Frame>
   </Step>
   <Step title="Map Xano fields to item fields">
     When you connect your table to a block, you can choose which Xano **properties** to display and map to Softr fields. This lets you control how your data appears in Softr.
 
+    1. Open the **Content** tab of the block settings.
+
+    2. Under **Item fields**, click **Add** and turn on the Xano properties you want to show.
+
+    3. Click a field to change how it displays. For example, select **Image** as the display type for an image field.<br/>
+       <Frame caption="Map Xano fields to item fields">![The Content tab of a List block, with the Photo item field open and its display type set to Image](/data-sources/images/xano/xano-map-image-field.png)</Frame>
+
     **Example:** If you have an **email field** in Xano, select **an email field** in Softr.
-    <Frame caption="Map Xano fields to item fields">![Map Xano fields to item fields](/data-sources/images/xano/image10.png)</Frame>
   </Step>
 </Steps>
