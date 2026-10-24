@@ -9,7 +9,7 @@ twitter:title: "Airtable – Softr Help Docs"
 twitter:description: "Using Airtable as a data source for your Softr app."
 ---
 
-Airtable is a powerful tool that combines theflexibility of spreadsheets with the power of a database. It allows you to store and organize different types of data, making it a great choice for managing data in your **Softr app.**
+Airtable is a powerful tool that combines the flexibility of spreadsheets with the power of a database. It allows you to store and organize different types of data, making it a great choice for managing data in your **Softr app.**
 
 With Airtable, you can:
 
@@ -23,20 +23,26 @@ In this article, we’ll walk you through **connecting your Airtable account** t
 
 <iframe src="https://www.youtube.com/embed/CKLbBQAbJcI?rel=0" width="100%" height="500px" title="YouTube video" />
 
+<Info>Airtable is available on all plans, including Free.</Info>
+
 ## **1. Connect your Airtable account**
 
-To use Airtable in Softr, you must first **link your Airtable account**. Here’s how:
+You connect an Airtable account once per workspace. Then you can use it in all your apps.
 
 <Steps>
-  <Step title="Add an Airtable data source to your workspace">
-    In your [Softr Dashboard](https://studio.softr.io/dashboard/data-sources), navigate to **Data Sources** in the left menu and click **Connect Data Source.** Select **Airtable** and proceed to authenticate your account.
+  <Step title="Open Integrations">
+    1. In the [Softr Studio dashboard](https://studio.softr.io/dashboard/integrations), click **Integrations** in the left menu.
 
-    <Frame caption="Add, edit, or remove a datasource using the buttons on the dashboard">
-      ![Add, edit, or remove a datasource using the buttons on the dashboard](/data-sources/images/airtable/image1.png)
-    </Frame>
+    2. Click **Connect new**.
+
+    <Frame>![The Integrations page of the dashboard, with the Connect new button](/data-sources/images/shared/integrations.png)</Frame>
+
+    3. In the **Select an integration** window, click **Airtable**.
+
+    <Frame>![The Select an integration window, with Airtable selected](/data-sources/images/airtable/select-integration.png)</Frame>
   </Step>
-  <Step title="Grant access to the Airtable bases you want to use in your workspace.">
-    Select all the bases you want to access in Softr and click Authorize.
+  <Step title="Grant access to your Airtable bases">
+    Softr opens Airtable in a new window. Sign in to Airtable, select the bases you want to use in Softr, and click **Grant access**.
 
     <Warning>
       When granting access, we **strongly recommend** choosing **“All current and future bases in all current and future workspaces.”**
@@ -44,7 +50,7 @@ To use Airtable in Softr, you must first **link your Airtable account**. Here’
       If you don’t, you’ll need to manually reselect bases every time you reconnect, which could break your apps.
     </Warning>
     <Frame caption="Granting access to Airtable bases">
-      ![Granting access to Airtable bases](/data-sources/images/airtable/image2.png)
+      ![The Airtable window that asks you to grant Softr access to your bases](/data-sources/images/airtable/oauth-grant-access.png)
     </Frame>
   </Step>
 </Steps>
@@ -57,30 +63,32 @@ Once your Airtable account is connected, you can use the authorized bases across
   <Step title="Connect your data to a dynamic block">
     To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your Airtable base:
 
-    1. Go to the **Block source** **tab** and select your Airtable integration.
-    2. Pick the **base** you want to use.
-    3. Choose the **table** with the records you want to show.
+    1. Open the **Source** tab of the block settings.
+    2. In **Account**, select your Airtable account.
+    3. In **Base**, pick the base you want to use.
+    4. In **Table**, choose the table with the records you want to show.
+    5. Optional: in **View**, choose an Airtable view.
 
     <Warning>
       **Important:** Each Airtable table can only connect to one Softr block. For example, if you want to display **Projects** in a List block, you’ll need to map it to the **Projects table** in your base. If you also want to show **Tasks**, you’ll need to add a separate block and connect it to the **Tasks table**.
     </Warning>
-    <Frame caption="Selecting an Airtable view in Softr">
-      ![Selecting an Airtable view in Softr](/data-sources/images/airtable/image3.png)
+    <Frame caption="The Source tab of a List block connected to Airtable">
+      ![The Source tab of the block settings with the Account, Base, Table, and View fields](/data-sources/images/airtable/block-source.png)
     </Frame>
     <Info>
       **Tip**: You can also select an Airtable **View** to display. If a view is selected, any filters and sorting applied in Airtable will be preserved for the records shown in the Softr block (e.g., showing only completed tasks).
     </Info>
   </Step>
   <Step title="Map Airtable columns to item fields">
-    When you connect your table to a block, you can choose which Airtable **columns** to display and map it to a Softr field. This lets you control how your Airtable data appears in Softr.
+    When you connect your table to a block, you can choose which Airtable **columns** to display. Open the **Content** tab, then click **Add** under **Item fields**. Each column maps to a field of the block. This lets you control how your Airtable data appears in Softr.
 
     **Example:** If your Airtable base has a **Profile Picture (Attachment field)**, map it to an **Image field** in Softr so it displays correctly.
 
     <Frame caption="Airtable fields">
-      ![Airtable fields](/data-sources/images/airtable/image4.png)
+      ![An Airtable table with its fields as columns](/data-sources/images/airtable/airtable-table-fields.png)
     </Frame>
     <Frame caption="Mapping an image field">
-      ![Mapping an image field](/data-sources/images/airtable/image5.png)
+      ![The Content tab of a List block, with the Airtable Photo field shown as an Image field](/data-sources/images/airtable/map-image-field.png)
     </Frame>
 
     <Info>
@@ -133,7 +141,7 @@ These fields are not supported due to Airtable API limitations:
 
 <AccordionGroup>
   <Accordion title="What if I can’t see my Airtable bases in Softr?">
-    Check that you’ve granted **Softr access to all current and future bases** in Airtable. If not, go back to [**Data Sources**](https://studio.softr.io/dashboard/data-sources) and re-authenticate.
+    Check that you’ve granted **Softr access to all current and future bases** in Airtable. If not, go back to [**Integrations**](https://studio.softr.io/dashboard/integrations) and re-authenticate.
   </Accordion>
   <Accordion title="Why aren’t my mapped fields showing?">
     If some fields aren’t displaying data even though they are mapped correctly, check if their titles in Airtable contain any [special characters](https://www.computerhope.com/jargon/s/specchar.htm). Removing special characters can help resolve the issue.
@@ -145,27 +153,31 @@ These fields are not supported due to Airtable API limitations:
     Yes! You can connect multiple Airtable bases to the same app, but you have to use a separate [Dynamic Block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH) for each table.
   </Accordion>
   <Accordion title="How can I improve my app's performance?">
-    ### OAuth vs. Personal Access Token rate limits
+    ### OAuth vs. personal access token rate limits
 
-    In Softr, you can switch your Airtable connection from OAuth (5 requests/sec) to Personal Access Tokens (50 requests/sec). While Personal Access Tokens allow up to 50 requests per second at the token level, Airtable still enforces a base-level limit of 5 requests per second. This means requests to a single base remain capped at 5 RPS, regardless of the authentication method.
+    Softr sends up to 4 requests per second to Airtable with OAuth. With a personal access token, Softr sends up to 35 requests per second. Airtable still limits each base to 5 requests per second, so requests to one base stay capped at 5 per second, whatever the authentication method.
 
     ### Free plan rate limits
 
-    Airtable Free plan users are limited to 1,000 API calls per month; once this limit is reached, all API requests are blocked until the monthly reset.
+    Airtable Free plan users are limited to 1,000 API calls per month. When you reach this limit, Airtable blocks all API requests until the monthly reset.
 
-    ### Using PATs
+    ### Using a personal access token
 
-    Personal access tokens can help increase security on your account by only enabling Softr to access certain bases and scopes in your Airtable account. We recommend enabling all scopes, but the PAT setup screens will show which ones are required by Softr.
+    A personal access token lets you control which bases and scopes Softr can reach in your Airtable account.
 
-     
-
-    If you have already authenticated your Airtable account, click **"Switch to personal access token"** below the data source name and paste your Airtable PAT.
+    To switch an existing connection, click **Switch to personal access token** below the integration name in **Integrations**. Then paste your token in **Personal access token** and click **Connect**.
 
     <Frame>
-      ![Notion image](/data-sources/images/airtable/image6.png)
+      ![The Integrations page with the Switch to personal access token link](/data-sources/images/airtable/switch-to-pat.png)
     </Frame>
 
-    Follow [this Airtable guide](https://www.notion.so/softr/Airtable-1a89a723d691802b8540f4c7f8355265#) to generate a PAT.
+    Give the token the **Record data**, **Base schema**, **Webhook**, and **User email** scopes, with access to **all current and future bases**. Create it in the [Airtable developer hub](https://airtable.com/create/tokens).
+
+    <Frame>
+      ![The Connect to Airtable window with the personal access token field and the required scopes](/data-sources/images/airtable/connect-pat.png)
+    </Frame>
+
+    Follow [this Airtable guide](https://airtable.com/developers/web/guides/personal-access-tokens) to generate a token.
   </Accordion>
 </AccordionGroup>
 
