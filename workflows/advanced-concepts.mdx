@@ -178,7 +178,7 @@ The **Call API** action makes an outgoing HTTP request to any REST endpoint. Use
 
 **Key settings:**
 
-- **Method:** GET, POST, PUT, PATCH, or DELETE
+- **Method:** GET, POST, PUT, PATCH, DELETE, or OPTIONS - or a variable, such as a `method` field the Webhook trigger received. A variable's value is read in any case (`put` is sent as PUT); an empty value fails the step with `Method is required`, an unknown one with `Method 'FETCH' is not supported`.
 - **URL:** The endpoint you're calling
 - **Headers:** Authentication tokens, content type, and other metadata
 - **Query parameters:** Key-value pairs appended to the URL
