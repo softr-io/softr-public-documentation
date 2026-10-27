@@ -37,15 +37,19 @@ To connect your monday.com data to Softr you will need **admin** access in your 
     * Go to **Administration** > **Connections** > [API in monday.com.](https://developer.monday.com/api-reference/docs/authentication#admin-tab)
 
     * Copy your **Personal API Token**.
-      <Frame>![Notion image](/data-sources/images/mondaycom/image1.png)</Frame>
+      <Frame>![The API token field in monday.com, under Administration, Connections, API](/data-sources/images/mondaycom/monday-admin-api-token.png)</Frame>
   </Step>
   <Step title="Add monday.com as a data source in Softr">
-    * Open [Softr’s Data Sources](https://studio.softr.io/dashboard/data-sources) settings.
+    * Open [Softr’s Integrations page](https://studio.softr.io/dashboard/integrations).
 
-    * Click the **Connect data source.**
+    * Click **Connect new**.
+    <Frame>![The Integrations page in Softr with the Connect new button](/data-sources/images/shared/integrations.png)</Frame>
 
-    * Select **monday.com** and paste your API token.
-    <Frame>![Notion image](/data-sources/images/mondaycom/image2.png)</Frame>
+    * Select **Monday.com** in the list of integrations.
+    <Frame>![The Select an integration window in Softr with Monday.com highlighted](/data-sources/images/mondaycom/select-monday-picker.png)</Frame>
+
+    * Paste your Personal API Token in the **Personal API Token** field. Then click **Connect**.
+    <Frame>![The Connect to Monday.com window with the Personal API Token field highlighted](/data-sources/images/mondaycom/connect-monday-token.png)</Frame>
   </Step>
 </Steps>
 
@@ -57,23 +61,23 @@ Once your monday.com account is connected, you can use it in any Softr applicati
   <Step title="Connect your data to a dynamic block">
     To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your monday.com board:
 
-    1. Go to the Block **Source** **tab** and select your monday.com integration.
+    1. Go to the block's **Source** tab. In **Account**, select your monday.com account.
 
-    2. Select the **workspace** you want to connect.
+    2. In **Workspace**, select the workspace you want to connect.
 
-    3. Pick the **board** you want to use.
+    3. In **Board**, pick the board you want to use.
 
     <Warning>
 
     **Important:** You can connect **only one board to one block**. For example, if you want to show a list of clients, you can select the **Companies** board. If you would like to show **Tickets**, you will need to add another **dynamic block.**
     </Warning>
-    <Frame>![Notion image](/data-sources/images/mondaycom/image3.png)</Frame>
+    <Frame>![The Source tab of a List block with the Account, Workspace and Board fields filled in](/data-sources/images/mondaycom/source-account-board.png)</Frame>
   </Step>
   <Step title="Map monday.com columns to item fields">
     When you connect your board to a block, you can choose which monday.com **columns** to display and map it to a Softr field. This lets you control how your monday.com data appears in Softr.
 
-    **Example:** If your Airtable base has a **Profile Picture (Attachment field)**, map it to an **Image field** in Softr so it displays correctly
-    <Frame>![Notion image](/data-sources/images/mondaycom/image4.png)</Frame><Frame caption="Mapping an image field">![Mapping an image field](/data-sources/images/mondaycom/image5.png)</Frame>
+    **Example:** If your monday.com board has a **file column** with photos, map it to an **Image** field in Softr so it displays correctly.
+    <Frame>![A monday.com Projects board with the Project image file column](/data-sources/images/mondaycom/monday-projects-board-columns.png)</Frame><Frame caption="Mapping an image field">![The Content tab of a List block with the Photo field set to the Image type](/data-sources/images/mondaycom/item-fields-photo.png)</Frame><Frame caption="The Photo image field window with Display type set to Image">![The Photo field window with Display type set to Image](/data-sources/images/mondaycom/map-image-field.png)</Frame>
 
     You can learn more about Softr field types in the [List block overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU).
   </Step>
@@ -90,7 +94,7 @@ Most fields you edit in monday **monday.com** can be edited in Softr, but there 
   + **Item ID**
   + **Mirror fields**
 
-<Warning>Currently Formula fields, Progress fields, and Workdocs are not supported.</Warning>
+<Warning>Currently Formula fields and Progress fields are not supported.</Warning>
 
 ### **Connected boards in monday.com**
 
@@ -103,10 +107,10 @@ For example, if you have two boards:
 * **Projects**
 
 You can **connect Clients to Projects** to see which projects each client is involved in. This helps keep all related information in one place.
-<Frame caption="monday.com Projects board with a Connected board with Clients.">![monday.com Projects board with a Connected board with Clients.](/data-sources/images/mondaycom/image6.png)</Frame>
+<Frame caption="monday.com Projects board with a Connected board with Clients.">![monday.com Projects board with a Connected board with Clients.](/data-sources/images/mondaycom/monday-connected-board-projects.png)</Frame>
 
 Below, you can see the Clients table, where the Project field is a Connected board that shows records from the Projects table.
-<Frame caption="monday.com Clients board with a Connected board with Projects.">![monday.com Clients board with a Connected board with Projects.](/data-sources/images/mondaycom/image7.png)</Frame>
+<Frame caption="monday.com Clients board with a Connected board with Projects.">![monday.com Clients board with a Connected board with Projects.](/data-sources/images/mondaycom/monday-connected-board-clients.png)</Frame>
 
 ### Subitems
 
