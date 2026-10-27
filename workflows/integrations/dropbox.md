@@ -30,7 +30,7 @@ List the files and folders in a folder, optionally including its subfolders and 
 
 ### Find file or folder
 
-Search your Dropbox, or one folder of it, by name, optionally by file category and extension. Finding nothing is not an error: `count` is 0 and `firstItem` is empty. If `hasMore` is true, Dropbox had more matches than were returned.
+Search your Dropbox, or one folder of it, by name, optionally by file category and extension. Finding nothing is not an error: `count` is 0 and `items` is empty. If `hasMore` is true, Dropbox had more matches than were returned.
 
 Dropbox search can take a few minutes to include newly added files. To look up a file you know the path of, use **Get file or folder** instead.
 
