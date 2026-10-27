@@ -20,6 +20,8 @@ icon: "random"
 
 Workflows are built one step at a time: pick a trigger, add a step, fill in its inputs, test it, then move on to the next.
 
+**The assistant reads the workflow guide first.** `workflow_guide` returns Softr's instructions for building, testing and publishing a workflow. An assistant calls it once per conversation, before the other workflow tools. It changes nothing, and it isn't needed for app, page or database work.
+
 **A step's output can only be used once that step has been tested.** Later steps usually need data from earlier ones, and those references only work after the earlier step has actually run. So the assistant tests as it builds rather than at the end — and every step needs a passing test, including final ones that nothing reads from.
 
 **Testing a single step can have real effects.** Most steps are tested with mock data by default. Some can only be tested for real, and testing one of those with `workflow_test_node` makes a real call — sending the actual email, writing the actual row. `workflow_test` never does: it runs every step that would change data as a mock, and reports one that has no mock as untestable for you to test in the builder.
