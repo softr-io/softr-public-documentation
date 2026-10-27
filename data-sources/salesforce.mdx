@@ -50,7 +50,7 @@ To connect Salesforce, you must have permissions to authorize third-party OAuth 
 
     2. Sign in to your Salesforce account when redirected.
 
-    3. Approve the requested permissions to complete the connection.
+    3. Choose whether to connect a **production** org or a **sandbox** org, then approve the requested permissions to complete the connection.
   </Step>
 </Steps>
 
@@ -135,6 +135,9 @@ Related objects cannot currently be used in [Visibility Conditional Filters](/us
    <AccordionGroup>
    <Accordion title="Why can't I see certain Salesforce fields in Softr?">
 Salesforce enforces **field-level security** and **profile permissions** on the API user account that authorized the connection. If a field or object is missing in Softr, verify that the authorizing user's profile and permission sets grant read (and, where needed, edit) access to those fields.
+   </Accordion>
+   <Accordion title="Can I connect a Salesforce sandbox?">
+Yes. When connecting Salesforce, choose the **sandbox** option to authenticate against `test.salesforce.com` instead of your production org. This is useful for testing your Softr app against non-production data before going live.
    </Accordion>
    <Accordion title="Can I use multiple Salesforce orgs in one Softr app?">
 Yes. You can connect multiple Salesforce accounts, but you'll need to use **separate Softr blocks** for each object from each org.
