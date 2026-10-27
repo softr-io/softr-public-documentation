@@ -8,7 +8,7 @@ description: "Using Notion as a data source for your Softr app."
 'twitter:title': "Notion – Softr Help Docs"
 'twitter:description': "Using Notion as a data source for your Softr app."
 ---
-**Notion** is more than just a note-taking tool—it combines project management and databases, making it a stronger alternative to spreadsheets for organizing and collaborating on data in one place.
+**Notion** is more than just a note-taking tool. It combines project management and databases, making it a stronger alternative to spreadsheets for organizing and collaborating on data in one place.
 
 By using [Notion databases](https://www.notion.so/help/what-is-a-database) with Softr, you can easily create Client Portals, Internal Tools, and other business apps to:
 
@@ -22,32 +22,50 @@ By using [Notion databases](https://www.notion.so/help/what-is-a-database) with 
 
 * Collect forms, feedback, and inputs effortlessly
 
+<Info>Notion is available on all plans, including Free.</Info>
+
 <iframe src="https://www.youtube.com/embed/YSn5fXXnpjI?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
 
 ## **1. Connect your Notion account**
 
 To use Notion in Softr, you must first **link your Notion account**. Here’s how:
 
+You connect Notion once per workspace. Then you can use it in all your apps.
+
 <Steps>
-  <Step title="Add Notion data source to your workspace">
-    To create an app using a Notion database, the first step is to add Notion as a data source in Softr. You can do this either through the **Data Sources** section of the Softr dashboard or by adding a new data source directly to a block within your application.
-    <Frame>![Image](/data-sources/images/notion/image1.png)</Frame>
+  <Step title="Open Integrations">
+    1. In the Softr Studio dashboard, click **Integrations** in the left menu.
+
+    2. Click **Connect new**.
+
+    <Frame>![The Integrations page of the dashboard, with the Connect new button](/data-sources/images/shared/integrations.png)</Frame>
+
+    3. In the **Select an integration** window, click **Notion**.
+
+    <Frame>![The Select an integration window, with Notion selected](/data-sources/images/notion/select-integration.png)</Frame>
+
+    You can also connect Notion from the **Account** list in the **Source** tab of a block.
   </Step>
-  <Step title="Grant access to the Notion databases you want to use in your workspace.">
-    After selecting Notion as the data source, you’ll be redirected to the **Notion Authorization** page. On this page, select the workspace and top-level pages containing the databases you wish to connect to Softr.
-    <Frame>![Notion image](/data-sources/images/notion/image2.png)</Frame>
+  <Step title="Start the connection">
+    In the **Connect to Notion** window, click **Connect**. Softr opens the Notion authorization page.
+
+    <Frame>![The Connect to Notion window, with the Connect button](/data-sources/images/notion/connect-notion.png)</Frame>
+  </Step>
+  <Step title="Grant access to the Notion databases you want to use">
+    On the Notion authorization page, select the workspace. Then click **Select pages** to choose the top-level pages that contain the databases you want to connect to Softr.
+    <Frame>![Notion authorization page, with the workspace selector and the Select pages button](/data-sources/images/notion/oauth-workspace-access.png)</Frame>
     <Info>
 
     You can authorize the integration only for Notion workspaces where you are **a member.**
     </Info>
-    <Frame>![Notion image](/data-sources/images/notion/image3.png)</Frame>
+    <Frame>![Notion page picker, with the Tasks, Projects and Clients pages selected](/data-sources/images/notion/oauth-select-pages.png)</Frame>
     <Info>
 
     Once connected, **only Notion database pages** can be used with Softr dynamic blocks, such as List and Detail blocks.
 
     </Info>
 
-    To finalize the connection, click the "Allow Access" button to grant Softr permission to access your Notion account.
+    To finalize the connection, click the **Allow access** button to grant Softr permission to access your Notion account.
   </Step>
 </Steps>
 
@@ -57,31 +75,33 @@ To use Notion in Softr, you must first **link your Notion account**. Here’s ho
   <Step title="Connect your data to a dynamic block">
     To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g. [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your Notion database:
 
-    1. Go to the Block **source** **tab** and select your Notion integration.
+    1. Open the **Source** tab of the block.
 
-    2. Pick the **database** you want to use.
+    2. In **Account**, select your Notion account.
 
-    Once you select the Notion account, the pages within that database will display as individual records in your application.
-    <Frame>![Notion image](/data-sources/images/notion/image4.png)</Frame>
+    3. In **Database**, pick the database you want to use.
+
+    Each page of that database is a record in your app.
+    <Frame>![The Source tab of a List block, with the Notion account and the list of databases](/data-sources/images/notion/block-source-database.png)</Frame>
   </Step>
   <Step title="Map Notion columns to item fields">
-    Once your data source is connected to a block, you can map individual fields to display the desired information.
-    <Frame>![Notion image](/data-sources/images/notion/image5.png)</Frame>
+    Once the block is connected to your database, open the **Content** tab. In **Item fields**, click **Add** to show a Notion property in each item.
+    <Frame>![Notion database with its properties as columns](/data-sources/images/notion/notion-database-properties.png)</Frame>
 
     In Notion, properties are essentially the columns in the database, with each property having a predefined type, such as **Files**, **Status**, **Date**, and more. Similarly, Softr offers a variety of field types to choose from when displaying your data. It's important to select the appropriate field type when mapping fields from Notion to Softr.
 
     For example, in the image below, we’ve mapped a **File** property from Notion to an **Image** field type on Softr’s List block to display photos.
-    <Frame>![Image](/data-sources/images/notion/image6.png)</Frame>
+    <Frame>![The Content tab of a List block, with the Notion Cover property shown as an Image field](/data-sources/images/notion/block-content-image-field.png)</Frame>
   </Step>
 </Steps>
 
 ### **Supported fields**
 
-Most fields that can be edited in Notion are also editable in Softr. However, there are exceptions. Fields that are automatically generated by Notion, such as **Rollup, Formula** and **People** can be displayed but not edited within Softr.
+Most fields that can be edited in Notion are also editable in Softr. However, there are exceptions. Fields that Notion generates, such as **Rollup, Formula, People, Created time, Created by, Last edited time, Last edited by** and **ID**, can be displayed but not edited within Softr.
 
 <Info>
 
-The following read-only fields are not supported: **Last edited by, Last edited time, Created time, Created by, ID, Button.**
+Softr does not support these Notion properties: **Button, Verification, Place.**
 
 </Info>
 
@@ -117,8 +137,8 @@ If times aren’t needed, choose Skip Time Altogether for simplicity. Otherwise,
 
 The [Relation](https://www.notion.so/help/relations-and-rollups) property in Notion is essential for creating a **relational database**. It allows you to link records from one database to another, enabling the seamless display of related information across your boards.
 
-For example, if you have two Notion databases—**Clients** and **Projects**—you can add a Relation property to **Clients** to link it with **Projects**. This lets you easily display all projects associated with a specific client.
-<Frame>![Notion image](/data-sources/images/notion/image7.png)</Frame>
+For example, if you have two Notion databases (**Clients** and **Projects**), you can add a Relation property to **Clients** to link it with **Projects**. This lets you easily display all projects associated with a specific client.
+<Frame>![The Edit property panel of a Notion Relation property that links Projects to Clients](/data-sources/images/notion/notion-relation-property.png)</Frame>
 <Info>
 
 Due to limitations in the Notion API, Relation fields cannot be displayed in List-type dynamic blocks (List, Table, Inbox, etc). As an alternative, we recommend creating a **Rollup field** based on the Relation field and using that for display.
@@ -128,7 +148,7 @@ Due to limitations in the Notion API, Relation fields cannot be displayed in Lis
 ### Conditional filters based on relation
 
 [Conditional filters](/user-groups-and-permissions/3oA6AaFzUiePs2sW2TpYrF/conditional-filters/mDnn7jnpPiYmJcT99jpt7m) allow you to display specific records based on set conditions. This feature is handy when showing related records between databases. For example, if you have a "Client Detail" page, you can display a list of projects related to a specific client.
-<Frame caption="Conditional filters with related record set up">![Conditional filters with related record set up](/data-sources/images/notion/image8.png)</Frame><Frame caption="Published application with conditional filter set up">![Published application with conditional filter set up](/data-sources/images/notion/image9.png)</Frame>
+<Frame caption="Conditional filters with related record set up">![Conditional filters with related record set up](/data-sources/images/notion/block-filter-relation.png)</Frame><Frame caption="Published application with conditional filter set up">![Published application with conditional filter set up](/data-sources/images/notion/published-app-filtered-projects.png)</Frame>
 
 ### How to show sub-items
 
@@ -137,22 +157,22 @@ If your database includes sub-items, here’s how you can choose what shows up i
 **Show both items and sub-items**
 
 When you connect your database to a dynamic block, you’ll automatically see both items and sub-items.
-<Frame>![Notion image](/data-sources/images/notion/image10.png)</Frame>
+<Frame>![The Source tab of a List block on a Notion Tasks database, with no condition](/data-sources/images/notion/block-no-filter.png)</Frame>
 <Info>
 
-Note: The block will display them as one flat list—it won't keep the parent- child hierarchy.
+Note: The block will display them as one flat list. It won't keep the parent-child hierarchy.
 
 </Info>
 
 **Show only top-level items**
 
-To hide sub-items and show only top-level items, add a Conditional filter: `Parent item is empty`
-<Frame>![Notion image](/data-sources/images/notion/image11.png)</Frame>
+To hide sub-items and show only top-level items, in the **Source** tab, add this condition under **Record filters**: `Parent item - is empty`.
+<Frame>![The Source tab with the condition Parent item is empty](/data-sources/images/notion/block-filter-parent-empty.png)</Frame>
 
 **Show only sub-items**
 
-To show just sub-items (and hide the top-level items), add a Conditional filter: `Parent item - is not empty`.
-<Frame>![Notion image](/data-sources/images/notion/image12.png)</Frame>
+To show just sub-items (and hide the top-level items), in the **Source** tab, add this condition under **Record filters**: `Parent item - is not empty`.
+<Frame>![The Source tab with the condition Parent item is not empty](/data-sources/images/notion/block-filter-parent-not-empty.png)</Frame>
 
 **Show items with sub-items in a detail page**
 
@@ -167,7 +187,7 @@ Want users to click an item and see its sub-items on a new page? Here's how:
 4. Set that block to show sub-items related to the current item:<br/>
 
    `Parent item - Includes any of → Current record {Primary column name}`
-   <Frame>![Notion image](/data-sources/images/notion/image13.gif)</Frame>
+   <Frame>![Steps to show the sub-items of an item on a detail page](/data-sources/images/notion/sub-items-detail-page.gif)</Frame>
 
 ---
 
@@ -177,10 +197,10 @@ Want users to click an item and see its sub-items on a new page? Here's how:
    <AccordionGroup>
    <Accordion title="My Notion is connected to Softr, but I don’t see the page or database I’m trying to access.">
 This can happen when you add a page or database to Notion after you have already created the connection to Softr. To fix this, navigate to the page you want to give Softr access to and click on the ellipses icon in the upper right corner. Hover over the Connections, search for Softr and select it.
-<Frame>![Notion image](/data-sources/images/notion/image14.png)</Frame>
+<Frame>![The Notion page menu, with Connections and Softr selected](/data-sources/images/notion/notion-connections-menu.png)</Frame>
 
 Notion will ask you to confirm letting Softr access this page. Note that you will need to refresh Softr editor to see the newly connected page or database.
-<Frame>![Notion image](/data-sources/images/notion/image15.png)</Frame>
+<Frame>![Notion asking to confirm that Softr can access the page](/data-sources/images/notion/notion-confirm-connection.png)</Frame>
    </Accordion>
    <Accordion title="Can I use multiple Notion workspaces in one Softr app?">
 Yes! You can connect multiple Notion workspaces but need to use **separate Softr blocks** for each database.
