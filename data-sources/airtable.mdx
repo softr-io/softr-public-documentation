@@ -155,7 +155,7 @@ These fields are not supported due to Airtable API limitations:
   <Accordion title="How can I improve my app's performance?">
     ### OAuth vs. personal access token rate limits
 
-    Softr sends up to 4 requests per second to Airtable with OAuth. With a personal access token, Softr sends up to 35 requests per second. Airtable still limits each base to 5 requests per second, so requests to one base stay capped at 5 per second, whatever the authentication method.
+    Airtable limits each base to 5 requests per second, whatever the authentication method. A personal access token gives Softr more room across several bases. Requests to one base stay capped at 5 per second.
 
     ### Free plan rate limits
 
