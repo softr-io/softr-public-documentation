@@ -820,6 +820,11 @@
   },
   "redirects": [
     {
+      "source": "/migration-tips/airtable-app-migration",
+      "destination": "/migration-tips/migrating-from-airtable-to-softr-databases#if-the-app-cant-be-migrated-yet",
+      "permanent": true
+    },
+    {
       "source": "/workflows/integrations/push-notifications",
       "destination": "/workflows/actions/send-notification"
     },
