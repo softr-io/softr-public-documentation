@@ -1,18 +1,18 @@
 ---
 title: "Applications"
 sidebarTitle: "Applications"
-description: "Let an AI assistant create and rename apps, add pages, build navigation menus, read your apps, manage their users, user groups and data restrictions, configure login, sign-up, sessions and the email sender, preview changes, and publish them."
+description: "Let an AI assistant create and rename apps, add pages, build navigation menus, read your apps, manage their users, user groups and data restrictions, configure login, sign-in methods, sign-up, sessions and the email sender, preview changes, and publish them."
 'og:title': "MCP: Applications – Softr Help Docs"
-'og:description': "Let an AI assistant create and rename apps, add pages, build navigation menus, read your apps, manage their users, user groups and data restrictions, configure login, sign-up, sessions and the email sender, preview changes, and publish them."
+'og:description': "Let an AI assistant create and rename apps, add pages, build navigation menus, read your apps, manage their users, user groups and data restrictions, configure login, sign-in methods, sign-up, sessions and the email sender, preview changes, and publish them."
 'og:image': "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
 'twitter:title': "MCP: Applications – Softr Help Docs"
-'twitter:description': "Let an AI assistant create and rename apps, add pages, build navigation menus, read your apps, manage their users, user groups and data restrictions, configure login, sign-up, sessions and the email sender, preview changes, and publish them."
+'twitter:description': "Let an AI assistant create and rename apps, add pages, build navigation menus, read your apps, manage their users, user groups and data restrictions, configure login, sign-in methods, sign-up, sessions and the email sender, preview changes, and publish them."
 icon: "window"
 ---
 
 These tools let an assistant understand how an app is built — its pages, its blocks, and who can see what — and then show you a change or make it live.
 
-Most of these tools only read. The ones that change something create or rename an app, add a page, manage navigation menus, app users, user groups and data restrictions, change the app's login, sign-up, session, email sender, subdomain and custom-domain settings, preview it, and publish it. An assistant can add an empty page, but filling it with content is done through [vibe coding blocks](/mcp/vibe-coding) — and changes to an existing page's content are made the same way.
+Most of these tools only read. The ones that change something create or rename an app, add a page, manage navigation menus, app users, user groups and data restrictions, change the app's login, sign-in, sign-up, session, email sender, subdomain and custom-domain settings, preview it, and publish it. An assistant can add an empty page, but filling it with content is done through [vibe coding blocks](/mcp/vibe-coding) — and changes to an existing page's content are made the same way.
 
 ## Creating and renaming an app
 
@@ -89,7 +89,7 @@ Before changing anything, the assistant needs to know what is there. This is how
 | Tool | What it does |
 |---|---|
 | `application_list` | Lists the apps you can access, optionally filtered to one workspace |
-| `application_get` | Gets an app's details: name, workspace, domain, home page, and the configured email sender |
+| `application_get` | Gets an app's details: name, workspace, domain, home page, the configured email sender, and its login, sign-in, sign-up and session settings |
 | `application_page_list` | Lists an app's pages with their paths, types, and whether they are enabled |
 | `application_page_get` | Gets a page and the blocks on it |
 | `application_page_get_block` | Gets a single block's configuration, visibility settings, and connected data sources, with each source's table and fields |
@@ -227,11 +227,35 @@ These tools manage an app's **end users** — the people who log in to the publi
 
 `application_set_login` turns the app's end-user login on or off — pass `enabled=true` to turn it on, `enabled=false` to turn it off. Disabling login stops end users from signing in to the app; it is reversible, so calling it again with `enabled=true` restores login. It applies only to apps that support login — apps without login settings are rejected. Changes take effect on the next publish, like other app changes.
 
+To see whether login is on without changing it, the assistant reads the app with `application_get`, whose `login` field holds the app's login, sign-in and sign-up settings.
+
 Turning login off does not change any page's own **Who can view** setting. A page still set to logged-in users can then not be opened by anyone, so when you want the app public, also set those pages to all users with `application_page_set_permissions`.
 
 <Note>
   **Login cannot be disabled while the app still has users.** The call fails with an error saying so. Remove the app's users first (for example with `application_remove_user`), then disable login.
 </Note>
+
+### Sign-in methods
+
+| Tool | What it does |
+|---|---|
+| `application_configure_sign_in` | Turns the email sign-in method and the permanent login link on or off, and sets the email method's options |
+
+`application_configure_sign_in` changes how end users sign in. Each setting is optional, and one you leave out keeps its current value:
+
+- **Email sign-in** — on or off.
+- **Permanent login link** — a link that signs a user in without a password and keeps working. Anyone who gets hold of a user's link can sign in as them, so the assistant is told to warn you and ask before turning it on.
+- **Email login methods** — password, a one-time code sent by email, or both, in which case a user can use either. Choosing a single method also turns off a setup where users need both. One-time codes need a paid plan.
+- **Strong passwords** — require at least 12 characters with upper and lower case, a number and a symbol.
+- **One-time code lifetime** — 1, 2, 5 (the default), 10 or 30 minutes.
+
+The response is the app's resulting sign-in settings, the same ones `application_get` returns. At least one sign-in method has to stay on, so a change that would leave none is refused.
+
+<Warning>
+  **Turning a method off locks out the users who sign in that way**, and narrowing the email login methods stops users from signing in the way they are used to. The assistant confirms either with you before making the change.
+</Warning>
+
+Google sign-in, SSO and two-factor sign-in with an authenticator app cannot be changed through these tools: Google and SSO need credentials from Google or your identity provider, and the authenticator app needs your app's sign-in screens to handle the second step. `application_get` reports whether each one is on, and the assistant gives you a link to the matching setting on the **Authentication** tab in Studio, where you set it up yourself. Don't paste client secrets into the chat.
 
 ### Session length
 
@@ -254,6 +278,8 @@ A login lasts 24 hours, 7 days, 30 days or 90 days (the default). Separately, us
 - `DOMAIN_RESTRICTED` — only people whose email is in `allowedDomains` can sign up
 
 `allowedDomains` is a list of email domains like `["example.com"]`; it is required for `DOMAIN_RESTRICTED` and cleared for the other policies. Like login, it applies only to apps that support sign-up — apps without login settings are rejected — and changes take effect on the next publish.
+
+To see the current policy without changing it, the assistant reads `login.signUp` from `application_get`.
 
 ## Email sender
 
