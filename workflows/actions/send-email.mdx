@@ -1,0 +1,54 @@
+---
+title: "Send Email"
+permalink: "workflows-actions-send-email"
+sidebarTitle: "Send Email"
+description: "Send an email from a workflow through Softr, without connecting a mail account."
+og:title: "Send Email - Softr Help Docs"
+og:description: "Send an email from a workflow through Softr, without connecting a mail account."
+og:image: "https://res.cloudinary.com/helpkit/image/upload/c_scale,w_700,q_auto/v1674219840/softrdocs_meta_OG_Image_Url_258f31c013.png"
+---
+
+# Send Email
+
+> **Applies to:** Send Email 1.0.0, 1.1.0
+
+Send an email from a workflow through Softr, without connecting a mail account. Each email costs 5 workflow credits per
+recipient, counting To, CC and BCC together.
+
+## Settings
+
+| Field | Description |
+| :- | :- |
+| **From** (1.0.0) | The sender address, typed in. |
+| **Sender name** (1.0.0) | The name shown next to the sender address. |
+| **From** (1.1.0) | One of your workspace's email senders. Left empty, or when that sender no longer exists, the email is sent from `"<Workspace name>" <workspace-id@softr-email.com>`. |
+| **To** | Required. One or more addresses, separated by commas. |
+| **Cc** / **Bcc** *(optional)* | Addresses, separated by commas. |
+| **Reply to** *(optional)* | The address replies go to. |
+| **Subject** | Required. |
+| **Body** | Required. Plain text or HTML. |
+| **Attachments** (1.1.0) *(optional)* | A file name and a publicly available file URL per file. The file name can leave out the extension. At most 10 MB in total. |
+
+## Limits
+
+- At most 50 recipients in To, CC and BCC together.
+- The Softr address (`…@softr-email.com`) sends at most 30 emails a day per workspace. Pick one of your workspace's
+  email senders to send more.
+
+## Errors
+
+| Message in the run details | What to do |
+| :- | :- |
+| `The 'to' address is required and cannot be blank for sending an email.` (also for `'subject'` and `'body'`) | Fill in the field. |
+| `The combined number of recipients in To, CC, and BCC cannot exceed 50 for this action, but N were provided.` | Send to fewer recipients. |
+| `Daily limit for sending emails from <workspace-id>@softr-email.com reached` | Wait until the next day, or pick one of your workspace's email senders in **From**. |
+| `Postmark rejected the email (error code N): <reason>` | The email provider refused this email, for example because of an invalid address (300), an unconfirmed sender (400) or an inactive recipient (406). Fix what the reason names. The step is not retried, because the same email would be refused again. |
+
+## Versions
+
+A step keeps the version it was created with. Items marked with a version above apply to that version only.
+
+| Version | What changed |
+|---|---|
+| 1.1.0 | **From** picks one of your workspace's email senders instead of a typed address, with the Softr address as the fallback. Adds **Attachments**. |
+| 1.0.0 | The first version, with a typed **From** and **Sender name**. |
