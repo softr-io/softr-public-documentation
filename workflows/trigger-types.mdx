@@ -172,10 +172,10 @@ Softr auto-generates a unique POST endpoint URL for each workflow that uses this
 | `application/json` (or none) | Parsed into `body` |
 | `application/x-www-form-urlencoded` | Each field in `body` |
 | `multipart/form-data` | Text fields in `body`, each uploaded file in `files` |
-| Text: `text/plain`, `text/xml`, `application/xml`, ... | `body` as a string, or parsed like JSON when the text is valid JSON |
+| Text: `text/plain`, `text/xml`, `application/xml`, ... | `body` as a string (decoded with the `charset` of the `Content-Type`, UTF-8 by default), or parsed like JSON when the whole text is valid JSON |
 | Anything else: `application/pdf`, `image/png`, `application/octet-stream`, ... | The whole body as one file in `files` |
 
-A file sent as the raw body takes its name from the `Content-Disposition` header when the sender sets one (for example `attachment; filename="invoice.pdf"`), and is otherwise named `file` with an extension that matches the content type, such as `file.pdf`. For example, this request starts the workflow with the PDF in `files`:
+A file sent as the raw body takes its name from the `Content-Disposition` header when the sender sets one (for example `attachment; filename="invoice.pdf"`), and is otherwise named `file` with an extension that matches the content type, such as `file.pdf`, or `file.bin` when the content type has no usual extension. For example, this request starts the workflow with the PDF in `files`:
 
 ```bash
 curl --data-binary @invoice.pdf -H "Content-Type: application/pdf" <webhook-url>
