@@ -131,6 +131,7 @@
                   "workflows/integrations/linkup",
                   "workflows/integrations/firecrawl",
                   "workflows/integrations/microsoft-excel",
+                  "workflows/integrations/microsoft-planner",
                   "workflows/integrations/mistral",
                   "workflows/integrations/monday",
                   "workflows/integrations/notion",
