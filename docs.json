@@ -120,6 +120,7 @@
                   "workflows/integrations/fillout",
                   "workflows/integrations/gemini",
                   "workflows/integrations/gmail",
+                  "workflows/integrations/gohighlevel",
                   "workflows/integrations/google-calendar",
                   "workflows/integrations/google-sheets",
                   "workflows/integrations/granola",
