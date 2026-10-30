@@ -165,6 +165,26 @@ Softr auto-generates a unique POST endpoint URL for each workflow that uses this
 - **Webhook URL** — Auto-generated; copy and paste into the external service
 - **CORS origins** — (Optional) Restrict which domains can send requests to this endpoint
 
+**Request body:** The trigger reads the body according to its `Content-Type` header:
+
+| Content-Type | Where it arrives |
+|---|---|
+| `application/json`, or no usable `Content-Type` | Parsed into `body` |
+| `application/x-www-form-urlencoded` | Each field in `body` |
+| `multipart/form-data` | Text fields in `body`, each uploaded file in `files` |
+| Text: `text/plain`, `text/xml`, `application/xml`, ... | `body` as a string (decoded with the `charset` of the `Content-Type`, UTF-8 by default), or parsed like JSON when the whole text is valid JSON |
+| Anything else: `application/pdf`, `image/png`, `application/octet-stream`, ... | The whole body as one file in `files` |
+
+A file sent as the raw body takes its name from the `Content-Disposition` header when the sender sets one (for example `attachment; filename="invoice.pdf"`), and is otherwise named `file` with an extension that matches the content type, such as `file.pdf`, or `file.bin` when the content type has no usual extension. For example, this request starts the workflow with the PDF in `files`:
+
+```bash
+curl --data-binary @invoice.pdf -H "Content-Type: application/pdf" <webhook-url>
+```
+
+Each file, uploaded or sent as the raw body, can be up to 10 MB. A larger raw body is rejected with HTTP 400 and the message `Webhook request body exceeds the maximum file size of 10 MB`.
+
+A request without a `Content-Type` header, or with one that cannot be read, must carry JSON. Any other body is rejected with HTTP 400 and the message `Webhook request has no usable Content-Type header and the body is not JSON. Set Content-Type to the body's type, such as application/pdf or text/plain.` A request that declares JSON but sends invalid JSON gets `Malformed JSON webhook body`.
+
 > **Tip:** Use the Webhook trigger to start workflows from Softr button clicks, form submissions on external sites, or any service that supports outbound webhooks.
 
 **When to use:** Connect Softr Workflows to any tool that supports webhooks — Stripe payment events, Typeform submissions, Shopify orders, or your own application.
