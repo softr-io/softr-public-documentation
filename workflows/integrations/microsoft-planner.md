@@ -30,6 +30,22 @@ Change a task from your workflow: rename it, move it to another bucket, reassign
 
 Remove a task permanently when the request behind it is withdrawn or the work is no longer needed.
 
+### List plans
+
+Get every plan your connected account can see, with the Microsoft 365 group each one belongs to — to let users pick a plan in your app or to loop over plans in a report.
+
+### Get plan
+
+Read a plan and the names of its labels, so your workflow can pick the right label for a task or show the plan's setup in your app.
+
+### List buckets
+
+Get the buckets of a plan in board order, to route a task to the right column by name or mirror the board's stages in a Softr view.
+
+### Create bucket
+
+Add a new bucket to a plan — for example one column per new client, project phase or sprint created in your app.
+
 ## Key Benefits
 
 - **No-code simplicity:** Pick your plan, bucket and labels from live dropdowns and map the rest from your app — no scripts, no Power Automate.
@@ -48,12 +64,13 @@ Remove a task permanently when the request behind it is withdrawn or the work is
 | **Bug and feedback triage** | Turn feedback submitted in your app into prioritized tasks, with the submitter's screenshots attached as links. |
 | **Content and campaign planning** | When a campaign or article is scheduled in your Softr app, create the production task with its start and due dates in the marketing plan. |
 | **Recurring operations** | On a schedule, create the week's recurring tasks — reports, checks, reviews — so they appear in Planner without anyone remembering to add them. |
+| **Board per client** | When a new client is added in your app, create a bucket named after them in the delivery plan, so their tasks have a home from day one. |
 | **Team task dashboard** | List each plan's open tasks on a schedule and sync them into a Softr table, so clients or managers see progress without a Planner licence. |
 
 ## How to Connect Softr with Microsoft Planner
 
 1. Open your Softr workspace and go to **Workflows**.
-2. Create a new workflow or open an existing one, then add a Microsoft Planner action — create, get, list, update or delete a task.
+2. Create a new workflow or open an existing one, then add a Microsoft Planner action — work with tasks (create, get, list, update, delete), plans (list, get) or buckets (list, create).
 3. In the **Account** field, click **Add another account** and sign in with your Microsoft work or school account. Grant Softr permission to manage your tasks when Microsoft asks.
 4. Pick the **Plan** and **Bucket** the task should be created in — the dropdowns list the plans you have access to.
 5. Map the **Title** and any other fields from your Softr forms, records, or previous workflow steps. Assignees can be entered as email addresses.
