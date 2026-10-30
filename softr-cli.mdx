@@ -14,8 +14,8 @@ The Softr CLI (`softr`) works with your Softr workspace from your machine. It is
 hand as well: every command has a `--json` form, and nothing runs on your machine. Whatever the CLI tests or runs
 happens in Softr, exactly as in the builder.
 
-Today it covers your account and workspace (logging in, your workspaces, the integrations connected in them) and
-[workflows](/workflows/workflows). Each further area of Softr gets a section on this page and a skill of its own. The
+Today it covers your account and workspace (logging in, your workspaces, the integrations connected in them),
+[workflows](/workflows/workflows) and [Softr Databases](/softr-databases/softr-databases-overview). Each further area of Softr gets a section on this page and a skill of its own. The
 full command reference, with every option, is the README on the
 [package page on npm](https://www.npmjs.com/package/@softr/cli); this page says what the CLI is for and how to start.
 
@@ -79,11 +79,13 @@ npx @softr/cli@latest --help     # or run the latest release without installing
 
 ## Log in
 
-In a terminal, `softr login` offers two ways and recommends the first: the browser, which opens Softr's authorization
-screen where you approve the CLI for your workspaces, or a
-[personal API token](/mcp/connect#personal-access-tokens) you created in Softr Studio. The CLI keeps the token in
-`~/.softr/credentials.json` and renews it on its own. When there is no browser on that machine, `login` prints the
-URL to open elsewhere, or you pass the token with `login --token`. An agent asks you to do this once.
+```bash
+softr login            # approve the CLI in your browser (recommended)
+softr login --token    # or paste a personal API token you created in Softr Studio
+```
+
+See [personal API tokens](/mcp/connect#personal-access-tokens) for how to create one, and `softr login --help` for
+every other way to log in, for example in scripts. An agent asks you to do this once, in your own terminal.
 
 The CLI has exactly the rights you have in Softr, never more; `softr whoami` shows them and `softr logout` forgets
 the token.
@@ -112,6 +114,23 @@ The agent initializes the workflow, adds the steps, writes the code files, pushe
 whole workflow and, when you confirm, publishes it. The trigger's URL and a link to the workflow in Softr Studio are in
 its output, and the workflow opens in the builder like any other.
 
+## Databases
+
+The `softr db` commands create and shape Softr Databases (databases, their tables, fields and views) and read and
+write their records. A database gets a
+directory of its own, with a `softr-db.jsonc` file that names it and a cache of its tables and fields that the CLI keeps
+up to date. Next to your workflow directories, it gives the agent the table and field ids a workflow needs. Every
+change goes to Softr at once.
+
+**Skill:** `softr-db`. Ask for the outcome:
+
+> Create a Softr database for my CRM with a Leads table: name, email, a stage with New, Qualified and Won, and a
+> follow-up date.
+
+The agent creates the database and its directory, adds the table and its fields, and shows you the result. It asks
+before it deletes anything. Records use field names in both directions, and they are never stored on your machine.
+`softr db --help` lists the commands.
+
 ## Learn more
 
 <CardGroup cols={2}>
@@ -123,6 +142,9 @@ its output, and the workflow opens in the builder like any other.
   </Card>
   <Card title="Workflows" icon="random" href="/workflows/workflows">
     Triggers, steps and how workflows run.
+  </Card>
+  <Card title="Softr Databases" icon="database" href="/softr-databases/softr-databases-overview">
+    Tables, field types and how Softr stores your data.
   </Card>
   <Card title="Softr MCP server" icon="plug" href="/mcp/workflows">
     Build workflows with every step type through an AI assistant.

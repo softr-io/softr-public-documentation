@@ -18,7 +18,7 @@ This integration allows you to:
 
 * Utilize relational data for enhanced workflows
 
-<Info>Smartsuite is available on **Professional** and higher plans.</Info>
+<Info>SmartSuite is available on all plans, including Free.</Info>
 
 <iframe src="https://www.youtube.com/embed/MTUHApAIzeE?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
 
@@ -28,18 +28,21 @@ To use SmartSuite in Softr, you must first **connect your SmartSuite account**. 
 
 <Steps>
   <Step title="Add SmartSuite as a data source in Softr">
-    1. Open [**Softr’s Data Sources**](https://studio.softr.io/dashboard/data-sources) settings.
+    1. In the [Softr Studio dashboard](https://studio.softr.io/dashboard/integrations), click **Integrations** in the left menu.
 
-    2. Click **Connect data source**.
+    2. Click **Connect new**.
 
-    3. Select **SmartSuite** from the list.
+    <Frame>![The Integrations page of the dashboard, with the Connect new button](/data-sources/images/shared/integrations.png)</Frame>
+
+    3. In the **Select an integration** window, click **SmartSuite**.
+
+    <Frame>![The Select an integration window, with SmartSuite selected](/data-sources/images/smartsuite-/select-smartsuite.png)</Frame>
 
     4. Log in to your **SmartSuite** account (if not already).
 
     5. Authorize Softr to access your SmartSuite data.
 
     Once connected, your SmartSuite data will be available to use in Softr.
-    <Frame>![Notion image](/data-sources/images/smartsuite-/image1.png)</Frame>
   </Step>
 </Steps>
 
@@ -51,23 +54,27 @@ After connecting SmartSuite, you can use its data in any Softr app.
   <Step title="Connect your data to a dynamic block">
     To display your data in the app, connect a [dynamic block](/core-concepts-overview/c5VwEbsWtTfPyUZjmEKvfx/visualize-data-with-building-blocks/41p6U2eZs7zgY8zWmFV4eH#1859a723d691803d9551ecd7b3b0c043) (e.g., [List](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU), [Grid](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/grid-block/42JZoeYwMsogZcveqh74QH), [Table](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/table-block-/j7rGwu7J7zuU69h3bZ7HFe)) to your SmartSuite table:
 
-    1. Go to the Block **source** **tab** and select your SmartSuite integration.
+    1. Open the **Source** tab of the block settings.
 
-    2. Select the **workspace** and **solution** you want to connect.
+    2. In **Account**, select your SmartSuite account.
 
-    3. Pick the **table** you want to use.
+    3. In **Workspace**, select the workspace.
+
+    4. In **Solution**, select the solution.
+
+    5. In **Table**, pick the table you want to use.
 
     <Warning>
 
     **Important**: Each **block can connect to only one SmartSuite table**. If you need to display data from multiple tables, use separate blocks.
     </Warning>
-    <Frame>![Notion image](/data-sources/images/smartsuite-/image2.png)</Frame>
+    <Frame>![The Source tab of a List block with the SmartSuite account, workspace, solution and table selected](/data-sources/images/smartsuite-/list-block-source-smartsuite.png)</Frame>
   </Step>
   <Step title="Map SmartSuite fields to item fields in softr">
-    Each SmartSuite table has multiple fields (columns) with predefined types (e.g., File, Yes/No, Formula). Connecting your table to a block lets you choose which SmartSuite **fields** to display and map it to a Softr field. This lets you control how your Smartusuite data appears in Softr.
+    Each SmartSuite table has multiple fields (columns) with predefined types (e.g., File, Yes/No, Formula). Connecting your table to a block lets you choose which SmartSuite **fields** to display and map it to a Softr field. This lets you control how your SmartSuite data appears in Softr.
 
     **Example:** If your SmartSuite table has a **Photos (Files & Images field)**, map it to an **Image field** in Softr to display it correctly.
-    <Frame caption="SmartSuite fields">![SmartSuite fields](/data-sources/images/smartsuite-/image3.png)</Frame><Frame caption="Mapping an image field">![Mapping an image field](/data-sources/images/smartsuite-/image4.png)</Frame>
+    <Frame caption="SmartSuite fields">![A SmartSuite table with its field names as column headers](/data-sources/images/smartsuite-/smartsuite-table-fields.png)</Frame><Frame caption="Mapping an image field">![The Content tab of a List block with a SmartSuite Photo field mapped to an Image item field](/data-sources/images/smartsuite-/map-photos-to-image-field.png)</Frame>
     <Info>
 
     Learn more about Softr field types in the [List Block Overview](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU).
@@ -99,4 +106,4 @@ For example, if you have two SmartSuite tables:
 You can link the **Tasks table** to the **Projects table** to show which project each task belongs to.
 
 Below, you can see the **Tasks table**, where the **Project field** is a linked record showing data from the **Projects table**.
-<Frame caption="SmartSuite table with projects">![SmartSuite table with projects](/data-sources/images/smartsuite-/image5.png)</Frame><Frame caption="Project linked records">![Project linked records](/data-sources/images/smartsuite-/image6.png)</Frame>
+<Frame caption="SmartSuite table with projects">![A SmartSuite Projects table](/data-sources/images/smartsuite-/smartsuite-projects-table.png)</Frame><Frame caption="Project linked records">![A SmartSuite Tasks table with a linked Project field](/data-sources/images/smartsuite-/smartsuite-tasks-linked-projects.png)</Frame>

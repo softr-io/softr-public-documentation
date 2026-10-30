@@ -18,7 +18,7 @@ ClickUp is a comprehensive project management and productivity tool that you can
 
 <Tip>
 
-ClickUp as a data source is available on Softr’s **Professional** plan and above.
+ClickUp as a data source is available on Softr’s **Professional** plan and above. It is not available on the Free and Basic plans.
 
 </Tip>
 
@@ -26,38 +26,47 @@ ClickUp as a data source is available on Softr’s **Professional** plan and abo
 
 <Steps>
   <Step title="Add ClickUp as a data source">
-    From your Softr workspace dashboard, click on the Data sources tab on the left menu.
-    <Frame caption="Click on the Data sources tab in the left menu">![Click on the Data sources tab in the left menu](/data-sources/images/clickup/image1.png)</Frame>
+    In your Softr workspace, click **Integrations** in the left menu.
+    <Frame caption="Click Integrations in the left menu">![Integrations page in the Studio left menu, with the Connect new button](/data-sources/images/shared/integrations.png)</Frame>
 
-    Click on “Connect to Data source” button in the upper right
-    <Frame caption="Click on Connect to Data source in the upper right">![Click on Connect to Data source in the upper right](/data-sources/images/clickup/image2.png)</Frame>
+    Click **Connect new**.
 
-    Select ClickUp from the list and click the Continue button in the bottom right:
-    <Frame caption="Select Clickup, then click Continue in the bottom right">![Select Clickup, then click Continue in the bottom right](/data-sources/images/clickup/image3.png)</Frame>
+    Click the **ClickUp** tile in the list of data sources.
+    <Frame caption="Click the ClickUp tile">![Select an integration window with the ClickUp tile highlighted](/data-sources/images/clickup/picker-clickup-tile.png)</Frame>
 
-    If you’re not logged in to ClickUp, you’ll be prompted to sign in first. Then you’ll see a screen that let’s you choose which Workspaces to connect to Softr. Select any or all of the workspace(s) you want to connect to and click “Connect Workspace(s)”:
-    <Frame caption="Click on the workspace you want to connect, then click Connect Workspace">![Click on the workspace you want to connect, then click Connect Workspace](/data-sources/images/clickup/image4.png)</Frame>
+    In the Connect to ClickUp window, click **Connect**.
+    <Frame caption="Click Connect in the Connect to ClickUp window">![Connect to ClickUp window with the Connect button highlighted](/data-sources/images/clickup/connect-clickup-window.png)</Frame>
 
-    You will be redirected back to your Softr browser tab and your new ClickUp connection will be available to use in any and all of your Softr apps. If you need to rename, delete or see which apps the data source is being used in, just click the three dots on the data source:
-    <Frame caption="Click the three dots to edit, rename, delete, or see all apps the data source is being used in.">![Click the three dots to edit, rename, delete, or see all apps the data source is being used in.](/data-sources/images/clickup/image5.png)</Frame>
+    If you are not signed in to ClickUp, sign in first. Then select the Workspaces you want to connect to Softr and click **Connect Workspace**.
+    <Frame caption="Select the Workspaces, then click Connect Workspace">![ClickUp screen to select the Workspaces to connect with Softr](/data-sources/images/clickup/clickup-workspace-selection-third-party.png)</Frame>
+
+    Softr opens again. Your ClickUp connection now appears in the Integrations list and in every Softr app.
+
+    To rename, share, re-authenticate, or remove the connection, click the three dots next to it. Select **See active apps** to see which apps use it.
+    <Frame caption="Click the three dots to rename, share, re-authenticate, or remove the connection">![Three dots menu of the ClickUp connection with the options See active apps, Share, Rename, Re-authenticate, and Remove](/data-sources/images/clickup/integrations-row-menu.png)</Frame>
   </Step>
   <Step title="Connect a block to your new ClickUp datasource">
-    In any of your Softr apps, you can select almost any dynamic block and choose ClickUp as the connected data source for the block. Just select the Data source, the Workspace, Space, and List for the block.
+    In any of your Softr apps, select a dynamic block, such as a List block. In the Source settings, select **ClickUp - [connection name]** as the **Account**.
+
+    Then select the **Team**, the **Space**, and the **List** to show.
 
     <Tip>
 
-    You can get any List from Clickup, whether it is in a folder or not. Softr ignores the heirarchy in ClickUp to show all List within a given Space.
+    You can use any List from ClickUp, whether it is in a folder or not. Softr ignores the hierarchy in ClickUp and shows all Lists in a Space.
     </Tip>
-    <Frame caption="Use the settings for the block to connect ClickUp to dynamic blocks.">![Use the settings for the block to connect ClickUp to dynamic blocks.](/data-sources/images/clickup/image6.png)</Frame>
+    <Frame caption="Set the Account, Team, Space, and List in the Source settings of the block.">![Source settings of a List block with the ClickUp account, Team, Space, and List selected](/data-sources/images/clickup/block-source-settings.png)</Frame>
 
-    You can tell which blocks support ClickUp as a datasource by hovering over the block you want to add.
-    <Frame caption="Hover over a block to see what data sources it supports.">![Hover over a block to see what data sources it supports.](/data-sources/images/clickup/image7.png)</Frame>
+    Hover over a block to see which data sources it supports.
+    <Frame caption="Hover over a block to see what data sources it supports.">![Block hover showing the data sources a block supports](/data-sources/images/clickup/block-supported-sources-hover.png)</Frame>
   </Step>
   <Step title="Map your ClickUp properties to the block elements">
-    Click on the block and select the Content tab to edit the fields and map your columns/properties in ClickUp to the visual elements of the block.
-    <Frame>![Notion image](/data-sources/images/clickup/image8.png)</Frame>
+    Click the block and select the **Content** tab. Map your ClickUp fields to the visual elements of the block.
+    <Frame caption="Map the ClickUp fields to the block elements in the Content tab">![Content tab of a List block with the item fields name, status, and description mapped to the block elements](/data-sources/images/clickup/block-content-item-fields.png)</Frame>
 
-    You can add new fields, delete fields, duplicate fields or even change the styling of individual fields and elements. You can also change the field type if it doesn’t match how you want it to display. Read more about mapping data [here](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU#content).
+    To map a field, click it and choose the field from ClickUp. For example, map an image element to the **Files** field.
+    <Frame caption="Map an image element to a file field">![Image field settings with the Files field mapped to the cover media of the block](/data-sources/images/clickup/content-image-field.png)</Frame>
+
+    You can add new fields, delete fields, duplicate fields, or change the styling of individual fields and elements. You can also change the field type if it does not match how you want it to display. Read more about mapping data [here](/building-blocks/vikC2AWEpQGkZd4jGyoVxo/list-block/pQhPYuA28VXr5tLLFBcbCU#content).
   </Step>
   <Step title="Step 4 (optional): Create app users from ClickUp">
     You can sync a list of contacts or people in ClickUp so that they become Users of your Softr app. To learn more about users and how to sync them, check out [this article](/add-and-manage-users/pxnkp9H3qyEVMF6XUceqnj/syncing-users-with-a-data-source/hshRGygHr4T33EnaLntGf9).

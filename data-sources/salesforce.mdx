@@ -15,7 +15,7 @@ In this article, we'll cover how to connect Salesforce to Softr and take a close
 
 <Info>
 
-**Salesforce** as a data source is available on **Business** and **Enterprise** plans.
+**Salesforce** as a data source is available on the **Enterprise** plan.
 
 </Info>
 
@@ -31,16 +31,26 @@ To connect Salesforce, you must have permissions to authorize third-party OAuth 
 
 <Steps>
   <Step title="Add Salesforce data source to your workspace">
-    1. In your [Softr Dashboard](https://studio.softr.io/dashboard/data-sources), navigate to **Data Sources** in the left menu.
+    1. Install the Softr app in your Salesforce org.
 
-    2. Click **Connect Data Source.**
+    2. In the Softr Studio dashboard, click **Integrations** in the left menu.
 
-    3. Select **Salesforce** and proceed to authenticate your account.
+    3. Click **Connect new**.
+
+    <Frame>![The Integrations page of the dashboard, with the Connect new button](/data-sources/images/shared/integrations.png)</Frame>
+
+    4. Select **Salesforce** in the Select an integration window.
+
+    <Frame>![The Select an integration window, with Salesforce selected](/data-sources/images/salesforce/select-salesforce.png)</Frame>
   </Step>
   <Step title="Grant access to Salesforce">
-    1. Sign in to your Salesforce account when redirected.
+    1. In the Connect to Salesforce window, click **Connect**.
 
-    2. Choose whether to connect a **production** org or a **sandbox** org, then approve the requested permissions to complete the connection.
+    <Frame>![The Connect to Salesforce window, with the Connect button](/data-sources/images/salesforce/connect-salesforce.png)</Frame>
+
+    2. Sign in to your Salesforce account when redirected.
+
+    3. Choose whether to connect a **production** org or a **sandbox** org, then approve the requested permissions to complete the connection.
   </Step>
 </Steps>
 
@@ -55,6 +65,8 @@ Once your Salesforce account is connected, you can use the authorized account ac
     1. In the block **source tab**, select the authenticated Salesforce integration.
 
     2. Choose the **Object** you want to use.
+
+    <Frame>![The Source tab of a List block, with the Salesforce account Acme Corp and the Opportunity object selected](/data-sources/images/salesforce/block-source.png)</Frame>
 
     <Warning>
 
@@ -74,8 +86,6 @@ Once your Salesforce account is connected, you can use the authorized account ac
     * **Accounts**
 
     * **Cases**
-
-    * **Tasks**
 
     * **Custom Objects**
   </Step>
@@ -104,7 +114,7 @@ Salesforce works as a **relational database**, meaning objects can be linked tog
 
 * An **Account** with multiple **Contacts** linked to it
 
-* An **Opportunity** with multiple **Tasks** linked to it
+* An **Account** with multiple **Opportunities** linked to it
 
 In Softr, you can show related objects using:
 

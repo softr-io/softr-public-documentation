@@ -1,0 +1,192 @@
+---
+title: "Migrate a Softr app from Airtable to Softr Databases"
+sidebarTitle: "Migrate a Softr app from Airtable"
+description: "Migrate a Softr app from Airtable to Softr Databases, and fix the issues that stop a migration."
+'og:title': "Migrate a Softr app from Airtable to Softr Databases – Softr Help Docs"
+'og:description': "Migrate a Softr app from Airtable to Softr Databases, and fix the issues that stop a migration."
+'twitter:title': "Migrate a Softr app from Airtable to Softr Databases – Softr Help Docs"
+'twitter:description': "Migrate a Softr app from Airtable to Softr Databases, and fix the issues that stop a migration."
+---
+
+Softr can move an app that uses Airtable to Softr Databases for you. This page explains what the migration does, how to start it, and how to fix each issue that can stop it.
+
+## What the migration does
+
+The migration runs in three steps:
+
+1. Import Airtable data to Softr Databases. Softr imports the tables your app uses, and the tables they link to. Each Airtable base becomes its own Softr database.
+2. Duplicate your app. Softr makes a copy of your app.
+3. Connect data to app. Softr connects the copy to the new Softr databases.
+
+<Note>
+  Your original app and your Airtable base stay unchanged. The migration reads from Airtable but does not write to it. You review the copy before you switch your users over.
+</Note>
+
+If the import step fails, Softr does not make the copy.
+
+## Start a migration
+
+You can start a migration in these places:
+
+- When you open the app, Softr can show the **Migrate this app from Airtable to Softr Databases** dialog.
+- In the left sidebar of the app editor, click **Migrate**.
+- In the Data tab of the app editor, click **Migrate to Softr Database**.
+- On your dashboard, go to **Migrate from Airtable** > **Migrate app** and click **Convert app**. Then select the app.
+
+In the dialog, click **Start migration**. The migration can take a few minutes.
+
+## If the app can't be migrated yet
+
+Before the migration starts, Softr checks the app. If a check fails, the dialog shows **This app can't be migrated yet**, and you can't click **Start migration**.
+
+The message does not say which check failed. Softr runs the two checks in the order below and stops at the first one that fails. Fix them in this order, then open the dialog again.
+
+| Check | Sign that this check fails |
+| --- | --- |
+| [1. Convert the app to the new app version](#1-convert-the-app-to-the-new-app-version) | The app has a **Legacy** tag on your dashboard. Or, the bottom-right corner of the app editor shows **Convert to new app version** or **Finish conversion**. |
+| [2. Update old blocks that read Airtable](#2-update-old-blocks-that-read-airtable) | A block that reads Airtable data shows **Block update available** or **This legacy block is no longer supported** at the bottom of its settings panel. |
+
+<Tip>
+  On the **Migrate from Airtable** > **Migrate app** page of your dashboard, the app list shows **Can't convert yet** next to apps that fail check 1.
+</Tip>
+
+### 1. Convert the app to the new app version
+
+Apps made before February 12, 2025 use the legacy app version. The migration works only for apps on the new app version. If you started the conversion but did not finish it, the app still counts as not converted.
+
+<Steps>
+  <Step title="Start the conversion">
+    Open the app. In the bottom-right corner of the app editor, click **Convert to new app version**. Click **How does conversion work?**, then click **Start converting**.
+  </Step>
+  <Step title="Finish the conversion">
+    When the conversion is done, click **Finish conversion** in the bottom-right corner of the app editor. The checklist shows the pages that still have blocks the new app version does not support. These are usually header, footer, and user account blocks. Remove them.
+  </Step>
+  <Step title="Verify">
+    Click **Verify**. When the checklist shows **All set!**, the conversion is finished.
+  </Step>
+</Steps>
+
+Softr saves a snapshot of your app before the conversion. You can go back to it from **Settings** > **App History**. Your published app keeps working while you convert.
+
+For more details, see [Migrating App Versions](/application-settings/migrating-app-versions).
+
+### 2. Update old blocks that read Airtable
+
+Older block versions can't show data from Softr Databases. If a block of an older version reads data from Airtable, the migration can't start. Update these blocks first.
+
+These blocks count:
+
+- Blocks that read data from Airtable, on any page of the app. Hidden blocks count too.
+- Sign-up, user profile, and onboarding blocks, if your app users come from an Airtable table.
+
+Blocks on deleted pages do not count.
+
+To find and update the old blocks:
+
+<Steps>
+  <Step title="Check each block">
+    Open each page. Click each block that reads Airtable data, hidden blocks included. Look at the bottom of the block settings panel.
+  </Step>
+  <Step title="If you see Block update available">
+    Click **View details**.
+
+    - If the dialog shows **Update now**, click it. Softr updates the block and keeps its settings.
+    - If the dialog shows **Add new version to app**, click it. Softr adds the new version as a separate block. Set up the new block, then delete the old block.
+  </Step>
+  <Step title="If you see This legacy block is no longer supported">
+    Click **Add** and add the new version of the block from the block library. Set it up, then delete the old block.
+  </Step>
+  <Step title="Delete old blocks you don't use">
+    You don't have to update an old block that you don't use. You can delete it instead. This is often the fastest fix for hidden blocks.
+  </Step>
+</Steps>
+
+For more details, see [Block Version Update](/application-settings/block-version-update).
+
+<Note>
+  You make these changes in the editor. Your published app does not change until you publish. You can also go back to an earlier version from [App History](/application-settings/app-history).
+</Note>
+
+## If the migration didn't finish
+
+If the migration stops after it starts, the dialog closes and an error message opens with the title **The migration didn't finish**. The message tells you what went wrong.
+
+The message names each Airtable base by its ID, for example `appAbC123dEf456gH`. To find the base, open it in Airtable: the ID is the part of the URL that starts with `app`. The message shows up to five issues. Fix all of them, then start the migration again.
+
+Softr checks only the tables your app uses and the tables they link to.
+
+### Two fields share this name
+
+The message looks like this: `table 'Projects', field 'Status': Two fields share this name, so references to it cannot be remapped unambiguously`.
+
+Two fields in the same Airtable table have the same name. Upper and lower case do not count as different, so `Status` and `status` are the same name.
+
+To fix it, open the table in Airtable and rename one of the two fields. Rename the field your app does not use. If you rename a field that your app uses, blocks in your original app that use it can stop working.
+
+### Two tables share this name
+
+The message ends with `Two tables share this name, so field references cannot be remapped unambiguously`.
+
+Two tables in the same Airtable base have the same name. Upper and lower case do not count as different. Rename one of the two tables in Airtable.
+
+### Softr can't read the Airtable base
+
+The message looks like this: `data source appAbC123dEf456gH could not be read - check that the connection still has access to it`. You can also see `No tables were returned for this Airtable base`.
+
+The Airtable connection that the app uses can't read the base. To fix it:
+
+1. In Airtable, make sure the base still exists and that you have access to it.
+2. In Softr, open a block that uses the base and go to its **Source** tab. Open the **Base** dropdown and click **Edit bases Softr can access**.
+3. In Airtable, give Softr access to the base. We recommend **All current and future bases in all current and future workspaces**.
+
+For more help, see [Airtable](/data-sources/airtable) and [Troubleshooting Airtable Errors](/troubleshooting/troubleshooting-airtable-errors).
+
+### A table or field is over the limit
+
+A Softr database can have up to 512 tables. A table can have up to 512 fields. If you see one of these messages, the base or a table is over the limit:
+
+- `Base has 530 tables, the limit for a tablespace is 512`
+- `Table has 530 fields, the limit is 512`
+
+For a table with too many fields, delete the fields you don't use in Airtable. For a base with too many tables, contact support.
+
+### A field can't be imported
+
+You can see one of these messages:
+
+- `Field has no type, which the import cannot translate`
+- A message that starts with `Field cannot be translated and would abort the import`
+- `No field of this table can be imported, so the table cannot be created`
+
+Contact support and include the full message.
+
+### Something went wrong, please try again
+
+These messages are usually temporary:
+
+- `Importing data source appAbC123dEf456gH failed, please try again`
+- `Could not copy the application's workflows, please try again`
+- `Could not start the migration, please try again`
+
+Start the migration again. If you get the same message again, contact support.
+
+## If you don't see the migration option
+
+The app editor shows the **Migrate** item, the **Migrate to Softr Database** button, and the migration dialog only when all of these are true:
+
+- You can edit the app. Workspace guests can't start a migration.
+- The app reads data from Airtable.
+- The app is not a copy made by a migration, and it does not already have one. To find the copy, go to **Migrate from Airtable** > **Migrate app** on your dashboard.
+- The app is not a vibe coding app. Vibe coding apps read data through code, and the migration does not change code.
+
+## After the migration
+
+When the migration is done, the dialog tells you that your app is migrated. The new app is a copy that uses Softr Databases. Before you publish it:
+
+- Review your data. Some database settings may not migrate fully because of Airtable limitations. If the dialog shows **Review data import**, click it and update the settings as needed. See [What transfers, and what to double-check](/migration-tips/migrating-from-airtable-to-softr-databases#what-transfers-and-what-to-double-check).
+- Check your workflows. The copy gets its own copies of the app's workflows, but their steps still use Airtable. Update them to use Softr Databases.
+- Move your domain. Remove your custom domain from the original app and add it to the copy.
+
+## Get help
+
+If you can't find the cause, email [support@softr.io](mailto:support@softr.io). Include the link to your app and the full text of any message you see.

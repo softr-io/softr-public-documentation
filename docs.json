@@ -120,6 +120,7 @@
                   "workflows/integrations/fillout",
                   "workflows/integrations/gemini",
                   "workflows/integrations/gmail",
+                  "workflows/integrations/gohighlevel",
                   "workflows/integrations/google-calendar",
                   "workflows/integrations/google-sheets",
                   "workflows/integrations/granola",
@@ -130,6 +131,7 @@
                   "workflows/integrations/linkup",
                   "workflows/integrations/firecrawl",
                   "workflows/integrations/microsoft-excel",
+                  "workflows/integrations/microsoft-planner",
                   "workflows/integrations/mistral",
                   "workflows/integrations/monday",
                   "workflows/integrations/notion",
@@ -193,7 +195,8 @@
           {
             "group": "Import Data",
             "pages": [
-              "migration-tips/migrating-from-airtable-to-softr-databases"
+              "migration-tips/migrating-from-airtable-to-softr-databases",
+              "migration-tips/airtable-app-migration"
             ],
             "icon": "arrow-down-from-bracket"
           }
@@ -818,6 +821,11 @@
     ]
   },
   "redirects": [
+    {
+      "source": "/migration-tips/airtable-app-migration",
+      "destination": "/migration-tips/migrating-from-airtable-to-softr-databases#if-the-app-cant-be-migrated-yet",
+      "permanent": true
+    },
     {
       "source": "/workflows/integrations/push-notifications",
       "destination": "/workflows/actions/send-notification"

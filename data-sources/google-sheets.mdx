@@ -8,7 +8,7 @@ description: "Using Google Sheets as a data source for your Softr app."
 'twitter:title': "Google Sheets – Softr Help Docs"
 'twitter:description': "Using Google Sheets as a data source for your Softr app."
 ---
-Google Sheets is a cloud-based spreadsheet solution used by millions worldwide. While it may not be as powerful as Airtable in terms of data management, it is a popular and free tool that many users already rely on. In this guide, we'll walk you through **connecting Google Sheets as a data source** for your Softr app and discuss some of its **advantages and limitations**.
+Google Sheets is a cloud-based spreadsheet solution used by millions worldwide. While it may not be as powerful as Airtable in terms of data management, it is a popular and free tool that many users already rely on. In this guide, we'll walk you through **connecting Google Sheets as a data source** for your Softr app and discuss some of its **advantages and limitations**. Google Sheets is available on all plans, including Free.
 
 <iframe src="https://www.youtube.com/embed/dte3kfZ8Ky4?rel=0" width="100%" height="500px" title="YouTube video"></iframe>
 
@@ -16,14 +16,17 @@ Google Sheets is a cloud-based spreadsheet solution used by millions worldwide. 
 
 To start using Google Sheets in Softr, you must first connect your account.
 
-* Open [Softr’s Data Sources](https://studio.softr.io/dashboard/data-sources) settings.
+* Open the **Integrations** page in the Studio sidebar.
 
-* Click the **Connect data source.**
+* Click **Connect new**.
+<Frame>![The Integrations page with the Connect new button](/data-sources/images/shared/integrations.png)</Frame>
 
-* Select **Google Sheets** and log in to your account.
+* Select **Google Sheets**. The **Connect to Google Sheets** window opens.
+
+* Click **Connect**, then log in to your Google account.
 
 * Check all required permission boxes.
-<Frame>![Notion image](/data-sources/images/google-sheets/image1.png)</Frame>
+<Frame>![The Connect to Google Sheets window with the Connect button highlighted](/data-sources/images/google-sheets/connect-google-sheets-window.png)</Frame>
 
 ## **2. Connect your Google Sheet data to your Softr app**
 
@@ -33,12 +36,12 @@ Once your Google Sheets account is connected, you can use it in any Softr applic
   <Step title="Connect your data to a dynamic block">
     To display your data in the app, connect a **dynamic block** to your Google Sheet.
 
-    1. Go to the Block **Source** **tab** and select your GSheet integration.
+    1. Go to the block **Source** tab and select your Google Sheets account.
 
-    2. Select the **document** you want to connect.
+    2. Select the **Document** you want to connect.
 
-    3. Pick the **sheet** you want to use.<br/>
-       <Frame>![Notion image](/data-sources/images/google-sheets/image2.png)</Frame>
+    3. Select the **Sheet** you want to use.<br/>
+       <Frame>![The Source tab of a List block, with Document set to Help Desk by Softr and Sheet set to Teammates](/data-sources/images/google-sheets/source-tab-document-and-sheet.png)</Frame>
   </Step>
   <Step title="Step 2. Mapping Google Sheets columns to Softr field">
     <Tip>
@@ -52,10 +55,10 @@ Once your Google Sheets account is connected, you can use it in any Softr applic
     * **The first row as field names** (e.g., "Assignee," "Status," "Description").
 
     * **Data stored in rows** under the appropriate column headers.
-      <Frame caption="Field names and values on Google Sheets">![Field names and values on Google Sheets](/data-sources/images/google-sheets/image3.png)</Frame>
+      <Frame caption="Field names and values on Google Sheets">![Google Sheets sheet with the columns Assignee, Email, Description, Project and Status](/data-sources/images/google-sheets/field-names-in-sheet.png)</Frame>
 
-    When you connect your board to a block, you can choose which Sheet **columns** to display and map it to a Softr field. This lets you control how your GSheet data appears in Softr.
-    <Frame caption="Mapping fields from Google Sheets to Softr">![Mapping fields from Google Sheets to Softr](/data-sources/images/google-sheets/image4.png)</Frame>
+    When you connect a block to a sheet, you can choose which sheet **columns** to display and map each one to a Softr field. In the block's **Content** tab, click an item field, such as **Photo**, to change how it displays. An image field needs a column that holds image URLs.
+    <Frame caption="Mapping an image column to an Image field">![The Content tab of a List block, with the Photo item field set to the Image display type](/data-sources/images/google-sheets/content-photo-image-field.png)</Frame>
   </Step>
 </Steps>
 
@@ -67,7 +70,7 @@ Once you connect a sheet to Softr, a **Softr Record ID** column is automatically
 
 **Ensure you have edit permissions** for your Google Sheet so Softr can add and update this column. Do not delete it.
 </Warning>
-<Frame caption="The Record ID column created inside the sheet">![The Record ID column created inside the sheet](/data-sources/images/google-sheets/image5.png)</Frame>
+<Frame caption="The Record ID column created inside the sheet">![Google Sheets with the Softr Record ID column in column F](/data-sources/images/google-sheets/softr-record-id-column.png)</Frame>
 <Tip>
 
 **Tip**: Use **Softr Record IDs** to link related records across sheets (e.g., setting a "Manager ID" as another user's Softr ID).
@@ -80,11 +83,11 @@ Google Sheets doesn’t have built-in field types like Airtable, but you can org
 
 **Supported Field Types & Workarounds**
 
-* **Text** – Standard text fields.
+* **Text**: Standard text fields.
 
-* **Number** – Whole numbers, decimals, currency.
+* **Number**: Whole numbers, decimals, currency.
 
-* **Date & Time** – Standard date formats. See below for supported formats:
+* **Date & Time**: Standard date formats. See below for supported formats:
    <Accordion title="Supported Date and Time Formats">
       Date patterns with month as whole or 3 letter (August, Aug) - Currently only English language is supported.
 
@@ -163,12 +166,12 @@ Google Sheets doesn’t have built-in field types like Airtable, but you can org
       ```
    </Accordion>
 
-* **Checkbox** – Use "true" (checked) or "false" (unchecked).
+* **Checkbox**: Use "true" (checked) or "false" (unchecked).
 
-* **Image, File, Video/Audio** – Store file URLs. If storing multiple image URLs in the same cell, separate them with a comma
+* **Image, File, Video/Audio**: Store file URLs. If storing multiple image URLs in the same cell, separate them with a comma
 
-* **Tag Field** – Separate multiple values with commas.
+* **Tag Field**: Separate multiple values with commas.
 
-* **Rating** – Use integer values from 1 to 5.
+* **Rating**: Use integer values from 1 to 5.
 
 * **File Uploads:** Google Sheets doesn’t support direct file uploads. Use URLs instead.
