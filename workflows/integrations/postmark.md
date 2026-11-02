@@ -14,6 +14,9 @@ This is the right fit when your Softr app needs to send branded, reliable emails
 
 Send a transactional email from your verified Postmark sender to one or more recipients, with custom subject, body, and optional HTML content — triggered by any event in your Softr app.
 
+If Postmark refuses an email, the step fails with `Postmark rejected the email (error code N): <reason>`, and the reason
+tells you what to fix.
+
 ## Key Benefits
 
 - **Industry-leading deliverability:** Postmark's transactional infrastructure consistently lands emails in the inbox, not the spam folder.

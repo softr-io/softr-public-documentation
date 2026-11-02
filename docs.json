@@ -92,6 +92,7 @@
                 "icon": "bolt",
                 "pages": [
                   "workflows/actions/run-custom-code",
+                  "workflows/actions/send-email",
                   "workflows/actions/send-notification"
                 ]
               },
