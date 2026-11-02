@@ -872,7 +872,7 @@ If Start Date is 2025-06-02 and End Date is 2025-06-09 and 2025-06-04 is a holid
 
 `WEEKDAY(date, [startDayOfWeek])`
 
-Returns the day of the week as a number. By default, the week starts on Sunday (0 = Sunday, 1 = Monday, ..., 6 = Saturday). Pass "monday" as the second argument to start the week on Monday instead.
+Returns the day of the week as a number. By default, the week starts on Sunday (1 = Sunday, 2 = Monday, ..., 7 = Saturday). Pass "monday" as the second argument to start the week on Monday instead (1 = Monday, 2 = Tuesday, ..., 7 = Sunday). Any other second argument is ignored and the default Sunday start is used. The result is 0 when the date is empty.
 
 Example:
 
@@ -880,13 +880,13 @@ Example:
 WEEKDAY({Due Date})
 ```
 
-If Due Date is 2025-06-02 (a Monday), the result is 1.
+If Due Date is 2025-06-02 (a Monday), the result is 2.
 
 ```plain
 WEEKDAY({Due Date}, "monday")
 ```
 
-If Due Date is 2025-06-02 (a Monday), the result is 0.
+If Due Date is 2025-06-02 (a Monday), the result is 1.
 
 ---
 
