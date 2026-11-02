@@ -115,6 +115,7 @@
                   "workflows/integrations/docs-automator",
                   "workflows/integrations/documint",
                   "workflows/integrations/docusign",
+                  "workflows/integrations/dropbox",
                   "workflows/integrations/asana",
                   "workflows/integrations/fathom",
                   "workflows/integrations/fillout",
